@@ -7,7 +7,9 @@ Library           Selenium2Library
 ${USER_1}         Testi Superuser
 ${CODE_LIST_1}    koodisto6000
 ${CODE_LIST_2}    koodisto7000
+${CODE_LIST_3}    testiautomaatiokoodisto
 ${CODE_LIST_VALUE_1}    Koodisto 6000
+${CODE_LIST_VALUE_2}    t100
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
 ${TEST_CODE_1}    T100 - Automaatiokoodi
 ${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
@@ -53,6 +55,7 @@ ${SAVE_NEW_CODE_BTN}    //button[@class='btn btn-action pull-right ml-3'][contai
 ${BACK_BTN}       //div[@class='col-12']//a
 ${REMOVE_CODE_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Poista')]
 ${REMOVE_CODE_CONF_BTN}    //button[@class='btn btn-secondary-action confirm']
+${CANCEL_CODE_CREATE_BTN}    //button[@class='btn btn-link pull-right']
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Code_list_without_codes}    ${DATAFOLDER}${/}Draft_Code_list_without_codes.xlsx
@@ -195,6 +198,35 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains    koodisto6000    timeout=10
     Return to Koodistot frontpage
     [Teardown]    Remove imported Draft code list
+
+505. Create new Code list with existing Codevalue
+    [Documentation]    Create new Code list with existing Codevalue and check error message from
+    ...    Code list value input field
+    [Tags]    regression
+    [Setup]    Test Case Setup
+    Set Selenium Speed    0.5
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=10
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=10
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CODEREGISTRY_DDL}    timeout=10
+    Click element    ${CODEREGISTRY_DDL}
+    Click button    ${CODEREGISTRY_1}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_2}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_3}
+    Click button    Lisää luokitus
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=10
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
+    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until page contains    Koodiston tunnus on jo käytössä tässä rekisterissä.
+    Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}
+    Click element    ${CANCEL_CODE_CREATE_BTN}
+    Click element    ${BACK_BTN}
+    Return to Koodistot frontpage
 
 *** Keywords ***
 Test Case Setup
