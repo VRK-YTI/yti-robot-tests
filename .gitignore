@@ -1,5 +1,11 @@
 .DS_Store
 
+# Test generated content
+*.png
+output.xml
+report.html
+log.html
+
 # IntelliJ Idea
 .idea
 
