@@ -71,8 +71,8 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Documentation]    Search for VALID code list with frontpage search function.
     [Tags]    regression
     [Setup]    Test Case Setup
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_1}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_1}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_1}")]
     Sleep    2
@@ -100,8 +100,8 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_7}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_7}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_7}")]
     Sleep    2
@@ -198,8 +198,8 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Documentation]    Check ChangeNote information from Code list. YTI-489
     [Tags]    regression
     [Setup]    Test Case Setup
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_5}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_5}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_5}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_5}")]
     Sleep    2
