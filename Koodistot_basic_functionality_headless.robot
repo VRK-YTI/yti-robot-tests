@@ -33,7 +33,6 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
 
 *** Test Cases ***
 100. Open Information about the web service page
-    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     [Documentation]    Verify that Information about the web service page is opened correctly. YTI-460
     [Tags]    regression
     [Setup]    Test Case Setup
@@ -46,7 +45,6 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Teardown]    Go back to Koodistot frontpage
 
 101. Open EUPL-1.2 license page
-    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly. YTI-457
     [Tags]    regression
     [Setup]    Test Case Setup
@@ -59,7 +57,6 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Close All Browsers
 
 102. Open Description of file page
-    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
     [Tags]    regression
     [Setup]    Test Case Setup
@@ -71,7 +68,6 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Close All Browsers
 
 103. Search for VALID code list
-    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     [Documentation]    Search for VALID code list with frontpage search function.
     [Tags]    regression
     [Setup]    Test Case Setup
@@ -215,6 +211,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
 
 *** Keywords ***
 Test Case Setup
+    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     Open Koodistot
     Choose user
 
