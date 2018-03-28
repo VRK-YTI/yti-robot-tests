@@ -1,0 +1,8 @@
+.DS_Store
+
+# IntelliJ Idea
+.idea
+
+.project
+.settings/
+.classpath
