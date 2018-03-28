@@ -37,6 +37,7 @@ ${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
 ${Codes_with_invalid_status_csv}    ${DATAFOLDER}${/}Codes_with_invalid_status_csv.csv
 ${Codes_with_invalid_broader_csv}    ${DATAFOLDER}${/}Codes_with_invalid_broader_value_csv.csv
 ${Codes_with_same_broader_csv}    ${DATAFOLDER}${/}Codes_with_same_broader_value_csv.csv
+${Codes_with_duplicate_columns_csv}    ${DATAFOLDER}${/}Codes_with_duplicate_columns_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
@@ -163,7 +164,7 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Go back to Koodistot frontpage
 
 405. Import codes with duplicate comlumns
-    [Documentation]    Import Codes with duplicate columns in Codes-Excel and check error message
+    [Documentation]    Import Codes (Excel, CSV) with duplicate columns and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
@@ -171,6 +172,12 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns}
     Sleep    2
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_duplicate_columns}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns_csv}
+    Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_with_duplicate_columns}    timeout=10
