@@ -62,7 +62,6 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
-    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     [Documentation]    Import Codes (Excel, CSV) with missing code value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
@@ -328,6 +327,7 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
 
 *** Keywords ***
 Test Case Setup
+    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     Open Koodistot
     Choose user
 
