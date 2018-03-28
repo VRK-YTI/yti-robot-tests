@@ -66,7 +66,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Close All Browsers
 
 103. Search for VALID code list
-    [Documentation]    Search for VALID code list with frontpage search funtionalty.
+    [Documentation]    Search for VALID code list with frontpage search function.
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait Until Element Is Visible    id=search-box    timeout=30
@@ -92,7 +92,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Teardown]    Go back to Koodistot frontpage
 
 104. Search for code list with codeValue
-    [Documentation]    Search for code list with codeValue with frontpage search funtionalty. YTI-651
+    [Documentation]    Search for code list with codeValue with frontpage search function. YTI-651
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
@@ -137,7 +137,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     #Wait until page contains    ${municipalityNameSV}
     [Teardown]    Restore Finnish language
 
-106. Export Excel and CSV for Kunnat 2017 code list
+106. Export Excel and CSV for Kunnat 2017 Code list
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
@@ -153,7 +153,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Sleep    5
     [Teardown]    Go back to Koodistot frontpage
 
-107. Export Excel and CSV for Palveluluokitus code list
+107. Export Excel and CSV for Palveluluokitus Code list
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
@@ -193,7 +193,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Teardown]    Restore Finnish language
 
 109. Check ChangeNote information from code list
-    [Documentation]    Check ChangeNote information from code list. YTI-489
+    [Documentation]    Check ChangeNote information from Code list. YTI-489
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait Until Element Is Visible    id=search-box    timeout=30
