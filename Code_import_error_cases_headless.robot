@@ -332,7 +332,7 @@ Test Case Setup
     Choose user
 
 Open Koodistot
-    Open Koodistot in 'chrome'
+    Open Koodistot in 'firefox'
     Sleep    1
 
 Choose user
@@ -354,8 +354,7 @@ Open Koodistot in '${BROWSER}'
 Open koodistot in dev-environment
     [Arguments]    ${browser}
     Set Selenium Speed    0.3
-    Open Browser    https://koodistot-dev.suomi.fi/
-    #Open Browser    https://koodistot-dev.suomi.fi/    browser=${browser}
+    Open Browser    https://koodistot-dev.suomi.fi/    browser=${browser}
 
 Go back to Koodistot frontpage
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=10
