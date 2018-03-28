@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation     Test Suite for Code import error cases
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
 
@@ -35,6 +36,7 @@ ${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.c
 ${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
 ${Codes_with_invalid_status_csv}    ${DATAFOLDER}${/}Codes_with_invalid_status_csv.csv
 ${Codes_with_invalid_broader_csv}    ${DATAFOLDER}${/}Codes_with_invalid_broader_value_csv.csv
+${Codes_with_same_broader_csv}    ${DATAFOLDER}${/}Codes_with_same_broader_value_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
@@ -139,17 +141,23 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Go back to Koodistot frontpage
 
 404. Code import when BROADER code references code value of the code itself
-    [Documentation]    Import Codes when BROADER code references code value of the code itself and check error message
+    [Documentation]    Import Codes (Excel, CSV) when BROADER code references code value of the code itself and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_broader}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader}
     Sleep    2
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_broader}    timeout=10
+    Wait until page contains    ${Error_with_same_broader}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_same_broader}    timeout=10
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
