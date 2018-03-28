@@ -20,7 +20,7 @@ ${CLOSE_ERROR_MESSAGE_BTN}    //ngb-modal-window[2]/div/div/app-error-modal/div[
 ${CANCEL_IMPORT_CODE_LIST_BTN}    //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[3]/div/button[2]
 #Excel paths
 #${DATAFOLDER}     ${CURDIR}${/}test_files
-${DATAFOLDER}     test_files
+${DATAFOLDER}     ${/}tmp${/}test_files
 ${Codes_codevalue_missing}    ${DATAFOLDER}${/}Codes_codevalue_missing.xlsx
 ${Codes_status_missing}    ${DATAFOLDER}${/}Codes_status_missing.xlsx
 ${Codes_with_invalid_status}    ${DATAFOLDER}${/}Codes_with_invalid_status.xlsx
