@@ -38,6 +38,12 @@ ${Codes_with_invalid_status_csv}    ${DATAFOLDER}${/}Codes_with_invalid_status_c
 ${Codes_with_invalid_broader_csv}    ${DATAFOLDER}${/}Codes_with_invalid_broader_value_csv.csv
 ${Codes_with_same_broader_csv}    ${DATAFOLDER}${/}Codes_with_same_broader_value_csv.csv
 ${Codes_with_duplicate_columns_csv}    ${DATAFOLDER}${/}Codes_with_duplicate_columns_csv.csv
+${Codes_with_invalid_HL_csv}    ${DATAFOLDER}${/}Codes_with_invalid_HL_value_csv.csv
+${Codes_without_codevalue_column_csv}    ${DATAFOLDER}${/}Codes_without_codevalue_column_csv.csv
+${Codes_with_invalid_startdate_csv}    ${DATAFOLDER}${/}Codes_with_invalid_startdate_csv.csv
+${Codes_with_invalid_ID_csv}    ${DATAFOLDER}${/}Codes_with_invalid_ID_csv.csv
+${Update_Code_valid_draft_csv}    ${DATAFOLDER}${/}Update_code_valid_draft_csv.csv
+${Duplicate_Codes_csv}    ${DATAFOLDER}${/}Duplicate_codes_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
@@ -186,7 +192,7 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Go back to Koodistot frontpage
 
 406. Import codes with invalid HIERARCHYLEVEL value
-    [Documentation]    Import Codes with invalid HIERARCHYLEVEL value and check error message
+    [Documentation]    Import Codes (Excel, CSV) with invalid HIERARCHYLEVEL value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
@@ -197,12 +203,18 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_with_invalid_HL_value}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_HL_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_invalid_HL_value}    timeout=10
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
 
 407. Import codes with CODEVALUE column missing
-    [Documentation]    Import codes with CODEVALUE column missing and check error message
+    [Documentation]    Import codes (Excel, CSV) with CODEVALUE column missing and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
@@ -213,12 +225,18 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_without_codevalue_column_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=10
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
 
 408. Import codes with invalid start date
-    [Documentation]    Import codes with invalid start date and check error message
+    [Documentation]    Import codes (CSV, Excel) with invalid start date and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
@@ -229,12 +247,18 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_with_invalid_startdate}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_startdate_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_invalid_startdate}    timeout=10
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
 
 409. Import codes with invalid ID values
-    [Documentation]    Import codes with invalid ID values and check error message
+    [Documentation]    Import codes (Excel, CSV) with invalid ID values and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
@@ -245,12 +269,18 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_with_invalid_ID}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_ID_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_invalid_ID}    timeout=10
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
 
 410. Update code status from VALID to DRAFT
-    [Documentation]    Update code status from VALID to DRAFT and check error message
+    [Documentation]    Update Code status from VALID to DRAFT with import function (Excel, CSV) and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
@@ -261,12 +291,18 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Update_Code_valid_draft_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=10
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
 
 411. Import codes with duplicate CODEVALUES
-    [Documentation]    Import codes with duplicate code values and check error message
+    [Documentation]    Import codes (Excel, CSV) with duplicate CODEVALUES and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
@@ -274,6 +310,12 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes}
     Sleep    2
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_with_duplicate_codes}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes_csv}
+    Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_with_duplicate_codes}    timeout=10
