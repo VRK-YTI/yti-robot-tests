@@ -19,10 +19,10 @@ ${CLASSIFICATION_2}    Koulutus
 ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
 ${ADD_CLASSIFICATION_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/button
 ${CANCEL_CODE_MOD_BTN}    //button[@class='btn btn-link pull-right']
-${MODIFY_CODE_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Muokkaa')]
-${CODE_NAME_INPUT}    //*[@id="ngb-tab-2-panel"]/app-code-information/form/div[2]/div/app-localizable-input/dl/dd/div/input
-${CODE_DESC_INPUT}    //*[@id="ngb-tab-2-panel"]/app-code-information/form/div[2]/div/app-localizable-textarea/dl/dd/div/textarea
-${CODE_SHORT_NAME_INPUT}    //*[@id="ngb-tab-2-panel"]/app-code-information/form/div[2]/div/app-literal-input/dl/dd/div/input
+${MODIFY_CODE_BTN}    id=editable_edit_button
+${CODE_NAME_INPUT}    id=localizable_text_input
+${CODE_DESC_INPUT}    id=localizable_textarea
+${CODE_SHORT_NAME_INPUT}    id=literal_text_input
 ${SAVE_CODE_MOD_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Tallenna')]
 ${ADD_LINK_TO_CODE_BTN}    //button[@class='btn btn-action']
 ${ADD_NEW_LINK_BTN}    //button[@class='btn btn-action'][contains(text(),'Lisää uusi linkki')]
@@ -177,11 +177,11 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Sleep    1
     Wait until page contains element    ${LINK_NAME_INPUT}    timeout=10
     Click element    ${LINK_NAME_INPUT}
-    Input Text    ${LINK_NAME_INPUT}    suomi.fi
+    Input Text    ${LINK_NAME_INPUT}    www.suomi.fi
     Wait until page contains element    ${SAVE_LINK_MODIFY_BTN}    timeout=10
     Click Element    ${SAVE_LINK_MODIFY_BTN}
     Wait until page contains    Linkki
-    Page should contain    suomi.fi
+    Page should contain    www.suomi.fi
     Save code modification
     Reload Page
     [Teardown]    Delete link from code
@@ -496,7 +496,7 @@ Delete link from code
     Click element    ${DELETE_LINK_ICON}
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}
     Click Element    ${REMOVE_LINK_CONF_BTN}
-    Page should not contain    suomi.fi
+    Page should not contain    www.suomi.fi
     Save code modification
     Sleep    2
     Go back to Koodistot frontpage
