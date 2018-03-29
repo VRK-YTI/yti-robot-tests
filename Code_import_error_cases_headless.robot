@@ -5,7 +5,6 @@ Library           Selenium2Library
 Library           XvfbRobot
 
 *** Variables ***
-${HEADLESS}       True
 ${USER_1}         Testi Admin
 ${CODE_LIST_7}    testiautomaatiokoodisto1
 ${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
@@ -328,7 +327,6 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
 
 *** Keywords ***
 Test Case Setup
-    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     Open Koodistot
     Choose user
 
