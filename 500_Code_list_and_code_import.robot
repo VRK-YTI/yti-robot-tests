@@ -359,8 +359,8 @@ Check values from Valid Code list
     Page should contain    Elinkeinot
 
 Remove imported Draft code list
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_1}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_1}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_1}")]
     Wait until page contains    ${CODE_LIST_1}
@@ -375,14 +375,14 @@ Remove imported Draft code list
     Click element    ${REMOVE_CODE_LIST_BTN}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=10
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_1}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_1}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
 Remove imported Draft code list with codes
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_1}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_1}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_1}")]
     Wait until page contains    ${CODE_LIST_1}
@@ -399,14 +399,14 @@ Remove imported Draft code list with codes
     Click element    ${REMOVE_CODE_LIST_BTN}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=10
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_1}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_1}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
 Remove imported Valid code list
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_2}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_2}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_2}")]
     Wait until page contains    ${CODE_LIST_2}
@@ -420,8 +420,8 @@ Remove imported Valid code list
     Click element    ${REMOVE_CODE_LIST_BTN}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=10
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search-box    timeout=30
-    Input Text    id=search-box    ${CODE_LIST_2}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_2}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
