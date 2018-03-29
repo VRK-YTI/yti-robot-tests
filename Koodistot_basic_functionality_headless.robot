@@ -5,7 +5,6 @@ Library           Selenium2Library
 Library           XvfbRobot
 
 *** Variables ***
-${HEADLESS}       True
 ${USER_1}         Testi Admin
 ${CODE_LIST_1}    Kunnat 2017
 ${CODE_LIST_1_EN}    Municipalities 2017
@@ -211,7 +210,6 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
 
 *** Keywords ***
 Test Case Setup
-    #Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     Open Koodistot
     Choose user
 
