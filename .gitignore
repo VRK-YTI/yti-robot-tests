@@ -5,6 +5,7 @@
 output.xml
 report.html
 log.html
+.geckodriver.log
 
 # IntelliJ Idea
 .idea
