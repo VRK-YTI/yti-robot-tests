@@ -2,8 +2,10 @@
 Documentation     Test Suite for Code list and Code modification
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
+Library           XvfbRobot
 
 *** Variables ***
+${BROWSER}        chrome
 ${USER_1}         Testi Admin
 ${CODE_LIST_4}    testiautomaatiokoodisto
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
@@ -319,7 +321,7 @@ Test Case Setup
     Choose user
 
 Open Koodistot
-    Open Koodistot in 'chrome'
+    Open Koodistot in '${BROWSER}'
     Sleep    1
 
 Choose user

@@ -2,8 +2,10 @@
 Documentation     Test Suite for Code import error cases
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
+Library           XvfbRobot
 
 *** Variables ***
+${BROWSER}        chrome
 ${USER_1}         Testi Admin
 ${CODE_LIST_7}    testiautomaatiokoodisto1
 ${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
@@ -329,7 +331,7 @@ Test Case Setup
     Choose user
 
 Open Koodistot
-    Open Koodistot in 'chrome'
+    Open Koodistot in '${BROWSER}'
     Sleep    1
 
 Choose user

@@ -2,8 +2,10 @@
 Documentation     Test Suite for Koodistot basic functionality
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
+Library           XvfbRobot
 
 *** Variables ***
+${BROWSER}        chrome
 ${USER_1}         Testi Admin
 ${CODE_LIST_1}    Kunnat 2017
 ${CODE_LIST_1_EN}    Municipalities 2017
@@ -213,7 +215,7 @@ Test Case Setup
     Choose user
 
 Open Koodistot
-    Open Koodistot in 'chrome'
+    Open Koodistot in '${BROWSER}'
     Sleep    1
 
 Choose user
