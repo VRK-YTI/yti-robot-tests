@@ -211,7 +211,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
 
 *** Keywords ***
 Test Case Setup
-    Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
+    #Run Keyword If    '${HEADLESS}'=='True'    Start Virtual Display    1920    1080
     Open Koodistot
     Choose user
 
