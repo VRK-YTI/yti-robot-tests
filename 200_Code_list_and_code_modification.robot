@@ -17,15 +17,15 @@ ${CLASSIFICATION_1}    Demokratia
 ${CLASSIFICATION_2}    Koulutus
 #Buttons and links
 ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
-${ADD_CLASSIFICATION_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/button
-${CANCEL_CODE_MOD_BTN}    //button[@class='btn btn-link pull-right']
+${ADD_CLASSIFICATION_BTN}    id=add_classification_button
+${CANCEL_CODE_MOD_BTN}    id=editable_cancel_button
 ${MODIFY_CODE_BTN}    id=editable_edit_button
 ${CODE_NAME_INPUT}    id=localizable_text_input
-${CODE_DESC_INPUT}    id=localizable_textarea
+${CODE_DESC_INPUT}    id=code_description_textarea
 ${CODE_SHORT_NAME_INPUT}    id=literal_text_input
-${SAVE_CODE_MOD_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Tallenna')]
-${ADD_LINK_TO_CODE_BTN}    //button[@class='btn btn-action']
-${ADD_NEW_LINK_BTN}    //button[@class='btn btn-action'][contains(text(),'Lisää uusi linkki')]
+${SAVE_CODE_MOD_BTN}    id=editable_save_button
+${ADD_LINK_TO_CODE_BTN}    id=add_link_button
+${ADD_NEW_LINK_BTN}    id=add_new_link_button
 ${LINK_TYPE_DROPDOWN}    //button[@id='propertyType-dropdown']
 ${DROPDOWN_ITEM_LINK}    //button[@class='dropdown-item'][contains(text(),'Linkki')]
 ${LINK_URL_INPUT}    //ngb-modal-window[2]/div/div/app-link-create-modal/div[2]/div/div/form/app-literal-input/dl/dd/div/input
@@ -43,7 +43,7 @@ ${CODE_START_DATE_BTN}    //app-root/div/app-code/div/ngb-tabset/div/div/app-cod
 ${CODE_END_DATE_BTN}    //app-root/div/app-code/div/ngb-tabset/div/div/app-code-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[2]/app-date-input/dl/dd/div/div/button
 ${CODE_START_DATE_INPUT}    //app-root/div/app-code/div/ngb-tabset/div/div/app-code-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[1]/app-date-input/dl/dd/div/div/input
 ${CODE_END_DATE_INPUT}    //app-root/div/app-code/div/ngb-tabset/div/div/app-code-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[2]/app-date-input/dl/dd/div/div/input
-${SAVE_CODE_LIST_MOD_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Tallenna')]
+${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
 ${CANCEL_CODE_MOD_BTN}    //button[@class='btn btn-link pull-right']
 ${CLOSE_ERROR_MESSAGE_BTN}    //button[@class='btn btn-action'][contains(text(),'Sulje')]
 ${CODE_LIST_START_DATE_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[1]/app-date-input/dl/dd/div/div/button
@@ -53,10 +53,9 @@ ${CODE_LIST_NAME_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div
 ${CODE_LIST_DESC_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[1]/dl/dd/div/textarea
 ${CODE_LIST_DEF_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[2]/dl/dd/div/textarea
 ${CODE_LIST_CHANGENOTE_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[3]/dl/dd/div/textarea
-${MODIFY_CODE_LIST}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Muokkaa')]
+${MODIFY_CODE_LIST}    id=editable_edit_button
 ${STATUS_VALID}    //button[@class='dropdown-item'][contains(text(),'Voimassa oleva')]
 ${STATUS_SUPERSEDED}    //button[@class='dropdown-item'][contains(text(),'Korvattu')]
-${SAVE_CODE_LIST_MOD_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Tallenna')]
 ${SEARCH_CLASSIFICATION_INPUT}    //ngb-modal-window/div/div/app-search-linked-code-modal/div[2]/div[1]/div/div/input
 ${NEW_CLASSIFICATION}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/div/div[2]/a/i
 #Error messages
