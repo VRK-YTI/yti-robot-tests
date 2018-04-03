@@ -77,7 +77,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Click element    //*[contains(text(), "${CODE_LIST_1}")]
     Sleep    2
     Wait until page contains    ${CODE_LIST_1}
-    Wait until page contains element    id=contentLanguageDropdown
+    Wait until page contains element    id=content_language_dropdown_button
     Wait until page contains element    id=exportDropdown
     Click element    //*[contains(text(), "${MUNICIPALITY}")]
     Wait until page contains    ${MUNICIPALITY}
@@ -105,7 +105,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_7}")]
     Sleep    2
-    Wait until page contains element    id=contentLanguageDropdown
+    Wait until page contains element    id=content_language_dropdown_button
     Wait until page contains element    id=exportDropdown
     Wait until page contains    ${CODE_LIST_7}
     Wait until page contains element    //*[contains(text(), "KOODIT")]
