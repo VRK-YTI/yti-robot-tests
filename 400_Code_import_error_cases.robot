@@ -13,8 +13,8 @@ ${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
 ${FILE_FORMAT_Excel}    //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[2]/div/div/div[1]/dl/dd/div/button[2]
 ${FILE_FORMAT_CSV}    //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[2]/div/div/div[1]/dl/dd/div/button[1]
 ${IMPORT_CODES_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-codes/div/div[2]/div/button[1]
-${FILE_FORMAT_BTN}    //*[@id="format-dropdown"]
-${FILE_UPLOAD_BTN}    //*[@id="fileupload"]
+${FILE_FORMAT_BTN}    id=file_format_dropdown_button
+${FILE_UPLOAD_BTN}    id=fileupload_input
 ${IMPORT_BTN}     //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[3]/div/button[1]
 ${CLOSE_ERROR_MESSAGE_BTN}    //ngb-modal-window[2]/div/div/app-error-modal/div[3]/button
 ${CANCEL_IMPORT_CODE_LIST_BTN}    //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[3]/div/button[2]
