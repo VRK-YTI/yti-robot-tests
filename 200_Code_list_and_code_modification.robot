@@ -26,10 +26,10 @@ ${CODE_SHORT_NAME_INPUT}    id=literal_text_input
 ${SAVE_CODE_MOD_BTN}    id=editable_save_button
 ${ADD_LINK_TO_CODE_BTN}    id=add_link_button
 ${ADD_NEW_LINK_BTN}    id=add_new_link_button
-${LINK_TYPE_DROPDOWN}    //button[@id='propertyType-dropdown']
-${DROPDOWN_ITEM_LINK}    //button[@class='dropdown-item'][contains(text(),'Linkki')]
+${LINK_TYPE_DROPDOWN}    id=propertytype_dropdown_button
+${DROPDOWN_ITEM_LINK}    id=9e6b738c-e4be-11e7-9d91-b36cf669b046_propertytype_dropdown_button
 ${LINK_URL_INPUT}    //ngb-modal-window[2]/div/div/app-link-create-modal/div[2]/div/div/form/app-literal-input/dl/dd/div/input
-${ADD_BTN}        //div[@class='modal-footer']//div//button[@class='btn btn-action']
+${ADD_BTN}        //div[@class='modal-footer']//div//button[@id='add_link_button']
 ${LINK_1}         //a[@target='_blank'][contains(text(),'https://www.suomi.fi/etusivu/')]
 ${LINK_MODAL_OK_BTN}    //button[@class='btn btn-action'][contains(text(),'Ok')]
 ${DELETE_LINK_ICON}    //*[@class="icon icon-trash"]
@@ -99,10 +99,11 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    ${LINK_TYPE_DROPDOWN}
     Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=10
     Click element    ${DROPDOWN_ITEM_LINK}
-    Wait until page contains element    ${LINK_URL_INPUT}    timeout=30
+    Wait until page contains element    ${LINK_URL_INPUT}    timeout=10
     Click element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Click Element    ${ADD_BTN}
+    Wait until page contains element    ${ADD_BTN}    timeout=10
+    Click element    ${ADD_BTN}
     Wait until page contains    Linkki
     Page should contain    https://www.suomi.fi/etusivu/
     Click element    //*[contains(text(), "https://www.suomi.fi/etusivu/")]
@@ -211,7 +212,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(2)
     Sleep    1
     Save code modification
-    Sleep    2
+    Sleep    3
     Page should contain    02.01.2018 - 27.02.2018
     [Teardown]    Clear dates from code
 
