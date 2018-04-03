@@ -103,6 +103,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_7}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
+    Sleep    2
     Click element    //*[contains(text(), "${CODE_LIST_7}")]
     Sleep    2
     Wait until page contains element    id=content_language_dropdown_button
