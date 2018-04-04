@@ -28,7 +28,7 @@ ${ADD_LINK_TO_CODE_BTN}    id=add_link_button
 ${ADD_NEW_LINK_BTN}    id=add_new_link_button
 ${LINK_TYPE_DROPDOWN}    id=propertytype_dropdown_button
 ${DROPDOWN_ITEM_LINK}    id=9e6b738c-e4be-11e7-9d91-b36cf669b046_propertytype_dropdown_button
-${LINK_URL_INPUT}    //ngb-modal-window[2]/div/div/app-link-create-modal/div[2]/div/div/form/app-literal-input/dl/dd/div/input
+${LINK_URL_INPUT}    id=link_url_input
 ${ADD_BTN}        //div[@class='modal-footer']//div//button[@id='add_link_button']
 ${LINK_1}         //a[@target='_blank'][contains(text(),'https://www.suomi.fi/etusivu/')]
 ${LINK_MODAL_OK_BTN}    //button[@class='btn btn-action'][contains(text(),'Ok')]
@@ -37,7 +37,7 @@ ${REMOVE_LINK_CONF_BTN}    //button[@class='btn btn-secondary-action confirm']
 ${CC_BY_40}       //ngb-modal-window/div/div/app-link-list-modal/div[2]/div/div/div[1]/div[2]/div/label/input
 ${SELECT_LINK_BTN}    //button[@class='btn btn-action'][contains(text(),'Valitse')]
 ${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
-${LINK_NAME_INPUT}    //ngb-modal-window/div/div/app-link-edit-modal/div[2]/div/div/form/app-localizable-input/dl/dd/div/input
+${LINK_NAME_INPUT}    id=link_title_input
 ${SAVE_LINK_MODIFY_BTN}    //button[@class='btn btn-action'][contains(text(),'Tallenna')]
 ${CODE_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
 ${CODE_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
