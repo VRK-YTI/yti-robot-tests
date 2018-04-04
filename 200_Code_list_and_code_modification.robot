@@ -39,10 +39,10 @@ ${SELECT_LINK_BTN}    //button[@class='btn btn-action'][contains(text(),'Valitse
 ${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
 ${LINK_NAME_INPUT}    //ngb-modal-window/div/div/app-link-edit-modal/div[2]/div/div/form/app-localizable-input/dl/dd/div/input
 ${SAVE_LINK_MODIFY_BTN}    //button[@class='btn btn-action'][contains(text(),'Tallenna')]
-${CODE_START_DATE_BTN}    //app-root/div/app-code/div/ngb-tabset/div/div/app-code-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[1]/app-date-input/dl/dd/div/div/button
-${CODE_END_DATE_BTN}    //app-root/div/app-code/div/ngb-tabset/div/div/app-code-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[2]/app-date-input/dl/dd/div/div/button
-${CODE_START_DATE_INPUT}    //app-root/div/app-code/div/ngb-tabset/div/div/app-code-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[1]/app-date-input/dl/dd/div/div/input
-${CODE_END_DATE_INPUT}    //app-root/div/app-code/div/ngb-tabset/div/div/app-code-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[2]/app-date-input/dl/dd/div/div/input
+${CODE_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
+${CODE_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
+${CODE_START_DATE_INPUT}    id=start_date_input
+${CODE_END_DATE_INPUT}    id=end_date_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
 ${CANCEL_CODE_MOD_BTN}    //button[@class='btn btn-link pull-right']
 ${CLOSE_ERROR_MESSAGE_BTN}    //button[@class='btn btn-action'][contains(text(),'Sulje')]
