@@ -467,11 +467,12 @@ Restore valid Code list
     Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=10
     Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Muutostieto
     Click element    //*[contains(text(), "Tallenna")]
-    Page should contain    testiautomaatiokoodisto 2
-    Page should contain    Tämä on kuvaus
-    Page should contain    Tämä on määritelmä
-    Page should contain    Muutostieto
-    Page should contain    Oikeusturva
+    Wait until page contains    testiautomaatiokoodisto2    timeout=10
+    Wait until page contains    testiautomaatiokoodisto 2    timeout=10
+    Wait until page contains    Tämä on kuvaus    timeout=10
+    Wait until page contains    Tämä on määritelmä    timeout=10
+    Wait until page contains    Muutostieto    timeout=10
+    Wait until page contains    Oikeusturva    timeout=10
     Sleep    2
     Go back to Koodistot frontpage
     Close All Browsers
