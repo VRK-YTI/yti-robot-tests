@@ -6,7 +6,7 @@ Library           XvfbRobot
 
 *** Variables ***
 ${BROWSER}        chrome
-${USER_1}         Testi Admin
+${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_4}    testiautomaatiokoodisto
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
 ${TEST_CODE_1}    T100 - Automaatiokoodi
@@ -29,22 +29,20 @@ ${ADD_NEW_LINK_BTN}    id=add_new_link_button
 ${LINK_TYPE_DROPDOWN}    id=propertytype_dropdown_button
 ${DROPDOWN_ITEM_LINK}    id=9e6b738c-e4be-11e7-9d91-b36cf669b046_propertytype_dropdown_button
 ${LINK_URL_INPUT}    id=link_url_input
-${ADD_BTN}        //div[@class='modal-footer']//div//button[@id='add_link_button']
+${ADD_BTN}        id=create_link_button
 ${LINK_1}         //a[@target='_blank'][contains(text(),'https://www.suomi.fi/etusivu/')]
-${LINK_MODAL_OK_BTN}    //button[@class='btn btn-action'][contains(text(),'Ok')]
+${LINK_MODAL_OK_BTN}    id=close_modal_button
 ${DELETE_LINK_ICON}    //*[@class="icon icon-trash"]
 ${REMOVE_LINK_CONF_BTN}    //button[@class='btn btn-secondary-action confirm']
-${CC_BY_40}       //ngb-modal-window/div/div/app-link-list-modal/div[2]/div/div/div[1]/div[2]/div/label/input
-${SELECT_LINK_BTN}    //button[@class='btn btn-action'][contains(text(),'Valitse')]
+${SELECT_LINK_BTN}    id=select_link_button
 ${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
 ${LINK_NAME_INPUT}    id=link_title_input
-${SAVE_LINK_MODIFY_BTN}    //button[@class='btn btn-action'][contains(text(),'Tallenna')]
+${SAVE_LINK_MODIFY_BTN}    id=save_button
 ${CODE_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
 ${CODE_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
 ${CODE_START_DATE_INPUT}    id=start_date_input
 ${CODE_END_DATE_INPUT}    id=end_date_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
-${CANCEL_CODE_MOD_BTN}    //button[@class='btn btn-link pull-right']
 ${CLOSE_ERROR_MESSAGE_BTN}    //button[@class='btn btn-action'][contains(text(),'Sulje')]
 ${CODE_LIST_START_DATE_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[1]/app-date-input/dl/dd/div/div/button
 ${CODE_LIST_END_DATE_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[2]/app-date-input/dl/dd/div/div/button
@@ -58,6 +56,7 @@ ${STATUS_VALID}    //button[@class='dropdown-item'][contains(text(),'Voimassa ol
 ${STATUS_SUPERSEDED}    //button[@class='dropdown-item'][contains(text(),'Korvattu')]
 ${SEARCH_CLASSIFICATION_INPUT}    //ngb-modal-window/div/div/app-search-linked-code-modal/div[2]/div[1]/div/div/input
 ${NEW_CLASSIFICATION}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/div/div[2]/a/i
+${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 #Error messages
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
@@ -127,8 +126,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
-    Wait until page contains element    ${CC_BY_40}    timeout=10
-    Click element    ${CC_BY_40}
+    Select Radio Button    externalReference    9a25f7fc-e4be-11e7-82ab-479f4f288376_external_reference_input
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=10
     Click element    ${SELECT_LINK_BTN}
     Wait until page contains    Lisenssi
@@ -325,11 +323,11 @@ Open Koodistot
     Sleep    1
 
 Choose user
-    Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30
-    Click element    //*[@class="nav-link dropdown-toggle"]
+    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
-    Click element    //*[contains(text(), "${USER_1}")]
-    Wait Until Page Contains    ${USER_1}
+    Click element    ${USER_1}
+    Wait Until Page Contains    Testi Admin    timeout=10
     Reload Page
     Sleep    2
 
