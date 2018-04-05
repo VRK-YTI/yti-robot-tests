@@ -6,7 +6,7 @@ Library           XvfbRobot
 
 *** Variables ***
 ${BROWSER}        chrome
-${USER_1}         Testi Admin
+${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_1}    Kunnat 2017
 ${CODE_LIST_1_EN}    Municipalities 2017
 ${CODE_LIST_2}    Kunnat 2018
@@ -16,32 +16,33 @@ ${CODE_LIST_7}    T200
 ${MUNICIPALITY}    091 - Helsinki
 ${MUNICIPALITY2}    092 - Vantaa
 ${MUNICIPLALITY_SV}    091 - Helsingfors
-${LANGUAGE_FI}    Suomeksi (FI)
-${LANGUAGE_EN}    In English (EN)
+${LANGUAGE_EN}    id=en
+${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
 ${MUNICIPALITY_NAME_SV}    Helsingfors
 ${STATUS_DRAFT_FI}    Luonnos
 ${STATUS_VALID_FI}    Voimassa oleva
 ${ALL_STATUSES_FI}    Kaikki tilat
-${EXPORT_TYPE_EXCEL}    Excel
-${EXPORT_TYPE_CSV}    CSV
-${USER_RIGHT_MANAGEMENT_FI}    Oikeuksienhallinta
-${USER_RIGHT_MANAGEMENT_EN}    User right management
+${EXPORT_TYPE_EXCEL}    id=codelist_export_excel_link
+${EXPORT_TYPE_CSV}    id=codelist_export_csv_link
+${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 #Buttons and links
-${LANGUAGE_DROPDOWN_BTN}    //*[@class="dropdown-toggle nav-link btn btn-language dropdown-toggle"]
+${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
+${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 *** Test Cases ***
-100. Open Information about the web service page
-    [Documentation]    Verify that Information about the web service page is opened correctly. YTI-460
+100. Open Information about the service page
+    [Documentation]    Verify that Information about the service page is opened correctly. YTI-460
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=10
     Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
+    Wait until page contains    Tietoa koodistoista
     Wait until page contains    Hyödyt käyttäjille
-    Wait until page contains    Miten palvelu toimii?
-    Wait until page contains    Nykytilanne
+    Wait until page contains    Miten koodistot-työkalu toimii?
     Wait until page contains    Miten voin liittyä palvelun käyttäjäksi?
+    Wait until page contains    Ota yhteyttä
     [Teardown]    Go back to Koodistot frontpage
 
 101. Open EUPL-1.2 license page
@@ -127,7 +128,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    1
-    Click element    //*[contains(text(), "${LANGUAGE_EN}")]
+    Click element    ${LANGUAGE_EN}
     Wait until page contains    ${CODE_LIST_1_EN}
     Wait until page contains    Add code list
     Wait until page contains    All registries
@@ -148,11 +149,11 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
     Wait until page contains element    id=exportDropdown    timeout=10
     Click element    id=exportDropdown
-    Click element    //*[contains(text(), "${EXPORT_TYPE_EXCEL}")]
+    Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
     Wait until page contains element    id=exportDropdown    timeout=10
     Click element    id=exportDropdown
-    Click element    //*[contains(text(), "${EXPORT_TYPE_CSV}")]
+    Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
     [Teardown]    Go back to Koodistot frontpage
 
@@ -164,11 +165,11 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
     Wait until page contains element    id=exportDropdown    timeout=10
     Click element    id=exportDropdown
-    Click element    //*[contains(text(), "${EXPORT_TYPE_EXCEL}")]
+    Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
     Wait until page contains element    id=exportDropdown    timeout=10
     Click element    id=exportDropdown
-    Click element    //*[contains(text(), "${EXPORT_TYPE_CSV}")]
+    Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
     [Teardown]    Go back to Koodistot frontpage
 
@@ -178,7 +179,7 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Setup]    Test Case Setup
     Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=10
     Click element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)
-    Click element    //*[contains(text(), "${USER_RIGHT_MANAGEMENT_FI}")]
+    Click element    ${USER_RIGHT_MANAGEMENT}
     #Select Window    title=Yhteentoimivuusalustan oikeuksienhallinta
     #Wait until page contains    Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    2
@@ -186,11 +187,11 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    1
-    Click element    //*[contains(text(), "${LANGUAGE_EN}")]
+    Click element    ${LANGUAGE_EN}
     Wait until page contains    ${CODE_LIST_1_EN}
     Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=10
     Click element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)
-    Click element    //*[contains(text(), "${USER_RIGHT_MANAGEMENT_EN}")]
+    Click element    ${USER_RIGHT_MANAGEMENT}
     Sleep    2
     Select Window    title=Koodistot
     [Teardown]    Restore Finnish language
@@ -220,11 +221,11 @@ Open Koodistot
     Sleep    1
 
 Choose user
-    Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30
-    Click element    //*[@class="nav-link dropdown-toggle"]
+    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
-    Click element    //*[contains(text(), "${USER_1}")]
-    Wait Until Page Contains    ${USER_1}
+    Click element    ${USER_1}
+    Wait Until Page Contains    Testi Admin    timeout=10
     Reload Page
     Sleep    2
 
@@ -244,7 +245,12 @@ Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    1
-    Click element    //*[contains(text(), "${LANGUAGE_FI}")]
+    Click element    ${LANGUAGE_FI}
+    Wait until page contains    ${CODE_LIST_1}
+    Wait until page contains    Kaikki tilat
+    Wait until page contains    Kaikki rekisterit
+    Wait until page contains    Kaikki organisaatiot
+    Wait until page contains    Luokitus
     Close All Browsers
 
 Go back to Koodistot frontpage
