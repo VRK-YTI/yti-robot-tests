@@ -42,10 +42,12 @@ ${Code_list_invalid_status_value}    ${DATAFOLDER}${/}Code_list_incorrect_status
 ${Code_list_with_duplicate_columns}    ${DATAFOLDER}${/}Code_list_with_multiple_columns.xlsx
 ${Duplicate_code_lists}    ${DATAFOLDER}${/}Duplicate_code_lists.xlsx
 ${Code_list_exists}    ${DATAFOLDER}${/}Code_list_exists.xlsx
+${Code_list_invalid_codeValue}    ${DATAFOLDER}${/}Code_list_with_invalid_codevalue.xlsx
 #CSV paths
 ${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
 ${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
 ${Code_list_invalid_classification_csv}    ${DATAFOLDER}${/}Code_list_incorrect_classification_value_csv.csv
+${Code_list_invalid_codeValue_csv}    ${DATAFOLDER}${/}Code_list_with_invalid_codevalue_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 2.
 ${Error_no_classification_value}    Aineistolle annettua luokitusta ei löydy.
@@ -53,6 +55,7 @@ ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä
 ${Error_invalid_status_value}    Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu.
 ${Error_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja.
 ${Error_duplicate_code_lists}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
+${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-
 
 *** Test Cases ***
 300. Import Code list with missing codeValue
@@ -177,6 +180,28 @@ ${Error_duplicate_code_lists}    Aineistosta löytyi useita rivejä samalla CODE
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=10
     Click button    Tuo
     Wait until page contains    ${Error_duplicate_code_lists}    timeout=10
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
+307. Import Code list with invalid codeValue
+    [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
+    [Tags]    regression
+    [Setup]    Test Case Setup
+    Set Selenium Speed    0.5
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_invalid_code_list}    timeout=10
+    Cancel code list import
+    Import code list in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue_csv}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_invalid_code_list}    timeout=10
     Cancel code list import
     Sleep    2
     Go back to Koodistot frontpage
