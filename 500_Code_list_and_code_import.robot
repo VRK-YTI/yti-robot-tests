@@ -10,7 +10,7 @@ ${USER_1}         Testi Superuser
 ${CODE_LIST_1}    koodisto6000
 ${CODE_LIST_2}    koodisto7000
 ${CODE_LIST_3}    testiautomaatiokoodisto
-${CODE_LIST_VALUE_1}    Koodisto 6000
+${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
 ${TEST_CODE_1}    T100 - Automaatiokoodi
@@ -51,9 +51,9 @@ ${CLASSIFICATION_1}    Asuminen
 ${SEARCH_CLASSIFICATION_INPUT}    //ngb-modal-window/div/div/app-search-linked-code-modal/div[2]/div[1]/div/div/input
 ${SAVE_NEW_CODE_LIST}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Tallenna')]
 ${CREATE_CODE_BTN}    //button[@class='btn btn-action pull-right']
-${CODE_CODEVALUE_INPUT}    //app-root/div/app-code-create/div/form/div[2]/div/app-literal-input[1]/dl/dd/div/input
-${CODE_CODENAME_INPUT}    //app-root/div/app-code-create/div/form/div[2]/div/app-localizable-input/dl/dd/div/input
-${SAVE_NEW_CODE_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Tallenna')]
+${CODE_CODEVALUE_INPUT}    id=code_value_input
+${CODE_CODENAME_INPUT}    id=code_name_input
+${SAVE_NEW_CODE_BTN}    id=editable_save_button
 ${BACK_BTN}       //div[@class='col-12']//a
 ${REMOVE_CODE_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Poista')]
 ${REMOVE_CODE_CONF_BTN}    //button[@class='btn btn-secondary-action confirm']
@@ -337,7 +337,7 @@ Import codes in CSV format
 
 Check values from Draft Code list
     Page should contain    Tunnus
-    Page should contain    Koodisto 6000
+    Page should contain    Koodisto6000
     Page should contain    Koodiston nimi
     Page should contain    koodisto6000
     Page should contain    Rekisteri
@@ -349,7 +349,7 @@ Check values from Draft Code list
 
 Check values from Valid Code list
     Page should contain    Tunnus
-    Page should contain    Koodisto 7000
+    Page should contain    Koodisto7000
     Page should contain    Koodiston nimi
     Page should contain    koodisto7000
     Page should contain    Rekisteri
@@ -369,7 +369,7 @@ Remove imported Draft code list
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=10
     Click element    //*[contains(text(), "TIEDOT")]
     Page should contain    Tunnus
-    Page should contain    Koodisto 6000
+    Page should contain    Koodisto6000
     Page should contain    Koodiston nimi
     Page should contain    koodisto6000
     Wait until page contains element    ${REMOVE_CODE_LIST_BTN}    timeout=10
@@ -393,7 +393,7 @@ Remove imported Draft code list with codes
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=10
     Click element    //*[contains(text(), "TIEDOT")]
     Page should contain    Tunnus
-    Page should contain    Koodisto 6000
+    Page should contain    Koodisto6000
     Page should contain    Koodiston nimi
     Page should contain    koodisto6000
     Wait until page contains element    ${REMOVE_CODE_LIST_BTN}    timeout=10
@@ -414,7 +414,7 @@ Remove imported Valid code list
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=10
     Click element    //*[contains(text(), "TIEDOT")]
     Page should contain    Tunnus
-    Page should contain    Koodisto 7000
+    Page should contain    Koodisto7000
     Page should contain    Koodiston nimi
     Page should contain    koodisto7000
     Wait until page contains element    ${REMOVE_CODE_LIST_BTN}    timeout=10
