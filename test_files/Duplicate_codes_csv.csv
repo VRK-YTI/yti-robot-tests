@@ -1,6 +1,6 @@
 CODEVALUE,BROADER,ID,STATUS,PREFLABEL_FI,SHORTNAME,HIERARCHYLEVEL,STARTDATE,ENDDATE
-Koodi 05,,,DRAFT,koodi05,,,,
-Koodi 05,,,DRAFT,koodi05,,,,
-Koodi 06,,,DRAFT,koodi06,,,,
-Koodi 07,Koodi 06,,DRAFT,koodi07,,,,
-Koodi 08,Koodi 06,,DRAFT,koodi08,,,,
+Koodi05,,,DRAFT,koodi05,,,,
+Koodi05,,,DRAFT,koodi05,,,,
+Koodi06,,,DRAFT,koodi06,,,,
+Koodi07,Koodi06,,DRAFT,koodi07,,,,
+Koodi08,Koodi06,,DRAFT,koodi08,,,,
