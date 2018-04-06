@@ -38,10 +38,11 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Setup]    Test Case Setup
     Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=10
     Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
-    Wait until page contains    Tietoa koodistoista
+    Wait until page contains    Tietoa Koodistoista
     Wait until page contains    Hyödyt käyttäjille
-    Wait until page contains    Miten koodistot-työkalu toimii?
-    Wait until page contains    Miten voin liittyä palvelun käyttäjäksi?
+    Wait until page contains    Miten Koodistot-työkalu toimii?
+    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi
+    Wait until page contains    Katso myös
     Wait until page contains    Ota yhteyttä
     [Teardown]    Go back to Koodistot frontpage
 
