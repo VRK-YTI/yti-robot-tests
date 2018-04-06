@@ -21,8 +21,10 @@ ${FILE_FORMAT_CSV}    //ngb-modal-window/div/div/app-code-scheme-import-modal/di
 #Buttons and links
 ${ADD_CLASSIFICATION_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/button
 ${LANGUAGE_DROPDOWN_BTN}    //*[@class="dropdown-toggle nav-link btn btn-language dropdown-toggle"]
-${ADD_CODE_LIST_BTN}    //app-root/div/app-frontpage/div/div[2]/div[2]/div[1]/div/div/button
-${IMPORT_CODE_LIST_BTN}    //app-root/div/app-code-scheme-import-and-create/div/button[1]
+#${ADD_CODE_LIST_BTN}    //app-root/div/app-frontpage/div/div[2]/div[2]/div[1]/div/div/button
+${ADD_CODE_LIST_BTN}    id=import_codelist_button
+${IMPORT_CODE_LIST_BTN}    id=import_from_file_button
+#${IMPORT_CODE_LIST_BTN}    //app-root/div/app-code-scheme-import-and-create/div/button[1]
 ${SELECT_REGISTRY_BTN}    //ngb-modal-window/div/div/app-code-scheme-import-modal/div/div[2]/div[1]/div/app-coderegistry-input/dl/dd/div/app-dropdown/div/button
 ${FILE_FORMAT_BTN}    id=file_format_dropdown_button
 ${FILE_UPLOAD_BTN}    id=fileupload_input
