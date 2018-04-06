@@ -6,18 +6,19 @@ Library           XvfbRobot
 
 *** Variables ***
 ${BROWSER}        chrome
-${USER_1}         Testi Admin
+${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_7}    testiautomaatiokoodisto1
 ${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
 #Buttons and links
-${FILE_FORMAT_Excel}    //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[2]/div/div/div[1]/dl/dd/div/button[2]
-${FILE_FORMAT_CSV}    //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[2]/div/div/div[1]/dl/dd/div/button[1]
-${IMPORT_CODES_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-codes/div/div[2]/div/button[1]
+${FILE_FORMAT_Excel}    id=excel_format_dropdown_button
+${FILE_FORMAT_CSV}    id=csv_format_dropdown_button
+${IMPORT_CODES_BTN}    id=import_codes_button
 ${FILE_FORMAT_BTN}    id=file_format_dropdown_button
 ${FILE_UPLOAD_BTN}    id=fileupload_input
-${IMPORT_BTN}     //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[3]/div/button[1]
+${IMPORT_BTN}     id=upload_codes_file_button
 ${CLOSE_ERROR_MESSAGE_BTN}    //ngb-modal-window[2]/div/div/app-error-modal/div[3]/button
-${CANCEL_IMPORT_CODE_LIST_BTN}    //ngb-modal-window/div/div/app-code-scheme-codes-import-modal/div/div[3]/div/button[2]
+${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
+${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codes_codevalue_missing}    ${DATAFOLDER}${/}Codes_codevalue_missing.xlsx
@@ -360,11 +361,11 @@ Open Koodistot
     Sleep    1
 
 Choose user
-    Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30
-    Click element    //*[@class="nav-link dropdown-toggle"]
+    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
-    Click element    //*[contains(text(), "${USER_1}")]
-    Wait Until Page Contains    ${USER_1}
+    Click element    ${USER_1}
+    Wait Until Page Contains    Testi Admin    timeout=10
     Reload Page
     Sleep    2
 
