@@ -33,6 +33,7 @@ ${Codes_with_invalid_ID}    ${DATAFOLDER}${/}Codes_with_invalid_ID.xlsx
 ${Update_Code_valid_draft}    ${DATAFOLDER}${/}Update_code_valid_draft.xlsx
 ${Duplicate_Codes}    ${DATAFOLDER}${/}Duplicate_codes.xlsx
 ${Codes_without_ID_column}    ${DATAFOLDER}${/}Codes_without_ID_column.xlsx
+${Codes_invalid_codevalue}    ${DATAFOLDER}${/}Codes_invalid_codevalue.xlsx
 #CSV paths
 ${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.csv
 ${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
@@ -46,6 +47,7 @@ ${Codes_with_invalid_startdate_csv}    ${DATAFOLDER}${/}Codes_with_invalid_start
 ${Codes_with_invalid_ID_csv}    ${DATAFOLDER}${/}Codes_with_invalid_ID_csv.csv
 ${Update_Code_valid_draft_csv}    ${DATAFOLDER}${/}Update_code_valid_draft_csv.csv
 ${Duplicate_Codes_csv}    ${DATAFOLDER}${/}Duplicate_codes_csv.csv
+${Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Codes_invalid_codevalue_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
@@ -59,6 +61,7 @@ ${Error_with_invalid_startdate}    Virheellinen alkupäivä rivillä 5.
 ${Error_with_invalid_ID}    Aineistossa oleva ID-sarakkeen arvo ei ole sallittu.
 ${Error_with_update_code_valid_draft}    Aineiston tilan muutos ei ole sallittu.
 ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
+${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
@@ -323,6 +326,28 @@ ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODE
     Wait until page contains    ${Error_with_duplicate_codes}    timeout=10
     Cancel code import
     Sleep    2
+    Go back to Koodistot frontpage
+
+412. Import Codes with invalid CODEVALUE
+    [Documentation]    Import Codes (Excel, CSV) with invalid CODEVALUE and check error message. YTI-703
+    [Tags]    regression
+    [Setup]    Test Case Setup
+    Set Selenium Speed    0.5
+    Select draft code list
+    Import codes in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_invalid_codeValue}    timeout=10
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Click button    Tuo
+    Wait until page contains    ${Error_invalid_codeValue}    timeout=10
+    Cancel code import
+    Sleep    1
     Go back to Koodistot frontpage
 
 *** Keywords ***
