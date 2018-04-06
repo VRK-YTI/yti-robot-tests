@@ -82,7 +82,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=10
     Click button    Tuo
-    Wait until page contains    ${Error_no_codeValue}    timeout=10
+    Wait until page contains    ${Error_invalid_codeValue}    timeout=10
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
