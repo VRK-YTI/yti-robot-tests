@@ -6,32 +6,20 @@ Library           XvfbRobot
 
 *** Variables ***
 ${BROWSER}        chrome
-${USER_1}         Testi Admin
-${CODE_LIST_4}    testiautomaatiokoodisto
-${CODE_LIST_6}    testiautomaatiokoodisto 2
+${USER_1}         id=testiadmin@localhost
 ${TEST_CODE_1}    T100 - Automaatiokoodi
-${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
-${CODE_LIST_STATUS_VALID_FI}    Voimassa oleva
-${CODE_LIST_STATUSES_ALL}    Kaikki tilat
-${EXPORT_TYPE_EXCEL}    Excel
-${EXPORT_TYPE_CSV}    CSV
 ${REGISTRY_1}     Testirekisteri
-${FILE_FORMAT_Excel}    //ngb-modal-window/div/div/app-code-scheme-import-modal/div/div[2]/div[2]/dl/dd/div/button[2]
-${FILE_FORMAT_CSV}    //ngb-modal-window/div/div/app-code-scheme-import-modal/div/div[2]/div[2]/dl/dd/div/button[1]
+${FILE_FORMAT_Excel}    id=excel_format_dropdown_button
+${FILE_FORMAT_CSV}    id=csv_format_dropdown_button
 #Buttons and links
-${ADD_CLASSIFICATION_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/button
-${LANGUAGE_DROPDOWN_BTN}    //*[@class="dropdown-toggle nav-link btn btn-language dropdown-toggle"]
 ${ADD_CODE_LIST_BTN}    id=import_codelist_button
 ${IMPORT_CODE_LIST_BTN}    id=import_from_file_button
 ${SELECT_REGISTRY_BTN}    //ngb-modal-window/div/div/app-code-scheme-import-modal/div/div[2]/div[1]/div/app-coderegistry-input/dl/dd/div/app-dropdown/div/button
 ${FILE_FORMAT_BTN}    id=file_format_dropdown_button
 ${FILE_UPLOAD_BTN}    id=fileupload_input
 ${CLOSE_ERROR_MESSAGE_BTN}    //ngb-modal-window[2]/div/div/app-error-modal/div[3]/button
-${CANCEL_IMPORT_CODE_LIST_BTN}    //ngb-modal-window/div/div/app-code-scheme-import-modal/div/div[3]/div/button[2]
-${SAVE_CODE_LIST_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[1]/div/app-editable-buttons/button[1]
-${MODIFY_CODE_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Muokkaa')]
-${SAVE_CODE_MODIFICATION_BTN}    //button[@class='btn btn-action pull-right ml-3'][contains(text(),'Tallenna')]
-${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
+${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
+${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Code_list_no_codeValue}    ${DATAFOLDER}${/}Code_list_no_codeValue.xlsx
@@ -216,11 +204,11 @@ Open Koodistot
     Sleep    1
 
 Choose user
-    Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30
-    Click element    //*[@class="nav-link dropdown-toggle"]
+    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
-    Click element    //*[contains(text(), "${USER_1}")]
-    Wait Until Page Contains    ${USER_1}
+    Click element    ${USER_1}
+    Wait Until Page Contains    Testi Admin    timeout=10
     Reload Page
     Sleep    2
 
@@ -241,28 +229,6 @@ Go back to Koodistot frontpage
     Click element    //app-root/app-navigation-bar/nav/a/span
     Sleep    2
     Close All Browsers
-
-Save code list
-    Wait until page contains element    ${SAVE_CODE_LIST_BTN}    timeout=10
-    Click element    ${SAVE_CODE_LIST_BTN}
-
-Modify code
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=10
-    Click element    ${MODIFY_CODE_BTN}
-
-Save code modification
-    Wait until page contains element    ${SAVE_CODE_MODIFICATION_BTN}
-    Click element    ${SAVE_CODE_MODIFICATION_BTN}
-
-Select draft code list
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN})
-    Click element    //*[contains(text(), "${CODE_LIST_STATUS_DRAFT_FI}")]
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_4}")]
-    Wait until page contains    ${CODE_LIST_4}
-    Click element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait until page contains    ${TEST_CODE_1}
 
 Import code list in Excel format
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=10
