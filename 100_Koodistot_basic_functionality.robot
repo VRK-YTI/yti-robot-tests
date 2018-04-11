@@ -36,7 +36,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Documentation]    Verify that Information about the service page is opened correctly. YTI-460
     [Tags]    regression
     [Setup]    Test Case Setup
-    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=10
+    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
     Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
     Wait until page contains    Tietoa Koodistoista
     Wait until page contains    Hyödyt käyttäjille
@@ -50,7 +50,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly. YTI-457
     [Tags]    regression
     [Setup]    Test Case Setup
-    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[3]/a    timeout=10
+    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[3]/a    timeout=20
     Click element    xpath=//app-root/app-footer/div/div[2]/div[3]/a
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
@@ -62,7 +62,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
     [Tags]    regression
     [Setup]    Test Case Setup
-    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a    timeout=10
+    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a    timeout=20
     Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
@@ -148,11 +148,11 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_1}")]
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
-    Wait until page contains element    id=exportDropdown    timeout=10
+    Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    Wait until page contains element    id=exportDropdown    timeout=10
+    Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
@@ -164,11 +164,11 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_3}")]
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
-    Wait until page contains element    id=exportDropdown    timeout=10
+    Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    Wait until page contains element    id=exportDropdown    timeout=10
+    Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
@@ -178,7 +178,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Documentation]    Check User right management link functionality. YTI-449
     [Tags]    regression
     [Setup]    Test Case Setup
-    Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=10
+    Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=20
     Click element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)
     Click element    ${USER_RIGHT_MANAGEMENT}
     #Select Window    title=Yhteentoimivuusalustan oikeuksienhallinta
@@ -190,7 +190,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     Sleep    1
     Click element    ${LANGUAGE_EN}
     Wait until page contains    ${CODE_LIST_1_EN}
-    Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=10
+    Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=20
     Click element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)
     Click element    ${USER_RIGHT_MANAGEMENT}
     Sleep    2
@@ -207,7 +207,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     Click element    //*[contains(text(), "${CODE_LIST_5}")]
     Sleep    2
     Wait until page contains    ${CODE_LIST_5}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
     Wait until page contains    Muutostieto
     [Teardown]    Go back to Koodistot frontpage
@@ -226,7 +226,7 @@ Choose user
     Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
     Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=10
+    Wait Until Page Contains    Testi Admin    timeout=20
     Reload Page
     Sleep    2
 
@@ -255,7 +255,7 @@ Restore Finnish language
     Close All Browsers
 
 Go back to Koodistot frontpage
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Close All Browsers

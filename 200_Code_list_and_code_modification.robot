@@ -70,11 +70,11 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    ${CANCEL_CODE_MOD_BTN}
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
     Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
-    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
-    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
     Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
@@ -92,26 +92,26 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
-    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=10
+    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
     Click element    ${ADD_NEW_LINK_BTN}
-    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=10
+    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
     Click element    ${LINK_TYPE_DROPDOWN}
-    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=10
+    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
     Click element    ${DROPDOWN_ITEM_LINK}
-    Wait until page contains element    ${LINK_URL_INPUT}    timeout=10
+    Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${ADD_BTN}    timeout=10
+    Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
     Wait until page contains    Linkki
     Page should contain    https://www.suomi.fi/etusivu/
     Click element    //*[contains(text(), "https://www.suomi.fi/etusivu/")]
-    Wait until page contains element    ${LINK_1}    timeout=10
+    Wait until page contains element    ${LINK_1}    timeout=20
     Click element    ${LINK_1}
     Select Window    title=Etusivu - Suomi.fi
     Sleep    1
     Select Window    title=Koodistot
-    Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=10
+    Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=20
     Click element    ${LINK_MODAL_OK_BTN}
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
@@ -127,16 +127,16 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
     Select Radio Button    externalReference    9a25f7fc-e4be-11e7-82ab-479f4f288376_external_reference_input
-    Wait until page contains element    ${SELECT_LINK_BTN}    timeout=10
+    Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
     Click element    ${SELECT_LINK_BTN}
     Wait until page contains    Lisenssi
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=10
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    2
     Modify code
     Wait until page contains    Lisenssi
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=10
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${DELETE_LINK_ICON}
     Click element    ${DELETE_LINK_ICON}
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}
@@ -154,15 +154,15 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto code and edit
-    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=10
+    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=20
     Click element    ${ADD_LINK_TO_CODE_BTN}
-    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=10
+    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
     Click element    ${ADD_NEW_LINK_BTN}
-    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=10
+    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
     Click element    ${LINK_TYPE_DROPDOWN}
-    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=10
+    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
     Click Element    ${DROPDOWN_ITEM_LINK}
-    Wait until page contains element    ${LINK_URL_INPUT}    timeout=10
+    Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Click Element    ${ADD_BTN}
@@ -173,10 +173,10 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    ${MODIFY_LINK_ICON}
     Click element    ${MODIFY_LINK_ICON}
     Sleep    1
-    Wait until page contains element    ${LINK_NAME_INPUT}    timeout=10
+    Wait until page contains element    ${LINK_NAME_INPUT}    timeout=20
     Click element    ${LINK_NAME_INPUT}
     Input Text    ${LINK_NAME_INPUT}    www.suomi.fi
-    Wait until page contains element    ${SAVE_LINK_MODIFY_BTN}    timeout=10
+    Wait until page contains element    ${SAVE_LINK_MODIFY_BTN}    timeout=20
     Click Element    ${SAVE_LINK_MODIFY_BTN}
     Wait until page contains    Linkki
     Page should contain    www.suomi.fi
@@ -191,22 +191,22 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto code and edit
-    Wait until page contains element    ${CODE_START_DATE_BTN}    timeout=10
+    Wait until page contains element    ${CODE_START_DATE_BTN}    timeout=20
     Click element    ${CODE_START_DATE_BTN}
     Click element    css=select.custom-select:nth-child(1)
     Wait until page contains element    css=select.custom-select:nth-child(1) > option:nth-child(1)
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(1)
-    Wait until page contains element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)    timeout=10
+    Wait until page contains element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(2)
     Sleep    5
-    Wait until page contains element    ${CODE_END_DATE_BTN}    timeout=10
+    Wait until page contains element    ${CODE_END_DATE_BTN}    timeout=20
     Click element    ${CODE_END_DATE_BTN}
     Sleep    1
-    Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=10
+    Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=20
     Click element    css=select.custom-select:nth-child(1)
     Sleep    1
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(2)
-    Wait until page contains element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(2)    timeout=10
+    Wait until page contains element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(2)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(2)
     Sleep    1
     Save code modification
@@ -220,29 +220,29 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup
     Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto and edit
-    Wait until page contains element    ${CODE_LIST_START_DATE_BTN}    timeout=10
+    Wait until page contains element    ${CODE_LIST_START_DATE_BTN}    timeout=20
     Click element    ${CODE_LIST_START_DATE_BTN}
-    Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=10
+    Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=20
     Click element    css=select.custom-select:nth-child(1)
     Sleep    1
-    Wait until page contains element    css=select.custom-select:nth-child(1) > option:nth-child(2)    timeout=10
+    Wait until page contains element    css=select.custom-select:nth-child(1) > option:nth-child(2)    timeout=20
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(2)
     Wait until page contains element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(3)
     Click element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(3)
     Sleep    2
-    Wait until page contains element    ${CODE_LIST_END_DATE_BTN}    timeout=10
+    Wait until page contains element    ${CODE_LIST_END_DATE_BTN}    timeout=20
     Click element    ${CODE_LIST_END_DATE_BTN}
-    Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=10
+    Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=20
     Click element    css=select.custom-select:nth-child(1)
     Wait until page contains element    css=select.custom-select:nth-child(1) > option:nth-child(1)
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(1)
     Sleep    2
-    Wait until page contains element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)    timeout=10
+    Wait until page contains element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)
     Save code list
-    Wait until page contains    ${Error_end_date_before_start_date}    timeout=10
+    Wait until page contains    ${Error_end_date_before_start_date}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=10
+    Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
     Click element    ${CANCEL_CODE_MOD_BTN}
     [Teardown]    Go back to Koodistot frontpage
 
@@ -251,7 +251,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression
     [Setup]    Test Case Setup
     Choose testiautomaatiokoodisto 2 and edit
-    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=10
+    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
     Sleep    1
     Page should not contain    Luonnos
@@ -267,13 +267,13 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression
     [Setup]    Test Case Setup
     Choose testiautomaatiokoodisto 2 and edit
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
-    Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=20
     Input text    ${CODE_LIST_DESC_INPUT}    Uusi kuvaus
-    Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=20
     Input text    ${CODE_LIST_DEF_INPUT}    Uusi määritelmä
-    Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Uusi muutostieto
     Save code list
     Sleep    1
@@ -294,14 +294,14 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Page should contain    ${CLASSIFICATION_2}
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}
     Click element    ${ADD_CLASSIFICATION_BTN}
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=10
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Sleep    1
     Save code list
     Page should contain    ${CLASSIFICATION_1}
     Page should contain    ${CLASSIFICATION_2}
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
@@ -327,7 +327,7 @@ Choose user
     Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
     Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=10
+    Wait Until Page Contains    Testi Admin    timeout=20
     Reload Page
     Sleep    2
 
@@ -344,13 +344,13 @@ Open koodistot in dev-environment
     Open Browser    https://koodistot-dev.suomi.fi/    browser=${browser}
 
 Restore code modify
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=10
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
     Input text    ${CODE_NAME_INPUT}    Automaatiokoodi
-    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on kuvaus koodille
-    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
     Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on lyhyt nimi
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
@@ -362,13 +362,13 @@ Restore code modify
     Close All Browsers
 
 Go back to Koodistot frontpage
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Close All Browsers
 
 Remove links from draft code
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    1
     Choose testiautomaatiokoodisto code and edit
@@ -388,9 +388,9 @@ Remove links from draft code
 Clear dates from code
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_START_DATE_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_START_DATE_INPUT}    timeout=20
     Clear element text    ${CODE_START_DATE_INPUT}
-    Wait until page contains element    ${CODE_END_DATE_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_END_DATE_INPUT}    timeout=20
     Clear element text    ${CODE_END_DATE_INPUT}
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    1
@@ -414,17 +414,17 @@ Choose testiautomaatiokoodisto code and edit
     Click element    ${MODIFY_CODE_BTN}
 
 Choose testiautomaatiokoodisto and edit
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=10
+    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=20
     Click element    ${STATUS_DROPDOWN_BTN}
     Click element    //*[contains(text(), "${CODE_LIST_STATUS_DRAFT_FI}")]
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_LIST_4}")]
     Sleep    1
     Wait until page contains    ${CODE_LIST_4}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
-    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=20
     Click element    //*[contains(text(), "Muokkaa")]
 
 Choose testiautomaatiokoodisto 2 and edit
@@ -436,15 +436,15 @@ Choose testiautomaatiokoodisto 2 and edit
     Click element    //*[contains(text(), "${CODE_LIST_6}")]
     Sleep    1
     Wait until page contains    ${CODE_LIST_6}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
-    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=10
+    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=20
     Click element    //*[contains(text(), "Muokkaa")]
 
 Restore valid Code list status
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=10
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
-    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=10
+    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
     Click element    ${STATUS_VALID}
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}
@@ -456,29 +456,29 @@ Restore valid Code list status
     Close All Browsers
 
 Restore valid Code list
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=10
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    //*[contains(text(), "Muokkaa")]
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    testiautomaatiokoodisto 2
-    Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=20
     Input text    ${CODE_LIST_DESC_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=20
     Input text    ${CODE_LIST_DEF_INPUT}    Tämä on määritelmä
-    Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=10
+    Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Muutostieto
     Click element    //*[contains(text(), "Tallenna")]
-    Wait until page contains    testiautomaatiokoodisto2    timeout=10
-    Wait until page contains    testiautomaatiokoodisto 2    timeout=10
-    Wait until page contains    Tämä on kuvaus    timeout=10
-    Wait until page contains    Tämä on määritelmä    timeout=10
-    Wait until page contains    Muutostieto    timeout=10
-    Wait until page contains    Oikeusturva    timeout=10
+    Wait until page contains    testiautomaatiokoodisto2    timeout=20
+    Wait until page contains    testiautomaatiokoodisto 2    timeout=20
+    Wait until page contains    Tämä on kuvaus    timeout=20
+    Wait until page contains    Tämä on määritelmä    timeout=20
+    Wait until page contains    Muutostieto    timeout=20
+    Wait until page contains    Oikeusturva    timeout=20
     Sleep    2
     Go back to Koodistot frontpage
     Close All Browsers
 
 Save code list
-    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=10
+    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
 
 Modify code

@@ -74,15 +74,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_no_codeValue}    timeout=10
+    Wait until page contains    ${Error_no_codeValue}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_invalid_codeValue}    timeout=10
+    Wait until page contains    ${Error_invalid_codeValue}    timeout=20
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
@@ -96,15 +96,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_status_missing}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_no_status_value}    timeout=10
+    Wait until page contains    ${Error_no_status_value}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_status_missing_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_no_status_value}    timeout=10
+    Wait until page contains    ${Error_no_status_value}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -118,15 +118,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_status}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_status}    timeout=10
+    Wait until page contains    ${Error_with_invalid_status}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_status_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_status}    timeout=10
+    Wait until page contains    ${Error_with_invalid_status}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -140,15 +140,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_broader}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_broader}    timeout=10
+    Wait until page contains    ${Error_with_invalid_broader}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_broader_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_broader}    timeout=10
+    Wait until page contains    ${Error_with_invalid_broader}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -162,15 +162,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_same_broader}    timeout=10
+    Wait until page contains    ${Error_with_same_broader}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_same_broader}    timeout=10
+    Wait until page contains    ${Error_with_same_broader}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -184,15 +184,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_duplicate_columns}    timeout=10
+    Wait until page contains    ${Error_with_duplicate_columns}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_duplicate_columns}    timeout=10
+    Wait until page contains    ${Error_with_duplicate_columns}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -206,15 +206,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_HL}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_HL_value}    timeout=10
+    Wait until page contains    ${Error_with_invalid_HL_value}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_HL_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_HL_value}    timeout=10
+    Wait until page contains    ${Error_with_invalid_HL_value}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -228,15 +228,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_without_codevalue_column}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=10
+    Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_without_codevalue_column_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=10
+    Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -250,15 +250,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_startdate}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_startdate}    timeout=10
+    Wait until page contains    ${Error_with_invalid_startdate}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_startdate_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_startdate}    timeout=10
+    Wait until page contains    ${Error_with_invalid_startdate}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -272,15 +272,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_ID}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_ID}    timeout=10
+    Wait until page contains    ${Error_with_invalid_ID}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_ID_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_invalid_ID}    timeout=10
+    Wait until page contains    ${Error_with_invalid_ID}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -294,15 +294,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Update_Code_valid_draft}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=10
+    Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Update_Code_valid_draft_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=10
+    Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -316,15 +316,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes}
     Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_duplicate_codes}    timeout=10
+    Wait until page contains    ${Error_with_duplicate_codes}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_with_duplicate_codes}    timeout=10
+    Wait until page contains    ${Error_with_duplicate_codes}    timeout=20
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
@@ -338,15 +338,15 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_invalid_codeValue}    timeout=10
+    Wait until page contains    ${Error_invalid_codeValue}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue_csv}
     Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_invalid_codeValue}    timeout=10
+    Wait until page contains    ${Error_invalid_codeValue}    timeout=20
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
@@ -365,7 +365,7 @@ Choose user
     Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
     Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=10
+    Wait Until Page Contains    Testi Admin    timeout=20
     Reload Page
     Sleep    2
 
@@ -382,7 +382,7 @@ Open koodistot in dev-environment
     Open Browser    https://koodistot-dev.suomi.fi/    browser=${browser}
 
 Go back to Koodistot frontpage
-    Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=10
+    Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
     Click element    //app-root/app-navigation-bar/nav/a/span
     Sleep    2
     Close All Browsers
@@ -398,23 +398,23 @@ Select draft code list
     Wait until page contains    ${CODE_LIST_7}
 
 Import codes in Excel format
-    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=10
+    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
     Click element    ${IMPORT_CODES_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=10
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
     Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=10
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=10
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Cancel code import
     Click button    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=10
+    Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}
 
 Import codes in CSV format
     Click button    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=10
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
     Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=10
+    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
     Click element    ${FILE_FORMAT_CSV}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=10
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
