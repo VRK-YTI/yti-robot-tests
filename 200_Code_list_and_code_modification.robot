@@ -6,6 +6,7 @@ Library           XvfbRobot
 
 *** Variables ***
 ${BROWSER}        chrome
+${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_4}    testiautomaatiokoodisto
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
@@ -332,16 +333,16 @@ Choose user
     Sleep    2
 
 Open Koodistot in '${BROWSER}'
-    Open koodistot in dev-environment    ${BROWSER}
+    Open koodistot in environment    ${BROWSER}
     Sleep    2
     Page should contain    Koodistot
     #Page should contain    Luokitus
     Page should contain    KIRJAUDU SISÄÄN
 
-Open koodistot in dev-environment
+Open koodistot in environment
     [Arguments]    ${browser}
     Set Selenium Speed    0.3
-    Open Browser    https://koodistot-dev.suomi.fi/    browser=${browser}
+    Open Browser    ${ENVIRONMENT_URL}  browser=${browser}
 
 Restore code modify
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20

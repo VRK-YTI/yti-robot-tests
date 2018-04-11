@@ -6,6 +6,7 @@ Library           XvfbRobot
 
 *** Variables ***
 ${BROWSER}        chrome
+${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${USER_1}         Testi Superuser
 ${CODE_LIST_1}    koodisto6000
 ${CODE_LIST_2}    koodisto7000
@@ -259,7 +260,7 @@ Open Koodistot in '${BROWSER}'
 Open koodistot in dev-environment
     [Arguments]    ${browser}
     Set Selenium Speed    0.3
-    Open Browser    https://koodistot-dev.suomi.fi/    browser=${browser}
+    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
 
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
