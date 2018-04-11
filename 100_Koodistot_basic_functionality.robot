@@ -8,9 +8,8 @@ Library           XvfbRobot
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}   https://koodistot-dev.suomi.fi/
 ${USER_1}         id=testiadmin@localhost
-${CODE_LIST_1}    Kunnat 2017
-${CODE_LIST_1_EN}    Municipalities 2017
-${CODE_LIST_2}    Kunnat 2018
+${CODE_LIST_1}    Kunnat 2018
+${CODE_LIST_1_EN}    Municipalities 2018
 ${CODE_LIST_3}    Palveluluokitus
 ${CODE_LIST_5}    Ammattiluokitus 2010
 ${CODE_LIST_7}    T200
@@ -85,7 +84,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     Click element    //*[contains(text(), "${MUNICIPALITY}")]
     Wait until page contains    ${MUNICIPALITY}
     Wait until page contains    Koodisto
-    Wait until page contains    Kunnat 2017
+    Wait until page contains    Kunnat 2018
     Wait until page contains    Tunnus
     Wait until page contains    091
     Wait until page contains    Koodin nimi
@@ -132,9 +131,9 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     Sleep    1
     Click element    ${LANGUAGE_EN}
     Wait until page contains    ${CODE_LIST_1_EN}
-    Wait until page contains    Add code list
-    Wait until page contains    All registries
-    Wait until page contains    All organizations
+    Wait until page contains    Add code list      timeout=30
+    Wait until page contains    All registries     timeout=30
+    Wait until page contains    All organizations  timeout=30
     Wait until page contains    Classification
     #Click element    //*[@class="dropdown-toggle nav-link btn btn-language dropdown-toggle"]
     #Sleep    1
@@ -143,7 +142,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     #Wait until page contains    ${municipalityNameSV}
     [Teardown]    Restore Finnish language
 
-106. Export Excel and CSV for Kunnat 2017 Code list
+106. Export Excel and CSV for Kunnat 2018 Code list
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
