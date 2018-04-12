@@ -6,16 +6,15 @@ Library           XvfbRobot
 
 *** Variables ***
 ${BROWSER}        chrome
-${ENVIRONMENT_URL}   https://koodistot-dev.suomi.fi/
+${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
 ${CODE_LIST_3}    Palveluluokitus
 ${CODE_LIST_5}    Ammattiluokitus 2010
+${CODE_LIST_6}    testiautomaatiokoodisto 2
 ${CODE_LIST_7}    T200
-${MUNICIPALITY}    091 - Helsinki
-${MUNICIPALITY2}    092 - Vantaa
-${MUNICIPLALITY_SV}    091 - Helsingfors
+${CODE_1}         koodi01 - Koodi01
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
@@ -74,21 +73,21 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_1}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_1}")]
-    Sleep    2
-    Wait until page contains    ${CODE_LIST_1}
+    Input Text    id=search_box_input    ${CODE_LIST_6}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_6}")]
+    Wait until page contains    ${CODE_LIST_6}
     Wait until page contains element    id=content_language_dropdown_button
     Wait until page contains element    id=exportDropdown
-    Click element    //*[contains(text(), "${MUNICIPALITY}")]
-    Wait until page contains    ${MUNICIPALITY}
+    Wait until page contains element    //*[contains(text(), "${CODE_1}")]
+    Click element    //*[contains(text(), "${CODE_1}")]
+    Wait until page contains    ${CODE_1}
     Wait until page contains    Koodisto
-    Wait until page contains    Kunnat 2018
+    Wait until page contains    testiautomaatiokoodisto 2
     Wait until page contains    Tunnus
-    Wait until page contains    091
+    Wait until page contains    koodi01
     Wait until page contains    Koodin nimi
-    Wait until page contains    Helsinki
+    Wait until page contains    Koodi01
     Wait until page contains    Tila
     Wait until page contains    Voimassa oleva
     Wait until page contains    Viimeisin muokkaus
@@ -131,9 +130,9 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     Sleep    1
     Click element    ${LANGUAGE_EN}
     Wait until page contains    ${CODE_LIST_1_EN}
-    Wait until page contains    Add code list      timeout=30
-    Wait until page contains    All registries     timeout=30
-    Wait until page contains    All organizations  timeout=30
+    Wait until page contains    Add code list    timeout=30
+    Wait until page contains    All registries    timeout=30
+    Wait until page contains    All organizations    timeout=30
     Wait until page contains    Classification
     #Click element    //*[@class="dropdown-toggle nav-link btn btn-language dropdown-toggle"]
     #Sleep    1
