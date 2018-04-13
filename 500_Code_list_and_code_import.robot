@@ -174,6 +174,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.
     Create new code to code list
+    Wait until page contains element    ${BACK_BTN}
     Click element    ${BACK_BTN}
     Wait until page contains    koodisto6000    timeout=20
     Wait until page contains    NewCode001 - newcode001    timeout=20
@@ -217,6 +218,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains    Koodiston tunnus on jo käytössä tässä rekisterissä.
     Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}
     Click element    ${CANCEL_CODE_CREATE_BTN}
+    Wait until page contains element    ${BACK_BTN}
     Click element    ${BACK_BTN}
     Return to Koodistot frontpage
 
