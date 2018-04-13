@@ -241,13 +241,13 @@ Choose user
     Sleep    2
 
 Open Koodistot in '${BROWSER}'
-    Open koodistot in dev-environment    ${BROWSER}
+    Open koodistot in environment    ${BROWSER}
     Sleep    2
     Page should contain    Koodistot
     #Page should contain    Luokitus
     Page should contain    KIRJAUDU SISÄÄN
 
-Open koodistot in dev-environment
+Open koodistot in environment
     [Arguments]    ${browser}
     Set Selenium Speed    0.3
     Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
