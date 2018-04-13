@@ -55,7 +55,7 @@ ${CODE_LIST_CHANGENOTE_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/d
 ${MODIFY_CODE_LIST}    id=editable_edit_button
 ${STATUS_VALID}    //button[@class='dropdown-item'][contains(text(),'Voimassa oleva')]
 ${STATUS_SUPERSEDED}    //button[@class='dropdown-item'][contains(text(),'Korvattu')]
-${SEARCH_CLASSIFICATION_INPUT}    //ngb-modal-window/div/div/app-search-linked-code-modal/div[2]/div[1]/div/div/input
+${SEARCH_CLASSIFICATION_INPUT}    id=search_linked_code_input
 ${NEW_CLASSIFICATION}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/div/div[2]/a/i
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 #Error messages
@@ -342,7 +342,7 @@ Open Koodistot in '${BROWSER}'
 Open koodistot in environment
     [Arguments]    ${browser}
     Set Selenium Speed    0.3
-    Open Browser    ${ENVIRONMENT_URL}  browser=${browser}
+    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
 
 Restore code modify
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
