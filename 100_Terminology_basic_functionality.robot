@@ -3,7 +3,7 @@ Documentation     Test Suite for basic functionality of Terminology application
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
 Library           XvfbRobot
-Resource          Terminology_Resources.robot
+Resource          resources/Terminology_Resources.robot
 
 *** Test Cases ***
 100. Open Information about the service page
