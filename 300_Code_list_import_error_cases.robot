@@ -210,7 +210,6 @@ Choose user
     Sleep    1
     Click element    ${USER_1}
     Wait Until Page Contains    Testi Admin    timeout=20
-    Reload Page
     Sleep    2
 
 Open Koodistot in '${BROWSER}'
