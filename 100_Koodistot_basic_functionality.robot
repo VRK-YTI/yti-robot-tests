@@ -127,13 +127,15 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Setup]    Test Case Setup
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Sleep    1
+    Sleep    2
     Click element    ${LANGUAGE_EN}
-    Wait until page contains    ${CODE_LIST_1_EN}
-    Wait until page contains    Add code list    timeout=30
-    Wait until page contains    All registries    timeout=30
+    Sleep    2
+    Wait until page contains    ${CODE_LIST_1_EN}    timeout=30
+    Wait until page contains    Add code list        timeout=30
+    Wait until page contains    All registries       timeout=30
     Wait until page contains    All organizations    timeout=30
-    Wait until page contains    Classification
+    Wait until page contains    Classification       timeout=30
+    Sleep    2
     #Click element    //*[@class="dropdown-toggle nav-link btn btn-language dropdown-toggle"]
     #Sleep    1
     #Click element    //*[contains(text(), "${languageSV}")]
@@ -223,10 +225,9 @@ Open Koodistot
 Choose user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
-    Sleep    1
+    Sleep    2
     Click element    ${USER_1}
     Wait Until Page Contains    Testi Admin    timeout=20
-    Reload Page
     Sleep    2
 
 Open Koodistot in '${BROWSER}'
