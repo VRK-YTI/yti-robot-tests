@@ -1,4 +1,4 @@
-*** Settings ***
+﻿*** Settings ***
 Documentation     Test Suite for basic functionality of Datamodel application
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
@@ -35,7 +35,7 @@ Resource          resources/Datamodel_Resources.robot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
-    [Tags]    regression    sanastot
+    [Tags]    regression    tietomallit
     [Setup]    Test Case Setup
     Wait until page contains element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]    timeout=20
     Click element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
