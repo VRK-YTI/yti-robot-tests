@@ -252,10 +252,11 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
     [Tags]    regression
     [Setup]    Test Case Setup
+    Sleep    2
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
-    Sleep    1
+    Sleep    2
     Page should not contain    Luonnos
     Page should not contain    Odottaa hyväksyntää
     Click element    ${STATUS_SUPERSEDED}
@@ -268,6 +269,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
     [Tags]    regression
     [Setup]    Test Case Setup
+    Sleep    2
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
@@ -278,7 +280,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Uusi muutostieto
     Save code list
-    Sleep    1
+    Sleep    2
     Page should contain    Testinimi
     Page should contain    Uusi kuvaus
     Page should contain    Uusi määritelmä
