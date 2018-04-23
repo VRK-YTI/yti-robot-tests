@@ -2,7 +2,7 @@
 Documentation     Test Suite for Koodistot basic functionality
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
-Library           XvfbRobot
+#Library           XvfbRobot
 Resource          resources/Chrome_setup.robot
 
 *** Variables ***

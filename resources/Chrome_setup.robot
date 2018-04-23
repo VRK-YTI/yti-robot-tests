@@ -9,7 +9,7 @@ Open koodistot in environment
 Open Chrome to Environment
     ${chrome_options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument      --headless
-    Call Method    ${chrome_options}    add_argument      --no-sandbox
+#    Call Method    ${chrome_options}    add_argument      --no-sandbox
     Call Method    ${chrome_options}    add_argument      --single-process
     Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     Go To    ${ENVIRONMENT_URL}
@@ -22,7 +22,7 @@ Open Chrome Local
     Call Method    ${chrome_options}    add_argument      --dump-dom
     Call Method    ${chrome_options}    add_argument      --enable-crash-reporter
     Call Method    ${chrome_options}    add_argument      --disable-gpu
-    Call Method    ${chrome_options}    add_argument      --no-sandbox
+#    Call Method    ${chrome_options}    add_argument      --no-sandbox
     Call Method    ${chrome_options}    add_argument      --single-process
     Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
