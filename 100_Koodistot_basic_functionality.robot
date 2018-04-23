@@ -3,6 +3,7 @@ Documentation     Test Suite for Koodistot basic functionality
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
 Library           XvfbRobot
+Resource          resources/Chrome_setup.robot
 
 *** Variables ***
 ${BROWSER}        chrome
@@ -215,6 +216,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 *** Keywords ***
 Test Case Setup
+    Setup Chrome Options
     Open Koodistot
     Choose user
 

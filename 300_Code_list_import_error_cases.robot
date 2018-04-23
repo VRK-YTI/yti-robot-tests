@@ -3,6 +3,7 @@ Documentation     Test Suite for Code list import error cases
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
 Library           XvfbRobot
+Resource          resources/Chrome_setup.robot
 
 *** Variables ***
 ${BROWSER}        chrome
@@ -197,6 +198,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 
 *** Keywords ***
 Test Case Setup
+    Setup Chrome Options
     Open Koodistot
     Choose user
 

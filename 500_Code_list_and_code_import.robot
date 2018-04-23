@@ -3,6 +3,7 @@ Documentation     Test Suite for Code list and Code import
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
 Library           XvfbRobot
+Resource          resources/Chrome_setup.robot
 
 *** Variables ***
 ${BROWSER}        chrome
@@ -224,6 +225,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 
 *** Keywords ***
 Test Case Setup
+    Setup Chrome Options
     Open Koodistot
     Choose user
 

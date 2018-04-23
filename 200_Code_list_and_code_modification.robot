@@ -3,6 +3,7 @@ Documentation     Test Suite for Code list and Code modification
 Suite Teardown    Close All Browsers
 Library           Selenium2Library
 Library           XvfbRobot
+Resource          resources/Chrome_setup.robot
 
 *** Variables ***
 ${BROWSER}        chrome
@@ -316,6 +317,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 *** Keywords ***
 Test Case Setup
+    Setup Chrome Options
     Open Koodistot
     Choose user
 
