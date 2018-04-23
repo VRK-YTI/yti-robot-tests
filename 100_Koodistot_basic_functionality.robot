@@ -216,7 +216,6 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 *** Keywords ***
 Test Case Setup
-    Setup Chrome Options
     Open Koodistot
     Choose user
 
@@ -238,11 +237,6 @@ Open Koodistot in '${BROWSER}'
     Page should contain    Koodistot
     #Page should contain    Luokitus
     Page should contain    KIRJAUDU SISÄÄN
-
-Open koodistot in environment
-    [Arguments]    ${browser}
-    Set Selenium Speed    0.3
-    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
 
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}

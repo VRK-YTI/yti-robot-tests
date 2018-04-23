@@ -317,7 +317,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 *** Keywords ***
 Test Case Setup
-    Setup Chrome Options
     Open Koodistot
     Choose user
 
@@ -339,11 +338,6 @@ Open Koodistot in '${BROWSER}'
     Page should contain    Koodistot
     #Page should contain    Luokitus
     Page should contain    KIRJAUDU SISÄÄN
-
-Open koodistot in environment
-    [Arguments]    ${browser}
-    Set Selenium Speed    0.3
-    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
 
 Restore code modify
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20

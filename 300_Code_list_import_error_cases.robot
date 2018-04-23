@@ -198,7 +198,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 
 *** Keywords ***
 Test Case Setup
-    Setup Chrome Options
     Open Koodistot
     Choose user
 
@@ -220,11 +219,6 @@ Open Koodistot in '${BROWSER}'
     Page should contain    Koodistot
     #Page should contain    Luokitus
     Page should contain    KIRJAUDU SISÄÄN
-
-Open koodistot in environment
-    [Arguments]    ${browser}
-    Set Selenium Speed    0.3
-    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
 
 Go back to Koodistot frontpage
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
