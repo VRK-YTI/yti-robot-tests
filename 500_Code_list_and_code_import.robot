@@ -155,6 +155,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Documentation]    Create new code list and codes manually and remove new code list
     [Tags]    regression
     [Setup]    Test Case Setup
+    Sleep    2
     Set Selenium Speed    0.5
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -173,7 +174,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.
+    Sleep    5
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list
     Wait until page contains element    ${BACK_BTN}    timeout=20
     Click element    ${BACK_BTN}
@@ -198,6 +200,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     ...    Code list value input field
     [Tags]    regression
     [Setup]    Test Case Setup
+    Sleep    2
     Set Selenium Speed    0.5
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -216,7 +219,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until page contains    Koodiston tunnus on jo käytössä tässä rekisterissä.
+    Sleep    5
+    Wait until page contains    Koodiston tunnus on jo käytössä tässä rekisterissä.    timeout=20
     Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}
     Click element    ${CANCEL_CODE_CREATE_BTN}
     Wait until page contains element    ${BACK_BTN}    timeout=20
