@@ -126,6 +126,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression
     [Setup]    Test Case Setup
+    Sleep    2
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    2
