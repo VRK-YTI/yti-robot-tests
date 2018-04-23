@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Koodistot basic functionality
 Suite Teardown    Close All Browsers
-Library           Selenium2Library
+Library           SeleniumLibrary
 Library           XvfbRobot
 Resource          resources/Chrome_setup.robot
 
@@ -63,9 +63,9 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Tags]    regression
     [Setup]    Test Case Setup
     Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a    timeout=20
-    Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
-    Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
-    Sleep    2
+#    Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
+#    Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
+#    Sleep    2
     Select Window    title=Koodistot
     Close All Browsers
 
