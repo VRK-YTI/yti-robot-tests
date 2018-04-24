@@ -242,6 +242,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)
     Save code list
+    Sleep    5
     Wait until page contains    ${Error_end_date_before_start_date}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
@@ -261,8 +262,9 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Page should not contain    Odottaa hyväksyntää
     Click element    ${STATUS_SUPERSEDED}
     Save code list
+    Sleep    5
     Wait until page contains element    //*[contains(text(), "Korvattu")]
-    Sleep    1
+    Sleep    2
     [Teardown]    Restore valid Code list status
 
 207. Modify Valid Code list
