@@ -2,7 +2,6 @@
 Documentation     Test Suite for Code list and Code modification
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
-#Library           XvfbRobot
 Resource          resources/Chrome_setup.robot
 
 *** Variables ***
