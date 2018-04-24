@@ -177,6 +177,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Sleep    5
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list
+    Sleep    5
     Wait until page contains element    ${BACK_BTN}    timeout=20
     Click element    ${BACK_BTN}
     Wait until page contains    koodisto6000    timeout=20
