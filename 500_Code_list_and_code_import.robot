@@ -242,7 +242,7 @@ Choose user
     Sleep    1
     Click element    //*[contains(text(), "${USER_1}")]
     Wait Until Page Contains    ${USER_1 }
-    Sleep    2
+    Sleep    5
 
 Open Koodistot in '${BROWSER}'
     Open koodistot in environment    ${BROWSER}

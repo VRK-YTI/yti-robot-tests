@@ -334,7 +334,7 @@ Choose user
     Sleep    1
     Click element    ${USER_1}
     Wait Until Page Contains    Testi Admin    timeout=20
-    Sleep    2
+    Sleep    5
 
 Open Koodistot in '${BROWSER}'
     Open koodistot in environment    ${BROWSER}
