@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Terminology application
 Suite Teardown    Close All Browsers
-Library           Selenium2Library
-Library           XvfbRobot
+Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
 *** Test Cases ***
@@ -35,7 +34,7 @@ Resource          resources/Terminology_Resources.robot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
-    [Tags]    regression    sanastot
+    [Tags]    local    sanastot
     [Setup]    Test Case Setup
     Wait until page contains element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]    timeout=20
     Click element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]

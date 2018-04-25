@@ -36,11 +36,22 @@ ${IMPORT_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocab
 Test Case Setup
     Set Selenium Speed    0.5
     Open Sanastot
+    Sleep    5
     Select user
 
-Open Sanastot
-    Open Sanastot in '${BROWSER}'
-    Sleep    1
+Open Browser with Settings
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
+    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
+
+Open Chrome to Environment
+    ${chrome_options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument      --headless
+    Call Method    ${chrome_options}    add_argument      --single-process
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
+    ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
+    Set Window Size    1920    1080
+    Go To    ${ENVIRONMENT_URL}
 
 Select user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
@@ -51,16 +62,13 @@ Select user
     Reload Page
     Sleep    2
 
-Open Sanastot in '${BROWSER}'
-    Open Sanastot in environment    ${BROWSER}
+Open Sanastot
+    Open Chrome to Environment
     Wait until page contains    Sanastot    timeout=20
     Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
-
-Open Sanastot in environment
-    [Arguments]    ${browser}
-    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
 
 Go back to Sanastot frontpage
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
+
