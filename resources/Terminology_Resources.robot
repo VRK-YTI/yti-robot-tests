@@ -20,10 +20,10 @@ ${FRONTPAGE_SEARCH_BOX}    //app-root/div/app-frontpage/app-vocabularies/div/div
 ${SHOW_VOCABULARY_DETAILS_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div/div/h2/button[1]
 ${ADD_NEW_CONCEPT_BTN}    //button[@class='btn btn-action mb-3']//span
 #vocabulary buttons
-${EDIT_VOCBULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[3]/span
-${VOCBULARY_TITLE_TEXTAREA}    id=prefLabel
-${VOCBULARY_DESCRIPTION_TEXTAREA}    id=description
-${SAVE_VOCBULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[2]/span
+${EDIT_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[3]/span
+${VOCABULARY_TITLE_TEXTAREA}    id=prefLabel
+${VOCABULARY_DESCRIPTION_TEXTAREA}    id=description
+${SAVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[2]/span
 ${ADD_TITLE_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/button
 ${LANGUAGE_EN_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/div/button[1]
 ${ADD_ORGANIZATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/button
