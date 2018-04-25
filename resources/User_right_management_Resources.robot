@@ -30,15 +30,16 @@ eDuuni Login
     Click element    id=ContentPlaceHolder1_Button1
     Wait Until Page Contains element    id=identifierId
     Input text    id=identifierId    ${TEST_EMAIL}
+    Sleep    5
     Wait Until Page Contains element    id=identifierNext    timeout=20
     Click element    id=identifierNext
+    Sleep    5
     Wait Until Page Contains element    //div[1]/div[1]/div[2]/div[2]/div/div[2]/div/form/div[1]/div/div[1]/div/div[1]/input    timeout=20
     Input text    //div[1]/div[1]/div[2]/div[2]/div/div[2]/div/form/div[1]/div/div[1]/div/div[1]/input    ${TEST_PASSWORD}
-    #Wait Until Page Contains element    //div[@id="passwordNext"]/content/span
+    Sleep    5
     Wait Until Page Contains element    id=passwordNext
-    Capture Page Screenshot
-    #Click element    //div[@id="passwordNext"]/content/span
     Click element    id=passwordNext
+    Sleep    5
     Wait Until Page Contains    Yhteentoimivuusalustan oikeuksienhallinta    timeout=20
     Sleep    5
 
