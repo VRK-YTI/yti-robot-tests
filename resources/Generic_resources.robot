@@ -5,11 +5,14 @@ ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 *** Keywords ***
 Open Koodistot
     Set Selenium Speed    0.3
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'      Open Chrome to Environment
-    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
+    Open Browser with Settings
     Page should contain    Koodistot
     Page should contain    KIRJAUDU SISÄÄN
+
+Open Browser with Settings
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'      Open Chrome to Environment
+    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
     ${chrome_options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
