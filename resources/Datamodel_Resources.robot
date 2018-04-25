@@ -38,7 +38,7 @@ Open Tietomallit
 
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'      Open Chrome to Environment
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
     ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
@@ -46,7 +46,7 @@ Open Chrome to Environment
     Call Method    ${chrome_options}    add_argument      --headless
     Call Method    ${chrome_options}    add_argument      --single-process
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
-    ...    ELSE   Create Webdriver    Chrome    chrome_options=${chrome_options}
+    ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
     Go To    ${ENVIRONMENT_URL}
 
