@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Resource file for Datamodel application
-Library           Selenium2Library
-Library           XvfbRobot
+Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
@@ -21,11 +20,8 @@ ${ADD_CLASS_BTN}    //application/ng-container/div/div/model-page/div/div[2]/div
 Test Case Setup
     Set Selenium Speed    0.5
     Open Tietomallit
+    Sleep    5
     Select user
-
-Open Tietomallit
-    Open Tietomallit in '${BROWSER}'
-    Sleep    1
 
 Select user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
@@ -35,14 +31,24 @@ Select user
     Wait Until Page Contains    Testi Admin    timeout=20
     Sleep    2
 
-Open Tietomallit in '${BROWSER}'
-    Open Tietomallit in environment    ${BROWSER}
+Open Tietomallit
+    Open Browser with Settings
     Wait until page contains    Tietomallit    timeout=20
     Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
 
-Open Tietomallit in environment
-    [Arguments]    ${browser}
-    Open Browser    ${ENVIRONMENT_URL}    browser=${browser}
+Open Browser with Settings
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'      Open Chrome to Environment
+    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
+
+Open Chrome to Environment
+    ${chrome_options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument      --headless
+    Call Method    ${chrome_options}    add_argument      --single-process
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
+    ...    ELSE   Create Webdriver    Chrome    chrome_options=${chrome_options}
+    Set Window Size    1920    1080
+    Go To    ${ENVIRONMENT_URL}
 
 Go back to Tietomallit frontpage
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
