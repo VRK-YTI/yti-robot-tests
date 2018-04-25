@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for vocabulary modification
 Suite Teardown    Close All Browsers
-Library           Selenium2Library
-Library           XvfbRobot
+Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
 *** Test Cases ***
@@ -49,6 +48,16 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SAVE_VOCBULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCBULARY_BTN}
     Go back to Sanastot frontpage
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait until page contains    ${ORGANIZATION_1}    timeout=30
+    Wait until page contains    ${CLASSIFICATION_1}    timeout=30
+    Wait until page contains    Testiorganisaatio    timeout=30
+    Wait until page contains    Eläkkeet    timeout=30
+    Wait until page contains    Terminologinen sanasto    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
     [Teardown]    Restore organization and classification for DRAFT vocabulary
 
 *** Keywords ***
@@ -69,7 +78,10 @@ Select and edit Draft vocabulary
     Click element    ${EDIT_VOCBULARY_BTN}
 
 Restore organization and classification for DRAFT vocabulary
-    Select and edit Draft vocabulary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${EDIT_VOCBULARY_BTN}    timeout=30
+    Click element    ${EDIT_VOCBULARY_BTN}
     Wait until page contains element    ${REMOVE_ORGANIZATION_1}    timeout=30
     Click element    ${REMOVE_ORGANIZATION_1}
     Wait until page contains element    ${REMOVE_CLASSIFICATION_1}    timeout=30

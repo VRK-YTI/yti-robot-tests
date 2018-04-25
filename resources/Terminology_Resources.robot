@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Resource file for terminology application
-Library           Selenium2Library
-Library           XvfbRobot
+Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
@@ -31,6 +30,7 @@ ${ADD_ORGANIZATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabu
 ${SEARCH_ORGANIZATION_INPUT}    //ngb-modal-window/div/div/app-search-organization-modal/div[2]/div[1]/div/div/input
 ${ADD_CLASSIFICATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/button
 ${SEARCH_CLASSIFICATION_INPUT}    //ngb-modal-window/div/div/app-search-group-modal/div[2]/div[1]/div/div/input
+${IMPORT_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/div/label
 
 *** Keywords ***
 Test Case Setup
