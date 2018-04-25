@@ -2,11 +2,9 @@
 Documentation     Test Suite for Koodistot basic functionality
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
-Resource          resources/Chrome_setup.robot
+Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
@@ -59,12 +57,12 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
-    [Tags]    regression
+    [Tags]    local
     [Setup]    Test Case Setup
     Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a    timeout=20
-#    Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
-#    Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
-#    Sleep    2
+    Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
+    Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
+    Sleep    2
     Select Window    title=Koodistot
     Close All Browsers
 
@@ -219,10 +217,6 @@ Test Case Setup
     Open Koodistot
     Choose user
 
-Open Koodistot
-    Open Koodistot in '${BROWSER}'
-    Sleep    1
-
 Choose user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
@@ -230,13 +224,6 @@ Choose user
     Click element    ${USER_1}
     Wait Until Page Contains    Testi Admin    timeout=20
     Sleep    5
-
-Open Koodistot in '${BROWSER}'
-    Open koodistot in environment    ${BROWSER}
-    Sleep    2
-    Page should contain    Koodistot
-    #Page should contain    Luokitus
-    Page should contain    KIRJAUDU SISÄÄN
 
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}

@@ -2,11 +2,9 @@
 Documentation     Test Suite for Code list and Code modification
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
-Resource          resources/Chrome_setup.robot
+Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_4}    testiautomaatiokoodisto
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
@@ -323,10 +321,6 @@ Test Case Setup
     Open Koodistot
     Choose user
 
-Open Koodistot
-    Open Koodistot in '${BROWSER}'
-    Sleep    1
-
 Choose user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
@@ -334,13 +328,6 @@ Choose user
     Click element    ${USER_1}
     Wait Until Page Contains    Testi Admin    timeout=20
     Sleep    5
-
-Open Koodistot in '${BROWSER}'
-    Open koodistot in environment    ${BROWSER}
-    Sleep    2
-    Page should contain    Koodistot
-    #Page should contain    Luokitus
-    Page should contain    KIRJAUDU SISÄÄN
 
 Restore code modify
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20

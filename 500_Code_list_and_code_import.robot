@@ -2,11 +2,9 @@
 Documentation     Test Suite for Code list and Code import
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
-Resource          resources/Chrome_setup.robot
+Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${USER_1}         Testi Superuser
 ${CODE_LIST_1}    koodisto6000
 ${CODE_LIST_2}    koodisto7000
@@ -231,10 +229,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 Test Case Setup
     Open Koodistot
     Choose user
-
-Open Koodistot
-    Open Koodistot in '${BROWSER}'
-    Sleep    1
 
 Choose user
     Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30

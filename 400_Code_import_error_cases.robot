@@ -2,11 +2,9 @@
 Documentation     Test Suite for Code import error cases
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
-Resource          resources/Chrome_setup.robot
+Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_7}    testiautomaatiokoodisto1
 ${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
@@ -356,10 +354,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 Test Case Setup
     Open Koodistot
     Choose user
-
-Open Koodistot
-    Open Koodistot in '${BROWSER}'
-    Sleep    1
 
 Choose user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
