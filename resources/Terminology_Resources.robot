@@ -65,7 +65,7 @@ Select user
     Sleep    5
 
 Open Sanastot
-    Open Chrome to Environment
+    Open Browser with Settings
     Wait until page contains    Sanastot    timeout=20
     Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
 
