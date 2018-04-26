@@ -65,6 +65,20 @@ Resource          resources/Terminology_Resources.robot
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     [Teardown]    Restore organization and classification for DRAFT vocabulary
 
+202. Add new Terminological Dictionary and import vocabulary
+    [Documentation]    Add new Terminological Dictionary, import vocabulary and delete dictionary
+    [Tags]    sanastot
+    [Setup]    Test Case Setup
+    Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
+    Click element    ${ADD_VOCABULARY_BTN}
+    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
+    Click element    ${VOCABULARY_TYPE_DDL}
+    Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
+    Click element    //*[contains(text(), "Terminologinen sanasto")]
+    Wait until page contains element    ${ADD_TITLE_BTN}    timeout=30
+    Input text    ${ADD_TITLE_BTN}    ${VOCABULARY_2}
+    Sleep    5
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
