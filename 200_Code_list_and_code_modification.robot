@@ -310,6 +310,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Sleep    1
     Save code list
+    Sleep    5
     Page should contain    ${CLASSIFICATION_1}
     Page should contain    ${CLASSIFICATION_2}
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
