@@ -5,7 +5,6 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${USER_1}         id=testiadmin@localhost
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
 ${CODE_LIST_3}    Palveluluokitus
@@ -26,13 +25,12 @@ ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 #Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
-${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly. YTI-460
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
     Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
     Wait until page contains    Tietoa Koodistoista
@@ -46,7 +44,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly. YTI-457
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[3]/a    timeout=20
     Click element    xpath=//app-root/app-footer/div/div[2]/div[3]/a
     Select Window    title=EUPL - v1.2 [FI / suomi]
@@ -58,7 +56,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
     [Tags]    local
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a    timeout=20
     Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
@@ -69,7 +67,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 103. Search for VALID code list
     [Documentation]    Search for VALID code list with frontpage search function.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_6}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
@@ -95,7 +93,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 104. Search for code list with codeValue
     [Documentation]    Search for code list with codeValue with frontpage search function. YTI-651
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
@@ -122,7 +120,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 105. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Sleep    2
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
@@ -144,7 +142,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 106. Export Excel and CSV for Kunnat 2018 Code list
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_1}")]
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
@@ -160,7 +158,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 107. Export Excel and CSV for Palveluluokitus Code list
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_3}")]
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
@@ -177,7 +175,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 108. Check User right management link
     [Documentation]    Check User right management link functionality. YTI-449
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=20
     Click element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)
     Click element    ${USER_RIGHT_MANAGEMENT}
@@ -200,7 +198,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 109. Check ChangeNote information from code list
     [Documentation]    Check ChangeNote information from Code list. YTI-489
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_5}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_5}")]    timeout=30

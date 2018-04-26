@@ -5,7 +5,6 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${USER_1}         Testi Superuser
 ${CODE_LIST_1}    koodisto6000
 ${CODE_LIST_2}    koodisto7000
 ${CODE_LIST_3}    testiautomaatiokoodisto
@@ -59,7 +58,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 500. Import DRAFT Code list without codes
     [Documentation]    Import DRAFT Code list without codes, check that import is successful and remove code list
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
     Sleep    1
@@ -77,7 +76,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 501. Import VALID Code list with codes
     [Documentation]    Import VALID Code list with codes, check that import is successful and remove code list
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_with_codes}
     Sleep    2
@@ -97,7 +96,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 502. Import DRAFT Codes to existing Code list
     [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful and remove code list
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
     Sleep    2
@@ -120,7 +119,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful,
     ...    update Codes and remove code list
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
     Sleep    2
@@ -147,7 +146,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 504. Create new Code list and Codes
     [Documentation]    Create new code list and codes manually and remove new code list
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -192,7 +191,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Documentation]    Create new Code list with existing Codevalue and check error message from
     ...    Code list value input field
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}

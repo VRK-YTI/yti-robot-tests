@@ -5,7 +5,8 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${USER_1}         id=testiadmin@localhost
+${USER_1_ID}      id=testiadmin@localhost
+${USER_1_NAME}    Testi Admin
 ${CODE_LIST_4}    testiautomaatiokoodisto
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
 ${TEST_CODE_1}    T100 - Automaatiokoodi
@@ -55,7 +56,6 @@ ${STATUS_VALID}    //button[@class='dropdown-item'][contains(text(),'Voimassa ol
 ${STATUS_SUPERSEDED}    //button[@class='dropdown-item'][contains(text(),'Korvattu')]
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_linked_code_input
 ${NEW_CLASSIFICATION}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/div/div[2]/a/i
-${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 #Error messages
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
@@ -63,7 +63,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 200. Modify DRAFT Code
     [Documentation]    Modify name, description and short name values for DRAFT code.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${CANCEL_CODE_MOD_BTN}
     Click element    ${CANCEL_CODE_MOD_BTN}
@@ -86,7 +86,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 201. Add link to the DRAFT Code
     [Documentation]    Add link to the draft code, check link functionalty and remove the link.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
@@ -127,7 +127,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 202. Add Creative Commons license to DRAFT Code
     [Documentation]    Add Creative Commons license to draft code and remove the license.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
@@ -160,7 +160,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Add link to the DRAFT code, modify link name, check the name from TIEDOT-tab
     ...    and remove the link. YTI-444, YTI-614.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=20
     Click element    ${ADD_LINK_TO_CODE_BTN}
@@ -196,7 +196,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.
     ...    YTI-438
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${CODE_START_DATE_BTN}    timeout=20
     Click element    ${CODE_START_DATE_BTN}
@@ -224,7 +224,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 205. Set end date before start date for Code list
     [Documentation]    Set end date before start date for code list and check error message.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto and edit
     Wait until page contains element    ${CODE_LIST_START_DATE_BTN}    timeout=20
     Click element    ${CODE_LIST_START_DATE_BTN}
@@ -256,7 +256,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
@@ -273,7 +273,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
@@ -300,7 +300,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
     ...    remove classification.
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto and edit
     Page should contain    ${CLASSIFICATION_2}
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}

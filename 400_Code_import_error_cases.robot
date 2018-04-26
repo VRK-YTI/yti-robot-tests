@@ -5,7 +5,8 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${USER_1}         id=testiadmin@localhost
+${USER_1_ID}      id=testiadmin@localhost
+${USER_1_NAME}    Testi Admin
 ${CODE_LIST_7}    testiautomaatiokoodisto1
 ${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
 #Buttons and links
@@ -17,7 +18,6 @@ ${FILE_UPLOAD_BTN}    id=fileupload_input
 ${IMPORT_BTN}     id=upload_codes_file_button
 ${CLOSE_ERROR_MESSAGE_BTN}    //ngb-modal-window[2]/div/div/app-error-modal/div[3]/button
 ${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
-${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codes_codevalue_missing}    ${DATAFOLDER}${/}Codes_codevalue_missing.xlsx
@@ -67,7 +67,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 400. Import Codes with missing CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with missing code value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing}
@@ -88,7 +88,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 401. Import Codes with missing STATUS value
     [Documentation]    Import Codes (Excel, CSV) with missing STATUS value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_status_missing}
@@ -109,7 +109,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 402. Import Codes with invalid STATUS value
     [Documentation]    Import Codes (Excel, CSV) with invalid STATUS value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_status}
@@ -130,7 +130,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 403. Import Codes with invalid BROADER value
     [Documentation]    Import Codes (Excel, CSV) with invalid BROADER value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_broader}
@@ -151,7 +151,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 404. Code import when BROADER code references code value of the code itself
     [Documentation]    Import Codes (Excel, CSV) when BROADER code references code value of the code itself and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader}
@@ -172,7 +172,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 405. Import codes with duplicate comlumns
     [Documentation]    Import Codes (Excel, CSV) with duplicate columns and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns}
@@ -193,7 +193,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 406. Import codes with invalid HIERARCHYLEVEL value
     [Documentation]    Import Codes (Excel, CSV) with invalid HIERARCHYLEVEL value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_HL}
@@ -214,7 +214,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 407. Import codes with CODEVALUE column missing
     [Documentation]    Import codes (Excel, CSV) with CODEVALUE column missing and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_without_codevalue_column}
@@ -235,7 +235,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 408. Import codes with invalid start date
     [Documentation]    Import codes (CSV, Excel) with invalid start date and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_startdate}
@@ -256,7 +256,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 409. Import codes with invalid ID values
     [Documentation]    Import codes (Excel, CSV) with invalid ID values and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_ID}
@@ -277,7 +277,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 410. Update code status from VALID to DRAFT
     [Documentation]    Update Code status from VALID to DRAFT with import function (Excel, CSV) and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Update_Code_valid_draft}
@@ -298,7 +298,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 411. Import codes with duplicate CODEVALUES
     [Documentation]    Import codes (Excel, CSV) with duplicate CODEVALUES and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes}
@@ -319,7 +319,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 412. Import Codes with invalid CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with invalid CODEVALUE and check error message. YTI-703
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue}

@@ -1,19 +1,30 @@
 *** Variables ***
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
+${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
+${ADMIN_USER_ID}      id=testiadmin@localhost
+${ADMIN_USER_NAME}    Testi Admin
+${SUPER_USER_ID}      id=testisuperuser@localhost
+${SUPER_USER_NAME}    Testi Superuser
 
 *** Keywords ***
-Test Case Setup
+Test Case Setup Admin
     Set Selenium Speed    0.5
     Open Koodistot
-    Choose user
+    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
 
-Choose user
-    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+Test Case Setup Superuser
+    Set Selenium Speed    0.5
+    Open Koodistot
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+
+Select user
+    [Arguments]    ${user_id}    ${user_name}
+    Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
-    Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=20
+    Click element    ${user_id}
+    Wait Until Page Contains    ${user_name}
     Sleep    5
 
 Open Koodistot
