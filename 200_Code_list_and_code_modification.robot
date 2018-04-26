@@ -90,22 +90,30 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
+    Sleep    1
     Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
     Click element    ${ADD_NEW_LINK_BTN}
+    Sleep    1
     Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
     Click element    ${LINK_TYPE_DROPDOWN}
+    Sleep    1
     Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
     Click element    ${DROPDOWN_ITEM_LINK}
+    Sleep    1
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
+    Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
+    Sleep    1
     Wait until page contains    Linkki
     Page should contain    https://www.suomi.fi/etusivu/
     Click element    //*[contains(text(), "https://www.suomi.fi/etusivu/")]
+    Sleep    1
     Wait until page contains element    ${LINK_1}    timeout=20
     Click element    ${LINK_1}
+    Sleep    1
     Select Window    title=Etusivu - Suomi.fi
     Sleep    1
     Select Window    title=Koodistot
@@ -265,12 +273,16 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
+    Sleep    1
     Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=20
     Input text    ${CODE_LIST_DESC_INPUT}    Uusi kuvaus
+    Sleep    1
     Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=20
     Input text    ${CODE_LIST_DEF_INPUT}    Uusi määritelmä
+    Sleep    1
     Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Uusi muutostieto
+    Sleep    1
     Save code list
     Sleep    2
     Page should contain    Testinimi
@@ -301,9 +313,12 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Sleep    2
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
+    Sleep    1
     Click element    //*[contains(text(), "${CODE_LIST_ALL_STATUSES_FI}")]
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]
     Sleep    2
     [Teardown]    Remove classification from code list
@@ -354,6 +369,7 @@ Remove links from draft code
     Sleep    3
     Wait until page contains element    ${DELETE_LINK_ICON}
     Click element    ${DELETE_LINK_ICON}
+    Sleep    1
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
     Click Element    ${REMOVE_LINK_CONF_BTN}
     Sleep    1
@@ -417,6 +433,7 @@ Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains    ${CODE_LIST_6}
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=20
     Click element    //*[contains(text(), "Muokkaa")]
 
