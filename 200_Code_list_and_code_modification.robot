@@ -411,6 +411,7 @@ Choose testiautomaatiokoodisto code and edit
     Sleep    1
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
+    Sleep    1
 
 Choose testiautomaatiokoodisto and edit
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=20
@@ -423,8 +424,10 @@ Choose testiautomaatiokoodisto and edit
     Wait until page contains    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=20
     Click element    //*[contains(text(), "Muokkaa")]
+    Sleep    1
 
 Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
@@ -440,6 +443,7 @@ Choose testiautomaatiokoodisto 2 and edit
     Sleep    1
     Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=20
     Click element    //*[contains(text(), "Muokkaa")]
+    Sleep    1
 
 Restore valid Code list status
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
@@ -458,15 +462,21 @@ Restore valid Code list status
 Restore valid Code list
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    //*[contains(text(), "Muokkaa")]
+    Sleep    1
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    testiautomaatiokoodisto 2
+    Sleep    1
     Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=20
     Input text    ${CODE_LIST_DESC_INPUT}    Tämä on kuvaus
+    Sleep    1
     Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=20
     Input text    ${CODE_LIST_DEF_INPUT}    Tämä on määritelmä
+    Sleep    1
     Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Muutostieto
+    Sleep    1
     Click element    //*[contains(text(), "Tallenna")]
+    Sleep    1
     Wait until page contains    testiautomaatiokoodisto2    timeout=20
     Wait until page contains    testiautomaatiokoodisto 2    timeout=20
     Wait until page contains    Tämä on kuvaus    timeout=20
@@ -480,14 +490,17 @@ Restore valid Code list
 Save code list
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
+    Sleep    1
 
 Modify code
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
+    Sleep    1
 
 Save code modification
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
+    Sleep    4
 
 Delete link from code
     Modify code
