@@ -220,26 +220,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Return to Koodistot frontpage
 
 *** Keywords ***
-Test Case Setup
-    Set Selenium Speed    0.5
-    Open Koodistot
-    Choose user
-
-Choose user
-    Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30
-    Click element    //*[@class="nav-link dropdown-toggle"]
-    Sleep    1
-    Click element    //*[contains(text(), "${USER_1}")]
-    Wait Until Page Contains    ${USER_1 }
-    Sleep    5
-
-Open Koodistot in '${BROWSER}'
-    Open koodistot in environment    ${BROWSER}
-    Sleep    2
-    Page should contain    Koodistot
-    #Page should contain    Luokitus
-    Page should contain    KIRJAUDU SISÄÄN
-
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
     Click element    //app-root/app-navigation-bar/nav/a/span

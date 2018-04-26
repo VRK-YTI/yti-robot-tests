@@ -213,19 +213,6 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
     [Teardown]    Go back to Koodistot frontpage
 
 *** Keywords ***
-Test Case Setup
-    Set Selenium Speed    0.5
-    Open Koodistot
-    Choose user
-
-Choose user
-    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
-    Click element    ${IMPERSONATE_USER_DROPDOWN}
-    Sleep    2
-    Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=20
-    Sleep    5
-
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}

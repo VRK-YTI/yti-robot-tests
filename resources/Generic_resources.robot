@@ -3,6 +3,19 @@ ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 
 *** Keywords ***
+Test Case Setup
+    Set Selenium Speed    0.5
+    Open Koodistot
+    Choose user
+
+Choose user
+    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Click element    ${IMPERSONATE_USER_DROPDOWN}
+    Sleep    1
+    Click element    ${USER_1}
+    Wait Until Page Contains    Testi Admin    timeout=20
+    Sleep    5
+
 Open Koodistot
     Open Browser with Settings
     Sleep    5
