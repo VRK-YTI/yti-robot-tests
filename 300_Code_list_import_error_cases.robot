@@ -48,7 +48,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 300. Import Code list with missing codeValue
     [Documentation]    Import Code list (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_codeValue}
     Sleep    2
@@ -69,7 +69,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 301. Import Code list with missing CLASSIFICATION value
     [Documentation]    Import Code list with missing CLASSIFICATION value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification}
     Sleep    2
@@ -90,7 +90,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 302. Import Code list with invalid CLASSIFICATION value
     [Documentation]    Import Code list (Excel, CSV) with invalid CLASSIFICATION value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification}
     Sleep    2
@@ -111,7 +111,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 303. Import Code list with missing STATUS value
     [Documentation]    Import Code list with missing STATUS value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_status_value}
     Sleep    2
@@ -125,7 +125,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 304. Import Code list with invalid STATUS value
     [Documentation]    Import Code list with invalid STATUS value and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_status_value}
     Sleep    2
@@ -139,7 +139,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 305. Import Code list with duplicate columns
     [Documentation]    Import Code list with duplicate columns and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_columns}
     Sleep    2
@@ -153,7 +153,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 306. Import Code list with duplicate Code lists
     [Documentation]    Import Code list with duplicate Code lists and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists}
     Sleep    2
@@ -167,7 +167,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 307. Import Code list with invalid codeValue
     [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
     [Tags]    regression
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue}
     Sleep    2
@@ -186,13 +186,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Go back to Koodistot frontpage
 
 *** Keywords ***
-Open Koodistot in '${BROWSER}'
-    Open koodistot in environment    ${BROWSER}
-    Sleep    2
-    Page should contain    Koodistot
-    #Page should contain    Luokitus
-    Page should contain    KIRJAUDU SISÄÄN
-
 Go back to Koodistot frontpage
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
     Click element    //app-root/app-navigation-bar/nav/a/span
