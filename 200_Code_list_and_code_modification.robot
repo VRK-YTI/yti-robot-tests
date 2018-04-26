@@ -131,9 +131,11 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
+    Sleep    1
     Select Radio Button    externalReference    9a25f7fc-e4be-11e7-82ab-479f4f288376_external_reference_input
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
     Click element    ${SELECT_LINK_BTN}
+    Sleep    1
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
@@ -144,8 +146,10 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${DELETE_LINK_ICON}
     Click element    ${DELETE_LINK_ICON}
+    Sleep    1
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}
     Click Element    ${REMOVE_LINK_CONF_BTN}
+    Sleep    1
     Page should not contain    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
