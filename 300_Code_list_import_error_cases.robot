@@ -49,7 +49,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_codeValue}
     Sleep    2
@@ -71,7 +70,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list with missing CLASSIFICATION value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification}
     Sleep    2
@@ -93,7 +91,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list (Excel, CSV) with invalid CLASSIFICATION value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification}
     Sleep    2
@@ -115,7 +112,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list with missing STATUS value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_status_value}
     Sleep    2
@@ -130,7 +126,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list with invalid STATUS value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_status_value}
     Sleep    2
@@ -145,7 +140,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list with duplicate columns and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_columns}
     Sleep    2
@@ -160,7 +154,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list with duplicate Code lists and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists}
     Sleep    2
@@ -175,7 +168,6 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue}
     Sleep    2
@@ -195,6 +187,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 
 *** Keywords ***
 Test Case Setup
+    Set Selenium Speed    0.5
     Open Koodistot
     Choose user
 

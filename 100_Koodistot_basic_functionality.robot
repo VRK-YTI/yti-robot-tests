@@ -214,6 +214,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 
 *** Keywords ***
 Test Case Setup
+    Set Selenium Speed    0.5
     Open Koodistot
     Choose user
 

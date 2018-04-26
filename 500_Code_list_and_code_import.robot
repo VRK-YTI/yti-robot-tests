@@ -60,7 +60,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Documentation]    Import DRAFT Code list without codes, check that import is successful and remove code list
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
     Sleep    1
@@ -79,7 +78,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Documentation]    Import VALID Code list with codes, check that import is successful and remove code list
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_with_codes}
     Sleep    2
@@ -100,7 +98,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful and remove code list
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
     Sleep    2
@@ -124,7 +121,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     ...    update Codes and remove code list
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Import code list in Excel format
     Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
     Sleep    2
@@ -153,7 +149,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Tags]    regression
     [Setup]    Test Case Setup
     Sleep    2
-    Set Selenium Speed    0.5
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
@@ -199,7 +194,6 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Tags]    regression
     [Setup]    Test Case Setup
     Sleep    2
-    Set Selenium Speed    0.5
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
@@ -227,6 +221,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 
 *** Keywords ***
 Test Case Setup
+    Set Selenium Speed    0.5
     Open Koodistot
     Choose user
 

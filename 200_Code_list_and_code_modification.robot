@@ -87,7 +87,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Add link to the draft code, check link functionalty and remove the link.
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
@@ -121,7 +120,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Add Creative Commons license to draft code and remove the license.
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
@@ -151,7 +149,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     ...    and remove the link. YTI-444, YTI-614.
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=20
     Click element    ${ADD_LINK_TO_CODE_BTN}
@@ -188,7 +185,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     ...    YTI-438
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${CODE_START_DATE_BTN}    timeout=20
     Click element    ${CODE_START_DATE_BTN}
@@ -217,7 +213,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Set end date before start date for code list and check error message.
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto and edit
     Wait until page contains element    ${CODE_LIST_START_DATE_BTN}    timeout=20
     Click element    ${CODE_LIST_START_DATE_BTN}
@@ -250,7 +245,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
     [Tags]    regression
     [Setup]    Test Case Setup
-    Sleep    2
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
@@ -268,7 +262,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
     [Tags]    regression
     [Setup]    Test Case Setup
-    Sleep    2
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
@@ -292,7 +285,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     ...    remove classification.
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto and edit
     Page should contain    ${CLASSIFICATION_2}
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}
@@ -318,6 +310,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 *** Keywords ***
 Test Case Setup
+    Set Selenium Speed    0.5
     Open Koodistot
     Choose user
 
@@ -487,7 +480,6 @@ Delete link from code
     Go back to Koodistot frontpage
 
 Remove classification from code list
-    Set Selenium Speed    0.5
     Choose testiautomaatiokoodisto and edit
     Page should contain    ${CLASSIFICATION_1}
     Page should contain    ${CLASSIFICATION_2}

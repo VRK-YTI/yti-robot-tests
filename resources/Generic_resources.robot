@@ -6,6 +6,7 @@ ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 Open Koodistot
     Set Selenium Speed    0.3
     Open Browser with Settings
+    Sleep    5
     Page should contain    Koodistot
     Page should contain    KIRJAUDU SISÄÄN
 

@@ -68,7 +68,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) with missing code value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing}
@@ -90,7 +89,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) with missing STATUS value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_status_missing}
@@ -112,7 +110,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) with invalid STATUS value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_status}
@@ -134,7 +131,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) with invalid BROADER value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_broader}
@@ -156,7 +152,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) when BROADER code references code value of the code itself and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader}
@@ -178,7 +173,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) with duplicate columns and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns}
@@ -200,7 +194,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) with invalid HIERARCHYLEVEL value and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_HL}
@@ -222,7 +215,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import codes (Excel, CSV) with CODEVALUE column missing and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_without_codevalue_column}
@@ -244,7 +236,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import codes (CSV, Excel) with invalid start date and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_startdate}
@@ -266,7 +257,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import codes (Excel, CSV) with invalid ID values and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_ID}
@@ -288,7 +278,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Update Code status from VALID to DRAFT with import function (Excel, CSV) and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Update_Code_valid_draft}
@@ -310,7 +299,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import codes (Excel, CSV) with duplicate CODEVALUES and check error message
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes}
@@ -332,7 +320,6 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     [Documentation]    Import Codes (Excel, CSV) with invalid CODEVALUE and check error message. YTI-703
     [Tags]    regression
     [Setup]    Test Case Setup
-    Set Selenium Speed    0.5
     Select draft code list
     Import codes in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue}
@@ -352,6 +339,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 
 *** Keywords ***
 Test Case Setup
+    Set Selenium Speed    0.5
     Open Koodistot
     Choose user
 
