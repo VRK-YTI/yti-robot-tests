@@ -9,13 +9,13 @@ ${SUPER_USER_NAME}    Testi Superuser
 
 *** Keywords ***
 Test Case Setup Admin
-    Set Selenium Speed    0.5
     Open Koodistot
+    Set Selenium Speed    0.5
     Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
 
 Test Case Setup Superuser
-    Set Selenium Speed    0.5
     Open Koodistot
+    Set Selenium Speed    0.5
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
 
 Select user
