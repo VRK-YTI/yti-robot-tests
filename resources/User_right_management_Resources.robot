@@ -18,8 +18,8 @@ ${EDIT_ORGANIZATION_BTN}    //app-root/div/app-organization/div/div/button/span
 
 *** Keywords ***
 Test Case Setup
-    Set Selenium Speed    0.5
     Open RHP
+    Set Selenium Speed    0.5
     eDuuni Login
 
 eDuuni Login
