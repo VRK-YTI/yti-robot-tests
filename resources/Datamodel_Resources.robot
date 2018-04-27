@@ -18,8 +18,8 @@ ${ADD_CLASS_BTN}    //application/ng-container/div/div/model-page/div/div[2]/div
 
 *** Keywords ***
 Test Case Setup
-    Set Selenium Speed    0.5
     Open Tietomallit
+    Set Selenium Speed    0.5
     Sleep    5
     Select user
 
