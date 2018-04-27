@@ -40,7 +40,6 @@ ${CREATE_CODE_BTN}    id=create_code_button
 ${CODE_CODEVALUE_INPUT}    id=code_value_input
 ${CODE_CODENAME_INPUT}    id=code_name_input
 ${SAVE_NEW_CODE_BTN}    id=editable_save_button
-${BACK_BTN}       //div[@class='col-12']//a
 ${REMOVE_CODE_BTN}    id=code_info_delete_button
 ${REMOVE_CODE_CONF_BTN}    //button[@class='btn btn-secondary-action confirm']
 ${CANCEL_CODE_CREATE_BTN}    id=editable_cancel_button
@@ -87,6 +86,17 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Click button    ${EXPAND_ALL_BTN}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_2}")]
+    Page should contain    Tunnus
+    Page should contain    testikoodi02
+    Page should contain    Koodin nimi
+    Page should contain    Testikoodi 02
+    Sleep    5
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
     Check values from Valid Code list
@@ -169,8 +179,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list
     Sleep    5
-    Wait until page contains element    ${BACK_BTN}    timeout=20
-    Click element    ${BACK_BTN}
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
     Wait until page contains    koodisto6000    timeout=20
     Wait until page contains    NewCode001 - newcode001    timeout=20
     Sleep    2
@@ -214,8 +224,9 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains    Koodiston tunnus on jo käytössä tässä rekisterissä.    timeout=20
     Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}
     Click element    ${CANCEL_CODE_CREATE_BTN}
-    Wait until page contains element    ${BACK_BTN}    timeout=20
-    Click element    ${BACK_BTN}
+    Sleep    5
+    Wait until page contains element    ${IMPORT_CREATE_BACK_BTN}    timeout=20
+    Click element    ${IMPORT_CREATE_BACK_BTN}
     Return to Koodistot frontpage
 
 *** Keywords ***
