@@ -37,8 +37,8 @@ ${VOCABULARY_TYPE_DDL}    //app-root/div/app-new-vocabulary/div/div/form/div/div
 
 *** Keywords ***
 Test Case Setup
-    Set Selenium Speed    0.5
     Open Sanastot
+    Set Selenium Speed    0.5
     Sleep    5
     Select user
 
