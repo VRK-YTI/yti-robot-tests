@@ -12,6 +12,7 @@ ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
 ${CLASSIFICATION_1}    Ympäristö
+${PREFIX_2}       222
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
 ${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
 #Buttons and links
@@ -34,6 +35,16 @@ ${ADD_CLASSIFICATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-voca
 ${SEARCH_CLASSIFICATION_INPUT}    //ngb-modal-window/div/div/app-search-group-modal/div[2]/div[1]/div/div/input
 ${IMPORT_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/div/label
 ${VOCABULARY_TYPE_DDL}    //app-root/div/app-new-vocabulary/div/div/form/div/div[1]/div/app-dropdown/div/button
+${TITLE_INPUT_FI}    id=prefLabel
+${PREFIX_INPUT}    id=prefix
+${ADD_NEW_ORGANIZATION_BTN}    //app-root/div/app-new-vocabulary/div/div/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/button
+${ADD_NEW_CLASSIFICATION_BTN}    //app-root/div/app-new-vocabulary/div/div/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/button
+${SAVE_NEW_VOCABULARY_BTN}    //app-root/div/app-new-vocabulary/div/div/form/div/div[2]/div/app-editable-buttons/div/button[2]/span
+${REMOVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[4]/span
+${CONFIRM_REMOVE_VOCABULARY_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
+#Excel paths
+${DATAFOLDER}     ${CURDIR}${/}..${/}test_files
+${test_concepts}    ${DATAFOLDER}${/}test_concepts.xlsx
 
 *** Keywords ***
 Test Case Setup

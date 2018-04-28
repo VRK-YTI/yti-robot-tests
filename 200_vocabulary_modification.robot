@@ -75,9 +75,32 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${VOCABULARY_TYPE_DDL}
     Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
     Click element    //*[contains(text(), "Terminologinen sanasto")]
-    Wait until page contains element    ${ADD_TITLE_BTN}    timeout=30
-    Input text    ${ADD_TITLE_BTN}    ${VOCABULARY_2}
-    Sleep    5
+    Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
+    Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_2}
+    Wait until page contains element    ${ADD_NEW_ORGANIZATION_BTN}    timeout=30
+    Click element    ${ADD_NEW_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
+    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Click element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
+    Click element    ${ADD_NEW_CLASSIFICATION_BTN}
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
+    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Wait until page contains element    ${PREFIX_INPUT}    timeout=30
+    Input text    ${PREFIX_INPUT}    ${PREFIX_2}
+    Wait until page contains element    ${SAVE_NEW_VOCABULARY_BTN}    timeout=30
+    Click element    ${SAVE_NEW_VOCABULARY_BTN}
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    #Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    #Click element    ${IMPORT_VOCABULARY_BTN
+    #Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
+    #Sleep    5
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Testiautomaatiosanasto2 vocabulary
 
 *** Keywords ***
 Select and edit Draft vocabulary
@@ -111,3 +134,20 @@ Restore organization and classification for DRAFT vocabulary
     Page should not contain    ${ORGANIZATION_1}
     Page should not contain    ${CLASSIFICATION_1}
     Go back to Sanastot frontpage
+
+Delete Testiautomaatiosanasto2 vocabulary
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_2}")]
+    Wait until page contains    ${VOCABULARY_2}    timeout=30
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains    Testiautomaatiosanasto2    timeout=20
+    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${REMOVE_VOCABULARY_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
+    Page should contain    sanastoa
