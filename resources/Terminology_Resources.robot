@@ -42,6 +42,9 @@ ${ADD_NEW_CLASSIFICATION_BTN}    //app-root/div/app-new-vocabulary/div/div/form/
 ${SAVE_NEW_VOCABULARY_BTN}    //app-root/div/app-new-vocabulary/div/div/form/div/div[2]/div/app-editable-buttons/div/button[2]/span
 ${REMOVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
+#CSV paths
+${DATAFOLDER}     ${EXECDIR}${/}test_files
+${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
 
 *** Keywords ***
 Test Case Setup

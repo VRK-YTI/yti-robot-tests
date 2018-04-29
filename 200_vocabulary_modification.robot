@@ -4,11 +4,6 @@ Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
-*** Variables ***
-#CSV paths
-${DATAFOLDER}     ${CURDIR}${/}test_files
-${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
-
 *** Test Cases ***
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
@@ -104,6 +99,7 @@ ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
     Sleep    3
     Click button    Kyllä
+    Sleep    3
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto2 vocabulary
 
