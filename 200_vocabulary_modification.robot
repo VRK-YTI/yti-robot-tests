@@ -4,6 +4,11 @@ Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
+*** Variables ***
+#Excel paths
+${DATAFOLDER}     ${CURDIR}${/}test_files
+${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
+
 *** Test Cases ***
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
@@ -95,10 +100,10 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${SAVE_NEW_VOCABULARY_BTN}
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
-    #Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    #Click element    ${IMPORT_VOCABULARY_BTN
-    #Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
-    #Sleep    5
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
+    Sleep    3
+    Click button    Kyllä
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto2 vocabulary
 

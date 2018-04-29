@@ -33,7 +33,7 @@ ${ADD_ORGANIZATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabu
 ${SEARCH_ORGANIZATION_INPUT}    //ngb-modal-window/div/div/app-search-organization-modal/div[2]/div[1]/div/div/input
 ${ADD_CLASSIFICATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/button
 ${SEARCH_CLASSIFICATION_INPUT}    //ngb-modal-window/div/div/app-search-group-modal/div[2]/div[1]/div/div/input
-${IMPORT_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/div/label
+${IMPORT_VOCABULARY_BTN}    id=fileElem
 ${VOCABULARY_TYPE_DDL}    //app-root/div/app-new-vocabulary/div/div/form/div/div[1]/div/app-dropdown/div/button
 ${TITLE_INPUT_FI}    id=prefLabel
 ${PREFIX_INPUT}    id=prefix
@@ -42,9 +42,6 @@ ${ADD_NEW_CLASSIFICATION_BTN}    //app-root/div/app-new-vocabulary/div/div/form/
 ${SAVE_NEW_VOCABULARY_BTN}    //app-root/div/app-new-vocabulary/div/div/form/div/div[2]/div/app-editable-buttons/div/button[2]/span
 ${REMOVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
-#Excel paths
-${DATAFOLDER}     ${CURDIR}${/}..${/}test_files
-${test_concepts}    ${DATAFOLDER}${/}test_concepts.xlsx
 
 *** Keywords ***
 Test Case Setup
