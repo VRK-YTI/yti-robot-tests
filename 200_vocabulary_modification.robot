@@ -67,7 +67,7 @@ Resource          resources/Terminology_Resources.robot
 
 202. Add new Terminological Dictionary and import vocabulary
     [Documentation]    Add new Terminological Dictionary, import vocabulary and delete dictionary
-    [Tags]    sanastot
+    [Tags]    regression    sanastot
     [Setup]    Test Case Setup
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
