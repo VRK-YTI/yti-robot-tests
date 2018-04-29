@@ -5,7 +5,7 @@ Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
 *** Variables ***
-#Excel paths
+#CSV paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
 
