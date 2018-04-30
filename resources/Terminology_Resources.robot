@@ -13,16 +13,16 @@ ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
 ${CLASSIFICATION_1}    Ympäristö
 ${PREFIX_2}       222
+${TERM_1}         Automaatio
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
 ${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
-#Buttons and links
+#Frontpage Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    //app-root/app-navigation-bar/nav/ul/li[3]/a
 ${IMPERSONATE_USER_DROPDOWN}    //app-root/app-navigation-bar/nav/ul/li[1]/a
 ${FRONTPAGE_SEARCH_BOX}    //app-root/div/app-frontpage/app-vocabularies/div/div[1]/div/div/input
-${SHOW_VOCABULARY_DETAILS_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div/div/h2/button[1]
-${ADD_NEW_CONCEPT_BTN}    //button[@class='btn btn-action mb-3']//span
 ${ADD_VOCABULARY_BTN}    //app-root/div/app-frontpage/app-vocabularies/div/div[2]/div[2]/div[1]/div/button/span
-#vocabulary buttons
+#Vocabulary buttons
+${SHOW_VOCABULARY_DETAILS_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div/div/h2/button[1]
 ${EDIT_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[3]/span
 ${VOCABULARY_TITLE_TEXTAREA}    id=prefLabel
 ${VOCABULARY_DESCRIPTION_TEXTAREA}    id=description
@@ -42,6 +42,18 @@ ${ADD_NEW_CLASSIFICATION_BTN}    //app-root/div/app-new-vocabulary/div/div/form/
 ${SAVE_NEW_VOCABULARY_BTN}    //app-root/div/app-new-vocabulary/div/div/form/div/div[2]/div/app-editable-buttons/div/button[2]/span
 ${REMOVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
+#Concept buttons
+${ADD_NEW_CONCEPT_BTN}    //app-root/div/app-concepts/div/div[2]/div/div[2]/div/ngb-tabset/div/div/app-concept-list/div[1]/div/div/button
+${TERM_LITERAL_VALUE_INPUT}    id=prefLabel
+${SCOPE_INPUT}    id=Scope
+${SOURCE_INPUT}    id=Source
+${DRAFT_COMMENT_INPUT}    id=draftComment
+${HISTORY_NOTE_INPUT}    id=historyNote
+${CHANGENOTE_INPUT}    id=changeNote
+${TERM_STATUS_DDL}    id=selected_undefined
+${SAVE_CONCEPT_BTN}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/div/app-editable-buttons/div/button[2]/span
+${REMOVE_CONCEPT_BTN}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/div/app-editable-buttons/div/button[4]/span
+${CONFIRM_REMOVE_CONCEPT_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv

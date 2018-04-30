@@ -67,7 +67,7 @@ Resource          resources/Terminology_Resources.robot
 
 202. Add new Terminological Dictionary and import vocabulary
     [Documentation]    Add new Terminological Dictionary, import vocabulary and delete dictionary
-    [Tags]    regression    sanastot
+    [Tags]    sanastot
     [Setup]    Test Case Setup
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
@@ -103,6 +103,34 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto2 vocabulary
 
+203. Add new concept to the existing vocabulary
+    [Documentation]    Add new concept to the existing vocabulary and remove concept
+    [Tags]    sanastot
+    [Setup]    Test Case Setup
+    Select Draft vocabulary
+    Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
+    Click element    ${ADD_NEW_CONCEPT_BTN}
+    Wait until page contains element    ${TERM_LITERAL_VALUE_INPUT}    timeout=30
+    Input text    ${TERM_LITERAL_VALUE_INPUT}    ${TERM_1}
+    Wait until page contains element    ${SOURCE_INPUT}    timeout=30
+    Input text    ${SOURCE_INPUT}    Lähde
+    Wait until page contains element    ${SCOPE_INPUT}    timeout=30
+    Input text    ${SCOPE_INPUT}    Käyttöala
+    Wait until page contains element    ${DRAFT_COMMENT_INPUT}    timeout=30
+    Input text    ${DRAFT_COMMENT_INPUT}    Luonnosvaiheen kommentti
+    Wait until page contains element    ${HISTORY_NOTE_INPUT}    timeout=30
+    Input text    ${HISTORY_NOTE_INPUT}    Käytön historiatieto
+    Wait until page contains element    ${CHANGENOTE_INPUT}    timeout=30
+    Input text    ${CHANGENOTE_INPUT}    Muutoshistoriatieto
+    Wait until page contains element    ${TERM_STATUS_DDL}    timeout=30
+    Click element    ${TERM_STATUS_DDL}
+    Click button    Voimassa oleva
+    Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
+    Click element    ${SAVE_CONCEPT_BTN}
+    Sleep    2
+    Go back to Sanastot frontpage
+    [Teardown]    Delete concept from Testiautomaatiosanasto vocabulary
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -119,6 +147,13 @@ Select and edit Draft vocabulary
     Wait until page contains    Tämä on kuvaus    timeout=20
     Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=30
     Click element    ${EDIT_VOCABULARY_BTN}
+
+Select Draft vocabulary
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
 
 Restore organization and classification for DRAFT vocabulary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
@@ -152,3 +187,17 @@ Delete Testiautomaatiosanasto2 vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Page should contain    sanastoa
+
+Delete concept from Testiautomaatiosanasto vocabulary
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait until page contains element    //*[contains(text(), "${TERM_1}")]    timeout=30
+    Click element    //*[contains(text(), "${TERM_1}")]
+    Wait until page contains element    ${REMOVE_CONCEPT_BTN}    timeout=30
+    Click element    ${REMOVE_CONCEPT_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
+    Go back to Sanastot frontpage
