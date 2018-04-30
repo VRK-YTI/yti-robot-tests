@@ -105,7 +105,7 @@ Resource          resources/Terminology_Resources.robot
 
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
-    [Tags]    sanastot
+    [Tags]    regression    sanastot
     [Setup]    Test Case Setup
     Select Draft vocabulary
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
