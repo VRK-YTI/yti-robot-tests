@@ -170,6 +170,8 @@ Restore organization and classification for DRAFT vocabulary
     Page should not contain    ${ORGANIZATION_1}
     Page should not contain    ${CLASSIFICATION_1}
     Go back to Sanastot frontpage
+    Sleep    1
+    Close All Browsers
 
 Delete Testiautomaatiosanasto2 vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -187,6 +189,8 @@ Delete Testiautomaatiosanasto2 vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Page should contain    sanastoa
+    Sleep    1
+    Close All Browsers
 
 Delete concept from Testiautomaatiosanasto vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -201,3 +205,5 @@ Delete concept from Testiautomaatiosanasto vocabulary
     Wait until page contains element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
     Go back to Sanastot frontpage
+    Sleep    1
+    Close All Browsers
