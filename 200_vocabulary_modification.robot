@@ -77,8 +77,8 @@ Resource          resources/Terminology_Resources.robot
     Click element    //*[contains(text(), "Terminologinen sanasto")]
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_2}
-    Wait until page contains element    ${ADD_NEW_ORGANIZATION_BTN}    timeout=30
-    Click element    ${ADD_NEW_ORGANIZATION_BTN}
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
+    Click element    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
     Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
@@ -91,8 +91,8 @@ Resource          resources/Terminology_Resources.robot
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_2}
-    Wait until page contains element    ${SAVE_NEW_VOCABULARY_BTN}    timeout=30
-    Click element    ${SAVE_NEW_VOCABULARY_BTN}
+    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${SAVE_VOCABULARY_BTN}
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
