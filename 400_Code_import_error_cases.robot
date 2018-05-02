@@ -16,7 +16,7 @@ ${IMPORT_CODES_BTN}    id=import_codes_button
 ${FILE_FORMAT_BTN}    id=file_format_dropdown_button
 ${FILE_UPLOAD_BTN}    id=fileupload_input
 ${IMPORT_BTN}     id=upload_codes_file_button
-${CLOSE_ERROR_MESSAGE_BTN}    //ngb-modal-window[2]/div/div/app-error-modal/div[3]/button
+${CLOSE_ERROR_MESSAGE_BTN}    id=close_error_modal_button
 ${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files

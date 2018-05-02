@@ -14,10 +14,10 @@ ${FILE_FORMAT_CSV}    id=csv_format_dropdown_button
 #Buttons and links
 ${ADD_CODE_LIST_BTN}    id=import_codelist_button
 ${IMPORT_CODE_LIST_BTN}    id=import_from_file_button
-${SELECT_REGISTRY_BTN}    //ngb-modal-window/div/div/app-code-scheme-import-modal/div/div[2]/div[1]/div/app-coderegistry-input/dl/dd/div/app-dropdown/div/button
+${SELECT_REGISTRY_BTN}    id=selected_codeRegistry_dropdown
 ${FILE_FORMAT_BTN}    id=file_format_dropdown_button
 ${FILE_UPLOAD_BTN}    id=fileupload_input
-${CLOSE_ERROR_MESSAGE_BTN}    //ngb-modal-window[2]/div/div/app-error-modal/div[3]/button
+${CLOSE_ERROR_MESSAGE_BTN}    id=close_error_modal_button
 ${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files

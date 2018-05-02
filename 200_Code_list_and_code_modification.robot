@@ -16,7 +16,7 @@ ${CODE_LIST_ALL_STATUSES_FI}    Kaikki tilat
 ${CLASSIFICATION_1}    Demokratia
 ${CLASSIFICATION_2}    Koulutus
 #Buttons and links
-${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
+${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
 ${ADD_CLASSIFICATION_BTN}    id=add_classification_button
 ${CANCEL_CODE_MOD_BTN}    id=editable_cancel_button
 ${MODIFY_CODE_BTN}    id=editable_edit_button
@@ -33,7 +33,7 @@ ${ADD_BTN}        id=create_link_button
 ${LINK_1}         //a[@target='_blank'][contains(text(),'https://www.suomi.fi/etusivu/')]
 ${LINK_MODAL_OK_BTN}    id=close_modal_button
 ${DELETE_LINK_ICON}    //*[@class="icon icon-trash"]
-${REMOVE_LINK_CONF_BTN}    //button[@class='btn btn-secondary-action confirm']
+${REMOVE_LINK_CONF_BTN}    id=confirm_confirmation_modal_button
 ${SELECT_LINK_BTN}    id=select_link_button
 ${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
 ${LINK_NAME_INPUT}    id=link_title_input
@@ -43,17 +43,15 @@ ${CODE_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
 ${CODE_START_DATE_INPUT}    id=start_date_input
 ${CODE_END_DATE_INPUT}    id=end_date_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
-${CLOSE_ERROR_MESSAGE_BTN}    //button[@class='btn btn-action'][contains(text(),'Sulje')]
+${CLOSE_ERROR_MESSAGE_BTN}    id=close_error_modal_button
 ${CODE_LIST_START_DATE_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[1]/app-date-input/dl/dd/div/div/button
 ${CODE_LIST_END_DATE_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[2]/app-date-input/dl/dd/div/div/button
 ${CODE_LIST_STATUS_DDL}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-status-input/dl/dd/app-status-dropdown/div/button
 ${CODE_LIST_NAME_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-input/dl/dd/div/input
 ${CODE_LIST_DESC_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[1]/dl/dd/div/textarea
 ${CODE_LIST_DEF_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[2]/dl/dd/div/textarea
-${CODE_LIST_CHANGENOTE_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[3]/dl/dd/div/textarea
+${CODE_LIST_CHANGENOTE_INPUT}    id=codelist_changenote_textarea
 ${MODIFY_CODE_LIST}    id=editable_edit_button
-${STATUS_VALID}    //button[@class='dropdown-item'][contains(text(),'Voimassa oleva')]
-${STATUS_SUPERSEDED}    //button[@class='dropdown-item'][contains(text(),'Korvattu')]
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_linked_code_input
 ${NEW_CLASSIFICATION}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/div/div[2]/a/i
 #Error messages
@@ -263,7 +261,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Sleep    2
     Page should not contain    Luonnos
     Page should not contain    Odottaa hyväksyntää
-    Click element    ${STATUS_SUPERSEDED}
+    #Click element    ${STATUS_SUPERSEDED}
+    Click button    Korvattu
     Save code list
     Sleep    5
     Wait until page contains element    //*[contains(text(), "Korvattu")]
@@ -438,10 +437,10 @@ Restore valid Code list status
     Click element    ${MODIFY_CODE_LIST}
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
-    Click element    ${STATUS_VALID}
+    Click button    Voimassa oleva
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
-    Sleep    2
+    Sleep    3
     Wait until page contains    Voimassa oleva
     Sleep    2
     Go back to Koodistot frontpage

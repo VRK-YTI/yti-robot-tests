@@ -21,16 +21,16 @@ ${REGISTRY_1}     Testirekisteri
 #Buttons and links
 ${ADD_CODE_LIST_BTN}    id=import_codelist_button
 ${IMPORT_CODE_LIST_BTN}    id=import_from_file_button
-${SELECT_REGISTRY_BTN}    //ngb-modal-window/div/div/app-code-scheme-import-modal/div/div[2]/div[1]/div/app-coderegistry-input/dl/dd/div/app-dropdown/div/button
+${SELECT_REGISTRY_BTN}    id=selected_codeRegistry_dropdown
 ${FILE_FORMAT_BTN}    id=file_format_dropdown_button
 ${FILEUPLOAD_INPUT}    id=fileupload_input
 ${UPLOAD_FILE_BTN}    id=upload_file_button
 ${UPLOAD_CODES_FILE_BTN}    id=upload_codes_file_button
 ${IMPORT_CODES_BTN}    id=import_codes_button
 ${DELETE_CODE_LIST_BTN}    id=delete_codelist_button
-${REMOVE_CODE_LIST_CONF_BTN}    //ngb-modal-window/div/div/app-confirmation-modal/div[3]/button[1]
+${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
-${CODEREGISTRY_DDL}    //app-root/div/app-code-scheme-create/div/form/div[2]/div/app-coderegistry-input/dl/dd/div/app-dropdown/div/button
+${CODEREGISTRY_DDL}    id=selected_codeRegistry_dropdown
 ${CODE_LIST_VALUE_INPUT}    id=codelist_value_input
 ${CODE_LIST_NAME_INPUT}    id=codelist_name_input
 ${CLASSIFICATION_1}    Asuminen
@@ -41,7 +41,7 @@ ${CODE_CODEVALUE_INPUT}    id=code_value_input
 ${CODE_CODENAME_INPUT}    id=code_name_input
 ${SAVE_NEW_CODE_BTN}    id=editable_save_button
 ${REMOVE_CODE_BTN}    id=code_info_delete_button
-${REMOVE_CODE_CONF_BTN}    //button[@class='btn btn-secondary-action confirm']
+${REMOVE_CODE_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CANCEL_CODE_CREATE_BTN}    id=editable_cancel_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files

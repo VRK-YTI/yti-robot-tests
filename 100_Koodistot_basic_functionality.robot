@@ -24,15 +24,15 @@ ${EXPORT_TYPE_CSV}    id=codelist_export_csv_link
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 #Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
-${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
+${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
 
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly. YTI-460
     [Tags]    regression
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
-    Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
+    Wait until page contains element    id=information_link    timeout=20
+    Click element    id=information_link
     Wait until page contains    Tietoa Koodistoista
     Wait until page contains    Hyödyt käyttäjille
     Wait until page contains    Miten Koodistot-työkalu toimii?
@@ -45,8 +45,8 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly. YTI-457
     [Tags]    regression
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[3]/a    timeout=20
-    Click element    xpath=//app-root/app-footer/div/div[2]/div[3]/a
+    Wait until page contains element    id=license_link    timeout=20
+    Click element    id=license_link
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
@@ -57,8 +57,8 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
     [Tags]    local
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a    timeout=20
-    Click element    xpath=//app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
+    Wait until page contains element    id=description_of_file_link    timeout=20
+    Click element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Select Window    title=Koodistot
@@ -128,10 +128,10 @@ ${STATUS_DROPDOWN_BTN}    css=app-filter-dropdown.d-inline-block:nth-child(3)
     Click element    ${LANGUAGE_EN}
     Sleep    2
     Wait until page contains    ${CODE_LIST_1_EN}    timeout=30
-    Wait until page contains    Add code list        timeout=30
-    Wait until page contains    All registries       timeout=30
+    Wait until page contains    Add code list    timeout=30
+    Wait until page contains    All registries    timeout=30
     Wait until page contains    All organizations    timeout=30
-    Wait until page contains    Classification       timeout=30
+    Wait until page contains    Classification    timeout=30
     Sleep    2
     #Click element    //*[@class="dropdown-toggle nav-link btn btn-language dropdown-toggle"]
     #Sleep    1
