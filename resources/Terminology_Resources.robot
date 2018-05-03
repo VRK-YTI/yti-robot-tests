@@ -11,7 +11,10 @@ ${LANGUAGE_FI}    //app-root/app-navigation-bar/nav/ul/li[3]/div/a[1]/span
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
+${ORGANIZATION_2}    Testiorganisaatio
 ${CLASSIFICATION_1}    Ympäristö
+${CLASSIFICATION_2}    Eläkkeet
+${PREFIX_1}       111
 ${PREFIX_2}       222
 ${TERM_1}         Automaatio
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
@@ -40,6 +43,8 @@ ${PREFIX_INPUT}    id=prefix_input
 ${ADD_NEW_CLASSIFICATION_BTN}    //app-root/div/app-new-vocabulary/div/div/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/button
 ${REMOVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
+${ADD_DESCRIPTION_DDL}    //app-localized-input[@ng-reflect-id='description']//div[@class='clearfix']//div[@class='add-button']//button[@id='add_button']
+${NEW_DESCRIPTION_FI}    id=add_new_localization_fibutton
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=prefLabel
@@ -57,6 +62,12 @@ ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
 
 *** Keywords ***
+Terminology Suite Setup
+    Create Testiautomaatiosanasto and import vocabulary
+
+Terminology Suite Teardown
+    Delete Testiautomaatiosanasto
+
 Test Case Setup
     Open Sanastot
     Set Selenium Speed    0.5
@@ -93,3 +104,65 @@ Open Sanastot
 Go back to Sanastot frontpage
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
+
+Create Testiautomaatiosanasto and import vocabulary
+    Test Case Setup
+    Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
+    Click element    ${ADD_VOCABULARY_BTN}
+    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
+    Click element    ${VOCABULARY_TYPE_DDL}
+    Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
+    Click element    //*[contains(text(), "Terminologinen sanasto")]
+    Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
+    Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_1}
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
+    Click element    ${ADD_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
+    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_2}")]
+    Click element    //*[contains(text(), "${ORGANIZATION_2}")]
+    Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
+    Click element    ${ADD_NEW_CLASSIFICATION_BTN}
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_2}
+    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_2}")]
+    Click element    //*[contains(text(), "${CLASSIFICATION_2}")]
+    Wait until page contains element    ${ADD_DESCRIPTION_DDL}    timeout=30
+    Click element    ${ADD_DESCRIPTION_DDL}
+    Click button    ${NEW_DESCRIPTION_FI}
+    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA}    timeout=30
+    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA}    Tämä on kuvaus
+    Wait until page contains element    ${PREFIX_INPUT}    timeout=30
+    Input text    ${PREFIX_INPUT}    ${PREFIX_1}
+    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${SAVE_VOCABULARY_BTN}
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
+    Sleep    3
+    Click button    Kyllä
+    Sleep    3
+    Go back to Sanastot frontpage
+    Close All Browsers
+
+Delete Testiautomaatiosanasto
+    Test Case Setup
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains    Testiautomaatiosanasto    timeout=20
+    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${REMOVE_VOCABULARY_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Sleep    3
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Page should contain    sanastoa
+    Sleep    1
+    Close All Browsers
