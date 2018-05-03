@@ -44,12 +44,12 @@ ${CODE_START_DATE_INPUT}    id=start_date_input
 ${CODE_END_DATE_INPUT}    id=end_date_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
 ${CLOSE_ERROR_MESSAGE_BTN}    id=close_error_modal_button
-${CODE_LIST_START_DATE_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[1]/app-date-input/dl/dd/div/div/button
-${CODE_LIST_END_DATE_BTN}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-date-range-input/dl/dd/div/div/div[2]/app-date-input/dl/dd/div/div/button
-${CODE_LIST_STATUS_DDL}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-status-input/dl/dd/app-status-dropdown/div/button
-${CODE_LIST_NAME_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-input/dl/dd/div/input
-${CODE_LIST_DESC_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[1]/dl/dd/div/textarea
-${CODE_LIST_DEF_INPUT}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-localizable-textarea[2]/dl/dd/div/textarea
+${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
+${CODE_LIST_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
+${CODE_LIST_STATUS_DDL}    id=selected_status_input_dropdown
+${CODE_LIST_NAME_INPUT}    id=codelist_name_input
+${CODE_LIST_DESC_INPUT}    id=codelist_description_textarea
+${CODE_LIST_DEF_INPUT}    id=codelist_definition_textarea
 ${CODE_LIST_CHANGENOTE_INPUT}    id=codelist_changenote_textarea
 ${MODIFY_CODE_LIST}    id=editable_edit_button
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_linked_code_input
@@ -261,7 +261,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Sleep    2
     Page should not contain    Luonnos
     Page should not contain    Odottaa hyväksyntää
-    #Click element    ${STATUS_SUPERSEDED}
     Click button    Korvattu
     Save code list
     Sleep    5
