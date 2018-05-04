@@ -4,28 +4,6 @@ Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
-*** Variables ***
-${CODE_LIST_1}    Kunnat 2018
-${CODE_LIST_1_EN}    Municipalities 2018
-${CODE_LIST_3}    Palveluluokitus
-${CODE_LIST_5}    Ammattiluokitus 2010
-${CODE_LIST_6}    testiautomaatiokoodisto 2
-${CODE_LIST_7}    T200
-${CODE_1}         koodi01 - Koodi01
-${LANGUAGE_EN}    id=en
-${LANGUAGE_FI}    id=fi
-${LANGUAGE_SV}    På svenska (SV)
-${MUNICIPALITY_NAME_SV}    Helsingfors
-${STATUS_DRAFT_FI}    Luonnos
-${STATUS_VALID_FI}    Voimassa oleva
-${ALL_STATUSES_FI}    Kaikki tilat
-${EXPORT_TYPE_EXCEL}    id=codelist_export_excel_link
-${EXPORT_TYPE_CSV}    id=codelist_export_csv_link
-${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
-#Buttons and links
-${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
-${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
-
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly. YTI-460

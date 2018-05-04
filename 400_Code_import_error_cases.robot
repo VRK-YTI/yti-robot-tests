@@ -5,19 +5,6 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${USER_1_ID}      id=testiadmin@localhost
-${USER_1_NAME}    Testi Admin
-${CODE_LIST_7}    testiautomaatiokoodisto1
-${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
-#Buttons and links
-${FILE_FORMAT_Excel}    id=excel_format_dropdown_button
-${FILE_FORMAT_CSV}    id=csv_format_dropdown_button
-${IMPORT_CODES_BTN}    id=import_codes_button
-${FILE_FORMAT_BTN}    id=file_format_dropdown_button
-${FILE_UPLOAD_BTN}    id=fileupload_input
-${IMPORT_BTN}     id=upload_codes_file_button
-${CLOSE_ERROR_MESSAGE_BTN}    id=close_error_modal_button
-${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codes_codevalue_missing}    ${DATAFOLDER}${/}Codes_codevalue_missing.xlsx
@@ -347,12 +334,12 @@ Go back to Koodistot frontpage
 Select draft code list
     Wait until page contains element    css=app-filter-dropdown.d-inline-block:nth-child(3)    timeout=30
     Click element    css=app-filter-dropdown.d-inline-block:nth-child(3)
-    Click element    //*[contains(text(), "${CODE_LIST_STATUS_DRAFT_FI}")]
+    Click element    //*[contains(text(), "${STATUS_DRAFT_FI}")]
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_7}")]
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_2}")]
     Sleep    1
-    Wait until page contains    ${CODE_LIST_7}
+    Wait until page contains    ${CODE_LIST_2}
 
 Import codes in Excel format
     Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20

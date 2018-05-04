@@ -5,20 +5,6 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${USER_1_ID}      id=testiadmin@localhost
-${USER_1_NAME}    Testi Admin
-${TEST_CODE_1}    T100 - Automaatiokoodi
-${REGISTRY_1}     Testirekisteri
-${FILE_FORMAT_Excel}    id=excel_format_dropdown_button
-${FILE_FORMAT_CSV}    id=csv_format_dropdown_button
-#Buttons and links
-${ADD_CODE_LIST_BTN}    id=import_codelist_button
-${IMPORT_CODE_LIST_BTN}    id=import_from_file_button
-${SELECT_REGISTRY_BTN}    id=selected_codeRegistry_dropdown
-${FILE_FORMAT_BTN}    id=file_format_dropdown_button
-${FILE_UPLOAD_BTN}    id=fileupload_input
-${CLOSE_ERROR_MESSAGE_BTN}    id=close_error_modal_button
-${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Code_list_no_codeValue}    ${DATAFOLDER}${/}Code_list_no_codeValue.xlsx

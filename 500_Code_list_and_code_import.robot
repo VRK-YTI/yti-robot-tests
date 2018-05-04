@@ -5,44 +5,6 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${CODE_LIST_1}    koodisto6000
-${CODE_LIST_2}    koodisto7000
-${CODE_LIST_3}    testiautomaatiokoodisto
-${CODE_LIST_VALUE_1}    Koodisto6000
-${CODE_LIST_VALUE_2}    t100
-${CODE_LIST_6}    testiautomaatiokoodisto 2
-${TEST_CODE_1}    T100 - Automaatiokoodi
-${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
-${CODE_LIST_STATUS_VALID_FI}    Voimassa oleva
-${CODE_LIST_STATUSES_ALL}    Kaikki tilat
-${CODES_FILE_FORMAT_Excel}    id=excel_format_dropdown_button
-${CODE_LIST_FILE_FORMAT_Excel}    id=excel_format_dropdown_button
-${REGISTRY_1}     Testirekisteri
-#Buttons and links
-${ADD_CODE_LIST_BTN}    id=import_codelist_button
-${IMPORT_CODE_LIST_BTN}    id=import_from_file_button
-${SELECT_REGISTRY_BTN}    id=selected_codeRegistry_dropdown
-${FILE_FORMAT_BTN}    id=file_format_dropdown_button
-${FILEUPLOAD_INPUT}    id=fileupload_input
-${UPLOAD_FILE_BTN}    id=upload_file_button
-${UPLOAD_CODES_FILE_BTN}    id=upload_codes_file_button
-${IMPORT_CODES_BTN}    id=import_codes_button
-${DELETE_CODE_LIST_BTN}    id=delete_codelist_button
-${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
-${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
-${CODEREGISTRY_DDL}    id=selected_codeRegistry_dropdown
-${CODE_LIST_VALUE_INPUT}    id=codelist_value_input
-${CODE_LIST_NAME_INPUT}    id=codelist_name_input
-${CLASSIFICATION_1}    Asuminen
-${SEARCH_CLASSIFICATION_INPUT}    id=search_linked_code_input
-${SAVE_NEW_CODE_LIST}    id=editable_save_button
-${CREATE_CODE_BTN}    id=create_code_button
-${CODE_CODEVALUE_INPUT}    id=code_value_input
-${CODE_CODENAME_INPUT}    id=code_name_input
-${SAVE_NEW_CODE_BTN}    id=editable_save_button
-${REMOVE_CODE_BTN}    id=code_info_delete_button
-${REMOVE_CODE_CONF_BTN}    id=confirm_confirmation_modal_button
-${CANCEL_CODE_CREATE_BTN}    id=editable_cancel_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Code_list_without_codes}    ${DATAFOLDER}${/}Draft_Code_list_without_codes.xlsx
@@ -59,12 +21,12 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
     Sleep    1
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    1
-    Wait until page contains    ${CODE_LIST_1}    timeout=20
+    Wait until page contains    ${CODE_LIST_8}    timeout=20
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
@@ -77,12 +39,12 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_with_codes}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
     Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    5
-    Wait until page contains    ${CODE_LIST_2}    timeout=20
+    Wait until page contains    ${CODE_LIST_9}    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -108,17 +70,17 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
     Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    1
-    Wait until page contains    ${CODE_LIST_1}    timeout=20
+    Wait until page contains    ${CODE_LIST_8}    timeout=20
     Import codes in Excel format
-    Choose file    ${FILEUPLOAD_INPUT}    ${Draft_Codes_with_broader}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Draft_Codes_with_broader}
     Sleep    1
-    Wait until page contains element    ${UPLOAD_CODES_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_CODES_FILE_BTN}
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    ${IMPORT_BTN}
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
@@ -131,24 +93,24 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILEUPLOAD_INPUT}    ${Code_list_without_codes}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
     Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    5
-    Wait until page contains    ${CODE_LIST_1}    timeout=20
+    Wait until page contains    ${CODE_LIST_8}    timeout=20
     Import codes in Excel format
-    Choose file    ${FILEUPLOAD_INPUT}    ${Draft_Codes_with_broader}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Draft_Codes_with_broader}
     Sleep    1
-    Wait until page contains element    ${UPLOAD_CODES_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_CODES_FILE_BTN}
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    ${IMPORT_BTN}
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Import codes in Excel format
-    Choose file    ${FILEUPLOAD_INPUT}    ${Update_Codes}
-    Wait until page contains element    ${UPLOAD_CODES_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_CODES_FILE_BTN}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Update_Codes}
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    ${IMPORT_BTN}
     Check updated code listing
     Return to Koodistot frontpage
     [Teardown]    Remove imported Draft code list with codes
@@ -162,17 +124,17 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${CODEREGISTRY_DDL}    timeout=20
-    Click element    ${CODEREGISTRY_DDL}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_1}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
     Click button    Lisää luokitus
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_3}
+    Click element    //*[contains(text(), "${CLASSIFICATION_3}")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
@@ -207,17 +169,17 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${CODEREGISTRY_DDL}    timeout=20
-    Click element    ${CODEREGISTRY_DDL}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_2}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_3}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_4}
     Click button    Lisää luokitus
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_3}
+    Click element    //*[contains(text(), "${CLASSIFICATION_3}")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
@@ -263,18 +225,18 @@ Import code list in Excel format
     Click button    ${REGISTRY_1}
     Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
     Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${CODE_LIST_FILE_FORMAT_Excel}    timeout=20
-    Click element    ${CODE_LIST_FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILEUPLOAD_INPUT}    timeout=20
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Import codes in Excel format
     Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
     Click element    ${IMPORT_CODES_BTN}
     Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
     Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${CODES_FILE_FORMAT_Excel}    timeout=20
-    Click element    ${CODES_FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILEUPLOAD_INPUT}    timeout=20
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Check values from Draft Code list
     Page should contain    Tunnus
@@ -302,10 +264,10 @@ Check values from Valid Code list
 
 Remove imported Draft code list
     Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_1}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_1}")]
-    Wait until page contains    ${CODE_LIST_1}
+    Input Text    id=search_box_input    ${CODE_LIST_8}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_8}")]
+    Wait until page contains    ${CODE_LIST_8}
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
@@ -318,16 +280,16 @@ Remove imported Draft code list
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
     Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_1}
+    Input Text    id=search_box_input    ${CODE_LIST_8}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
 Remove imported Draft code list with codes
     Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_1}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_1}")]
-    Wait until page contains    ${CODE_LIST_1}
+    Input Text    id=search_box_input    ${CODE_LIST_8}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_8}")]
+    Wait until page contains    ${CODE_LIST_8}
     #Wait until page contains    koodi500 - Koodi500    timeout=20
     #Wait until page contains    koodi503 - Koodi503    timeout=20
     #Wait until page contains    koodi504 - Koodi504    timeout=20
@@ -342,16 +304,16 @@ Remove imported Draft code list with codes
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
     Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_1}
+    Input Text    id=search_box_input    ${CODE_LIST_8}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
 Remove imported Valid code list
     Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_2}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_2}")]
-    Wait until page contains    ${CODE_LIST_2}
+    Input Text    id=search_box_input    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Wait until page contains    ${CODE_LIST_9}
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
     Page should contain    Tunnus
@@ -363,7 +325,7 @@ Remove imported Valid code list
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
     Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_2}
+    Input Text    id=search_box_input    ${CODE_LIST_9}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
@@ -380,7 +342,7 @@ Create new code to code list
     Click element    ${CREATE_CODE_BTN}
     Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
-    Wait until page contains element    ${CODE_CODENAME_INPUT}    timeout=20
-    Input text    ${CODE_CODENAME_INPUT}    newcode001
+    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Input text    ${CODE_NAME_INPUT}    newcode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}

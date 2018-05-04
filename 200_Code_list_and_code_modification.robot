@@ -5,55 +5,6 @@ Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
-${USER_1_ID}      id=testiadmin@localhost
-${USER_1_NAME}    Testi Admin
-${CODE_LIST_4}    testiautomaatiokoodisto
-${CODE_LIST_6}    testiautomaatiokoodisto 2
-${TEST_CODE_1}    T100 - Automaatiokoodi
-${CODE_LIST_STATUS_DRAFT_FI}    Luonnos
-${CODE_LIST_STAUS_VALID_FI}    Voimassa oleva
-${CODE_LIST_ALL_STATUSES_FI}    Kaikki tilat
-${CLASSIFICATION_1}    Demokratia
-${CLASSIFICATION_2}    Koulutus
-#Buttons and links
-${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
-${ADD_CLASSIFICATION_BTN}    id=add_classification_button
-${CANCEL_CODE_MOD_BTN}    id=editable_cancel_button
-${MODIFY_CODE_BTN}    id=editable_edit_button
-${CODE_NAME_INPUT}    id=code_name_input
-${CODE_DESC_INPUT}    id=code_description_textarea
-${CODE_SHORT_NAME_INPUT}    id=code_shortname_input
-${SAVE_CODE_MOD_BTN}    id=editable_save_button
-${ADD_LINK_TO_CODE_BTN}    id=add_link_button
-${ADD_NEW_LINK_BTN}    id=add_new_link_button
-${LINK_TYPE_DROPDOWN}    id=propertytype_dropdown_button
-${DROPDOWN_ITEM_LINK}    id=9e6b738c-e4be-11e7-9d91-b36cf669b046_propertytype_dropdown_button
-${LINK_URL_INPUT}    id=link_url_input
-${ADD_BTN}        id=create_link_button
-${LINK_1}         //a[@target='_blank'][contains(text(),'https://www.suomi.fi/etusivu/')]
-${LINK_MODAL_OK_BTN}    id=close_modal_button
-${DELETE_LINK_ICON}    //*[@class="icon icon-trash"]
-${REMOVE_LINK_CONF_BTN}    id=confirm_confirmation_modal_button
-${SELECT_LINK_BTN}    id=select_link_button
-${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
-${LINK_NAME_INPUT}    id=link_title_input
-${SAVE_LINK_MODIFY_BTN}    id=save_button
-${CODE_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
-${CODE_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
-${CODE_START_DATE_INPUT}    id=start_date_input
-${CODE_END_DATE_INPUT}    id=end_date_input
-${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
-${CLOSE_ERROR_MESSAGE_BTN}    id=close_error_modal_button
-${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
-${CODE_LIST_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
-${CODE_LIST_STATUS_DDL}    id=selected_status_input_dropdown
-${CODE_LIST_NAME_INPUT}    id=codelist_name_input
-${CODE_LIST_DESC_INPUT}    id=codelist_description_textarea
-${CODE_LIST_DEF_INPUT}    id=codelist_definition_textarea
-${CODE_LIST_CHANGENOTE_INPUT}    id=codelist_changenote_textarea
-${MODIFY_CODE_LIST}    id=editable_edit_button
-${SEARCH_CLASSIFICATION_INPUT}    id=search_linked_code_input
-${NEW_CLASSIFICATION}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/div/div[2]/a/i
 #Error messages
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
@@ -317,7 +268,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
     Sleep    1
-    Click element    //*[contains(text(), "${CODE_LIST_ALL_STATUSES_FI}")]
+    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Sleep    1
     Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
@@ -386,7 +337,7 @@ Clear dates from code
 Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${CODE_LIST_STATUS_DRAFT_FI}")]
+    Click element    //*[contains(text(), "${STATUS_DRAFT_FI}")]
     Sleep    1
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_4}")]
@@ -402,7 +353,7 @@ Choose testiautomaatiokoodisto code and edit
 Choose testiautomaatiokoodisto and edit
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=20
     Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${CODE_LIST_STATUS_DRAFT_FI}")]
+    Click element    //*[contains(text(), "${STATUS_DRAFT_FI}")]
     Sleep    1
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_LIST_4}")]
@@ -418,7 +369,7 @@ Choose testiautomaatiokoodisto and edit
 Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${CODE_LIST_STAUS_VALID_FI}")]
+    Click element    //*[contains(text(), "${STATUS_VALID_FI}")]
     Sleep    1
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_6}")]
