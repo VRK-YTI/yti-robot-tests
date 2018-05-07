@@ -14,8 +14,8 @@ Resource          resources/Terminology_Resources.robot
     Select and edit Draft vocabulary
     Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
     Input text    ${VOCABULARY_TITLE_TEXTAREA}    Uusi sanasto
-    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA}    timeout=30
-    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA}    Uusi kuvaus
+    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
+    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Uusi kuvaus
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Sleep    5
@@ -25,8 +25,8 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${EDIT_VOCABULARY_BTN}
     Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
     Input text    ${VOCABULARY_TITLE_TEXTAREA}    Testiautomaatiosanasto
-    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA}    timeout=30
-    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA}    Tämä on kuvaus
+    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
+    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Sleep    5

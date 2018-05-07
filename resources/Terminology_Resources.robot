@@ -6,8 +6,8 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
 ${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
-${LANGUAGE_EN}    //app-root/app-navigation-bar/nav/ul/li[3]/div/a[2]/span
-${LANGUAGE_FI}    //app-root/app-navigation-bar/nav/ul/li[3]/div/a[1]/span
+${LANGUAGE_EN}    //*[@id="In English (EN)_language_selection_link"]/span
+${LANGUAGE_FI}    //*[@id="Suomeksi (FI)_language_selection_link"]/span
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
@@ -28,9 +28,9 @@ ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
 ${SHOW_VOCABULARY_DETAILS_BTN}    id=vocabulary_show_details_button
 ${EDIT_VOCABULARY_BTN}    id=editable_start_editing_button
 ${VOCABULARY_TITLE_TEXTAREA}    id=prefLabel_fi_0_input
-${VOCABULARY_DESCRIPTION_TEXTAREA}    id=description_fi_0_textarea
+${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    id=description_fi_0_textarea
 ${SAVE_VOCABULARY_BTN}    id=editable_save_edited_button
-${ADD_TITLE_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/button
+${ADD_TITLE_BTN}    id=prefLabel_add_button
 ${LANGUAGE_EN_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/div/button[1]
 ${ADD_ORGANIZATION_BTN}    id=add_organization_button
 ${SEARCH_ORGANIZATION_INPUT}    id=search_organization_link
@@ -43,8 +43,8 @@ ${PREFIX_INPUT}    id=prefix_input
 ${ADD_NEW_CLASSIFICATION_BTN}    id=add_classification_button
 ${REMOVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
-${ADD_DESCRIPTION_DDL}    id=Kuvaus_add_button
-${NEW_DESCRIPTION_FI}    id=add_new_localization_fibutton
+${ADD_DESCRIPTION_DDL}    id=description_add_button
+${NEW_DESCRIPTION_FI}    id=add_new_description_fi_button
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=prefLabel__fi_0_input
@@ -133,8 +133,8 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${ADD_DESCRIPTION_DDL}    timeout=30
     Click element    ${ADD_DESCRIPTION_DDL}
     Click button    ${NEW_DESCRIPTION_FI}
-    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA}    timeout=30
-    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA}    Tämä on kuvaus
+    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
+    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30

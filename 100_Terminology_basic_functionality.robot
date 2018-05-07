@@ -49,7 +49,6 @@ Resource          resources/Terminology_Resources.robot
     [Setup]    Test Case Setup
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait until page contains element    ${LANGUAGE_EN}
     Click element    ${LANGUAGE_EN}
     Wait until page contains    All organizations    timeout=20
     Wait until page contains    All vocabulary types    timeout=20
@@ -74,7 +73,6 @@ Resource          resources/Terminology_Resources.robot
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait until page contains element    ${LANGUAGE_FI}
     Click element    ${LANGUAGE_FI}
     Wait until page contains    Kaikki organisaatiot    timeout=20
     Wait until page contains    Kaikki sanastotyypit    timeout=20
