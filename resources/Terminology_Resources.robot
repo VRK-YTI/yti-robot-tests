@@ -27,32 +27,32 @@ ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
 #Vocabulary buttons
 ${SHOW_VOCABULARY_DETAILS_BTN}    id=vocabulary_show_details_button
 ${EDIT_VOCABULARY_BTN}    id=editable_start_editing_button
-${VOCABULARY_TITLE_TEXTAREA}    id=prefLabel
-${VOCABULARY_DESCRIPTION_TEXTAREA}    id=description
+${VOCABULARY_TITLE_TEXTAREA}    id=prefLabel_fi_0_input
+${VOCABULARY_DESCRIPTION_TEXTAREA}    id=description_fi_0_textarea
 ${SAVE_VOCABULARY_BTN}    id=editable_save_edited_button
 ${ADD_TITLE_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/button
 ${LANGUAGE_EN_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/div/button[1]
-${ADD_ORGANIZATION_BTN}    id=add_reference_button
+${ADD_ORGANIZATION_BTN}    id=add_organization_button
 ${SEARCH_ORGANIZATION_INPUT}    id=search_organization_link
 ${ADD_CLASSIFICATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/button
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_classification_link
 ${IMPORT_VOCABULARY_BTN}    id=fileElem
 ${VOCABULARY_TYPE_DDL}    id=selected_vocabulary_type_dropdown
-${TITLE_INPUT_FI}    id=prefLabel
+${TITLE_INPUT_FI}    id=prefLabel_fi_0_input
 ${PREFIX_INPUT}    id=prefix_input
-${ADD_NEW_CLASSIFICATION_BTN}    //app-root/div/app-new-vocabulary/div/div/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/button
+${ADD_NEW_CLASSIFICATION_BTN}    id=add_classification_button
 ${REMOVE_VOCABULARY_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/div/app-editable-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    //ngb-modal-window/div/div/app-delete-confirmation-modal/div[3]/button[1]
-${ADD_DESCRIPTION_DDL}    //app-localized-input[@ng-reflect-id='description']//div[@class='clearfix']//div[@class='add-button']//button[@id='add_button']
+${ADD_DESCRIPTION_DDL}    id=Kuvaus_add_button
 ${NEW_DESCRIPTION_FI}    id=add_new_localization_fibutton
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
-${TERM_LITERAL_VALUE_INPUT}    id=prefLabel
-${SCOPE_INPUT}    id=Scope
-${SOURCE_INPUT}    id=Source
-${DRAFT_COMMENT_INPUT}    id=draftComment
-${HISTORY_NOTE_INPUT}    id=historyNote
-${CHANGENOTE_INPUT}    id=changeNote
+${TERM_LITERAL_VALUE_INPUT}    id=prefLabel__fi_0_input
+${SCOPE_INPUT}    id=scope__textarea
+${SOURCE_INPUT}    id=source__textarea
+${DRAFT_COMMENT_INPUT}    id=draftComment__textarea
+${HISTORY_NOTE_INPUT}    id=historyNote__textarea
+${CHANGENOTE_INPUT}    id=changeNote__textarea
 ${TERM_STATUS_DDL}    id=selected_status_input_dropdown
 ${SAVE_CONCEPT_BTN}    id=editable_save_edited_button
 ${REMOVE_CONCEPT_BTN}    id=editable_remove_button
@@ -73,6 +73,9 @@ Test Case Setup
     Set Selenium Speed    0.5
     Sleep    5
     Select user
+
+Test Case Teardown
+    Close All Browsers
 
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment

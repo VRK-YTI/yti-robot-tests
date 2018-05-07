@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Terminology application
-Suite Teardown    Close All Browsers
+Suite Setup       Terminology Suite Setup
+Suite Teardown    Terminology Suite Teardown
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
@@ -18,7 +20,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    Miten voin liittyä työkalun käyttäjäksi?
     Wait until page contains    Katso myös
     Wait until page contains    Ota yhteyttä
-    [Teardown]    Go back to Sanastot frontpage
+    Go back to Sanastot frontpage
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
@@ -30,7 +32,6 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
     Select Window    title=Sanastot
-    Close All Browsers
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
@@ -41,7 +42,6 @@ Resource          resources/Terminology_Resources.robot
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Select Window    title=Sanastot
-    Close All Browsers
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.

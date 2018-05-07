@@ -2,6 +2,7 @@
 Documentation     Test Suite for vocabulary modification
 Suite Setup       Terminology Suite Setup
 Suite Teardown    Terminology Suite Teardown
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
@@ -32,7 +33,6 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    Testiautomaatiosanasto    timeout=30
     Wait until page contains    Tämä on kuvaus    timeout=30
     Go back to Sanastot frontpage
-    Close All Browsers
 
 201. Add new organization and classification for DRAFT vocabulary
     [Documentation]    Add new organization and classification for DRAFT vocabulary
