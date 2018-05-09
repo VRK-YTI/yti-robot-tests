@@ -6,8 +6,8 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
 ${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
-${LANGUAGE_EN}    //*[@id="In English (EN)_language_selection_link"]/span
-${LANGUAGE_FI}    //*[@id="Suomeksi (FI)_language_selection_link"]/span
+${LANGUAGE_EN}    id=en_language_selection_link
+${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
