@@ -17,6 +17,7 @@ ${CLASSIFICATION_2}    Eläkkeet
 ${PREFIX_1}       111
 ${PREFIX_2}       222
 ${TERM_1}         Automaatio
+${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
 ${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
 #Frontpage Buttons and links
@@ -57,9 +58,13 @@ ${TERM_STATUS_DDL}    id=selected_status_input_dropdown
 ${SAVE_CONCEPT_BTN}    id=editable_save_edited_button
 ${REMOVE_CONCEPT_BTN}    id=editable_remove_button
 ${CONFIRM_REMOVE_CONCEPT_BTN}    id=delete_confirmation_yes_button
+${IMPORT_CANCEL_BTN}    id=import_cancel_button
+${IMPORT_YES_BTN}    id=import_yes_button
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
+${invalid_related_concepts}    ${DATAFOLDER}${/}test_concepts_invalid_related_concepts_csv.csv
+${empty_related_concepts}    ${DATAFOLDER}${/}empty_related_concepts_csv.csv
 
 *** Keywords ***
 Terminology Suite Setup
