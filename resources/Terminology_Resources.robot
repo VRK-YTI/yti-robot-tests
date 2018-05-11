@@ -66,6 +66,7 @@ ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
 ${invalid_related_concepts}    ${DATAFOLDER}${/}test_concepts_invalid_related_concepts_csv.csv
 ${empty_related_concepts}    ${DATAFOLDER}${/}empty_related_concepts_csv.csv
 ${concepts_with_empty_status}    ${DATAFOLDER}${/}test_concept_with_empty_status_csv.csv
+${concepts_with_missing_status}    ${DATAFOLDER}${/}test_concept_with_missing_status_column_csv.csv
 
 *** Keywords ***
 Terminology Suite Setup

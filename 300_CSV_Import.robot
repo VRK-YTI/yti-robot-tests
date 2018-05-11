@@ -95,6 +95,43 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary
 
+303. Import Concepts to the Terminological Dictionary with missing STATUS column
+    [Documentation]    Import Concepts to the Terminological Dictionary with missing STATUS column.
+    ...    Check that import is successful and concept STATUS is Draft after CSV import. Check that Draft STATUS
+    ...    is shown in import confirmation as well.
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Terminological Dictionary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_missing_status}
+    Sleep    2
+    Page should contain    Tuodaan 1 käsitettä
+    Page should contain    tutkimus
+    Page should contain    research
+    Page should contain    tutkielma
+    Page should contain    study
+    Page should contain    systemaattista ja luovaa toimintaa
+    Page should contain    huomio
+    Page should contain    esimerkki
+    Page should contain    Luonnos
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
+    Click element    //*[contains(text(), "${TERM_2}")]
+    Sleep    2
+    Page should contain    tutkimus
+    Page should contain    research
+    Page should contain    tutkielma
+    Page should contain    study
+    Page should contain    systemaattista ja luovaa toimintaa
+    Page should contain    huomio
+    Page should contain    esimerkki
+    Page should contain    Luonnos
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary
+
 *** Keywords ***
 Create Terminological Dictionary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
