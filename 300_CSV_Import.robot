@@ -1,7 +1,5 @@
 *** Settings ***
 Documentation     Test Suite for CSV Import test cases
-Suite Setup       Create Terminological Dictionary
-Suite Teardown    Delete Terminological Dictionary
 Test Teardown     Test Case Teardown
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
@@ -12,11 +10,7 @@ Resource          resources/Terminology_Resources.robot
     ...    import confirmation when related, broader and isPartOf concepts are not found from CSV.
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait until page contains    ${VOCABULARY_2}    timeout=30
+    Create Terminological Dictionary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -31,17 +25,14 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary
 
 301. Import Concepts to the Terminological Dictionary, related columns with empty values in CSV
     [Documentation]    Import Concepts to the Terminological Dictionary. Check that import is successful when
     ...    related, broader and isPartOf columns are empty for certain concepts in CSV.
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait until page contains    ${VOCABULARY_2}    timeout=30
+    Create Terminological Dictionary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -67,10 +58,45 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    esim
     Page should contain    Voimassa oleva
     Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary
+
+302. Import Concepts to the Terminological Dictionary with empty STATUS values
+    [Documentation]    Import Concepts to the Terminological Dictionary with empty STATUS values.
+    ...    Check that import is successful and concept STATUS is Draft after CSV import. Check that Draft STATUS
+    ...    is shown in import confirmation as well.
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Terminological Dictionary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_empty_status}
+    Sleep    2
+    Page should contain    Tuodaan 1 käsitettä
+    Page should contain    tutkimus
+    Page should contain    research
+    Page should contain    tutkielma
+    Page should contain    systemaattista ja luovaa toimintaa
+    Page should contain    huomio
+    Page should contain    esim
+    Page should contain    Luonnos
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
+    Click element    //*[contains(text(), "${TERM_2}")]
+    Sleep    2
+    Page should contain    tutkimus
+    Page should contain    research
+    Page should contain    tutkielma
+    Page should contain    systemaattista ja luovaa toimintaa
+    Page should contain    huomio
+    Page should contain    esim
+    Page should contain    Luonnos
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary
 
 *** Keywords ***
 Create Terminological Dictionary
-    Test Case Setup
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
     Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
@@ -96,10 +122,8 @@ Create Terminological Dictionary
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Sleep    2
-    Go back to Sanastot frontpage
 
 Delete Terminological Dictionary
-    Test Case Setup
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
@@ -118,3 +142,10 @@ Delete Terminological Dictionary
     Page should contain    sanastoa
     Sleep    1
     Close All Browsers
+
+Select Testiautomaatiosanasto2 vocabulary
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait until page contains    ${VOCABULARY_1}    timeout=30

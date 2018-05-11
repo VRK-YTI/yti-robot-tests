@@ -48,13 +48,13 @@ ${ADD_DESCRIPTION_DDL}    id=description_add_button
 ${NEW_DESCRIPTION_FI}    id=add_new_description_fi_button
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
-${TERM_LITERAL_VALUE_INPUT}    id=prefLabel__fi_0_input
-${SCOPE_INPUT}    id=scope__textarea
-${SOURCE_INPUT}    id=source__textarea
-${DRAFT_COMMENT_INPUT}    id=draftComment__textarea
-${HISTORY_NOTE_INPUT}    id=historyNote__textarea
-${CHANGENOTE_INPUT}    id=changeNote__textarea
-${TERM_STATUS_DDL}    id=selected_status_input_dropdown
+${TERM_LITERAL_VALUE_INPUT}    id=prefLabelXl_0_prefLabel_fi_0_input
+${SCOPE_INPUT}    id=prefLabelXl_0_scope_textarea
+${SOURCE_INPUT}    id=prefLabelXl_0_source_textarea
+${DRAFT_COMMENT_INPUT}    id=prefLabelXl_0_draftComment_textarea
+${HISTORY_NOTE_INPUT}    id=prefLabelXl_0_historyNote_textarea
+${CHANGENOTE_INPUT}    id=prefLabelXl_0_changeNote_textarea
+${TERM_STATUS_DDL}    id=selected_prefLabelXl_0_status_input_dropdown
 ${SAVE_CONCEPT_BTN}    id=editable_save_edited_button
 ${REMOVE_CONCEPT_BTN}    id=editable_remove_button
 ${CONFIRM_REMOVE_CONCEPT_BTN}    id=delete_confirmation_yes_button
@@ -65,6 +65,7 @@ ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
 ${invalid_related_concepts}    ${DATAFOLDER}${/}test_concepts_invalid_related_concepts_csv.csv
 ${empty_related_concepts}    ${DATAFOLDER}${/}empty_related_concepts_csv.csv
+${concepts_with_empty_status}    ${DATAFOLDER}${/}test_concept_with_empty_status_csv.csv
 
 *** Keywords ***
 Terminology Suite Setup
