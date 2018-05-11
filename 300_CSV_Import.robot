@@ -132,6 +132,23 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary
 
+304. Import Concepts to the Terminological Dictionary, with invalid column name in CSV
+    [Documentation]    Import Concepts to the Terminological Dictionary with invalid column name in CSV.
+    ...    Check that error message is displayed in import confirmation and import is unsuccessful
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Terminological Dictionary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_invalid_column}
+    Sleep    3
+    Page should contain    Ominaisuus “definition” täytyy olla määritelty kielen kanssa
+    Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click element    ${IMPORT_CANCEL_BTN}
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary
+
 *** Keywords ***
 Create Terminological Dictionary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30

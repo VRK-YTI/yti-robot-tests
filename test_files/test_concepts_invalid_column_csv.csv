@@ -1,0 +1,5 @@
+prefLabel_fi,broader_fi,related_fi,isPartOf_fi,definition,definition_fi,note_fi,synonym_fi,example_fi,prefLabel_en,synonym_en,prefLabel_sv,status
+tutkimus,tutkija,hutkija,hotkija,,systemaattista ja luovaa toimintaa,huomio,tutkielma,esim,research,,,DRAFT
+tutkija,hutkija,hutkija,hotkija,,henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta,Huomautus,tiedemies,esimerkki,researcher,,,DRAFT
+hutkija,,,,,"henkilö, joka hutkii ammatikseen",huomio,,Tämä on esimerkki,,,,DRAFT
+hotkija,,,,,"henkilö, joka hotkii kaiken",huom,ahne,esimerkiksi,,,,DRAFT
