@@ -108,13 +108,15 @@ Open Chrome to Environment
 Select user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
-    Wait until page contains element    ${USER_1}
+    Sleep    1
+    #Wait until page contains element    ${USER_1}
     Click element    ${USER_1}
     Wait Until Page Contains    Testi Admin    timeout=20
     Sleep    5
 
 Open Sanastot
     Open Browser with Settings
+    Sleep    5
     Wait until page contains    Sanastot    timeout=20
     Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
 
