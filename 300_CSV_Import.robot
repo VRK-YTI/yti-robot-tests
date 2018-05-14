@@ -132,9 +132,9 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary
 
-304. Import Concepts to the Terminological Dictionary, with invalid column name in CSV
+304. Import Concepts to the Terminological Dictionary with invalid column name in CSV
     [Documentation]    Import Concepts to the Terminological Dictionary with invalid column name in CSV.
-    ...    Check that error message is displayed in import confirmation and import is unsuccessful
+    ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup
     Create Terminological Dictionary
@@ -146,6 +146,53 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    Ominaisuus “definition” täytyy olla määritelty kielen kanssa
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary
+
+305. Import Concepts to the Terminological Dictionary with invalid status value in CSV
+    [Documentation]    Import Concepts to the Terminological Dictionary with invalid status value in CSV.
+    ...    Check that error message is displayed in import confirmation and import is not successful.
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Terminological Dictionary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_invalid_status_value}
+    Sleep    3
+    Page should contain    3: Virheellinen tila “xxxxx”
+    Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click element    ${IMPORT_CANCEL_BTN}
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary
+
+306. Import Concepts to the Terminological Dictionary with duplicate Definition columns in CSV
+    [Documentation]    Import Concepts to the Terminological Dictionary with duplicate Definition columns in CSV.
+    ...    Check that the values of the second column are taken into use
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Terminological Dictionary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_duplicate_definition_columns}
+    Sleep    3
+    Page should contain    systemaattista ja luovaa toimintaa2
+    Page should contain    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta2
+    Page should contain    henkilö, joka hutkii ammatikseen2
+    Page should contain    henkilö, joka hotkii kaiken2
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
+    Click element    //*[contains(text(), "${TERM_2}")]
+    Sleep    2
+    Page should contain    tutkimus
+    Page should contain    research
+    Page should contain    tutkielma
+    Page should contain    systemaattista ja luovaa toimintaa2
+    Page should contain    huomio
+    Page should contain    esim
+    Page should contain    Voimassa oleva
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary
 
