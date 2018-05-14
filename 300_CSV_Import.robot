@@ -196,6 +196,60 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary
 
+307. Import Concepts to the Thesaurus with isPartOf and status columns
+    [Documentation]    Import Concepts to the Thesaurus with isPartOf and status columns
+    ...    Check that error message is displayed in import confirmation and import is not successful.
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Thesaurus
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_isPartOf_and_status}
+    Sleep    3
+    Page should contain    Ominaisuutta tai viitettä ei löydy nimellä “isPartOf”
+    Page should contain    Ominaisuutta tai viitettä ei löydy nimellä “status”
+    Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click element    ${IMPORT_CANCEL_BTN}
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Thesaurus
+
+308. Import Concepts to the Thesaurus
+    [Documentation]    Import Concepts to the Thesaurus and check that import is successful
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Thesaurus
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts_to_thesaurus}
+    Sleep    3
+    Page should contain    Tuodaan 4 käsitettä
+    Page should contain    tutkimus
+    Page should contain    research
+    Page should contain    tutkielma
+    Page should contain    systemaattista ja luovaa toimintaa
+    Page should contain    huomio
+    Page should contain    esim
+    Page should contain    tutkija
+    Page should contain    researcher
+    Page should contain    hutkija
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
+    Click element    //*[contains(text(), "${TERM_2}")]
+    Sleep    2
+    Page should contain    tutkimus
+    Page should contain    research
+    Page should contain    tutkielma
+    Page should contain    systemaattista ja luovaa toimintaa
+    Page should contain    huomio
+    Page should contain    esim
+    Page should contain    tutkija
+    Page should contain    hutkija
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Thesaurus
+
 *** Keywords ***
 Create Terminological Dictionary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
@@ -250,3 +304,50 @@ Select Testiautomaatiosanasto2 vocabulary
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
+
+Create Thesaurus
+    Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
+    Click element    ${ADD_VOCABULARY_BTN}
+    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
+    Click element    ${VOCABULARY_TYPE_DDL}
+    Wait until page contains element    //*[contains(text(), "Asiasanasto")]    timeout=20
+    Click element    //*[contains(text(), "Asiasanasto")]
+    Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
+    Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_3}
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
+    Click element    ${ADD_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
+    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Click element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
+    Click element    ${ADD_NEW_CLASSIFICATION_BTN}
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
+    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Wait until page contains element    ${PREFIX_INPUT}    timeout=30
+    Input text    ${PREFIX_INPUT}    ${PREFIX_3}
+    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${SAVE_VOCABULARY_BTN}
+    Sleep    2
+
+Delete Thesaurus
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_3}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_3}")]
+    Wait until page contains    ${VOCABULARY_3}    timeout=30
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains    Testiautomaatioasiasanasto    timeout=20
+    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${REMOVE_VOCABULARY_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Sleep    3
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
+    Page should contain    sanastoa
+    Sleep    1
+    Close All Browsers

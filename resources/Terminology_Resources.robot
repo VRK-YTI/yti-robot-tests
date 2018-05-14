@@ -10,12 +10,14 @@ ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
+${VOCABULARY_3}    Testiautomaatioasiasanasto
 ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
 ${ORGANIZATION_2}    Testiorganisaatio
 ${CLASSIFICATION_1}    Ympäristö
 ${CLASSIFICATION_2}    Eläkkeet
 ${PREFIX_1}       111
 ${PREFIX_2}       222
+${PREFIX_3}       333
 ${TERM_1}         Automaatio
 ${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
@@ -70,6 +72,8 @@ ${concepts_with_missing_status}    ${DATAFOLDER}${/}test_concept_with_missing_st
 ${concepts_with_invalid_column}    ${DATAFOLDER}${/}test_concepts_invalid_column_csv.csv
 ${concepts_with_invalid_status_value}    ${DATAFOLDER}${/}test_concepts_invalid_status_value_csv.csv
 ${concepts_with_duplicate_definition_columns}    ${DATAFOLDER}${/}test_concepts_duplicate_definition_columns_csv.csv
+${concepts_with_isPartOf_and_status}    ${DATAFOLDER}${/}test_concepts_to_thesaurus_with_isPartOf_status_csv.csv
+${test_concepts_to_thesaurus}    ${DATAFOLDER}${/}test_concept_import_to_thesaurus_csv.csv
 
 *** Keywords ***
 Terminology Suite Setup
