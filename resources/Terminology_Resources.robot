@@ -37,7 +37,7 @@ ${ADD_TITLE_BTN}    id=prefLabel_add_button
 ${LANGUAGE_EN_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/div/button[1]
 ${ADD_ORGANIZATION_BTN}    id=vocabulary_contributor_add_organization_button
 ${SEARCH_ORGANIZATION_INPUT}    id=search_organization_link
-${ADD_CLASSIFICATION_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/button
+${ADD_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_classification_button
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_classification_link
 ${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_input
 ${VOCABULARY_TYPE_DDL}    id=selected_vocabulary_type_dropdown

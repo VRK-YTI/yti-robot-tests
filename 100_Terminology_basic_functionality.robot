@@ -11,8 +11,8 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup
-    Wait until page contains element    //app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
-    Click element    //app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
+    Wait until page contains element    id=information_link    timeout=20
+    Click element    id=information_link
     Wait until page contains    Tietoa Sanastoista
     Wait until page contains    Sanastot-työkalu on tarkoitettu
     Wait until page contains    Sanastot-työkalulla
@@ -26,8 +26,8 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup
-    Wait until page contains element    //a[@target='_blank'][contains(text(),'Lähdekoodi on lisensoitu EUPL-1.2 -lisenssillä.')]    timeout=20
-    Click element    //a[@target='_blank'][contains(text(),'Lähdekoodi on lisensoitu EUPL-1.2 -lisenssillä.')]
+    Wait until page contains element    id=license_link    timeout=20
+    Click element    id=license_link
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
@@ -37,8 +37,8 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Verify that Description of file page is opened correctly.
     [Tags]    local    sanastot
     [Setup]    Test Case Setup
-    Wait until page contains element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]    timeout=20
-    Click element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
+    Wait until page contains element    id=description_of_file_link    timeout=20
+    Click element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Select Window    title=Sanastot
