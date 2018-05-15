@@ -81,6 +81,9 @@ ${CODE_LIST_6}    testiautomaatiokoodisto 2
 ${CODE_LIST_7}    T200
 ${CODE_LIST_8}    koodisto6000
 ${CODE_LIST_9}    koodisto7000
+${CODE_LIST_10}    koodisto7001
+${CODE_LIST_11}    koodisto7002
+${CODE_LIST_12}    koodisto7003
 ${CODE_1}         koodi01 - Koodi01
 ${TEST_CODE_1}    T100 - Automaatiokoodi
 ${TEST_CODE_2}    testikoodi02 - Testikoodi 02

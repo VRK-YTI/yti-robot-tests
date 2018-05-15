@@ -11,6 +11,7 @@ ${Code_list_without_codes}    ${DATAFOLDER}${/}Draft_Code_list_without_codes.xls
 ${Code_list_with_codes}    ${DATAFOLDER}${/}Valid_Code_list_with_codes.xlsx
 ${Draft_Codes_with_broader}    ${DATAFOLDER}${/}Codes_500_broader.xlsx
 ${Update_Codes}    ${DATAFOLDER}${/}Update_Codes.xlsx
+${Multiple_codelists_and_codes}    ${DATAFOLDER}${/}Multiple_codelists_and_codes.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -191,6 +192,62 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Click element    ${IMPORT_CREATE_BACK_BTN}
     Return to Koodistot frontpage
 
+506. Import multiple Code lists with codes
+    [Documentation]    Import multiple Code list with codes, check that import is successful. Remove code lists and codes.
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Multiple_codelists_and_codes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_10}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait until page contains    ${CODE_LIST_10}
+    Wait until page contains    ${CODE_LIST_10}    timeout=20
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Click button    ${EXPAND_ALL_BTN}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_2}")]
+    Page should contain    Tunnus
+    Page should contain    testikoodi02
+    Page should contain    Koodin nimi
+    Page should contain    Testikoodi 02
+    Sleep    5
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
+    Return to Koodistot frontpage
+    Sleep    3
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_11}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_11}")]
+    Wait until page contains    ${CODE_LIST_11}
+    Wait until page contains    ${CODE_LIST_11}    timeout=20
+    Wait until page contains    testikoodi11 - Testikoodi 11    timeout=20
+    Wait until page contains    testikoodi14 - Testikoodi 14    timeout=20
+    Wait until page contains    testikoodi16 - Testikoodi 16    timeout=20
+    Sleep    3
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_12}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_12}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_12}")]
+    Wait until page contains    ${CODE_LIST_12}
+    Wait until page contains    ${CODE_LIST_12}    timeout=20
+    Wait until page contains    testikoodi21 - Testikoodi 21    timeout=20
+    Wait until page contains    testikoodi24 - Testikoodi 24    timeout=20
+    Wait until page contains    testikoodi26 - Testikoodi 26    timeout=20
+    Sleep    3
+    Return to Koodistot frontpage
+    [Teardown]    Remove multiple code lists
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
@@ -346,3 +403,44 @@ Create new code to code list
     Input text    ${CODE_NAME_INPUT}    newcode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
+
+Remove multiple code lists
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_10}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait until page contains    ${CODE_LIST_10}
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_10}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Sleep    1
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_11}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_11}")]
+    Wait until page contains    ${CODE_LIST_11}
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_11}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Sleep    1
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_12}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_12}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_12}")]
+    Wait until page contains    ${CODE_LIST_12}
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_12}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
