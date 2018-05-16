@@ -196,7 +196,7 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary
 
-307. Import Concepts to the Thesaurus with isPartOf and status columns
+307. Import Concepts to the Thesaurus with columns that are not supported
     [Documentation]    Import Concepts to the Thesaurus with isPartOf and status columns
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot
@@ -214,7 +214,7 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Thesaurus
 
-308. Import Concepts to the Thesaurus
+308. Successful CSV import to the Thesaurus
     [Documentation]    Import Concepts to the Thesaurus and check that import is successful
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup
