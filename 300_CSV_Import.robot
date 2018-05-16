@@ -267,6 +267,23 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Thesaurus
 
+310. Import Concepts to the Thesaurus with incorrect column name
+    [Documentation]    Import Concepts to the Thesaurus with incorrect column name in CSV.
+    ...    Check that error message is displayed in import confirmation and import is not successful.
+    [Tags]    regression    sanastot
+    [Setup]    Test Case Setup
+    Create Thesaurus
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts_to_thesaurus_incorrect_column}
+    Sleep    3
+    Page should contain    Ominaisuutta tai viitettä ei löydy nimellä “ggggggggg”
+    Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click element    ${IMPORT_CANCEL_BTN}
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Thesaurus
+
 *** Keywords ***
 Create Terminological Dictionary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
