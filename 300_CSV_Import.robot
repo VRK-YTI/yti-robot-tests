@@ -16,12 +16,13 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${invalid_related_concepts}
     Sleep    3
-    Page should contain    4: Viittauksella “broader” ei löydy käsitettä
-    Page should contain    4: Viittauksella “related” ei löydy käsitettä
-    Page should contain    4: Viittauksella “isPartOf” ei löydy käsitettä
-    Page should contain    5: Viittauksella “broader” ei löydy käsitettä
-    Page should contain    5: Viittauksella “related” ei löydy käsitettä
-    Page should contain    5: Viittauksella “isPartOf” ei löydy käsitettä
+    Page should contain    Tuodaan 4 käsitettä
+    Page should contain    4: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
+    Page should contain    4: Viittauksella “related” ei löydy käsitettä arvolle “joku”
+    Page should contain    4: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
+    Page should contain    5: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
+    Page should contain    5: Viittauksella “related” ei löydy käsitettä arvolle “joku”
+    Page should contain    5: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
