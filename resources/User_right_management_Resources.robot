@@ -34,8 +34,8 @@ eDuuni Login
     Wait Until Page Contains element    id=identifierNext    timeout=20
     Click element    id=identifierNext
     Sleep    5
-    Wait Until Page Contains element    //div[1]/div[1]/div[2]/div[2]/div/div[2]/div/form/div[1]/div/div[1]/div/div[1]/input    timeout=20
-    Input text    //div[1]/div[1]/div[2]/div[2]/div/div[2]/div/form/div[1]/div/div[1]/div/div[1]/input    ${TEST_PASSWORD}
+    Wait Until Page Contains element    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/content/form/div[1]/div/div[1]/div/div[1]/input    timeout=20
+    Input text    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/content/form/div[1]/div/div[1]/div/div[1]/input    ${TEST_PASSWORD}
     Sleep    5
     Wait Until Page Contains element    id=passwordNext
     Click element    id=passwordNext
@@ -53,9 +53,9 @@ Open Browser with Settings
     ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
-    ${chrome_options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument      --headless
-    Call Method    ${chrome_options}    add_argument      --single-process
+    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    --headless
+    Call Method    ${chrome_options}    add_argument    --single-process
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
