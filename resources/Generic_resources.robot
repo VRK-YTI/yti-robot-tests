@@ -18,6 +18,7 @@ ${REGISTRY_1}     Testirekisteri
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
+${SEARCH_CODE_CHECKBOX}    id=search_code_details_checkbox
 #Code list buttons
 ${ADD_CLASSIFICATION_BTN}    id=add_classification_button
 ${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
@@ -85,8 +86,10 @@ ${CODE_LIST_10}    koodisto7001
 ${CODE_LIST_11}    koodisto7002
 ${CODE_LIST_12}    koodisto7003
 ${CODE_1}         koodi01 - Koodi01
+${CODE_2}         koodi1006
 ${TEST_CODE_1}    T100 - Automaatiokoodi
 ${TEST_CODE_2}    testikoodi02 - Testikoodi 02
+${TEST_CODE_3}    Koodi1006 - Koodi1006
 ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 #Status

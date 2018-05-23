@@ -188,6 +188,33 @@ Resource          resources/Generic_resources.robot
     Wait until page contains    Muutostieto
     [Teardown]    Go back to Koodistot frontpage
 
+110. Search for code list and extend search to codes
+    [Documentation]    Search for code list with frontpage search function and extend search to codes.
+    ...    Check that the correct code list which contains the searched code is listed as a result.
+    [Tags]    regression
+    [Setup]    Test Case Setup create draft codelist with codes
+    Wait Until Element Is Visible    ${SEARCH_CODE_CHECKBOX}    timeout=30
+    Click element    ${SEARCH_CODE_CHECKBOX}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_2}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_2}")]
+    Wait until page contains    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_3}")]
+    Click element    //*[contains(text(), "${TEST_CODE_3}")]
+    Wait until page contains    ${TEST_CODE_3}
+    Wait until page contains    Koodisto
+    Wait until page contains    testiautomaatiokoodisto1
+    Wait until page contains    Tunnus
+    Wait until page contains    Koodi1006
+    Wait until page contains    Koodin nimi
+    Wait until page contains    Koodi1006
+    Wait until page contains    Tila
+    Wait until page contains    Luonnos
+    Wait until page contains    Viimeisin muokkaus
+    Close All Browsers
+    [Teardown]    Test Case Teardown remove draft codelist with codes
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
@@ -226,3 +253,11 @@ Test Case Teardown remove codelist without prefLabel
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Remove Testikoodisto T200
+
+Test Case Setup create draft codelist with codes
+    Test Case Setup Superuser
+    Create testiautomaatiokoodisto1 with codes
+
+Test Case Teardown remove draft codelist with codes
+    Test Case Setup Superuser
+    Remove testiautomaatiokoodisto1 with codes
