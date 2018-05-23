@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code list and Code modification
-Suite Teardown    Close All Browsers
+Suite Setup       Create draft codelist
+Suite Teardown    Remove codelists
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
@@ -205,7 +206,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
     [Tags]    regression
-    [Setup]    Test Case Setup Admin
+    [Setup]    Test Case Setup create valid codelist
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
@@ -222,7 +223,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
     [Tags]    regression
-    [Setup]    Test Case Setup Admin
+    [Setup]    Test Case Setup create valid codelist
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
@@ -463,3 +464,23 @@ Remove classification from code list
     Sleep    1
     Go back to Koodistot frontpage
     Close All Browsers
+
+Create draft codelist
+    Test Case Setup Admin
+    Create testiautomaatiokoodisto with one code
+    Close All Browsers
+
+Remove codelists
+    Test Case Setup Superuser
+    Remove testiautomaatiokoodisto with one code
+    Test Case Setup Superuser
+    Remove testiautomaatiokoodisto 2 with one code
+    Close All Browsers
+
+Test Case Setup create valid codelist
+    Test Case Setup Admin
+    Create testiautomaatiokoodisto 2 with one code
+
+Test Case Teardown remove valid codelist
+    Test Case Setup Superuser
+    Remove testiautomaatiokoodisto 2 with one code

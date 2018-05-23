@@ -164,7 +164,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     [Documentation]    Create new Code list with existing Codevalue and check error message from
     ...    Code list value input field
     [Tags]    regression
-    [Setup]    Test Case Setup Superuser
+    [Setup]    Create draft codelist
     Sleep    2
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -191,6 +191,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains element    ${IMPORT_CREATE_BACK_BTN}    timeout=20
     Click element    ${IMPORT_CREATE_BACK_BTN}
     Return to Koodistot frontpage
+    [Teardown]    Remove draft codelist
 
 506. Import multiple Code lists with codes
     [Documentation]    Import multiple Code list with codes, check that import is successful. Remove code lists and codes.
@@ -444,3 +445,10 @@ Remove multiple code lists
     Input Text    id=search_box_input    ${CODE_LIST_12}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
+
+Create draft codelist
+    Test Case Setup Superuser
+    Create testiautomaatiokoodisto with one code
+
+Remove draft codelist
+    Remove testiautomaatiokoodisto with one code

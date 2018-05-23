@@ -110,6 +110,12 @@ ${SELECT_LINK_BTN}    id=select_link_button
 ${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
 ${LINK_NAME_INPUT}    id=link_title_input
 ${SAVE_LINK_MODIFY_BTN}    id=save_button
+#Excel paths
+${DATAFOLDER}     ${EXECDIR}${/}test_files
+${testiautomaatiokoodisto_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodisto_with_code.xlsx
+${testiautomaatiokoodisto2_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodisto2_with_code.xlsx
+${testiautomaatiokoodisto1_with_codes}    ${DATAFOLDER}${/}testiautomaatiokoodisto1_with_codes.xlsx
+${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
 
 *** Keywords ***
 Test Case Setup Admin
@@ -156,3 +162,178 @@ Open Chrome to Environment
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
     Go To    ${ENVIRONMENT_URL}
+
+Create testiautomaatiokoodisto with one code
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${testiautomaatiokoodisto_with_code}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${CODE_LIST_4}
+    Wait until page contains    ${TEST_CODE_1}
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click element    //*[contains(text(), "Etusivu")]
+    Sleep    2
+
+Remove testiautomaatiokoodisto with one code
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_4}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_4}")]
+    Wait until page contains    ${CODE_LIST_4}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Page should contain    T100
+    Page should contain    testiautomaatiokoodisto
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_4}
+    #Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Page should not contain element    //*[contains(text(), "testiautomaatiokoodisto")]
+    Close All Browsers
+
+Create testiautomaatiokoodisto 2 with one code
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${testiautomaatiokoodisto2_with_code}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${CODE_LIST_6}
+    Wait until page contains    ${CODE_1}
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click element    //*[contains(text(), "Etusivu")]
+    Sleep    2
+
+Remove testiautomaatiokoodisto 2 with one code
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_6}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_6}")]
+    Wait until page contains    ${CODE_LIST_6}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Page should contain    testiautomaatiokoodisto2
+    Page should contain    testiautomaatiokoodisto 2
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_6}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
+
+Create testiautomaatiokoodisto1 with codes
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${testiautomaatiokoodisto1_with_codes}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${CODE_LIST_2}
+    Wait until page contains    Koodi1000 - Koodi1000
+    Wait until page contains    Koodi1003 - Koodi1003
+    Wait until page contains    Koodi1006 - Koodi1006
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click element    //*[contains(text(), "Etusivu")]
+    Sleep    2
+
+Remove testiautomaatiokoodisto1 with codes
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_2}")]
+    Wait until page contains    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Page should contain    testiautomaatiokoodisto
+    Page should contain    testiautomaatiokoodisto1
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_2}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
+
+Create Testikoodisto T200
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${Testikoodisto_T200}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    Testikoodisto T200
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click element    //*[contains(text(), "Etusivu")]
+    Sleep    2
+
+Remove Testikoodisto T200
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_7}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_7}")]
+    Wait until page contains    ${CODE_LIST_7}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Page should contain    T200
+    Page should contain    Testikoodisto T200
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_7}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers

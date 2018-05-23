@@ -45,7 +45,7 @@ Resource          resources/Generic_resources.robot
 103. Search for VALID code list
     [Documentation]    Search for VALID code list with frontpage search function.
     [Tags]    regression
-    [Setup]    Test Case Setup Admin
+    [Setup]    Test Case Setup create valid codelist
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_6}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
@@ -66,12 +66,12 @@ Resource          resources/Generic_resources.robot
     Wait until page contains    Voimassa oleva
     Wait until page contains    Viimeisin muokkaus
     Wait until page contains    Voimassa oleva
-    [Teardown]    Go back to Koodistot frontpage
+    [Teardown]    Test Case Teardown remove valid codelist
 
 104. Search for code list with codeValue
     [Documentation]    Search for code list with codeValue with frontpage search function. YTI-651
     [Tags]    regression
-    [Setup]    Test Case Setup Admin
+    [Setup]    Test Case Setup create codelist without prefLabel
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
@@ -93,7 +93,7 @@ Resource          resources/Generic_resources.robot
     Wait until page contains    Testirekisteri
     Wait until page contains    Luokitus
     Wait until page contains    Eläkkeet
-    [Teardown]    Go back to Koodistot frontpage
+    [Teardown]    Test Case Teardown remove codelist without prefLabel
 
 105. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -206,3 +206,23 @@ Go back to Koodistot frontpage
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Close All Browsers
+
+Test Case Setup create valid codelist
+    Test Case Setup Superuser
+    Create testiautomaatiokoodisto 2 with one code
+
+Test Case Teardown remove valid codelist
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click element    //*[contains(text(), "Etusivu")]
+    Sleep    2
+    Remove testiautomaatiokoodisto 2 with one code
+
+Test Case Setup create codelist without prefLabel
+    Test Case Setup Superuser
+    Create Testikoodisto T200
+
+Test Case Teardown remove codelist without prefLabel
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click element    //*[contains(text(), "Etusivu")]
+    Sleep    2
+    Remove Testikoodisto T200

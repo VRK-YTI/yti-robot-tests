@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code import error cases
-Suite Teardown    Close All Browsers
+Suite Setup       Create valid codelist
+Suite Teardown    Remove valid codelist
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
@@ -362,3 +363,12 @@ Import codes in CSV format
     Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
     Click element    ${FILE_FORMAT_CSV}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+
+Create valid codelist
+    Test Case Setup Admin
+    Create testiautomaatiokoodisto1 with codes
+    Close All Browsers
+
+Remove valid codelist
+    Test Case Setup Superuser
+    Remove testiautomaatiokoodisto1 with codes
