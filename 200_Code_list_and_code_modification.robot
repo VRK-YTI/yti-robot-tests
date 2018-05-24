@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code list and Code modification
 Suite Setup       Create draft codelist
-Suite Teardown    Remove codelists
+Suite Teardown    Remove draft codelist
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
@@ -218,7 +218,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Sleep    5
     Wait until page contains element    //*[contains(text(), "Korvattu")]
     Sleep    2
-    [Teardown]    Restore valid Code list status
+    Go back to Koodistot frontpage
+    [Teardown]    Test Case Teardown remove valid codelist
 
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
@@ -244,7 +245,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Page should contain    Uusi määritelmä
     Page should contain    Uusi muutostieto
     Page should contain    Oikeusturva
-    [Teardown]    Restore valid Code list
+    Restore valid Code list
+    [Teardown]    Test Case Teardown remove valid codelist
 
 208. Modify classification for DRAFT Code list
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
@@ -470,11 +472,9 @@ Create draft codelist
     Create testiautomaatiokoodisto with one code
     Close All Browsers
 
-Remove codelists
+Remove draft codelist
     Test Case Setup Superuser
     Remove testiautomaatiokoodisto with one code
-    Test Case Setup Superuser
-    Remove testiautomaatiokoodisto 2 with one code
     Close All Browsers
 
 Test Case Setup create valid codelist
