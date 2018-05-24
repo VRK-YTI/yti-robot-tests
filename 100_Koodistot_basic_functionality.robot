@@ -66,6 +66,7 @@ Resource          resources/Generic_resources.robot
     Wait until page contains    Voimassa oleva
     Wait until page contains    Viimeisin muokkaus
     Wait until page contains    Voimassa oleva
+    Go back to Koodistot frontpage
     [Teardown]    Test Case Teardown remove valid codelist
 
 104. Search for code list with codeValue
@@ -93,6 +94,7 @@ Resource          resources/Generic_resources.robot
     Wait until page contains    Testirekisteri
     Wait until page contains    Luokitus
     Wait until page contains    Eläkkeet
+    Go back to Koodistot frontpage
     [Teardown]    Test Case Teardown remove codelist without prefLabel
 
 105. Change user interface language
@@ -239,9 +241,7 @@ Test Case Setup create valid codelist
     Create testiautomaatiokoodisto 2 with one code
 
 Test Case Teardown remove valid codelist
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
-    Sleep    2
+    Test Case Setup Superuser
     Remove testiautomaatiokoodisto 2 with one code
 
 Test Case Setup create codelist without prefLabel
@@ -249,9 +249,7 @@ Test Case Setup create codelist without prefLabel
     Create Testikoodisto T200
 
 Test Case Teardown remove codelist without prefLabel
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
-    Sleep    2
+    Test Case Setup Superuser
     Remove Testikoodisto T200
 
 Test Case Setup create draft codelist with codes
