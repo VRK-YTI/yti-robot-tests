@@ -217,6 +217,32 @@ Resource          resources/Generic_resources.robot
     Close All Browsers
     [Teardown]    Test Case Teardown remove draft codelist with codes
 
+111. Filter Codes by codeValue and prefLabel
+    [Documentation]    Import codelist and filter Codes by codeValue and prefLabel
+    [Tags]    regression
+    [Setup]    Test Case Setup import Code filter codelist with codes
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_13}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_13}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_13}")]
+    Wait until page contains    ${CODE_LIST_13}
+    Wait until page contains element    ${SEARCH_CODE_BOX_INPUT}
+    Input Text    ${SEARCH_CODE_BOX_INPUT}    t52
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_4}")]
+    Sleep    1
+    Wait until page contains element    ${SEARCH_CODE_BOX_INPUT}
+    Input Text    ${SEARCH_CODE_BOX_INPUT}    testi06
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_5}")]
+    Click element    //*[contains(text(), "${TEST_CODE_5}")]
+    Wait until page contains    Koodisto
+    Wait until page contains    Sisällön filteröinti
+    Wait until page contains    Tunnus
+    Wait until page contains    T56
+    Wait until page contains    Koodin nimi
+    Wait until page contains    Testi06
+    Go back to Koodistot frontpage
+    [Teardown]    Test Case Teardown remove Code filter codelist with codes
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
@@ -259,3 +285,11 @@ Test Case Setup create draft codelist with codes
 Test Case Teardown remove draft codelist with codes
     Test Case Setup Superuser
     Remove testiautomaatiokoodisto1 with codes
+
+Test Case Setup import Code filter codelist with codes
+    Test Case Setup Superuser
+    Create Code filter codelist
+
+Test Case Teardown remove Code filter codelist with codes
+    Test Case Setup Superuser
+    Remove Code filter codelist

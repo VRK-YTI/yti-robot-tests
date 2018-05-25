@@ -44,6 +44,7 @@ ${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
 ${DELETE_CODE_LIST_BTN}    id=delete_codelist_button
 ${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
+${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -85,11 +86,14 @@ ${CODE_LIST_9}    koodisto7000
 ${CODE_LIST_10}    koodisto7001
 ${CODE_LIST_11}    koodisto7002
 ${CODE_LIST_12}    koodisto7003
+${CODE_LIST_13}    Sisällön filteröinti
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${TEST_CODE_1}    T100 - Automaatiokoodi
 ${TEST_CODE_2}    testikoodi02 - Testikoodi 02
 ${TEST_CODE_3}    Koodi1006 - Koodi1006
+${TEST_CODE_4}    T52 - Testi02
+${TEST_CODE_5}    T56 - Testi06
 ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 #Status
@@ -119,6 +123,7 @@ ${testiautomaatiokoodisto_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodisto
 ${testiautomaatiokoodisto2_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodisto2_with_code.xlsx
 ${testiautomaatiokoodisto1_with_codes}    ${DATAFOLDER}${/}testiautomaatiokoodisto1_with_codes.xlsx
 ${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
+${Code_filter}    ${DATAFOLDER}${/}Code_filter.xlsx
 
 *** Keywords ***
 Test Case Setup Admin
@@ -339,4 +344,47 @@ Remove Testikoodisto T200
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_7}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
+
+Create Code filter codelist
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_filter}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${CODE_LIST_13}
+    Wait until page contains    T51 - Testi01
+    Wait until page contains    T54 - Testi04
+    Wait until page contains    T57 - Testi07
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click element    //*[contains(text(), "Etusivu")]
+    Sleep    2
+
+Remove Code filter codelist
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_13}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_13}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_13}")]
+    Wait until page contains    ${CODE_LIST_13}
+    Page should contain    T51 - Testi01
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_13}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Page should not contain element    //*[contains(text(), "Sisällön filteröinti")]
     Close All Browsers
