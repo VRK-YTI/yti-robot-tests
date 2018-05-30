@@ -87,6 +87,7 @@ ${CODE_LIST_10}    koodisto7001
 ${CODE_LIST_11}    koodisto7002
 ${CODE_LIST_12}    koodisto7003
 ${CODE_LIST_13}    Sisällön filteröinti
+${CODE_LIST_14}    Testikoodisto2 pitkillä arvoilla
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${TEST_CODE_1}    T100 - Automaatiokoodi
@@ -94,6 +95,7 @@ ${TEST_CODE_2}    testikoodi02 - Testikoodi 02
 ${TEST_CODE_3}    Koodi1006 - Koodi1006
 ${TEST_CODE_4}    T52 - Testi02
 ${TEST_CODE_5}    T56 - Testi06
+${TEST_CODE_6}    testcode25 - Testikoodi 25
 ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 #Status

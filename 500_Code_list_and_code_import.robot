@@ -12,6 +12,7 @@ ${Code_list_with_codes}    ${DATAFOLDER}${/}Valid_Code_list_with_codes.xlsx
 ${Draft_Codes_with_broader}    ${DATAFOLDER}${/}Codes_500_broader.xlsx
 ${Update_Codes}    ${DATAFOLDER}${/}Update_Codes.xlsx
 ${Multiple_codelists_and_codes}    ${DATAFOLDER}${/}Multiple_codelists_and_codes.xlsx
+${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -160,8 +161,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Return to Koodistot frontpage
     [Teardown]    Remove imported Draft code list
 
-505. Create new Code list with existing Codevalue
-    [Documentation]    Create new Code list with existing Codevalue and check error message from
+505. Create new Code list with existing codeValue
+    [Documentation]    Create new Code list with existing codeValue and check error message from
     ...    Code list value input field
     [Tags]    regression
     [Setup]    Create draft codelist
@@ -248,6 +249,37 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Sleep    3
     Return to Koodistot frontpage
     [Teardown]    Remove multiple code lists
+
+507. Import Code list with Extension Schemes
+    [Documentation]    Import Code list with Extension Schemes, check that import is successfull,
+    ...    Export Excel and remove code list.
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_ExtensionSchemes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_14}")]    timeout=30
+    Wait until page contains    testcode01 - Testikoodi 01    timeout=20
+    Wait until page contains    testcode25 - Testikoodi 25    timeout=20
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_6}")]
+    Page should contain    Testikoodisto2 pitkillä arvoilla
+    Page should contain    testcode25
+    Page should contain    Testikoodi 25
+    Page should contain    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/testcode25
+    Sleep    5
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
+    Sleep    5
+    Wait until page contains element    id=exportDropdown    timeout=20
+    Click element    id=exportDropdown
+    Click element    ${EXPORT_TYPE_EXCEL}
+    Sleep    5
+    Return to Koodistot frontpage
+    [Teardown]    Remove codelist with Extension Schemes
 
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
@@ -452,3 +484,21 @@ Create draft codelist
 
 Remove draft codelist
     Remove testiautomaatiokoodisto with one code
+
+Remove codelist with Extension Schemes
+    Test Case Setup Superuser
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_14}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_14}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_14}")]
+    Wait until page contains    ${CODE_LIST_14}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_14}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Page should not contain element    //*[contains(text(), "Testikoodisto2 pitkillä arvoilla")]
+    Close All Browsers

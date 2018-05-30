@@ -53,7 +53,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
-    [Documentation]    Import Codes (Excel, CSV) with missing code value and check error message
+    [Documentation]    Import Codes (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression
     [Setup]    Test Case Setup Admin
     Select draft code list
