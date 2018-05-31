@@ -13,8 +13,9 @@ ${MODEL_1}        Testiautomaatio
 ${LANGUAGE_DROPDOWN_BTN}    //application/ng-container/navigation-bar/nav/ul/li[3]/a
 ${IMPERSONATE_USER_DROPDOWN}    //application/ng-container/navigation-bar/nav/ul/li[1]/a
 ${FRONTPAGE_SEARCH_BOX}    //application/ng-container/div/div/front-page/div/div[1]/div/div/input
-${SHOW_MODEL_DETAILS_BTN}    //application/ng-container/div/div/model-page/div/div[1]/div/model-view/div/div/div/h2/button[1]
-${ADD_CLASS_BTN}    //application/ng-container/div/div/model-page/div/div[2]/div/div[1]/div[2]/div/div/div[1]/div/div[1]/div/div/button/span[2]
+${SHOW_MODEL_DETAILS_BTN}    id=show_model_details_button
+${ADD_CLASS_BTN}    id=add_new_class_button
+${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
 
 *** Keywords ***
 Test Case Setup
@@ -42,9 +43,9 @@ Open Browser with Settings
     ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
-    ${chrome_options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument      --headless
-    Call Method    ${chrome_options}    add_argument      --single-process
+    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    --headless
+    Call Method    ${chrome_options}    add_argument    --single-process
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080

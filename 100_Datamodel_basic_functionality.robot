@@ -1,4 +1,4 @@
-﻿*** Settings ***
+*** Settings ***
 Documentation     Test Suite for basic functionality of Datamodel application
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
@@ -65,7 +65,9 @@ Resource          resources/Datamodel_Resources.robot
     Click element    //*[contains(text(), "${MODEL_1}")]
     Wait until page contains    ${MODEL_1}    timeout=30
     Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_MODEL_DETAILS_BTN}
     Wait until page contains element    ${ADD_CLASS_BTN}    timeout=30
+    Sleep    5
     [Teardown]    Go back to Tietomallit frontpage
 
 *** Keywords ***
