@@ -13,6 +13,7 @@ ${Draft_Codes_with_broader}    ${DATAFOLDER}${/}Codes_500_broader.xlsx
 ${Update_Codes}    ${DATAFOLDER}${/}Update_Codes.xlsx
 ${Multiple_codelists_and_codes}    ${DATAFOLDER}${/}Multiple_codelists_and_codes.xlsx
 ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
+${Codelist_with_defaultcode}    ${DATAFOLDER}${/}Codelist_with_defaultcode.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -281,6 +282,96 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes
 
+508. Import DRAFT Code list with codes and DEFAULTCODE
+    [Documentation]    Import Code list with codes and DEFAULTCODE, check that import is successful and DEFAULTCODE is
+    ...    defined in information tab. Remove code list.
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_with_defaultcode}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    5
+    Wait until page contains    ${CODE_LIST_15}    timeout=20
+    Wait until page contains    koodi500 - Koodi500    timeout=20
+    Wait until page contains    koodi503 - Koodi503    timeout=20
+    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_15}")]    timeout=20
+    Click element    //*[contains(text(), "${CODE_LIST_15}")]
+    Page should contain    T1333
+    Page should contain    Vakiokoodikoodisto
+    Page should contain    Vakio koodi
+    Page should contain    koodi502
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove Codelist with defaultcode
+
+509. Create Code list and add DEFAULTCODE
+    [Documentation]    Create new Code list and import codes. Add DEFAULTCODE manually,
+    ...    remove DEFAULTCODE and code list.
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Sleep    2
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
+    Click button    Lisää luokitus
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_3}
+    Click element    //*[contains(text(), "${CLASSIFICATION_3}")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    5
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Import codes in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Draft_Codes_with_broader}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    ${IMPORT_BTN}
+    Wait until page contains    koodi500 - Koodi500    timeout=20
+    Wait until page contains    koodi503 - Koodi503    timeout=20
+    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Sleep    2
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Sleep    2
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
+    Click element    ${ADD_DEFAULTCODE_BTN}
+    Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
+    Input Text    ${SEARCH_DEFAULTCODE_INPUT}    505
+    Wait until page contains element    //*[contains(text(), "Koodi505")]
+    Click element    //*[contains(text(), "Koodi505")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    2
+    Wait until page contains    Vakio koodi    timeout=20
+    Wait until page contains    koodi505 - Koodi505    timeout=20
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Sleep    2
+    Wait until page contains element    //*[contains(@id,'_defaultcode_link')]    timeout=20
+    Click element    //*[contains(@id,'_defaultcode_link')]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    3
+    Page should not contain    Vakio koodi    timeout=20
+    Page should not contain    koodi505 - Koodi505    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove imported Draft code list with codes
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
@@ -502,3 +593,28 @@ Remove codelist with Extension Schemes
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Page should not contain element    //*[contains(text(), "Testikoodisto2 pitkillä arvoilla")]
     Close All Browsers
+
+Remove imported Codelist with defaultcode
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_15}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_15}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_15}")]
+    Wait until page contains    ${CODE_LIST_15}
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Page should contain    Tunnus
+    Page should contain    T1333
+    Page should contain    Koodiston nimi
+    Page should contain    Vakiokoodikoodisto
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_15}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
+
+Remove Codelist with defaultcode
+    Test Case Setup Superuser
+    Remove imported Codelist with defaultcode

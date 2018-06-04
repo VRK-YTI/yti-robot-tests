@@ -45,6 +45,10 @@ ${DELETE_CODE_LIST_BTN}    id=delete_codelist_button
 ${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
+${CODELIST_INFO_TAB}    id=codelist_info_tab
+${ADD_DEFAULTCODE_BTN}    id=add_defaultcode_button
+${SEARCH_DEFAULTCODE_INPUT}    id=search_linked_code_input
+${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -62,7 +66,6 @@ ${CODE_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
 ${CODE_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
 ${CODE_START_DATE_INPUT}    id=start_date_input
 ${CODE_END_DATE_INPUT}    id=end_date_input
-${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
 ${IMPORT_CODES_BTN}    id=import_codes_button
 ${IMPORT_BTN}     id=upload_codes_file_button
 ${UPLOAD_FILE_BTN}    id=upload_file_button
@@ -88,6 +91,7 @@ ${CODE_LIST_11}    koodisto7002
 ${CODE_LIST_12}    koodisto7003
 ${CODE_LIST_13}    Sisällön filteröinti
 ${CODE_LIST_14}    Testikoodisto2 pitkillä arvoilla
+${CODE_LIST_15}    Vakiokoodikoodisto
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${TEST_CODE_1}    T100 - Automaatiokoodi
