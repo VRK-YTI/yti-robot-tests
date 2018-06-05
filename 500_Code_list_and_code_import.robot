@@ -303,7 +303,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Click element    //*[contains(text(), "${CODE_LIST_15}")]
     Page should contain    T1333
     Page should contain    Vakiokoodikoodisto
-    Page should contain    Vakio koodi
+    Page should contain    Vakiokoodi
     Page should contain    koodi502
     Sleep    2
     Return to Koodistot frontpage
@@ -357,7 +357,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
-    Wait until page contains    Vakio koodi    timeout=20
+    Wait until page contains    Vakiokoodi    timeout=20
     Wait until page contains    koodi505 - Koodi505    timeout=20
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
@@ -367,7 +367,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    3
-    Page should not contain    Vakio koodi    timeout=20
+    Page should not contain    Vakiokoodi    timeout=20
     Page should not contain    koodi505 - Koodi505    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove imported Draft code list with codes
