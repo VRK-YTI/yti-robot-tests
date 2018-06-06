@@ -362,8 +362,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Sleep    2
-    Wait until page contains element    //*[contains(@id,'_defaultcode_link')]    timeout=20
-    Click element    //*[contains(@id,'_defaultcode_link')]
+    Wait until page contains element    ${REMOVE_DEFAULTCODE}    timeout=20
+    Click element    ${REMOVE_DEFAULTCODE}
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    3

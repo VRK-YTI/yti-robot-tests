@@ -14,6 +14,7 @@ ${CLASSIFICATION_1}    Demokratia
 ${CLASSIFICATION_2}    Koulutus
 ${CLASSIFICATION_3}    Asuminen
 ${REGISTRY_1}     Testirekisteri
+${REMOVE_DEFAULTCODE}    id=remove_defaultcode_link
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
