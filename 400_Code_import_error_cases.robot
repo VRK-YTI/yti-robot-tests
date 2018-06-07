@@ -22,6 +22,7 @@ ${Update_Code_valid_draft}    ${DATAFOLDER}${/}Update_code_valid_draft.xlsx
 ${Duplicate_Codes}    ${DATAFOLDER}${/}Duplicate_codes.xlsx
 ${Codes_without_ID_column}    ${DATAFOLDER}${/}Codes_without_ID_column.xlsx
 ${Codes_invalid_codevalue}    ${DATAFOLDER}${/}Codes_invalid_codevalue.xlsx
+${Codes_with_missing_order_value}    ${DATAFOLDER}${/}Codes_with_missing_order.xlsx
 #CSV paths
 ${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.csv
 ${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
@@ -36,6 +37,7 @@ ${Codes_with_invalid_ID_csv}    ${DATAFOLDER}${/}Codes_with_invalid_ID_csv.csv
 ${Update_Code_valid_draft_csv}    ${DATAFOLDER}${/}Update_code_valid_draft_csv.csv
 ${Duplicate_Codes_csv}    ${DATAFOLDER}${/}Duplicate_codes_csv.csv
 ${Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Codes_invalid_codevalue_csv.csv
+${Codes_with_missing_order_value_csv}    ${DATAFOLDER}${/}Codes_with_missing_order_csv.xlsx
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
@@ -50,6 +52,7 @@ ${Error_with_invalid_ID}    Aineistossa oleva ID-sarakkeen arvo ei ole sallittu.
 ${Error_with_update_code_valid_draft}    Aineiston tilan muutos ei ole sallittu.
 ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
 ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.
+${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
@@ -321,6 +324,27 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
     Wait until page contains    ${Error_invalid_codeValue}    timeout=20
+    Cancel code import
+    Sleep    1
+    Go back to Koodistot frontpage
+
+413. Import Codes with missing ORDER value
+    [Documentation]    Import Codes (Excel, CSV) with missing ORDER value and check error message. YTI-650
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Admin
+    Select draft code list
+    Import codes in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_missing_order_value}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_missing_order}    timeout=20
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_missing_order_value_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_missing_order}    timeout=20
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage

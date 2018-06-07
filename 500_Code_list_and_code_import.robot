@@ -17,6 +17,7 @@ ${Codelist_with_defaultcode}    ${DATAFOLDER}${/}Codelist_with_defaultcode.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
+${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv.csv
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -136,8 +137,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
     Click button    Lisää luokitus
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_3}
-    Click element    //*[contains(text(), "${CLASSIFICATION_3}")]
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element    //*[contains(text(), "Asuminen")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
@@ -181,8 +182,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_4}
     Click button    Lisää luokitus
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_3}
-    Click element    //*[contains(text(), "${CLASSIFICATION_3}")]
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element    //*[contains(text(), "Asuminen")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
@@ -328,8 +329,8 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
     Click button    Lisää luokitus
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_3}
-    Click element    //*[contains(text(), "${CLASSIFICATION_3}")]
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element    //*[contains(text(), "Asuminen")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
@@ -369,6 +370,29 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
     Sleep    3
     Page should not contain    Vakiokoodi    timeout=20
     Page should not contain    koodi505 - Koodi505    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove imported Draft code list with codes
+
+510. Import DRAFT Codes (CSV) to existing Code list
+    [Documentation]    Import DRAFT Codes (CSV) to existing Code list, check that import is successful and remove code list
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    1
+    Wait until page contains    ${CODE_LIST_8}    timeout=20
+    Sleep    1
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Draft_Codes_with_broader_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    ${IMPORT_BTN}
+    Wait until page contains    koodi500 - Koodi500    timeout=20
+    Wait until page contains    koodi503 - Koodi503    timeout=20
+    Wait until page contains    koodi504 - Koodi504    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove imported Draft code list with codes
 
@@ -417,6 +441,15 @@ Import codes in Excel format
     Click element    ${FILE_FORMAT_BTN}
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+
+Import codes in CSV format
+    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
+    Click element    ${IMPORT_CODES_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
+    Click element    ${FILE_FORMAT_CSV}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Check values from Draft Code list
