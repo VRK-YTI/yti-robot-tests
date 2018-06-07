@@ -10,9 +10,9 @@ ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
 ${MUNICIPALITY_NAME_SV}    Helsingfors
-${CLASSIFICATION_1}    Demokratia
-${CLASSIFICATION_2}    Koulutus
-${CLASSIFICATION_3}    Asuminen
+${CLASSIFICATION_1}    id=remove_P8_classification_link
+${CLASSIFICATION_2}    id=remove_P6_classification_link
+${CLASSIFICATION_3}    id=remove_P1_classification_link
 ${REGISTRY_1}     Testirekisteri
 ${REMOVE_DEFAULTCODE}    id=remove_defaultcode_link
 #Frontpage buttons

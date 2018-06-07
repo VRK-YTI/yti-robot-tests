@@ -254,17 +254,17 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto and edit
-    Page should contain    ${CLASSIFICATION_2}
+    Page should contain element    ${CLASSIFICATION_2}
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}
     Click element    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element    //*[contains(text(), "Asuminen")]
     Sleep    1
     Save code list
     Sleep    5
-    Page should contain    ${CLASSIFICATION_1}
-    Page should contain    ${CLASSIFICATION_2}
+    Wait until page contains element    //*[contains(text(), "Asuminen")]
+    Wait until page contains element    //*[contains(text(), "Koulutus")]
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
@@ -273,8 +273,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Sleep    1
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Wait until page contains element    //*[contains(text(), "Asuminen")]
+    Click element    //*[contains(text(), "Asuminen")]
     Sleep    1
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]
     Sleep    2
@@ -455,14 +455,14 @@ Delete link from code
 
 Remove classification from code list
     Choose testiautomaatiokoodisto and edit
-    Page should contain    ${CLASSIFICATION_1}
-    Page should contain    ${CLASSIFICATION_2}
-    Wait until page contains element    ${NEW_CLASSIFICATION}
-    Click element    ${NEW_CLASSIFICATION}
+    Page should contain element    //*[contains(text(), "Asuminen")]
+    Page should contain element    //*[contains(text(), "Koulutus")]
+    Wait until page contains element    ${CLASSIFICATION_3}
+    Click element    ${CLASSIFICATION_3}
     Save code list
     Sleep    3
-    Page should not contain    ${CLASSIFICATION_1}
-    Page should contain    ${CLASSIFICATION_2}
+    Page should not contain element    //*[contains(text(), "Asuminen")]
+    Page should contain element    //*[contains(text(), "Koulutus")]
     Sleep    1
     Go back to Koodistot frontpage
     Close All Browsers
