@@ -128,6 +128,8 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
@@ -173,6 +175,8 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
@@ -320,6 +324,8 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
@@ -554,6 +560,8 @@ Check updated code listing
 Create new code to code list
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
     Click element    ${CREATE_CODE_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
     Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20

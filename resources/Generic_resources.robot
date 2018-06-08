@@ -50,6 +50,7 @@ ${CODELIST_INFO_TAB}    id=codelist_info_tab
 ${ADD_DEFAULTCODE_BTN}    id=add_defaultcode_button
 ${SEARCH_DEFAULTCODE_INPUT}    id=search_linked_code_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
+${CANCEL_CREATION_BTN}    id=cancel_modal_button_for_creation
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
