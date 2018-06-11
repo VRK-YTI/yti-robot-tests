@@ -208,8 +208,8 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_isPartOf_and_status}
     Sleep    3
-    Page should contain    Ominaisuutta tai viitettä ei löydy nimellä “isPartOf”
-    Page should contain    Ominaisuutta tai viitettä ei löydy nimellä “status”
+    Page should contain    Sanaston tyyppi ei tue saraketta “isPartOf”
+    Page should contain    Sanaston tyyppi ei tue saraketta “status”
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
@@ -279,7 +279,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts_to_thesaurus_incorrect_column}
     Sleep    3
-    Page should contain    Ominaisuutta tai viitettä ei löydy nimellä “ggggggggg”
+    Page should contain    Sanaston tyyppi ei tue saraketta “ggggggggg”
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
