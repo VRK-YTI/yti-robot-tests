@@ -3,6 +3,7 @@ Documentation     Test Suite for Code list and Code import
 Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
+Resource          resources/Controlled_vocabularies_resources.robot
 
 *** Variables ***
 #Excel paths
@@ -402,6 +403,40 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Return to Koodistot frontpage
     [Teardown]    Remove imported Draft code list with codes
 
+511. Create Code list and get concept from Controlled Vocabularies
+    [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
+    ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Controlled Vocabularies
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Input Text    ${SEARCH_CONCEPT_INPUT}    hotkija
+    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
+    Click element    ${VOCABULARY_SELECTION_DDL}
+    Click Button    Testiautomaatiosanasto
+    Wait until page contains element    //*[contains(text(), "hotkija")]
+    Click element    //*[contains(text(), "hotkija")]
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
+    Click button    Lisää luokitus
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element    //*[contains(text(), "Asuminen")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    5
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Test Case Teardown Controlled Vocabularies
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
@@ -659,3 +694,10 @@ Remove imported Codelist with defaultcode
 Remove Codelist with defaultcode
     Test Case Setup Superuser
     Remove imported Codelist with defaultcode
+
+Test Case Setup Controlled Vocabularies
+    Terminology Setup
+    Test Case Setup Superuser
+
+Test Case Teardown Controlled Vocabularies
+    Terminology Teardown
