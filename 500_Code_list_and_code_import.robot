@@ -444,39 +444,26 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
 512. Create Code to Code list and get concept for Code from Controlled Vocabularies
     [Documentation]    Create Code to Code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in Code. YTI-787
-    [Tags]    koodistot
+    [Tags]    regression
     [Setup]    Test Case Setup Controlled Vocabularies
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
-    Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
-    Input Text    ${SEARCH_CONCEPT_INPUT}    hotkija
-    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
-    Click element    ${VOCABULARY_SELECTION_DDL}
-    Click Button    Testiautomaatiosanasto
-    Wait until page contains element    //*[contains(text(), "hotkija")]
-    Click element    //*[contains(text(), "hotkija")]
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
-    Click button    Lisää luokitus
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
-    Click element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    5
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
+    Sleep    1
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    1
+    Wait until page contains    ${CODE_LIST_8}    timeout=20
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Check values from Draft Code list
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
+    Create new code to code list with concept
+    Wait until page contains    NewCode001 - hotkija
+    Wait until page contains    henkilö, joka hotkii kaiken
     Return to Koodistot frontpage
-    [Teardown]    Test Case Teardown Controlled Vocabularies
+    [Teardown]    Test Case Teardown Code with concept
 
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
@@ -564,7 +551,7 @@ Remove imported Draft code list
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_8}")]
     Wait until page contains    ${CODE_LIST_8}
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    #Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
     Page should contain    Tunnus
@@ -642,6 +629,21 @@ Create new code to code list
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
     Input text    ${CODE_NAME_INPUT}    newcode001
+    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click element    ${SAVE_NEW_CODE_BTN}
+
+Create new code to code list with concept
+    Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
+    Click element    ${CREATE_CODE_BTN}
+    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Input Text    ${SEARCH_CONCEPT_INPUT}    hotkija
+    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
+    Click element    ${VOCABULARY_SELECTION_DDL}
+    Click Button    Testiautomaatiosanasto
+    Wait until page contains element    //*[contains(text(), "hotkija")]
+    Click element    //*[contains(text(), "hotkija")]
+    Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
+    Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
 
@@ -765,3 +767,8 @@ Test Case Teardown Controlled Vocabularies
     Terminology Teardown
     Test Case Setup Superuser
     Remove Code list with concept from Controlled Vocabularies
+
+Test Case Teardown Code with concept
+    Terminology Teardown
+    Test Case Setup Superuser
+    Remove imported Draft code list

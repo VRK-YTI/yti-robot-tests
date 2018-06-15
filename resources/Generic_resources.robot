@@ -47,6 +47,7 @@ ${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
 ${CODELIST_INFO_TAB}    id=codelist_info_tab
+${CODELIST_CODES_TAB}    id=codelist_codes_tabs
 ${ADD_DEFAULTCODE_BTN}    id=add_defaultcode_button
 ${SEARCH_DEFAULTCODE_INPUT}    id=search_linked_code_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
