@@ -82,7 +82,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
     Sleep    1
-    Select Radio Button    externalReference    9a25f7fc-e4be-11e7-82ab-479f4f288376_external_reference_input
+    Click Element    ${CCBY4.0}
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
     Click element    ${SELECT_LINK_BTN}
     Sleep    1

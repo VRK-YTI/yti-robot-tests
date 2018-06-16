@@ -23,6 +23,9 @@ ${Duplicate_Codes}    ${DATAFOLDER}${/}Duplicate_codes.xlsx
 ${Codes_without_ID_column}    ${DATAFOLDER}${/}Codes_without_ID_column.xlsx
 ${Codes_invalid_codevalue}    ${DATAFOLDER}${/}Codes_invalid_codevalue.xlsx
 ${Codes_with_missing_order_value}    ${DATAFOLDER}${/}Codes_with_missing_order.xlsx
+${Same_order_values}    ${DATAFOLDER}${/}Codes_with_same_order_values.xlsx
+${Codes_with_order_values}    ${DATAFOLDER}${/}Codes_with_order_values.xlsx
+${Codes_with_existing_order_values}    ${DATAFOLDER}${/}Codes_with_existing_order_values.xlsx
 #CSV paths
 ${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.csv
 ${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
@@ -37,7 +40,8 @@ ${Codes_with_invalid_ID_csv}    ${DATAFOLDER}${/}Codes_with_invalid_ID_csv.csv
 ${Update_Code_valid_draft_csv}    ${DATAFOLDER}${/}Update_code_valid_draft_csv.csv
 ${Duplicate_Codes_csv}    ${DATAFOLDER}${/}Duplicate_codes_csv.csv
 ${Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Codes_invalid_codevalue_csv.csv
-${Codes_with_missing_order_value_csv}    ${DATAFOLDER}${/}Codes_with_missing_order_csv.xlsx
+${Codes_with_missing_order_value_csv}    ${DATAFOLDER}${/}Codes_with_missing_order_csv.csv
+${Same_order_values_csv}    ${DATAFOLDER}${/}Codes_with_same_order_values_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
@@ -53,6 +57,8 @@ ${Error_with_update_code_valid_draft}    Aineiston tilan muutos ei ole sallittu.
 ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
 ${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.
 ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
+${Error_same_order_values}    Koodin order-sarakkeen kentistä löytyi samoja arvoja.
+${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä koodistossa.
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
@@ -61,11 +67,11 @@ ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
     [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Same_order_values}
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_no_codeValue}    timeout=20
+    Wait until page contains    ${Same_order_values_in_Excel}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing_csv}
     Sleep    1
@@ -345,6 +351,50 @@ ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
     Wait until page contains    ${Error_missing_order}    timeout=20
+    Cancel code import
+    Sleep    1
+    Go back to Koodistot frontpage
+
+414. Import Codes with same ORDER values
+    [Documentation]    Import Codes with same ORDER values in Excel/CSV and check error message
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Admin
+    Select draft code list
+    Import codes in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Same_order_values}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_same_order_values}    timeout=20
+    Import codes in CSV format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Same_order_values_csv}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_same_order_values}    timeout=20
+    Cancel code import
+    Sleep    1
+    Go back to Koodistot frontpage
+
+415. Import Codes with existing ORDER values
+    [Documentation]    Import Codes with existing ORDER values in Code list and check error message
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Admin
+    Select draft code list
+    Import codes in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_order_values}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Sleep    1
+    Import codes in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_existing_order_values}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Sleep    1
+    Wait until page contains    ${Error_existing_order_values}    timeout=20
+    Sleep    1
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage

@@ -15,6 +15,7 @@ ${CLASSIFICATION_2}    id=remove_P6_classification_link
 ${CLASSIFICATION_3}    id=remove_P1_classification_link
 ${REGISTRY_1}     Testirekisteri
 ${REMOVE_DEFAULTCODE}    id=remove_defaultcode_link
+${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_input
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
