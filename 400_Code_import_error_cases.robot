@@ -67,11 +67,11 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Same_order_values}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing}
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Same_order_values_in_Excel}    timeout=20
+    Wait until page contains    ${Error_no_codeValue}    timeout=20
     Import codes in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing_csv}
     Sleep    1
