@@ -413,12 +413,12 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
     Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
-    Input Text    ${SEARCH_CONCEPT_INPUT}    hotkija
+    Input Text    ${SEARCH_CONCEPT_INPUT}    tutkija
     Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
     Click element    ${VOCABULARY_SELECTION_DDL}
     Click Button    Testiautomaatiosanasto
-    Wait until page contains element    //*[contains(text(), "hotkija")]
-    Click element    //*[contains(text(), "hotkija")]
+    Wait until page contains element    //*[contains(text(), "tutkija")]
+    Click element    //*[contains(text(), "tutkija")]
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
@@ -435,9 +435,9 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodisto6000    timeout=20
-    Wait until page contains    hotkija    timeout=20
+    Wait until page contains    tutkija    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
-    Wait until page contains    henkilö, joka hotkii kaiken    timeout=20
+    Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Controlled Vocabularies
 
@@ -460,8 +460,8 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
     Click element    ${CODELIST_CODES_TAB}
     Create new code to code list with concept
-    Wait until page contains    NewCode001 - hotkija
-    Wait until page contains    henkilö, joka hotkii kaiken
+    Wait until page contains    NewCode001 - tutkija
+    Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Code with concept
 
@@ -636,12 +636,12 @@ Create new code to code list with concept
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
     Click element    ${CREATE_CODE_BTN}
     Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
-    Input Text    ${SEARCH_CONCEPT_INPUT}    hotkija
+    Input Text    ${SEARCH_CONCEPT_INPUT}    tutkija
     Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
     Click element    ${VOCABULARY_SELECTION_DDL}
     Click Button    Testiautomaatiosanasto
-    Wait until page contains element    //*[contains(text(), "hotkija")]
-    Click element    //*[contains(text(), "hotkija")]
+    Wait until page contains element    //*[contains(text(), "tutkija")]
+    Click element    //*[contains(text(), "tutkija")]
     Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
@@ -737,15 +737,15 @@ Remove imported Codelist with defaultcode
 Remove Code list with concept from Controlled Vocabularies
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains element    //*[contains(text(), "hotkija")]    timeout=30
-    Click element    //*[contains(text(), "hotkija")]
+    Wait until page contains element    //*[contains(text(), "tutkija")]    timeout=30
+    Click element    //*[contains(text(), "tutkija")]
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Page should contain    Tunnus
     Page should contain    Koodisto6000
     Page should contain    Koodiston nimi
-    Page should contain    hotkija
+    Page should contain    tutkija
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
