@@ -444,7 +444,7 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
 512. Create Code to Code list and get concept for Code from Controlled Vocabularies
     [Documentation]    Create Code to Code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in Code. YTI-787
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
