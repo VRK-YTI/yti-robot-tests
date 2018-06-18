@@ -357,7 +357,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 414. Import Codes with same ORDER values
     [Documentation]    Import Codes with same ORDER values in Excel/CSV and check error message
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
@@ -378,7 +378,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 415. Import Codes with existing ORDER values
     [Documentation]    Import Codes with existing ORDER values in Code list and check error message
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
@@ -386,15 +386,9 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Sleep    1
-    Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_existing_order_values}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
-    Sleep    1
+    Sleep    2
     Wait until page contains    ${Error_existing_order_values}    timeout=20
-    Sleep    1
+    Sleep    2
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
