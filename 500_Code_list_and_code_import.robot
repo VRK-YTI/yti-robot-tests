@@ -465,6 +465,37 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Code with concept
 
+513. Import VALID Code list with codes and copy Code list
+    [Documentation]    Import VALID Code list with codes and clone Code list. YTI-156
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    5
+    Wait until page contains    ${CODE_LIST_9}    timeout=20
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Click button    ${EXPAND_ALL_BTN}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_2}")]
+    Page should contain    Tunnus
+    Page should contain    testikoodi02
+    Page should contain    Koodin nimi
+    Page should contain    Testikoodi 02
+    Sleep    5
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Check values from Valid Code list
+    Return to Koodistot frontpage
+    [Teardown]    Remove imported Valid code list
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20

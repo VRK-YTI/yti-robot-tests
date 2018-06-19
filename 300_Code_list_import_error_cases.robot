@@ -205,6 +205,21 @@ ${Error_invalid_code}    Laajennukseen liitettyä koodia ei ole olemassa.
     Sleep    2
     Go back to Koodistot frontpage
 
+310. Import Code list with Extensions that exceed maximum Hierarchy level
+    [Documentation]    Import Code list with Extensions that exceed maximum Hierarchy level and
+    ...    Check error message . YTI-844
+    [Tags]    regression
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_codeschemes_invalid_code}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_invalid_code}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
 *** Keywords ***
 Go back to Koodistot frontpage
     Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20

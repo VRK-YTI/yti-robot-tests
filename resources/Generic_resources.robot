@@ -14,7 +14,6 @@ ${CLASSIFICATION_1}    id=remove_P8_classification_link
 ${CLASSIFICATION_2}    id=remove_P6_classification_link
 ${CLASSIFICATION_3}    id=remove_P1_classification_link
 ${REGISTRY_1}     Testirekisteri
-${REMOVE_DEFAULTCODE}    id=remove_defaultcode_link
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_input
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
@@ -49,12 +48,14 @@ ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
 ${CODELIST_INFO_TAB}    id=codelist_info_tab
 ${CODELIST_CODES_TAB}    id=codelist_codes_tabs
-${ADD_DEFAULTCODE_BTN}    id=add_defaultcode_button
+${ADD_DEFAULTCODE_BTN}    id=add_code_button
+${REMOVE_DEFAULTCODE}    id=remove_code_link
 ${SEARCH_DEFAULTCODE_INPUT}    id=search_linked_code_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
-${CANCEL_CREATION_BTN}    id=cancel_modal_button_for_creation
+${CANCEL_CREATION_BTN}    id=cancel_modal_button
 ${SEARCH_CONCEPT_INPUT}    id=search_concept_input
 ${VOCABULARY_SELECTION_DDL}    id=selected_vocabulary_selection_dropdown
+${CLONE_CODE_LIST_BTN}    id=clone_codelist_button
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -118,7 +119,7 @@ ${EXPORT_TYPE_CSV}    id=codelist_export_csv_link
 #link buttons
 ${ADD_NEW_LINK_BTN}    id=add_new_link_button
 ${LINK_TYPE_DROPDOWN}    id=propertytype_dropdown_button
-${DROPDOWN_ITEM_LINK}    id=9e6b738c-e4be-11e7-9d91-b36cf669b046_propertytype_dropdown_button
+${DROPDOWN_ITEM_LINK}    id=ExternalReference_link_propertytype_dropdown_button
 ${LINK_URL_INPUT}    id=link_url_input
 ${ADD_BTN}        id=create_link_button
 ${LINK_1}         //a[@target='_blank'][contains(text(),'https://www.suomi.fi/etusivu/')]
