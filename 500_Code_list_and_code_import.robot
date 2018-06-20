@@ -493,8 +493,32 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
     Check values from Valid Code list
+    Wait until page contains element    ${CLONE_CODE_LIST_BTN}    timeout=20
+    Click button    ${CLONE_CODE_LIST_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until page contains element    ${EXPAND_ALL_BTN}
+    Click element    ${EXPAND_ALL_BTN}
+    Wait until page contains    testikoodi01 - Testikoodi 01
+    Wait until page contains    testikoodi02 - Testikoodi 02
+    Wait until page contains    testikoodi03 - Testikoodi 03
+    Wait until page contains    testikoodi04 - Testikoodi 04
+    Wait until page contains    testikoodi05 - Testikoodi 05
+    Wait until page contains    testikoodi06 - Testikoodi 06
+    Wait until page contains    testikoodi07 - Testikoodi 07
+    Wait until page contains    testikoodi08 - Testikoodi 08
+    Wait until page contains    testikoodi09 - Testikoodi 09
+    Wait until page contains    testikoodi10 - Testikoodi 10
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Valid code list
+    [Teardown]    Remove copied Code list
 
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
@@ -640,6 +664,27 @@ Remove imported Valid code list
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_9}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
+
+Remove copied Code list
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait until page contains    ${CODE_LIST_10}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Page should contain    Tunnus
+    Page should contain    Koodisto7001
+    Page should contain    Koodiston nimi
+    Page should contain    koodisto7001
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_10}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 

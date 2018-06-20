@@ -102,7 +102,7 @@ Terminology Open Chrome to Environment
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    $${TERMINOLOGY_ENVIRONMENT_URL}
+    Go To    ${TERMINOLOGY_ENVIRONMENT_URL}
 
 Terminology Select user
     Wait until page contains element    ${TERMINOLOGY_USER_DROPDOWN}    timeout=30

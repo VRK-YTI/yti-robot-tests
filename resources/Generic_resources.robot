@@ -109,6 +109,7 @@ ${TEST_CODE_5}    T56 - Testi06
 ${TEST_CODE_6}    testcode25 - Testikoodi 25
 ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
+${CODE_LIST_VALUE_3}    Koodisto7001
 #Status
 ${STATUS_DRAFT_FI}    Luonnos
 ${STATUS_VALID_FI}    Voimassa oleva
