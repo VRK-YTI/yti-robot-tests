@@ -91,8 +91,8 @@ Terminology Test Case Teardown
     Close All Browsers
 
 Terminology Open Browser with Settings
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Terminology Open Chrome to Environment
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Terminology Open Chrome to Environment
     ...    ELSE    Open Browser    ${TERMINOLOGY_ENVIRONMENT_URL}    browser=${BROWSER}
 
 Terminology Open Chrome to Environment
