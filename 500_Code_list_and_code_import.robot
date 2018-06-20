@@ -406,7 +406,7 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
 511. Create Code list and get concept for Code list from Controlled Vocabularies
     [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}

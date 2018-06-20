@@ -173,7 +173,7 @@ Open Browser with Settings
 Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    --headless
-    Call Method    ${chrome_options}    add_argument    --single-process
+    #Call Method    ${chrome_options}    add_argument    --single-process
     #    Call Method    ${chrome_options}    add_argument    start-maximized
     #    Call Method    ${chrome_options}    add_argument    --disable-web-security
     #    Call Method    ${chrome_options}    add_argument    --allow-insecure-localhost
