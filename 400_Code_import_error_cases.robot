@@ -55,7 +55,7 @@ ${Error_with_invalid_startdate}    Virheellinen alkupäivä rivillä 5.
 ${Error_with_invalid_ID}    Aineistossa oleva ID-sarakkeen arvo ei ole sallittu.
 ${Error_with_update_code_valid_draft}    Aineiston tilan muutos ei ole sallittu.
 ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
-${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.
+${Error_invalid_codeValue}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&
 ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
 ${Error_same_order_values}    Koodin order-sarakkeen kentistä löytyi samoja arvoja.
 ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä koodistossa.
@@ -395,8 +395,8 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 *** Keywords ***
 Go back to Koodistot frontpage
-    Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
-    Click element    //app-root/app-navigation-bar/nav/a/span
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
     Sleep    2
     Close All Browsers
 

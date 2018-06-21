@@ -222,8 +222,8 @@ ${Error_invalid_code}    Laajennukseen liitettyä koodia ei ole olemassa.
 
 *** Keywords ***
 Go back to Koodistot frontpage
-    Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
-    Click element    //app-root/app-navigation-bar/nav/a/span
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
     Sleep    2
     Close All Browsers
 

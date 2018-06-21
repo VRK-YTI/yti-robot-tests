@@ -20,6 +20,7 @@ ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
 ${SEARCH_CODE_CHECKBOX}    id=search_code_details_checkbox
+${FRONTPAGE_LINK}    id=main_page_link
 #Code list buttons
 ${ADD_CLASSIFICATION_BTN}    id=add_classification_button
 ${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button

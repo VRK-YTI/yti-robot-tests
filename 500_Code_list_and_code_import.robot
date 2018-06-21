@@ -467,7 +467,7 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
 
 513. Import VALID Code list with codes and copy Code list
     [Documentation]    Import VALID Code list with codes and clone Code list. YTI-156
-    [Tags]    koodistot
+    [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
@@ -495,14 +495,12 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Check values from Valid Code list
     Wait until page contains element    ${CLONE_CODE_LIST_BTN}    timeout=20
     Click button    ${CLONE_CODE_LIST_BTN}
-    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
-    Click element    ${CANCEL_CREATION_BTN}
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_10}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait until page contains element    ${EXPAND_ALL_BTN}
@@ -518,18 +516,18 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains    testikoodi09 - Testikoodi 09
     Wait until page contains    testikoodi10 - Testikoodi 10
     Return to Koodistot frontpage
-    [Teardown]    Remove copied Code list
+    [Teardown]    Remove original and copied Code list
 
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
-    Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
-    Click element    //app-root/app-navigation-bar/nav/a/span
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
     Sleep    2
     Close All Browsers
 
 Return to Koodistot frontpage
-    Wait until page contains element    //app-root/app-navigation-bar/nav/a/span    timeout=20
-    Click element    //app-root/app-navigation-bar/nav/a/span
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
 
 Save code list
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
@@ -667,9 +665,28 @@ Remove imported Valid code list
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
-Remove copied Code list
+Remove original and copied Code list
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Wait until page contains    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Page should contain    Tunnus
+    Page should contain    Koodisto7000
+    Page should contain    Koodiston nimi
+    Page should contain    koodisto7000
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_9}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Sleep    3
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_10}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_10}")]
     Wait until page contains    ${CODE_LIST_10}

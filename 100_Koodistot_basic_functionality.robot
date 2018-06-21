@@ -257,8 +257,8 @@ Restore Finnish language
     Close All Browsers
 
 Go back to Koodistot frontpage
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
     Sleep    2
     Close All Browsers
 

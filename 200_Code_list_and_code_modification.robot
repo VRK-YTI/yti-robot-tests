@@ -300,14 +300,14 @@ Restore code modify
     Close All Browsers
 
 Go back to Koodistot frontpage
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
     Sleep    2
     Close All Browsers
 
 Remove links from draft code
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
     Sleep    1
     Choose testiautomaatiokoodisto code and edit
     Sleep    3
