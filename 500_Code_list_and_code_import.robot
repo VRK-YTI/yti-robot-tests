@@ -310,7 +310,7 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Page should contain    T1333
     Page should contain    Vakiokoodikoodisto
     Page should contain    Vakiokoodi
-    Page should contain    koodi502
+    Page should contain    koodi502 - Koodi502
     Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove Codelist with defaultcode

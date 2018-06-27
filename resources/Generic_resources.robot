@@ -57,6 +57,9 @@ ${CANCEL_CREATION_BTN}    id=cancel_modal_button
 ${SEARCH_CONCEPT_INPUT}    id=search_concept_input
 ${VOCABULARY_SELECTION_DDL}    id=selected_vocabulary_selection_dropdown
 ${CLONE_CODE_LIST_BTN}    id=clone_codelist_button
+${EXTENSION_SCHEMES_TAB}    id=codelist_extensionschemes_tab
+${ADD_EXTENSION_BTN}    id=add_extension_button
+${SEARCH_EXTENSION_INPUT}    id=search_linked_extension_input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -83,6 +86,7 @@ ${SAVE_NEW_CODE_BTN}    id=editable_save_button
 ${REMOVE_CODE_BTN}    id=code_info_delete_button
 ${REMOVE_CODE_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CANCEL_CODE_CREATE_BTN}    id=editable_cancel_button
+${EXTENSION_BACK_BTN}    id=extension_back_button
 #Code lists and Codes
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
