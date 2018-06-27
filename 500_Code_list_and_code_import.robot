@@ -857,9 +857,15 @@ Test Case Setup Controlled Vocabularies
     Test Case Setup Superuser
 
 Test Case Teardown Controlled Vocabularies
+    Log    Controlled Vocabularies teardown start
     Terminology Teardown
+    Log    Controlled Vocabularies teardown done
+    Log    Test Case Setup Superuser start
     Test Case Setup Superuser
+    Log    Test Case Setup Superuser done
+    Log    Remove Code list with concept from Controlled Vocabularies start
     Remove Code list with concept from Controlled Vocabularies
+    Log    Remove Code list with concept from Controlled Vocabularies done
 
 Test Case Teardown Code with concept
     Terminology Teardown
