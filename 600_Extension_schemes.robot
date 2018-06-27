@@ -41,8 +41,8 @@ ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.
     Click Element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]
     Wait until page contains element    //*[contains(text(), "LAAJENNUKSET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "testcode01 - Testikoodi 01 - arvo: extensiontest11")]    timeout=20
-    Click element    //*[contains(text(), "testcode01 - Testikoodi 01 - arvo: extensiontest11")]
+    Wait until page contains element    //*[contains(text(), "koodi: Testikoodi 01 - arvo: extensiontest11")]    timeout=20
+    Click element    //*[contains(text(), "koodi: Testikoodi 01 - arvo: extensiontest11")]
     Wait until page contains    Testikoodisto2 pitkillä arvoilla    timeout=20
     Wait until page contains    Laajennusjärjestelmä    timeout=20
     Wait until page contains    Testilaajennus11    timeout=20
@@ -73,7 +73,7 @@ ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.
     Wait until page contains    Koodi    timeout=20
     Wait until page contains    testcode25 - Testikoodi 25    timeout=20
     Wait until page contains    Laajennus    timeout=20
-    Wait until page contains    EDUC - Koulutus, kulttuuri ja urheilu    timeout=20
+    Wait until page contains    koodi: Koulutus, kulttuuri ja urheilu - arvo: extensiontest18    timeout=20
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
     Sleep    5
