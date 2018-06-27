@@ -444,7 +444,7 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
 512. Create Code to Code list and get concept for Code from Controlled Vocabularies
     [Documentation]    Create Code to Code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in Code. YTI-787
-    [Tags]    koodistot
+    [Tags]    regression
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -603,18 +603,22 @@ Remove imported Draft code list
     Input Text    id=search_box_input    ${CODE_LIST_8}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_8}")]
+    Sleep    5
     Wait until page contains    ${CODE_LIST_8}
     #Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
+    Sleep    5
     Page should contain    Tunnus
     Page should contain    Koodisto6000
     Page should contain    Koodiston nimi
     Page should contain    koodisto6000
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
+    Sleep    5
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Sleep    5
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_8}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
