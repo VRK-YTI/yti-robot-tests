@@ -171,6 +171,7 @@ Select user
     Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
     Click element    ${user_id}
+    Sleep    5
     Wait Until Page Contains    ${user_name}
     Sleep    5
 
