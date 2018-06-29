@@ -110,6 +110,7 @@ Terminology Select user
     Sleep    1
     #Wait until page contains element    ${USER_1}
     Click element    ${USER_1}
+    Sleep    3
     Wait Until Page Contains    Testi Admin    timeout=20
     Sleep    5
 
@@ -122,29 +123,37 @@ Open Sanastot
 Go back to Sanastot frontpage
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
+    Sleep    3
 
 Create Testiautomaatiosanasto and import vocabulary
     Terminology Test Case Setup
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
+    Sleep    3
     Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
     Click element    ${VOCABULARY_TYPE_DDL}
+    Sleep    3
     Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
     Click element    //*[contains(text(), "Terminologinen sanasto")]
+    Sleep    3
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_1}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
+    Sleep    3
     Click element    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
     Wait until page contains element    //*[contains(text(), "${ORGANIZATION_2}")]
     Click element    //*[contains(text(), "${ORGANIZATION_2}")]
+    Sleep    3
     Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click element    ${ADD_NEW_CLASSIFICATION_BTN}
+    Sleep    3
     Wait until page contains element    ${TERMINOLOGY_CLASSIFICATION_INPUT}    timeout=30
     Input text    ${TERMINOLOGY_CLASSIFICATION_INPUT}    ${TERMINOLOGY_CLASSIFICATION_2}
     Wait until page contains element    //*[contains(text(), "${TERMINOLOGY_CLASSIFICATION_2}")]
     Click element    //*[contains(text(), "${TERMINOLOGY_CLASSIFICATION_2}")]
+    Sleep    3
     Wait until page contains element    ${ADD_DESCRIPTION_DDL}    timeout=30
     Click element    ${ADD_DESCRIPTION_DDL}
     Click button    ${NEW_DESCRIPTION_FI}
@@ -154,6 +163,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
+    Sleep    3
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -170,12 +180,15 @@ Delete Testiautomaatiosanasto
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Sleep    3
     Wait until page contains    ${VOCABULARY_1}    timeout=30
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Sleep    3
     Wait until page contains    Testiautomaatiosanasto    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}
+    Sleep    3
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Sleep    3
