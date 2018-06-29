@@ -378,7 +378,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 415. Import Codes with existing ORDER values
     [Documentation]    Import Codes with existing ORDER values in Code list and check error message
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
