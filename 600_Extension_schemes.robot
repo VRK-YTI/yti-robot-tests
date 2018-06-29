@@ -9,12 +9,15 @@ Resource          resources/Controlled_vocabularies_resources.robot
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
+${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
+${601_Extension_Scheme}    ${DATAFOLDER}${/}601_Extension_Scheme.xlsx
+${601_Extensions}    ${DATAFOLDER}${/}601_Extensions.xlsx
 
 *** Test Cases ***
 600. Import Code list with Extension Schemes
     [Documentation]    Import Code list with Extension Schemes, check that import is successfull,
     ...    Modify Extension, Export Excel and remove code list.
-    [Tags]    koodistot
+    [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_ExtensionSchemes}
@@ -83,6 +86,56 @@ ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.
     Sleep    5
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes
+
+601. Import Code list with codes and import Extension Schemes and Extensions
+    [Documentation]    Import Code list with Codes and import Extension Scheme and Extensions
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    testcode29 - Testcode 29    timeout=20
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_DDL}
+    Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
+    Sleep    2
+    Choose file    ${EXTENSION_SCHEMES_FILE_UPLOAD}    ${601_Extension_Scheme}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEMES_UPLOAD_BTN}    timeout=20
+    Click button    ${EXTENSION_SCHEMES_UPLOAD_BTN}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
+    Click element    ${EXTENSION_SCHEMES_TAB}
+    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Wait until page contains element    //*[contains(text(), "LAAJENNUKSET")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
+    Click element    ${IMPORT_EXTENSION_BTN}
+    Choose file    ${EXTENSION_FILE_UPLOAD}    ${601_Extensions}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
+    Click button    ${EXTENSION_UPLOAD_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
+    Click element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    Laajennusjärjestelmä    timeout=20
+    Wait until page contains    Testilaajennus55    timeout=20
+    Wait until page contains    suomi    timeout=20
+    Wait until page contains    extensiontest40    timeout=20
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
+    Click element    ${EXTENSION_BACK_BTN}
+    Return to Koodistot frontpage
+    [Teardown]    Remove codelist with Extension Schemes and Extensions
 
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
@@ -412,6 +465,24 @@ Remove Code list with concept from Controlled Vocabularies
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_8}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
+
+Remove codelist with Extension Schemes and Extensions
+    Test Case Setup Superuser
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_16}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_16}")]
+    Wait until page contains    ${CODE_LIST_16}
+    #Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_16}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Page should not contain element    //*[contains(text(), "Koodisto600")]
     Close All Browsers
 
 Remove Codelist with defaultcode

@@ -57,9 +57,18 @@ ${CANCEL_CREATION_BTN}    id=cancel_modal_button
 ${SEARCH_CONCEPT_INPUT}    id=search_concept_input
 ${VOCABULARY_SELECTION_DDL}    id=selected_vocabulary_selection_dropdown
 ${CLONE_CODE_LIST_BTN}    id=clone_codelist_button
+#Extension schemes
+${EXTENSION_SCHEMES_DDL}    id=extensionSchemeDropdown
+${IMPORT_EXTENSION_SCHEMES_BTN}    id=import_extensionschemes_button
 ${EXTENSION_SCHEMES_TAB}    id=codelist_extensionschemes_tab
 ${ADD_EXTENSION_BTN}    id=add_extension_button
 ${SEARCH_EXTENSION_INPUT}    id=search_linked_extension_input
+${EXTENSION_SCHEMES_FILE_UPLOAD}    id=fileupload_input
+${CREATE_EXTENSION_BTN}    id=create_extension_button
+${IMPORT_EXTENSION_BTN}    id=import_extensions_button
+${EXTENSION_FILE_UPLOAD}    id=fileupload_input
+${EXTENSION_SCHEMES_UPLOAD_BTN}    id=upload_file_button
+${EXTENSION_UPLOAD_BTN}    id=upload_file_button
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -104,6 +113,7 @@ ${CODE_LIST_12}    koodisto7003
 ${CODE_LIST_13}    Sisällön filteröinti
 ${CODE_LIST_14}    Testikoodisto2 pitkillä arvoilla
 ${CODE_LIST_15}    Vakiokoodikoodisto
+${CODE_LIST_16}    Koodisto600
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${TEST_CODE_1}    T100 - Automaatiokoodi
