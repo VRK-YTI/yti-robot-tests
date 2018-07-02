@@ -857,16 +857,32 @@ Remove Codelist with defaultcode
     Remove imported Codelist with defaultcode
 
 Test Case Setup Controlled Vocabularies
+    Log To Console    Terminology Setup start
     Terminology Setup
+    Log To Console    Terminology Setup end
+    Log To Console    Test Case Setup Superuser start
     Test Case Setup Superuser
+    Log To Console    Test Case Setup Superuser end
 
 Test Case Teardown Controlled Vocabularies
+    Log To Console    Controlled Vocabularies teardown start
     Terminology Teardown
+    Log To Console    Controlled Vocabularies teardown end
+    Log To Console    Test Case Setup Superuser start
     Test Case Setup Superuser
+    Log To Console    Test Case Setup Superuser end
+    Log To Console    Remove Code list with concept from Controlled Vocabularies start
     Remove Code list with concept from Controlled Vocabularies
+    Log To Console    Remove Code list with concept from Controlled Vocabularies end
 
 Test Case Teardown Code with concept
+    Log To Console    Terminology Teardown start
     Terminology Teardown
+    Log To Console    Terminology Teardown end
+    Log To Console    Test Case Setup Superuser start
     Test Case Setup Superuser
+    Log To Console    Test Case Setup Superuser end
+    Log To Console    Remove imported Draft code list start
     Remove imported Draft code list
+    Log To Console    Remove imported Draft code list end
 
