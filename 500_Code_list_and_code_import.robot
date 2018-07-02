@@ -466,7 +466,8 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     [Teardown]    Test Case Teardown Code with concept
 
 513. Import VALID Code list with codes and copy Code list
-    [Documentation]    Import VALID Code list with codes and clone Code list. YTI-156
+    [Documentation]    Import VALID Code list with codes and clone Code list.
+    ...    Check that links in original Code list and Code are copied as well. YTI-156
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -488,11 +489,54 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
     Sleep    5
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
+    Click element    ${ADD_LINK_TO_CODE_BTN}
+    Sleep    1
+    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
+    Click element    ${ADD_NEW_LINK_BTN}
+    Sleep    1
+    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
+    Click element    ${LINK_TYPE_DROPDOWN}
+    Sleep    1
+    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
+    Click element    ${DROPDOWN_ITEM_LINK}
+    Sleep    1
+    Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
+    Click element    ${LINK_URL_INPUT}
+    Sleep    1
+    Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
+    Wait until page contains element    ${ADD_BTN}    timeout=20
+    Click element    ${ADD_BTN}
+    Sleep    1
+    Wait until page contains    Linkki
+    Page should contain    https://www.suomi.fi/etusivu/
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Sleep    5
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
     Click element    ${CODE_BACK_BTN}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
+    Sleep    5
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
     Check values from Valid Code list
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
+    Click element    ${ADD_LINK_TO_CODE_BTN}
+    Sleep    1
+    Click Element    ${CCBY4.0}
+    Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
+    Click element    ${SELECT_LINK_BTN}
+    Sleep    1
+    Wait until page contains    Lisenssi
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}
+    Click element    ${SAVE_CODE_LIST_MOD_BTN}
+    Sleep    5
+    Wait until page contains    Lisenssi
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${CLONE_CODE_LIST_BTN}    timeout=20
     Click button    ${CLONE_CODE_LIST_BTN}
     Click element    ${SELECT_REGISTRY_BTN}
@@ -515,6 +559,20 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains    testikoodi08 - Testikoodi 08
     Wait until page contains    testikoodi09 - Testikoodi 09
     Wait until page contains    testikoodi10 - Testikoodi 10
+    Click element    //*[contains(text(), "testikoodi02 - Testikoodi 02")]
+    Wait until page contains    Linkki    timeout=20
+    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
+    Sleep    3
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Sleep    3
+    Wait until page contains    Lisenssi
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
+    Sleep    3
     Return to Koodistot frontpage
     [Teardown]    Remove original and copied Code list
 
@@ -885,4 +943,3 @@ Test Case Teardown Code with concept
     Log To Console    Remove imported Draft code list start
     Remove imported Draft code list
     Log To Console    Remove imported Draft code list end
-
