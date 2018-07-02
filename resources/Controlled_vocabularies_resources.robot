@@ -141,6 +141,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Sleep    3
     Click element    ${ADD_ORGANIZATION_BTN}
+    Sleep    3
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
     Wait until page contains element    //*[contains(text(), "${ORGANIZATION_2}")]
@@ -157,6 +158,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${ADD_DESCRIPTION_DDL}    timeout=30
     Click element    ${ADD_DESCRIPTION_DDL}
     Click button    ${NEW_DESCRIPTION_FI}
+    Sleep    3
     Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
@@ -166,6 +168,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Sleep    3
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Sleep    3
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_from_controlled_vocabularies}
     Sleep    3
