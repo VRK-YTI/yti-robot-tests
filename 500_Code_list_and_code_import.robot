@@ -741,8 +741,10 @@ Remove original and copied Code list
     Page should contain    koodisto7000
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
+    Sleep    5
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Sleep    5
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_9}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
@@ -760,8 +762,10 @@ Remove original and copied Code list
     Page should contain    koodisto7001
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
+    Sleep    5
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Sleep    5
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_10}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
