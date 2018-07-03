@@ -564,15 +564,15 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
     Click element    ${CODE_BACK_BTN}
-    Sleep    3
+    Sleep    7
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Sleep    3
+    Sleep    5
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
     Click element    ${CODELIST_CODES_TAB}
-    Sleep    3
+    Sleep    7
     Return to Koodistot frontpage
     [Teardown]    Remove original and copied Code list
 
