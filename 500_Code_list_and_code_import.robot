@@ -574,6 +574,7 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Click element    ${CODELIST_CODES_TAB}
     Sleep    3
     Return to Koodistot frontpage
+    Sleep    5
     [Teardown]    Remove original and copied Code list
 
 *** Keywords ***
@@ -741,7 +742,7 @@ Remove original and copied Code list
     Page should contain    Koodisto7000
     Page should contain    Koodiston nimi
     Page should contain    koodisto7000
-    Sleep    5
+    Sleep    10
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
     Sleep    10
