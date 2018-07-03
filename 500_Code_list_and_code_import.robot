@@ -732,19 +732,21 @@ Remove original and copied Code list
     Input Text    id=search_box_input    ${CODE_LIST_9}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Sleep    5
     Wait until page contains    ${CODE_LIST_9}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Sleep    5
     Page should contain    Tunnus
     Page should contain    Koodisto7000
     Page should contain    Koodiston nimi
     Page should contain    koodisto7000
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
-    Sleep    5
+    Sleep    7
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Sleep    5
+    Sleep    7
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_9}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
@@ -754,8 +756,9 @@ Remove original and copied Code list
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_10}")]
     Wait until page contains    ${CODE_LIST_10}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Sleep    5
     Page should contain    Tunnus
     Page should contain    Koodisto7001
     Page should contain    Koodiston nimi
