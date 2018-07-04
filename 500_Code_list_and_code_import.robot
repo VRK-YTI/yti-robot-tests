@@ -466,89 +466,124 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     [Teardown]    Test Case Teardown Code with concept
 
 513. Import VALID Code list with codes and copy Code list
+    Log to Console    Import VALID Code list with codes and copy Code list
     [Documentation]    Import VALID Code list with codes and clone Code list.
     ...    Check that links in original Code list and Code are copied as well. YTI-156
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
+    Log to Console    Start data import
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
     Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
-    Sleep    5
+    Sleep    7
+    Log to Console    Data imported successfully
     Wait until page contains    ${CODE_LIST_9}    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
     Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Log to Console    Codes visible and expand button shown
     Click button    ${EXPAND_ALL_BTN}
+    Sleep    3
+    Log to Console    Expand button clicked
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
+    Sleep    3
     Page should contain    Tunnus
     Page should contain    testikoodi02
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
-    Sleep    5
     Wait until page contains element    ${MODIFY_CODE_BTN}
+    Log to Console    Modify button is visible
     Click element    ${MODIFY_CODE_BTN}
+    Sleep    3
+    Log to Console    Modify button click successful
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
-    Sleep    1
+    Sleep    2
+    Log to Console    Add link button click successful
     Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
     Click element    ${ADD_NEW_LINK_BTN}
-    Sleep    1
+    Sleep    2
+    Log to Console    Add new link button click successful
     Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
     Click element    ${LINK_TYPE_DROPDOWN}
-    Sleep    1
+    Sleep    2
+    Log to Console    Link type dropdown click successful
     Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
     Click element    ${DROPDOWN_ITEM_LINK}
-    Sleep    1
+    Sleep    2
+    Log to Console    Link type selection click successful
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
-    Sleep    1
+    Sleep    2
+    Log to Console    URL input click successful
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
+    Log to Console    Link URL text input successful
     Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
-    Sleep    1
+    Sleep    2
     Wait until page contains    Linkki
     Page should contain    https://www.suomi.fi/etusivu/
+    Log to Console    Link has been added successfully to page
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    5
+    Sleep    3
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
     Click element    ${CODE_BACK_BTN}
-    Sleep    5
+    Sleep    3
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Log to Console    Back button press successful from Code page
     Click element    ${CODELIST_INFO_TAB}
+    Sleep    2
     Check values from Valid Code list
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Log to Console    Modify code list button is found
     Click element    ${MODIFY_CODE_LIST}
+    Sleep    2
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
+    Log to Console    Add link button is found
     Click element    ${ADD_LINK_TO_CODE_BTN}
     Sleep    1
     Click Element    ${CCBY4.0}
+    Sleep    2
+    Log to Console    Add link button is found
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
     Click element    ${SELECT_LINK_BTN}
     Sleep    1
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}
+    Log to Console    Save button is found
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
     Sleep    5
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${CLONE_CODE_LIST_BTN}    timeout=20
+    Log to Console    Add link button is found and CC by 4.0 is there
     Click button    ${CLONE_CODE_LIST_BTN}
+    Sleep    2
+    Log to Console    Clone button pressed
     Click element    ${SELECT_REGISTRY_BTN}
+    Sleep    2
+    Log to Console    Registry button clicked
     Click button    ${REGISTRY_1}
+    Sleep    2
+    Log to Console    Registry selection done
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    2
+    Log to Console    Code list save pressed
     Wait until page contains element    ${EXPAND_ALL_BTN}
     Click element    ${EXPAND_ALL_BTN}
+    Sleep    2
+    Log to Console    Expand all pressed
     Wait until page contains    testikoodi01 - Testikoodi 01
     Wait until page contains    testikoodi02 - Testikoodi 02
     Wait until page contains    testikoodi03 - Testikoodi 03
@@ -560,19 +595,26 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Wait until page contains    testikoodi09 - Testikoodi 09
     Wait until page contains    testikoodi10 - Testikoodi 10
     Click element    //*[contains(text(), "testikoodi02 - Testikoodi 02")]
+    Sleep    2
+    Log to Console    Testikoodi 02 clicked
     Wait until page contains    Linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Log to Console    Testikoodi 02 elements found on page
     Click element    ${CODE_BACK_BTN}
     Sleep    7
+    Log to Console    Code back button pressed
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Log to Console    Codelist info tab found
     Click element    ${CODELIST_INFO_TAB}
     Sleep    5
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Log to Console    CC 4.0 license found and Codes tab is there
     Click element    ${CODELIST_CODES_TAB}
-    Sleep    7
+    Sleep    5
+    Log to Console    Codes tab clicked
     Return to Koodistot frontpage
     [Teardown]    Remove original and copied Code list
 
@@ -728,6 +770,7 @@ Remove imported Valid code list
     Close All Browsers
 
 Remove original and copied Code list
+    Log to Console    Removing original and copied Code lists
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_9}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
@@ -746,6 +789,7 @@ Remove original and copied Code list
     Click element    ${DELETE_CODE_LIST_BTN}
     Sleep    5
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Log to Console    Code list 7000 removed
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
     Sleep    5
     Wait Until Element Is Visible    id=search_box_input    timeout=30
@@ -756,6 +800,7 @@ Remove original and copied Code list
     Input Text    id=search_box_input    ${CODE_LIST_10}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Sleep    5
     Wait until page contains    ${CODE_LIST_10}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
@@ -768,6 +813,7 @@ Remove original and copied Code list
     Click element    ${DELETE_CODE_LIST_BTN}
     Sleep    5
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Log to Console    Code list 7001 removed
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
     Sleep    5
     Wait Until Element Is Visible    id=search_box_input    timeout=30
