@@ -706,6 +706,49 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
+515. Create registry with existing registry code value
+    [Documentation]    Create registry with existing registry code value and check error message
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Sleep    2
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=20
+    Click element    ${CREATE_REGISTRY_BTN}
+    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
+    Input Text    ${REGISTRY_VALUE_INPUT}    Rekisteri123
+    Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
+    Input Text    ${REGISTRY_NAME_INPUT}    Automaatiorekisteri
+    Wait until page contains element    ${REGISTRY_DEFINITON_INPUT}    timeout=20
+    Input text    ${REGISTRY_DEFINITON_INPUT}    Määritelmä
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click button    ${ADD_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
+    Click element    //*[contains(text(), "Testiorganisaatio")]
+    Wait until page contains element    ${SAVE_REGISTRY}
+    Click element    ${SAVE_REGISTRY}
+    Sleep    5
+    Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
+    Sleep    2
+    Return to Koodistot frontpage
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=20
+    Click element    ${CREATE_REGISTRY_BTN}
+    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
+    Input Text    ${REGISTRY_VALUE_INPUT}    Rekisteri123
+    Wait until page contains    Rekisterin tunnus on jo käytössä.    timeout=20
+    Sleep    3
+    Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
+    Click element    ${CANCEL_CODE_MOD_BTN}
+    Sleep    5
+    Return to Koodistot frontpage
+    Sleep    3
+    [Teardown]    Remove registry
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
@@ -1085,3 +1128,20 @@ Test Case Teardown Code with concept
     Log To Console    Remove imported Draft code list start
     Remove imported Draft code list
     Log To Console    Remove imported Draft code list end
+
+Remove registry
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
+    Click element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
+    Wait until page contains element    ${DELETE_REGISTRY}
+    Click element    ${DELETE_REGISTRY}
+    Sleep    5
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Sleep    5
+    Wait until page contains element    ${REGISTRY_FILTER_DDL}    timeout=20
+    Click element    ${REGISTRY_FILTER_DDL}
+    Page should not contain element    //*[contains(text(), "Automaatiorekisteri")]
+    Close All Browsers

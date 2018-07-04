@@ -31,8 +31,8 @@ ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    id=vocabulary_description_fi_0_textarea
 ${SAVE_VOCABULARY_BTN}    id=vocabulary_editable_save_edited_button
 ${ADD_TITLE_BTN}    id=prefLabel_add_button
 ${LANGUAGE_EN_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/div/button[1]
-${ADD_ORGANIZATION_BTN}    id=vocabulary_contributor_add_organization_button
-${SEARCH_ORGANIZATION_INPUT}    id=search_organization_link
+${ADD_VOCABULARY_ORGANIZATION_BTN}    id=vocabulary_contributor_add_organization_button
+${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    id=search_organization_link
 ${ADD_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_classification_button
 ${TERMINOLOGY_CLASSIFICATION_INPUT}    id=search_classification_link
 ${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_input
@@ -138,12 +138,12 @@ Create Testiautomaatiosanasto and import vocabulary
     Sleep    3
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_1}
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
+    Wait until page contains element    ${ADD_VOCABULARY_ORGANIZATION_BTN}    timeout=30
     Sleep    3
-    Click element    ${ADD_ORGANIZATION_BTN}
+    Click element    ${ADD_VOCABULARY_ORGANIZATION_BTN}
     Sleep    3
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
+    Wait until page contains element    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    timeout=30
+    Input text    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
     Wait until page contains element    //*[contains(text(), "${ORGANIZATION_2}")]
     Click element    //*[contains(text(), "${ORGANIZATION_2}")]
     Sleep    3
@@ -163,6 +163,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
+    Sleep    3
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Sleep    3

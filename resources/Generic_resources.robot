@@ -24,7 +24,7 @@ ${SEARCH_CODE_CHECKBOX}    id=search_code_details_checkbox
 ${FRONTPAGE_LINK}    id=main_page_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
 ${NAVIGATION_MENU_REGISTRIES}    id=navigation_link_registries
-${REGISTRY_FILTER_DDL}    id=selected_register_filter_dropdown
+${REGISTRY_FILTER_DDL}    id=selected_registry_filter_dropdown
 #Registry
 ${CREATE_REGISTRY_BTN}    id=create_registry_button
 ${REGISTRY_VALUE_INPUT}    id=registry_value_input
