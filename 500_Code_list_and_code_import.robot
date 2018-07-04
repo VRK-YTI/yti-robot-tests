@@ -19,6 +19,8 @@ ${Codelist_with_defaultcode}    ${DATAFOLDER}${/}Codelist_with_defaultcode.xlsx
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv.csv
+#Error messages
+${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -466,11 +468,11 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     [Teardown]    Test Case Teardown Code with concept
 
 513. Import VALID Code list with codes and copy Code list
-    Log to Console    Import VALID Code list with codes and copy Code list
     [Documentation]    Import VALID Code list with codes and clone Code list.
     ...    Check that links in original Code list and Code are copied as well. YTI-156
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
+    Log to Console    Import VALID Code list with codes and copy Code list
     Log to Console    Start data import
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
@@ -617,6 +619,92 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
     Log to Console    Codes tab clicked
     Return to Koodistot frontpage
     [Teardown]    Remove original and copied Code list
+
+514. Create and delete registry
+    [Documentation]    Create registry and attach code list to that registry. Check that deleting
+    ...    registry with code lists is not possible, remove code list and delete empty registry.
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Superuser
+    Sleep    2
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=20
+    Click element    ${CREATE_REGISTRY_BTN}
+    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
+    Input Text    ${REGISTRY_VALUE_INPUT}    Rekisteri123
+    Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
+    Input Text    ${REGISTRY_NAME_INPUT}    Automaatiorekisteri
+    Wait until page contains element    ${REGISTRY_DEFINITON_INPUT}    timeout=20
+    Input text    ${REGISTRY_DEFINITON_INPUT}    Määritelmä
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click button    ${ADD_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
+    Click element    //*[contains(text(), "Testiorganisaatio")]
+    Wait until page contains element    ${SAVE_REGISTRY}
+    Click element    ${SAVE_REGISTRY}
+    Sleep    5
+    Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
+    Return to Koodistot frontpage
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_2}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
+    Click button    Lisää luokitus
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element    //*[contains(text(), "Asuminen")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    5
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Create new code to code list
+    Sleep    5
+    Return to Koodistot frontpage
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
+    Click element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
+    Wait until page contains element    ${DELETE_REGISTRY}
+    Click element    ${DELETE_REGISTRY}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait until page contains    ${Error_registry_with_codes}    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Wait until page contains element    //*[contains(text(), "koodisto6000")]    timeout=20
+    Click element    //*[contains(text(), "koodisto6000")]
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
+    Click element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
+    Wait until page contains element    ${DELETE_REGISTRY}    timeout=20
+    Click element    ${DELETE_REGISTRY}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait until page contains element    ${REGISTRY_FILTER_DDL}    timeout=20
+    Click element    ${REGISTRY_FILTER_DDL}
+    Page should not contain element    //*[contains(text(), "Automaatiorekisteri")]
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_8}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Close All Browsers
 
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers

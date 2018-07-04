@@ -14,6 +14,7 @@ ${CLASSIFICATION_1}    id=remove_P8_classification_link
 ${CLASSIFICATION_2}    id=remove_P6_classification_link
 ${CLASSIFICATION_3}    id=remove_P1_classification_link
 ${REGISTRY_1}     Testirekisteri
+${REGISTRY_2}     Automaatiorekisteri
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_input
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
@@ -21,6 +22,18 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
 ${SEARCH_CODE_CHECKBOX}    id=search_code_details_checkbox
 ${FRONTPAGE_LINK}    id=main_page_link
+${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
+${NAVIGATION_MENU_REGISTRIES}    id=navigation_link_registries
+${REGISTRY_FILTER_DDL}    id=selected_register_filter_dropdown
+#Registry
+${CREATE_REGISTRY_BTN}    id=create_registry_button
+${REGISTRY_VALUE_INPUT}    id=registry_value_input
+${REGISTRY_NAME_INPUT}    id=registry_name_input
+${REGISTRY_DEFINITON_INPUT}    id=registry_definition_textarea
+${ADD_ORGANIZATION_BTN}    id=add_organization_button
+${SEARCH_ORGANIZATION_INPUT}    id=search_linked_organization_input
+${SAVE_REGISTRY}    id=editable_save_button
+${DELETE_REGISTRY}    id=delete_registry_button
 #Code list buttons
 ${ADD_CLASSIFICATION_BTN}    id=add_classification_button
 ${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
