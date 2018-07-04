@@ -623,7 +623,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 514. Create and delete registry
     [Documentation]    Create registry and attach code list to that registry. Check that deleting
     ...    registry with code lists is not possible, remove code list and delete empty registry.
-    [Tags]    koodistot
+    [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
