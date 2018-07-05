@@ -34,8 +34,8 @@ eDuuni Login
     Wait Until Page Contains element    id=identifierNext    timeout=20
     Click element    id=identifierNext
     Sleep    5
-    Wait Until Page Contains element    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[1]/form/content/div[1]/div/div[1]/div/div[1]/input    timeout=20
-    Input text    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[1]/form/content/div[1]/div/div[1]/div/div[1]/input    ${TEST_PASSWORD}
+    Wait Until Page Contains element    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[1]/div/form/content/div[1]/div/div[1]/div/div[1]/input    timeout=20
+    Input text    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[1]/div/form/content/div[1]/div/div[1]/div/div[1]/input    ${TEST_PASSWORD}
     Sleep    5
     Wait Until Page Contains element    id=passwordNext
     Click element    id=passwordNext
