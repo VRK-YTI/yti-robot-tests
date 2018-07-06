@@ -137,6 +137,55 @@ ${601_Extensions}    ${DATAFOLDER}${/}601_Extensions.xlsx
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
+602. Import new Code list and create Extension Scheme and Extensions
+    [Documentation]    Import new Code list and create Extension Scheme and Extension manually
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    testcode29 - Testcode 29    timeout=20
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_DDL}
+    Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
+    Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${EXTENSION_SCHEME_VALUE_1}
+    Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
+    Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${EXTENSION_SCHEME_NAME_1}
+    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
+    Click button    ${SAVE_EXTENSION_SCHEME}
+    Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
+    Click button    ${CREATE_EXTENSION_BTN}
+    Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
+    Input Text    ${EXTENSION_VALUE_INPUT}    ${EXTENSION_VALUE_1}
+    Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
+    Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
+    Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
+    Click button    ${ADD_CODE_TO_EXTENSION_BTN}
+    Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
+    Input Text    ${SEARCH_CODE_TO_EXTENSION_INPUT}    Testcode 57
+    Wait until page contains element    //*[contains(text(), "Testcode 57")]    timeout=30
+    Click element    //*[contains(text(), "Testcode 57")]
+    Sleep    3
+    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
+    Click button    ${SAVE_EXTENSION_SCHEME}
+    Sleep    3
+    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'3_breadcrumb_link')]
+    Wait until page contains    Extension 1 - koodi: Testcode 57 - arvo: ext1    timeout=30
+    Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'2_breadcrumb_link')]
+    Wait until page contains    Koodisto600    timeout=30
+    Sleep    3
+    Return to Koodistot frontpage
+    [Teardown]    Remove codelist with Extension Schemes and Extensions
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20

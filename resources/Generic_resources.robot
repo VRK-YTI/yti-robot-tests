@@ -73,6 +73,7 @@ ${CLONE_CODE_LIST_BTN}    id=clone_codelist_button
 #Extension schemes
 ${EXTENSION_SCHEMES_DDL}    id=extensionSchemeDropdown
 ${IMPORT_EXTENSION_SCHEMES_BTN}    id=import_extensionschemes_button
+${CREATE_EXTENSION_SCHEMES_BTN}    id=create_extensionscheme_button
 ${EXTENSION_SCHEMES_TAB}    id=codelist_extensionschemes_tab
 ${ADD_EXTENSION_BTN}    id=add_extension_button
 ${SEARCH_EXTENSION_INPUT}    id=search_linked_extension_input
@@ -82,6 +83,13 @@ ${IMPORT_EXTENSION_BTN}    id=import_extensions_button
 ${EXTENSION_FILE_UPLOAD}    id=fileupload_input
 ${EXTENSION_SCHEMES_UPLOAD_BTN}    id=upload_file_button
 ${EXTENSION_UPLOAD_BTN}    id=upload_file_button
+${EXTENSION_SCHEME_CODEVALUE_INPUT}    id=extensionscheme_codevalue_input
+${EXTENSION_SCHEME_NAME_INPUT}    id=extensionscheme_name_input
+${SAVE_EXTENSION_SCHEME}    id=editable_save_button
+${EXTENSION_VALUE_INPUT}    id=extension_extensionvalue_input
+${EXTENSION_NAME_INPUT}    id=extension_name_input
+${ADD_CODE_TO_EXTENSION_BTN}    id=add_code_button
+${SEARCH_CODE_TO_EXTENSION_INPUT}    id=search_linked_code_input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -138,6 +146,10 @@ ${TEST_CODE_6}    testcode25 - Testikoodi 25
 ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 ${CODE_LIST_VALUE_3}    Koodisto7001
+${EXTENSION_SCHEME_VALUE_1}    extscheme1
+${EXTENSION_SCHEME_NAME_1}    Extension scheme 1
+${EXTENSION_VALUE_1}    ext1
+${EXTENSION_NAME_1}    Extension 1
 #Status
 ${STATUS_DRAFT_FI}    Luonnos
 ${STATUS_VALID_FI}    Voimassa oleva
