@@ -139,7 +139,7 @@ ${601_Extensions}    ${DATAFOLDER}${/}601_Extensions.xlsx
 
 602. Import new Code list and create Extension Scheme and Extensions
     [Documentation]    Import new Code list and create Extension Scheme and Extension manually
-    [Tags]    koodistot
+    [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
