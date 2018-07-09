@@ -90,6 +90,9 @@ ${EXTENSION_VALUE_INPUT}    id=extension_extensionvalue_input
 ${EXTENSION_NAME_INPUT}    id=extension_name_input
 ${ADD_CODE_TO_EXTENSION_BTN}    id=add_code_button
 ${SEARCH_CODE_TO_EXTENSION_INPUT}    id=search_linked_code_input
+${EXTENSION_DELETE_BTN}    id=extension_delete_button
+${CONFIRM_DELETE_EXTENSION_BTN}    id=confirm_confirmation_modal_button
+${EXTENSION_SCHEME_DELETE_BTN}    id=delete_extensionscheme_button
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
