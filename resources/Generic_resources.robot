@@ -86,6 +86,7 @@ ${EXTENSION_UPLOAD_BTN}    id=upload_file_button
 ${EXTENSION_SCHEME_CODEVALUE_INPUT}    id=extensionscheme_codevalue_input
 ${EXTENSION_SCHEME_NAME_INPUT}    id=extensionscheme_name_input
 ${SAVE_EXTENSION_SCHEME}    id=editable_save_button
+${SAVE_EXTENSION}    id=editable_save_button
 ${EXTENSION_VALUE_INPUT}    id=extension_extensionvalue_input
 ${EXTENSION_NAME_INPUT}    id=extension_name_input
 ${ADD_CODE_TO_EXTENSION_BTN}    id=add_code_button
@@ -93,6 +94,9 @@ ${SEARCH_CODE_TO_EXTENSION_INPUT}    id=search_linked_code_input
 ${EXTENSION_DELETE_BTN}    id=extension_delete_button
 ${CONFIRM_DELETE_EXTENSION_BTN}    id=confirm_confirmation_modal_button
 ${EXTENSION_SCHEME_DELETE_BTN}    id=delete_extensionscheme_button
+${MODIFY_EXTENSION_SCHEME_BTN}    id=editable_edit_button
+${MODIFY_EXTENSION_BTN}    id=editable_edit_button
+${REMOVE_EXTENSION_LINK}    id=remove_extension_link
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
