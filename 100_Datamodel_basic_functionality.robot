@@ -18,7 +18,7 @@ Resource          resources/Datamodel_Resources.robot
     Wait until page contains    Miten voin liittyä työkalun käyttäjäksi?
     Wait until page contains    Katso myös
     Wait until page contains    Ota yhteyttä
-    [Teardown]    Go back to Tietomallit frontpage
+    [Teardown]    Go back to Tietomallit frontpage and close browsers
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
@@ -58,7 +58,7 @@ Resource          resources/Datamodel_Resources.robot
 104. Search for DRAFT model
     [Documentation]    Search for DRAFT model with frontpage search function.
     [Tags]    regression    tietomallit
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Create Testiautomaatio model
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait until page contains element    //*[contains(text(), "${MODEL_1}")]    timeout=30
@@ -68,7 +68,8 @@ Resource          resources/Datamodel_Resources.robot
     Click element    ${SHOW_MODEL_DETAILS_BTN}
     Wait until page contains element    ${ADD_CLASS_BTN}    timeout=30
     Sleep    5
-    [Teardown]    Go back to Tietomallit frontpage
+    Go back to Tietomallit frontpage
+    [Teardown]    Test Case Teardown Delete Testiautomaatio model
 
 *** Keywords ***
 Restore Finnish language
@@ -80,3 +81,11 @@ Restore Finnish language
     Wait until page contains    Kaikki tyypit    timeout=20
     Wait until page contains    Luokitus    timeout=20
     Close All Browsers
+
+Test Case Setup Create Testiautomaatio model
+    Test Case Setup
+    Create Testiautomaatio model
+    Go back to Tietomallit frontpage
+
+Test Case Teardown Delete Testiautomaatio model
+    Delete Testiautomaatio model
