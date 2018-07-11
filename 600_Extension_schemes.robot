@@ -12,6 +12,8 @@ ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.
 ${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
 ${601_Extension_Scheme}    ${DATAFOLDER}${/}601_Extension_Scheme.xlsx
 ${601_Extensions}    ${DATAFOLDER}${/}601_Extensions.xlsx
+#CSV paths
+${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
 
 *** Test Cases ***
 600. Import Code list with Extension Schemes
@@ -317,6 +319,56 @@ ${601_Extensions}    ${DATAFOLDER}${/}601_Extensions.xlsx
     Wait until page contains    ext1    timeout=20
     Wait until page contains    testcode57 - Testcode 57    timeout=20
     #Page should not contain    suomi - koodi: Testcode 29 - arvo: extensiontest41
+    Return to Koodistot frontpage
+    [Teardown]    Remove codelist with Extension Schemes and Extensions
+
+605. Import Extensions in CSV format
+    [Documentation]    Import Code list with Codes and import Extension Scheme and Extensions in CSV format.
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    testcode29 - Testcode 29    timeout=20
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_DDL}
+    Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
+    Sleep    2
+    Choose file    ${EXTENSION_SCHEMES_FILE_UPLOAD}    ${601_Extension_Scheme}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEMES_UPLOAD_BTN}    timeout=20
+    Click button    ${EXTENSION_SCHEMES_UPLOAD_BTN}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
+    Click element    ${EXTENSION_SCHEMES_TAB}
+    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Wait until page contains element    //*[contains(text(), "LAAJENNUKSET")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
+    Click element    ${IMPORT_EXTENSION_BTN}
+    Choose file    ${EXTENSION_FILE_UPLOAD}    ${Extensions_csv}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
+    Click button    ${EXTENSION_UPLOAD_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
+    Click element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    Laajennusjärjestelmä    timeout=20
+    Wait until page contains    Testilaajennus55    timeout=20
+    Wait until page contains    suomi    timeout=20
+    Wait until page contains    extensiontest40    timeout=20
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
+    Click element    ${EXTENSION_BACK_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
