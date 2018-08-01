@@ -27,6 +27,14 @@ ${ADD_CONTRIBUTOR}    //application/ng-container/div/div/new-model-page/div/form
 ${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
 ${REMOVE_MODEL_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_MODEL_BTN}    //div[1]/div/div/div/modal-template/div[3]/div[2]/button[1]
+${MODEL_LANGUAGE_INTPUT}    id=modelLanguage
+${REMOVE_CLASSIFICATION}    //*[@id="ctrl.id"]/div/div[2]/classifications-view/editable-table/table/tbody/tr/td[2]/i
+${REMOVE_CONTRIBUTOR}    //*[@id="ctrl.id"]/div/div[2]/contributors-view/editable-table/table/tbody/tr/td[2]/i
+${ADD_LINK}       //*[@id="ctrl.id"]/div/div[2]/links-view/h4/button/span
+${LINK_URL_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[1]/div/div/input
+${LINK_NAME_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[2]/div/div/input
+${LINK_DESCRIPTION_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[3]/div/div/textarea
+${MODIFY_MODEL}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
 
 *** Keywords ***
 Test Case Setup
