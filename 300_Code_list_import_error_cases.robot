@@ -193,7 +193,7 @@ ${Error_invalid_code}    Laajennukseen liitettyä koodia ei ole olemassa.
 309. Import Code list with Extension Schemes and with invalid Code
     [Documentation]    Import Code list (Excel) with Extension Schemes. Check error message when
     ...    Code in Extensions sheet is not included to the Code list. YTI-853
-    [Tags]    regression
+    [Tags]    fail
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_codeschemes_invalid_code}
@@ -208,7 +208,7 @@ ${Error_invalid_code}    Laajennukseen liitettyä koodia ei ole olemassa.
 310. Import Code list with Extensions that exceed maximum Hierarchy level
     [Documentation]    Import Code list with Extensions that exceed maximum Hierarchy level and
     ...    Check error message . YTI-844
-    [Tags]    regression
+    [Tags]    fail
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_codeschemes_invalid_code}

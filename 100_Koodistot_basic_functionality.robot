@@ -58,7 +58,7 @@ Resource          resources/Generic_resources.robot
     Wait until page contains    ${CODE_1}
     Wait until page contains    Koodisto
     Wait until page contains    testiautomaatiokoodisto 2
-    Wait until page contains    Tunnus
+    Wait until page contains    Koodin arvo
     Wait until page contains    koodi01
     Wait until page contains    Koodin nimi
     Wait until page contains    Koodi01
@@ -207,7 +207,7 @@ Resource          resources/Generic_resources.robot
     Wait until page contains    ${TEST_CODE_3}
     Wait until page contains    Koodisto
     Wait until page contains    testiautomaatiokoodisto1
-    Wait until page contains    Tunnus
+    Wait until page contains    Koodin arvo
     Wait until page contains    Koodi1006
     Wait until page contains    Koodin nimi
     Wait until page contains    Koodi1006
@@ -236,7 +236,7 @@ Resource          resources/Generic_resources.robot
     Click element    //*[contains(text(), "${TEST_CODE_5}")]
     Wait until page contains    Koodisto
     Wait until page contains    Sisällön filteröinti
-    Wait until page contains    Tunnus
+    Wait until page contains    Koodin arvo
     Wait until page contains    T56
     Wait until page contains    Koodin nimi
     Wait until page contains    Testi06

@@ -29,7 +29,7 @@ ${REGISTRY_FILTER_DDL}    id=selected_registry_filter_dropdown
 ${CREATE_REGISTRY_BTN}    id=create_registry_button
 ${REGISTRY_VALUE_INPUT}    id=registry_value_input
 ${REGISTRY_NAME_INPUT}    id=registry_name_input
-${REGISTRY_DEFINITON_INPUT}    id=registry_definition_textarea
+${REGISTRY_DESCRIPTION_INPUT}    id=registry_description_textarea
 ${ADD_ORGANIZATION_BTN}    id=add_organization_button
 ${SEARCH_ORGANIZATION_INPUT}    id=search_linked_organization_input
 ${SAVE_REGISTRY}    id=editable_save_button
@@ -69,7 +69,7 @@ ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
 ${CANCEL_CREATION_BTN}    id=cancel_modal_button
 ${SEARCH_CONCEPT_INPUT}    id=search_concept_input
 ${VOCABULARY_SELECTION_DDL}    id=selected_vocabulary_selection_dropdown
-${CLONE_CODE_LIST_BTN}    id=clone_codelist_button
+${CREATE_NEW_VERSION_BTN}    id=clone_codelist_button
 #Extension schemes
 ${EXTENSION_SCHEMES_DDL}    id=extensionSchemeDropdown
 ${IMPORT_EXTENSION_SCHEMES_BTN}    id=import_extensionschemes_button

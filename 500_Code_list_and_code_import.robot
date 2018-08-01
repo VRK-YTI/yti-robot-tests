@@ -59,7 +59,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Click button    ${EXPAND_ALL_BTN}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Page should contain    Tunnus
+    Page should contain    Koodin arvo
     Page should contain    testikoodi02
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
@@ -156,7 +156,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Wait until page contains    NewCode001 - newcode001    timeout=20
     Sleep    2
     Click element    //*[contains(text(), "NewCode001 - newcode001")]
-    Wait until page contains    Tunnus    timeout=20
+    Wait until page contains    Koodin arvo    timeout=20
     Wait until page contains    NewCode001    timeout=20
     Wait until page contains element    ${REMOVE_CODE_BTN}
     Click element    ${REMOVE_CODE_BTN}
@@ -226,7 +226,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Click button    ${EXPAND_ALL_BTN}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Page should contain    Tunnus
+    Page should contain    Koodin arvo
     Page should contain    testikoodi02
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
@@ -262,7 +262,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 507. Import Code list with Extension Schemes
     [Documentation]    Import Code list with Extension Schemes, check that import is successfull,
     ...    Export Excel and remove code list.
-    [Tags]    regression
+    [Tags]    fail
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_ExtensionSchemes}
@@ -467,8 +467,8 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Code with concept
 
-513. Import VALID Code list with codes and copy Code list
-    [Documentation]    Import VALID Code list with codes and clone Code list.
+513. Import VALID Code list with codes and create new version for Code list
+    [Documentation]    Import VALID Code list with codes and create new version for Code list.
     ...    Check that links in original Code list and Code are copied as well. YTI-156
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
@@ -493,7 +493,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
     Sleep    3
-    Page should contain    Tunnus
+    Page should contain    Koodin arvo
     Page should contain    testikoodi02
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
@@ -563,17 +563,11 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Sleep    5
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${CLONE_CODE_LIST_BTN}    timeout=20
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Log to Console    Add link button is found and CC by 4.0 is there
-    Click button    ${CLONE_CODE_LIST_BTN}
+    Click button    ${CREATE_NEW_VERSION_BTN}
     Sleep    2
-    Log to Console    Clone button pressed
-    Click element    ${SELECT_REGISTRY_BTN}
-    Sleep    2
-    Log to Console    Registry button clicked
-    Click button    ${REGISTRY_1}
-    Sleep    2
-    Log to Console    Registry selection done
+    Log to Console    Create new version button pressed
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}
@@ -635,8 +629,8 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Input Text    ${REGISTRY_VALUE_INPUT}    Rekisteri123
     Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
     Input Text    ${REGISTRY_NAME_INPUT}    Automaatiorekisteri
-    Wait until page contains element    ${REGISTRY_DEFINITON_INPUT}    timeout=20
-    Input text    ${REGISTRY_DEFINITON_INPUT}    Määritelmä
+    Wait until page contains element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
+    Input text    ${REGISTRY_DESCRIPTION_INPUT}    Kuvaus
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
     Click button    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
@@ -720,8 +714,8 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Input Text    ${REGISTRY_VALUE_INPUT}    Rekisteri123
     Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
     Input Text    ${REGISTRY_NAME_INPUT}    Automaatiorekisteri
-    Wait until page contains element    ${REGISTRY_DEFINITON_INPUT}    timeout=20
-    Input text    ${REGISTRY_DEFINITON_INPUT}    Määritelmä
+    Wait until page contains element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
+    Input text    ${REGISTRY_DESCRIPTION_INPUT}    Kuvaus
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
     Click button    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20

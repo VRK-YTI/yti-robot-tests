@@ -19,7 +19,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
 600. Import Code list with Extension Schemes
     [Documentation]    Import Code list with Extension Schemes, check that import is successfull,
     ...    Modify Extension, Export Excel and remove code list.
-    [Tags]    regression
+    [Tags]    fail
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_ExtensionSchemes}
@@ -295,6 +295,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Click element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
     Click element    ${SAVE_EXTENSION}
+    Sleep    2
     Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
     Click element    ${MODIFY_EXTENSION_BTN}
     Sleep    2
@@ -313,6 +314,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Click element    ${REMOVE_EXTENSION_LINK}
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
     Click element    ${SAVE_EXTENSION}
+    Sleep    2
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    Extension 1    timeout=20
@@ -324,7 +326,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
 
 605. Import Extensions in CSV format
     [Documentation]    Import Code list with Codes and import Extension Scheme and Extensions in CSV format.
-    [Tags]    koodistot
+    [Tags]    fail
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
