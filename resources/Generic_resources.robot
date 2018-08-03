@@ -16,6 +16,7 @@ ${CLASSIFICATION_3}    id=remove_P1_classification_link
 ${REGISTRY_1}     Testirekisteri
 ${REGISTRY_2}     Automaatiorekisteri
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_input
+${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
@@ -62,6 +63,7 @@ ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
 ${CODELIST_INFO_TAB}    id=codelist_info_tab
 ${CODELIST_CODES_TAB}    id=codelist_codes_tabs
+${CODELIST_VARIANTS_TAB}    id=codelist_variants_tab
 ${ADD_DEFAULTCODE_BTN}    id=add_code_button
 ${REMOVE_DEFAULTCODE}    id=remove_code_link
 ${SEARCH_DEFAULTCODE_INPUT}    id=search_linked_code_input
@@ -70,6 +72,10 @@ ${CANCEL_CREATION_BTN}    id=cancel_modal_button
 ${SEARCH_CONCEPT_INPUT}    id=search_concept_input
 ${VOCABULARY_SELECTION_DDL}    id=selected_vocabulary_selection_dropdown
 ${CREATE_NEW_VERSION_BTN}    id=clone_codelist_button
+${ATTACH_VARIANT_BTN}    id=attach_variant_button
+${SEARCH_VARIANT_INPUT}    id=search_variant_input
+${START_DATE_INPUT}    id=start_date_input
+${END_DATE_INPUT}    id=end_date_input
 #Extension schemes
 ${EXTENSION_SCHEMES_DDL}    id=extensionSchemeDropdown
 ${IMPORT_EXTENSION_SCHEMES_BTN}    id=import_extensionschemes_button

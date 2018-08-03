@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code list and Code import
 Suite Teardown    Close All Browsers
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
@@ -123,7 +124,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     [Teardown]    Remove imported Draft code list with codes
 
 504. Create new Code list and Codes
-    [Documentation]    Create new code list and codes manually and remove new code list
+    [Documentation]    Create new code list and codes manually and remove code and code list
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Sleep    2
@@ -290,8 +291,8 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes
 
-508. Import DRAFT Code list with codes and DEFAULTCODE
-    [Documentation]    Import Code list with codes and DEFAULTCODE, check that import is successful and DEFAULTCODE is
+508. Import DRAFT Code list with codes and DEFAULT CODE
+    [Documentation]    Import Code list with codes and DEFAULT CODE, check that import is successful and DEFAULTCODE is
     ...    defined in information tab. Remove code list.
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
@@ -317,8 +318,8 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Return to Koodistot frontpage
     [Teardown]    Remove Codelist with defaultcode
 
-509. Create Code list and add DEFAULTCODE
-    [Documentation]    Create new Code list and import codes. Add DEFAULTCODE manually,
+509. Create Code list and add DEFAULT CODE
+    [Documentation]    Create new Code list and import codes. Add DEFAULT CODE manually,
     ...    remove DEFAULTCODE and code list.
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
@@ -743,6 +744,80 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Sleep    3
     [Teardown]    Remove registry
 
+516. Import new VALID code list and attach variant
+    [Documentation]    Import new VALID code list and attach variant to the code list
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Sleep    2
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
+    Wait until page contains element    ${START_DATE_INPUT}    timeout=20
+    Input text    ${START_DATE_INPUT}    2020-08-01
+    Wait until page contains element    ${END_DATE_INPUT}    timeout=20
+    Input text    ${END_DATE_INPUT}    2020-08-31
+    Click button    Lisää luokitus
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element    //*[contains(text(), "Asuminen")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    3
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Create new code to code list
+    Sleep    5
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
+    Wait until page contains    koodisto6000    timeout=20
+    Wait until page contains    NewCode001 - newcode001    timeout=20
+    Sleep    2
+    Return to Koodistot frontpage
+    Sleep    2
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    5
+    Wait until page contains    ${CODE_LIST_9}    timeout=20
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click element    ${ATTACH_VARIANT_BTN}
+    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Sleep    2
+    Input Text    ${SEARCH_VARIANT_INPUT}    koodisto6000
+    Sleep    2
+    Click element    ${Koodisto6000_variant}
+    Sleep    2
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click element    ${CODELIST_VARIANTS_TAB}
+    Wait until page contains    Voimassaolo    timeout=20
+    Wait until page contains    Nimi    timeout=20
+    Wait until page contains    Tila    timeout=20
+    #Wait until page contains    01.08.2020 - 31.08.2020    timeout=20
+    Wait until page contains    koodisto6000    timeout=20
+    Wait until page contains element    //*[contains(@id,'detach_variant_')]    timeout=20
+    Click Element    //*[contains(@id,'detach_variant_')]
+    Sleep    3
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Sleep    3
+    Page should not contain element    ${CODELIST_VARIANTS_TAB}
+    Return to Koodistot frontpage
+    [Teardown]    Remove imported Valid code list and variant
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
@@ -1139,3 +1214,38 @@ Remove registry
     Click element    ${REGISTRY_FILTER_DDL}
     Page should not contain element    //*[contains(text(), "Automaatiorekisteri")]
     Close All Browsers
+
+Remove imported Valid code list and variant
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Wait until page contains    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_9}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Sleep    3
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_8}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_8}")]
+    Sleep    3
+    Wait until page contains    ${CODE_LIST_8}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Sleep    3
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Sleep    3
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_8}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Sleep    1
