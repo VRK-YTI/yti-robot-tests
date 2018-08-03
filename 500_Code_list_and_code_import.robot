@@ -773,6 +773,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    3
+    Log to Console    koodisto6000 created
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list
     Sleep    5
@@ -789,6 +790,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    5
+    Log to Console    koodisto7000 created
     Wait until page contains    ${CODE_LIST_9}    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
@@ -801,6 +803,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Sleep    2
     Click element    ${Koodisto6000_variant}
     Sleep    2
+    Log to Console    koodisto6000 attached to koodisto7000
     Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
     Click element    ${CODELIST_VARIANTS_TAB}
     Wait until page contains    Voimassaolo    timeout=20
@@ -813,8 +816,10 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Sleep    3
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Sleep    3
+    Log to Console    Variant removed
+    Sleep    5
     Page should not contain element    ${CODELIST_VARIANTS_TAB}
+    Log to Console    Variant tab not visible
     Return to Koodistot frontpage
     [Teardown]    Remove imported Valid code list and variant
 
@@ -1227,6 +1232,7 @@ Remove imported Valid code list and variant
     Click element    ${DELETE_CODE_LIST_BTN}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Log to Console    koodisto6000 removed
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_9}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
@@ -1244,6 +1250,7 @@ Remove imported Valid code list and variant
     Sleep    3
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Log to Console    koodisto7000 removed
     Sleep    3
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_8}
