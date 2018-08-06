@@ -1,54 +1,63 @@
 *** Settings ***
-Documentation     Test Suite for basic functionality of Datamodel application
-Suite Setup       Datamodel Suite Setup
-Suite Teardown    Datamodel Suite Teardown
+Documentation     Test Suite for basic functionality of Data Vocabularies application
+Suite Setup       Data Vocabularies Suite Setup
+Suite Teardown    Data Vocabularies Suite Teardown
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Datamodel_Resources.robot
 
 *** Test Cases ***
-200. Modify Testiautomaatio model
-    [Documentation]    Modify Testiautomaatio model
-    [Tags]    tietomallit
+200. Modify profile
+    [Documentation]    Modify existing profile and restore changes
+    [Tags]    regression    tietomallit
     [Setup]    Test Case Setup
-    Select and edit Testiautomaatio model
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
     Wait until page contains element    ${MODEL_LABEL_INPUT}    timeout=30
     Input Text    ${MODEL_LABEL_INPUT}    Uusi nimi
     Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Uusi kuvaus
-    Wait until page contains element    ${MODEL_LANGUAGE_INTPUT}    timeout=30
-    Sleep    2
-    Click Element    ${MODEL_LANGUAGE_INTPUT}
-    Sleep    2
-    Click Element    //*[contains(text(), "sv")]
     Wait until page contains element    ${REMOVE_CLASSIFICATION}    timeout=30
     Click Element    ${REMOVE_CLASSIFICATION}
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
-    Click Element    ${ADD_CLASSIFICATION}
+    Log to Console    Classification removed
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Lisää luokitus")]    timeout=30
+    Click Element    //*[contains(text(), "Lisää luokitus")]
     Wait until page contains element    //*[contains(text(), "Kulttuuri")]    timeout=30
     Click Element    //*[contains(text(), "Kulttuuri")]
+    Log to Console    New classification added
     Wait until page contains element    ${REMOVE_CONTRIBUTOR}    timeout=30
     Click Element    ${REMOVE_CONTRIBUTOR}
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
-    Click Element    ${ADD_CONTRIBUTOR}
+    Log to Console    Contributor removed
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Lisää sisällöntuottaja")]    timeout=30
+    Click Element    //*[contains(text(), "Lisää sisällöntuottaja")]
     Wait until page contains element    //*[contains(text(), "Väestörekisterikeskus")]    timeout=30
     Click Element    //*[contains(text(), "Väestörekisterikeskus")]
+    Log to Console    New contributor added
     Wait until page contains element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=30
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait until page contains element    ${LINK_NAME_INPUT}    timeout=30
-    Input Text    ${LINK_NAME_INPUT}    suomi.fi
+    Input Text    ${LINK_NAME_INPUT}    www.suomi.fi/etusivu/
     Wait until page contains element    ${LINK_DESCRIPTION_INPUT}    timeout=30
-    Input Text    ${LINK_DESCRIPTION_INPUT}    Tänä on suomi.fi linkki
-    Wait until page contains element    ${SAVE_MODEL_BTN}    timeout=30
-    Click Element    ${SAVE_MODEL_BTN}
+    Input Text    ${LINK_DESCRIPTION_INPUT}    Tämä on suomi.fi linkki
+    Wait until page contains element    ${CREATE_NEW_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_LINK}
+    Log to Console    New link added
     Sleep    2
-    Restore model modify
-    Go back to Tietomallit frontpage and close browsers
+    Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
+    Click Element    //*[contains(text(), "Tallenna")]
+    Log to Console    Modifications saved
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=30
+    Click Element    //*[contains(text(), "Muokkaa")]
+    Sleep    2
+    Restore profile modifications
 
 *** Keywords ***
-Select and edit Testiautomaatio model
+Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
@@ -58,41 +67,44 @@ Select and edit Testiautomaatio model
     Wait until page contains element    ${MODIFY_MODEL}    timeout=30
     Click Element    ${MODIFY_MODEL}
 
-Datamodel Suite Setup
+Data Vocabularies Suite Setup
     Test Case Setup
-    Create Testiautomaatio model
+    Create Testiautomaatio profile
 
-Datamodel Suite Teardown
+Data Vocabularies Suite Teardown
     Test Case Setup
-    Delete Testiautomaatio model
+    Delete Testiautomaatio profile
 
-Restore model modify
+Restore profile modifications
     Wait until page contains element    ${MODEL_LABEL_INPUT}    timeout=30
     Input Text    ${MODEL_LABEL_INPUT}    ${MODEL_1}
     Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${MODEL_PREFIX_INTPUT}    timeout=30
-    Input Text    ${MODEL_PREFIX_INTPUT}    test
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
-    Click Element    ${ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
-    Click Element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
-    Click Element    ${ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
-    Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${REMOVE_CLASSIFICATION}    timeout=30
     Click Element    ${REMOVE_CLASSIFICATION}
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
-    Click Element    ${ADD_CLASSIFICATION}
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Lisää luokitus")]    timeout=30
+    Click Element    //*[contains(text(), "Lisää luokitus")]
     Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
     Click Element    //*[contains(text(), "Asuminen")]
     Wait until page contains element    ${REMOVE_CONTRIBUTOR}    timeout=30
     Click Element    ${REMOVE_CONTRIBUTOR}
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
-    Click Element    ${ADD_CONTRIBUTOR}
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "Lisää sisällöntuottaja")]    timeout=30
+    Click Element    //*[contains(text(), "Lisää sisällöntuottaja")]
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_MODEL_BTN}    timeout=30
-    Click Element    ${SAVE_MODEL_BTN}
+    Wait until page contains element    ${REMOVE_LINK}    timeout=30
+    Click Element    ${REMOVE_LINK}
     Sleep    2
+    Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
+    Click Element    //*[contains(text(), "Tallenna")]
+    Sleep    2
+    Page should contain    Testiautomaatio
+    Page should contain    Tämä on kuvaus
+    Page should contain    Asuminen
+    Page should contain    Testiorganisaatio
+    Page should not contain    www.suomi.fi/etusivu/
+    Log to Console    Modifications restored
+    Sleep    2
+    Go back to Data Vocabularies frontpage

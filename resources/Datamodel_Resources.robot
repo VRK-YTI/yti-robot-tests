@@ -35,6 +35,8 @@ ${LINK_URL_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/
 ${LINK_NAME_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[2]/div/div/input
 ${LINK_DESCRIPTION_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[3]/div/div/textarea
 ${MODIFY_MODEL}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
+${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
+${REMOVE_LINK}    //*[@id="ctrl.id"]/div/div[2]/links-view/editable-table/table/tbody/tr/td[3]/i
 
 *** Keywords ***
 Test Case Setup
@@ -70,18 +72,18 @@ Open Chrome to Environment
     Set Window Size    1920    1080
     Go To    ${ENVIRONMENT_URL}
 
-Go back to Tietomallit frontpage and close browsers
+Go back to Data Vocabularies frontpage and close browsers
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Close All Browsers
 
-Go back to Tietomallit frontpage
+Go back to Data Vocabularies frontpage
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
 
-Create Testiautomaatio model
+Create Testiautomaatio profile
     Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
     Click Button    Lisää soveltamisprofiili
@@ -103,7 +105,7 @@ Create Testiautomaatio model
     Click Element    ${SAVE_MODEL_BTN}
     Sleep    2
 
-Delete Testiautomaatio model
+Delete Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
@@ -118,5 +120,6 @@ Delete Testiautomaatio model
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains    tietomallia    timeout=30
+    Log to Console    Testiautomaatio profile deleted
     Sleep    2
     Close All Browsers
