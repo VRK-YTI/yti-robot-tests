@@ -37,6 +37,14 @@ ${LINK_DESCRIPTION_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/mod
 ${MODIFY_MODEL}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
 ${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
 ${REMOVE_LINK}    //*[@id="ctrl.id"]/div/div[2]/links-view/editable-table/table/tbody/tr/td[3]/i
+${IMPORT_NAMESPACE}    //*[@id="ctrl.id"]/div/div[2]/imported-namespaces-view/h4/button/span
+${SEARCH_NAMESPACE_INPUT}    //div[1]/div/div/div/div[2]/div[1]/div/text-filter/div/input
+#Class
+${ADD_NEW_CLASS}    //*[@id="add_new_class_button"]/span
+${SEARCH_CLASS_INPUT}    //div[1]/div/div/form/div[2]/div[1]/div/text-filter/div/input
+${SPECIALIZE_CLASS}    //div[1]/div/div/form/div[3]/button[1]
+${CONFIRM_ADD_PROPERTIES}    //div[1]/div/div/modal-template/div[3]/div/modal-buttons/button[1]
+${SAVE_CLASS}     //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
 
 *** Keywords ***
 Test Case Setup
@@ -82,6 +90,14 @@ Go back to Data Vocabularies frontpage
     Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    2
+
+Test Case Setup Create Testiautomaatio profile
+    Test Case Setup
+    Create Testiautomaatio profile
+    Go back to Data Vocabularies frontpage
+
+Test Case Teardown Delete Testiautomaatio profile
+    Delete Testiautomaatio profile
 
 Create Testiautomaatio profile
     Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30

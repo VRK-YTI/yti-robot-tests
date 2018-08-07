@@ -82,11 +82,3 @@ Restore Finnish language
     Wait until page contains    Kaikki tyypit    timeout=20
     Wait until page contains    Luokitus    timeout=20
     Close All Browsers
-
-Test Case Setup Create Testiautomaatio profile
-    Test Case Setup
-    Create Testiautomaatio profile
-    Go back to Data Vocabularies frontpage
-
-Test Case Teardown Delete Testiautomaatio profile
-    Delete Testiautomaatio profile
