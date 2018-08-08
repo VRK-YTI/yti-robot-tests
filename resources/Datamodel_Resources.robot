@@ -9,6 +9,7 @@ ${USER_1}         //a[@class='dropdown-item ng-binding ng-scope'][contains(text(
 ${LANGUAGE_EN}    //application/ng-container/navigation-bar/nav/ul/li[3]/div/a[2]/span
 ${LANGUAGE_FI}    //application/ng-container/navigation-bar/nav/ul/li[3]/div/a[1]/span
 ${MODEL_1}        Testiautomaatio
+${CORE_VOCABULARY_1}    Automaatiokirjasto
 #Frontpage
 ${ADD_MODEL_BTN}    id=modelCreation
 ${LANGUAGE_DROPDOWN_BTN}    //application/ng-container/navigation-bar/nav/ul/li[3]/a
@@ -45,6 +46,14 @@ ${SEARCH_CLASS_INPUT}    //div[1]/div/div/form/div[2]/div[1]/div/text-filter/div
 ${SPECIALIZE_CLASS}    //div[1]/div/div/form/div[3]/button[1]
 ${CONFIRM_ADD_PROPERTIES}    //div[1]/div/div/modal-template/div[3]/div/modal-buttons/button[1]
 ${SAVE_CLASS}     //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
+#Core Vocabulary
+${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
+${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
+${CORE_VOCABULARY_PREFIX_INPUT}    id=modelPrefix
+${VOCABULARY_ADD_CLASSIFICATION}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[2]/div[2]/classifications-view/h4/button/span
+${VOCABULARY_ADD_CONTRIBUTOR}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[2]/div[2]/contributors-view/h4/button/span
+${SAVE_CORE_VOCABULARY_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
+${MODIFY_CORE_VOCABULARY_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
 
 *** Keywords ***
 Test Case Setup
@@ -99,6 +108,14 @@ Test Case Setup Create Testiautomaatio profile
 Test Case Teardown Delete Testiautomaatio profile
     Delete Testiautomaatio profile
 
+Test Case Setup Create Automaatiokirjasto Core Vocabulary
+    Test Case Setup
+    Create Automaatiokirjasto Core Vocabulary
+    Go back to Data Vocabularies frontpage
+
+Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
+    Delete Automaatiokirjasto Core Vocabulary
+
 Create Testiautomaatio profile
     Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
@@ -137,5 +154,46 @@ Delete Testiautomaatio profile
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains    tietomallia    timeout=30
     Log to Console    Testiautomaatio profile deleted
+    Sleep    2
+    Close All Browsers
+
+Create Automaatiokirjasto Core Vocabulary
+    Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
+    Click Element    ${ADD_MODEL_BTN}
+    Click Button    Lisää tietokomponenttikirjasto
+    Wait until page contains element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
+    Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    ${CORE_VOCABULARY_1}
+    Wait until page contains element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
+    Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Tämä on kuvaus
+    Wait until page contains element    ${CORE_VOCABULARY_PREFIX_INPUT}    timeout=30
+    Input Text    ${CORE_VOCABULARY_PREFIX_INPUT}    lib
+    Wait until page contains element    ${VOCABULARY_ADD_CLASSIFICATION}    timeout=30
+    Click Element    ${VOCABULARY_ADD_CLASSIFICATION}
+    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
+    Click Element    //*[contains(text(), "Asuminen")]
+    Wait until page contains element    ${VOCABULARY_ADD_CONTRIBUTOR}    timeout=30
+    Click Element    ${VOCABULARY_ADD_CONTRIBUTOR}
+    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
+    Click Element    //*[contains(text(), "Testiorganisaatio")]
+    Wait until page contains element    ${SAVE_CORE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_CORE_VOCABULARY_BTN}
+    Sleep    2
+
+Delete Automaatiokirjasto Core Vocabulary
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
+    Click Element    //*[contains(text(), "Automaatiokirjasto")]
+    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
+    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${REMOVE_MODEL_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Sleep    2
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
+    Wait Until Page Contains    tietomallia    timeout=30
+    Log to Console    Automaatiokirjasto Core Vocabulary deleted
     Sleep    2
     Close All Browsers
