@@ -6,15 +6,15 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
 ${USER_1}         //a[@class='dropdown-item ng-binding ng-scope'][contains(text(),'Testi Admin')]
-${LANGUAGE_EN}    //application/ng-container/navigation-bar/nav/ul/li[3]/div/a[2]/span
-${LANGUAGE_FI}    //application/ng-container/navigation-bar/nav/ul/li[3]/div/a[1]/span
+${LANGUAGE_EN}    id=en_ui_language_dropdown
+${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatio
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 #Frontpage
-${ADD_MODEL_BTN}    id=modelCreation
-${LANGUAGE_DROPDOWN_BTN}    //application/ng-container/navigation-bar/nav/ul/li[3]/a
-${IMPERSONATE_USER_DROPDOWN}    //application/ng-container/navigation-bar/nav/ul/li[1]/a
-${FRONTPAGE_SEARCH_BOX}    //application/ng-container/div/div/front-page/div/div[1]/div/div/input
+${ADD_MODEL_BTN}    id=model_creation_button
+${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
+${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
+${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 #Buttons and links
 ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
