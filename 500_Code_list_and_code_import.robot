@@ -471,7 +471,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 513. Import VALID Code list with codes and create new version for Code list
     [Documentation]    Import VALID Code list with codes and create new version for Code list.
     ...    Check that links in original Code list and Code are copied as well. YTI-156
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Log to Console    Import VALID Code list with codes and copy Code list
     Log to Console    Start data import
