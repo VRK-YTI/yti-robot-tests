@@ -46,6 +46,14 @@ ${SEARCH_CLASS_INPUT}    //div[1]/div/div/form/div[2]/div[1]/div/text-filter/div
 ${SPECIALIZE_CLASS}    //div[1]/div/div/form/div[3]/button[1]
 ${CONFIRM_ADD_PROPERTIES}    //div[1]/div/div/modal-template/div[3]/div/modal-buttons/button[1]
 ${SAVE_CLASS}     //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
+${MODIFY_CLASS}    //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[3]/span
+${ADD_PROPERTY_DDL}    //*[@id="ctrl.id"]/div[3]/div/div/button-with-options/div/button
+${ADD_PROPERTY_BTN}    //*[@id="ctrl.id"]/div[3]/div/div/button-with-options/div/div/a[1]
+${SEARCH_ATTRIBUTE_INPUT}    id=text_filter_search_input
+${USE_SELECTION_BTN}    //div[1]/div/div/form/div[3]/button[1]
+${ALL_TYPES_DDL}    id=type
+${ASSOCIATION_TYPE}    //*[@id="type"]/option[3]
+${ATTRIBUTE_TYPE}    //*[@id="type"]/option[2]
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
@@ -136,6 +144,7 @@ Create Testiautomaatio profile
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${SAVE_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_MODEL_BTN}
+    Log to Console    Testiautomaatio profile created
     Sleep    2
 
 Delete Testiautomaatio profile
@@ -177,6 +186,7 @@ Create Automaatiokirjasto Core Vocabulary
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${SAVE_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_CORE_VOCABULARY_BTN}
+    Log to Console    Automaatiokirjasto Core Vocabulary created
     Sleep    2
 
 Delete Automaatiokirjasto Core Vocabulary

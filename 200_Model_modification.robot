@@ -8,6 +8,8 @@ Resource          resources/Datamodel_Resources.robot
 *** Variables ***
 ${class}          Asiakirja
 ${namespace}      Julkishallinnon tietokomponentit
+${attribute}      Entinen nimi
+${association}    Jäsen
 
 *** Test Cases ***
 200. Modify profile
@@ -142,6 +144,38 @@ ${namespace}      Julkishallinnon tietokomponentit
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Automaatiokirjasto Core Vocabulary
 
+204. Add new attribute and association
+    [Documentation]    Add new attribute and association for class
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace
+    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Add class    Henkilö
+    Sleep    2
+    Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
+    Click Element    ${CONFIRM_ADD_PROPERTIES}
+    Sleep    2
+    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Click Element    ${SAVE_CLASS}
+    Sleep    2
+    Log to Console    Class "Henkilö" added
+    Add attribute    Entinen nimi
+    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Click Element    ${SAVE_CLASS}
+    Log to Console    Attribute "Entinen nimi" added to class "Henkilö"
+    Sleep    2
+    Add association    Jäsen
+    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Click Element    ${SAVE_CLASS}
+    Log to Console    Association "Jäsen" added to class "Henkilö"
+    Sleep    2
+    Page should contain    Entinen nimi
+    Page should contain    Jäsen
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
 *** Keywords ***
 Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -185,6 +219,44 @@ Add class
     Sleep    2
     Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
     Click Element    ${SPECIALIZE_CLASS}
+    Sleep    2
+
+Add attribute
+    [Arguments]    ${attribute}=Entinen nimi
+    Wait until page contains element    ${MODIFY_CLASS}    timeout=30
+    Click Element    ${MODIFY_CLASS}
+    Wait until page contains element    ${ADD_PROPERTY_DDL}    timeout=30
+    Click Element    ${ADD_PROPERTY_DDL}
+    Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
+    Click Element    ${ADD_PROPERTY_BTN}
+    Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
+    Click Element    ${ALL_TYPES_DDL}
+    #Click Element    ${ATTRIBUTE_TYPE}
+    Click Element    //*[contains(text(), "Attribuutti")]
+    Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
+    Input Text    ${SEARCH_ATTRIBUTE_INPUT}    Entinen nimi
+    Click Element    //*[contains(text(), "Entinen nimi")]
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Sleep    2
+
+Add association
+    [Arguments]    ${association}=Jäsen
+    Wait until page contains element    ${MODIFY_CLASS}    timeout=30
+    Click Element    ${MODIFY_CLASS}
+    Wait until page contains element    ${ADD_PROPERTY_DDL}    timeout=30
+    Click Element    ${ADD_PROPERTY_DDL}
+    Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
+    Click Element    ${ADD_PROPERTY_BTN}
+    Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
+    Click Element    ${ALL_TYPES_DDL}
+    #Click Element    ${ASSOCIATION_TYPE}
+    Click Element    //*[contains(text(), "Assosiaatio")]
+    Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
+    Input Text    ${SEARCH_ATTRIBUTE_INPUT}    Jäsen
+    Click Element    //*[contains(text(), "Jäsen")]
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Restore profile modifications
