@@ -206,12 +206,13 @@ Restore profile modifications
     Click Element    //*[contains(text(), "Lisää sisällöntuottaja")]
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
+    Sleep    3
     Wait until page contains element    ${REMOVE_LINK}    timeout=30
     Click Element    ${REMOVE_LINK}
-    Sleep    2
+    Sleep    4
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
-    Sleep    2
+    Sleep    3
     Page should contain    Testiautomaatio
     Page should contain    Tämä on kuvaus
     Page should contain    Asuminen
