@@ -315,7 +315,7 @@ Restore Core Vocabulary modifications
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${REMOVE_LINK}    timeout=30
     Click Element    ${REMOVE_LINK}
-    Sleep    2
+    Sleep    5
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
     Sleep    2
