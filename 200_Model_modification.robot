@@ -193,6 +193,7 @@ ${association}    Jäsen
     Log to Console    Class "Asiakirja" added
     Sleep    1
     Add association    Rekisteröinti
+    Log to Console    Association "Rekisteröinti" added
     Wait until page contains element    //*[contains(@id,'valueClass')]    timeout=30
     Click Element    //*[contains(@id,'valueClass')]
     Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
