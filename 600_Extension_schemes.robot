@@ -19,7 +19,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
 600. Import Code list with Extension Schemes
     [Documentation]    Import Code list with Extension Schemes, check that import is successfull,
     ...    Modify Extension, Export Excel and remove code list.
-    [Tags]    fail
+    [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_ExtensionSchemes}
