@@ -175,6 +175,41 @@ ${association}    Jäsen
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
+205. Add association between two classes
+    [Documentation]    Add association between two classes
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace
+    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Add class    Henkilö
+    Sleep    2
+    Confirm all properties for class
+    Log to Console    Class "Henkilö" added
+    Add class    Asiakirja
+    Sleep    2
+    Confirm all properties for class
+    Log to Console    Class "Asiakirja" added
+    Sleep    1
+    Add association    Rekisteröinti
+    Wait until page contains element    //*[contains(@id,'valueClass')]    timeout=30
+    Click Element    //*[contains(@id,'valueClass')]
+    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    Henkilö
+    Click Element    //*[contains(text(), "Henkilö")]
+    Sleep    2
+    Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
+    Click Element    ${SPECIALIZE_CLASS}
+    Sleep    2
+    Save class
+    Page should contain    Rekisteröinti
+    Page should contain    test:Henkilo
+    Log to Console    Association "Rekisteröinti" added between "Henkilö" and "Asiakirja"
+    Sleep    3
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
 *** Keywords ***
 Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -220,6 +255,19 @@ Add class
     Click Element    ${SPECIALIZE_CLASS}
     Sleep    2
 
+Save class
+    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Click Element    ${SAVE_CLASS}
+    Sleep    2
+
+Confirm all properties for class
+    Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
+    Click Element    ${CONFIRM_ADD_PROPERTIES}
+    Sleep    2
+    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Click Element    ${SAVE_CLASS}
+    Sleep    2
+
 Add attribute
     [Arguments]    ${attribute}=Entinen nimi
     Wait until page contains element    ${MODIFY_CLASS}    timeout=30
@@ -233,8 +281,8 @@ Add attribute
     #Click Element    ${ATTRIBUTE_TYPE}
     Click Element    //*[contains(text(), "Attribuutti")]
     Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
-    Input Text    ${SEARCH_ATTRIBUTE_INPUT}    Entinen nimi
-    Click Element    //*[contains(text(), "Entinen nimi")]
+    Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
+    Click Element    //*[contains(text(), "${attribute}")]
     Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
@@ -252,8 +300,8 @@ Add association
     #Click Element    ${ASSOCIATION_TYPE}
     Click Element    //*[contains(text(), "Assosiaatio")]
     Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
-    Input Text    ${SEARCH_ATTRIBUTE_INPUT}    Jäsen
-    Click Element    //*[contains(text(), "Jäsen")]
+    Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${association}
+    Click Element    //*[contains(text(), "${association}")]
     Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
