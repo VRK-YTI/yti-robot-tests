@@ -22,21 +22,21 @@ ${association}    Jäsen
     Input Text    ${MODEL_LABEL_INPUT}    Uusi nimi
     Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Uusi kuvaus
-    Wait until page contains element    ${REMOVE_CLASSIFICATION}    timeout=30
-    Click Element    ${REMOVE_CLASSIFICATION}
+    Wait until page contains element    ${REMOVE_Asuminen}    timeout=30
+    Click Element    ${REMOVE_Asuminen}
     Log to Console    Classification removed
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää luokitus")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää luokitus")]
+    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
+    Click Element    ${ADD_CLASSIFICATION}
     Wait until page contains element    //*[contains(text(), "Kulttuuri")]    timeout=30
     Click Element    //*[contains(text(), "Kulttuuri")]
     Log to Console    New classification added
-    Wait until page contains element    ${REMOVE_CONTRIBUTOR}    timeout=30
-    Click Element    ${REMOVE_CONTRIBUTOR}
+    Wait until page contains element    ${REMOVE_Testiorganisaatio}    timeout=30
+    Click Element    ${REMOVE_Testiorganisaatio}
     Log to Console    Contributor removed
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää sisällöntuottaja")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää sisällöntuottaja")]
+    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
+    Click Element    ${ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "Väestörekisterikeskus")]    timeout=30
     Click Element    //*[contains(text(), "Väestörekisterikeskus")]
     Log to Console    New contributor added
@@ -51,11 +51,10 @@ ${association}    Jäsen
     Wait until page contains element    ${CREATE_NEW_LINK}    timeout=30
     Click Element    ${CREATE_NEW_LINK}
     Log to Console    New link added
-    Sleep    2
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
     Log to Console    Modifications saved
-    Sleep    2
+    Sleep    4
     Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=30
     Click Element    //*[contains(text(), "Muokkaa")]
     Sleep    2
@@ -103,21 +102,21 @@ ${association}    Jäsen
     Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    Uusi nimi
     Wait until page contains element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Uusi kuvaus
-    Wait until page contains element    ${REMOVE_CLASSIFICATION}    timeout=30
-    Click Element    ${REMOVE_CLASSIFICATION}
+    Wait until page contains element    ${REMOVE_Asuminen}    timeout=30
+    Click Element    ${REMOVE_Asuminen}
     Log to Console    Classification removed
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää luokitus")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää luokitus")]
+    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
+    Click Element    ${ADD_CLASSIFICATION}
     Wait until page contains element    //*[contains(text(), "Kulttuuri")]    timeout=30
     Click Element    //*[contains(text(), "Kulttuuri")]
     Log to Console    New classification added
-    Wait until page contains element    ${REMOVE_CONTRIBUTOR}    timeout=30
-    Click Element    ${REMOVE_CONTRIBUTOR}
+    Wait until page contains element    ${REMOVE_Testiorganisaatio}    timeout=30
+    Click Element    ${REMOVE_Testiorganisaatio}
     Log to Console    Contributor removed
-    Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää sisällöntuottaja")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää sisällöntuottaja")]
+    Sleep    3
+    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
+    Click Element    ${ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "Väestörekisterikeskus")]    timeout=30
     Click Element    //*[contains(text(), "Väestörekisterikeskus")]
     Log to Console    New contributor added
@@ -264,24 +263,25 @@ Restore profile modifications
     Input Text    ${MODEL_LABEL_INPUT}    ${MODEL_1}
     Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${REMOVE_CLASSIFICATION}    timeout=30
-    Click Element    ${REMOVE_CLASSIFICATION}
+    Wait until page contains element    ${REMOVE_Kulttuuri}    timeout=30
+    Click Element    ${REMOVE_Kulttuuri}
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää luokitus")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää luokitus")]
+    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
+    Click Element    ${ADD_CLASSIFICATION}
     Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
     Click Element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${REMOVE_CONTRIBUTOR}    timeout=30
-    Click Element    ${REMOVE_CONTRIBUTOR}
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää sisällöntuottaja")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää sisällöntuottaja")]
+    Wait until page contains element    ${REMOVE_Väestörekisterikeskus}    timeout=30
+    Click Element    ${REMOVE_Väestörekisterikeskus}
+    Sleep    5
+    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
+    Click Element    ${ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Sleep    3
     Wait until page contains element    ${REMOVE_LINK}    timeout=30
     Click Element    ${REMOVE_LINK}
-    Sleep    4
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
     Sleep    3
@@ -299,18 +299,18 @@ Restore Core Vocabulary modifications
     Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    ${CORE_VOCABULARY_1}
     Wait until page contains element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${REMOVE_CLASSIFICATION}    timeout=30
-    Click Element    ${REMOVE_CLASSIFICATION}
+    Wait until page contains element    ${REMOVE_Kulttuuri}    timeout=30
+    Click Element    ${REMOVE_Kulttuuri}
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää luokitus")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää luokitus")]
+    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
+    Click Element    ${ADD_CLASSIFICATION}
     Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
     Click Element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${REMOVE_CONTRIBUTOR}    timeout=30
-    Click Element    ${REMOVE_CONTRIBUTOR}
-    Sleep    1
-    Wait until page contains element    //*[contains(text(), "Lisää sisällöntuottaja")]    timeout=30
-    Click Element    //*[contains(text(), "Lisää sisällöntuottaja")]
+    Wait until page contains element    ${REMOVE_Väestörekisterikeskus}    timeout=30
+    Click Element    ${REMOVE_Väestörekisterikeskus}
+    Sleep    5
+    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
+    Click Element    ${ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${REMOVE_LINK}    timeout=30

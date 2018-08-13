@@ -10,6 +10,11 @@ ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatio
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
+${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
+${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
+${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable_button
+${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
+${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
@@ -23,26 +28,23 @@ ${SHOW_MODEL_DETAILS_BTN}    id=show_model_details_button
 ${MODEL_LABEL_INPUT}    id=modelLabel
 ${MODEL_DESCRIPTION_INPUT}    id=modelComment
 ${MODEL_PREFIX_INTPUT}    id=modelPrefix
-${ADD_CLASSIFICATION}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[2]/div[2]/classifications-view/h4/button/span
-${ADD_CONTRIBUTOR}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[2]/div[2]/contributors-view/h4/button/span
+${ADD_CLASSIFICATION}    id=add_classification_button
+${ADD_CONTRIBUTOR}    id=add_contributor_button
 ${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
 ${REMOVE_MODEL_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_MODEL_BTN}    //div[1]/div/div/div/modal-template/div[3]/div[2]/button[1]
 ${MODEL_LANGUAGE_INTPUT}    id=modelLanguage
-${REMOVE_CLASSIFICATION}    //*[@id="ctrl.id"]/div/div[2]/classifications-view/editable-table/table/tbody/tr/td[2]/i
-${REMOVE_CONTRIBUTOR}    //*[@id="ctrl.id"]/div/div[2]/contributors-view/editable-table/table/tbody/tr/td[2]/i
-${ADD_LINK}       //*[@id="ctrl.id"]/div/div[2]/links-view/h4/button/span
+${ADD_LINK}       id=add_link_button
 ${LINK_URL_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[1]/div/div/input
 ${LINK_NAME_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[2]/div/div/input
 ${LINK_DESCRIPTION_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[3]/div/div/textarea
 ${MODIFY_MODEL}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
 ${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
-${REMOVE_LINK}    //*[@id="ctrl.id"]/div/div[2]/links-view/editable-table/table/tbody/tr/td[3]/i
-${IMPORT_NAMESPACE}    //*[@id="ctrl.id"]/div/div[2]/imported-namespaces-view/h4/button/span
+${IMPORT_NAMESPACE}    id=add_imported_namespace_button
 ${SEARCH_NAMESPACE_INPUT}    //div[1]/div/div/div/div[2]/div[1]/div/text-filter/div/input
 #Class
-${ADD_NEW_CLASS}    //*[@id="add_new_class_button"]/span
-${SEARCH_CLASS_INPUT}    //div[1]/div/div/form/div[2]/div[1]/div/text-filter/div/input
+${ADD_NEW_CLASS}    id=add_new_class_button
+${SEARCH_CLASS_INPUT}    id=text_filter_search_input
 ${SPECIALIZE_CLASS}    //div[1]/div/div/form/div[3]/button[1]
 ${CONFIRM_ADD_PROPERTIES}    //div[1]/div/div/modal-template/div[3]/div/modal-buttons/button[1]
 ${SAVE_CLASS}     //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
