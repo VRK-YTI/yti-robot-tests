@@ -87,6 +87,7 @@ ${EXTENSION_SCHEMES_FILE_UPLOAD}    id=fileupload_input
 ${CREATE_EXTENSION_BTN}    id=create_extension_button
 ${IMPORT_EXTENSION_BTN}    id=import_extensions_button
 ${EXTENSION_FILE_UPLOAD}    id=fileupload_input
+${FILE_FORMAT_UPLOAD}    id=file_format_dropdown_button
 ${EXTENSION_SCHEMES_UPLOAD_BTN}    id=upload_file_button
 ${EXTENSION_UPLOAD_BTN}    id=upload_file_button
 ${EXTENSION_SCHEME_CODEVALUE_INPUT}    id=extensionscheme_codevalue_input

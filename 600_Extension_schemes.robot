@@ -325,8 +325,9 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
 605. Import Extensions in CSV format
-    [Documentation]    Import Code list with Codes and import Extension Scheme and Extensions in CSV format.
-    [Tags]    fail
+    [Documentation]    Import Code list with Codes and import Extension Scheme.
+    ...    Import Extensions in CSV format and export CSV
+    [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
@@ -354,23 +355,33 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
     Click element    ${IMPORT_EXTENSION_BTN}
+    Wait until page contains element    ${FILE_FORMAT_UPLOAD}    timeout=20
+    Click element    ${FILE_FORMAT_UPLOAD}
+    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
+    Click element    ${FILE_FORMAT_CSV}
+    Wait until page contains element    ${EXTENSION_FILE_UPLOAD}    timeout=20
     Choose file    ${EXTENSION_FILE_UPLOAD}    ${Extensions_csv}
     Sleep    2
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    6
-    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
-    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
-    Click element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains element    //*[contains(text(), "testcode28_FI - koodi: Testcode 28 - arvo: extensiontest40")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "testcode29_FI - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
+    Click element    //*[contains(text(), "testcode28_FI - koodi: Testcode 28 - arvo: extensiontest40")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennusjärjestelmä    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
-    Wait until page contains    suomi    timeout=20
+    Wait until page contains    testcode28_FI    timeout=20
     Wait until page contains    extensiontest40    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
+    Sleep    5
+    Wait until page contains element    id=exportDropdown    timeout=20
+    Click element    id=exportDropdown
+    Click element    ${EXPORT_TYPE_CSV}
+    Sleep    5
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
