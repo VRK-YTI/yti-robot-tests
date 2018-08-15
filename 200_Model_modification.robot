@@ -67,10 +67,10 @@ ${contributor}    Testiorganisaatio
     Log to Console    Testiautomaatio profile selected
     Import namespace
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Hide model details
     Add class    Henkilö
     Sleep    2
     Confirm all properties for class
-    Save class
     Log to Console    Class "Henkilö" added
     Sleep    3
     Go back to Data Vocabularies frontpage
@@ -140,10 +140,10 @@ ${contributor}    Testiorganisaatio
     Log to Console    Testiautomaatio profile selected
     Import namespace
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Hide model details
     Add class    Henkilö
     Sleep    2
     Confirm all properties for class
-    Save class
     Log to Console    Class "Henkilö" added
     Add attribute    Entinen nimi
     Save class
@@ -258,6 +258,11 @@ Add class
 Save class
     Wait until page contains element    ${SAVE_CLASS}    timeout=30
     Click Element    ${SAVE_CLASS}
+    Sleep    2
+
+Hide model details
+    Wait until page contains element    ${HIDE_MODEL_DETAILS_BTN}    timeout=30
+    Click Element    ${HIDE_MODEL_DETAILS_BTN}
     Sleep    2
 
 Confirm all properties for class

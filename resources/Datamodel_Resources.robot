@@ -42,6 +42,7 @@ ${MODIFY_MODEL}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-butt
 ${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
 ${IMPORT_NAMESPACE}    id=add_imported_namespace_button
 ${SEARCH_NAMESPACE_INPUT}    //div[1]/div/div/div/div[2]/div[1]/div/text-filter/div/input
+${HIDE_MODEL_DETAILS_BTN}    id=hide_model_details_button
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
