@@ -320,7 +320,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains    Extension 1    timeout=20
     Wait until page contains    ext1    timeout=20
     Wait until page contains    testcode57 - Testcode 57    timeout=20
-    #Page should not contain    suomi - koodi: Testcode 29 - arvo: extensiontest41
+    Page should not contain    suomi - koodi: Testcode 29 - arvo: extensiontest41
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
