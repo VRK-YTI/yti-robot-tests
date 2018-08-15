@@ -56,6 +56,7 @@ ${USE_SELECTION_BTN}    //div[1]/div/div/form/div[3]/button[1]
 ${ALL_TYPES_DDL}    id=type
 ${ASSOCIATION_TYPE}    //*[@id="type"]/option[3]
 ${ATTRIBUTE_TYPE}    //*[@id="type"]/option[2]
+${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_button')]
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment

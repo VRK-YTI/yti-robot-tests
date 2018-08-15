@@ -10,10 +10,12 @@ ${class}          Asiakirja
 ${namespace}      Julkishallinnon tietokomponentit
 ${attribute}      Entinen nimi
 ${association}    Jäsen
+${classification}    Asuminen
+${contributor}    Testiorganisaatio
 
 *** Test Cases ***
 200. Modify profile
-    [Documentation]    Modify existing profile and restore changes
+    [Documentation]    Modify existing profile
     [Tags]    regression    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
@@ -26,19 +28,13 @@ ${association}    Jäsen
     Click Element    ${REMOVE_Asuminen}
     Log to Console    Classification removed
     Sleep    1
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
-    Click Element    ${ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "Kulttuuri")]    timeout=30
-    Click Element    //*[contains(text(), "Kulttuuri")]
+    Add classification    Kulttuuri
     Log to Console    New classification added
     Wait until page contains element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
     Log to Console    Contributor removed
     Sleep    1
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
-    Click Element    ${ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "Väestörekisterikeskus")]    timeout=30
-    Click Element    //*[contains(text(), "Väestörekisterikeskus")]
+    Add contributor    Väestörekisterikeskus
     Log to Console    New contributor added
     Wait until page contains element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
@@ -54,13 +50,14 @@ ${association}    Jäsen
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
     Log to Console    Modifications saved
-    Sleep    4
-    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=30
-    Click Element    //*[contains(text(), "Muokkaa")]
     Sleep    2
-    Restore profile modifications
+    Page should contain    Uusi nimi
+    Page should contain    Uusi kuvaus
+    Page should contain    Kulttuuri
+    Page should contain    Väestörekisterikeskus
+    Page should contain    www.suomi.fi/etusivu/
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete Uusi nimi profile
 
 201. Add new class to profile
     [Documentation]    Add new class to profile
@@ -72,11 +69,8 @@ ${association}    Jäsen
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Add class    Henkilö
     Sleep    2
-    Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
-    Click Element    ${CONFIRM_ADD_PROPERTIES}
-    Sleep    2
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
-    Click Element    ${SAVE_CLASS}
+    Confirm all properties for class
+    Save class
     Log to Console    Class "Henkilö" added
     Sleep    3
     Go back to Data Vocabularies frontpage
@@ -106,19 +100,13 @@ ${association}    Jäsen
     Click Element    ${REMOVE_Asuminen}
     Log to Console    Classification removed
     Sleep    1
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
-    Click Element    ${ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "Kulttuuri")]    timeout=30
-    Click Element    //*[contains(text(), "Kulttuuri")]
+    Add classification    Kulttuuri
     Log to Console    New classification added
     Wait until page contains element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
     Log to Console    Contributor removed
-    Sleep    3
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
-    Click Element    ${ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "Väestörekisterikeskus")]    timeout=30
-    Click Element    //*[contains(text(), "Väestörekisterikeskus")]
+    Sleep    1
+    Add contributor    Väestörekisterikeskus
     Log to Console    New contributor added
     Wait until page contains element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
@@ -135,13 +123,14 @@ ${association}    Jäsen
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
     Log to Console    Modifications saved
-    Sleep    3
-    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=30
-    Click Element    //*[contains(text(), "Muokkaa")]
     Sleep    2
-    Restore Core Vocabulary modifications
+    Page should contain    Uusi nimi
+    Page should contain    Uusi kuvaus
+    Page should contain    Kulttuuri
+    Page should contain    Väestörekisterikeskus
+    Page should contain    www.suomi.fi/etusivu/
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Automaatiokirjasto Core Vocabulary
+    [Teardown]    Delete Uusi nimi profile
 
 204. Add new attribute and association
     [Documentation]    Add new attribute and association for class
@@ -153,21 +142,15 @@ ${association}    Jäsen
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Add class    Henkilö
     Sleep    2
-    Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
-    Click Element    ${CONFIRM_ADD_PROPERTIES}
-    Sleep    2
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
-    Click Element    ${SAVE_CLASS}
-    Sleep    2
+    Confirm all properties for class
+    Save class
     Log to Console    Class "Henkilö" added
     Add attribute    Entinen nimi
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
-    Click Element    ${SAVE_CLASS}
+    Save class
     Log to Console    Attribute "Entinen nimi" added to class "Henkilö"
     Sleep    2
     Add association    Jäsen
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
-    Click Element    ${SAVE_CLASS}
+    Save class
     Log to Console    Association "Jäsen" added to class "Henkilö"
     Sleep    2
     Page should contain    Entinen nimi
@@ -194,8 +177,8 @@ ${association}    Jäsen
     Sleep    1
     Add association    Rekisteröinti
     Log to Console    Association "Rekisteröinti" added
-    Wait until page contains element    //*[contains(@id,'valueClass')]    timeout=30
-    Click Element    //*[contains(@id,'valueClass')]
+    Wait until page contains element    ${VALUE_CLASS_BTN}    timeout=30
+    Click Element    ${VALUE_CLASS_BTN}
     Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    Henkilö
     Click Element    //*[contains(text(), "Henkilö")]
@@ -231,6 +214,22 @@ Select and edit Automaatiokirjasto Core Vocabulary
     Click Element    ${SHOW_MODEL_DETAILS_BTN}
     Wait until page contains element    ${MODIFY_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${MODIFY_CORE_VOCABULARY_BTN}
+
+Add classification
+    [Arguments]    ${classification}=Asuminen
+    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
+    Click Element    ${ADD_CLASSIFICATION}
+    Wait until page contains element    //*[contains(text(), "${classification}")]    timeout=30
+    Click Element    //*[contains(text(), "${classification}")]
+    Sleep    2
+
+Add contributor
+    [Arguments]    ${contributor}=Testiorganisaatio
+    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
+    Click Element    ${ADD_CONTRIBUTOR}
+    Wait until page contains element    //*[contains(text(), "${contributor}")]    timeout=30
+    Click Element    //*[contains(text(), "${contributor}")]
+    Sleep    2
 
 Import namespace
     [Arguments]    ${namespace}=Julkishallinnon tietokomponentit
@@ -307,72 +306,21 @@ Add association
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
-Restore profile modifications
-    Wait until page contains element    ${MODEL_LABEL_INPUT}    timeout=30
-    Input Text    ${MODEL_LABEL_INPUT}    ${MODEL_1}
-    Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
-    Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${REMOVE_Kulttuuri}    timeout=30
-    Click Element    ${REMOVE_Kulttuuri}
-    Sleep    1
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
-    Click Element    ${ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
-    Click Element    //*[contains(text(), "Asuminen")]
-    Sleep    1
-    Wait until page contains element    ${REMOVE_Väestörekisterikeskus}    timeout=30
-    Click Element    ${REMOVE_Väestörekisterikeskus}
-    Sleep    5
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
-    Click Element    ${ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
-    Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Sleep    3
-    Wait until page contains element    ${REMOVE_LINK}    timeout=30
-    Click Element    ${REMOVE_LINK}
-    Sleep    1
-    Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
-    Click Element    //*[contains(text(), "Tallenna")]
-    Sleep    3
-    Page should contain    Testiautomaatio
-    Page should contain    Tämä on kuvaus
-    Page should contain    Asuminen
-    Page should contain    Testiorganisaatio
-    Page should not contain    www.suomi.fi/etusivu/
-    Log to Console    Modifications restored
+Delete Uusi nimi profile
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    Uusi nimi
+    Wait until page contains element    //*[contains(text(), "Uusi nimi")]    timeout=30
+    Click Element    //*[contains(text(), "Uusi nimi")]
+    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
+    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${REMOVE_MODEL_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
-    Go back to Data Vocabularies frontpage
-
-Restore Core Vocabulary modifications
-    Wait until page contains element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
-    Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    ${CORE_VOCABULARY_1}
-    Wait until page contains element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
-    Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${REMOVE_Kulttuuri}    timeout=30
-    Click Element    ${REMOVE_Kulttuuri}
-    Sleep    1
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
-    Click Element    ${ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
-    Click Element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${REMOVE_Väestörekisterikeskus}    timeout=30
-    Click Element    ${REMOVE_Väestörekisterikeskus}
-    Sleep    5
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
-    Click Element    ${ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
-    Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${REMOVE_LINK}    timeout=30
-    Click Element    ${REMOVE_LINK}
-    Sleep    5
-    Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
-    Click Element    //*[contains(text(), "Tallenna")]
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    Uusi nimi
+    Wait Until Page Contains    tietomallia    timeout=30
+    Log to Console    "Uusi nimi" profile deleted
     Sleep    2
-    Page should contain    Automaatiokirjasto
-    Page should contain    Tämä on kuvaus
-    Page should contain    Asuminen
-    Page should contain    Testiorganisaatio
-    Page should not contain    www.suomi.fi/etusivu/
-    Log to Console    Modifications restored
-    Sleep    2
-    Go back to Data Vocabularies frontpage
+    Close All Browsers
