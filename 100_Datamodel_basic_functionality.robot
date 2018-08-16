@@ -72,6 +72,22 @@ Resource          resources/Datamodel_Resources.robot
     Go back to Data Vocabularies frontpage
     [Teardown]    Test Case Teardown Delete Testiautomaatio profile
 
+105. Frontpage advanced search
+    [Documentation]    Search attribute with frontpage advanced search function.
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup
+    Wait Until Element Is Visible    ${FRONTPAGE_ADVANCED_SEARCH}    timeout=30
+    Click Element    ${FRONTPAGE_ADVANCED_SEARCH}
+    Wait Until Element Is Visible    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    Entinen nimi
+    Wait until page contains element    //*[contains(text(), "Entinen nimi")]    timeout=30
+    Click element    //*[contains(text(), "Entinen nimi")]
+    Sleep    1
+    Wait until page contains    Julkishallinnon tietokomponentit    timeout=30
+    Wait until page contains    Entinen nimi    timeout=30
+    Sleep    2
+    [Teardown]    Go back to Data Vocabularies frontpage and close browsers
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
