@@ -70,7 +70,7 @@ ${contributor}    Testiorganisaatio
     Hide model details
     Add class    Henkilö
     Sleep    2
-    Confirm all properties for class
+    Confirm all properties for class and save
     Log to Console    Class "Henkilö" added
     Sleep    3
     Go back to Data Vocabularies frontpage
@@ -143,7 +143,7 @@ ${contributor}    Testiorganisaatio
     Hide model details
     Add class    Henkilö
     Sleep    2
-    Confirm all properties for class
+    Confirm all properties for class and save
     Log to Console    Class "Henkilö" added
     Add attribute    Entinen nimi
     Save class
@@ -168,11 +168,11 @@ ${contributor}    Testiorganisaatio
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Add class    Henkilö
     Sleep    2
-    Confirm all properties for class
+    Confirm all properties for class and save
     Log to Console    Class "Henkilö" added
     Add class    Asiakirja
     Sleep    2
-    Confirm all properties for class
+    Confirm all properties for class and save
     Log to Console    Class "Asiakirja" added
     Sleep    1
     Add association    Rekisteröinti
@@ -265,7 +265,7 @@ Hide model details
     Click Element    ${HIDE_MODEL_DETAILS_BTN}
     Sleep    2
 
-Confirm all properties for class
+Confirm all properties for class and save
     Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Sleep    2
