@@ -7,11 +7,13 @@ Resource          resources/Datamodel_Resources.robot
 
 *** Variables ***
 ${class}          Asiakirja
+${class_2}        auto
 ${namespace}      Julkishallinnon tietokomponentit
 ${attribute}      Entinen nimi
 ${association}    Jäsen
 ${classification}    Asuminen
 ${contributor}    Testiorganisaatio
+${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 
 *** Test Cases ***
 200. Modify profile
@@ -194,6 +196,22 @@ ${contributor}    Testiorganisaatio
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
+206. Create new class without referencing concept
+    [Documentation]    Create new class without referencing concept
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace
+    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Hide model details
+    Create new class without referencing concept    ${new_class_link}    automobiili
+    Page should contain    Automobiili
+    Log to Console    Class "Automobiili" added without referencing concept
+    Sleep    3
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
 *** Keywords ***
 Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -309,6 +327,23 @@ Add association
     Click Element    //*[contains(text(), "${association}")]
     Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
+    Sleep    2
+
+Create new class without referencing concept
+    [Arguments]    ${new_class_link}    ${class_2}
+    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    Click Element    ${ADD_NEW_CLASS}
+    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    ${class_2}
+    Sleep    2
+    Click Element    ${new_class_link}
+    Sleep    3
+    Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
+    sleep    2
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Click Element    ${SAVE_CLASS}
     Sleep    2
 
 Delete Uusi nimi profile

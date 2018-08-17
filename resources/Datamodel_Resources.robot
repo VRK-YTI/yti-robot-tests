@@ -60,6 +60,7 @@ ${ALL_TYPES_DDL}    id=type
 ${ASSOCIATION_TYPE}    //*[@id="type"]/option[3]
 ${ATTRIBUTE_TYPE}    //*[@id="type"]/option[2]
 ${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_button')]
+${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    id=create_new_LuoUusiLuokkaIlmanKasiteviitetta_link
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
