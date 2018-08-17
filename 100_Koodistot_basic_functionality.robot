@@ -4,6 +4,9 @@ Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
+*** Variables ***
+${navigation_menu_link}    Käyttäjätiedot
+
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly. YTI-460
@@ -243,6 +246,40 @@ Resource          resources/Generic_resources.robot
     Go back to Koodistot frontpage
     [Teardown]    Test Case Teardown remove Code filter codelist with codes
 
+112. Check navigation menu links
+    [Documentation]    Verify that navigation menu links are opened correctly
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Select navigation menu link    Käyttäjätiedot
+    Wait until page contains    Käyttäjätiedot
+    Wait until page contains    Nimi
+    Wait until page contains    Sähköposti
+    Wait until page contains    Organisaatiot ja roolit
+    Sleep    1
+    Select navigation menu link    Rekisterit
+    Wait until page contains    Rekisterit
+    Wait until page contains element    ${CREATE_REGISTRY_BTN}
+    Sleep    1
+    Select navigation menu link    yhteentoimiva.suomi.fi
+    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Close Window
+    Select Window    title=Koodistot
+    Select navigation menu link    Suomi.fi-sanastot
+    Select Window    title=Sanastot
+    Wait until page contains    Sanastot
+    Wait until page contains    Luokitus
+    Close Window
+    Select Window    title=Koodistot
+    Sleep    1
+    Select navigation menu link    Suomi.fi-tietomallit
+    Select Window    title=Tietomallit
+    Wait until page contains    Tietomallit
+    Wait until page contains    Etusivu
+    Close Window
+    Select Window    title=Koodistot
+    Sleep    1
+    Close All Browsers
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
@@ -261,6 +298,14 @@ Go back to Koodistot frontpage
     Click element    ${FRONTPAGE_LINK}
     Sleep    2
     Close All Browsers
+
+Select navigation menu link
+    [Arguments]    ${navigation_menu_link}=Käyttäjätiedot
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
+    Sleep    2
 
 Test Case Setup create valid codelist
     Test Case Setup Superuser
