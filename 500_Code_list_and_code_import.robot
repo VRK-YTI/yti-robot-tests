@@ -746,7 +746,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 
 516. Import new VALID code list and attach variant
     [Documentation]    Import new VALID code list and attach variant to the code list
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
