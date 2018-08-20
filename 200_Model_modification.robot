@@ -15,6 +15,7 @@ ${classification}    Asuminen
 ${contributor}    Testiorganisaatio
 ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
+${class_property_name}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[1]/label/input
 
 *** Test Cases ***
 200. Modify profile
@@ -229,6 +230,23 @@ ${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
+208. Add new class to profile and remove properties
+    [Documentation]    Add new class to profile and remove properties
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace
+    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Hide model details
+    Add class    Henkilö
+    Sleep    2
+    Deselect properties for class and save    ${class_property_name}
+    Log to Console    Class "Henkilö" added
+    Sleep    6
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
 *** Keywords ***
 Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -304,6 +322,17 @@ Confirm all properties for class and save
     Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Sleep    2
+    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Click Element    ${SAVE_CLASS}
+    Sleep    2
+
+Deselect properties for class and save
+    [Arguments]    ${class_property_name}
+    Unselect Checkbox    ${class_property_name}
+    Sleep    5
+    Checkbox Should Not Be Selected    ${class_property_name}
+    Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
+    Click Element    ${CONFIRM_ADD_PROPERTIES}
     Wait until page contains element    ${SAVE_CLASS}    timeout=30
     Click Element    ${SAVE_CLASS}
     Sleep    2
