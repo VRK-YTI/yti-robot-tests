@@ -14,6 +14,7 @@ ${association}    Jäsen
 ${classification}    Asuminen
 ${contributor}    Testiorganisaatio
 ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
+${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
 
 *** Test Cases ***
 200. Modify profile
@@ -212,6 +213,22 @@ ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
+207. Create new shape by referencing external uri
+    [Documentation]    Create new shape by referencing external uri
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace
+    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Hide model details
+    Create new shape by referencing external uri    ${external_uri}    ${class}
+    Confirm all properties for class and save
+    Page should contain    Asiakirja
+    Log to Console    Shape "Asiakirja" added by referencing external uri
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
 *** Keywords ***
 Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -344,6 +361,21 @@ Create new class without referencing concept
     Click Element    ${USE_SELECTION_BTN}
     Wait until page contains element    ${SAVE_CLASS}    timeout=30
     Click Element    ${SAVE_CLASS}
+    Sleep    2
+
+Create new shape by referencing external uri
+    [Arguments]    ${external_uri}    ${class}
+    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    Click Element    ${ADD_NEW_CLASS}
+    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Sleep    2
+    Click Element    ${CREATE_NEW_SHAPE_BY_REF_URI}
+    Sleep    2
+    Input Text    ${EXTERNAL_URI_INPUT}    ${external_uri}
+    Sleep    2
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Delete Uusi nimi profile

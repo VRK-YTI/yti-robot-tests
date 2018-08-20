@@ -61,6 +61,8 @@ ${ASSOCIATION_TYPE}    //*[@id="type"]/option[3]
 ${ATTRIBUTE_TYPE}    //*[@id="type"]/option[2]
 ${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_button')]
 ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    id=create_new_LuoUusiLuokkaIlmanKasiteviitetta_link
+${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaamallaUlkoiseenTunnisteeseen_link
+${EXTERNAL_URI_INPUT}    id=externalUri
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
