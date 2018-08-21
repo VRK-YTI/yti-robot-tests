@@ -32,6 +32,7 @@ ${MODEL_DESCRIPTION_INPUT}    id=modelComment
 ${MODEL_PREFIX_INTPUT}    id=modelPrefix
 ${ADD_CLASSIFICATION}    id=add_classification_button
 ${ADD_CONTRIBUTOR}    id=add_contributor_button
+${ADD_VOCABULARY}    id=add_vocabulary_button
 ${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
 ${REMOVE_MODEL_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_MODEL_BTN}    //div[1]/div/div/div/modal-template/div[3]/div[2]/button[1]
@@ -44,6 +45,7 @@ ${MODIFY_MODEL}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-butt
 ${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
 ${IMPORT_NAMESPACE}    id=add_imported_namespace_button
 ${SEARCH_NAMESPACE_INPUT}    //div[1]/div/div/div/div[2]/div[1]/div/text-filter/div/input
+${SEARCH_VOCABULARY_INPUT}    id=text_filter_search_input
 ${HIDE_MODEL_DETAILS_BTN}    id=hide_model_details_button
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
@@ -63,6 +65,8 @@ ${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_butt
 ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    id=create_new_LuoUusiLuokkaIlmanKasiteviitetta_link
 ${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaamallaUlkoiseenTunnisteeseen_link
 ${EXTERNAL_URI_INPUT}    id=externalUri
+${CHANGE_CONCEPT}    //*[@id="ctrl.id"]/subject-view/div[1]/div/button/span
+${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment

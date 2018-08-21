@@ -13,11 +13,13 @@ ${attribute}      Entinen nimi
 ${association}    Jäsen
 ${classification}    Asuminen
 ${contributor}    Testiorganisaatio
+${vocabulary}     JHSMETA
 ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
 ${class_property_language}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[3]/label/input
 ${class_property_gender}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[5]/label/input
 ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[8]/label/input
+${concept}        liikenneväline
 
 *** Test Cases ***
 200. Modify profile
@@ -72,6 +74,7 @@ ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/d
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace
+    Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Add class    Henkilö
@@ -145,6 +148,7 @@ ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/d
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace
+    Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Add class    Henkilö
@@ -171,6 +175,7 @@ ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/d
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace
+    Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Add class    Henkilö
     Sleep    2
@@ -207,9 +212,11 @@ ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/d
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace
+    Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Create new class without referencing concept    ${new_class_link}    automobiili
+    Save class
     Page should contain    Automobiili
     Log to Console    Class "Automobiili" added without referencing concept
     Sleep    3
@@ -223,6 +230,7 @@ ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/d
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace
+    Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Create new shape by referencing external uri    ${external_uri}    ${class}
@@ -239,6 +247,7 @@ ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/d
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace
+    Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Add class    Henkilö
@@ -250,6 +259,29 @@ ${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/d
     Log to Console    Language, gender and civil status properties removed from class
     Log to Console    Class "Henkilö" added
     Sleep    6
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
+209. Create new class and add referencing concept
+    [Documentation]    Create new class and add referencing concept
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace
+    Add vocabulary    ${vocabulary}
+    Save model
+    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Log to Console    Vocabulary "JHSMETA" added
+    Hide model details
+    Create new class without referencing concept    ${new_class_link}    automobiili
+    Page should contain    Automobiili
+    Log to Console    Class "Automobiili" added without referencing concept
+    Sleep    1
+    Change concept for class    ${concept}
+    Save class
+    Page should contain    liikennevälineen määritelmä
+    Log to Console    Concept definition "liikenneväline" added for "automobiili"
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
@@ -290,6 +322,18 @@ Add contributor
     Click Element    //*[contains(text(), "${contributor}")]
     Sleep    2
 
+Add vocabulary
+    [Arguments]    ${vocabulary}
+    Wait until page contains element    ${ADD_VOCABULARY}    timeout=30
+    Click Element    ${ADD_VOCABULARY}
+    Wait until page contains element    ${SEARCH_VOCABULARY_INPUT}    timeout=30
+    Input Text    ${SEARCH_VOCABULARY_INPUT}    ${vocabulary}
+    Click Element    //*[contains(text(), "${vocabulary}")]
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "${vocabulary}")]    timeout=30
+    Click Element    //*[contains(text(), "${vocabulary}")]
+    Sleep    2
+
 Import namespace
     [Arguments]    ${namespace}=Julkishallinnon tietokomponentit
     Wait until page contains element    ${IMPORT_NAMESPACE}    timeout=30
@@ -298,6 +342,8 @@ Import namespace
     Input Text    ${SEARCH_NAMESPACE_INPUT}    ${namespace}
     Click Element    //*[contains(text(), "${namespace}")]
     Sleep    2
+
+Save model
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
     Sleep    2
@@ -381,6 +427,19 @@ Add association
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
+Change concept for class
+    [Arguments]    ${concept}
+    Wait until page contains element    ${CHANGE_CONCEPT}    timeout=30
+    Click Element    ${CHANGE_CONCEPT}
+    Wait until page contains element    ${SEARCH_CONCEPT_DB_INPUT}    timeout=30
+    Input Text    ${SEARCH_CONCEPT_DB_INPUT}    ${concept}
+    Wait until page contains element    //*[contains(text(), "${concept}")]    timeout=30
+    Click Element    //*[contains(text(), "${concept}")]
+    Sleep    2
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Sleep    2
+
 Create new class without referencing concept
     [Arguments]    ${new_class_link}    ${class_2}
     Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
@@ -394,8 +453,6 @@ Create new class without referencing concept
     sleep    2
     Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
-    Click Element    ${SAVE_CLASS}
     Sleep    2
 
 Create new shape by referencing external uri
