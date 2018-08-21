@@ -15,9 +15,9 @@ ${classification}    Asuminen
 ${contributor}    Testiorganisaatio
 ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
-${class_property_name}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[1]/label/input
 ${class_property_language}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[3]/label/input
 ${class_property_gender}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[5]/label/input
+${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[8]/label/input
 
 *** Test Cases ***
 200. Modify profile
@@ -243,7 +243,11 @@ ${class_property_gender}    xpath=//div[1]/div/div/modal-template/div[2]/div/mod
     Hide model details
     Add class    Henkilö
     Sleep    2
-    Deselect properties for class and save    ${class_property_name}    ${class_property_language}    ${class_property_gender}
+    Deselect properties for class and save    ${class_property_language}    ${class_property_gender}    ${class_property_civil_status}
+    Page should not contain element    //*[contains(text(), "Äidinkieli")]
+    Page should not contain element    //*[contains(text(), "Sukupuoli")]
+    Page should not contain element    //*[contains(text(), "Sivilisääty")]
+    Log to Console    Language, gender and civil status properties removed from class
     Log to Console    Class "Henkilö" added
     Sleep    6
     Go back to Data Vocabularies frontpage
@@ -330,9 +334,8 @@ Confirm all properties for class and save
 
 Deselect properties for class and save
     [Arguments]    @{class_properties}
-    :FOR    ${class_property}    IN    @{class_properties}
+    : FOR    ${class_property}    IN    @{class_properties}
     \    Unselect Checkbox    ${class_property}
-    \    Sleep    5
     \    Checkbox Should Not Be Selected    ${class_property}
     Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
