@@ -16,6 +16,8 @@ ${contributor}    Testiorganisaatio
 ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
 ${class_property_name}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[1]/label/input
+${class_property_language}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[3]/label/input
+${class_property_gender}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[5]/label/input
 
 *** Test Cases ***
 200. Modify profile
@@ -241,7 +243,7 @@ ${class_property_name}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal
     Hide model details
     Add class    Henkilö
     Sleep    2
-    Deselect properties for class and save    ${class_property_name}
+    Deselect properties for class and save    ${class_property_name}    ${class_property_language}    ${class_property_gender}
     Log to Console    Class "Henkilö" added
     Sleep    6
     Go back to Data Vocabularies frontpage
@@ -327,10 +329,11 @@ Confirm all properties for class and save
     Sleep    2
 
 Deselect properties for class and save
-    [Arguments]    ${class_property_name}
-    Unselect Checkbox    ${class_property_name}
-    Sleep    5
-    Checkbox Should Not Be Selected    ${class_property_name}
+    [Arguments]    @{class_property_names}
+    :FOR    ${property_name}    IN    @{class_property_names}
+    \    Unselect Checkbox    ${property_name}
+    \    Sleep    5
+    \    Checkbox Should Not Be Selected    ${property_name}
     Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Wait until page contains element    ${SAVE_CLASS}    timeout=30
