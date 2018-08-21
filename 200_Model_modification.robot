@@ -329,11 +329,11 @@ Confirm all properties for class and save
     Sleep    2
 
 Deselect properties for class and save
-    [Arguments]    @{class_property_names}
-    :FOR    ${property_name}    IN    @{class_property_names}
-    \    Unselect Checkbox    ${property_name}
+    [Arguments]    @{class_properties}
+    :FOR    ${class_property}    IN    @{class_properties}
+    \    Unselect Checkbox    ${class_property}
     \    Sleep    5
-    \    Checkbox Should Not Be Selected    ${property_name}
+    \    Checkbox Should Not Be Selected    ${class_property}
     Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Wait until page contains element    ${SAVE_CLASS}    timeout=30
