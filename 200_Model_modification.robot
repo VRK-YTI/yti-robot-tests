@@ -16,9 +16,9 @@ ${contributor}    Testiorganisaatio
 ${vocabulary}     JHSMETA
 ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
-${class_property_language}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[3]/label/input
-${class_property_gender}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[5]/label/input
-${class_property_civil_status}    xpath=//div[1]/div/div/modal-template/div[2]/div/modal-body/div/div[1]/div[8]/label/input
+${class_property_language}    id=select_property_attribute_Aidinkieli_checkbox
+${class_property_gender}    id=select_property_attribute_Sukupuoli_checkbox
+${class_property_civil_status}    id=select_property_attribute_Siviilisaaty_checkbox
 ${concept}        liikenneväline
 
 *** Test Cases ***
