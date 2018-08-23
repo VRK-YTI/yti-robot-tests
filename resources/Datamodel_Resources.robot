@@ -67,6 +67,9 @@ ${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaam
 ${EXTERNAL_URI_INPUT}    id=externalUri
 ${CHANGE_CONCEPT}    //*[@id="ctrl.id"]/subject-view/div[1]/div/button/span
 ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
+${SHOW_HISTORY_BTN}    //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/history/button
+${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
+${REMOVE_CLASS_BTN}    //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[4]/span
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment

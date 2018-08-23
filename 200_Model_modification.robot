@@ -20,6 +20,9 @@ ${class_property_language}    id=select_property_attribute_Aidinkieli_checkbox
 ${class_property_gender}    id=select_property_attribute_Sukupuoli_checkbox
 ${class_property_civil_status}    id=select_property_attribute_Siviilisaaty_checkbox
 ${concept}        liikenneväline
+${class_item_person}    Henkilö
+${class_item_record}    Asiakirja
+${class_item_time_period}    Ajanjakso
 
 *** Test Cases ***
 200. Modify profile
@@ -285,6 +288,43 @@ ${concept}        liikenneväline
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
+210. Add several classes to profile, check history and remove one class
+    [Documentation]    Add several classes to profile, check class history information and remove one class
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace
+    Save model
+    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
+    Hide model details
+    Add several classes    ${class_item_person}    ${class_item_record}    ${class_item_time_period}
+    Sleep    2
+    Page should contain element    //*[contains(@id, 'Ajanjakso_tabset_link')]
+    Page should contain element    //*[contains(@id, 'Henkilo_tabset_link')]
+    Page should contain element    //*[contains(@id, 'Asiakirja_tabset_link')]
+    Log to Console    Class "Henkilö" added
+    Log to Console    Class "Asiakirja" added
+    Log to Console    Class "Ajanjakso" added
+    Sleep    1
+    Wait until page contains element    //*[contains(@id, 'Ajanjakso_tabset_link')]    timeout=30
+    Click Element    //*[contains(@id, 'Ajanjakso_tabset_link')]
+    Wait until page contains element    ${SHOW_HISTORY_BTN}    timeout=30
+    Click Element    ${SHOW_HISTORY_BTN}
+    Wait until page contains    Historialliset versiot    timeout=10
+    Log to Console    History for class "Ajanjakso" opened
+    Wait until page contains element    ${CLOSE_HISTORY_BTN}    timeout=30
+    Click Element    ${CLOSE_HISTORY_BTN}
+    Wait until page contains element    ${REMOVE_CLASS_BTN}    timeout=30
+    Click Element    ${REMOVE_CLASS_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Sleep    2
+    Page should not contain element    //*[contains(@id, 'Ajanjakso_tabset_link')]
+    Log to Console    Class "Ajanjakso" removed
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
 *** Keywords ***
 Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -359,6 +399,21 @@ Add class
     Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
     Click Element    ${SPECIALIZE_CLASS}
     Sleep    2
+
+Add several classes
+    [Arguments]    @{class_items}
+    : FOR    ${class_item}    IN    @{class_items}
+    \    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    \    Click Element    ${ADD_NEW_CLASS}
+    \    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    \    Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
+    \    Click Element    //*[contains(text(), "${class_item}")]
+    \    Sleep    2
+    \    Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
+    \    Click Element    ${SPECIALIZE_CLASS}
+    \    Sleep    1
+    \    Confirm all properties for class and save
+    \    Sleep    2
 
 Save class
     Wait until page contains element    ${SAVE_CLASS}    timeout=30
