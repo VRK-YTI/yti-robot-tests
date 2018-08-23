@@ -149,7 +149,7 @@ Create Testiautomaatio profile
     Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
     Wait until page contains element    ${MODEL_PREFIX_INTPUT}    timeout=30
-    Input Text    ${MODEL_PREFIX_INTPUT}    test
+    Input Text    ${MODEL_PREFIX_INTPUT}    autom
     Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
     Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
