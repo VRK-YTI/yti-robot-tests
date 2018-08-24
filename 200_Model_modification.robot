@@ -6,7 +6,7 @@ Library           SeleniumLibrary
 Resource          resources/Datamodel_Resources.robot
 
 *** Variables ***
-${class}          Asiakirja
+${class}          Maksu
 ${class_2}        auto
 ${namespace}      Julkishallinnon tietokomponentit
 ${attribute}      Entinen nimi
@@ -15,19 +15,19 @@ ${classification}    Asuminen
 ${contributor}    Testiorganisaatio
 ${vocabulary}     JHSMETA
 ${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
-${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Asiakirja
-${class_property_language}    id=select_property_attribute_Aidinkieli_checkbox
-${class_property_gender}    id=select_property_attribute_Sukupuoli_checkbox
-${class_property_civil_status}    id=select_property_attribute_Siviilisaaty_checkbox
+${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Maksu
+${class_property_po_box}    id=select_property_attribute_Postilokero-osoite_checkbox
+${class_property_post_code}    id=select_property_attribute_Postinumero_checkbox
+${class_property_post_name}    id=select_property_attribute_Postitoimipaikka_checkbox
 ${concept}        liikenneväline
-${class_item_person}    Henkilö
-${class_item_record}    Asiakirja
+${class_item_person}    Päätös
+${class_item_record}    Maksu
 ${class_item_time_period}    Ajanjakso
 
 *** Test Cases ***
 200. Modify profile
     [Documentation]    Modify existing profile
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
@@ -72,7 +72,7 @@ ${class_item_time_period}    Ajanjakso
 
 201. Add new class to profile
     [Documentation]    Add new class to profile
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
@@ -80,17 +80,17 @@ ${class_item_time_period}    Ajanjakso
     Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
-    Add class    Henkilö
+    Add class    Päätös
     Sleep    2
     Confirm all properties for class and save
-    Log to Console    Class "Henkilö" added
+    Log to Console    Class "Päätös" added
     Sleep    3
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
 202. Add new Core Vocabulary
     [Documentation]    Add new Core Vocabulary and delete Core Vocabulary
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup
     Create Automaatiokirjasto Core Vocabulary
     Log to Console    Automaatiokirjasto Core Vocabulary created
@@ -99,7 +99,7 @@ ${class_item_time_period}    Ajanjakso
 
 203. Modify Core Vocabulary
     [Documentation]    Modify Core Vocabulary and delete Core Vocabulary
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Log to Console    Automaatiokirjasto Core Vocabulary created
     Select and edit Automaatiokirjasto Core Vocabulary
@@ -146,7 +146,7 @@ ${class_item_time_period}    Ajanjakso
 
 204. Add new attribute and association
     [Documentation]    Add new attribute and association for class
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
@@ -154,17 +154,17 @@ ${class_item_time_period}    Ajanjakso
     Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
-    Add class    Henkilö
+    Add class    Päätös
     Sleep    2
     Confirm all properties for class and save
-    Log to Console    Class "Henkilö" added
+    Log to Console    Class "Päätös" added
     Add attribute    Entinen nimi
     Save class
-    Log to Console    Attribute "Entinen nimi" added to class "Henkilö"
+    Log to Console    Attribute "Entinen nimi" added to class "Päätös"
     Sleep    2
     Add association    Jäsen
     Save class
-    Log to Console    Association "Jäsen" added to class "Henkilö"
+    Log to Console    Association "Jäsen" added to class "Päätös"
     Sleep    2
     Page should contain    Entinen nimi
     Page should contain    Jäsen
@@ -173,44 +173,44 @@ ${class_item_time_period}    Ajanjakso
 
 205. Add association between two classes
     [Documentation]    Add association between two classes
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace
     Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
-    Add class    Henkilö
+    Add class    Päätös
     Sleep    2
     Confirm all properties for class and save
-    Log to Console    Class "Henkilö" added
-    Add class    Asiakirja
+    Log to Console    Class "Päätös" added
+    Add class    Maksu
     Sleep    2
     Confirm all properties for class and save
-    Log to Console    Class "Asiakirja" added
+    Log to Console    Class "Maksu" added
     Sleep    1
     Add association    Rekisteröinti
     Log to Console    Association "Rekisteröinti" added
     Wait until page contains element    ${VALUE_CLASS_BTN}    timeout=30
     Click Element    ${VALUE_CLASS_BTN}
     Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
-    Input Text    ${SEARCH_CLASS_INPUT}    Henkilö
-    Click Element    //*[contains(text(), "Henkilö")]
+    Input Text    ${SEARCH_CLASS_INPUT}    Päätös
+    Click Element    //*[contains(text(), "Päätös")]
     Sleep    2
     Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
     Click Element    ${SPECIALIZE_CLASS}
     Sleep    2
     Save class
     Page should contain    Rekisteröinti
-    Page should contain    test:Henkilo
-    Log to Console    Association "Rekisteröinti" added between "Henkilö" and "Asiakirja"
+    Page should contain    autom:Paatos
+    Log to Console    Association "Rekisteröinti" added between "Päätös" and "Maksu"
     Sleep    3
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
 206. Create new class without referencing concept
     [Documentation]    Create new class without referencing concept
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
@@ -228,7 +228,7 @@ ${class_item_time_period}    Ajanjakso
 
 207. Create new shape by referencing external uri
     [Documentation]    Create new shape by referencing external uri
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
@@ -238,14 +238,14 @@ ${class_item_time_period}    Ajanjakso
     Hide model details
     Create new shape by referencing external uri    ${external_uri}    ${class}
     Confirm all properties for class and save
-    Page should contain    Asiakirja
-    Log to Console    Shape "Asiakirja" added by referencing external uri
+    Page should contain    Maksu
+    Log to Console    Shape "Maksu" added by referencing external uri
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
 208. Add new class to profile and remove properties
     [Documentation]    Add new class to profile and remove properties
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
@@ -253,15 +253,15 @@ ${class_item_time_period}    Ajanjakso
     Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
-    Add class    Henkilö
+    Add class    Postiosoite
     Sleep    2
-    Deselect properties for class and save    ${class_property_language}    ${class_property_gender}    ${class_property_civil_status}
-    Page should not contain element    //*[contains(text(), "Äidinkieli")]
-    Page should not contain element    //*[contains(text(), "Sukupuoli")]
-    Page should not contain element    //*[contains(text(), "Sivilisääty")]
-    Log to Console    Language, gender and civil status properties removed from class
-    Log to Console    Class "Henkilö" added
-    Sleep    6
+    Deselect properties for class and save    ${class_property_po_box}    ${class_property_post_code}    ${class_property_post_name}
+    Page should not contain element    //*[contains(text(), "Postilokero-osoite")]
+    Page should not contain element    //*[contains(text(), "Postinumero")]
+    Page should not contain element    //*[contains(text(), "Postitoimipaikka")]
+    Log to Console    PO box, post code and post name properties removed from class
+    Log to Console    Class "Postiosoite" added
+    Sleep    1
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
@@ -290,7 +290,7 @@ ${class_item_time_period}    Ajanjakso
 
 210. Add several classes to profile, check history and remove one class
     [Documentation]    Add several classes to profile, check class history information and remove one class
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
@@ -301,10 +301,10 @@ ${class_item_time_period}    Ajanjakso
     Add several classes    ${class_item_person}    ${class_item_record}    ${class_item_time_period}
     Sleep    2
     Page should contain element    //*[contains(@id, 'Ajanjakso_tabset_link')]
-    Page should contain element    //*[contains(@id, 'Henkilo_tabset_link')]
-    Page should contain element    //*[contains(@id, 'Asiakirja_tabset_link')]
-    Log to Console    Class "Henkilö" added
-    Log to Console    Class "Asiakirja" added
+    Page should contain element    //*[contains(@id, 'Paatos_tabset_link')]
+    Page should contain element    //*[contains(@id, 'Maksu_tabset_link')]
+    Log to Console    Class "Päätös" added
+    Log to Console    Class "Maksu" added
     Log to Console    Class "Ajanjakso" added
     Sleep    1
     Wait until page contains element    //*[contains(@id, 'Ajanjakso_tabset_link')]    timeout=30
@@ -389,11 +389,12 @@ Save model
     Sleep    2
 
 Add class
-    [Arguments]    ${class}=Asiakirja
+    [Arguments]    ${class}=Maksu
     Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
     Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Sleep    2
     Click Element    //*[contains(text(), "${class}")]
     Sleep    2
     Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
@@ -452,9 +453,11 @@ Add attribute
     Click Element    ${ADD_PROPERTY_DDL}
     Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
+    Sleep    4
     Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     #Click Element    ${ATTRIBUTE_TYPE}
+    Sleep    2
     Click Element    //*[contains(text(), "Attribuutti")]
     Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
@@ -471,9 +474,11 @@ Add association
     Click Element    ${ADD_PROPERTY_DDL}
     Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
+    Sleep    4
     Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     #Click Element    ${ASSOCIATION_TYPE}
+    Sleep    2
     Click Element    //*[contains(text(), "Assosiaatio")]
     Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${association}

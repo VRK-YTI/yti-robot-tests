@@ -7,7 +7,7 @@ Resource          resources/Datamodel_Resources.robot
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup
     Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
     Click element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a
@@ -22,7 +22,7 @@ Resource          resources/Datamodel_Resources.robot
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup
     Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[3]/a    timeout=20
     Click element    //application/ng-container/app-footer/div/div[2]/div[3]/a
@@ -45,7 +45,7 @@ Resource          resources/Datamodel_Resources.robot
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
@@ -57,7 +57,7 @@ Resource          resources/Datamodel_Resources.robot
 
 104. Search for DRAFT model
     [Documentation]    Search for DRAFT model with frontpage search function.
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
@@ -74,7 +74,7 @@ Resource          resources/Datamodel_Resources.robot
 
 105. Frontpage advanced search
     [Documentation]    Search attribute with frontpage advanced search function.
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup
     Wait Until Element Is Visible    ${FRONTPAGE_ADVANCED_SEARCH}    timeout=30
     Click Element    ${FRONTPAGE_ADVANCED_SEARCH}
