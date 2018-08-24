@@ -26,7 +26,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 *** Test Cases ***
 500. Import DRAFT Code list without codes
     [Documentation]    Import DRAFT Code list without codes, check that import is successful and remove code list
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -44,7 +44,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 
 501. Import VALID Code list with codes
     [Documentation]    Import VALID Code list with codes, check that import is successful and remove code list
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
@@ -75,7 +75,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 
 502. Import DRAFT Codes to existing Code list
     [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful and remove code list
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -98,7 +98,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 503. Import DRAFT Codes to existing Code list and update Codes with import functionality
     [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful,
     ...    update Codes and remove code list
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -125,7 +125,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 
 504. Create new Code list and Codes
     [Documentation]    Create new code list and codes manually and remove code and code list
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
@@ -172,7 +172,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 505. Create new Code list with existing codeValue
     [Documentation]    Create new Code list with existing codeValue and check error message from
     ...    Code list value input field
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Create draft codelist
     Sleep    2
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
@@ -206,7 +206,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 
 506. Import multiple Code lists with codes
     [Documentation]    Import multiple Code list with codes, check that import is successful. Remove code lists and codes.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Multiple_codelists_and_codes}
@@ -294,7 +294,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 508. Import DRAFT Code list with codes and DEFAULT CODE
     [Documentation]    Import Code list with codes and DEFAULT CODE, check that import is successful and DEFAULTCODE is
     ...    defined in information tab. Remove code list.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_with_defaultcode}
@@ -321,7 +321,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 509. Create Code list and add DEFAULT CODE
     [Documentation]    Create new Code list and import codes. Add DEFAULT CODE manually,
     ...    remove DEFAULTCODE and code list.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
@@ -385,7 +385,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 
 510. Import DRAFT Codes (CSV) to existing Code list
     [Documentation]    Import DRAFT Codes (CSV) to existing Code list, check that import is successful and remove code list
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -409,7 +409,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 511. Create Code list and get concept for Code list from Controlled Vocabularies
     [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -447,7 +447,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 512. Create Code to Code list and get concept for Code from Controlled Vocabularies
     [Documentation]    Create Code to Code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in Code. YTI-787
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -618,7 +618,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 514. Create and delete registry
     [Documentation]    Create registry and attach code list to that registry. Check that deleting
     ...    registry with code lists is not possible, remove code list and delete empty registry.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
@@ -703,7 +703,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
 
 515. Create registry with existing registry code value
     [Documentation]    Create registry with existing registry code value and check error message
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20

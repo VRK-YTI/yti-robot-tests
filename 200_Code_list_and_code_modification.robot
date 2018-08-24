@@ -12,7 +12,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 *** Test Cases ***
 200. Modify DRAFT Code
     [Documentation]    Modify name, description and short name values for DRAFT code.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${CANCEL_CODE_MOD_BTN}
@@ -35,7 +35,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 201. Add link to the DRAFT Code
     [Documentation]    Add link to the draft code, check link functionalty and remove the link.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
@@ -76,7 +76,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 202. Add Creative Commons license to DRAFT Code
     [Documentation]    Add Creative Commons license to draft code and remove the license.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
@@ -109,7 +109,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 203. Modify link for DRAFT Code
     [Documentation]    Add link to the DRAFT code, modify link name, check the name from TIEDOT-tab
     ...    and remove the link. YTI-444, YTI-614.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=20
@@ -145,7 +145,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 204. Set start date and end date for Code
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.
     ...    YTI-438
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto code and edit
     Wait until page contains element    ${CODE_START_DATE_BTN}    timeout=20
@@ -173,7 +173,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 205. Set end date before start date for Code list
     [Documentation]    Set end date before start date for code list and check error message.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto and edit
     Wait until page contains element    ${CODE_LIST_START_DATE_BTN}    timeout=20
@@ -205,7 +205,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup create valid codelist
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
@@ -223,7 +223,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup create valid codelist
     Choose testiautomaatiokoodisto 2 and edit
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
@@ -251,7 +251,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 208. Modify classification for DRAFT Code list
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
     ...    remove classification.
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Choose testiautomaatiokoodisto and edit
     Page should contain element    ${CLASSIFICATION_2}
