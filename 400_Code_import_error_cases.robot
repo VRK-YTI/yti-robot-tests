@@ -336,7 +336,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 413. Import Codes with missing ORDER value
     [Documentation]    Import Codes (Excel, CSV) with missing ORDER value and check error message. YTI-650
-    [Tags]    koodistot    test
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Select draft code list
     Import codes in Excel format
