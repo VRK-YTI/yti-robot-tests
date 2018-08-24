@@ -8,7 +8,7 @@ Resource          resources/Login_details.robot
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
-    [Tags]    regression    rhp
+    [Tags]    regression    rhp    test
     [Setup]    Test Case Setup
     Wait until page contains element    //app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
     Click element    //app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
@@ -19,7 +19,7 @@ Resource          resources/Login_details.robot
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
-    [Tags]    regression    rhp
+    [Tags]    regression    rhp    test
     [Setup]    Test Case Setup
     Wait until page contains element    //app-root/app-footer/div/div[2]/div[3]/a    timeout=20
     Click element    //app-root/app-footer/div/div[2]/div[3]/a
@@ -42,7 +42,7 @@ Resource          resources/Login_details.robot
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
-    [Tags]    regression    rhp
+    [Tags]    regression    rhp    test
     [Setup]    Test Case Setup
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
@@ -54,7 +54,7 @@ Resource          resources/Login_details.robot
 
 104. Search organization
     [Documentation]    Search for organization with frontpage search function.
-    [Tags]    regression    rhp
+    [Tags]    regression    rhp    test
     [Setup]    Test Case Setup
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${ORGANIZATION_1}
