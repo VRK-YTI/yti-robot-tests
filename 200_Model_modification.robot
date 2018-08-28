@@ -325,6 +325,46 @@ ${class_item_time_period}    Ajanjakso
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Testiautomaatio profile
 
+211. Add reference data for profile
+    [Documentation]    Create profile and add reference data for that profile
+    [Tags]    regression    tietomallit    test
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Wait until page contains element    ${ADD_REF_DATA_BTN}    timeout=30
+    Click Element    ${ADD_REF_DATA_BTN}
+    Sleep    7
+    Wait until page contains element    ${REF_DATA_FILTER_DDL}    timeout=30
+    Click Element    ${REF_DATA_FILTER_DDL}
+    Wait until page contains element    //*[contains(text(), "Voimassa oleva")]    timeout=30
+    Click Element    //*[contains(text(), "Voimassa oleva")]
+    Wait until page contains element    ${SEARCH_REF_DATA_INPUT}    timeout=30
+    Input Text    ${SEARCH_REF_DATA_INPUT}    Kunnat 2018
+    Sleep    3
+    Wait until page contains element    //*[contains(text(), "Kunnat 2018")]    timeout=30
+    Click Element    //*[contains(text(), "Kunnat 2018")]
+    Wait until page contains element    ${REF_DATA_FILTER_DDL}    timeout=30
+    Click Element    ${REF_DATA_FILTER_DDL}
+    Wait until page contains element    //*[contains(text(), "Kaikki tilat")]    timeout=30
+    Click Element    //*[contains(text(), "Kaikki tilat")]
+    Page should contain    Koodiston URI
+    Page should contain    Koodiston tila
+    Page should contain    Voimassa oleva
+    Page should contain    Koodiston nimi
+    Page should contain    Tunniste
+    Page should contain    005
+    Page should contain    Alajärvi
+    Wait until page contains element    ${USE_SELCTION_BTN}    timeout=30
+    Click Element    ${USE_SELCTION_BTN}
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
+    Click Element    //*[contains(text(), "Tallenna")]
+    Sleep    2
+    Wait until page contains    Kunnat 2018
+    Log to Console    Reference data "Kunnat 2018" added for profile
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete Testiautomaatio profile
+
 *** Keywords ***
 Select and edit Testiautomaatio profile
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30

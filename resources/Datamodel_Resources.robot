@@ -36,7 +36,6 @@ ${ADD_VOCABULARY}    id=add_vocabulary_button
 ${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
 ${REMOVE_MODEL_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[4]/span
 ${CONFIRM_REMOVE_MODEL_BTN}    //div[1]/div/div/div/modal-template/div[3]/div[2]/button[1]
-${MODEL_LANGUAGE_INTPUT}    id=modelLanguage
 ${ADD_LINK}       id=add_link_button
 ${LINK_URL_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[1]/div/div/input
 ${LINK_NAME_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[2]/div/div/input
@@ -47,6 +46,10 @@ ${IMPORT_NAMESPACE}    id=add_imported_namespace_button
 ${SEARCH_NAMESPACE_INPUT}    //div[1]/div/div/div/div[2]/div[1]/div/text-filter/div/input
 ${SEARCH_VOCABULARY_INPUT}    id=text_filter_search_input
 ${HIDE_MODEL_DETAILS_BTN}    id=hide_model_details_button
+${ADD_REF_DATA_BTN}    id=add_reference_data_button
+${REF_DATA_FILTER_DDL}    id=reference_data_status_filter_dropdown
+${SEARCH_REF_DATA_INPUT}    id=text_filter_search_input
+${USE_SELCTION_BTN}    //div[1]/div/div/form/div[3]/button[1]/span[2]
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
