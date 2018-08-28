@@ -129,7 +129,11 @@ Go back to Data Vocabularies frontpage
 
 Test Case Setup Create Testiautomaatio profile
     Test Case Setup
-    Create Testiautomaatio profile
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
+    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
+    run keyword if    ${model_exists}    Delete existing profile and create new
+    ...    ELSE    Create Testiautomaatio profile
     Go back to Data Vocabularies frontpage
 
 Test Case Teardown Delete Testiautomaatio profile
@@ -137,7 +141,11 @@ Test Case Teardown Delete Testiautomaatio profile
 
 Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Test Case Setup
-    Create Automaatiokirjasto Core Vocabulary
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
+    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
+    run keyword if    ${model_exists}    Delete existing core vocabulary and create new
+    ...    ELSE    Create Automaatiokirjasto Core Vocabulary
     Go back to Data Vocabularies frontpage
 
 Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
@@ -185,6 +193,22 @@ Delete Testiautomaatio profile
     Sleep    2
     Close All Browsers
 
+Delete existing profile and create new
+    Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
+    Click Element    //*[contains(text(), "Testiautomaatio")]
+    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
+    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${REMOVE_MODEL_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Sleep    2
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
+    Wait Until Page Contains    tietomallia    timeout=30
+    Log to Console    Testiautomaatio profile deleted
+    Create Testiautomaatio profile
+
 Create Automaatiokirjasto Core Vocabulary
     Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
@@ -226,3 +250,19 @@ Delete Automaatiokirjasto Core Vocabulary
     Log to Console    Automaatiokirjasto Core Vocabulary deleted
     Sleep    2
     Close All Browsers
+
+Delete existing core vocabulary and create new
+    Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
+    Click Element    //*[contains(text(), "Automaatiokirjasto")]
+    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
+    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${REMOVE_MODEL_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Sleep    2
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
+    Wait Until Page Contains    tietomallia    timeout=30
+    Log to Console    Automaatiokirjasto Core Vocabulary deleted
+    Create Automaatiokirjasto Core Vocabulary
