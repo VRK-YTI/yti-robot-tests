@@ -15,6 +15,12 @@ ${LANGUAGE_DROPDOWN_BTN}    //app-root/app-navigation-bar/nav/ul/li[2]/a
 ${FRONTPAGE_SEARCH_BOX}    //app-root/div/app-frontpage/div/ngb-tabset/div/div/app-organizations/div/div[1]/div[1]/input
 ${ADD_ORGANIZATION_BTN}    //*[@id="ngb-tab-0-panel"]/app-organizations/div/div[1]/button/span
 ${EDIT_ORGANIZATION_BTN}    //app-root/div/app-organization/div/div/button/span
+${ID_ELEMENT_HOOK_XPATH}    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/content/form/div[1]/div/div[1]/div/div[1]/input
+${ID_ELEMENT_HOOK}    id=identifierId
+${PASSWORD_ELEMENT_HOOK}    //*[contains(@name,'password')]
+${ID_NEXT_ELEMENT_HOOK}    id=identifierNext
+${PASSWORD_NEXT_ELEMENT_HOOK}    id=passwordNext
+${GOOGLE_LOGIN_SELECTION}    https://googlelogin.eduuni.fi
 
 *** Keywords ***
 Test Case Setup
@@ -25,20 +31,34 @@ Test Case Setup
 eDuuni Login
     Wait until page contains element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    timeout=30
     Click element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
-    Select From List    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    https://googlelogin.eduuni.fi
+    Select From List    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    ${GOOGLE_LOGIN_SELECTION}
     Wait Until Page Contains element    id=ContentPlaceHolder1_Button1    timeout=30
     Click element    id=ContentPlaceHolder1_Button1
-    Wait Until Page Contains element    id=identifierId
-    Input text    id=identifierId    ${TEST_EMAIL}
     Sleep    5
-    Wait Until Page Contains element    id=identifierNext    timeout=20
-    Click element    id=identifierNext
+    ${has_id_element}=    Run Keyword And Return Status    Page Should Contain Element    id=identifierId    limit=1
+    run keyword if    ${has_id_element}    Login With Id Field Id
+    ...               ELSE    Login With Id Field Xpath
+
+Login With Id Field Id
+    Wait Until Page Contains element    ${ID_ELEMENT_HOOK}
+    Input text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
+    Continue Login
+
+Login With Id Field Xpath
+    Wait Until Page Contains element    ${ID_ELEMENT_HOOK_XPATH}
+    Input text    ${ID_ELEMENT_HOOK_XPATH}    ${TEST_EMAIL}
+    Continue Login
+
+Continue Login
     Sleep    5
-    Wait Until Page Contains element    //*[contains(@name,'password')]    timeout=20
-    Input text    //*[contains(@name,'password')]    ${TEST_PASSWORD}
+    Wait Until Page Contains element    ${ID_NEXT_ELEMENT_HOOK}    timeout=20
+    Click element    ${ID_NEXT_ELEMENT_HOOK}
     Sleep    5
-    Wait Until Page Contains element    id=passwordNext
-    Click element    id=passwordNext
+    Wait Until Page Contains element    ${PASSWORD_ELEMENT_HOOK}    timeout=20
+    Input text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
+    Sleep    5
+    Wait Until Page Contains element    ${PASSWORD_NEXT_ELEMENT_HOOK}
+    Click element    ${PASSWORD_NEXT_ELEMENT_HOOK}
     Sleep    5
     Wait Until Page Contains    Yhteentoimivuusalustan oikeuksienhallinta    timeout=20
     Sleep    5
