@@ -267,7 +267,8 @@ ${navigation_menu_link}    Käyttäjätiedot
     Select navigation menu link    Suomi.fi-sanastot
     Select Window    title=Sanastot
     Wait until page contains    Sanastot
-    Wait until page contains    Luokitus
+    Wait until page contains    Hae sanastoja
+    Wait until page contains    Rajaa tietoalueella
     Close Window
     Select Window    title=Koodistot
     Sleep    1
