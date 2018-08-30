@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Test Suite for vocabulary modification
-Suite Setup       Terminology Suite Setup
-Suite Teardown    Terminology Suite Teardown
+Suite Teardown    Close All Browsers    #Suite Setup    Terminology Suite Setup    #Suite Teardown    Terminology Suite Teardown
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
@@ -10,7 +9,7 @@ Resource          resources/Terminology_Resources.robot
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select and edit Draft vocabulary
     Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
     Input text    ${VOCABULARY_TITLE_TEXTAREA}    Uusi sanasto
@@ -33,11 +32,12 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    Testiautomaatiosanasto    timeout=30
     Wait until page contains    Tämä on kuvaus    timeout=30
     Go back to Sanastot frontpage
+    [Teardown]    Delete Testiautomaatiosanasto
 
 201. Add new organization and classification for DRAFT vocabulary
     [Documentation]    Add new organization and classification for DRAFT vocabulary
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select and edit Draft vocabulary
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Click element    ${ADD_ORGANIZATION_BTN}
@@ -65,50 +65,21 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    Eläkkeet    timeout=30
     Wait until page contains    Terminologinen sanasto    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    [Teardown]    Restore organization and classification for DRAFT vocabulary
+    Restore organization and classification for DRAFT vocabulary
+    [Teardown]    Delete Testiautomaatiosanasto
 
 202. Add new Terminological Dictionary and import vocabulary
     [Documentation]    Add new Terminological Dictionary, import vocabulary and delete dictionary
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup
-    Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
-    Click element    ${ADD_VOCABULARY_BTN}
-    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
-    Click element    ${VOCABULARY_TYPE_DDL}
-    Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
-    Click element    //*[contains(text(), "Terminologinen sanasto")]
-    Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
-    Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_2}
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
-    Click element    ${ADD_ORGANIZATION_BTN}
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
-    Click element    //*[contains(text(), "${ORGANIZATION_1}")]
-    Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
-    Click element    ${ADD_NEW_CLASSIFICATION_BTN}
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
-    Wait until page contains element    ${PREFIX_INPUT}    timeout=30
-    Input text    ${PREFIX_INPUT}    ${PREFIX_2}
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
-    Sleep    3
-    Click button    Kyllä
-    Sleep    3
+    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto2 vocabulary
 
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Create Testiautomaatiosanasto
+    #[Setup]    Test Case Setup
     Select Draft vocabulary
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
     Click element    ${ADD_NEW_CONCEPT_BTN}
@@ -131,7 +102,9 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${SAVE_CONCEPT_BTN}
     Sleep    2
     Go back to Sanastot frontpage
-    [Teardown]    Delete concept from Testiautomaatiosanasto vocabulary
+    Delete concept from Testiautomaatiosanasto vocabulary
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Testiautomaatiosanasto
 
 *** Keywords ***
 Select and edit Draft vocabulary
@@ -175,7 +148,7 @@ Restore organization and classification for DRAFT vocabulary
     Sleep    1
     Close All Browsers
 
-Delete Testiautomaatiosanasto2 vocabulary
+Delete Terminological Vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
@@ -208,4 +181,3 @@ Delete concept from Testiautomaatiosanasto vocabulary
     Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
     Go back to Sanastot frontpage
     Sleep    1
-    Close All Browsers
