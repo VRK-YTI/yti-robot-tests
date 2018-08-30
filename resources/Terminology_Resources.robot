@@ -94,8 +94,8 @@ Test Case Setup Create Testiautomaatiosanasto
     Test Case Setup
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]    limit=1
-    run keyword if    ${vocabulary_exists}    Delete existing vocabulary and create new
+    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
+    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
     ...    ELSE    Create Testiautomaatiosanasto and import vocabulary
     Go back to Sanastot frontpage
 
@@ -103,8 +103,8 @@ Test Case Setup Create Terminological Vocabulary with concepts
     Test Case Setup
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto2")]    limit=1
-    run keyword if    ${vocabulary_exists}    Delete existing terminolgical vocabulary and create new
+    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto2")]
+    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary 2 and create new
     ...    ELSE    Create Terminological Dictionary and import vocabulary
     Go back to Sanastot frontpage
 
@@ -112,18 +112,18 @@ Test Case Setup Create Terminological Vocabulary without concepts
     Test Case Setup
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto2")]    limit=1
+    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto2")]
     run keyword if    ${vocabulary_exists}    Delete existing terminolgical vocabulary and create new
     ...    ELSE    Create Terminological Vocabulary without concepts
     Go back to Sanastot frontpage
 
-Test Case Setup Create Thesaurus
+Test Case Setup Create Vocabulary
     Test Case Setup
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatioasiasanasto")]    limit=1
-    run keyword if    ${vocabulary_exists}    Delete existing thesaurus and create new
-    ...    ELSE    Create Thesaurus
+    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatioasiasanasto")]
+    run keyword if    ${vocabulary_exists}    Delete existing vocabulary and create new
+    ...    ELSE    Create Vocabulary
     Go back to Sanastot frontpage
 
 Test Case Teardown
@@ -223,7 +223,7 @@ Delete Testiautomaatiosanasto
     Log to Console    Testiautomaatiosanasto deleted
     Close All Browsers
 
-Delete existing vocabulary and create new
+Delete existing terminological vocabulary and create new
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
@@ -275,7 +275,7 @@ Create Terminological Dictionary and import vocabulary
     Sleep    3
     Log to Console    Terminological Dictionary created
 
-Delete existing terminolgical vocabulary and create new
+Delete existing terminological vocabulary 2 and create new
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_2}")]
     Wait until page contains    ${VOCABULARY_2}    timeout=30
@@ -345,8 +345,9 @@ Delete Terminological Vocabulary
     Page should contain    sanastoa
     Sleep    1
     Log to Console    Terminological Vocabulary deleted
+    Close All Browsers
 
-Create Thesaurus
+Create Vocabulary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
     Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
@@ -372,9 +373,9 @@ Create Thesaurus
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Sleep    2
-    Log to Console    Thesaurus created
+    Log to Console    Vocabulary created
 
-Delete Thesaurus
+Delete Vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_3}")]    timeout=30
@@ -392,10 +393,10 @@ Delete Thesaurus
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
     Page should contain    sanastoa
     Sleep    1
-    Log to Console    Thesaurus deleted
+    Log to Console    Vocabulary deleted
     Close All Browsers
 
-Delete existing thesaurus and create new
+Delete existing vocabulary and create new
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_3}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_3}")]
     Wait until page contains    ${VOCABULARY_3}    timeout=30
@@ -411,5 +412,5 @@ Delete existing thesaurus and create new
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
     Page should contain    sanastoa
     Sleep    1
-    Log to Console    Thesaurus deleted
-    Create Thesaurus
+    Log to Console    Vocabulary deleted
+    Create Vocabulary

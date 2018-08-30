@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Terminology application
-Suite Setup       Terminology Suite Setup
-Suite Teardown    Terminology Suite Teardown
+Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
@@ -52,14 +51,14 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${LANGUAGE_EN}
     Wait until page contains    All organizations    timeout=20
     Wait until page contains    All vocabulary types    timeout=20
-    Wait until page contains    All organizations    timeout=20
-    Wait until page contains    Classification
+    Wait until page contains    Search vocabularies    timeout=20
+    Wait until page contains    Filter with classification
     [Teardown]    Restore Finnish language
 
 104. Search for DRAFT vocabulary
     [Documentation]    Search for DRAFT vocabulary with frontpage search function.
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
@@ -67,7 +66,8 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    ${VOCABULARY_1}    timeout=30
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
-    [Teardown]    Go back to Sanastot frontpage
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Testiautomaatiosanasto
 
 *** Keywords ***
 Restore Finnish language
@@ -76,5 +76,5 @@ Restore Finnish language
     Click element    ${LANGUAGE_FI}
     Wait until page contains    Kaikki organisaatiot    timeout=20
     Wait until page contains    Kaikki sanastotyypit    timeout=20
-    Wait until page contains    Luokitus    timeout=20
+    Wait until page contains    Rajaa tietoalueella    timeout=20
     Close All Browsers

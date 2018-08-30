@@ -202,12 +202,12 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
-307. Import Concepts to the Thesaurus with columns that are not supported
-    [Documentation]    Import Concepts to the Thesaurus with isPartOf and status columns
+307. Import Concepts to the Vocabulary with columns that are not supported
+    [Documentation]    Import Concepts to the Vocabulary with isPartOf and status columns
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup Create Thesaurus
-    Select Thesaurus
+    [Setup]    Test Case Setup Create Vocabulary
+    Select Vocabulary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -217,17 +217,17 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    Sanaston tyyppi ei tue saraketta “status”
     log to Console    Sanaston tyyppi ei tue saraketta “isPartOf”
     log to Console    Sanaston tyyppi ei tue saraketta “status”
-    log to Console    Import is not successful when importing concepts to the thesaurus with isPartOf and status columns
+    log to Console    Import is not successful when importing concepts to the vocabulary with isPartOf and status columns
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
-    [Teardown]    Delete Thesaurus
+    [Teardown]    Delete Vocabulary
 
-308. Successful CSV import to the Thesaurus
-    [Documentation]    Import Concepts to the Thesaurus and check that import is successful
+308. Successful CSV import to the Vocabulary
+    [Documentation]    Import Concepts to the Vocabulary and check that import is successful
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup Create Thesaurus
-    Select Thesaurus
+    [Setup]    Test Case Setup Create Vocabulary
+    Select Vocabulary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -258,14 +258,14 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    hutkija
     log to Console    Concept import successful
     Go back to Sanastot frontpage
-    [Teardown]    Delete Thesaurus
+    [Teardown]    Delete Vocabulary
 
-309. Import Concepts to the Thesaurus with invalid column name
-    [Documentation]    Import Concepts to the Thesaurus with invalid column name in CSV.
+309. Import Concepts to the Vocabulary with invalid column name
+    [Documentation]    Import Concepts to the Vocabulary with invalid column name in CSV.
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup Create Thesaurus
-    Select Thesaurus
+    [Setup]    Test Case Setup Create Vocabulary
+    Select Vocabulary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -277,14 +277,14 @@ Resource          resources/Terminology_Resources.robot
     log to Console    Viittaus “narrower” täytyy määritellä kielen kanssa
     log to Console    Error message displayed and import is not successful when column name is invalid in CSV
     Go back to Sanastot frontpage
-    [Teardown]    Delete Thesaurus
+    [Teardown]    Delete Vocabulary
 
-310. Import Concepts to the Thesaurus with incorrect column name
-    [Documentation]    Import Concepts to the Thesaurus with incorrect column name in CSV.
+310. Import Concepts to the Vocabulary with incorrect column name
+    [Documentation]    Import Concepts to the Vocabulary with incorrect column name in CSV.
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot
-    [Setup]    Test Case Setup Create Thesaurus
-    Select Thesaurus
+    [Setup]    Test Case Setup Create Vocabulary
+    Select Vocabulary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -296,7 +296,7 @@ Resource          resources/Terminology_Resources.robot
     log to Console    Sanaston tyyppi ei tue saraketta “ggggggggg”
     log to Console    Error message displayed and import is not successful when column name is incorrect in CSV
     Go back to Sanastot frontpage
-    [Teardown]    Delete Thesaurus
+    [Teardown]    Delete Vocabulary
 
 *** Keywords ***
 Create Terminological Vocabulary without concepts
@@ -333,7 +333,7 @@ Select Testiautomaatiosanasto2 vocabulary
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
 
-Select Thesaurus
+Select Vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_3}")]    timeout=30

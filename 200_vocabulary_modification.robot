@@ -73,7 +73,7 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
-    [Teardown]    Delete Testiautomaatiosanasto2 vocabulary
+    [Teardown]    Delete Terminological Vocabulary
 
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
