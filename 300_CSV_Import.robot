@@ -24,6 +24,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    5: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
     Page should contain    5: Viittauksella “related” ei löydy käsitettä arvolle “joku”
     Page should contain    5: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
+    Log to Console    Error message displayed when related, broader and isPartOf concepts are not found from CSV
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
@@ -59,6 +60,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    huomio
     Page should contain    esim
     Page should contain    Voimassa oleva
+    Log to Console    Import successful when related columns have empty values in CSV
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
@@ -94,6 +96,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    huomio
     Page should contain    esim
     Page should contain    Luonnos
+    Log to Console    Concept import with empty STATUS values in CSV is successful
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
@@ -131,7 +134,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    huomio
     Page should contain    esimerkki
     Page should contain    Luonnos
-    Log to Console    Import is successful and concept STATUS is Draft after CSV import
+    Log to Console    When STATUS column is missing import is successful and concept STATUS is Draft after CSV import
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
@@ -147,7 +150,7 @@ Resource          resources/Terminology_Resources.robot
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_invalid_column}
     Sleep    3
     Page should contain    Ominaisuus “definition” täytyy olla määritelty kielen kanssa
-    Log to Console    Error message "Ominaisuus “definition” täytyy olla määritelty kielen kanssa" dispalyed when column name is invalid
+    Log to Console    Import is not successful and error message is dispalyed when column name is invalid
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
@@ -165,13 +168,13 @@ Resource          resources/Terminology_Resources.robot
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_invalid_status_value}
     Sleep    3
     Page should contain    3: Virheellinen tila “xxxxx”
-    log to Console    Error message "3: Virheellinen tila “xxxxx”" dispalyed when status value is invalid
+    log to Console    Import is not successful and error message is dispalyed when status value is invalid
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
-306. Import Concepts to the Terminological Vocabulary with duplicate Definition columns in CSV
+306. Import Concepts to the Terminological Vocabulary with duplicate definition columns in CSV
     [Documentation]    Import Concepts to the Terminological Vocabulary with duplicate definition columns in CSV.
     ...    Check that the values of the second column are taken into use
     [Tags]    regression    sanastot
@@ -198,7 +201,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    huomio
     Page should contain    esim
     Page should contain    Voimassa oleva
-    log to Console    Import is successful and values of the second column are taken into use when duplicate definition columns defined in CSV
+    log to Console    Import is successful and values of the second column are taken into use when duplicate definition columns are defined in CSV
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
@@ -215,8 +218,6 @@ Resource          resources/Terminology_Resources.robot
     Sleep    3
     Page should contain    Sanaston tyyppi ei tue saraketta “isPartOf”
     Page should contain    Sanaston tyyppi ei tue saraketta “status”
-    log to Console    Sanaston tyyppi ei tue saraketta “isPartOf”
-    log to Console    Sanaston tyyppi ei tue saraketta “status”
     log to Console    Import is not successful when importing concepts to the vocabulary with isPartOf and status columns
     Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click element    ${IMPORT_CANCEL_BTN}
@@ -256,7 +257,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    esim
     Page should contain    tutkija
     Page should contain    hutkija
-    log to Console    Concept import successful
+    log to Console    Concept import is successful
     Go back to Sanastot frontpage
     [Teardown]    Delete Vocabulary
 

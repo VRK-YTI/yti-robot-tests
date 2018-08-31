@@ -31,6 +31,7 @@ Resource          resources/Terminology_Resources.robot
     Sleep    5
     Wait until page contains    Testiautomaatiosanasto    timeout=30
     Wait until page contains    Tämä on kuvaus    timeout=30
+    Log to console    Title and description of Terminological Vocabulary modified
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto
 
@@ -45,12 +46,14 @@ Resource          resources/Terminology_Resources.robot
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
     Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
     Click element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Log to Console    Organization added
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}    timeout=30
     Click element    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
     Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Log to Console    Classification added
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Sleep    10
@@ -79,7 +82,6 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Add new concept to the existing vocabulary and remove concept
     [Tags]    regression    sanastot
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
-    #[Setup]    Test Case Setup
     Select Draft vocabulary
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
     Click element    ${ADD_NEW_CONCEPT_BTN}
@@ -101,8 +103,11 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
     Click element    ${SAVE_CONCEPT_BTN}
     Sleep    2
+    Wait until page contains    Automaatio    timeout=30
+    Log to Console    New concept "Automaatio" added
     Go back to Sanastot frontpage
     Delete concept from Testiautomaatiosanasto vocabulary
+    Log to console    Concept "Automaatio" deleted
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto
 
@@ -144,6 +149,7 @@ Restore organization and classification for DRAFT vocabulary
     Sleep    5
     Page should not contain    ${ORGANIZATION_1}
     Page should not contain    ${CLASSIFICATION_1}
+    Log to Console    Vocabulary changes restored
     Go back to Sanastot frontpage
     Sleep    1
     Close All Browsers
@@ -164,6 +170,7 @@ Delete Terminological Vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Page should contain    sanastoa
+    Log to Console    Terminological Vocabulary deleted
     Sleep    1
     Close All Browsers
 
@@ -179,5 +186,6 @@ Delete concept from Testiautomaatiosanasto vocabulary
     Click element    ${REMOVE_CONCEPT_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
+    Log to Comsole    Concept removed frpm Terminological Vocabulary
     Go back to Sanastot frontpage
     Sleep    1

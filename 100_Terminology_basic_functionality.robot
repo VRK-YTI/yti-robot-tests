@@ -19,6 +19,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    Miten voin liittyä työkalun käyttäjäksi?
     Wait until page contains    Katso myös
     Wait until page contains    Ota yhteyttä
+    Log to Console    Information about the service page opened
     Go back to Sanastot frontpage
 
 101. Open EUPL-1.2 license page
@@ -30,6 +31,7 @@ Resource          resources/Terminology_Resources.robot
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
+    Log to Console    EUPL-1.2 license page opened
     Select Window    title=Sanastot
 
 102. Open Description of file page
@@ -40,6 +42,7 @@ Resource          resources/Terminology_Resources.robot
     Click element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
+    Log to Console    Description of file page opened
     Select Window    title=Sanastot
 
 103. Change user interface language
@@ -53,6 +56,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    All vocabulary types    timeout=20
     Wait until page contains    Search vocabularies    timeout=20
     Wait until page contains    Filter with classification
+    Log to Console    User interface language changed
     [Teardown]    Restore Finnish language
 
 104. Search for DRAFT vocabulary
@@ -66,6 +70,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    ${VOCABULARY_1}    timeout=30
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
+    Log to Console    Testiautomaatiosanasto found
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto
 
