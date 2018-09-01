@@ -186,6 +186,6 @@ Delete concept from Testiautomaatiosanasto vocabulary
     Click element    ${REMOVE_CONCEPT_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
-    Log to Comsole    Concept removed frpm Terminological Vocabulary
+    Log to Console    Concept removed from Terminological Vocabulary
     Go back to Sanastot frontpage
     Sleep    1
