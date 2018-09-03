@@ -22,6 +22,7 @@ ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${TEXT_FILTER_SEARCH_INPUT}    id=text_filter_search_input
 ${FRONTPAGE_ADVANCED_SEARCH}    id=advanced_search_link
+${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
 #Buttons and links
 ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button

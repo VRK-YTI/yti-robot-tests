@@ -47,13 +47,11 @@ Resource          resources/Datamodel_Resources.robot
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait until page contains element    ${LANGUAGE_EN}
-    Click element    ${LANGUAGE_EN}
+    Change user interface language    ${LANGUAGE_EN}
+    Wait until page contains    Data Vocabularies    timeout=20
     Wait until page contains    All organizations    timeout=20
     Wait until page contains    All types    timeout=20
-    [Teardown]    Restore Finnish language
+    [Teardown]    Change user interface language    ${LANGUAGE_FI}
 
 104. Search for DRAFT model
     [Documentation]    Search for DRAFT model with frontpage search function.
@@ -88,6 +86,45 @@ Resource          resources/Datamodel_Resources.robot
     Sleep    2
     [Teardown]    Go back to Data Vocabularies frontpage and close browsers
 
+106. Check navigation menu links
+    [Documentation]    Verify that navigation menu links are opened correctly
+    [Tags]    regression    test
+    [Setup]    Test Case Setup
+    Select navigation menu link    Käyttäjätiedot
+    Wait until page contains    Käyttäjätiedot
+    Wait until page contains    Nimi
+    Wait until page contains    Sähköposti
+    Wait until page contains    Organisaatiot ja roolit
+    Sleep    1
+    Select navigation menu link    yhteentoimiva.suomi.fi
+    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Close Window
+    Select Window    title=Tietomallit
+    Select navigation menu link    Suomi.fi-sanastot
+    Select Window    title=Sanastot
+    Wait until page contains    Sanastot
+    Wait until page contains    Hae sanastoja
+    Wait until page contains    Rajaa tietoalueella
+    Close Window
+    Select Window    title=Tietomallit
+    Sleep    1
+    Select navigation menu link    Suomi.fi-koodistot
+    Select Window    title=Koodistot
+    Wait until page contains    Koodistot
+    Wait until page contains    Etusivu
+    Close Window
+    Select Window    title=Tietomallit
+    Sleep    1
+    Change user interface language    ${LANGUAGE_EN}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Wait until page contains    User details
+    Wait until page contains    yhteentoimiva.suomi.fi
+    Wait until page contains    Suomi.fi Controlled Vocabularies
+    Wait until page contains    Suomi.fi Reference Data
+    Wait until page contains    User right management
+    Close All Browsers
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
@@ -98,3 +135,19 @@ Restore Finnish language
     Wait until page contains    Kaikki tyypit    timeout=20
     Wait until page contains    Luokitus    timeout=20
     Close All Browsers
+
+Select navigation menu link
+    [Arguments]    ${navigation_menu_link}=Käyttäjätiedot
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
+    Sleep    2
+
+Change user interface language
+    [Arguments]    ${language}
+    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
+    Click element    ${LANGUAGE_DROPDOWN_BTN}
+    Sleep    2
+    Click element    ${language}
+    Sleep    2
