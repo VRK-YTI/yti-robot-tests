@@ -6,9 +6,6 @@ Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
 
 *** Variables ***
-#${codelist}      ${Code_list_with_30_Codes}
-#${codelist_name}    ${CODE_LIST_16}
-#${extension_scheme}    ${601_Extension_Scheme}
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
