@@ -6,18 +6,32 @@ Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
 
 *** Variables ***
+#${codelist}      ${Code_list_with_30_Codes}
+#${codelist_name}    ${CODE_LIST_16}
+#${extension_scheme}    ${601_Extension_Scheme}
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
 ${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
 ${601_Extension_Scheme}    ${DATAFOLDER}${/}601_Extension_Scheme.xlsx
 ${601_Extensions}    ${DATAFOLDER}${/}601_Extensions.xlsx
+${ExtensionSchemes_without_codeschemes}    ${DATAFOLDER}${/}ExtensionSchemes_without_codeschemes_value.xlsx
+${ExtensionSchemes_codeschemes_invalid_code}    ${DATAFOLDER}${/}ExtensionSchemes_codeschemes_invalid_Code.xlsx
+${Extensios_max_hierarchy_level}    ${DATAFOLDER}${/}Extensions_max_hierarchy_level.xlsx
+${Extension_Scheme_calculation_hierarchy}    ${DATAFOLDER}${/}Extension_Scheme_calculation_hierarchy.xlsx
+${Extensions_empty_extensionvalues}    ${DATAFOLDER}${/}Extensions_empty_extensionvalues.xlsx
+${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensionvalue_column.xlsx
 #CSV paths
 ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
+#error messages
+${Error_missing_codeschemes}    Laajennukseen liitetty koodi ei kuulu tähän koodistoon tai laajennusjärjestelmään liitettyihin koodistoihin.
+${Error_invalid_code}    Laajennukseen liitettyä koodia ei ole olemassa.
+${Error_max_hierarchy_level}    Laajennusten maksimi hierarkinen taso ylittyi.
+${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä 2.
 
 *** Test Cases ***
 600. Import Code list with Extension Schemes
-    [Documentation]    Import Code list with Extension Schemes, check that import is successfull,
+    [Documentation]    Import Code list with Extension Schemes (calculation hierarchy), check that import is successfull,
     ...    Modify Extension, Export Excel and remove code list.
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
@@ -46,14 +60,11 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Click Element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]
     Wait until page contains element    //*[contains(text(), "LAAJENNUKSET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "koodi: Testikoodi 01 - arvo: extensiontest11")]    timeout=20
-    Click element    //*[contains(text(), "koodi: Testikoodi 01 - arvo: extensiontest11")]
+    Wait until page contains element    //*[contains(text(), "Testikoodi 01")]    timeout=20
+    Click element    //*[contains(text(), "Testikoodi 01")]
     Wait until page contains    Testikoodisto2 pitkillä arvoilla    timeout=20
     Wait until page contains    Laajennusjärjestelmä    timeout=20
     Wait until page contains    Testilaajennus11    timeout=20
-    Wait until page contains    Laajennus    timeout=20
-    Wait until page contains    Testikoodi 01    timeout=20
-    Wait until page contains    extensiontest11
     Wait until page contains    Koodi    timeout=20
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
     Sleep    2
@@ -71,14 +82,14 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Click element    //*[contains(text(), "Koulutus, kulttuuri ja urheilu")]
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains    Laajennus    timeout=20
-    Wait until page contains    Testikoodi 25    timeout=20
-    Wait until page contains    Laajennuksen arvo    timeout=20
-    Wait until page contains    extensiontest11    timeout=20
-    Wait until page contains    Koodi    timeout=20
-    Wait until page contains    testcode25 - Testikoodi 25    timeout=20
-    Wait until page contains    Laajennus    timeout=20
-    Wait until page contains    koodi: Koulutus, kulttuuri ja urheilu - arvo: extensiontest18    timeout=20
+    Wait until page contains    Koodisto
+    Wait until page contains    Testikoodisto2 pitkillä arvoilla
+    Wait until page contains    Laajennusjärjestelmä
+    Wait until page contains    Testilaajennus11
+    Wait until page contains    Koodi
+    Wait until page contains    testcode25 - Testikoodi 25
+    Wait until page contains    Laajennus
+    Wait until page contains    Koulutus, kulttuuri ja urheilu - DCAT-AP-luokitus
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
     Sleep    5
@@ -102,6 +113,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
+    Wait until page contains    30 koodia    timeout=20
     Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
     Click element    ${EXTENSION_SCHEMES_DDL}
     Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
@@ -124,14 +136,13 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    6
-    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
-    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
-    Click element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains element    //*[contains(text(), "Testcode 28")]
+    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 28")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennusjärjestelmä    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    suomi    timeout=20
-    Wait until page contains    extensiontest40    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
@@ -140,7 +151,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
 602. Import new Code list and create Extension Scheme and Extensions
-    [Documentation]    Import new Code list and create Extension Scheme and Extension manually
+    [Documentation]    Import new Code list and create calculation hierarchy Extension Scheme and Extension manually
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -180,7 +191,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Sleep    3
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
-    Wait until page contains    Extension 1 - koodi: Testcode 57 - arvo: ext1    timeout=30
+    Wait until page contains    ext1 Extension 1 - Testcode 57    timeout=30
     Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'2_breadcrumb_link')]
     Wait until page contains    Koodisto600    timeout=30
@@ -227,11 +238,16 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
     Click button    ${SAVE_EXTENSION_SCHEME}
     Sleep    3
-    Wait until page contains    Extension 1 - koodi: Testcode 57 - arvo: ext1    timeout=30
-    Wait until page contains    Koodisto600    timeout=30
-    Wait until page contains    Extension 1    timeout=30
-    Wait until page contains    ext1    timeout=30
-    Wait until page contains    testcode57 - Testcode 57    timeout=30
+    Wait until page contains    Koodisto
+    Wait until page contains    Koodisto600
+    Wait until page contains    Laajennusjärjestelmä
+    Wait until page contains    Extension scheme 1
+    Wait until page contains    Laajennuksen nimi
+    Wait until page contains    Extension 1
+    Wait until page contains    Laajennuksen arvo
+    Wait until page contains    ext1
+    Wait until page contains    Koodi
+    Wait until page contains    testcode57 - Testcode 57
     Wait until page contains element    ${EXTENSION_DELETE_BTN}    timeout=30
     Click element    ${EXTENSION_DELETE_BTN}
     Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
@@ -248,7 +264,7 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
 604. Modify Extension
-    [Documentation]    Import new Code list with Extension Schemes and Extensions and modify Extension.
+    [Documentation]    Import new Code list with calculation hierarhy Extension Schemes and Extensions and modify Extension.
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -282,25 +298,23 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    6
-    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
-    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
-    Click element    //*[contains(text(), "suomi - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains element    //*[contains(text(), "Testcode 28")]
+    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 28")]
     Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
     Click element    ${MODIFY_EXTENSION_BTN}
     Sleep    2
     Wait until page contains element    ${ADD_EXTENSION_BTN}    timeout=20
     Click element    ${ADD_EXTENSION_BTN}
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
-    Click element    //*[contains(text(), "suomi - koodi: Testcode 29 - arvo: extensiontest41")]
+    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 29")]
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
     Click element    ${SAVE_EXTENSION}
     Sleep    2
     Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
     Click element    ${MODIFY_EXTENSION_BTN}
     Sleep    2
-    Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
-    Input Text    ${EXTENSION_VALUE_INPUT}    ${EXTENSION_VALUE_1}
     Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
     Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
     Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
@@ -315,12 +329,16 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
     Click element    ${SAVE_EXTENSION}
     Sleep    2
+    Wait until page contains    Koodisto    timeout=20
     Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    Laajennusjärjestelmä    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
+    Wait until page contains    Laajennuksen nimi    timeout=20
     Wait until page contains    Extension 1    timeout=20
-    Wait until page contains    ext1    timeout=20
-    Wait until page contains    testcode57 - Testcode 57    timeout=20
-    Page should not contain    suomi - koodi: Testcode 29 - arvo: extensiontest41
+    Wait until page contains    Koodi    timeout=20
+    Wait until page contains    testcode57 - Testcode 57
+    Page should not contain    Testcode 29
+    Sleep    6
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes and Extensions
 
@@ -365,14 +383,13 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    6
-    Wait until page contains element    //*[contains(text(), "testcode28_FI - koodi: Testcode 28 - arvo: extensiontest40")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "testcode29_FI - koodi: Testcode 29 - arvo: extensiontest41")]    timeout=20
-    Click element    //*[contains(text(), "testcode28_FI - koodi: Testcode 28 - arvo: extensiontest40")]
+    Wait until page contains element    //*[contains(text(), "Testcode 28")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 28")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennusjärjestelmä    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    testcode28_FI    timeout=20
-    Wait until page contains    extensiontest40    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
@@ -384,6 +401,68 @@ ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
     Sleep    5
     Return to Koodistot frontpage
     [Teardown]    Remove codelist with Extension Schemes and Extensions
+
+606. Import Code list with Extension Schemes and without CODESCHEME value
+    [Documentation]    Import Code list (Excel) with Extension Schemes. Check error message when CODESCHEME value
+    ...    for external code list is missing from ExtensionSchemes sheet in Excel. YTI-853
+    [Tags]    regression
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_without_codeschemes}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_missing_codeschemes}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
+607. Import Code list with Extension Schemes and with invalid Code
+    [Documentation]    Import Code list (Excel) with Extension Schemes. Check error message when
+    ...    Code in Extensions sheet is not included to the Code list. YTI-853
+    [Tags]    regression
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_codeschemes_invalid_code}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_invalid_code}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
+608. Import Code list with Extensions that exceed maximum hierarchy level
+    [Documentation]    Import Code list with Extensions that exceed maximum hierarchy level and
+    ...    Check error message . YTI-844
+    [Tags]    regression
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_max_hierarchy_level}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
+609. Import Extensions with missing EXTENSIONVALUE
+    [Documentation]    Import Extensions with missing EXTENSIONVALUE to calculation hierarchy extension scheme
+    ...    and check error message.
+    [Tags]    regression
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Sleep    2
+    Upload extension scheme    ${Extension_Scheme_calculation_hierarchy}
+    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Upload extension    ${Extensions_empty_extensionvalues}    ${FILE_FORMAT_EXCEL}
+    Wait until page contains    ${Error_extensionvalue_missing}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
 
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
@@ -750,3 +829,53 @@ Test Case Teardown Code with concept
     Terminology Teardown
     Test Case Setup Superuser
     Remove imported Draft code list
+
+Cancel code list import
+    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
+    Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}
+
+Go back to Koodistot frontpage
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
+    Sleep    2
+    Close All Browsers
+
+Upload codelist
+    [Arguments]    ${codelist}    ${codelist_name}
+    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+
+Upload extension scheme
+    [Arguments]    ${extension_scheme}
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_DDL}
+    Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
+    Sleep    2
+    Choose file    ${EXTENSION_SCHEMES_FILE_UPLOAD}    ${extension_scheme}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEMES_UPLOAD_BTN}    timeout=20
+    Click button    ${EXTENSION_SCHEMES_UPLOAD_BTN}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
+    Click element    ${EXTENSION_SCHEMES_TAB}
+    Sleep    1
+
+Upload extension
+    [Arguments]    ${extension}    ${file_format}
+    Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
+    Click element    ${IMPORT_EXTENSION_BTN}
+    Wait until page contains element    ${FILE_FORMAT_UPLOAD}    timeout=20
+    Click element    ${FILE_FORMAT_UPLOAD}
+    Wait until page contains element    ${file_format}    timeout=20
+    Click element    ${file_format}
+    Wait until page contains element    ${EXTENSION_FILE_UPLOAD}    timeout=20
+    Choose file    ${EXTENSION_FILE_UPLOAD}    ${extension}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
+    Click button    ${EXTENSION_UPLOAD_BTN}
+    Sleep    2

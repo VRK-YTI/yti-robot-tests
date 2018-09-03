@@ -77,7 +77,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_invalid_codeValue}    timeout=20
+    Wait until page contains    ${Error_no_codeValue}    timeout=20
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
