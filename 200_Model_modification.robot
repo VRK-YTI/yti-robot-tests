@@ -548,7 +548,7 @@ Create new class without referencing concept
     Input Text    ${SEARCH_CLASS_INPUT}    ${class_2}
     Sleep    2
     Click Element    ${new_class_link}
-    Sleep    3
+    Sleep    5
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
     sleep    2
     Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
