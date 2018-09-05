@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Koodistot basic functionality
 Suite Teardown    Close All Browsers
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
@@ -48,7 +49,10 @@ ${navigation_menu_link}    Käyttäjätiedot
 103. Search for VALID code list
     [Documentation]    Search for VALID code list with frontpage search function.
     [Tags]    regression    test
-    [Setup]    Test Case Setup create valid codelist
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
+    Go back to Koodistot frontpage
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_6}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
@@ -70,17 +74,20 @@ ${navigation_menu_link}    Käyttäjätiedot
     Wait until page contains    Viimeisin muokkaus
     Wait until page contains    Voimassa oleva
     Go back to Koodistot frontpage
-    [Teardown]    Test Case Teardown remove valid codelist
+    [Teardown]    Remove code lists    ${CODE_LIST_6}
 
 104. Search for code list with codeValue
     [Documentation]    Search for code list with codeValue with frontpage search function. YTI-651
     [Tags]    regression    test
-    [Setup]    Test Case Setup create codelist without prefLabel
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Testikoodisto_T200}    ${CODE_LIST_7}
+    Go back to Koodistot frontpage
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_7}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_7}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
     Sleep    2
     Click element    //*[contains(text(), "${CODE_LIST_7}")]
@@ -98,7 +105,7 @@ ${navigation_menu_link}    Käyttäjätiedot
     Wait until page contains    Luokitus
     Wait until page contains    Eläkkeet
     Go back to Koodistot frontpage
-    [Teardown]    Test Case Teardown remove codelist without prefLabel
+    [Teardown]    Remove code lists    ${CODE_LIST_7}
 
 105. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -197,11 +204,14 @@ ${navigation_menu_link}    Käyttäjätiedot
     [Documentation]    Search for code list with frontpage search function and extend search to codes.
     ...    Check that the correct code list which contains the searched code is listed as a result.
     [Tags]    regression    test
-    [Setup]    Test Case Setup create draft codelist with codes
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Go back to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_CODE_CHECKBOX}    timeout=30
     Click element    ${SEARCH_CODE_CHECKBOX}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_2}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_2}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_2}")]
     Wait until page contains    ${CODE_LIST_2}
@@ -217,15 +227,18 @@ ${navigation_menu_link}    Käyttäjätiedot
     Wait until page contains    Tila
     Wait until page contains    Luonnos
     Wait until page contains    Viimeisin muokkaus
-    Close All Browsers
-    [Teardown]    Test Case Teardown remove draft codelist with codes
+    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 111. Filter Codes by codeValue and prefLabel
     [Documentation]    Import codelist and filter Codes by codeValue and prefLabel
     [Tags]    regression    test
-    [Setup]    Test Case Setup import Code filter codelist with codes
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_13}
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_filter}    ${CODE_LIST_13}
+    Go back to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_13}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_13}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_13}")]
     Wait until page contains    ${CODE_LIST_13}
@@ -244,7 +257,7 @@ ${navigation_menu_link}    Käyttäjätiedot
     Wait until page contains    Koodin nimi
     Wait until page contains    Testi06
     Go back to Koodistot frontpage
-    [Teardown]    Test Case Teardown remove Code filter codelist with codes
+    [Teardown]    Remove code lists    ${CODE_LIST_13}
 
 112. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
@@ -258,7 +271,7 @@ ${navigation_menu_link}    Käyttäjätiedot
     Sleep    1
     Select navigation menu link    Rekisterit
     Wait until page contains    Rekisterit
-    Wait until page contains element    ${CREATE_REGISTRY_BTN}
+    Wait until page contains element    ${REGISTRY_DDL}
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
@@ -266,16 +279,16 @@ ${navigation_menu_link}    Käyttäjätiedot
     Select Window    title=Koodistot
     Select navigation menu link    Suomi.fi-sanastot
     Select Window    title=Sanastot
-    Wait until page contains    Sanastot
-    Wait until page contains    Hae sanastoja
-    Wait until page contains    Rajaa tietoalueella
+    Wait until page contains    Sanastot    timeout=40
+    Wait until page contains    Hae sanastoja    timeout=40
+    Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=Koodistot
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
     Select Window    title=Tietomallit
-    Wait until page contains    Tietomallit
-    Wait until page contains    Etusivu
+    Wait until page contains    Tietomallit    timeout=40
+    Wait until page contains    Etusivu    timeout=40
     Close Window
     Select Window    title=Koodistot
     Sleep    1
@@ -298,7 +311,6 @@ Go back to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
     Click element    ${FRONTPAGE_LINK}
     Sleep    2
-    Close All Browsers
 
 Select navigation menu link
     [Arguments]    ${navigation_menu_link}=Käyttäjätiedot

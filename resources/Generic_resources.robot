@@ -17,6 +17,8 @@ ${REGISTRY_1}     Testirekisteri
 ${REGISTRY_2}     Automaatiorekisteri
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_input
 ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
+${CALCULATION_HIIERARCHY}    id=ExtensionScheme_calculationHierarchy_propertytype_dropdown_button
+${DEFINITION_HIIERARCHY}    id=ExtensionScheme_definitionHierarchy_propertytype_dropdown_button
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
@@ -26,6 +28,7 @@ ${FRONTPAGE_LINK}    id=main_page_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
 ${NAVIGATION_MENU_REGISTRIES}    id=navigation_link_registries
 ${REGISTRY_FILTER_DDL}    id=selected_registry_filter_dropdown
+${SEARCH_BOX_INPUT}    id=search_box_input
 #Registry
 ${CREATE_REGISTRY_BTN}    id=create_registry_button
 ${REGISTRY_VALUE_INPUT}    id=registry_value_input
@@ -35,6 +38,7 @@ ${ADD_ORGANIZATION_BTN}    id=add_organization_button
 ${SEARCH_ORGANIZATION_INPUT}    id=search_linked_organization_input
 ${SAVE_REGISTRY}    id=editable_save_button
 ${DELETE_REGISTRY}    id=delete_registry_button
+${REGISTRY_DDL}    id=registryDropdown
 #Code list buttons
 ${ADD_CLASSIFICATION_BTN}    id=add_classification_button
 ${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
@@ -76,6 +80,7 @@ ${ATTACH_VARIANT_BTN}    id=attach_variant_button
 ${SEARCH_VARIANT_INPUT}    id=search_variant_input
 ${START_DATE_INPUT}    id=start_date_input
 ${END_DATE_INPUT}    id=end_date_input
+${CODE_LIST_DDL}    id=codeSchemeDropdown
 #Extension schemes
 ${EXTENSION_SCHEMES_DDL}    id=extensionSchemeDropdown
 ${IMPORT_EXTENSION_SCHEMES_BTN}    id=import_extensionschemes_button
@@ -104,6 +109,8 @@ ${EXTENSION_SCHEME_DELETE_BTN}    id=delete_extensionscheme_button
 ${MODIFY_EXTENSION_SCHEME_BTN}    id=editable_edit_button
 ${MODIFY_EXTENSION_BTN}    id=editable_edit_button
 ${REMOVE_EXTENSION_LINK}    id=remove_extension_link
+${EXTENSION_SCHEME_TYPE}    id=propertytype_dropdown_button
+${SEARCH_LINKED_CODE_INPUT}    id=search_linked_code-scheme_input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -457,3 +464,93 @@ Remove Code filter codelist
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Page should not contain element    //*[contains(text(), "Sisällön filteröinti")]
     Close All Browsers
+
+Remove code lists
+    [Arguments]    @{code_list_items}
+    : FOR    ${code_list_item}    IN    @{code_list_items}
+    \    Return to Koodistot frontpage
+    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+    \    Wait until page contains element    //*[contains(text(), "${code_list_item}")]    timeout=30
+    \    Click element    //*[contains(text(), "${code_list_item}")]
+    \    Wait until page contains    ${code_list_item}
+    \    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    \    Click element    ${CODE_LIST_DDL}
+    \    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    \    Click element    ${DELETE_CODE_LIST_BTN}
+    \    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    \    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+    \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    \    Sleep    1
+
+Create code list
+    [Arguments]    ${registry}    ${codelist_value}    ${codelist_name}    ${classification}
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${registry}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
+    Click button    Lisää luokitus
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
+    Click element    //*[contains(text(), "${classification}")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    5
+
+Upload codelist
+    [Arguments]    ${codelist}    ${codelist_name}
+    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+
+Import code list in Excel format
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    #Wait until page contains element    ${REGISTRY_1}    timeout=20
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+
+Import codes in Excel format
+    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
+    Click element    ${IMPORT_CODES_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+
+Import codes in CSV format
+    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
+    Click element    ${IMPORT_CODES_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
+    Click element    ${FILE_FORMAT_CSV}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+
+Return to Koodistot frontpage
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
+    Sleep    2

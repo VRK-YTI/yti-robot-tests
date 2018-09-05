@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Extension Schemes
 Suite Teardown    Close All Browsers
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
@@ -33,12 +34,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codelist_ExtensionSchemes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    6
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_14}")]    timeout=30
+    Upload codelist    ${Codelist_ExtensionSchemes}    ${CODE_LIST_14}
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
     Wait until page contains    testcode25 - Testikoodi 25    timeout=20
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
@@ -55,10 +51,12 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]    timeout=20
     Wait until page contains element    //*[contains(@id,'222_codelist_extensionscheme_listitem')]    timeout=20
     Click Element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]
-    Wait until page contains element    //*[contains(text(), "LAAJENNUKSET")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Wait until page contains element    //*[contains(text(), "Testikoodi 01")]    timeout=20
+    Sleep    2
     Click element    //*[contains(text(), "Testikoodi 01")]
+    Sleep    2
     Wait until page contains    Testikoodisto2 pitkillä arvoilla    timeout=20
     Wait until page contains    Laajennusjärjestelmä    timeout=20
     Wait until page contains    Testilaajennus11    timeout=20
@@ -95,44 +93,23 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
     Return to Koodistot frontpage
-    [Teardown]    Remove codelist with Extension Schemes
+    [Teardown]    Remove code lists    ${CODE_LIST_14}
 
 601. Import Code list with codes and import Extension Schemes and Extensions
     [Documentation]    Import Code list with Codes and import Extension Scheme and Extensions.
     [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    6
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Wait until page contains    30 koodia    timeout=20
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
-    Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
-    Sleep    2
-    Choose file    ${EXTENSION_SCHEMES_FILE_UPLOAD}    ${601_Extension_Scheme}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEMES_UPLOAD_BTN}    timeout=20
-    Click button    ${EXTENSION_SCHEMES_UPLOAD_BTN}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
-    Click element    ${EXTENSION_SCHEMES_TAB}
+    Upload extension scheme    ${601_Extension_Scheme}
     Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extensionscheme')]
-    Wait until page contains element    //*[contains(text(), "LAAJENNUKSET")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
-    Click element    ${IMPORT_EXTENSION_BTN}
-    Choose file    ${EXTENSION_FILE_UPLOAD}    ${601_Extensions}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
-    Click button    ${EXTENSION_UPLOAD_BTN}
-    Sleep    6
+    Upload extension    ${601_Extensions}    ${FILE_FORMAT_EXCEL}
     Wait until page contains element    //*[contains(text(), "Testcode 28")]
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
@@ -145,7 +122,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
     Return to Koodistot frontpage
-    [Teardown]    Remove codelist with Extension Schemes and Extensions
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 602. Import new Code list and create Extension Scheme and Extensions
     [Documentation]    Import new Code list and create calculation hierarchy Extension Scheme and Extension manually
@@ -461,6 +438,23 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Go back to Koodistot frontpage
 
+610. Add code list to the Extension Scheme
+    [Documentation]    Add code list to the calculation hierarchy Extension Scheme and
+    ...    add codes from that code list to the extension.
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Return to Koodistot frontpage
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Sleep    2
+    Create extension scheme manually    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${CALCULATION_HIIERARCHY}
+    Return to Koodistot frontpage
+    #Remove codelist    ${CODE_LIST_2}
+    #Remove codelist    ${CODE_LIST_16}
+    [Teardown]    Remove code lists    ${CODE_LIST_2}    ${CODE_LIST_16}
+
 *** Keywords ***
 Go back to Koodistot frontpage and close browsers
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
@@ -483,39 +477,6 @@ Modify code
 Save code modification
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
-
-Import code list in Excel format
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click element    ${IMPORT_CODE_LIST_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    #Wait until page contains element    ${REGISTRY_1}    timeout=20
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
-Import codes in Excel format
-    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
-    Click element    ${IMPORT_CODES_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
-Import codes in CSV format
-    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
-    Click element    ${IMPORT_CODES_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
-    Click element    ${FILE_FORMAT_CSV}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Check values from Draft Code list
     Page should contain    Tunnus
@@ -683,47 +644,6 @@ Create new code to code list with concept
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
 
-Remove multiple code lists
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_10}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}")]
-    Wait until page contains    ${CODE_LIST_10}
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_10}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Sleep    1
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_11}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_11}")]
-    Wait until page contains    ${CODE_LIST_11}
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_11}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Sleep    1
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_12}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_12}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_12}")]
-    Wait until page contains    ${CODE_LIST_12}
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_12}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Close All Browsers
-
 Create draft codelist
     Test Case Setup Superuser
     Create testiautomaatiokoodisto with one code
@@ -838,15 +758,6 @@ Go back to Koodistot frontpage
     Sleep    2
     Close All Browsers
 
-Upload codelist
-    [Arguments]    ${codelist}    ${codelist_name}
-    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    6
-    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
-
 Upload extension scheme
     [Arguments]    ${extension_scheme}
     Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
@@ -876,3 +787,49 @@ Upload extension
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    2
+
+Create extension scheme manually
+    [Arguments]    ${extension_scheme_codevalue}    ${extension_scheme_name}    ${property_type}
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_DDL}
+    Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
+    Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${extension_scheme_codevalue}
+    Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
+    Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${extension_scheme_name}
+    Wait until page contains element    ${EXTENSION_SCHEME_TYPE}    timeout=30
+    Click element    ${EXTENSION_SCHEME_TYPE}
+    Click element    ${property_type}
+    Sleep    1
+    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
+    Click button    ${SAVE_EXTENSION_SCHEME}
+    Sleep    2
+
+Add code list to extension scheme
+    [Arguments]    ${code_list}
+    Wait until page contains element    ${EXTENSION_SCHEME_TYPE}    timeout=30
+    Click element    ${EXTENSION_SCHEME_TYPE}
+    Wait until page contains element    ${SEARCH_LINKED_CODE_INPUT}    timeout=30
+    Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${code_list}
+    Click element    //*[contains(text(), "${code_list}")]
+    Sleep    2
+
+Remove codelist
+    [Arguments]    ${code_list}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${code_list}
+    Wait until page contains element    //*[contains(text(), "${code_list}")]    timeout=30
+    Click element    //*[contains(text(), "${code_list}")]
+    Wait until page contains    ${code_list}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click element    //*[contains(text(), "TIEDOT")]
+    Page should contain    testiautomaatiokoodisto
+    Page should contain    testiautomaatiokoodisto1
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${code_list}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
