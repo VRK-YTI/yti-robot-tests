@@ -517,6 +517,14 @@ Upload codelist
     Sleep    6
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
 
+Upload codes
+    [Arguments]    ${codes}
+    Choose file    ${FILE_UPLOAD_BTN}    ${codes}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Sleep    2
+
 Import code list in Excel format
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -533,6 +541,8 @@ Import code list in Excel format
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Import codes in Excel format
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
     Click element    ${IMPORT_CODES_BTN}
     Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
@@ -542,6 +552,8 @@ Import codes in Excel format
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Import codes in CSV format
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
     Click element    ${IMPORT_CODES_BTN}
     Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20

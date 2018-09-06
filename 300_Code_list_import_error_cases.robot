@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code list import error cases
 Suite Teardown    Close All Browsers
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 

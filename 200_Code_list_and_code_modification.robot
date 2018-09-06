@@ -1,12 +1,9 @@
 *** Settings ***
 Documentation     Test Suite for Code list and Code modification
 Suite Teardown    Close all Browsers
-Test Setup        Close all browsers
+Test Teardown     Close all browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
-
-*** Variables ***
-#Error messages
 
 *** Test Cases ***
 200. Modify DRAFT Code
@@ -15,8 +12,6 @@ Resource          resources/Generic_resources.robot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
-    #Wait until page contains element    ${CODELIST_CODES_TAB}
-    #Click element    ${CODELIST_CODES_TAB}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}
@@ -270,7 +265,7 @@ Resource          resources/Generic_resources.robot
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
     Modify code list
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
@@ -292,14 +287,16 @@ Resource          resources/Generic_resources.robot
     Page should contain    Uusi muutostieto
     Page should contain    Oikeusturva
     Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_6}
+    [Teardown]    Remove code lists    Testinimi
 
 208. Modify classification for DRAFT Code list
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
     ...    remove classification.
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Choose testiautomaatiokoodisto and edit
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Modify code list
     Page should contain element    ${CLASSIFICATION_2}
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}
     Click element    ${ADD_CLASSIFICATION_BTN}
@@ -324,7 +321,8 @@ Resource          resources/Generic_resources.robot
     Sleep    1
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]
     Sleep    2
-    [Teardown]    Remove classification from code list
+    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 *** Keywords ***
 Restore code modify

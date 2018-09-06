@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation     Test Suite for Code import error cases
 Suite Setup       Create valid codelist
-Suite Teardown    Remove valid codelist
+Suite Teardown    Close all Browsers
+Test Teardown     Close all Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
@@ -64,44 +65,38 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 400. Import Codes with missing CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Select draft code list
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_codevalue_missing}
     Wait until page contains    ${Error_no_codeValue}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_codevalue_missing_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_codevalue_missing_csv}
     Wait until page contains    ${Error_no_codeValue}    timeout=20
     Cancel code import
     Sleep    1
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 401. Import Codes with missing STATUS value
     [Documentation]    Import Codes (Excel, CSV) with missing STATUS value and check error message
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Select draft code list
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_status_missing}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_status_missing}
     Wait until page contains    ${Error_no_status_value}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_status_missing_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_status_missing_csv}
     Wait until page contains    ${Error_no_status_value}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 402. Import Codes with invalid STATUS value
     [Documentation]    Import Codes (Excel, CSV) with invalid STATUS value and check error message
@@ -123,6 +118,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 403. Import Codes with invalid BROADER value
     [Documentation]    Import Codes (Excel, CSV) with invalid BROADER value and check error message
@@ -144,6 +140,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 404. Code import when BROADER code references code value of the code itself
     [Documentation]    Import Codes (Excel, CSV) when BROADER code references code value of the code itself and check error message
@@ -165,6 +162,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 405. Import codes with duplicate comlumns
     [Documentation]    Import Codes (Excel, CSV) with duplicate columns and check error message
@@ -186,6 +184,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 406. Import codes with invalid HIERARCHYLEVEL value
     [Documentation]    Import Codes (Excel, CSV) with invalid HIERARCHYLEVEL value and check error message
@@ -207,6 +206,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 407. Import codes with CODEVALUE column missing
     [Documentation]    Import codes (Excel, CSV) with CODEVALUE column missing and check error message
@@ -228,6 +228,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 408. Import codes with invalid start date
     [Documentation]    Import codes (CSV, Excel) with invalid start date and check error message
@@ -249,6 +250,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 409. Import codes with invalid ID values
     [Documentation]    Import codes (Excel, CSV) with invalid ID values and check error message
@@ -270,6 +272,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 410. Update code status from VALID to DRAFT
     [Documentation]    Update Code status from VALID to DRAFT with import function (Excel, CSV) and check error message
@@ -291,6 +294,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 411. Import codes with duplicate CODEVALUES
     [Documentation]    Import codes (Excel, CSV) with duplicate CODEVALUES and check error message
@@ -312,6 +316,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    2
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 412. Import Codes with invalid CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with invalid CODEVALUE and check error message. YTI-703
@@ -333,6 +338,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 413. Import Codes with missing ORDER value
     [Documentation]    Import Codes (Excel, CSV) with missing ORDER value and check error message. YTI-650
@@ -354,6 +360,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 414. Import Codes with same ORDER values
     [Documentation]    Import Codes with same ORDER values in Excel/CSV and check error message
@@ -375,6 +382,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 415. Import Codes with existing ORDER values
     [Documentation]    Import Codes with existing ORDER values in Code list and check error message
@@ -392,14 +400,9 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Cancel code import
     Sleep    1
     Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 *** Keywords ***
-Go back to Koodistot frontpage
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
-    Click element    ${FRONTPAGE_LINK}
-    Sleep    2
-    Close All Browsers
-
 Select draft code list
     Wait until page contains element    css=app-filter-dropdown.d-inline-block:nth-child(3)    timeout=30
     Click element    css=app-filter-dropdown.d-inline-block:nth-child(3)
@@ -410,27 +413,10 @@ Select draft code list
     Sleep    1
     Wait until page contains    ${CODE_LIST_2}
 
-Import codes in Excel format
-    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
-    Click element    ${IMPORT_CODES_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
 Cancel code import
     Click button    ${CLOSE_ERROR_MESSAGE_BTN}
     Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}
-
-Import codes in CSV format
-    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
-    Click element    ${FILE_FORMAT_CSV}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Create valid codelist
     Test Case Setup Admin
@@ -439,4 +425,4 @@ Create valid codelist
 
 Remove valid codelist
     Test Case Setup Superuser
-    Remove testiautomaatiokoodisto1 with codes
+    Remove code lists    ${CODE_LIST_4}
