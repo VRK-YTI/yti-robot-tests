@@ -1,22 +1,24 @@
 *** Settings ***
 Documentation     Test Suite for Code list and Code modification
-Suite Setup       Create draft codelist
-Suite Teardown    Remove draft codelist
+Suite Teardown    Close all Browsers
+Test Setup        Close all browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
 *** Variables ***
 #Error messages
-${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 *** Test Cases ***
 200. Modify DRAFT Code
     [Documentation]    Modify name, description and short name values for DRAFT code.
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Choose testiautomaatiokoodisto code and edit
-    Wait until page contains element    ${CANCEL_CODE_MOD_BTN}
-    Click element    ${CANCEL_CODE_MOD_BTN}
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    #Wait until page contains element    ${CODELIST_CODES_TAB}
+    #Click element    ${CODELIST_CODES_TAB}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
@@ -31,13 +33,19 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains    Tämä on uusi kuvaus koodille
     Wait until page contains    Tämä on uusi lyhyt nimi
     Sleep    1
-    [Teardown]    Restore code modify
+    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 201. Add link to the DRAFT Code
     [Documentation]    Add link to the draft code, check link functionalty and remove the link.
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Choose testiautomaatiokoodisto code and edit
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_1}")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
     Sleep    1
@@ -72,13 +80,31 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    2
-    [Teardown]    Remove links from draft code
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${DELETE_LINK_ICON}
+    Click element    ${DELETE_LINK_ICON}
+    Sleep    1
+    Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
+    Click Element    ${REMOVE_LINK_CONF_BTN}
+    Sleep    1
+    Page should not contain    https://www.suomi.fi/etusivu/
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Sleep    1
+    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 202. Add Creative Commons license to DRAFT Code
     [Documentation]    Add Creative Commons license to draft code and remove the license.
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Choose testiautomaatiokoodisto code and edit
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_1}")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
     Click element    ${ADD_LINK_TO_CODE_BTN}
     Sleep    1
@@ -104,15 +130,20 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    2
-    [Teardown]    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 203. Modify link for DRAFT Code
     [Documentation]    Add link to the DRAFT code, modify link name, check the name from TIEDOT-tab
     ...    and remove the link. YTI-444, YTI-614.
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Choose testiautomaatiokoodisto code and edit
-    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=20
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_1}")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}
     Click element    ${ADD_LINK_TO_CODE_BTN}
     Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
     Click element    ${ADD_NEW_LINK_BTN}
@@ -140,14 +171,19 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Page should contain    www.suomi.fi
     Save code modification
     Reload Page
-    [Teardown]    Delete link from code
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 204. Set start date and end date for Code
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.
     ...    YTI-438
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Choose testiautomaatiokoodisto code and edit
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_1}")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${CODE_START_DATE_BTN}    timeout=20
     Click element    ${CODE_START_DATE_BTN}
     Click element    css=select.custom-select:nth-child(1)
@@ -169,13 +205,18 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Save code modification
     Sleep    3
     Page should contain    02.01.2018 - 27.02.2018
-    [Teardown]    Clear dates from code
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 205. Set end date before start date for Code list
     [Documentation]    Set end date before start date for code list and check error message.
     [Tags]    regression    test
-    [Setup]    Test Case Setup Admin
-    Choose testiautomaatiokoodisto and edit
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Click element    //*[contains(text(), "${TEST_CODE_1}")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${CODE_LIST_START_DATE_BTN}    timeout=20
     Click element    ${CODE_LIST_START_DATE_BTN}
     Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=20
@@ -201,13 +242,15 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
     Click element    ${CANCEL_CODE_MOD_BTN}
-    [Teardown]    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
     [Tags]    regression    test
-    [Setup]    Test Case Setup create valid codelist
-    Choose testiautomaatiokoodisto 2 and edit
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
+    Modify code list
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
     Sleep    2
@@ -219,13 +262,16 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    //*[contains(text(), "Korvattu")]
     Sleep    2
     Go back to Koodistot frontpage
-    [Teardown]    Test Case Teardown remove valid codelist
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    [Teardown]    Remove code lists    ${CODE_LIST_6}
 
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
     [Tags]    regression    test
-    [Setup]    Test Case Setup create valid codelist
-    Choose testiautomaatiokoodisto 2 and edit
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Modify code list
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
     Sleep    1
@@ -245,8 +291,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Page should contain    Uusi määritelmä
     Page should contain    Uusi muutostieto
     Page should contain    Oikeusturva
-    Restore valid Code list
-    [Teardown]    Test Case Teardown remove valid codelist
+    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_6}
 
 208. Modify classification for DRAFT Code list
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
@@ -303,7 +349,6 @@ Go back to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
     Click element    ${FRONTPAGE_LINK}
     Sleep    2
-    Close All Browsers
 
 Remove links from draft code
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
@@ -469,6 +514,7 @@ Remove classification from code list
 
 Create draft codelist
     Test Case Setup Admin
+    #Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Create testiautomaatiokoodisto with one code
     Close All Browsers
 
@@ -484,3 +530,10 @@ Test Case Setup create valid codelist
 Test Case Teardown remove valid codelist
     Test Case Setup Superuser
     Remove testiautomaatiokoodisto 2 with one code
+
+Modify code list
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Sleep    2

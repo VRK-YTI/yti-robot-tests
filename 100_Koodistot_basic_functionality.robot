@@ -7,6 +7,7 @@ Resource          resources/Generic_resources.robot
 
 *** Variables ***
 ${navigation_menu_link}    Käyttäjätiedot
+${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 *** Test Cases ***
 100. Open Information about the service page
