@@ -233,33 +233,10 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     ...    remove DEFAULTCODE and code list.
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
-    Sleep    2
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
-    Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
-    Click element    ${CANCEL_CREATION_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
-    Click button    Lisää luokitus
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
-    Click element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    5
+    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Draft_Codes_with_broader}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    ${IMPORT_BTN}
+    Upload codes    ${Draft_Codes_with_broader}
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
@@ -291,7 +268,7 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Page should not contain    Vakiokoodi    timeout=20
     Page should not contain    koodi505 - Koodi505    timeout=20
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Draft code list with codes
+    [Teardown]    Remove code lists    ${CODE_LIST_8}
 
 510. Import DRAFT Codes (CSV) to existing Code list
     [Documentation]    Import DRAFT Codes (CSV) to existing Code list, check that import is successful and remove code list
