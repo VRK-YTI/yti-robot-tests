@@ -82,6 +82,7 @@ ${SEARCH_VARIANT_INPUT}    id=search_variant_input
 ${START_DATE_INPUT}    id=start_date_input
 ${END_DATE_INPUT}    id=end_date_input
 ${CODE_LIST_DDL}    id=codeSchemeDropdown
+${EXPORT_DDL}     id=exportDropdown
 #Extension schemes
 ${EXTENSION_SCHEMES_DDL}    id=extensionSchemeDropdown
 ${IMPORT_EXTENSION_SCHEMES_BTN}    id=import_extensionschemes_button
@@ -172,6 +173,7 @@ ${TEST_CODE_6}    testcode25 - Testikoodi 25
 ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 ${CODE_LIST_VALUE_3}    Koodisto7001
+${CODE_LIST_VALUE_4}    testiautomaatiokoodisto
 ${EXTENSION_SCHEME_VALUE_1}    extscheme1
 ${EXTENSION_SCHEME_NAME_1}    Extension scheme 1
 ${EXTENSION_VALUE_1}    ext1
@@ -516,9 +518,20 @@ Create code list
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
     Click element    //*[contains(text(), "${classification}")]
+    Sleep    2
+    ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
+    run keyword if    ${code_value_exists}    Cancel code list creation
+    ...    ELSE    Save code list
+    Sleep    5
+
+Cancel code list creation
+    Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}
+    Click element    ${CANCEL_CODE_CREATE_BTN}
+    Sleep    2
+
+Save code list
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    5
 
 Upload codelist
     [Arguments]    ${codelist}    ${codelist_name}
