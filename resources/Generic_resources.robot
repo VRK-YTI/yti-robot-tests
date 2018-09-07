@@ -19,6 +19,7 @@ ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://crea
 ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
 ${CALCULATION_HIIERARCHY}    id=ExtensionScheme_calculationHierarchy_propertytype_dropdown_button
 ${DEFINITION_HIIERARCHY}    id=ExtensionScheme_definitionHierarchy_propertytype_dropdown_button
+${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
@@ -139,6 +140,8 @@ ${REMOVE_CODE_BTN}    id=code_info_delete_button
 ${REMOVE_CODE_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CANCEL_CODE_CREATE_BTN}    id=editable_cancel_button
 ${EXTENSION_BACK_BTN}    id=extension_back_button
+${CODE_STATUS_DDL}    id=selected_status_input_dropdown
+${CODE_DDL}       id=codeDropdown
 #Code lists and Codes
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
@@ -501,6 +504,7 @@ Create code list
     Click element    ${CREATE CODE_LIST_BTN}
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
+    Sleep    7
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${registry}
@@ -574,3 +578,37 @@ Import codes in CSV format
     Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
     Click element    ${FILE_FORMAT_CSV}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+
+Create new code to code list
+    [Arguments]    ${code_value}    ${code_name}    ${code_status}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
+    Click element    ${CREATE_CODE_BTN}
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
+    Sleep    5
+    Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
+    Input text    ${CODE_CODEVALUE_INPUT}    ${code_value}
+    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Input text    ${CODE_NAME_INPUT}    ${code_name}
+    Wait until page contains element    ${CODE_STATUS_DDL}    timeout=20
+    Click element    ${CODE_STATUS_DDL}
+    Wait until page contains element    ${code_status}    timeout=20
+    Click element    ${code_status}
+    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click element    ${SAVE_NEW_CODE_BTN}
+    Sleep    2
+
+Remove code
+    [Arguments]    ${code}
+    Wait until page contains element    //*[contains(text(), "${code}")]    timeout=20
+    Click element    //*[contains(text(), "${code}")]
+    Wait until page contains element    ${CODE_DDL}    timeout=20
+    Click element    ${CODE_DDL}
+    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_BTN}
+    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_CONF_BTN}
+    Sleep    2
+    Page should not contain element    ${code}

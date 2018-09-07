@@ -29,30 +29,20 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
-    Sleep    1
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    1
-    Wait until page contains    ${CODE_LIST_8}    timeout=20
+    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Draft code list
+    [Teardown]    Remove code lists    ${CODE_LIST_8}
 
 501. Import VALID Code list with codes
     [Documentation]    Import VALID Code list with codes, check that import is successful and remove code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    5
-    Wait until page contains    ${CODE_LIST_9}    timeout=20
+    Upload codelist    ${Code_list_with_codes}    ${CODE_LIST_9}
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -67,33 +57,25 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     Sleep    5
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
     Click element    ${CODE_BACK_BTN}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
     Check values from Valid Code list
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Valid code list
+    [Teardown]    Remove code lists    ${CODE_LIST_9}
 
 502. Import DRAFT Codes to existing Code list
     [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful and remove code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    1
-    Wait until page contains    ${CODE_LIST_8}    timeout=20
+    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Draft_Codes_with_broader}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    ${IMPORT_BTN}
+    Upload codes    ${Draft_Codes_with_broader}
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Draft code list with codes
+    [Teardown]    Remove code lists    ${CODE_LIST_8}
 
 503. Import DRAFT Codes to existing Code list and update Codes with import functionality
     [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful,
@@ -101,73 +83,42 @@ ${Error_registry_with_codes}    Rekisterillä on koodistoja. Poista koodistot en
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    5
-    Wait until page contains    ${CODE_LIST_8}    timeout=20
+    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Draft_Codes_with_broader}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    ${IMPORT_BTN}
+    Upload codes    ${Draft_Codes_with_broader}
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Update_Codes}
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    ${IMPORT_BTN}
+    Upload codes    ${Update_Codes}
     Check updated code listing
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Draft code list with codes
+    [Teardown]    Remove code lists    ${CODE_LIST_8}
 
 504. Create new Code list and Codes
     [Documentation]    Create new code list and codes manually and remove code and code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
+    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${CODE_LIST_8}    Asuminen
     Sleep    2
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
-    Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
-    Click element    ${CANCEL_CREATION_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
-    Click button    Lisää luokitus
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
-    Click element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    5
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Create new code to code list
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}
     Sleep    5
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains    NewCode001 - newCode001
     Wait until page contains    koodisto6000    timeout=20
-    Wait until page contains    NewCode001 - newcode001    timeout=20
-    Sleep    2
-    Click element    //*[contains(text(), "NewCode001 - newcode001")]
     Wait until page contains    Koodin arvo    timeout=20
     Wait until page contains    NewCode001    timeout=20
-    Wait until page contains element    ${REMOVE_CODE_BTN}
-    Click element    ${REMOVE_CODE_BTN}
-    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}
-    Click element    ${REMOVE_CODE_CONF_BTN}
+    Wait until page contains    Koodin nimi    timeout=20
+    Wait until page contains    newCode001    timeout=20
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
+    Sleep    2
+    Remove code    NewCode001 - newCode001
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
+    Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Draft code list
+    [Teardown]    Remove code lists    ${CODE_LIST_8}
 
 505. Create new Code list with existing codeValue
     [Documentation]    Create new Code list with existing codeValue and check error message from
@@ -788,10 +739,6 @@ Go back to Koodistot frontpage and close browsers
     Sleep    2
     Close All Browsers
 
-Return to Koodistot frontpage
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
-    Click element    ${FRONTPAGE_LINK}
-
 Save code list
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
@@ -803,39 +750,6 @@ Modify code
 Save code modification
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
-
-Import code list in Excel format
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click element    ${IMPORT_CODE_LIST_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    #Wait until page contains element    ${REGISTRY_1}    timeout=20
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
-Import codes in Excel format
-    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
-    Click element    ${IMPORT_CODES_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
-Import codes in CSV format
-    Wait until page contains element    ${IMPORT_CODES_BTN}    timeout=20
-    Click element    ${IMPORT_CODES_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
-    Click element    ${FILE_FORMAT_CSV}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Check values from Draft Code list
     Page should contain    Tunnus
@@ -991,18 +905,6 @@ Check updated code listing
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Wait until page contains    koodi505 - Koodi505    timeout=20
-
-Create new code to code list
-    Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
-    Click element    ${CREATE_CODE_BTN}
-    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
-    Click element    ${CANCEL_CREATION_BTN}
-    Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
-    Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
-    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
-    Input text    ${CODE_NAME_INPUT}    newcode001
-    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
-    Click element    ${SAVE_NEW_CODE_BTN}
 
 Create new code to code list with concept
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
