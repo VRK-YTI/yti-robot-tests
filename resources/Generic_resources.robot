@@ -111,6 +111,7 @@ ${MODIFY_EXTENSION_BTN}    id=editable_edit_button
 ${REMOVE_EXTENSION_LINK}    id=remove_extension_link
 ${EXTENSION_SCHEME_TYPE}    id=propertytype_dropdown_button
 ${SEARCH_LINKED_CODE_INPUT}    id=search_linked_code-scheme_input
+${ADD_CODE_LIST_BTN}    id=add_codelist_button
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -158,6 +159,7 @@ ${CODE_LIST_15}    Vakiokoodikoodisto
 ${CODE_LIST_16}    Koodisto600
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
+${CODE_1000}      Koodi1000 - Koodi1000
 ${TEST_CODE_1}    T100 - Automaatiokoodi
 ${TEST_CODE_2}    testikoodi02 - Testikoodi 02
 ${TEST_CODE_3}    Koodi1006 - Koodi1006
@@ -246,6 +248,11 @@ Open Chrome to Environment
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
     Go To    ${ENVIRONMENT_URL}
+
+Return to Koodistot frontpage
+    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Click element    ${FRONTPAGE_LINK}
+    Sleep    2
 
 Create testiautomaatiokoodisto with one code
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
@@ -469,6 +476,7 @@ Remove code lists
     [Arguments]    @{code_list_items}
     : FOR    ${code_list_item}    IN    @{code_list_items}
     \    Return to Koodistot frontpage
+    \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
     \    Wait until page contains element    //*[contains(text(), "${code_list_item}")]    timeout=30
@@ -517,14 +525,6 @@ Upload codelist
     Sleep    6
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
 
-Upload codes
-    [Arguments]    ${codes}
-    Choose file    ${FILE_UPLOAD_BTN}    ${codes}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
-    Sleep    2
-
 Import code list in Excel format
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -539,6 +539,19 @@ Import code list in Excel format
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+
+Upload codes
+    [Arguments]    ${codes}
+    Choose file    ${FILE_UPLOAD_BTN}    ${codes}
+    Sleep    1
+    Wait until page contains element    ${IMPORT_BTN}    timeout=20
+    Click button    Tuo
+    Sleep    2
+
+Cancel code import
+    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
+    Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}
 
 Import codes in Excel format
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
@@ -561,8 +574,3 @@ Import codes in CSV format
     Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
     Click element    ${FILE_FORMAT_CSV}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
-Return to Koodistot frontpage
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
-    Click element    ${FRONTPAGE_LINK}
-    Sleep    2

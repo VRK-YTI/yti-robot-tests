@@ -133,9 +133,9 @@ Resource          resources/Generic_resources.robot
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
-    Click element    //*[contains(text(), "${TEST_CODE_1}")]
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "${CODE_1000}")]    timeout=20
+    Click element    //*[contains(text(), "${CODE_1000}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}
@@ -166,7 +166,7 @@ Resource          resources/Generic_resources.robot
     Page should contain    www.suomi.fi
     Save code modification
     Reload Page
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 204. Set start date and end date for Code
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.

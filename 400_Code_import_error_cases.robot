@@ -1,6 +1,5 @@
 *** Settings ***
 Documentation     Test Suite for Code import error cases
-Suite Setup       Create valid codelist
 Suite Teardown    Close all Browsers
 Test Teardown     Close all Browsers
 Library           SeleniumLibrary
@@ -65,7 +64,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 400. Import Codes with missing CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression    test
-    [Setup]    Test Case Setup Superuser
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
@@ -76,14 +75,14 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Upload codes    ${Codes_codevalue_missing_csv}
     Wait until page contains    ${Error_no_codeValue}    timeout=20
     Cancel code import
-    Sleep    1
+    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 401. Import Codes with missing STATUS value
     [Documentation]    Import Codes (Excel, CSV) with missing STATUS value and check error message
     [Tags]    regression    test
-    [Setup]    Test Case Setup Superuser
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
@@ -102,327 +101,246 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     [Documentation]    Import Codes (Excel, CSV) with invalid STATUS value and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_status}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_status}
     Wait until page contains    ${Error_with_invalid_status}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_status_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_status_csv}
     Wait until page contains    ${Error_with_invalid_status}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 403. Import Codes with invalid BROADER value
     [Documentation]    Import Codes (Excel, CSV) with invalid BROADER value and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_broader}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_broader}
     Wait until page contains    ${Error_with_invalid_broader}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_broader_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_broader_csv}
     Wait until page contains    ${Error_with_invalid_broader}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 404. Code import when BROADER code references code value of the code itself
     [Documentation]    Import Codes (Excel, CSV) when BROADER code references code value of the code itself and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_same_broader}
     Wait until page contains    ${Error_with_same_broader}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_same_broader_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_same_broader_csv}
     Wait until page contains    ${Error_with_same_broader}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 405. Import codes with duplicate comlumns
     [Documentation]    Import Codes (Excel, CSV) with duplicate columns and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_duplicate_columns}
     Wait until page contains    ${Error_with_duplicate_columns}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_duplicate_columns_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_duplicate_columns_csv}
     Wait until page contains    ${Error_with_duplicate_columns}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 406. Import codes with invalid HIERARCHYLEVEL value
     [Documentation]    Import Codes (Excel, CSV) with invalid HIERARCHYLEVEL value and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_HL}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_HL}
     Wait until page contains    ${Error_with_invalid_HL_value}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_HL_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_HL_csv}
     Wait until page contains    ${Error_with_invalid_HL_value}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 407. Import codes with CODEVALUE column missing
     [Documentation]    Import codes (Excel, CSV) with CODEVALUE column missing and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_without_codevalue_column}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_without_codevalue_column}
     Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_without_codevalue_column_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_without_codevalue_column_csv}
     Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 408. Import codes with invalid start date
-    [Documentation]    Import codes (CSV, Excel) with invalid start date and check error message
+    [Documentation]    Import codes (Excel, CSV) with invalid start date and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_startdate}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_startdate}
     Wait until page contains    ${Error_with_invalid_startdate}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_startdate_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_startdate_csv}
     Wait until page contains    ${Error_with_invalid_startdate}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 409. Import codes with invalid ID values
     [Documentation]    Import codes (Excel, CSV) with invalid ID values and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_ID}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_ID}
     Wait until page contains    ${Error_with_invalid_ID}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_invalid_ID_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_invalid_ID_csv}
     Wait until page contains    ${Error_with_invalid_ID}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 410. Update code status from VALID to DRAFT
     [Documentation]    Update Code status from VALID to DRAFT with import function (Excel, CSV) and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Update_Code_valid_draft}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Update_Code_valid_draft}
     Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Update_Code_valid_draft_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Update_Code_valid_draft_csv}
     Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 411. Import codes with duplicate CODEVALUES
     [Documentation]    Import codes (Excel, CSV) with duplicate CODEVALUES and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes}
-    Sleep    2
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Duplicate_Codes}
     Wait until page contains    ${Error_with_duplicate_codes}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_Codes_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Duplicate_Codes_csv}
     Wait until page contains    ${Error_with_duplicate_codes}    timeout=20
     Cancel code import
     Sleep    2
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 412. Import Codes with invalid CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with invalid CODEVALUE and check error message. YTI-703
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_invalid_codevalue}
     Wait until page contains    ${Error_invalid_codeValue}    timeout=20
+    Cancel code import
     Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_invalid_codevalue_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_invalid_codevalue_csv}
     Wait until page contains    ${Error_invalid_codeValue}    timeout=20
     Cancel code import
     Sleep    1
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 413. Import Codes with missing ORDER value
     [Documentation]    Import Codes (Excel, CSV) with missing ORDER value and check error message. YTI-650
     [Tags]    koodistot
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_missing_order_value}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
-    Wait until page contains    ${Error_missing_order}    timeout=20
-    Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_missing_order_value_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Codes_with_missing_order_value}
     Wait until page contains    ${Error_missing_order}    timeout=20
     Cancel code import
-    Sleep    1
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Import codes in CSV format
+    Upload codes    ${Codes_with_missing_order_value_csv}
+    Wait until page contains    ${Error_missing_order}    timeout=20
+    Cancel code import
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 414. Import Codes with same ORDER values
     [Documentation]    Import Codes with same ORDER values in Excel/CSV and check error message
     [Tags]    regression    koodistot    test
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Same_order_values}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
-    Wait until page contains    ${Error_same_order_values}    timeout=20
-    Import codes in CSV format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Same_order_values_csv}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Upload codes    ${Same_order_values}
     Wait until page contains    ${Error_same_order_values}    timeout=20
     Cancel code import
-    Sleep    1
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    Import codes in CSV format
+    Upload codes    ${Same_order_values_csv}
+    Wait until page contains    ${Error_same_order_values}    timeout=20
+    Cancel code import
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
 
 415. Import Codes with existing ORDER values
     [Documentation]    Import Codes with existing ORDER values in Code list and check error message
     [Tags]    koodistot
     [Setup]    Test Case Setup Admin
-    Select draft code list
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Codes_with_order_values}
-    Sleep    1
-    Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
-    Sleep    2
+    Upload codes    ${Codes_with_order_values}
     Wait until page contains    ${Error_existing_order_values}    timeout=20
-    Sleep    2
     Cancel code import
-    Sleep    1
-    Go back to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
-
-*** Keywords ***
-Select draft code list
-    Wait until page contains element    css=app-filter-dropdown.d-inline-block:nth-child(3)    timeout=30
-    Click element    css=app-filter-dropdown.d-inline-block:nth-child(3)
-    Click element    //*[contains(text(), "${STATUS_DRAFT_FI}")]
-    Sleep    1
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_2}")]
-    Sleep    1
-    Wait until page contains    ${CODE_LIST_2}
-
-Cancel code import
-    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}
-
-Create valid codelist
-    Test Case Setup Admin
-    Create testiautomaatiokoodisto1 with codes
-    Close All Browsers
-
-Remove valid codelist
-    Test Case Setup Superuser
-    Remove code lists    ${CODE_LIST_4}
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}

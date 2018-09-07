@@ -789,9 +789,9 @@ Upload extension
     Sleep    2
 
 Create extension scheme manually
-    [Arguments]    ${extension_scheme_codevalue}    ${extension_scheme_name}    ${property_type}
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
+    [Arguments]    ${extension_scheme_codevalue}    ${extension_scheme_name}    ${property_type}    ${code_list_name}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
+    Click element    ${CODE_LIST_DDL}
     Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
     Sleep    2
     Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
@@ -799,20 +799,19 @@ Create extension scheme manually
     Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
     Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${extension_scheme_name}
     Wait until page contains element    ${EXTENSION_SCHEME_TYPE}    timeout=30
-    Click element    ${EXTENSION_SCHEME_TYPE}
-    Click element    ${property_type}
+    run keyword if    ${code_list_name}    Add code list to extension scheme    ${code_list_name}
     Sleep    1
     Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
     Click button    ${SAVE_EXTENSION_SCHEME}
     Sleep    2
 
 Add code list to extension scheme
-    [Arguments]    ${code_list}
-    Wait until page contains element    ${EXTENSION_SCHEME_TYPE}    timeout=30
-    Click element    ${EXTENSION_SCHEME_TYPE}
+    [Arguments]    ${code_list_name}
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=30
+    Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${SEARCH_LINKED_CODE_INPUT}    timeout=30
-    Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${code_list}
-    Click element    //*[contains(text(), "${code_list}")]
+    Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${code_list_name}
+    Click element    //*[contains(text(), "${code_list_name}")]
     Sleep    2
 
 Remove codelist
