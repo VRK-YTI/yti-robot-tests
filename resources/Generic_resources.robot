@@ -206,6 +206,8 @@ ${testiautomaatiokoodisto2_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodist
 ${testiautomaatiokoodisto1_with_codes}    ${DATAFOLDER}${/}testiautomaatiokoodisto1_with_codes.xlsx
 ${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
 ${Code_filter}    ${DATAFOLDER}${/}Code_filter.xlsx
+#Error messages
+${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 
 *** Keywords ***
 Test Case Setup Admin
@@ -506,7 +508,7 @@ Create code list
     Click element    ${CREATE CODE_LIST_BTN}
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
-    Sleep    7
+    Sleep    15
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${registry}
@@ -625,3 +627,45 @@ Remove code
     Click element    ${REMOVE_CODE_CONF_BTN}
     Sleep    2
     Page should not contain element    ${code}
+
+Delete registry with code lists
+    [Arguments]    ${registry}    ${code_list}
+    Return to Koodistot frontpage
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    //*[contains(text(), "${registry}")]
+    Click element    //*[contains(text(), "${registry}")]
+    Wait until page contains element    ${REGISTRY_DDL}
+    Click element    ${REGISTRY_DDL}
+    Wait until page contains element    ${DELETE_REGISTRY}
+    Click element    ${DELETE_REGISTRY}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait until page contains    ${Error_registry_with_codelists}    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Remove code lists    ${code_list}
+    Delete empty registry    ${registry}
+
+Delete empty registry
+    [Arguments]    ${registry}
+    Return to Koodistot frontpage
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    //*[contains(text(), "${registry}")]
+    Click element    //*[contains(text(), "${registry}")]
+    Wait until page contains element    ${REGISTRY_DDL}
+    Click element    ${REGISTRY_DDL}
+    Wait until page contains element    ${DELETE_REGISTRY}
+    Click element    ${DELETE_REGISTRY}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Sleep    2
+    Wait until page contains element    ${REGISTRY_FILTER_DDL}    timeout=20
+    Click element    ${REGISTRY_FILTER_DDL}
+    Page should not contain element    //*[contains(text(), "Automaatiorekisteri")]
+    Sleep    2
