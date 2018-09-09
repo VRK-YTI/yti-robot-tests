@@ -325,76 +325,10 @@ Resource          resources/Generic_resources.robot
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 *** Keywords ***
-Restore code modify
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
-    Input text    ${CODE_NAME_INPUT}    Automaatiokoodi
-    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
-    Input Text    ${CODE_DESC_INPUT}    Tämä on kuvaus koodille
-    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
-    Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on lyhyt nimi
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains    Automaatiokoodi
-    Wait until page contains    Tämä on kuvaus koodille
-    Wait until page contains    Tämä on lyhyt nimi
-    Sleep    1
-    Go back to Koodistot frontpage
-    Close All Browsers
-
 Go back to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
     Click element    ${FRONTPAGE_LINK}
     Sleep    2
-
-Remove links from draft code
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
-    Click element    ${FRONTPAGE_LINK}
-    Sleep    1
-    Choose testiautomaatiokoodisto code and edit
-    Sleep    3
-    Wait until page contains element    ${DELETE_LINK_ICON}
-    Click element    ${DELETE_LINK_ICON}
-    Sleep    1
-    Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
-    Click Element    ${REMOVE_LINK_CONF_BTN}
-    Sleep    1
-    Page should not contain    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    1
-    Go back to Koodistot frontpage
-    Close All Browsers
-
-Clear dates from code
-    Wait until page contains element    ${MODIFY_CODE_BTN}
-    Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_START_DATE_INPUT}    timeout=20
-    Clear element text    ${CODE_START_DATE_INPUT}
-    Wait until page contains element    ${CODE_END_DATE_INPUT}    timeout=20
-    Clear element text    ${CODE_END_DATE_INPUT}
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    1
-    Page should not contain    02.01.2018 - 27.02.2018
-    Go back to Koodistot frontpage
-    Close All Browsers
-
-Choose testiautomaatiokoodisto code and edit
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${STATUS_DRAFT_FI}")]
-    Sleep    1
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_4}")]
-    Sleep    1
-    Wait until page contains    ${CODE_LIST_4}
-    Click element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait until page contains    ${TEST_CODE_1}
-    Sleep    1
-    Wait until page contains element    ${MODIFY_CODE_BTN}
-    Click element    ${MODIFY_CODE_BTN}
-    Sleep    1
 
 Choose testiautomaatiokoodisto and edit
     Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=20
@@ -412,64 +346,6 @@ Choose testiautomaatiokoodisto and edit
     Click element    //*[contains(text(), "Muokkaa")]
     Sleep    1
 
-Choose testiautomaatiokoodisto 2 and edit
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${STATUS_VALID_FI}")]
-    Sleep    1
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_6}")]
-    Sleep    1
-    Wait until page contains    ${CODE_LIST_6}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
-    Sleep    1
-    Wait until page contains element    //*[contains(text(), "Muokkaa")]    timeout=20
-    Click element    //*[contains(text(), "Muokkaa")]
-    Sleep    1
-
-Restore valid Code list status
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
-    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
-    Click element    ${CODE_LIST_STATUS_DDL}
-    Click button    Voimassa oleva
-    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}
-    Click element    ${SAVE_CODE_LIST_MOD_BTN}
-    Sleep    3
-    Wait until page contains    Voimassa oleva
-    Sleep    2
-    Go back to Koodistot frontpage
-    Close All Browsers
-
-Restore valid Code list
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    //*[contains(text(), "Muokkaa")]
-    Sleep    1
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    testiautomaatiokoodisto 2
-    Sleep    1
-    Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=20
-    Input text    ${CODE_LIST_DESC_INPUT}    Tämä on kuvaus
-    Sleep    1
-    Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=20
-    Input text    ${CODE_LIST_DEF_INPUT}    Tämä on määritelmä
-    Sleep    1
-    Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
-    Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Muutostieto
-    Sleep    1
-    Click element    //*[contains(text(), "Tallenna")]
-    Sleep    1
-    Wait until page contains    testiautomaatiokoodisto2    timeout=20
-    Wait until page contains    testiautomaatiokoodisto 2    timeout=20
-    Wait until page contains    Tämä on kuvaus    timeout=20
-    Wait until page contains    Tämä on määritelmä    timeout=20
-    Wait until page contains    Muutostieto    timeout=20
-    Wait until page contains    Oikeusturva    timeout=20
-    Sleep    2
-    Go back to Koodistot frontpage
-    Close All Browsers
-
 Save code list
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
@@ -484,50 +360,6 @@ Save code modification
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    4
-
-Delete link from code
-    Modify code
-    Wait until page contains element    ${DELETE_LINK_ICON}
-    Click element    ${DELETE_LINK_ICON}
-    Wait until page contains element    ${REMOVE_LINK_CONF_BTN}
-    Click Element    ${REMOVE_LINK_CONF_BTN}
-    Page should not contain    www.suomi.fi
-    Save code modification
-    Sleep    2
-    Go back to Koodistot frontpage
-
-Remove classification from code list
-    Choose testiautomaatiokoodisto and edit
-    Page should contain element    //*[contains(text(), "Asuminen")]
-    Page should contain element    //*[contains(text(), "Koulutus")]
-    Wait until page contains element    ${CLASSIFICATION_3}
-    Click element    ${CLASSIFICATION_3}
-    Save code list
-    Sleep    3
-    Page should not contain element    //*[contains(text(), "Asuminen")]
-    Page should contain element    //*[contains(text(), "Koulutus")]
-    Sleep    1
-    Go back to Koodistot frontpage
-    Close All Browsers
-
-Create draft codelist
-    Test Case Setup Admin
-    #Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
-    Create testiautomaatiokoodisto with one code
-    Close All Browsers
-
-Remove draft codelist
-    Test Case Setup Superuser
-    Remove testiautomaatiokoodisto with one code
-    Close All Browsers
-
-Test Case Setup create valid codelist
-    Test Case Setup Admin
-    Create testiautomaatiokoodisto 2 with one code
-
-Test Case Teardown remove valid codelist
-    Test Case Setup Superuser
-    Remove testiautomaatiokoodisto 2 with one code
 
 Modify code list
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
