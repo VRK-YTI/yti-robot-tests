@@ -29,9 +29,9 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 *** Test Cases ***
 600. Import Code list with Extension Schemes
-    [Documentation]    Import Code list with Extension Schemes (calculation hierarchy), check that import is successfull,
+    [Documentation]    Import Code list with Extension Schemes (definition hierarchy), check that import is successfull,
     ...    Modify Extension, Export Excel and remove code list.
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Codelist_ExtensionSchemes}    ${CODE_LIST_14}
@@ -97,7 +97,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 601. Import Code list with codes and import Extension Schemes and Extensions
     [Documentation]    Import Code list with Codes and import Extension Scheme and Extensions.
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -126,7 +126,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 602. Import new Code list and create Extension Scheme and Extensions
     [Documentation]    Import new Code list and create calculation hierarchy Extension Scheme and Extension manually
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
@@ -175,7 +175,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 603. Delete Extension Scheme and Extension
     [Documentation]    Import new Code list and create and delete Extension Scheme and Extension.
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
@@ -239,7 +239,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 604. Modify Extension
     [Documentation]    Import new Code list with calculation hierarhy Extension Schemes and Extensions and modify Extension.
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
@@ -319,7 +319,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 605. Import Extensions in CSV format
     [Documentation]    Import Code list with Codes and import Extension Scheme.
     ...    Import Extensions in CSV format and export CSV
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
@@ -379,7 +379,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 606. Import Code list with Extension Schemes and without CODESCHEME value
     [Documentation]    Import Code list (Excel) with Extension Schemes. Check error message when CODESCHEME value
     ...    for external code list is missing from ExtensionSchemes sheet in Excel. YTI-853
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_without_codeschemes}
@@ -394,7 +394,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 607. Import Code list with Extension Schemes and with invalid Code
     [Documentation]    Import Code list (Excel) with Extension Schemes. Check error message when
     ...    Code in Extensions sheet is not included to the Code list. YTI-853
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_codeschemes_invalid_code}
@@ -409,7 +409,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 608. Import Code list with Extensions that exceed maximum hierarchy level
     [Documentation]    Import Code list with Extensions that exceed maximum hierarchy level and
     ...    Check error message . YTI-844
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
@@ -424,7 +424,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 609. Import Extensions with missing EXTENSIONVALUE
     [Documentation]    Import Extensions with missing EXTENSIONVALUE to calculation hierarchy extension scheme
     ...    and check error message.
-    [Tags]    regression
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -760,8 +760,9 @@ Go back to Koodistot frontpage
 
 Upload extension scheme
     [Arguments]    ${extension_scheme}
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${IMPORT_EXTENSION_SCHEMES_BTN}    timeout=30
     Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
     Sleep    2
     Choose file    ${EXTENSION_SCHEMES_FILE_UPLOAD}    ${extension_scheme}
@@ -775,6 +776,8 @@ Upload extension scheme
 
 Upload extension
     [Arguments]    ${extension}    ${file_format}
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_DDL}
     Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
     Click element    ${IMPORT_EXTENSION_BTN}
     Wait until page contains element    ${FILE_FORMAT_UPLOAD}    timeout=20
