@@ -520,43 +520,13 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Sleep    2
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
-    Click element    ${NAVIGATION_MENU_REGISTRIES}
-    Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=20
-    Click element    ${CREATE_REGISTRY_BTN}
-    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
-    Input Text    ${REGISTRY_VALUE_INPUT}    Rekisteri123
-    Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
-    Input Text    ${REGISTRY_NAME_INPUT}    Automaatiorekisteri
-    Wait until page contains element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
-    Input text    ${REGISTRY_DESCRIPTION_INPUT}    Kuvaus
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
-    Click button    ${ADD_ORGANIZATION_BTN}
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
-    Click element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_REGISTRY}
-    Click element    ${SAVE_REGISTRY}
-    Sleep    5
+    Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
+    Sleep    2
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Sleep    2
     Return to Koodistot frontpage
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
-    Click element    ${NAVIGATION_MENU_REGISTRIES}
-    Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=20
-    Click element    ${CREATE_REGISTRY_BTN}
-    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
-    Input Text    ${REGISTRY_VALUE_INPUT}    Rekisteri123
-    Wait until page contains    Rekisterin tunnus on jo käytössä.    timeout=20
-    Sleep    3
-    Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
-    Click element    ${CANCEL_CODE_MOD_BTN}
-    Sleep    5
-    Return to Koodistot frontpage
-    Sleep    3
-    [Teardown]    Remove registry
+    Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
+    [Teardown]    Delete empty registry    Rekisteri123 - Automaatiorekisteri
 
 516. Import new VALID code list and attach variant
     [Documentation]    Import new VALID code list and attach variant to the code list
@@ -638,24 +608,6 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Teardown]    Remove imported Valid code list and variant
 
 *** Keywords ***
-Go back to Koodistot frontpage and close browsers
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
-    Click element    ${FRONTPAGE_LINK}
-    Sleep    2
-    Close All Browsers
-
-Save code list
-    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_LIST_MOD_BTN}
-
-Modify code
-    Wait until page contains element    ${MODIFY_CODE_BTN}
-    Click element    ${MODIFY_CODE_BTN}
-
-Save code modification
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
-    Click element    ${SAVE_CODE_MOD_BTN}
-
 Check values from Draft Code list
     Page should contain    Tunnus
     Page should contain    Koodisto6000
@@ -703,51 +655,6 @@ Remove imported Draft code list
     Sleep    5
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Close All Browsers
-
-Remove imported Draft code list with codes
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_8}")]
-    Wait until page contains    ${CODE_LIST_8}
-    #Wait until page contains    koodi500 - Koodi500    timeout=20
-    #Wait until page contains    koodi503 - Koodi503    timeout=20
-    #Wait until page contains    koodi504 - Koodi504    timeout=20
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
-    Page should contain    Tunnus
-    Page should contain    Koodisto6000
-    Page should contain    Koodiston nimi
-    Page should contain    koodisto6000
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Close All Browsers
-
-Remove imported Valid code list
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_9}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_9}")]
-    Wait until page contains    ${CODE_LIST_9}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
-    Page should contain    Tunnus
-    Page should contain    Koodisto7000
-    Page should contain    Koodiston nimi
-    Page should contain    koodisto7000
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_9}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
@@ -812,6 +719,8 @@ Check updated code listing
     Wait until page contains    koodi505 - Koodi505    timeout=20
 
 Create new code to code list with concept
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
     Click element    ${CREATE_CODE_BTN}
     Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
@@ -825,93 +734,6 @@ Create new code to code list with concept
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
-
-Remove multiple code lists
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_10}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}")]
-    Wait until page contains    ${CODE_LIST_10}
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_10}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Sleep    1
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_11}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_11}")]
-    Wait until page contains    ${CODE_LIST_11}
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_11}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Sleep    1
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_12}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_12}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_12}")]
-    Wait until page contains    ${CODE_LIST_12}
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_12}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Close All Browsers
-
-Create draft codelist
-    Test Case Setup Superuser
-    Create testiautomaatiokoodisto with one code
-
-Remove draft codelist
-    Remove testiautomaatiokoodisto with one code
-
-Remove codelist with Extension Schemes
-    Test Case Setup Superuser
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_14}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_14}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_14}")]
-    Wait until page contains    ${CODE_LIST_14}
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_14}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Page should not contain element    //*[contains(text(), "Testikoodisto2 pitkillä arvoilla")]
-    Close All Browsers
-
-Remove imported Codelist with defaultcode
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_15}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_15}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_15}")]
-    Wait until page contains    ${CODE_LIST_15}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Page should contain    Tunnus
-    Page should contain    T1333
-    Page should contain    Koodiston nimi
-    Page should contain    Vakiokoodikoodisto
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_15}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Close All Browsers
 
 Remove Code list with concept from Controlled Vocabularies
     Wait Until Element Is Visible    id=search_box_input    timeout=30
@@ -934,10 +756,6 @@ Remove Code list with concept from Controlled Vocabularies
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
-Remove Codelist with defaultcode
-    Test Case Setup Superuser
-    Remove imported Codelist with defaultcode
-
 Test Case Setup Controlled Vocabularies
     Log To Console    Terminology Setup start
     Terminology Setup
@@ -954,7 +772,8 @@ Test Case Teardown Controlled Vocabularies
     Test Case Setup Superuser
     Log To Console    Test Case Setup Superuser end
     Log To Console    Remove Code list with concept from Controlled Vocabularies start
-    Remove Code list with concept from Controlled Vocabularies
+    #Remove Code list with concept from Controlled Vocabularies
+    Remove code lists    tutkija
     Log To Console    Remove Code list with concept from Controlled Vocabularies end
 
 Test Case Teardown Code with concept
@@ -965,25 +784,8 @@ Test Case Teardown Code with concept
     Test Case Setup Superuser
     Log To Console    Test Case Setup Superuser end
     Log To Console    Remove imported Draft code list start
-    Remove imported Draft code list
+    Remove code lists    ${CODE_LIST_8}
     Log To Console    Remove imported Draft code list end
-
-Remove registry
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
-    Click element    ${NAVIGATION_MENU_REGISTRIES}
-    Wait until page contains element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
-    Click element    //*[contains(text(), "Rekisteri123 - Automaatiorekisteri")]
-    Wait until page contains element    ${DELETE_REGISTRY}
-    Click element    ${DELETE_REGISTRY}
-    Sleep    5
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Sleep    5
-    Wait until page contains element    ${REGISTRY_FILTER_DDL}    timeout=20
-    Click element    ${REGISTRY_FILTER_DDL}
-    Page should not contain element    //*[contains(text(), "Automaatiorekisteri")]
-    Close All Browsers
 
 Remove imported Valid code list and variant
     Wait Until Element Is Visible    id=search_box_input    timeout=30
@@ -1021,27 +823,3 @@ Remove imported Valid code list and variant
     Input Text    id=search_box_input    ${CODE_LIST_8}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     Sleep    1
-
-Create registry
-    [Arguments]    ${registry_value}    ${registry_name}    ${registry_description}    ${organization}
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
-    Click element    ${NAVIGATION_MENU_REGISTRIES}
-    Wait until page contains element    ${REGISTRY_DDL}    timeout=20
-    Click element    ${REGISTRY_DDL}
-    Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=20
-    Click element    ${CREATE_REGISTRY_BTN}
-    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
-    Input Text    ${REGISTRY_VALUE_INPUT}    ${registry_value}
-    Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
-    Input Text    ${REGISTRY_NAME_INPUT}    ${registry_name}
-    Wait until page contains element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
-    Input text    ${REGISTRY_DESCRIPTION_INPUT}    ${registry_description}
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
-    Click button    ${ADD_ORGANIZATION_BTN}
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
-    Click element    //*[contains(text(), "${organization}")]
-    Wait until page contains element    ${SAVE_REGISTRY}
-    Click element    ${SAVE_REGISTRY}
-    Sleep    5

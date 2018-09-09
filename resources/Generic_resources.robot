@@ -669,3 +669,40 @@ Delete empty registry
     Click element    ${REGISTRY_FILTER_DDL}
     Page should not contain element    //*[contains(text(), "Automaatiorekisteri")]
     Sleep    2
+
+Create registry
+    [Arguments]    ${registry_value}    ${registry_name}    ${registry_description}    ${organization}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Click element    ${NAVIGATION_MENU_REGISTRIES}
+    Wait until page contains element    ${REGISTRY_DDL}    timeout=20
+    Click element    ${REGISTRY_DDL}
+    Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=20
+    Click element    ${CREATE_REGISTRY_BTN}
+    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
+    Input Text    ${REGISTRY_VALUE_INPUT}    ${registry_value}
+    ${code_value_exists}=    Run Keyword And Return Status    Page Should Contain    Rekisterin tunnus on jo käytössä.
+    run keyword if    ${code_value_exists}    Cancel registry creation
+    ...    ELSE    Continue registry creation    ${registry_name}    ${registry_description}    ${organization}
+
+Continue registry creation
+    [Arguments]    ${registry_name}    ${registry_description}    ${organization}
+    Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
+    Input Text    ${REGISTRY_NAME_INPUT}    ${registry_name}
+    Wait until page contains element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
+    Input text    ${REGISTRY_DESCRIPTION_INPUT}    ${registry_description}
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click button    ${ADD_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Click element    //*[contains(text(), "${organization}")]
+    Wait until page contains element    ${SAVE_REGISTRY}
+    Click element    ${SAVE_REGISTRY}
+    Sleep    5
+
+Cancel registry creation
+    Sleep    1
+    Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
+    Click element    ${CANCEL_CODE_MOD_BTN}
+    Sleep    5
+    Return to Koodistot frontpage
