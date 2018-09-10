@@ -113,7 +113,7 @@ ${MODIFY_EXTENSION_BTN}    id=editable_edit_button
 ${REMOVE_EXTENSION_LINK}    id=remove_extension_link
 ${EXTENSION_SCHEME_TYPE}    id=propertytype_dropdown_button
 ${SEARCH_LINKED_CODE_INPUT}    id=search_linked_code-scheme_input
-${ADD_CODE_LIST_BTN}    id=add_codelist_button
+${ADD_CODE_LIST_TO_EXT_SCHEME_BTN}    id=add_codelist_button
 ${EXT_SCHEME_STATUS_DDL}    id=selected_status_input_dropdown
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
