@@ -7,6 +7,8 @@ Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
 
 *** Variables ***
+${CALCULATION_HIERARCHY}    id=create_extensionscheme_calculationhierarchy_button
+${DEFINITION_HIERARCHY}    id=create_extensionscheme_definitionhierarchy_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
@@ -129,40 +131,11 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    6
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
-    Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
-    Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${EXTENSION_SCHEME_VALUE_1}
-    Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
-    Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${EXTENSION_SCHEME_NAME_1}
-    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    Click button    ${SAVE_EXTENSION_SCHEME}
-    Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
-    Click button    ${CREATE_EXTENSION_BTN}
-    Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
-    Input Text    ${EXTENSION_VALUE_INPUT}    ${EXTENSION_VALUE_1}
-    Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
-    Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
-    Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
-    Click button    ${ADD_CODE_TO_EXTENSION_BTN}
-    Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
-    Input Text    ${SEARCH_CODE_TO_EXTENSION_INPUT}    Testcode 57
-    Wait until page contains element    //*[contains(text(), "Testcode 57")]    timeout=30
-    Click element    //*[contains(text(), "Testcode 57")]
-    Sleep    3
-    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    Click button    ${SAVE_EXTENSION_SCHEME}
-    Sleep    3
+    Create extension scheme    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
+    Create extension    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Wait until page contains    ext1 Extension 1 - Testcode 57    timeout=30
@@ -171,7 +144,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Koodisto600    timeout=30
     Sleep    3
     Return to Koodistot frontpage
-    [Teardown]    Remove codelist with Extension Schemes and Extensions
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 603. Delete Extension Scheme and Extension
     [Documentation]    Import new Code list and create and delete Extension Scheme and Extension.
@@ -461,10 +434,6 @@ Go back to Koodistot frontpage and close browsers
     Click element    ${FRONTPAGE_LINK}
     Sleep    2
     Close All Browsers
-
-Return to Koodistot frontpage
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
-    Click element    ${FRONTPAGE_LINK}
 
 Save code list
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
@@ -791,18 +760,24 @@ Upload extension
     Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    2
 
-Create extension scheme manually
-    [Arguments]    ${extension_scheme_codevalue}    ${extension_scheme_name}    ${property_type}    ${code_list_name}
+Create extension scheme
+    [Arguments]    ${property_type}    ${extension_scheme_codevalue}    ${extension_scheme_name}    ${ext_scheme_status}    ${code_list_name}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
-    Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
+    Wait until page contains element    ${property_type}    timeout=30
+    Click element    ${property_type}
     Sleep    2
     Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
     Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${extension_scheme_codevalue}
     Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
     Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${extension_scheme_name}
-    Wait until page contains element    ${EXTENSION_SCHEME_TYPE}    timeout=30
-    run keyword if    ${code_list_name}    Add code list to extension scheme    ${code_list_name}
+    Wait until page contains element    ${EXT_SCHEME_STATUS_DDL}    timeout=20
+    Click element    ${EXT_SCHEME_STATUS_DDL}
+    Wait until page contains element    ${ext_scheme_status}    timeout=20
+    Click element    ${ext_scheme_status}
+    #${length}=    Get Length    ${code_list_name}
+    #run keyword if    ${length}    Add code list to extension scheme    ${code_list_name}
+    run keyword if    Should Not Be Empty    {code_list_name}    Add code list to extension scheme    ${code_list_name}
     Sleep    1
     Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
     Click button    ${SAVE_EXTENSION_SCHEME}
@@ -815,6 +790,27 @@ Add code list to extension scheme
     Wait until page contains element    ${SEARCH_LINKED_CODE_INPUT}    timeout=30
     Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${code_list_name}
     Click element    //*[contains(text(), "${code_list_name}")]
+    Sleep    2
+
+Create extension
+    [Arguments]    ${extension_codevalue}    ${extension_name}    ${code}
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click button    ${EXTENSION_SCHEMES_DDL}
+    Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
+    Click button    ${CREATE_EXTENSION_BTN}
+    Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
+    Input Text    ${EXTENSION_VALUE_INPUT}    ${extension_codevalue}
+    Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
+    Input Text    ${EXTENSION_NAME_INPUT}    ${extension_name}
+    Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
+    Click button    ${ADD_CODE_TO_EXTENSION_BTN}
+    Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
+    Input Text    ${SEARCH_CODE_TO_EXTENSION_INPUT}    ${code}
+    Wait until page contains element    //*[contains(text(), "${code}")]    timeout=30
+    Click element    //*[contains(text(), "${code}")]
+    Sleep    2
+    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
+    Click button    ${SAVE_EXTENSION_SCHEME}
     Sleep    2
 
 Remove codelist

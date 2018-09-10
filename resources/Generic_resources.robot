@@ -114,6 +114,7 @@ ${REMOVE_EXTENSION_LINK}    id=remove_extension_link
 ${EXTENSION_SCHEME_TYPE}    id=propertytype_dropdown_button
 ${SEARCH_LINKED_CODE_INPUT}    id=search_linked_code-scheme_input
 ${ADD_CODE_LIST_BTN}    id=add_codelist_button
+${EXT_SCHEME_STATUS_DDL}    id=selected_status_input_dropdown
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
