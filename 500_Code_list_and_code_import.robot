@@ -497,7 +497,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 514. Create and delete registry
     [Documentation]    Create registry and attach code list to that registry. Check that deleting
     ...    registry with code lists is not possible, remove code list and delete empty registry.
-    [Tags]    regression    test
+    [Tags]    test
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
