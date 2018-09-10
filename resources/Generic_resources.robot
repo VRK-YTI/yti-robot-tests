@@ -208,6 +208,7 @@ ${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
 ${Code_filter}    ${DATAFOLDER}${/}Code_filter.xlsx
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
+${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 *** Keywords ***
 Test Case Setup Admin
@@ -508,7 +509,7 @@ Create code list
     Click element    ${CREATE CODE_LIST_BTN}
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
-    Sleep    15
+    Sleep    5
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${registry}
