@@ -775,9 +775,8 @@ Create extension scheme
     Click element    ${EXT_SCHEME_STATUS_DDL}
     Wait until page contains element    ${ext_scheme_status}    timeout=20
     Click element    ${ext_scheme_status}
-    #${length}=    Get Length    ${code_list_name}
-    #run keyword if    ${length}    Add code list to extension scheme    ${code_list_name}
-    run keyword if    Should Not Be Empty    {code_list_name}    Add code list to extension scheme    ${code_list_name}
+    ${code_list_name_not_empty}    Should Not Be Empty    ${code_list_name}
+    run keyword if    ${code_list_name_not_empty}    Add code list to extension scheme    ${code_list_name}
     Sleep    1
     Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
     Click button    ${SAVE_EXTENSION_SCHEME}
