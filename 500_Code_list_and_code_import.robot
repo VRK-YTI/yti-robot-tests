@@ -97,7 +97,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 504. Create new Code list and Codes
     [Documentation]    Create new code list and codes manually and remove code and code list
-    [Tags]    regression    test
+    [Tags]    test
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${CODE_LIST_8}    Asuminen
     Sleep    2
@@ -123,7 +123,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 505. Create new Code list with existing codeValue
     [Documentation]    Create new Code list with existing codeValue and check error message from
     ...    Code list value input field
-    [Tags]    regression    test
+    [Tags]    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -231,7 +231,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 509. Create Code list and add DEFAULT CODE
     [Documentation]    Create new Code list and import codes. Add DEFAULT CODE manually,
     ...    remove DEFAULTCODE and code list.
-    [Tags]    regression    test
+    [Tags]    test
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
@@ -288,7 +288,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 511. Create Code list and get concept for Code list from Controlled Vocabularies
     [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787.
-    [Tags]    regression    test
+    [Tags]    test
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -326,7 +326,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 512. Create Code to Code list and get concept for Code from Controlled Vocabularies
     [Documentation]    Create Code to Code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in Code. YTI-787
-    [Tags]    regression    test
+    [Tags]    test
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
