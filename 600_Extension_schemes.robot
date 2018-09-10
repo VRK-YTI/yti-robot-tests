@@ -134,7 +134,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Create extension scheme    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
+    Create extension scheme    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    'DCAT-luokitus'
     Create extension    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
@@ -776,7 +776,7 @@ Create extension scheme
     Wait until page contains element    ${ext_scheme_status}    timeout=20
     Click element    ${ext_scheme_status}
     ${code_list_name_not_empty}    Should Not Be Empty    ${code_list_name}
-    run keyword if    ${code_list_name_not_empty}    Add code list to extension scheme    ${code_list_name}
+    run keyword if    '${code_list_name_not_empty}' == 'None'   Add code list to extension scheme    ${code_list_name}
     Sleep    1
     Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
     Click button    ${SAVE_EXTENSION_SCHEME}
@@ -786,6 +786,7 @@ Add code list to extension scheme
     [Arguments]    ${code_list_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=30
     Click element    ${ADD_CODE_LIST_BTN}
+    Sleep    2
     Wait until page contains element    ${SEARCH_LINKED_CODE_INPUT}    timeout=30
     Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${code_list_name}
     Click element    //*[contains(text(), "${code_list_name}")]
