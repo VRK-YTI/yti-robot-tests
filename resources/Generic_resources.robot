@@ -18,8 +18,6 @@ ${REGISTRY_2}     Automaatiorekisteri
 ${ORGANIZATION_1}    Testiorganisaatio
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_link
 ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
-${CALCULATION_HIIERARCHY}    id=ExtensionScheme_calculationHierarchy_propertytype_dropdown_button
-${DEFINITION_HIIERARCHY}    id=ExtensionScheme_definitionHierarchy_propertytype_dropdown_button
 ${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
