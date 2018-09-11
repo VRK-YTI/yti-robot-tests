@@ -320,35 +320,3 @@ Select navigation menu link
     Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]
     Sleep    2
-
-Test Case Setup create valid codelist
-    Test Case Setup Superuser
-    Create testiautomaatiokoodisto 2 with one code
-
-Test Case Teardown remove valid codelist
-    Test Case Setup Superuser
-    Remove testiautomaatiokoodisto 2 with one code
-
-Test Case Setup create codelist without prefLabel
-    Test Case Setup Superuser
-    Create Testikoodisto T200
-
-Test Case Teardown remove codelist without prefLabel
-    Test Case Setup Superuser
-    Remove Testikoodisto T200
-
-Test Case Setup create draft codelist with codes
-    Test Case Setup Superuser
-    Create testiautomaatiokoodisto1 with codes
-
-Test Case Teardown remove draft codelist with codes
-    Test Case Setup Superuser
-    Remove testiautomaatiokoodisto1 with codes
-
-Test Case Setup import Code filter codelist with codes
-    Test Case Setup Superuser
-    Create Code filter codelist
-
-Test Case Teardown remove Code filter codelist with codes
-    Test Case Setup Superuser
-    Remove Code filter codelist
