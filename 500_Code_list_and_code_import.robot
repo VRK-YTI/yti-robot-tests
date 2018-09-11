@@ -97,7 +97,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 504. Create new Code list and Codes
     [Documentation]    Create new code list and codes manually and remove code and code list
-    [Tags]    test
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Sleep    2
@@ -123,7 +123,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 505. Create new Code list with existing codeValue
     [Documentation]    Create new Code list with existing codeValue and check error message from
     ...    Code list value input field
-    [Tags]    test
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -235,7 +235,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 509. Create Code list and add DEFAULT CODE
     [Documentation]    Create new Code list and import codes. Add DEFAULT CODE manually,
     ...    remove DEFAULTCODE and code list.
-    [Tags]    test
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20

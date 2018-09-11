@@ -506,7 +506,7 @@ Remove code lists
     \    Sleep    6
 
 Create code list
-    [Arguments]    ${registry}    ${codelist_value}    ${organization}    ${registry_value}    ${codelist_name}    ${classification}
+    [Arguments]    ${registry}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
@@ -535,6 +535,7 @@ Create code list
     run keyword if    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list
     Sleep    5
+    Log to Console    ${codelist_name} created
 
 Cancel code list creation
     Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}
@@ -553,6 +554,7 @@ Upload codelist
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    6
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+    Log to Console    Code list imported
 
 Import code list in Excel format
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
@@ -575,6 +577,7 @@ Upload codes
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
+    Log to Console    Codes imported
     Sleep    2
 
 Cancel code import
@@ -623,6 +626,7 @@ Create new code to code list
     Click element    ${code_status}
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
+    Log to Console    ${code_name} created
     Sleep    2
 
 Remove code
@@ -637,6 +641,7 @@ Remove code
     Click element    ${REMOVE_CODE_CONF_BTN}
     Sleep    2
     Page should not contain element    ${code}
+    Log to Console    ${code} removed
 
 Delete registry with code lists
     [Arguments]    ${registry}    ${code_list}
@@ -678,6 +683,7 @@ Delete empty registry
     Wait until page contains element    ${REGISTRY_FILTER_DDL}    timeout=20
     Click element    ${REGISTRY_FILTER_DDL}
     Page should not contain element    //*[contains(text(), "Automaatiorekisteri")]
+    Log to Console    ${registry} deleted
     Sleep    2
 
 Create registry
@@ -708,11 +714,13 @@ Continue registry creation
     Click element    //*[contains(text(), "${organization}")]
     Wait until page contains element    ${SAVE_REGISTRY}
     Click element    ${SAVE_REGISTRY}
+    Log to Console    ${registry_name} created
     Sleep    5
 
 Cancel registry creation
     Sleep    1
     Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
     Click element    ${CANCEL_CODE_MOD_BTN}
+    Log to Console    Cancel registry creation
     Sleep    5
     Return to Koodistot frontpage
