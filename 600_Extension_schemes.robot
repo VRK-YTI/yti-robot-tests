@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Test Suite for Extension Schemes
+Documentation     Test Suite for Extensions
 Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
@@ -30,10 +30,10 @@ ${Error_max_hierarchy_level}    Laajennusten maksimi hierarkinen taso ylittyi.
 ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä 2.
 
 *** Test Cases ***
-600. Import Code list with Extension Schemes
-    [Documentation]    Import Code list with Extension Schemes (definition hierarchy), check that import is successfull,
-    ...    Modify Extension, Export Excel and remove code list.
-    [Tags]    koodistot
+600. Import code list with extension
+    [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
+    ...    modify member, export Excel and remove code list.
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Codelist_ExtensionSchemes}    ${CODE_LIST_14}
@@ -97,21 +97,21 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
 
-601. Import Code list with codes and import Extension Schemes and Extensions
-    [Documentation]    Import Code list with Codes and import Extension Scheme and Extensions.
-    [Tags]    koodistot
+601. Import code list with codes and import extension and members
+    [Documentation]    Import code list with codes and import extension and members.
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Wait until page contains    30 koodia    timeout=20
-    Upload extension scheme    ${601_Extension_Scheme}
+    Upload extension    ${601_Extension_Scheme}
     Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extensionscheme')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Upload extension    ${601_Extensions}    ${FILE_FORMAT_EXCEL}
+    Upload members    ${601_Extensions}    ${FILE_FORMAT_EXCEL}
     Wait until page contains element    //*[contains(text(), "Testcode 28")]
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
@@ -126,17 +126,17 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
-602. Import new Code list and create Extension Scheme and Extensions
-    [Documentation]    Import new Code list and create calculation hierarchy Extension Scheme and Extension manually
-    [Tags]    koodistot
+602. Import new code list and create extension and members
+    [Documentation]    Import new code list and create calculation hierarchy extension and member manually
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Create extension scheme    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
     Log to Console    Extension created
-    Create extension    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
+    Create member    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Wait until page contains    ext1 Extension 1 - Testcode 57    timeout=30
@@ -147,102 +147,47 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
-603. Delete Extension Scheme and Extension
-    [Documentation]    Import new Code list and create and delete Extension Scheme and Extension.
+603. Delete extension and member
+    [Documentation]    Import new code list and create and delete calculation hierarchy extension and member.
+    [Tags]    regression    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    testcode29 - Testcode 29    timeout=20
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    ${EMPTY}
+    Create member    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
+    Wait until page contains    Koodisto
+    Wait until page contains    Koodisto600
+    Wait until page contains    Laajennusjärjestelmä
+    Wait until page contains    Extension 1
+    Wait until page contains    Jäsenen nimi
+    Wait until page contains    Member 1
+    Wait until page contains    Jäsenen arvo
+    Wait until page contains    member1
+    Wait until page contains    Koodi
+    Wait until page contains    testcode57 - Testcode 57
+    Delete member
+    Wait until page contains    Extension 1    timeout=30
+    Wait until page contains    Tällä laajennuksella ei ole yhtään jäsentä.    timeout=30
+    Delete extension
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+604. Modify member
+    [Documentation]    Import new code list, import calculation hierarchy extension and members and modify member.
     [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Create extension scheme    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    ${EMPTY}
-    Log to Console    Extension created
-    #Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    #Click element    ${EXTENSION_SCHEMES_DDL}
-    #Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
-    #Sleep    2
-    #Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
-    #Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${EXTENSION_SCHEME_VALUE_1}
-    #Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
-    #Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${EXTENSION_SCHEME_NAME_1}
-    #Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    #Click button    ${SAVE_EXTENSION_SCHEME}
-    Create extension    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
-    Log to Console    created
-    #Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
-    #Click button    ${CREATE_EXTENSION_BTN}
-    #Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
-    #Input Text    ${EXTENSION_VALUE_INPUT}    ${EXTENSION_VALUE_1}
-    #Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
-    #Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
-    #Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
-    #Click button    ${ADD_CODE_TO_EXTENSION_BTN}
-    #Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
-    #Input Text    ${SEARCH_CODE_TO_EXTENSION_INPUT}    Testcode 57
-    #Wait until page contains element    //*[contains(text(), "Testcode 57")]    timeout=30
-    #Click element    //*[contains(text(), "Testcode 57")]
-    #Sleep    3
-    #Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    #Click button    ${SAVE_EXTENSION_SCHEME}
-    #Sleep    3
-    Wait until page contains    Koodisto
-    Wait until page contains    Koodisto600
-    Wait until page contains    Laajennusjärjestelmä
-    Wait until page contains    Extension scheme 1
-    Wait until page contains    Laajennuksen nimi
-    Wait until page contains    Extension 1
-    Wait until page contains    Laajennuksen arvo
-    Wait until page contains    ext1
-    Wait until page contains    Koodi
-    Wait until page contains    testcode57 - Testcode 57
-    Delete member
-    Wait until page contains    Extension scheme 1    timeout=30
-    Wait until page contains    Tällä laajennusjärjestelmällä ei ole yhtään laajennusta.    timeout=30
-    Log to Console    Member deleted
-    Wait until page contains element    ${EXTENSION_SCHEME_DELETE_BTN}    timeout=30
-    Click element    ${EXTENSION_SCHEME_DELETE_BTN}
-    Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
-    Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
-    Sleep    3
-    Return to Koodistot frontpage
-    Sleep    2
-    [Teardown]    Remove code lists    ${CODE_LIST_16}
-
-604. Modify Extension
-    [Documentation]    Import new Code list with calculation hierarhy Extension Schemes and Extensions and modify Extension.
-    [Tags]    koodistot
-    [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    6
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
-    Wait until page contains    testcode28 - Testcode 28    timeout=20
-    Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
-    Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
-    Sleep    2
-    Choose file    ${EXTENSION_SCHEMES_FILE_UPLOAD}    ${601_Extension_Scheme}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEMES_UPLOAD_BTN}    timeout=20
-    Click button    ${EXTENSION_SCHEMES_UPLOAD_BTN}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
-    Click element    ${EXTENSION_SCHEMES_TAB}
+    Upload extension    ${Extension_Scheme_calculation_hierarchy}
     Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extensionscheme')]
-    Wait until page contains element    //*[contains(text(), "LAAJENNUKSET")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
-    Click element    ${IMPORT_EXTENSION_BTN}
-    Choose file    ${EXTENSION_FILE_UPLOAD}    ${601_Extensions}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
-    Click button    ${EXTENSION_UPLOAD_BTN}
-    Sleep    6
+    Upload members    ${601_Extensions}    ${FILE_FORMAT_EXCEL}
     Wait until page contains element    //*[contains(text(), "Testcode 28")]
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
@@ -276,16 +221,17 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    Koodisto600    timeout=20
-    Wait until page contains    Laajennusjärjestelmä    timeout=20
+    Wait until page contains    Laajennus    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
-    Wait until page contains    Laajennuksen nimi    timeout=20
-    Wait until page contains    Extension 1    timeout=20
+    Wait until page contains    Jäsenen nimi    timeout=20
+    Wait until page contains    Member 1    timeout=20
     Wait until page contains    Koodi    timeout=20
     Wait until page contains    testcode57 - Testcode 57
     Page should not contain    Testcode 29
-    Sleep    6
+    Log to Console    Member modified
+    Sleep    1
     Return to Koodistot frontpage
-    [Teardown]    Remove codelist with Extension Schemes and Extensions
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 605. Import Extensions in CSV format
     [Documentation]    Import Code list with Codes and import Extension Scheme.
@@ -400,7 +346,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Upload extension scheme    ${Extension_Scheme_calculation_hierarchy}
+    Upload extension    ${Extension_Scheme_calculation_hierarchy}
     Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extensionscheme')]
     Upload extension    ${Extensions_empty_extensionvalues}    ${FILE_FORMAT_EXCEL}
@@ -420,7 +366,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Create extension scheme manually    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${CALCULATION_HIIERARCHY}
+    Create extension    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${CALCULATION_HIIERARCHY}
     Return to Koodistot frontpage
     #Remove codelist    ${CODE_LIST_2}
     #Remove codelist    ${CODE_LIST_16}
@@ -725,7 +671,7 @@ Go back to Koodistot frontpage
     Sleep    2
     Close All Browsers
 
-Upload extension scheme
+Upload extension
     [Arguments]    ${extension_scheme}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
@@ -739,9 +685,10 @@ Upload extension scheme
     Sleep    2
     Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
     Click element    ${EXTENSION_SCHEMES_TAB}
+    Log to Console    Extension imported
     Sleep    1
 
-Upload extension
+Upload members
     [Arguments]    ${extension}    ${file_format}
     Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
     Click element    ${EXTENSION_SCHEMES_DDL}
@@ -756,9 +703,10 @@ Upload extension
     Sleep    2
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
+    Log to Console    Member imported
     Sleep    2
 
-Create extension scheme
+Create extension
     [Arguments]    ${property_type}    ${extension_scheme_codevalue}    ${extension_scheme_name}    ${ext_scheme_status}    ${code_list_name}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
@@ -774,13 +722,14 @@ Create extension scheme
     Wait until page contains element    ${ext_scheme_status}    timeout=20
     Click element    ${ext_scheme_status}
     ${code_list_name_length}=    Get Length    ${code_list_name}
-    run keyword if    ${code_list_name_length} > 0    Add code list to extension scheme    ${code_list_name}
+    run keyword if    ${code_list_name_length} > 0    Add code list to extension    ${code_list_name}
     Sleep    1
     Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
     Click button    ${SAVE_EXTENSION_SCHEME}
+    Log to Console    ${extension_scheme_name} created
     Sleep    2
 
-Add code list to extension scheme
+Add code list to extension
     [Arguments]    ${code_list_name}
     Wait until page contains element    ${ADD_CODE_LIST_TO_EXT_SCHEME_BTN}    timeout=30
     Click element    ${ADD_CODE_LIST_TO_EXT_SCHEME_BTN}
@@ -790,7 +739,7 @@ Add code list to extension scheme
     Click element    //*[contains(text(), "${code_list_name}")]
     Sleep    2
 
-Create extension
+Create member
     [Arguments]    ${extension_codevalue}    ${extension_name}    ${code}
     Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
     Click button    ${EXTENSION_SCHEMES_DDL}
@@ -809,6 +758,7 @@ Create extension
     Sleep    2
     Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
     Click button    ${SAVE_EXTENSION_SCHEME}
+    Log to Console    ${extension_name} created
     Sleep    2
 
 Remove codelist
@@ -837,4 +787,15 @@ Delete member
     Click element    ${EXTENSION_DELETE_BTN}
     Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
     Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
+    Log to Console    Member deleted
+    Sleep    2
+
+Delete extension
+    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_DDL}
+    Wait until page contains element    ${EXTENSION_SCHEME_DELETE_BTN}    timeout=30
+    Click element    ${EXTENSION_SCHEME_DELETE_BTN}
+    Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
+    Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
+    Log to Console    Extension deleted
     Sleep    2

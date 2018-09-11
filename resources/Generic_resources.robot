@@ -177,10 +177,10 @@ ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 ${CODE_LIST_VALUE_3}    Koodisto7001
 ${CODE_LIST_VALUE_4}    testiautomaatiokoodisto
-${EXTENSION_SCHEME_VALUE_1}    extscheme1
-${EXTENSION_SCHEME_NAME_1}    Extension scheme 1
-${EXTENSION_VALUE_1}    ext1
-${EXTENSION_NAME_1}    Extension 1
+${EXTENSION_SCHEME_VALUE_1}    extension1
+${EXTENSION_SCHEME_NAME_1}    Extension 1
+${EXTENSION_VALUE_1}    member1
+${EXTENSION_NAME_1}    Member 1
 #Status
 ${STATUS_DRAFT_FI}    Luonnos
 ${STATUS_VALID_FI}    Voimassa oleva
