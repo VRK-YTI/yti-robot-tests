@@ -15,6 +15,7 @@ ${CLASSIFICATION_2}    id=remove_P6_classification_link
 ${CLASSIFICATION_3}    id=remove_P1_classification_link
 ${REGISTRY_1}     Testirekisteri
 ${REGISTRY_2}     Automaatiorekisteri
+${ORGANIZATION_1}    Testiorganisaatio
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_link
 ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
 ${CALCULATION_HIIERARCHY}    id=ExtensionScheme_calculationHierarchy_propertytype_dropdown_button
@@ -115,6 +116,7 @@ ${EXTENSION_SCHEME_TYPE}    id=propertytype_dropdown_button
 ${SEARCH_LINKED_CODE_INPUT}    id=search_linked_code-scheme_input
 ${ADD_CODE_LIST_TO_EXT_SCHEME_BTN}    id=add_codelist_button
 ${EXT_SCHEME_STATUS_DDL}    id=selected_status_input_dropdown
+${MEMBER_DDL}     id=memberDropdown
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -500,10 +502,11 @@ Remove code lists
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
     \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    \    Sleep    1
+    \    Log to Console    ${code_list_item} removed
+    \    Sleep    6
 
 Create code list
-    [Arguments]    ${registry}    ${codelist_value}    ${codelist_name}    ${classification}
+    [Arguments]    ${registry}    ${codelist_value}    ${organization}    ${registry_value}    ${codelist_name}    ${classification}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
@@ -516,6 +519,11 @@ Create code list
     Click button    ${registry}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click button    ${ADD_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Click element    //*[contains(text(), "${organization}")]
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}
     Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
     Click button    Lisää luokitus

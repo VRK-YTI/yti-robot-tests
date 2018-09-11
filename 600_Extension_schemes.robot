@@ -135,6 +135,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Create extension scheme    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
+    Log to Console    Extension created
     Create extension    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
@@ -151,40 +152,39 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    6
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
-    Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
-    Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
-    Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${EXTENSION_SCHEME_VALUE_1}
-    Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
-    Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${EXTENSION_SCHEME_NAME_1}
-    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    Click button    ${SAVE_EXTENSION_SCHEME}
-    Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
-    Click button    ${CREATE_EXTENSION_BTN}
-    Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
-    Input Text    ${EXTENSION_VALUE_INPUT}    ${EXTENSION_VALUE_1}
-    Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
-    Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
-    Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
-    Click button    ${ADD_CODE_TO_EXTENSION_BTN}
-    Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
-    Input Text    ${SEARCH_CODE_TO_EXTENSION_INPUT}    Testcode 57
-    Wait until page contains element    //*[contains(text(), "Testcode 57")]    timeout=30
-    Click element    //*[contains(text(), "Testcode 57")]
-    Sleep    3
-    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    Click button    ${SAVE_EXTENSION_SCHEME}
-    Sleep    3
+    Create extension scheme    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    ${EMPTY}
+    Log to Console    Extension created
+    #Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
+    #Click element    ${EXTENSION_SCHEMES_DDL}
+    #Click element    ${CREATE_EXTENSION_SCHEMES_BTN}
+    #Sleep    2
+    #Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
+    #Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${EXTENSION_SCHEME_VALUE_1}
+    #Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
+    #Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${EXTENSION_SCHEME_NAME_1}
+    #Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
+    #Click button    ${SAVE_EXTENSION_SCHEME}
+    Create extension    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    Testcode 57
+    Log to Console    created
+    #Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
+    #Click button    ${CREATE_EXTENSION_BTN}
+    #Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
+    #Input Text    ${EXTENSION_VALUE_INPUT}    ${EXTENSION_VALUE_1}
+    #Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
+    #Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
+    #Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
+    #Click button    ${ADD_CODE_TO_EXTENSION_BTN}
+    #Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
+    #Input Text    ${SEARCH_CODE_TO_EXTENSION_INPUT}    Testcode 57
+    #Wait until page contains element    //*[contains(text(), "Testcode 57")]    timeout=30
+    #Click element    //*[contains(text(), "Testcode 57")]
+    #Sleep    3
+    #Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
+    #Click button    ${SAVE_EXTENSION_SCHEME}
+    #Sleep    3
     Wait until page contains    Koodisto
     Wait until page contains    Koodisto600
     Wait until page contains    Laajennusjärjestelmä
@@ -195,12 +195,10 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    ext1
     Wait until page contains    Koodi
     Wait until page contains    testcode57 - Testcode 57
-    Wait until page contains element    ${EXTENSION_DELETE_BTN}    timeout=30
-    Click element    ${EXTENSION_DELETE_BTN}
-    Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
-    Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
+    Delete member
     Wait until page contains    Extension scheme 1    timeout=30
     Wait until page contains    Tällä laajennusjärjestelmällä ei ole yhtään laajennusta.    timeout=30
+    Log to Console    Member deleted
     Wait until page contains element    ${EXTENSION_SCHEME_DELETE_BTN}    timeout=30
     Click element    ${EXTENSION_SCHEME_DELETE_BTN}
     Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
@@ -208,7 +206,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    3
     Return to Koodistot frontpage
     Sleep    2
-    [Teardown]    Remove codelist with Extension Schemes and Extensions
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 604. Modify Extension
     [Documentation]    Import new Code list with calculation hierarhy Extension Schemes and Extensions and modify Extension.
@@ -831,3 +829,12 @@ Remove codelist
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${code_list}
     Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+
+Delete member
+    Wait until page contains element    ${MEMBER_DDL}    timeout=30
+    Click element    ${MEMBER_DDL}
+    Wait until page contains element    ${EXTENSION_DELETE_BTN}    timeout=30
+    Click element    ${EXTENSION_DELETE_BTN}
+    Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
+    Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
+    Sleep    2

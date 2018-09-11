@@ -99,7 +99,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Documentation]    Create new code list and codes manually and remove code and code list
     [Tags]    test
     [Setup]    Test Case Setup Superuser
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${CODE_LIST_8}    Asuminen
+    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Sleep    2
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}
@@ -128,7 +128,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Return to Koodistot frontpage
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_4}    ${CODE_LIST_2}    Asuminen
+    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_2}    Asuminen
     Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -139,11 +139,13 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Multiple_codelists_and_codes}    ${CODE_LIST_10}
+    Log to Console    Code lists imported
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_10}")]
     Wait until page contains    ${CODE_LIST_10}    timeout=20
+    Log to Console    koodisto7001 found
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -165,6 +167,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_11}")]
     Wait until page contains    ${CODE_LIST_11}    timeout=20
+    Log to Console    koodisto7002 found
     Wait until page contains    testikoodi11 - Testikoodi 11    timeout=20
     Wait until page contains    testikoodi14 - Testikoodi 14    timeout=20
     Wait until page contains    testikoodi16 - Testikoodi 16    timeout=20
@@ -175,6 +178,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_12}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_12}")]
     Wait until page contains    ${CODE_LIST_12}    timeout=20
+    Log to Console    koodisto7003 found
     Wait until page contains    testikoodi21 - Testikoodi 21    timeout=20
     Wait until page contains    testikoodi24 - Testikoodi 24    timeout=20
     Wait until page contains    testikoodi26 - Testikoodi 26    timeout=20
@@ -233,7 +237,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     ...    remove DEFAULTCODE and code list.
     [Tags]    test
     [Setup]    Test Case Setup Superuser
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${CODE_LIST_8}    Asuminen
+    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
@@ -504,7 +508,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
     Sleep    5
-    Create code list    ${REGISTRY_2}    ${CODE_LIST_VALUE_1}    ${CODE_LIST_8}    Asuminen
+    Create code list    ${REGISTRY_2}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}
     Sleep    3
