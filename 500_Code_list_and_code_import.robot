@@ -186,32 +186,6 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_11}    ${CODE_LIST_12}
 
-507. Import Code list with Extension Schemes
-    [Documentation]    Import Code list with Extension Schemes, check that import is successfull,
-    ...    Export Excel and remove code list.
-    [Tags]    regression
-    [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Codelist_ExtensionSchemes}    ${CODE_LIST_14}
-    Wait until page contains    testcode01 - Testikoodi 01    timeout=20
-    Wait until page contains    testcode25 - Testikoodi 25    timeout=20
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
-    Click element    //*[contains(text(), "${TEST_CODE_6}")]
-    Page should contain    Testikoodisto2 pitkillä arvoilla
-    Page should contain    testcode25
-    Page should contain    Testikoodi 25
-    Page should contain    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/testcode25
-    Sleep    5
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
-    Sleep    5
-    Wait until page contains element    ${EXPORT_DDL}    timeout=20
-    Click element    ${EXPORT_DDL}
-    Click element    ${EXPORT_TYPE_EXCEL}
-    Sleep    5
-    Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_14}
-
 508. Import DRAFT Code list with codes and DEFAULT CODE
     [Documentation]    Import Code list with codes and DEFAULT CODE, check that import is successful and DEFAULTCODE is
     ...    defined in information tab. Remove code list.
