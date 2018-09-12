@@ -33,7 +33,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 600. Import code list with extension
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
     ...    modify member, export Excel and remove code list.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Codelist_ExtensionSchemes}    ${CODE_LIST_14}
