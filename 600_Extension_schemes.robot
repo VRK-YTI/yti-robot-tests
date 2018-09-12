@@ -21,6 +21,7 @@ ${Extensios_max_hierarchy_level}    ${DATAFOLDER}${/}Extensions_max_hierarchy_le
 ${Extension_Scheme_calculation_hierarchy}    ${DATAFOLDER}${/}Extension_Scheme_calculation_hierarchy.xlsx
 ${Extensions_empty_extensionvalues}    ${DATAFOLDER}${/}Extensions_empty_extensionvalues.xlsx
 ${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensionvalue_column.xlsx
+${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
 #CSV paths
 ${Extensions_csv}    ${DATAFOLDER}${/}Extensions_csv.csv
 #error messages
@@ -359,6 +360,50 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_2}
+
+611. Import code list with codes, extension and members, create new version of code list
+    [Documentation]    Import code list with codes, extension and members,
+    ...    create new version of code list. Check that codes, extension and members are copied to the new
+    ...    code list version.
+    [Tags]    regression    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Wait until page contains    30 koodia    timeout=20
+    Upload extension    ${601_Extension_Scheme}
+    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Upload members    ${601_Extensions}    ${FILE_FORMAT_EXCEL}
+    Wait until page contains element    //*[contains(text(), "Testcode 28")]
+    Sleep    2
+    Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'2_breadcrumb_link')]
+    Sleep    2
+    Wait until page contains    Koodisto700    timeout=30
+    Create new version of code list    701    Koodisto701    Demokratia
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains element    ${VERSION_TAB}    timeout=30
+    Click element    ${VERSION_TAB}
+    Wait until page contains    Koodisto701    timeout=20
+    Wait until page contains    Koodisto700    timeout=20
+    Wait until page contains    01.01.2018 - 01.01.2019    timeout=20
+    Wait until page contains    Luonnos    timeout=20
+    Wait until page contains    Voimassa oleva    timeout=20
+    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_TAB}
+    Wait until page contains    MÄÄRITYSHIERARKIAT    timeout=20
+    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Wait until page contains    Testilaajennus55    timeout=20
+    #Wait until page contains element    //*[contains(text(), "suomi - Testcode 28")]    timeout=20
+    #Wait until page contains element    //*[contains(text(), "suomi - Testcode 29")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 28")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_17}    ${CODE_LIST_18}
 
 *** Keywords ***
 Upload extension

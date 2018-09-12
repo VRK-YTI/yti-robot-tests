@@ -82,6 +82,7 @@ ${START_DATE_INPUT}    id=start_date_input
 ${END_DATE_INPUT}    id=end_date_input
 ${CODE_LIST_DDL}    id=codeSchemeDropdown
 ${EXPORT_DDL}     id=exportDropdown
+${VERSION_TAB}    id=codelist_versionhistory_tab
 #Extension schemes
 ${EXTENSION_SCHEMES_DDL}    id=extensionSchemeDropdown
 ${IMPORT_EXTENSION_SCHEMES_BTN}    id=import_extensionschemes_button
@@ -162,6 +163,8 @@ ${CODE_LIST_13}    Sisällön filteröinti
 ${CODE_LIST_14}    Testikoodisto2 pitkillä arvoilla
 ${CODE_LIST_15}    Vakiokoodikoodisto
 ${CODE_LIST_16}    Koodisto600
+${CODE_LIST_17}    Koodisto700
+${CODE_LIST_18}    Koodisto701
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000
@@ -722,3 +725,22 @@ Cancel registry creation
     Log to Console    Cancel registry creation
     Sleep    5
     Return to Koodistot frontpage
+
+Create new version of code list
+    [Arguments]    ${codelist_value}    ${codelist_name}    ${classification}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click element    ${CREATE_NEW_VERSION_BTN}
+    Sleep    2
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
+    Click button    Lisää luokitus
+    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
+    Click element    //*[contains(text(), "${classification}")]
+    Sleep    2
+    Save code list
+    Log to Console    New version ${codelist_name} created
+    Sleep    5
