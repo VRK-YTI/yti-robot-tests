@@ -21,6 +21,7 @@ ${PASSWORD_ELEMENT_HOOK}    //*[contains(@name,'password')]
 ${ID_NEXT_ELEMENT_HOOK}    id=identifierNext
 ${PASSWORD_NEXT_ELEMENT_HOOK}    id=passwordNext
 ${GOOGLE_LOGIN_SELECTION}    https://googlelogin.eduuni.fi
+${NAVIGATION_MENU_DDL}    id=app_menu_dropdown
 
 *** Keywords ***
 Test Case Setup
@@ -37,7 +38,7 @@ eDuuni Login
     Sleep    5
     ${has_id_element}=    Run Keyword And Return Status    Page Should Contain Element    id=identifierId    limit=1
     run keyword if    ${has_id_element}    Login With Id Field Id
-    ...               ELSE    Login With Id Field Xpath
+    ...    ELSE    Login With Id Field Xpath
 
 Login With Id Field Id
     Wait Until Page Contains element    ${ID_ELEMENT_HOOK}

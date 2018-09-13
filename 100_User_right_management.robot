@@ -64,6 +64,37 @@ Resource          resources/Login_details.robot
     Wait until page contains element    ${EDIT_ORGANIZATION_BTN}    timeout=30
     [Teardown]    Go back to RHP frontpage
 
+105. Check navigation menu links
+    [Documentation]    Verify that navigation menu links are opened correctly
+    [Tags]    regression    test
+    [Setup]    Test Case Setup
+    Select navigation menu link    Käyttäjätiedot
+    Wait until page contains    Käyttäjätiedot
+    Wait until page contains    Nimi
+    Wait until page contains    Sähköposti
+    Wait until page contains    Organisaatio ja roolit
+    Sleep    1
+    Select navigation menu link    yhteentoimiva.suomi.fi
+    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Close Window
+    Select Window    title=Yhteentoimivuusalustan oikeuksienhallinta
+    Select navigation menu link    Suomi.fi-sanastot
+    Select Window    title=Sanastot
+    Wait until page contains    Sanastot    timeout=40
+    Wait until page contains    Hae sanastoja    timeout=40
+    Wait until page contains    Rajaa tietoalueella    timeout=40
+    Close Window
+    Select Window    title=Yhteentoimivuusalustan oikeuksienhallinta
+    Sleep    1
+    Select navigation menu link    Suomi.fi-tietomallit
+    Select Window    title=Tietomallit
+    Wait until page contains    Tietomallit    timeout=40
+    Wait until page contains    Etusivu    timeout=40
+    Close Window
+    Select Window    title=Yhteentoimivuusalustan oikeuksienhallinta
+    Sleep    1
+    Close All Browsers
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
@@ -73,3 +104,11 @@ Restore Finnish language
     Wait until page contains    ORGANISAATIOT    timeout=20
     Wait until page contains    KÄYTTÄJÄT    timeout=20
     Close All Browsers
+
+Select navigation menu link
+    [Arguments]    ${navigation_menu_link}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
+    Sleep    2
