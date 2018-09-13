@@ -169,7 +169,9 @@ Delete Terminological Vocabulary
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Page should contain    sanastoa
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_2}")]
+    Sleep    1
     Log to Console    Terminological Vocabulary deleted
     Sleep    1
     Close All Browsers

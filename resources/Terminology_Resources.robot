@@ -218,7 +218,8 @@ Delete Testiautomaatiosanasto
     Sleep    3
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Page should contain    sanastoa
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
     Sleep    1
     Log to Console    Testiautomaatiosanasto deleted
     Close All Browsers
@@ -237,7 +238,8 @@ Delete existing terminological vocabulary and create new
     Sleep    3
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait Until Page Contains    sanastoa    timeout=30
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
     Log to Console    Testiautomaatiosanasto deleted
     Create Testiautomaatiosanasto and import vocabulary
 
@@ -288,7 +290,8 @@ Delete existing terminological vocabulary 2 and create new
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Page should contain    sanastoa
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_2}")]
     Sleep    1
     Log to Console    Terminological Dictionary deleted
     Create Terminological Dictionary and import vocabulary
@@ -342,7 +345,8 @@ Delete Terminological Vocabulary
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Page should contain    sanastoa
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_2}")]
     Sleep    1
     Log to Console    Terminological Vocabulary deleted
     Close All Browsers
@@ -391,7 +395,8 @@ Delete Vocabulary
     Sleep    3
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
-    Page should contain    sanastoa
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_3}")]
     Sleep    1
     Log to Console    Vocabulary deleted
     Close All Browsers
@@ -410,7 +415,8 @@ Delete existing vocabulary and create new
     Sleep    3
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
-    Page should contain    sanastoa
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_3}")]
     Sleep    1
     Log to Console    Vocabulary deleted
     Create Vocabulary
