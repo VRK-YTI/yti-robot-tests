@@ -124,6 +124,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
+    Wait until page contains    Testilaajennus55    timeout=20
+    Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
@@ -141,11 +143,13 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    2
-    Wait until page contains    member1 Member 1 - Testcode 57    timeout=30
-    Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
-    Click element    //*[contains(@id,'2_breadcrumb_link')]
-    Sleep    2
-    Wait until page contains    Koodisto600    timeout=30
+    Wait until page contains    member1 Member 1 - Testcode 57    timeout=20
+    Wait until page contains    Extension 1    timeout=20
+    Delete extension
+    #Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
+    #Click element    //*[contains(@id,'2_breadcrumb_link')]
+    #Sleep    2
+    #Wait until page contains    Koodisto600    timeout=30
     Sleep    3
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
@@ -202,12 +206,12 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 29")]
-    Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
-    Click element    ${SAVE_EXTENSION}
-    Sleep    2
-    Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
-    Click element    ${MODIFY_EXTENSION_BTN}
-    Sleep    2
+    #Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
+    #Click element    ${SAVE_EXTENSION}
+    #Sleep    2
+    #Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
+    #Click element    ${MODIFY_EXTENSION_BTN}
+    #Sleep    2
     Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
     Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
     Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
@@ -221,7 +225,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click element    ${REMOVE_EXTENSION_LINK}
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
     Click element    ${SAVE_EXTENSION}
-    Sleep    2
+    Sleep    4
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennus    timeout=20
@@ -232,7 +236,13 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    testcode57 - Testcode 57
     Page should not contain    Testcode 29
     Log to Console    Member modified
-    Sleep    1
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
+    Click element    ${EXTENSION_BACK_BTN}
+    Wait until page contains    Testilaajennus55    timeout=20
+    Wait until page contains element    //*[contains(text(), "extensiontest40 Member 1 - Testcode 57")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "extensiontest41 suomi - Testcode 29")]    timeout=20
+    Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
@@ -268,6 +278,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
     Log to Console    CSV exported
+    Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
@@ -336,7 +347,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 610. Add code list to the extension
     [Documentation]    Add code list to the calculation hierarchy extension and
-    ...    add codes from that code list to the extension.
+    ...    add codes from that code list to the extension member.
     [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
@@ -358,6 +369,13 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Laskentahierarkia    timeout=20
     Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
     Sleep    1
+    Create member    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
+    Wait until page contains    Koodi1000 - Koodi1000    timeout=20
+    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
+    Click element    ${EXTENSION_BACK_BTN}
+    Sleep    5
+    Wait until page contains element    //*[contains(text(), "member1 Member 1 - Koodi1000 - testiautomaatiokoodisto1")]    timeout=20
+    Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_2}
 
@@ -402,8 +420,18 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    //*[contains(text(), "Testcode 28")]    timeout=20
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Sleep    2
+    Delete extension
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_17}    ${CODE_LIST_18}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    Koodisto700
+    Wait until page contains element    //*[contains(text(), "Koodisto700")]    timeout=30
+    Click element    //*[contains(text(), "Koodisto700")]
+    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=30
+    Click element    ${EXTENSION_SCHEMES_TAB}
+    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Delete extension
+    [Teardown]    Remove code lists    ${CODE_LIST_18}    ${CODE_LIST_17}
 
 *** Keywords ***
 Upload extension
@@ -475,7 +503,7 @@ Add code list to extension
     Sleep    2
 
 Create member
-    [Arguments]    ${extension_codevalue}    ${extension_name}    ${code}
+    [Arguments]    ${extension_codevalue}    ${extension_name}    ${code_list}    ${code}
     Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
     Click button    ${EXTENSION_SCHEMES_DDL}
     Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
@@ -486,6 +514,9 @@ Create member
     Input Text    ${EXTENSION_NAME_INPUT}    ${extension_name}
     Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
     Click button    ${ADD_CODE_TO_EXTENSION_BTN}
+    Wait until page contains element    ${CODE_SCHEME_DDL_BTN}    timeout=30
+    Click element    ${CODE_SCHEME_DDL_BTN}
+    Click element    //*[contains(text(), "${code_list}")]
     Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
     Input Text    ${SEARCH_CODE_TO_EXTENSION_INPUT}    ${code}
     Wait until page contains element    //*[contains(text(), "${code}")]    timeout=30
