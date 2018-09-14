@@ -87,14 +87,28 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Koodi
     Wait until page contains    testcode25 - Testikoodi 25
     Wait until page contains    Laajennus
-    Wait until page contains    Koulutus, kulttuuri ja urheilu - DCAT-AP-luokitus
+    Wait until page contains    Koulutus, kulttuuri ja urheilu
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
-    Sleep    5
+    Sleep    3
+    Wait until page contains element    ${EXTENSION_SCHEME_BACK_BTN}    timeout=20
+    Click element    ${EXTENSION_SCHEME_BACK_BTN}
+    Sleep    3
     Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
+    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
+    Click element    ${EXTENSION_SCHEMES_TAB}
+    Wait until page contains element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]    timeout=20
+    Click Element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]
+    Delete extension
+    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
+    Click element    ${EXTENSION_SCHEMES_TAB}
+    Sleep    3
+    Wait until page contains element    //*[contains(@id,'222_codelist_extensionscheme_listitem')]    timeout=20
+    Click Element    //*[contains(@id,'222_codelist_extensionscheme_listitem')]
+    Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
 
@@ -373,7 +387,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
     Sleep    5
-    Wait until page contains element    //*[contains(text(), "member1 Member 1 - Koodi1000 - testiautomaatiokoodisto1")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "member1 Member 1 - Koodi1000")]    timeout=20
     Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_2}

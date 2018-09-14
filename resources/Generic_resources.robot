@@ -116,6 +116,7 @@ ${SEARCH_LINKED_CODE_INPUT}    id=search_linked_code-scheme_input
 ${ADD_CODE_LIST_TO_EXT_SCHEME_BTN}    id=add_codelist_button
 ${EXT_SCHEME_STATUS_DDL}    id=selected_status_input_dropdown
 ${MEMBER_DDL}     id=memberDropdown
+${EXTENSION_SCHEME_BACK_BTN}    id=extensionscheme_back_button
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
