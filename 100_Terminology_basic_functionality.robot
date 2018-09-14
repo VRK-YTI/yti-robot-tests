@@ -8,7 +8,7 @@ Resource          resources/Terminology_Resources.robot
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup
     Wait until page contains element    id=information_link    timeout=20
     Click element    id=information_link
@@ -24,7 +24,7 @@ Resource          resources/Terminology_Resources.robot
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup
     Wait until page contains element    id=license_link    timeout=20
     Click element    id=license_link
@@ -47,7 +47,7 @@ Resource          resources/Terminology_Resources.robot
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
@@ -61,7 +61,7 @@ Resource          resources/Terminology_Resources.robot
 
 104. Search for DRAFT vocabulary
     [Documentation]    Search for DRAFT vocabulary with frontpage search function.
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}

@@ -8,7 +8,7 @@ Resource          resources/Terminology_Resources.robot
 *** Test Cases ***
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select and edit Draft vocabulary
     Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
@@ -37,7 +37,7 @@ Resource          resources/Terminology_Resources.robot
 
 201. Add new organization and classification for DRAFT vocabulary
     [Documentation]    Add new organization and classification for DRAFT vocabulary
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select and edit Draft vocabulary
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
@@ -73,14 +73,14 @@ Resource          resources/Terminology_Resources.robot
 
 202. Add new Terminological Dictionary and import vocabulary
     [Documentation]    Add new Terminological Dictionary, import vocabulary and delete dictionary
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select Draft vocabulary
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
