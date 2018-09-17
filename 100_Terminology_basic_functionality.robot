@@ -74,6 +74,36 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto
 
+105. Check navigation menu links
+    [Documentation]    Verify that navigation menu links are opened correctly
+    [Tags]    regression    test
+    [Setup]    Test Case Setup
+    Select navigation menu link    Käyttäjätiedot
+    Wait until page contains    Käyttäjätiedot
+    Wait until page contains    Nimi
+    Wait until page contains    Testi Admin
+    Wait until page contains    Sähköposti
+    Wait until page contains    Organisaatiot ja roolit
+    Wait until page contains    Lähetä käyttöoikeuspyyntö
+    Sleep    1
+    Select navigation menu link    yhteentoimiva.suomi.fi
+    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Close Window
+    Select Window    title=Sanastot
+    Select navigation menu link    Suomi.fi-koodistot
+    Select Window    title=Koodistot
+    Wait until page contains    Koodistot    timeout=40
+    Wait until page contains    Hae koodistoa    timeout=40
+    Wait until page contains    Rajaa tietoalueella    timeout=40
+    Close Window
+    Select Window    title=Sanastot
+    Sleep    1
+    Select navigation menu link    Suomi.fi-tietomallit
+    Select Window    title=Tietomallit
+    Close Window
+    Select Window    title=Sanastot
+    Close All Browsers
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
@@ -83,3 +113,11 @@ Restore Finnish language
     Wait until page contains    Kaikki sanastotyypit    timeout=20
     Wait until page contains    Rajaa tietoalueella    timeout=20
     Close All Browsers
+
+Select navigation menu link
+    [Arguments]    ${navigation_menu_link}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
+    Sleep    2

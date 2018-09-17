@@ -27,6 +27,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${IMPERSONATE_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${FRONTPAGE_SEARCH_BOX}    id=vocabularies_search_input
 ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
+${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 #Vocabulary buttons
 ${SHOW_VOCABULARY_DETAILS_BTN}    id=vocabulary_show_details_button
 ${EDIT_VOCABULARY_BTN}    id=vocabulary_editable_start_editing_button
