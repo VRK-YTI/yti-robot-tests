@@ -266,7 +266,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 511. Create Code list and get concept for Code list from Controlled Vocabularies
     [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787.
-    [Tags]    test
+    [Tags]    regression    test
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -279,6 +279,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click Button    Testiautomaatiosanasto
     Wait until page contains element    //*[contains(text(), "tutkija")]
     Click element    //*[contains(text(), "tutkija")]
+    Sleep    7
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
@@ -288,6 +289,11 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
     Click element    //*[contains(text(), "Asuminen")]
+    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click button    ${ADD_ORGANIZATION_BTN}
+    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
+    Click element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
@@ -304,7 +310,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 512. Create Code to Code list and get concept for Code from Controlled Vocabularies
     [Documentation]    Create Code to Code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in Code. YTI-787
-    [Tags]    test
+    [Tags]    regression    test
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -475,7 +481,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 514. Create and delete registry
     [Documentation]    Create registry and attach code list to that registry. Check that deleting
     ...    registry with code lists is not possible, remove code list and delete empty registry.
-    [Tags]    test
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio

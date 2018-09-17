@@ -198,6 +198,8 @@ Delete Testiautomaatiosanasto
     Sleep    3
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Page should contain    sanastoa
     Sleep    1
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
+    Sleep    1
+    Log to Console    Testiautomaatiosanasto deleted
     Close All Browsers
