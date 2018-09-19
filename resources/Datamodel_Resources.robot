@@ -36,7 +36,7 @@ ${ADD_CONTRIBUTOR}    id=add_contributor_button
 ${ADD_VOCABULARY}    id=add_vocabulary_button
 ${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
 ${REMOVE_MODEL_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[4]/span
-${CONFIRM_REMOVE_MODEL_BTN}    //div[1]/div/div/div/modal-template/div[3]/div[2]/button[1]
+${CONFIRM_REMOVE_MODEL_BTN}    id=confirm_modal_template_button
 ${ADD_LINK}       id=add_link_button
 ${LINK_URL_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[1]/div/div/input
 ${LINK_NAME_INPUT}    //div[1]/div/div/form/modal-template/div[2]/div/modal-body/editable[2]/div/div/input
