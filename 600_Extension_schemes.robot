@@ -58,9 +58,9 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    9 jäsentä    timeout=20
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "Testikoodi 01")]    timeout=20
+    Wait until page contains element    //*[contains(text(), " Jäsen1 · Testikoodi 01")]    timeout=20
     Sleep    2
-    Click element    //*[contains(text(), "Testikoodi 01")]
+    Click element    //*[contains(text(), " Jäsen1 · Testikoodi 01")]
     Sleep    2
     Wait until page contains    Testikoodisto2 pitkillä arvoilla    timeout=20
     Wait until page contains    Laajennus    timeout=20
@@ -100,19 +100,19 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
-    Click element    ${EXTENSIONS_TAB}
-    Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
-    Click Element    //*[contains(@id,'111_view_extension')]
-    Delete extension
-    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
-    Click element    ${EXTENSIONS_TAB}
-    Sleep    3
-    Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
-    Click Element    //*[contains(@id,'222_view_extension')]
-    Delete extension
+    #Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    #Click element    ${EXTENSIONS_TAB}
+    #Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
+    #Click Element    //*[contains(@id,'111_view_extension')]
+    #Delete extension
+    #Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    #Click element    ${EXTENSIONS_TAB}
+    #Sleep    3
+    #Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
+    #Click Element    //*[contains(@id,'222_view_extension')]
+    #Delete extension
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_14}
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_14}
 
 601. Import code list with codes and import extension and members
     [Documentation]    Import code list with codes and import extension and members.
@@ -557,8 +557,8 @@ Remove codelist
 Delete member
     Wait until page contains element    ${MEMBER_DDL}    timeout=30
     Click element    ${MEMBER_DDL}
-    Wait until page contains element    ${EXTENSION_DELETE_BTN}    timeout=30
-    Click element    ${EXTENSION_DELETE_BTN}
+    Wait until page contains element    ${MEMBER_DELETE_BTN}    timeout=30
+    Click element    ${MEMBER_DELETE_BTN}
     Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
     Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
     Log to Console    Member deleted
@@ -596,3 +596,47 @@ Add code to member
     Wait until page contains element    //*[contains(text(), "${code}")]    timeout=30
     Click element    //*[contains(text(), "${code}")]
     Sleep    2
+
+Remove code lists with extensions
+    [Arguments]    @{code_list_items}
+    : FOR    ${code_list_item}    IN    @{code_list_items}
+    \    Return to Koodistot frontpage
+    \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+    \    Wait until page contains element    //*[contains(text(), "${code_list_item}")]    timeout=30
+    \    Click element    //*[contains(text(), "${code_list_item}")]
+    \    Wait until page contains    ${code_list_item}
+    \    ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
+    \    run keyword if    ${extension_exists}    Delete extension before code list
+    \    ...    ELSE    Continue code list deletion
+    \    Sleep    2
+
+Continue code list deletion
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Log to Console    ${code_list_item} removed
+    Sleep    3
+
+Delete extension before code list
+    : FOR    ${i}    IN RANGE    999999
+    \    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    \    Click element    ${EXTENSIONS_TAB}
+    \    Wait until page contains element    //*[contains(@id,'_view_extension')]    timeout=20
+    \    Click Element    //*[contains(@id,'_view_extension')]
+    \    Wait until page contains element    ${EXTENSION_DDL}    timeout=30
+    \    Click element    ${EXTENSION_DDL}
+    \    Wait until page contains element    ${EXTENSION_DELETE_BTN}    timeout=30
+    \    Click element    ${EXTENSION_DELETE_BTN}
+    \    Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
+    \    Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
+    \    Log to Console    Extension deleted
+    \    Sleep    2
+    \    Exit For Loop If    jotain
