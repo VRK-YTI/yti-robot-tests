@@ -34,7 +34,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 600. Import code list with extension
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
     ...    modify member, export Excel and remove code list.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Codelist_Extensions_members}    ${CODE_LIST_14}
@@ -116,7 +116,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 601. Import code list with codes and import extension and members
     [Documentation]    Import code list with codes and import extension and members.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -147,7 +147,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 602. Import new code list and create extension and members
     [Documentation]    Import new code list and create calculation hierarchy extension and member manually
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -171,7 +171,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 603. Delete extension and member
     [Documentation]    Import new code list and create and delete calculation hierarchy extension and member.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -198,7 +198,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 604. Modify extension member
     [Documentation]    Import new code list, import calculation hierarchy extension and members and modify member.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -264,7 +264,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 605. Import members in CSV format
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -300,7 +300,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 606. Import code list with extension and without CODESCHEME value
     [Documentation]    Import code list with extension. Check error message when CODESCHEME value
     ...    for external code list is missing from ExtensionSchemes sheet in Excel. YTI-853
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_without_codeschemes}
@@ -315,7 +315,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 607. Import code list with extension and with invalid code
     [Documentation]    Import code list (Excel) with extension. Check error message when
     ...    code in extensions sheet is not included to the code list. YTI-853
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_codeschemes_invalid_code}
@@ -330,7 +330,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 608. Import code list with extension and members that exceed maximum hierarchy level
     [Documentation]    Import code list with extension and members that exceed maximum hierarchy level and
     ...    Check error message . YTI-844
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
@@ -363,7 +363,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 610. Add code list to the extension
     [Documentation]    Add code list to the calculation hierarchy extension and
     ...    add codes from that code list to the extension member.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -398,7 +398,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     [Documentation]    Import code list with codes, extension and members,
     ...    create new version of code list. Check that codes, extension and members are copied to the new
     ...    code list version.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
