@@ -7,11 +7,11 @@ Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
 
 *** Variables ***
-${CALCULATION_HIERARCHY}    id=create_extensionscheme_calculationhierarchy_button
-${DEFINITION_HIERARCHY}    id=create_extensionscheme_definitionhierarchy_button
+${CALCULATION_HIERARCHY}    id=create_extension_calculationhierarchy_button
+${DEFINITION_HIERARCHY}    id=create_extension_definitionhierarchy_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
-${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
+${Codelist_Extensions_members}    ${DATAFOLDER}${/}Codelist_with_def_hierarchy_extensions_and_members.xlsx
 ${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
 ${601_Extension_Scheme}    ${DATAFOLDER}${/}601_Extension_Scheme.xlsx
 ${601_Extensions}    ${DATAFOLDER}${/}601_Extensions.xlsx
@@ -37,9 +37,10 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${Codelist_ExtensionSchemes}    ${CODE_LIST_14}
+    Upload codelist    ${Codelist_Extensions_members}    ${CODE_LIST_14}
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
     Wait until page contains    testcode25 - Testikoodi 25    timeout=20
+    Wait until page contains    25 koodia    timeout=20
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_6}")]
     Page should contain    Testikoodisto2 pitkillä arvoilla
@@ -49,11 +50,12 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
     Click element    ${CODE_BACK_BTN}
     Sleep    5
-    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
-    Click element    ${EXTENSION_SCHEMES_TAB}
-    Wait until page contains element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]    timeout=20
-    Wait until page contains element    //*[contains(@id,'222_codelist_extensionscheme_listitem')]    timeout=20
-    Click Element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
+    Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'111_view_extension')]
+    Wait until page contains    9 jäsentä    timeout=20
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Wait until page contains element    //*[contains(text(), "Testikoodi 01")]    timeout=20
@@ -66,20 +68,20 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Koodi    timeout=20
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
     Sleep    2
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
+    Click element    ${MODIFY_MEMBER_BTN}
     Wait until page contains element    ${ADD_DEFAULTCODE_BTN}    timeout=20
     Click element    ${ADD_DEFAULTCODE_BTN}
     Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
     Input Text    ${SEARCH_DEFAULTCODE_INPUT}    25
     Click element    //*[contains(text(), "Testikoodi 25")]
-    Wait until page contains element    ${ADD_EXTENSION_BTN}    timeout=20
-    Click element    ${ADD_EXTENSION_BTN}
-    Wait until page contains element    ${SEARCH_EXTENSION_INPUT}    timeout=20
-    Input Text    ${SEARCH_EXTENSION_INPUT}    koulutus
+    Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
+    Click element    ${ADD_MEMBER_BTN}
+    Wait until page contains element    ${SEARCH_MEMBER_INPUT}    timeout=20
+    Input Text    ${SEARCH_MEMBER_INPUT}    koulutus
     Click element    //*[contains(text(), "Koulutus, kulttuuri ja urheilu")]
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${SAVE_MEMBER}    timeout=20
+    Click element    ${SAVE_MEMBER}
     Wait until page contains    Koodisto
     Wait until page contains    Testikoodisto2 pitkillä arvoilla
     Wait until page contains    Laajennus
@@ -88,26 +90,26 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    testcode25 - Testikoodi 25
     Wait until page contains    Laajennus
     Wait until page contains    Koulutus, kulttuuri ja urheilu
+    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
+    Click element    ${MEMBER_BACK_BTN}
+    Sleep    3
     Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
     Click element    ${EXTENSION_BACK_BTN}
-    Sleep    3
-    Wait until page contains element    ${EXTENSION_SCHEME_BACK_BTN}    timeout=20
-    Click element    ${EXTENSION_SCHEME_BACK_BTN}
     Sleep    3
     Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
-    Click element    ${EXTENSION_SCHEMES_TAB}
-    Wait until page contains element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]    timeout=20
-    Click Element    //*[contains(@id,'111_codelist_extensionscheme_listitem')]
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'111_view_extension')]
     Delete extension
-    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
-    Click element    ${EXTENSION_SCHEMES_TAB}
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
     Sleep    3
-    Wait until page contains element    //*[contains(@id,'222_codelist_extensionscheme_listitem')]    timeout=20
-    Click Element    //*[contains(@id,'222_codelist_extensionscheme_listitem')]
+    Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'222_view_extension')]
     Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
@@ -211,11 +213,11 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    //*[contains(text(), "Testcode 28")]
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
-    Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
-    Click element    ${MODIFY_EXTENSION_BTN}
+    Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
+    Click element    ${MODIFY_MEMBER_BTN}
     Sleep    2
-    Wait until page contains element    ${ADD_EXTENSION_BTN}    timeout=20
-    Click element    ${ADD_EXTENSION_BTN}
+    Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
+    Click element    ${ADD_MEMBER_BTN}
     Sleep    2
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 29")]
@@ -225,8 +227,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     #Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
     #Click element    ${MODIFY_EXTENSION_BTN}
     #Sleep    2
-    Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
-    Input Text    ${EXTENSION_NAME_INPUT}    ${EXTENSION_NAME_1}
+    Wait until page contains element    ${MEMBER_NAME_INPUT}    timeout=30
+    Input Text    ${MEMBER_NAME_INPUT}    ${MEMBER_NAME_1}
     Wait until page contains element    ${ADD_CODE_TO_EXTENSION_BTN}    timeout=30
     Click button    ${ADD_CODE_TO_EXTENSION_BTN}
     Wait until page contains element    ${SEARCH_CODE_TO_EXTENSION_INPUT}    timeout=30
@@ -236,8 +238,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    3
     Wait until page contains element    ${REMOVE_EXTENSION_LINK}    timeout=20
     Click element    ${REMOVE_EXTENSION_LINK}
-    Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
-    Click element    ${SAVE_EXTENSION}
+    Wait until page contains element    ${SAVE_MEMBER}    timeout=20
+    Click element    ${SAVE_MEMBER}
     Sleep    4
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    Koodisto600    timeout=20
@@ -250,8 +252,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Page should not contain    Testcode 29
     Log to Console    Member modified
     Sleep    2
-    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
-    Click element    ${EXTENSION_BACK_BTN}
+    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
+    Click element    ${MEMBER_BACK_BTN}
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains element    //*[contains(text(), "extensiontest40 Member 1 - Testcode 57")]    timeout=20
     Wait until page contains element    //*[contains(text(), "extensiontest41 suomi - Testcode 29")]    timeout=20
@@ -283,8 +285,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    testcode28_FI    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
-    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
-    Click element    ${EXTENSION_BACK_BTN}
+    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
+    Click element    ${MEMBER_BACK_BTN}
     Sleep    5
     Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
@@ -384,8 +386,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    1
     Create member    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
-    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
-    Click element    ${EXTENSION_BACK_BTN}
+    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
+    Click element    ${MEMBER_BACK_BTN}
     Sleep    5
     Wait until page contains element    //*[contains(text(), "member1 Member 1 - Koodi1000")]    timeout=20
     Delete extension
@@ -448,67 +450,67 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 *** Keywords ***
 Upload extension
-    [Arguments]    ${extension_scheme}
+    [Arguments]    ${extension}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${IMPORT_EXTENSION_SCHEMES_BTN}    timeout=30
-    Click element    ${IMPORT_EXTENSION_SCHEMES_BTN}
+    Wait until page contains element    ${IMPORT_EXTENSIONS_BTN}    timeout=30
+    Click element    ${IMPORT_EXTENSIONS_BTN}
     Sleep    2
-    Choose file    ${EXTENSION_SCHEMES_FILE_UPLOAD}    ${extension_scheme}
+    Choose file    ${EXTENSION_FILE_UPLOAD}    ${extension}
     Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEMES_UPLOAD_BTN}    timeout=20
-    Click button    ${EXTENSION_SCHEMES_UPLOAD_BTN}
+    Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
+    Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEMES_TAB}    timeout=20
-    Click element    ${EXTENSION_SCHEMES_TAB}
+    Wait until page contains element    ${EXTENSIONS__TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
     Log to Console    Extension imported
     Sleep    1
 
 Upload members
-    [Arguments]    ${extension}    ${file_format}
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
-    Wait until page contains element    ${IMPORT_EXTENSION_BTN}    timeout=30
-    Click element    ${IMPORT_EXTENSION_BTN}
+    [Arguments]    ${member}    ${file_format}
+    Wait until page contains element    ${EXTENSION_DDL}    timeout=30
+    Click element    ${EXTENSION_DDL}
+    Wait until page contains element    ${IMPORT_MEMBERS_BTN}    timeout=30
+    Click element    ${IMPORT_MEMBERS_BTN}
     Wait until page contains element    ${FILE_FORMAT_UPLOAD}    timeout=20
     Click element    ${FILE_FORMAT_UPLOAD}
     Wait until page contains element    ${file_format}    timeout=20
     Click element    ${file_format}
     Wait until page contains element    ${EXTENSION_FILE_UPLOAD}    timeout=20
-    Choose file    ${EXTENSION_FILE_UPLOAD}    ${extension}
+    Choose file    ${EXTENSION_FILE_UPLOAD}    ${member}
     Sleep    2
-    Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
-    Click button    ${EXTENSION_UPLOAD_BTN}
+    Wait until page contains element    ${MEMBER_UPLOAD_BTN}    timeout=20
+    Click button    ${MEMBER_UPLOAD_BTN}
     Log to Console    Member imported
     Sleep    2
 
 Create extension
-    [Arguments]    ${property_type}    ${extension_scheme_codevalue}    ${extension_scheme_name}    ${ext_scheme_status}    ${code_list_name}
+    [Arguments]    ${property_type}    ${extension_codevalue}    ${extension_name}    ${extension_status}    ${code_list_name}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${property_type}    timeout=30
     Click element    ${property_type}
     Sleep    2
-    Wait until page contains element    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    timeout=30
-    Input Text    ${EXTENSION_SCHEME_CODEVALUE_INPUT}    ${extension_scheme_codevalue}
-    Wait until page contains element    ${EXTENSION_SCHEME_NAME_INPUT}    timeout=30
-    Input Text    ${EXTENSION_SCHEME_NAME_INPUT}    ${extension_scheme_name}
-    Wait until page contains element    ${EXT_SCHEME_STATUS_DDL}    timeout=20
-    Click element    ${EXT_SCHEME_STATUS_DDL}
-    Wait until page contains element    ${ext_scheme_status}    timeout=20
-    Click element    ${ext_scheme_status}
+    Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
+    Input Text    ${EXTENSION_VALUE_INPUT}    ${extension_codevalue}
+    Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
+    Input Text    ${EXTENSION_NAME_INPUT}    ${extension_scheme_name}
+    Wait until page contains element    ${EXTENSION_STATUS_DDL}    timeout=20
+    Click element    ${EXTENSION_STATUS_DDL}
+    Wait until page contains element    ${extension_status}    timeout=20
+    Click element    ${extension_status}
     ${code_list_name_length}=    Get Length    ${code_list_name}
     run keyword if    ${code_list_name_length} > 0    Add code list to extension    ${code_list_name}
     Sleep    1
-    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    Click button    ${SAVE_EXTENSION_SCHEME}
-    Log to Console    ${extension_scheme_name} created
+    Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
+    Click button    ${SAVE_EXTENSION}
+    Log to Console    ${extension_name} created
     Sleep    2
 
 Add code list to extension
     [Arguments]    ${code_list_name}
-    Wait until page contains element    ${ADD_CODE_LIST_TO_EXT_SCHEME_BTN}    timeout=30
-    Click element    ${ADD_CODE_LIST_TO_EXT_SCHEME_BTN}
+    Wait until page contains element    ${ADD_CODE_LIST_TO_EXTENSION_BTN}    timeout=30
+    Click element    ${ADD_CODE_LIST_TO_EXTENSION_BTN}
     Sleep    2
     Wait until page contains element    ${SEARCH_LINKED_CODE_INPUT}    timeout=30
     Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${code_list_name}
@@ -516,21 +518,21 @@ Add code list to extension
     Sleep    2
 
 Create member
-    [Arguments]    ${extension_codevalue}    ${extension_name}    ${code_list_name}    ${code}
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click button    ${EXTENSION_SCHEMES_DDL}
-    Wait until page contains element    ${CREATE_EXTENSION_BTN}    timeout=30
-    Click button    ${CREATE_EXTENSION_BTN}
-    Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
-    Input Text    ${EXTENSION_VALUE_INPUT}    ${extension_codevalue}
-    Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
-    Input Text    ${EXTENSION_NAME_INPUT}    ${extension_name}
+    [Arguments]    ${member_codevalue}    ${member_name}    ${code_list_name}    ${code}
+    Wait until page contains element    ${EXTENSION_DDL}    timeout=30
+    Click button    ${EXTENSION_DDL}
+    Wait until page contains element    ${CREATE_MEMBER_BTN}    timeout=30
+    Click button    ${CREATE_MEMBER_BTN}
+    Wait until page contains element    ${MEMBER_VALUE_INPUT}    timeout=30
+    Input Text    ${MEMBER_VALUE_INPUT}    ${member_codevalue}
+    Wait until page contains element    ${MEMBER_NAME_INPUT}    timeout=30
+    Input Text    ${MEMBER_NAME_INPUT}    ${member_name}
     ${code_list_name_length}=    Get Length    ${code_list_name}
     run keyword if    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
-    Wait until page contains element    ${SAVE_EXTENSION_SCHEME}    timeout=30
-    Click button    ${SAVE_EXTENSION_SCHEME}
-    Log to Console    ${extension_name} created
+    Wait until page contains element    ${SAVE_MEMBER}    timeout=30
+    Click button    ${SAVE_MEMBER}
+    Log to Console    ${member_name} created
     Sleep    2
 
 Remove codelist
@@ -563,10 +565,10 @@ Delete member
     Sleep    2
 
 Delete extension
-    Wait until page contains element    ${EXTENSION_SCHEMES_DDL}    timeout=30
-    Click element    ${EXTENSION_SCHEMES_DDL}
-    Wait until page contains element    ${EXTENSION_SCHEME_DELETE_BTN}    timeout=30
-    Click element    ${EXTENSION_SCHEME_DELETE_BTN}
+    Wait until page contains element    ${EXTENSION_DDL}    timeout=30
+    Click element    ${EXTENSION_DDL}
+    Wait until page contains element    ${EXTENSION_DELETE_BTN}    timeout=30
+    Click element    ${EXTENSION_DELETE_BTN}
     Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
     Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
     Log to Console    Extension deleted

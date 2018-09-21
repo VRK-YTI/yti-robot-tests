@@ -427,10 +427,12 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Sleep    5
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Log to Console    Add link button is found and CC by 4.0 is there
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click button    ${CREATE_NEW_VERSION_BTN}
-    Sleep    2
+    Sleep    7
     Log to Console    Create new version button pressed
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
@@ -470,13 +472,13 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Sleep    5
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
     Log to Console    CC 4.0 license found and Codes tab is there
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
     Click element    ${CODELIST_CODES_TAB}
     Sleep    5
     Log to Console    Codes tab clicked
     Return to Koodistot frontpage
-    [Teardown]    Remove original and copied Code list
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 514. Create and delete registry
     [Documentation]    Create registry and attach code list to that registry. Check that deleting

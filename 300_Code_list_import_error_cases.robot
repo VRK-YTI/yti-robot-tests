@@ -17,6 +17,7 @@ ${Code_list_with_duplicate_columns}    ${DATAFOLDER}${/}Code_list_with_multiple_
 ${Duplicate_code_lists}    ${DATAFOLDER}${/}Duplicate_code_lists.xlsx
 ${Code_list_exists}    ${DATAFOLDER}${/}Code_list_exists.xlsx
 ${Code_list_invalid_codeValue}    ${DATAFOLDER}${/}Code_list_with_invalid_codevalue.xlsx
+${Code_list_max_hierarchy_level_codes}    ${DATAFOLDER}${/}Code_list_and_codes_wit_max_hierarchy_level.xlsx
 #CSV paths
 ${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
 ${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
@@ -30,6 +31,7 @@ ${Error_invalid_status_value}    Aineistossa oleva STATUS-sarakkeen arvo ei ole 
 ${Error_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja.
 ${Error_duplicate_code_lists}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
 ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-
+${Error_codes_max_hierarchy_level}    Koodien maksimi hierarkinen taso ylittyi.
 
 *** Test Cases ***
 300. Import Code list with missing codeValue
@@ -168,6 +170,21 @@ ${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    Tuo
     Wait until page contains    ${Error_invalid_code_list}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
+308. Import Code list with maximum hierarchies reached for codes
+    [Documentation]    Import Code list (Excel) with maximum hierarchies reached
+    ...    for codes and check error message
+    [Tags]    regression    test
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_max_hierarchy_level_codes}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_codes_max_hierarchy_level}    timeout=20
     Cancel code list import
     Sleep    2
     Go back to Koodistot frontpage
