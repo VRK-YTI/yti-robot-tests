@@ -100,17 +100,6 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click element    id=exportDropdown
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    #Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
-    #Click element    ${EXTENSIONS_TAB}
-    #Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
-    #Click Element    //*[contains(@id,'111_view_extension')]
-    #Delete extension
-    #Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
-    #Click element    ${EXTENSIONS_TAB}
-    #Sleep    3
-    #Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
-    #Click Element    //*[contains(@id,'222_view_extension')]
-    #Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_14}
 
@@ -124,8 +113,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Wait until page contains    30 koodia    timeout=20
     Upload extension    ${601_Extension_Scheme}
-    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
-    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${601_Extensions}    ${FILE_FORMAT_EXCEL}
@@ -137,13 +126,11 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    suomi    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
+    Click element    ${MEMBER_BACK_BTN}
     Sleep    2
-    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
-    Click element    ${EXTENSION_BACK_BTN}
-    Wait until page contains    Testilaajennus55    timeout=20
-    Delete extension
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_16}
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
 602. Import new code list and create extension and members
     [Documentation]    Import new code list and create calculation hierarchy extension and member manually
