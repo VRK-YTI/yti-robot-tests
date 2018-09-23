@@ -17,7 +17,7 @@ ${Code_list_with_duplicate_columns}    ${DATAFOLDER}${/}Code_list_with_multiple_
 ${Duplicate_code_lists}    ${DATAFOLDER}${/}Duplicate_code_lists.xlsx
 ${Code_list_exists}    ${DATAFOLDER}${/}Code_list_exists.xlsx
 ${Code_list_invalid_codeValue}    ${DATAFOLDER}${/}Code_list_with_invalid_codevalue.xlsx
-${Code_list_max_hierarchy_level_codes}    ${DATAFOLDER}${/}Code_list_and_codes_wit_max_hierarchy_level.xlsx
+${Code_list_max_hierarchy_level_codes}    ${DATAFOLDER}${/}Code_list_and_codes_with_max_hierarchy_level.xlsx
 #CSV paths
 ${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
 ${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
