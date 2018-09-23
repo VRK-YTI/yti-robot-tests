@@ -608,11 +608,12 @@ Remove code lists with extensions
     \    Click element    //*[contains(text(), "${code_list_item}")]
     \    Wait until page contains    ${code_list_item}
     \    ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
-    \    run keyword if    ${extension_exists}    Delete extension before code list
-    \    ...    ELSE    Continue code list deletion
+    \    run keyword if    ${extension_exists}    Delete extension before code list    ${code_list_item}
+    \    ...    ELSE    Continue code list deletion    ${code_list_item}
     \    Sleep    2
 
 Continue code list deletion
+    [Arguments]    ${code_list_item}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
@@ -626,7 +627,10 @@ Continue code list deletion
     Sleep    3
 
 Delete extension before code list
-    : FOR    ${i}    IN RANGE    999999
+    [Arguments]    ${code_list_item}
+    : FOR    ${CheckStatus}    IN RANGE    10
+    \    ${Status}    Get Text    //*[contains(text(), "LAAJENNUKSET")]
+    \    Page Should Contain    ${status}
     \    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     \    Click element    ${EXTENSIONS_TAB}
     \    Wait until page contains element    //*[contains(@id,'_view_extension')]    timeout=20
@@ -638,5 +642,7 @@ Delete extension before code list
     \    Wait until page contains element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
     \    Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
     \    Log to Console    Extension deleted
-    \    Sleep    2
-    \    Exit For Loop If    jotain
+    \    Sleep    3
+    \    ${exit}=    Run Keyword And Return Status    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
+    \    Exit For Loop If    ${exit}
+    Continue code list deletion    ${code_list_item}
