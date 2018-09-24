@@ -102,8 +102,8 @@ ${SAVE_EXTENSION}    id=editable_save_button
 ${SAVE_MEMBER}    id=editable_save_button
 ${EXTENSION_VALUE_INPUT}    id=extension_codevalue_input
 ${EXTENSION_NAME_INPUT}    id=extension_name_input
-${ADD_CODE_TO_EXTENSION_BTN}    id=add_code_button
-${SEARCH_CODE_TO_EXTENSION_INPUT}    id=search_linked_code_input
+${ADD_CODE_TO_MEMBER_BTN}    id=add_code_button
+${SEARCH_CODE_TO_MEMBER_INPUT}    id=search_linked_code_input
 ${EXTENSION_DELETE_BTN}    id=delete_extension_button
 ${CONFIRM_DELETE_EXTENSION_BTN}    id=confirm_confirmation_modal_button
 ${MEMBER_DELETE_BTN}    id=member_delete_button
@@ -119,6 +119,8 @@ ${EXTENSION_BACK_BTN}    id=extension_back_button
 ${MODIFY_MEMBER_BTN}    id=editable_edit_button
 ${SEARCH_MEMBER_INPUT}    id=search_linked_member_input
 ${MEMBER_BACK_BTN}    id=member_back_button
+${COMPARISON_OPERATOR_INPUT}    id=member_membervalue_comparisonOperator _input
+${UNARY_OPERATOR_INPUT}    id=member_membervalue_unaryOperator _input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
@@ -182,10 +184,12 @@ ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 ${CODE_LIST_VALUE_3}    Koodisto7001
 ${CODE_LIST_VALUE_4}    testiautomaatiokoodisto
-${EXTENSION_SCHEME_VALUE_1}    extension1
-${EXTENSION_SCHEME_NAME_1}    Extension 1
-${EXTENSION_VALUE_1}    member1
-${EXTENSION_NAME_1}    Member 1
+${EXTENSION_VALUE_1}    extension1
+${EXTENSION_NAME_1}    Extension 1
+${MEMBER_VALUE_1}    member1
+${MEMBER_NAME_1}    Member 1
+${COMPARISON_OPERATOR_1}    +
+${UNARY_OPERATOR_1}    ?
 #Status
 ${STATUS_DRAFT_FI}    Luonnos
 ${STATUS_VALID_FI}    Voimassa oleva
