@@ -366,22 +366,14 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click element    ${MODIFY_CODE_BTN}
     Sleep    3
     Log to Console    Modify button click successful
-    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
-    Click element    ${ADD_LINK_TO_CODE_BTN}
+    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
+    Click element    ${ADD_LINK_DDL}
     Sleep    2
     Log to Console    Add link button click successful
-    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
-    Click element    ${ADD_NEW_LINK_BTN}
+    Wait until page contains element    ${LINK_BTN}    timeout=20
+    Click element    ${LINK_BTN}
     Sleep    2
     Log to Console    Add new link button click successful
-    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
-    Click element    ${LINK_TYPE_DROPDOWN}
-    Sleep    2
-    Log to Console    Link type dropdown click successful
-    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
-    Click element    ${DROPDOWN_ITEM_LINK}
-    Sleep    2
-    Log to Console    Link type selection click successful
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
     Sleep    2
@@ -409,10 +401,13 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Log to Console    Modify code list button is found
     Click element    ${MODIFY_CODE_LIST}
     Sleep    2
-    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
+    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Log to Console    Add link button is found
-    Click element    ${ADD_LINK_TO_CODE_BTN}
+    Click element    ${ADD_LINK_DDL}
     Sleep    1
+    Wait until page contains element    ${LICENSE_BTN}    timeout=20
+    Click element    ${LICENSE_BTN}
+    Wait until page contains element    ${CCBY4.0}    timeout=20
     Click Element    ${CCBY4.0}
     Sleep    2
     Log to Console    Add link button is found

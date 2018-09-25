@@ -41,17 +41,11 @@ Resource          resources/Generic_resources.robot
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
-    Click element    ${ADD_LINK_TO_CODE_BTN}
+    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
+    Click element    ${ADD_LINK_DDL}
     Sleep    1
-    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
-    Click element    ${ADD_NEW_LINK_BTN}
-    Sleep    1
-    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
-    Click element    ${LINK_TYPE_DROPDOWN}
-    Sleep    1
-    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
-    Click element    ${DROPDOWN_ITEM_LINK}
+    Wait until page contains element    ${LINK_BTN}    timeout=20
+    Click element    ${LINK_BTN}
     Sleep    1
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
@@ -100,13 +94,15 @@ Resource          resources/Generic_resources.robot
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}    timeout=30
-    Click element    ${ADD_LINK_TO_CODE_BTN}
+    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
+    Click element    ${ADD_LINK_DDL}
+    Wait until page contains element    ${LICENSE_BTN}    timeout=20
+    Click element    ${LICENSE_BTN}
     Sleep    1
+    Wait until page contains element    ${CCBY4.0}    timeout=20
     Click Element    ${CCBY4.0}
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
-    Click element    ${SELECT_LINK_BTN}
-    Sleep    1
+    Click Element    ${SELECT_LINK_BTN}
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
@@ -138,14 +134,10 @@ Resource          resources/Generic_resources.robot
     Click element    //*[contains(text(), "${CODE_1000}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${ADD_LINK_TO_CODE_BTN}
-    Click element    ${ADD_LINK_TO_CODE_BTN}
-    Wait until page contains element    ${ADD_NEW_LINK_BTN}    timeout=20
-    Click element    ${ADD_NEW_LINK_BTN}
-    Wait until page contains element    ${LINK_TYPE_DROPDOWN}    timeout=20
-    Click element    ${LINK_TYPE_DROPDOWN}
-    Wait until page contains element    ${DROPDOWN_ITEM_LINK}    timeout=20
-    Click Element    ${DROPDOWN_ITEM_LINK}
+    Wait until page contains element    ${ADD_LINK_DDL}
+    Click element    ${ADD_LINK_DDL}
+    Wait until page contains element    ${LINK_BTN}    timeout=20
+    Click element    ${LINK_BTN}
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/

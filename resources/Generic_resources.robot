@@ -133,7 +133,7 @@ ${CODE_CODEVALUE_INPUT}    id=code_value_input
 ${CODE_DESC_INPUT}    id=code_description_textarea
 ${CODE_SHORT_NAME_INPUT}    id=code_shortname_input
 ${SAVE_CODE_MOD_BTN}    id=editable_save_button
-${ADD_LINK_TO_CODE_BTN}    id=add_link_button
+${ADD_LINK_DDL}    id=add_link_propertytype_dropdown
 ${CODE_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
 ${CODE_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
 ${CODE_START_DATE_INPUT}    id=start_date_input
@@ -211,6 +211,8 @@ ${SELECT_LINK_BTN}    id=select_link_button
 ${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
 ${LINK_NAME_INPUT}    id=link_title_input
 ${SAVE_LINK_MODIFY_BTN}    id=save_button
+${LINK_BTN}       id=ExternalReference_link_propertytype_dropdown_button
+${LICENSE_BTN}    id=ExternalReference_license_propertytype_dropdown_button
 #Excel paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${testiautomaatiokoodisto_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodisto_with_code.xlsx

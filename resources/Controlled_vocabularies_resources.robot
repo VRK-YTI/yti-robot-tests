@@ -174,7 +174,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_from_controlled_vocabularies}
     Sleep    3
     Click button    Kyllä
-    Sleep    3
+    Sleep    6
     Go back to Sanastot frontpage
     Close All Browsers
 
