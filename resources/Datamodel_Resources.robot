@@ -73,7 +73,7 @@ ${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_butt
 ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    id=create_new_LuoUusiLuokkaIlmanKasiteviitetta_link
 ${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaamallaUlkoiseenTunnisteeseen_link
 ${EXTERNAL_URI_INPUT}    id=externalUri
-${CHANGE_CONCEPT}    //*[@id="ctrl.id"]/subject-view/div[1]/div/button/span
+${CHANGE_CONCEPT}    //*[@id="$ctrl.id"]/subject-view/div[1]/div/button/span
 ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
 ${SHOW_HISTORY_BTN}    //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/history/button
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
