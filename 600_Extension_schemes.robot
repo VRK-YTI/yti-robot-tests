@@ -156,7 +156,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 603. Delete extension and member
     [Documentation]    Import new code list and create and delete calculation hierarchy extension and member.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -170,8 +170,10 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Extension 1
     Wait until page contains    Jäsenen nimi
     Wait until page contains    Member 1
-    Wait until page contains    Jäsenen arvo
-    Wait until page contains    member1
+    Wait until page contains    Laskenta operaattori
+    Wait until page contains    +
+    Wait until page contains    Aritmeettinen operaattori
+    Wait until page contains    ?
     Wait until page contains    Koodi
     Wait until page contains    testcode57 - Testcode 57
     Delete member
@@ -183,21 +185,23 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 
 604. Modify extension member
     [Documentation]    Import new code list, import calculation hierarchy extension and members and modify member.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Upload extension    ${Extension_calculation_hierarchy}
+    Sleep    2
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members}    ${FILE_FORMAT_EXCEL}
-    Wait until page contains element    //*[contains(text(), "Testcode 28")]
-    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
-    Click element    //*[contains(text(), "Testcode 28")]
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "x Jäsen2 · Testcode 29 Y")]
+    Wait until page contains element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]    timeout=20
+    Click element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]
     Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
     Sleep    2
@@ -206,12 +210,6 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 29")]
-    #Wait until page contains element    ${SAVE_EXTENSION}    timeout=20
-    #Click element    ${SAVE_EXTENSION}
-    #Sleep    2
-    #Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=20
-    #Click element    ${MODIFY_EXTENSION_BTN}
-    #Sleep    2
     Wait until page contains element    ${MEMBER_NAME_INPUT}    timeout=30
     Input Text    ${MEMBER_NAME_INPUT}    ${MEMBER_NAME_1}
     Wait until page contains element    ${ADD_CODE_TO_MEMBER_BTN}    timeout=30
@@ -221,8 +219,8 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    //*[contains(text(), "Testcode 57")]    timeout=30
     Click element    //*[contains(text(), "Testcode 57")]
     Sleep    3
-    Wait until page contains element    ${REMOVE_EXTENSION_LINK}    timeout=20
-    Click element    ${REMOVE_EXTENSION_LINK}
+    Wait until page contains element    ${REMOVE_MEMBER_LINK}    timeout=20
+    Click element    ${REMOVE_MEMBER_LINK}
     Wait until page contains element    ${SAVE_MEMBER}    timeout=20
     Click element    ${SAVE_MEMBER}
     Sleep    4
@@ -239,11 +237,9 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
     Click element    ${MEMBER_BACK_BTN}
-    Sleep    10
+    Sleep    3
     Wait until page contains    Testilaajennus55    timeout=20
-    #Wait until page contains element    //*[contains(text(), "x Member 1 · Testcode 57")]    timeout=20
-    #Wait until page contains element    //*[contains(text(), "extensiontest41 suomi · Testcode 29")]    timeout=20
-    #Delete extension
+    Wait until page contains element    //*[contains(text(), "x Member 1 · Testcode 57 Y")]    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
@@ -258,17 +254,22 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Upload extension    ${Extension_calculation_hierarchy}
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
-    Click Element    //*[contains(@id,'555_view_extensionscheme')]
+    Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members_csv}    ${FILE_FORMAT_CSV}
-    Wait until page contains element    //*[contains(text(), "Testcode 28")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
-    Click element    //*[contains(text(), "Testcode 28")]
+    Wait until page contains element    //*[contains(text(), "x Jäsen2 · Testcode 29 Y")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]    timeout=20
+    Click element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennus    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
-    Wait until page contains    testcode28_FI    timeout=20
+    Wait until page contains    Jäsenen nimi    timeout=20
+    Wait until page contains    Jäsen1    timeout=20
+    Wait until page contains    Laskenta operaattori    timeout=20
+    Wait until page contains    Y    timeout=20
+    Wait until page contains    Aritmeettinen operaattori    timeout=20
+    Wait until page contains    x    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
     Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
@@ -279,11 +280,10 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
     Log to Console    CSV exported
-    #Delete extension
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
-606. Import code list with extension and without CODESCHEME value
+606. Import code list with extension and without CODESCHEMES value
     [Documentation]    Import code list with extension. Check error message when CODESCHEME value
     ...    for external code list is missing from Extensions sheet in Excel. YTI-853
     [Tags]    koodistot
@@ -293,6 +293,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    Tuo
+    Sleep    3
     Wait until page contains    ${Error_missing_codeschemes}    timeout=20
     Cancel code import
     Sleep    2
