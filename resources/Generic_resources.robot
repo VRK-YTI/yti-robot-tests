@@ -188,8 +188,8 @@ ${EXTENSION_VALUE_1}    extension1
 ${EXTENSION_NAME_1}    Extension 1
 ${MEMBER_VALUE_1}    member1
 ${MEMBER_NAME_1}    Member 1
-${COMPARISON_OPERATOR_1}    +
-${UNARY_OPERATOR_1}    ?
+${COMPARISON_OPERATOR_1}    <=
+${UNARY_OPERATOR_1}    -
 #Status
 ${STATUS_DRAFT_FI}    Luonnos
 ${STATUS_VALID_FI}    Voimassa oleva

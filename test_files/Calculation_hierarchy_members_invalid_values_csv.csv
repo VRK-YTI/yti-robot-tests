@@ -1,6 +1,6 @@
 UNARYOPERATOR,COMPARISONOPERATOR,CODE,PREFLABEL_FI,PREFLABEL_EN,PREFLABEL_SV,RELATION,ORDER,STARTDATE,ENDDATE
--,<=,testcode28,Jäsen1,Member1,,,,2016-01-01,2020-01-01
--,<=,testcode29,Jäsen2,Member2,,,,2016-01-02,2020-01-02
+x,<=,testcode28,Jäsen1,Member1,,,,2016-01-01,2020-01-01
+-,y,testcode29,Jäsen2,Member2,,,,2016-01-02,2020-01-02
 -,<=,testcode30,Jäsen3,Member3,,,,2016-01-03,2020-01-03
 -,<=,testcode31,Jäsen4,Member4,,,,2016-01-04,2020-01-04
 -,<=,testcode32,Jäsen5,Member5,,,,2016-01-05,2020-01-05

@@ -18,18 +18,19 @@ ${Extension_definition_hierarchy}    ${DATAFOLDER}${/}Extension_definition_hiera
 ${Calculation_hierarchy_members}    ${DATAFOLDER}${/}Calculation_hierarchy_members.xlsx
 ${Definition_hierarchy_members}    ${DATAFOLDER}${/}Definition_hierarchy_members.xlsx
 ${Extensions_without_codeschemes_value}    ${DATAFOLDER}${/}Extensions_without_codeschemes_value.xlsx
-${ExtensionSchemes_codeschemes_invalid_code}    ${DATAFOLDER}${/}ExtensionSchemes_codeschemes_invalid_Code.xlsx
+${Extensions_invalid_code_in_members_sheet}    ${DATAFOLDER}${/}Extensions_invalid_code_in_members_sheet.xlsx
 ${Extensios_max_hierarchy_level}    ${DATAFOLDER}${/}Extensions_max_hierarchy_level.xlsx
 ${Extension_Scheme_calculation_hierarchy}    ${DATAFOLDER}${/}Extension_Scheme_calculation_hierarchy.xlsx
-${Extensions_empty_extensionvalues}    ${DATAFOLDER}${/}Extensions_empty_extensionvalues.xlsx
+${Unaryoperator_value_missing}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing.xlsx
 ${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensionvalue_column.xlsx
 ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
+${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
 #error messages
 ${Error_missing_codeschemes}    Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen liitettyihin koodistoihin.
 ${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa.
-${Error_max_hierarchy_level}    Jäsenten maksimi hierarkinen taso ylittyi.
+${Error_max_hierarchy_level}    Jäsenten maksimi hierarkkinen taso ylittyi.
 ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä 2.
 
 *** Test Cases ***
@@ -45,13 +46,14 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    25 koodia    timeout=20
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_6}")]
+    Sleep    5
     Page should contain    Testikoodisto2 pitkillä arvoilla
     Page should contain    testcode25
     Page should contain    Testikoodi 25
-    Page should contain    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/testcode25
+    Page should contain    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/code/testcode25
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
     Click element    ${CODE_BACK_BTN}
-    Sleep    5
+    Sleep    2
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
     Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
@@ -144,11 +146,11 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    600 - Koodisto600    Testcode 57
-    Wait until page contains    ? Member 1 · Testcode 57 +    timeout=20
+    Wait until page contains    - Member 1 · Testcode 57 <=    timeout=20
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "? Member 1 · Testcode 57 +")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 <=")]    timeout=20
     Wait until page contains    Extension 1    timeout=20
     Sleep    1
     Return to Koodistot frontpage
@@ -170,10 +172,10 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Extension 1
     Wait until page contains    Jäsenen nimi
     Wait until page contains    Member 1
-    Wait until page contains    Laskenta operaattori
-    Wait until page contains    +
-    Wait until page contains    Aritmeettinen operaattori
-    Wait until page contains    ?
+    Wait until page contains    Aritmeettinen operaattori    timeout=20
+    Wait until page contains    -    timeout=20
+    Wait until page contains    Vertailu operaattori    timeout=20
+    Wait until page contains    <=    timeout=20
     Wait until page contains    Koodi
     Wait until page contains    testcode57 - Testcode 57
     Delete member
@@ -199,9 +201,9 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members}    ${FILE_FORMAT_EXCEL}
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "x Jäsen2 · Testcode 29 Y")]
-    Wait until page contains element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]    timeout=20
-    Click element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]
+    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 <=")]
+    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]    timeout=20
+    Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]
     Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
     Sleep    2
@@ -239,14 +241,14 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click element    ${MEMBER_BACK_BTN}
     Sleep    3
     Wait until page contains    Testilaajennus55    timeout=20
-    Wait until page contains element    //*[contains(text(), "x Member 1 · Testcode 57 Y")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 <=")]    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
 605. Import members in CSV format
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -258,18 +260,18 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members_csv}    ${FILE_FORMAT_CSV}
-    Wait until page contains element    //*[contains(text(), "x Jäsen2 · Testcode 29 Y")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]    timeout=20
-    Click element    //*[contains(text(), "x Jäsen1 · Testcode 28 Y")]
+    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]    timeout=20
+    Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennus    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    Jäsenen nimi    timeout=20
     Wait until page contains    Jäsen1    timeout=20
-    Wait until page contains    Laskenta operaattori    timeout=20
-    Wait until page contains    Y    timeout=20
     Wait until page contains    Aritmeettinen operaattori    timeout=20
-    Wait until page contains    x    timeout=20
+    Wait until page contains    -    timeout=20
+    Wait until page contains    Vertailu operaattori    timeout=20
+    Wait until page contains    <=    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
     Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
@@ -286,7 +288,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 606. Import code list with extension and without CODESCHEMES value
     [Documentation]    Import code list with extension. Check error message when CODESCHEME value
     ...    for external code list is missing from Extensions sheet in Excel. YTI-853
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_without_codeschemes_value}
@@ -302,10 +304,10 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 607. Import code list with extension and with invalid code
     [Documentation]    Import code list (Excel) with extension. Check error message when
     ...    code in extensions sheet is not included to the code list. YTI-853
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${ExtensionSchemes_codeschemes_invalid_code}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_invalid_code_in_members_sheet}
     Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    Tuo
@@ -317,7 +319,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
 608. Import code list with extension and members that exceed maximum hierarchy level
     [Documentation]    Import code list with extension and members that exceed maximum hierarchy level and
     ...    Check error message . YTI-844
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
@@ -337,20 +339,25 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Upload extension    ${Extension_Scheme_calculation_hierarchy}
-    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
-    Click Element    //*[contains(@id,'555_view_extensionscheme')]
-    Upload members    ${Extensions_empty_extensionvalues}    ${FILE_FORMAT_EXCEL}
-    Wait until page contains    ${Error_extensionvalue_missing}    timeout=20
+    Upload extension    ${Extension_calculation_hierarchy}
+    Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extension')]
+    Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
+    Sleep    5
+    #Wait until page contains    ${Error_extensionvalue_missing}    timeout=20
+    Cancel code import
+    Sleep    2
+    Upload members    ${Unaryoperator_value_missing_csv}    ${FILE_FORMAT_CSV}
+    #Wait until page contains    ${Error_extensionvalue_missing}    timeout=20
     Cancel code import
     Sleep    2
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_16}
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
 610. Add code list to the extension
     [Documentation]    Add code list to the calculation hierarchy extension and
     ...    add codes from that code list to the extension member.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -358,7 +365,7 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_SCHEME_VALUE_1}    ${EXTENSION_SCHEME_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click Element    //*[contains(text(), "TIEDOT")]
     Wait until page contains    Koodisto    timeout=20
@@ -371,15 +378,14 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Wait until page contains    Laskentahierarkia    timeout=20
     Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
     Sleep    1
-    Create member    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
     Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
     Click element    ${MEMBER_BACK_BTN}
     Sleep    5
-    Wait until page contains element    //*[contains(text(), "member1 Member 1 - Koodi1000")]    timeout=20
-    Delete extension
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_2}
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_2}
 
 611. Import code list with codes, extension and members, create new version of code list
     [Documentation]    Import code list with codes, extension and members,
