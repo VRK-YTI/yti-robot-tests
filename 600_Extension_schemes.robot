@@ -31,7 +31,7 @@ ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_mem
 ${Error_missing_codeschemes}    Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen liitettyihin koodistoihin.
 ${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa.
 ${Error_max_hierarchy_level}    Jäsenten maksimi hierarkkinen taso ylittyi.
-${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä 2.
+${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä 6.
 
 *** Test Cases ***
 600. Import code list with extension
@@ -331,10 +331,10 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Sleep    2
     Return to Koodistot frontpage
 
-609. Import members with missing EXTENSIONVALUE
-    [Documentation]    Import members with missing EXTENSIONVALUE to calculation hierarchy extension
+609. Import members with missing member value
+    [Documentation]    Import members with missing member value to calculation hierarchy extension
     ...    and check error message.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -344,11 +344,11 @@ ${Error_extensionvalue_missing}    Aineistossa puuttuu arvo sarakkeesta EXTENSIO
     Click Element    //*[contains(@id,'555_view_extension')]
     Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
     Sleep    5
-    #Wait until page contains    ${Error_extensionvalue_missing}    timeout=20
+    Wait until page contains    ${Error_member_value_missing}    timeout=20
     Cancel code import
     Sleep    2
     Upload members    ${Unaryoperator_value_missing_csv}    ${FILE_FORMAT_CSV}
-    #Wait until page contains    ${Error_extensionvalue_missing}    timeout=20
+    Wait until page contains    ${Error_member_value_missing}    timeout=20
     Cancel code import
     Sleep    2
     Return to Koodistot frontpage
