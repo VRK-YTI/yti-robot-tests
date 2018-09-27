@@ -30,7 +30,7 @@ ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä
 ${Error_invalid_status_value}    Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu.
 ${Error_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja.
 ${Error_duplicate_code_lists}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
-${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-
+${Error_invalid_code_list}    Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-
 ${Error_codes_max_hierarchy_level}    Koodien maksimi hierarkkinen taso ylittyi.
 
 *** Test Cases ***
