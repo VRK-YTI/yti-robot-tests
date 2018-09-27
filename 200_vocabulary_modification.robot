@@ -87,6 +87,8 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${ADD_NEW_CONCEPT_BTN}
     Wait until page contains element    ${TERM_LITERAL_VALUE_INPUT}    timeout=30
     Input text    ${TERM_LITERAL_VALUE_INPUT}    ${TERM_1}
+    Wait until page contains element    ${ADD_NEW_CONCEPT}
+    Click element    ${ADD_NEW_CONCEPT}
     Wait until page contains element    ${SOURCE_INPUT}    timeout=30
     Input text    ${SOURCE_INPUT}    Lähde
     Wait until page contains element    ${SCOPE_INPUT}    timeout=30

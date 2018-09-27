@@ -52,8 +52,9 @@ ${NEW_DESCRIPTION_FI}    id=add_new_vocabulary_description_fi_button
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
+${ADD_NEW_CONCEPT}    id=add_new_concept_prefLabelXl_0_source_value_button
 ${SCOPE_INPUT}    id=concept_prefLabelXl_0_scope_textarea
-${SOURCE_INPUT}    id=concept_prefLabelXl_0_source_textarea
+${SOURCE_INPUT}    id=concept_prefLabelXl_0_source_0_textarea
 ${DRAFT_COMMENT_INPUT}    id=concept_prefLabelXl_0_draftComment_textarea
 ${HISTORY_NOTE_INPUT}    id=concept_prefLabelXl_0_historyNote_textarea
 ${CHANGENOTE_INPUT}    id=concept_prefLabelXl_0_changeNote_textarea
