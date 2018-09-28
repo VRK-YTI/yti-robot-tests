@@ -24,6 +24,7 @@ ${Extension_Scheme_calculation_hierarchy}    ${DATAFOLDER}${/}Extension_Scheme_c
 ${Unaryoperator_value_missing}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing.xlsx
 ${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensionvalue_column.xlsx
 ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
+${Extensions_new_version_creation}    ${DATAFOLDER}${/}Extensions_and_members_for_new_version_creation.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
@@ -388,28 +389,44 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_2}
 
 611. Import code list with codes, extension and members, create new version of code list
-    [Documentation]    Import code list with codes, extension and members,
-    ...    create new version of code list. Check that codes, extension and members are copied to the new
+    [Documentation]    Import code list with codes, calculation and definition hierarcghy extensions and members,
+    ...    create new version of code list. Check that all values of codes, extensions and members are copied to the new
     ...    code list version.
     [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
-    Wait until page contains    30 koodia    timeout=20
-    Upload extension    ${601_Extension_Scheme}
-    Wait until page contains element    //*[contains(@id,'555_view_extensionscheme')]    timeout=20
-    Click Element    //*[contains(@id,'555_view_extensionscheme')]
-    Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Upload members    ${601_Extensions}    ${FILE_FORMAT_EXCEL}
-    Wait until page contains element    //*[contains(text(), "Testcode 28")]
+    Upload codelist    ${Extensions_new_version_creation}    ${CODE_LIST_17}
+    Wait until page contains    25 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=30
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_19}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
-    Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
-    Click element    //*[contains(@id,'2_breadcrumb_link')]
-    Sleep    2
-    Wait until page contains    Koodisto700    timeout=30
-    Create new version of code list    701    Koodisto701    Demokratia
-    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains    25 koodia    timeout=20
+    Log to Console    New version of code list created
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=30
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    O1234567890123456789012345678901234567333    timeout=20
+    Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
+    Wait until page contains    Testirekisteri    timeout=20
+    Wait until page contains    Testiorganisaatio    timeout=20
+    #Wait until page contains    Asuminen    timeout=20
+    Wait until page contains    englanti    timeout=20
+    Wait until page contains    ruotsi    timeout=20
+    Wait until page contains    suomi    timeout=20
+    Wait until page contains    testcode06 - Testikoodi 06    timeout=20
+    Wait until page contains    01.01.2017 - 31.12.2018    timeout=20
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=30
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    //*[contains(text(), "MÄÄRITYSHIERARKIAT")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "LASKENTAHIERARKIAT")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "LASKENTAHIERARKIAT")]    timeout=20
     Wait until page contains element    ${VERSION_TAB}    timeout=30
     Click element    ${VERSION_TAB}
     Wait until page contains    Koodisto701    timeout=20

@@ -154,7 +154,7 @@ Resource          resources/Generic_resources.robot
     Input Text    ${LINK_NAME_INPUT}    www.suomi.fi
     Wait until page contains element    ${SAVE_LINK_MODIFY_BTN}    timeout=20
     Click Element    ${SAVE_LINK_MODIFY_BTN}
-    Wait until page contains    Linkki
+    Wait until page contains    Muu linkki
     Page should contain    www.suomi.fi
     Save code modification
     Reload Page

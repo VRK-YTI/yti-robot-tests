@@ -171,6 +171,7 @@ ${CODE_LIST_15}    Vakiokoodikoodisto
 ${CODE_LIST_16}    Koodisto600
 ${CODE_LIST_17}    Koodisto700
 ${CODE_LIST_18}    Koodisto701
+${CODE_LIST_19}    Testikoodisto3 pitkillä arvoilla
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000
@@ -184,6 +185,7 @@ ${CODE_LIST_VALUE_1}    Koodisto6000
 ${CODE_LIST_VALUE_2}    t100
 ${CODE_LIST_VALUE_3}    Koodisto7001
 ${CODE_LIST_VALUE_4}    testiautomaatiokoodisto
+${CODE_LIST_VALUE_5}    O1234567890123456789012345678901234567333
 ${EXTENSION_VALUE_1}    extension1
 ${EXTENSION_NAME_1}    Extension 1
 ${MEMBER_VALUE_1}    member1
