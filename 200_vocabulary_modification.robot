@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Test Suite for vocabulary modification
-Suite Teardown    Close All Browsers    #Suite Setup    Terminology Suite Setup    #Suite Teardown    Terminology Suite Teardown
+Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot

@@ -10,7 +10,6 @@ ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
-${VOCABULARY_3}    Testiautomaatioasiasanasto
 ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
 ${ORGANIZATION_2}    Testiorganisaatio
 ${CLASSIFICATION_1}    Ympäristö
@@ -119,15 +118,6 @@ Test Case Setup Create Terminological Vocabulary without concepts
     ...    ELSE    Create Terminological Vocabulary without concepts
     Go back to Sanastot frontpage
 
-Test Case Setup Create Vocabulary
-    Test Case Setup
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatioasiasanasto")]
-    run keyword if    ${vocabulary_exists}    Delete existing vocabulary and create new
-    ...    ELSE    Create Vocabulary
-    Go back to Sanastot frontpage
-
 Test Case Teardown
     Close All Browsers
 
@@ -167,10 +157,6 @@ Go back to Sanastot frontpage
 Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
-    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
-    Click element    ${VOCABULARY_TYPE_DDL}
-    Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
-    Click element    //*[contains(text(), "Terminologinen sanasto")]
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_1}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
@@ -248,10 +234,6 @@ Delete existing terminological vocabulary and create new
 Create Terminological Dictionary and import vocabulary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
-    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
-    Click element    ${VOCABULARY_TYPE_DDL}
-    Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
-    Click element    //*[contains(text(), "Terminologinen sanasto")]
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_2}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
@@ -301,10 +283,6 @@ Delete existing terminological vocabulary 2 and create new
 Create Terminological Vocabulary without concepts
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
-    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
-    Click element    ${VOCABULARY_TYPE_DDL}
-    Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
-    Click element    //*[contains(text(), "Terminologinen sanasto")]
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_2}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
@@ -352,73 +330,3 @@ Delete Terminological Vocabulary
     Sleep    1
     Log to Console    Terminological Vocabulary deleted
     Close All Browsers
-
-Create Vocabulary
-    Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
-    Click element    ${ADD_VOCABULARY_BTN}
-    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
-    Click element    ${VOCABULARY_TYPE_DDL}
-    Wait until page contains element    //*[contains(text(), "Asiasanasto")]    timeout=20
-    Click element    //*[contains(text(), "Asiasanasto")]
-    Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
-    Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_3}
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
-    Click element    ${ADD_ORGANIZATION_BTN}
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
-    Click element    //*[contains(text(), "${ORGANIZATION_1}")]
-    Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
-    Click element    ${ADD_NEW_CLASSIFICATION_BTN}
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
-    Wait until page contains element    ${PREFIX_INPUT}    timeout=30
-    Input text    ${PREFIX_INPUT}    ${PREFIX_3}
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${SAVE_VOCABULARY_BTN}
-    Sleep    2
-    Log to Console    Vocabulary created
-
-Delete Vocabulary
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_3}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_3}")]
-    Wait until page contains    ${VOCABULARY_3}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
-    Wait until page contains    Testiautomaatioasiasanasto    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${REMOVE_VOCABULARY_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Sleep    3
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
-    Sleep    2
-    Page should not contain element    //*[contains(text(), "${VOCABULARY_3}")]
-    Sleep    1
-    Log to Console    Vocabulary deleted
-    Close All Browsers
-
-Delete existing vocabulary and create new
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_3}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_3}")]
-    Wait until page contains    ${VOCABULARY_3}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
-    Wait until page contains    Testiautomaatioasiasanasto    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${REMOVE_VOCABULARY_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Sleep    3
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_3}
-    Sleep    2
-    Page should not contain element    //*[contains(text(), "${VOCABULARY_3}")]
-    Sleep    1
-    Log to Console    Vocabulary deleted
-    Create Vocabulary

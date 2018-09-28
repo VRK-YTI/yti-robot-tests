@@ -53,7 +53,6 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_EN}
     Wait until page contains    All organizations    timeout=20
-    Wait until page contains    All vocabulary types    timeout=20
     Wait until page contains    Search vocabularies    timeout=20
     Wait until page contains    Filter with classification
     Log to Console    User interface language changed
@@ -110,7 +109,6 @@ Restore Finnish language
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_FI}
     Wait until page contains    Kaikki organisaatiot    timeout=20
-    Wait until page contains    Kaikki sanastotyypit    timeout=20
     Wait until page contains    Rajaa tietoalueella    timeout=20
     Close All Browsers
 
