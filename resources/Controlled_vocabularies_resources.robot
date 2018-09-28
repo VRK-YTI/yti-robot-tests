@@ -33,13 +33,13 @@ ${ADD_TITLE_BTN}    id=prefLabel_add_button
 ${LANGUAGE_EN_BTN}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-property[1]/dl/dd/app-localized-input/div[1]/div/div/button[1]
 ${ADD_VOCABULARY_ORGANIZATION_BTN}    id=vocabulary_contributor_add_organization_button
 ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    id=search_organization_link
-${ADD_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_classification_button
-${TERMINOLOGY_CLASSIFICATION_INPUT}    id=search_classification_link
+${ADD_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_domain_button
+${TERMINOLOGY_CLASSIFICATION_INPUT}    id=search_domain_link
 ${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_input
 ${VOCABULARY_TYPE_DDL}    id=selected_vocabulary_type_dropdown
 ${TITLE_INPUT_FI}    id=vocabulary_prefLabel_fi_0_input
 ${PREFIX_INPUT}    id=vocabulary_prefix_input
-${ADD_NEW_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_classification_button
+${ADD_NEW_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_domain_button
 ${REMOVE_VOCABULARY_BTN}    id=vocabulary_editable_remove_button
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    id=delete_confirmation_yes_button
 ${ADD_DESCRIPTION_DDL}    id=vocabulary_description_add_button
