@@ -121,6 +121,8 @@ ${SEARCH_MEMBER_INPUT}    id=search_linked_member_input
 ${MEMBER_BACK_BTN}    id=member_back_button
 ${COMPARISON_OPERATOR_INPUT}    id=member_membervalue_comparisonOperator _input
 ${UNARY_OPERATOR_INPUT}    id=member_membervalue_unaryOperator _input
+${CALC_HIERARCHY_TAB}    id=codelist_extension_L (0)_tab
+${DEF_HIERARCHY_TAB}    id=codelist_extension_M (0)_tab
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button

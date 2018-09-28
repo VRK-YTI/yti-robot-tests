@@ -130,12 +130,6 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
     Sleep    3
-    Wait until page contains element    ${VOCABULARY_TYPE_DDL}    timeout=30
-    Click element    ${VOCABULARY_TYPE_DDL}
-    Sleep    3
-    Wait until page contains element    //*[contains(text(), "Terminologinen sanasto")]    timeout=20
-    Click element    //*[contains(text(), "Terminologinen sanasto")]
-    Sleep    3
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_1}
     Wait until page contains element    ${ADD_VOCABULARY_ORGANIZATION_BTN}    timeout=30
