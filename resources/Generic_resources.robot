@@ -83,6 +83,7 @@ ${END_DATE_INPUT}    id=end_date_input
 ${CODE_LIST_DDL}    id=codeSchemeDropdown
 ${EXPORT_DDL}     id=exportDropdown
 ${VERSION_TAB}    id=codelist_versionhistory_tab
+${CLOSE_ERROR_MODAL_BTN}    id=close_error_modal_button
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -308,6 +309,8 @@ Create code list
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
+    ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
+    run keyword if    ${vocabularies_error}    Close error modal
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
     Sleep    5
@@ -342,6 +345,11 @@ Cancel code list creation
 Save code list
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
+
+Close error modal
+    Wait until page contains element    ${CLOSE_ERROR_MODAL_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MODAL_BTN}
+    Sleep    1
 
 Upload codelist
     [Arguments]    ${codelist}    ${codelist_name}
