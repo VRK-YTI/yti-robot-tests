@@ -46,7 +46,6 @@ ${class_item_time_period}    Ajanjakso
     Log to Console    Contributor removed
     Sleep    1
     Add contributor    Väestörekisterikeskus
-    Log to Console    New contributor added
     Wait until page contains element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=30
@@ -68,7 +67,7 @@ ${class_item_time_period}    Ajanjakso
     Page should contain    Väestörekisterikeskus
     Page should contain    www.suomi.fi/etusivu/
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Uusi nimi profile
+    [Teardown]    Delete profile    Uusi nimi
 
 201. Add new class to profile
     [Documentation]    Add new class to profile
@@ -76,9 +75,8 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Add class    Päätös
     Sleep    2
@@ -86,7 +84,7 @@ ${class_item_time_period}    Ajanjakso
     Log to Console    Class "Päätös" added
     Sleep    3
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 202. Add new Core Vocabulary
     [Documentation]    Add new Core Vocabulary and delete Core Vocabulary
@@ -119,7 +117,6 @@ ${class_item_time_period}    Ajanjakso
     Log to Console    Contributor removed
     Sleep    1
     Add contributor    Väestörekisterikeskus
-    Log to Console    New contributor added
     Wait until page contains element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=30
@@ -142,7 +139,7 @@ ${class_item_time_period}    Ajanjakso
     Page should contain    Väestörekisterikeskus
     Page should contain    www.suomi.fi/etusivu/
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Uusi nimi profile
+    [Teardown]    Delete profile    Uusi nimi
 
 204. Add new attribute and association
     [Documentation]    Add new attribute and association for class
@@ -150,9 +147,8 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Add class    Päätös
     Sleep    2
@@ -169,7 +165,7 @@ ${class_item_time_period}    Ajanjakso
     Page should contain    Entinen nimi
     Page should contain    Jäsen
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 205. Add association between two classes
     [Documentation]    Add association between two classes
@@ -177,9 +173,8 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Add class    Päätös
     Sleep    2
     Confirm all properties for class and save
@@ -206,7 +201,7 @@ ${class_item_time_period}    Ajanjakso
     Log to Console    Association "Rekisteröinti" added between "Päätös" and "Maksu"
     Sleep    3
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 206. Create new class without referencing concept
     [Documentation]    Create new class without referencing concept
@@ -214,9 +209,8 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Create new class without referencing concept    ${new_class_link}    automobiili
     Save class
@@ -224,7 +218,7 @@ ${class_item_time_period}    Ajanjakso
     Log to Console    Class "Automobiili" added without referencing concept
     Sleep    3
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 207. Create new shape by referencing external uri
     [Documentation]    Create new shape by referencing external uri
@@ -232,16 +226,15 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Create new shape by referencing external uri    ${external_uri}    ${class}
     Confirm all properties for class and save
     Page should contain    Maksu
     Log to Console    Shape "Maksu" added by referencing external uri
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 208. Add new class to profile and remove properties
     [Documentation]    Add new class to profile and remove properties
@@ -249,9 +242,8 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Add class    Postiosoite
     Sleep    2
@@ -263,7 +255,7 @@ ${class_item_time_period}    Ajanjakso
     Log to Console    Class "Postiosoite" added
     Sleep    1
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 209. Create new class and add referencing concept
     [Documentation]    Create new class and add referencing concept
@@ -271,7 +263,7 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Add vocabulary    ${vocabulary}
     Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
@@ -286,7 +278,7 @@ ${class_item_time_period}    Ajanjakso
     Page should contain    liikennevälineen määritelmä
     Log to Console    Concept definition "liikenneväline" added for "automobiili"
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 210. Add several classes to profile, check history and remove one class
     [Documentation]    Add several classes to profile, check class history information and remove one class
@@ -294,9 +286,8 @@ ${class_item_time_period}    Ajanjakso
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
-    Import namespace
+    Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Hide model details
     Add several classes    ${class_item_person}    ${class_item_record}    ${class_item_time_period}
     Sleep    2
@@ -323,7 +314,7 @@ ${class_item_time_period}    Ajanjakso
     Page should not contain element    //*[contains(@id, 'Ajanjakso_tabset_link')]
     Log to Console    Class "Ajanjakso" removed
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 211. Add reference data for profile
     [Documentation]    Create profile and add reference data for that profile
@@ -363,7 +354,7 @@ ${class_item_time_period}    Ajanjakso
     Wait until page contains    Kunnat 2018
     Log to Console    Reference data "Kunnat 2018" added for profile
     Go back to Data Vocabularies frontpage
-    [Teardown]    Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 *** Keywords ***
 Select and edit Testiautomaatio profile
@@ -387,20 +378,22 @@ Select and edit Automaatiokirjasto Core Vocabulary
     Click Element    ${MODIFY_CORE_VOCABULARY_BTN}
 
 Add classification
-    [Arguments]    ${classification}=Asuminen
+    [Arguments]    ${classification}
     Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
     Wait until page contains element    //*[contains(text(), "${classification}")]    timeout=30
     Click Element    //*[contains(text(), "${classification}")]
     Sleep    2
+    Log to Console    New classification ${classification} added
 
 Add contributor
-    [Arguments]    ${contributor}=Testiorganisaatio
+    [Arguments]    ${contributor}
     Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
     Click Element    ${ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "${contributor}")]    timeout=30
     Click Element    //*[contains(text(), "${contributor}")]
     Sleep    2
+    Log to Console    New contributor ${contributor} added
 
 Add vocabulary
     [Arguments]    ${vocabulary}
@@ -415,13 +408,14 @@ Add vocabulary
     Sleep    2
 
 Import namespace
-    [Arguments]    ${namespace}=Julkishallinnon tietokomponentit
+    [Arguments]    ${namespace}
     Wait until page contains element    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
     Wait until page contains element    ${SEARCH_NAMESPACE_INPUT}    timeout=30
     Input Text    ${SEARCH_NAMESPACE_INPUT}    ${namespace}
     Click Element    //*[contains(text(), "${namespace}")]
     Sleep    2
+    Log to Console    New namespace ${namespace} added
 
 Save model
     Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
@@ -429,7 +423,7 @@ Save model
     Sleep    2
 
 Add class
-    [Arguments]    ${class}=Maksu
+    [Arguments]    ${class}
     Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
     Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
@@ -486,7 +480,7 @@ Deselect properties for class and save
     Sleep    2
 
 Add attribute
-    [Arguments]    ${attribute}=Entinen nimi
+    [Arguments]    ${attribute}
     Wait until page contains element    ${MODIFY_CLASS}    timeout=30
     Click Element    ${MODIFY_CLASS}
     Wait until page contains element    ${ADD_PROPERTY_DDL}    timeout=30
@@ -496,7 +490,6 @@ Add attribute
     Sleep    4
     Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
-    #Click Element    ${ATTRIBUTE_TYPE}
     Sleep    2
     Click Element    //*[contains(text(), "Attribuutti")]
     Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
@@ -507,7 +500,7 @@ Add attribute
     Sleep    2
 
 Add association
-    [Arguments]    ${association}=Jäsen
+    [Arguments]    ${association}
     Wait until page contains element    ${MODIFY_CLASS}    timeout=30
     Click Element    ${MODIFY_CLASS}
     Wait until page contains element    ${ADD_PROPERTY_DDL}    timeout=30
@@ -517,7 +510,6 @@ Add association
     Sleep    4
     Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
-    #Click Element    ${ASSOCIATION_TYPE}
     Sleep    2
     Click Element    //*[contains(text(), "Assosiaatio")]
     Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
@@ -548,7 +540,7 @@ Create new class without referencing concept
     Input Text    ${SEARCH_CLASS_INPUT}    ${class_2}
     Sleep    2
     Click Element    ${new_class_link}
-    Sleep    5
+    Sleep    8
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
     sleep    2
     Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
@@ -570,11 +562,12 @@ Create new shape by referencing external uri
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
-Delete Uusi nimi profile
+Delete profile
+    [Arguments]    ${profile}
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    Uusi nimi
-    Wait until page contains element    //*[contains(text(), "Uusi nimi")]    timeout=30
-    Click Element    //*[contains(text(), "Uusi nimi")]
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Wait until page contains element    //*[contains(text(), "${profile}")]    timeout=30
+    Click Element    //*[contains(text(), "${profile}")]
     Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
     Click Element    ${SHOW_MODEL_DETAILS_BTN}
     Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
@@ -583,8 +576,8 @@ Delete Uusi nimi profile
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    Uusi nimi
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log to Console    "Uusi nimi" profile deleted
+    Log to Console    "${profile}" profile deleted
     Sleep    2
     Close All Browsers

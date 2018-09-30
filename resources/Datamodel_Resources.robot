@@ -52,18 +52,17 @@ ${ADD_REF_DATA_BTN}    id=add_reference_data_button
 ${REF_DATA_FILTER_DDL}    id=reference_data_status_filter_dropdown
 ${SEARCH_REF_DATA_INPUT}    id=text_filter_search_input
 ${USE_SELCTION_BTN}    //div[1]/div/div/form/div[3]/button[1]/span[2]
+${ADD_PROFILE_BTN}    id=add_profile_button
+${ADD_LIBRARY_BTN}    id=add_library_button
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
 ${SPECIALIZE_CLASS}    //div[1]/div/div/form/div[3]/button[1]
-#${CONFIRM_ADD_PROPERTIES}    //div[1]/div/div/modal-template/div[3]/div/modal-buttons/button[1]
 ${CONFIRM_ADD_PROPERTIES}    id=confirm_properties_from_class_button
-${SAVE_CLASS}     //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
-${MODIFY_CLASS}    //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[3]/span
-#${ADD_PROPERTY_DDL}    //*[@id="ctrl.id"]/div[3]/div/div/button-with-options/div/button
-${ADD_PROPERTY_DDL}    //*[@id="$ctrl.id"]/div[3]/div/div/button-with-options/div/button
-#${ADD_PROPERTY_BTN}    //*[@id="ctrl.id"]/div[3]/div/div/button-with-options/div/div/a[1]
-${ADD_PROPERTY_BTN}    //*[@id="$ctrl.id"]/div[3]/div/div/button-with-options/div/div/a[1]
+${SAVE_CLASS}     //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
+${MODIFY_CLASS}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[3]/span
+${ADD_PROPERTY_DDL}    id=class_options_button_add_property_dropdown_title
+${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaOminaisuus_dropdown_option
 ${SEARCH_ATTRIBUTE_INPUT}    id=text_filter_search_input
 ${USE_SELECTION_BTN}    //div[1]/div/div/form/div[3]/button[1]
 ${ALL_TYPES_DDL}    id=type
@@ -73,11 +72,11 @@ ${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_butt
 ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    id=create_new_LuoUusiLuokkaIlmanKasiteviitetta_link
 ${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaamallaUlkoiseenTunnisteeseen_link
 ${EXTERNAL_URI_INPUT}    id=externalUri
-${CHANGE_CONCEPT}    //*[@id="$ctrl.id"]/subject-view/div[1]/div/button/span
+${CHANGE_CONCEPT}    id=class_subject_change_concept_button
 ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
-${SHOW_HISTORY_BTN}    //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/history/button
+${SHOW_HISTORY_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/history/button/span
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
-${REMOVE_CLASS_BTN}    //*[@id="'class'"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[4]/span
+${REMOVE_CLASS_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[4]/span
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
@@ -159,7 +158,8 @@ Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
 Create Testiautomaatio profile
     Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
-    Click Button    Lisää soveltamisprofiili
+    Wait until page contains element    ${ADD_PROFILE_BTN}    timeout=30
+    Click Element    ${ADD_PROFILE_BTN}
     Wait until page contains element    ${MODEL_LABEL_INPUT}    timeout=30
     Input Text    ${MODEL_LABEL_INPUT}    ${MODEL_1}
     Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
@@ -217,7 +217,8 @@ Delete existing profile and create new
 Create Automaatiokirjasto Core Vocabulary
     Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
-    Click Button    Lisää tietokomponenttikirjasto
+    Wait until page contains element    ${ADD_LIBRARY_BTN}    timeout=30
+    Click Element    ${ADD_LIBRARY_BTN}
     Wait until page contains element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    ${CORE_VOCABULARY_1}
     Wait until page contains element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
