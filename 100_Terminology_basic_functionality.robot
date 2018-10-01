@@ -54,7 +54,7 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${LANGUAGE_EN}
     Wait until page contains    All organizations    timeout=20
     Wait until page contains    Search vocabularies    timeout=20
-    Wait until page contains    Filter with classification
+    Wait until page contains    Filter with information domain
     Log to Console    User interface language changed
     [Teardown]    Restore Finnish language
 
