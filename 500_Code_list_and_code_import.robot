@@ -27,7 +27,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
-    [Documentation]    Import DRAFT Code list without codes, check that import is successful and remove code list
+    [Documentation]    Import DRAFT code list without codes, check that import is successful and remove code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -40,7 +40,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
 501. Import VALID Code list with codes
-    [Documentation]    Import VALID Code list with codes, check that import is successful and remove code list
+    [Documentation]    Import VALID code list with codes, check that import is successful and remove code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -65,8 +65,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
 
-502. Import DRAFT Codes to existing Code list
-    [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful and remove code list
+502. Import DRAFT codes to existing code list
+    [Documentation]    Import DRAFT codes to existing code list, check that import is successful and remove code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -79,9 +79,9 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
-503. Import DRAFT Codes to existing Code list and update Codes with import functionality
-    [Documentation]    Import DRAFT Codes to existing Code list, check that import is successful,
-    ...    update Codes and remove code list
+503. Import DRAFT codes to existing code list and update codes with import functionality
+    [Documentation]    Import DRAFT codes to existing code list, check that import is successful,
+    ...    update codes and remove code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -97,7 +97,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
-504. Create new Code list and Codes
+504. Create new code list and codes
     [Documentation]    Create new code list and codes manually and remove code and code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
@@ -122,9 +122,9 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
-505. Create new Code list with existing codeValue
-    [Documentation]    Create new Code list with existing codeValue and check error message from
-    ...    Code list value input field
+505. Create new code list with existing codeValue
+    [Documentation]    Create new code list with existing codeValue and check error message from
+    ...    code list value input field
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -135,8 +135,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
-506. Import multiple Code lists with codes
-    [Documentation]    Import multiple Code list with codes, check that import is successful. Remove code lists and codes.
+506. Import multiple code lists with codes
+    [Documentation]    Import multiple code list with codes, check that import is successful. Remove code lists and codes.
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -188,8 +188,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_11}    ${CODE_LIST_12}
 
-508. Import DRAFT Code list with codes and DEFAULT CODE
-    [Documentation]    Import Code list with codes and DEFAULT CODE, check that import is successful and DEFAULTCODE is
+508. Import DRAFT code list with codes and DEFAULT CODE
+    [Documentation]    Import code list with codes and DEFAULT CODE, check that import is successful and DEFAULT CODE is
     ...    defined in information tab. Remove code list.
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
@@ -208,9 +208,9 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_15}
 
-509. Create Code list and add DEFAULT CODE
-    [Documentation]    Create new Code list and import codes. Add DEFAULT CODE manually,
-    ...    remove DEFAULTCODE and code list.
+509. Create code list and add DEFAULT CODE
+    [Documentation]    Create new code list and import codes. Add DEFAULT CODE manually,
+    ...    remove DEFAULT CODE and code list.
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
@@ -250,8 +250,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
-510. Import DRAFT Codes (CSV) to existing Code list
-    [Documentation]    Import DRAFT Codes (CSV) to existing Code list, check that import is successful and remove code list
+510. Import DRAFT codes (CSV) to existing code list
+    [Documentation]    Import DRAFT codes (CSV) to existing code list, check that import is successful and remove code list
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import codelist in Excel format
@@ -265,7 +265,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
-511. Create Code list and get concept for Code list from Controlled Vocabularies
+511. Create code list and get concept for code list from Controlled Vocabularies
     [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787.
     [Tags]    regression    test
@@ -309,9 +309,9 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Controlled Vocabularies
 
-512. Create Code to Code list and get concept for Code from Controlled Vocabularies
-    [Documentation]    Create Code to Code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
-    ...    Check that the name and definition of the concept will be copied in their respective fields in Code. YTI-787
+512. Create code to code list and get concept for code from Controlled Vocabularies
+    [Documentation]    Create code to code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
+    ...    Check that the name and definition of the concept will be copied in their respective fields in code, YTI-787.
     [Tags]    regression    test
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
@@ -333,9 +333,9 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Code with concept
 
-513. Import VALID Code list with codes and create new version for Code list
+513. Import VALID code list with codes and create new version of code list
     [Documentation]    Import VALID code list with codes and create new version of code list.
-    ...    Check that links and codes from the original code list are copied to the new version. YTI-156
+    ...    Check that links and codes from the original code list are copied to the new version, YTI-979.
     [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format

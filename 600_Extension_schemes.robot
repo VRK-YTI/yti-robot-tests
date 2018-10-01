@@ -389,7 +389,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_2}
 
 611. Import code list with codes, extension and members, create new version of code list
-    [Documentation]    Import code list with codes, calculation and definition hierarcghy extensions and hierachial members,
+    [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    create new version of code list. Check that all values for codes, extensions and members are copied to the new
     ...    code list version.
     [Tags]    regression    koodistot
