@@ -359,7 +359,7 @@ Upload codelist
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    6
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
-    Log to Console    Code list imported
+    Log to Console    Code list ${codelist_name} imported
 
 Import code list in Excel format
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20

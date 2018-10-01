@@ -406,15 +406,10 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=30
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_19}
-    Wait until page contains element    ${ADD_CLASSIFICATION_BTN}    timeout=30
-    Click element    ${ADD_CLASSIFICATION_BTN}
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
-    Click element    //*[contains(text(), "Asuminen")]
     Sleep    2
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    2
+    Sleep    3
     Wait until page contains    25 koodia    timeout=20
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
     Log to Console    New version of code list created
@@ -424,12 +419,12 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testirekisteri    timeout=20
     Wait until page contains    Testiorganisaatio    timeout=20
-    #Wait until page contains    Asuminen    timeout=20
-    #Wait until page contains    Rakennettu ympäristö    timeout=20
-    #Wait until page contains    Yleiset tieto- ja hallintopalvelut    timeout=20
+    Wait until page contains    Asuminen    timeout=20
+    Wait until page contains    Rakennettu ympäristö    timeout=20
+    Wait until page contains    Yleiset tieto- ja hallintopalvelut    timeout=20
     Wait until page contains    englanti    timeout=20
     Wait until page contains    suomi    timeout=20
-    #Page should not contain    ruotsi    timeout=20
+    Page should not contain    ruotsi    timeout=20
     Wait until page contains    testcode06 - Testikoodi 06    timeout=20
     Wait until page contains    31.12.2016 - 30.12.2018    timeout=20
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=30
@@ -445,7 +440,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testilaajennus11    timeout=20
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
-    #Wait until page contains    01.01.2018 - 01.01.2020    timeout=20
+    Wait until page contains    01.01.2018 - 01.01.2020    timeout=20
     Wait until page contains    URI    timeout=20
     Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]
     Click element    //*[contains(@id,'2_breadcrumb_link')]
@@ -465,7 +460,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Vertailuoperaattori    timeout=20
     Wait until page contains    Aritmeettinen operaattori    timeout=20
     Wait until page contains    testcode08 - Testikoodi 08    timeout=20
-    #Wait until page contains    01.01.2018 - 01.01.2020    timeout=20
+    Wait until page contains    01.01.2018 - 01.01.2020    timeout=20
     Wait until page contains    URI    timeout=20
     Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]
     Click element    //*[contains(@id,'2_breadcrumb_link')]

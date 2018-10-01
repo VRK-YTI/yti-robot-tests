@@ -16,6 +16,7 @@ ${Update_Codes}    ${DATAFOLDER}${/}Update_Codes.xlsx
 ${Multiple_codelists_and_codes}    ${DATAFOLDER}${/}Multiple_codelists_and_codes.xlsx
 ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
 ${Codelist_with_defaultcode}    ${DATAFOLDER}${/}Codelist_with_defaultcode.xlsx
+${Variant_code_list}    ${DATAFOLDER}${/}Variant_code_list_and_codes.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -336,16 +337,9 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     ...    Check that links in original Code list and Code are copied as well. YTI-156
     [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
-    Log to Console    Import VALID Code list with codes and copy Code list
-    Log to Console    Start data import
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
+    Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
     Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    7
-    Log to Console    Data imported successfully
-    Wait until page contains    ${CODE_LIST_9}    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -353,7 +347,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Log to Console    Codes visible and expand button shown
     Click button    ${EXPAND_ALL_BTN}
     Sleep    3
-    Log to Console    Expand button clicked
+    Log to Console    Expand all button clicked
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
     Sleep    3
@@ -362,30 +356,23 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
     Wait until page contains element    ${MODIFY_CODE_BTN}
-    Log to Console    Modify button is visible
     Click element    ${MODIFY_CODE_BTN}
-    Sleep    3
-    Log to Console    Modify button click successful
+    Log to Console    Modify button clicked
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Click element    ${ADD_LINK_DDL}
-    Sleep    2
-    Log to Console    Add link button click successful
+    Sleep    1
     Wait until page contains element    ${LINK_BTN}    timeout=20
     Click element    ${LINK_BTN}
-    Sleep    2
-    Log to Console    Add new link button click successful
+    Sleep    1
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
-    Sleep    2
-    Log to Console    URL input click successful
+    Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Log to Console    Link URL text input successful
     Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
-    Sleep    2
-    Wait until page contains    Linkki
+    Sleep    1
+    Wait until page contains    Muu linkki
     Page should contain    https://www.suomi.fi/etusivu/
-    Log to Console    Link has been added successfully to page
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    3
@@ -396,29 +383,25 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Log to Console    Back button press successful from Code page
     Click element    ${CODELIST_INFO_TAB}
     Sleep    2
-    Check values from Valid Code list
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Log to Console    Modify code list button is found
+    #Check values from Valid Code list
+    Wait until page contains element    ${MODIFY_CODE_LIST}
     Click element    ${MODIFY_CODE_LIST}
-    Sleep    2
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
-    Log to Console    Add link button is found
     Click element    ${ADD_LINK_DDL}
-    Sleep    1
     Wait until page contains element    ${LICENSE_BTN}    timeout=20
     Click element    ${LICENSE_BTN}
+    Sleep    1
     Wait until page contains element    ${CCBY4.0}    timeout=20
     Click Element    ${CCBY4.0}
-    Sleep    2
-    Log to Console    Add link button is found
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
-    Click element    ${SELECT_LINK_BTN}
-    Sleep    1
+    Click Element    ${SELECT_LINK_BTN}
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Click element    ${SAVE_CODE_MOD_BTN}
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}
-    Log to Console    Save button is found
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
+    Log to Console    Save button clicked
     Sleep    5
     Wait until page contains    Lisenssi
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
@@ -510,83 +493,82 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Teardown]    Delete empty registry    Rekisteri123 - Automaatiorekisteri
 
 516. Import new VALID code list and attach variant
-    [Documentation]    Import new VALID code list and attach variant to the code list
-    [Tags]    koodistot
+    [Documentation]    Import two code lists, attach variant to both code lists
+    ...    and remove link between variant and code list from the first code list.
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
-    Sleep    2
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
-    Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
-    Click element    ${CANCEL_CREATION_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_8}
-    Wait until page contains element    ${START_DATE_INPUT}    timeout=20
-    Input text    ${START_DATE_INPUT}    2020-08-01
-    Wait until page contains element    ${END_DATE_INPUT}    timeout=20
-    Input text    ${END_DATE_INPUT}    2020-08-31
-    Click button    Lisää luokitus
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
-    Click element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    3
-    Log to Console    koodisto6000 created
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Create new code to code list
-    Sleep    5
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
-    Wait until page contains    koodisto6000    timeout=20
-    Wait until page contains    NewCode001 - newcode001    timeout=20
-    Sleep    2
+    Import codelist in Excel format
+    Upload code list    ${Variant_code_list}    ${CODE_LIST_8}
     Return to Koodistot frontpage
     Sleep    2
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_codes}
+    Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
     Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    5
-    Log to Console    koodisto7000 created
-    Wait until page contains    ${CODE_LIST_9}    timeout=20
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
     Click element    ${ATTACH_VARIANT_BTN}
     Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
     Sleep    2
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto6000
     Sleep    2
-    Click element    ${Koodisto6000_variant}
+    Click element    //*[contains(text(), "koodisto6000")]
     Sleep    2
     Log to Console    koodisto6000 attached to koodisto7000
     Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
     Click element    ${CODELIST_VARIANTS_TAB}
+    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
     Wait until page contains    Voimassaolo    timeout=20
     Wait until page contains    Nimi    timeout=20
     Wait until page contains    Tila    timeout=20
-    #Wait until page contains    01.08.2020 - 31.08.2020    timeout=20
+    Wait until page contains    31.12.2016 - 31.12.2018    timeout=20
     Wait until page contains    koodisto6000    timeout=20
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_8}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_8}")]
+    Sleep    5
+    Wait until page contains    ${CODE_LIST_8}
+    Sleep    2
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click element    ${ATTACH_VARIANT_BTN}
+    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Sleep    2
+    Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
+    Sleep    2
+    Click element    //*[contains(text(), "koodisto7000")]
+    Sleep    2
+    Log to Console    koodisto7000 attached to koodisto6000
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click element    ${CODELIST_VARIANTS_TAB}
+    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait until page contains    Voimassaolo    timeout=20
+    Wait until page contains    Nimi    timeout=20
+    Wait until page contains    Tila    timeout=20
+    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait until page contains    koodisto7000    timeout=20
+    Wait until page contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
     Wait until page contains element    //*[contains(@id,'detach_variant_')]    timeout=20
     Click Element    //*[contains(@id,'detach_variant_')]
     Sleep    3
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Log to Console    Variant removed
     Sleep    5
-    Page should not contain element    ${CODELIST_VARIANTS_TAB}
-    Log to Console    Variant tab not visible
+    Page should not contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Log to Console    Variant removed
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=20
+    Click element    //*[contains(text(), "${CODE_LIST_8}")]
+    Wait until page contains    koodisto6000    timeout=20
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click element    ${CODELIST_VARIANTS_TAB}
+    Page should not contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait until page contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
+    Wait until page contains    koodisto7000    timeout=20
     Return to Koodistot frontpage
-    [Teardown]    Remove imported Valid code list and variant
+    [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
 
 *** Keywords ***
 Check values from Draft Code list
@@ -767,40 +749,3 @@ Test Case Teardown Code with concept
     Log To Console    Remove imported Draft code list start
     Remove code lists    ${CODE_LIST_8}
     Log To Console    Remove imported Draft code list end
-
-Remove imported Valid code list and variant
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_9}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_9}")]
-    Wait until page contains    ${CODE_LIST_9}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Log to Console    koodisto6000 removed
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_9}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Sleep    3
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_8}")]
-    Sleep    3
-    Wait until page contains    ${CODE_LIST_8}
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Sleep    3
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Log to Console    koodisto7000 removed
-    Sleep    3
-    Wait Until Element Is Visible    id=search_box_input    timeout=30
-    Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Sleep    1
