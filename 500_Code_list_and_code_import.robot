@@ -17,6 +17,7 @@ ${Multiple_codelists_and_codes}    ${DATAFOLDER}${/}Multiple_codelists_and_codes
 ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.xlsx
 ${Codelist_with_defaultcode}    ${DATAFOLDER}${/}Codelist_with_defaultcode.xlsx
 ${Variant_code_list}    ${DATAFOLDER}${/}Variant_code_list_and_codes.xlsx
+${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_version_creation.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -333,12 +334,12 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Teardown]    Test Case Teardown Code with concept
 
 513. Import VALID Code list with codes and create new version for Code list
-    [Documentation]    Import VALID Code list with codes and create new version for Code list.
-    ...    Check that links in original Code list and Code are copied as well. YTI-156
-    [Tags]    koodistot
+    [Documentation]    Import VALID code list with codes and create new version of code list.
+    ...    Check that links and codes from the original code list are copied to the new version. YTI-156
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
     Sleep    2
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
@@ -355,7 +356,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Page should contain    testikoodi02
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
-    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Log to Console    Modify button clicked
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
@@ -373,18 +374,18 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Sleep    1
     Wait until page contains    Muu linkki
     Page should contain    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    3
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
     Click element    ${CODE_BACK_BTN}
     Sleep    3
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Log to Console    Back button press successful from Code page
     Click element    ${CODELIST_INFO_TAB}
+    Log to Console    Back button press successful from Code page
     Sleep    2
     #Check values from Valid Code list
-    Wait until page contains element    ${MODIFY_CODE_LIST}
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Click element    ${ADD_LINK_DDL}
@@ -395,15 +396,15 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click Element    ${CCBY4.0}
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
     Click Element    ${SELECT_LINK_BTN}
-    Wait until page contains    Lisenssi
+    Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}
+    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
     Log to Console    Save button clicked
     Sleep    5
-    Wait until page contains    Lisenssi
+    Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Log to Console    Add link button is found and CC by 4.0 is there
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
@@ -412,49 +413,59 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click button    ${CREATE_NEW_VERSION_BTN}
     Sleep    7
     Log to Console    Create new version button pressed
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}    timeout=20
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
     Log to Console    Code list save pressed
-    Wait until page contains element    ${EXPAND_ALL_BTN}
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
     Click element    ${EXPAND_ALL_BTN}
     Sleep    2
     Log to Console    Expand all pressed
-    Wait until page contains    testikoodi01 - Testikoodi 01
-    Wait until page contains    testikoodi02 - Testikoodi 02
-    Wait until page contains    testikoodi03 - Testikoodi 03
-    Wait until page contains    testikoodi04 - Testikoodi 04
-    Wait until page contains    testikoodi05 - Testikoodi 05
-    Wait until page contains    testikoodi06 - Testikoodi 06
-    Wait until page contains    testikoodi07 - Testikoodi 07
-    Wait until page contains    testikoodi08 - Testikoodi 08
-    Wait until page contains    testikoodi09 - Testikoodi 09
-    Wait until page contains    testikoodi10 - Testikoodi 10
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait until page contains    testikoodi02 - Testikoodi 02    timeout=20
+    Wait until page contains    testikoodi03 - Testikoodi 03    timeout=20
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait until page contains    testikoodi05 - Testikoodi 05    timeout=20
+    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait until page contains    testikoodi07 - Testikoodi 07    timeout=20
+    Wait until page contains    testikoodi08 - Testikoodi 08    timeout=20
+    Wait until page contains    testikoodi09 - Testikoodi 09    timeout=20
+    Wait until page contains    testikoodi10 - Testikoodi 10    timeout=20
+    Log to Console    All codes are copied
     Click element    //*[contains(text(), "testikoodi02 - Testikoodi 02")]
     Sleep    2
     Log to Console    Testikoodi 02 clicked
-    Wait until page contains    Linkki    timeout=20
+    Wait until page contains    Muu linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Log to Console    Testikoodi 02 elements found on page
     Click element    ${CODE_BACK_BTN}
     Sleep    7
     Log to Console    Code back button pressed
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Log to Console    Codelist info tab found
     Click element    ${CODELIST_INFO_TAB}
+    Log to Console    Codelist info tab clicked
     Sleep    5
-    Wait until page contains    Lisenssi
+    Wait until page contains    englanti    timeout=20
+    Wait until page contains    suomi    timeout=20
+    Wait until page contains    ruotsi    timeout=20
+    Wait until page contains    kuvausFI    timeout=20
+    Wait until page contains    määritelmäFI    timeout=20
+    Wait until page contains    muutostietoFI    timeout=20
+    Wait until page contains    101    timeout=20
+    Wait until page contains    lähdeFI    timeout=20
+    Wait until page contains    lakiperusteFI    timeout=20
+    Wait until page contains    sitovuustasoFI    timeout=20
+    Wait until page contains    Linkit    timeout=20
+    Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Log to Console    CC 4.0 license found and Codes tab is there
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Sleep    5
-    Log to Console    Codes tab clicked
+    Log to Console    All values and links copied
+    Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
