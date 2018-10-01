@@ -175,7 +175,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Member 1
     Wait until page contains    Aritmeettinen operaattori    timeout=20
     Wait until page contains    -    timeout=20
-    Wait until page contains    Vertailu operaattori    timeout=20
+    Wait until page contains    Vertailuoperaattori    timeout=20
     Wait until page contains    <=    timeout=20
     Wait until page contains    Koodi
     Wait until page contains    testcode57 - Testcode 57
@@ -271,7 +271,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Jäsen1    timeout=20
     Wait until page contains    Aritmeettinen operaattori    timeout=20
     Wait until page contains    -    timeout=20
-    Wait until page contains    Vertailu operaattori    timeout=20
+    Wait until page contains    Vertailuoperaattori    timeout=20
     Wait until page contains    <=    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
