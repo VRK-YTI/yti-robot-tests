@@ -124,6 +124,8 @@ ${COMPARISON_OPERATOR_INPUT}    id=member_membervalue_comparisonOperator _input
 ${UNARY_OPERATOR_INPUT}    id=member_membervalue_unaryOperator _input
 ${CALC_HIERARCHY_TAB}    id=codelist_extension_L (0)_tab
 ${DEF_HIERARCHY_TAB}    id=codelist_extension_M (0)_tab
+${EXTENSION_INFO_TAB}    id=extension_info_tab
+${MEMBERS_INFO_TAB}    id=extension_extensions_tabs
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button

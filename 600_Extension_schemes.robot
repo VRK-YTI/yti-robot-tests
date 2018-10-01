@@ -433,7 +433,16 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains element    //*[contains(text(), "LASKENTAHIERARKIAT")]    timeout=20
     Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
     Click element    //*[contains(@id,'111_view_extension')]
-    Wait until page contains    9 jäsentä    timeout=20
+    Wait until page contains element    ${EXTENSION_INFO_TAB}    timeout=30
+    Click element    ${EXTENSION_INFO_TAB}
+    Wait until page contains    O1234567890123456789012345678901234567111    timeout=20
+    Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
+    Wait until page contains    Testilaajennus11    timeout=20
+    Wait until page contains    Määrityshierarkia    timeout=20
+    Wait until page contains    dcat - DCAT-AP-luokitus    timeout=20
+    Wait until page contains    31.12.2016 - 30.12.2018    timeout=20
+    Wait until page contains element    ${MEMBERS_INFO_TAB}    timeout=30
+    Click element    ${MEMBERS_INFO_TAB}
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
     Wait until page contains element    //*[contains(text(), "Jäsen1 · Testikoodi 01")]    timeout=20
     Click element    //*[contains(text(), "Jäsen1 · Testikoodi 01")]
