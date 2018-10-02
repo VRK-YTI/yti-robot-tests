@@ -451,7 +451,17 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
     Wait until page contains    01.01.2018 - 01.01.2020    timeout=20
     Wait until page contains    URI    timeout=20
-    Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]
+    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'3_breadcrumb_link')]
+    Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]    timeout=20
+    Click element    //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]
+    Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
+    Wait until page contains    Testilaajennus11    timeout=20
+    Wait until page contains    EDUC - Koulutus, kulttuuri ja urheilu - DCAT-AP-luokitus - Euroopan unionin koodistot    timeout=20
+    Wait until page contains    08.01.2018 - 08.01.2020    timeout=20
+    Wait until page contains    URI    timeout=20
+    Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'2_breadcrumb_link')]
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=30
     Click element    ${EXTENSIONS_TAB}
