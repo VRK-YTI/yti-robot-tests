@@ -18,6 +18,7 @@ ${Codelist_ExtensionSchemes}    ${DATAFOLDER}${/}Codelist_with_ExtensionSchemes.
 ${Codelist_with_defaultcode}    ${DATAFOLDER}${/}Codelist_with_defaultcode.xlsx
 ${Variant_code_list}    ${DATAFOLDER}${/}Variant_code_list_and_codes.xlsx
 ${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_version_creation.xlsx
+${Code_list_with_languagecode}    ${DATAFOLDER}${/}Code_list_with_languagecodes.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -506,7 +507,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 516. Import new VALID code list and attach variant
     [Documentation]    Import two code lists, attach variant to both code lists
     ...    and remove link between variant and code list from the first code list.
-    [Tags]    regression    koodistot
+    [Tags]    regression    test    koodistot
     [Setup]    Test Case Setup Superuser
     Import codelist in Excel format
     Upload code list    ${Variant_code_list}    ${CODE_LIST_8}
@@ -580,6 +581,33 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    koodisto7000    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
+
+517. Import Code list with LANGUAGECODES
+    [Documentation]    Import code list with language codes and check that
+    ...    those are taken into use.
+    [Tags]    regression    test
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_languagecode}    ${CODE_LIST_9}
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Page should contain    Koodisto7000
+    Page should contain    koodisto7000
+    Page should contain    Testirekisteri
+    Page should contain    Testiorganisaatio
+    Page should contain    Asuminen
+    Page should contain    Työ ja työttömyys
+    Page should contain    Elinkeinot
+    Page should contain    Kielikoodi
+    Page should contain    asu
+    Page should contain    bemba
+    Page should contain    englanti
+    Page should contain    ruotsi
+    Page should contain    suomi
+    Page should contain    swahili (Tansania)
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_9}
 
 *** Keywords ***
 Check values from Draft Code list

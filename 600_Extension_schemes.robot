@@ -25,14 +25,17 @@ ${Unaryoperator_value_missing}    ${DATAFOLDER}${/}Calculation_hierarchy_members
 ${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensionvalue_column.xlsx
 ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
 ${Extensions_new_version_creation}    ${DATAFOLDER}${/}Extensions_and_members_for_new_version_creation.xlsx
+${Invalid_unaryoperator_value}    ${DATAFOLDER}${/}Calculation_members_invalid_unary_operator.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
+${Invalid_unaryoperator_value_csv}    ${DATAFOLDER}${/}Calculation_members_invalid_unary_operator_csv.csv
 #error messages
 ${Error_missing_codeschemes}    Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen liitettyihin koodistoihin.
 ${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa.
 ${Error_max_hierarchy_level}    Jäsenten maksimi hierarkkinen taso ylittyi.
 ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä 6.
+${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 3.
 
 *** Test Cases ***
 600. Import code list with extension
@@ -388,10 +391,10 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_2}
 
-611. Import code list with codes, extension and members, create new version of code list
+611. Import code list with codes, extensions and members and create new version of code list
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    create new version of code list. Check that all values for codes, extensions and members are copied to the new
-    ...    code list version.
+    ...    code list version. Export Excel and CSV for new code list version.
     [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -424,7 +427,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Yleiset tieto- ja hallintopalvelut    timeout=20
     Wait until page contains    englanti    timeout=20
     Wait until page contains    suomi    timeout=20
-    Page should not contain    ruotsi    timeout=20
+    Page should not contain    ruotsi
     Wait until page contains    testcode06 - Testikoodi 06    timeout=20
     Wait until page contains    31.12.2016 - 30.12.2018    timeout=20
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=30
@@ -441,8 +444,8 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Määrityshierarkia    timeout=20
     Wait until page contains    dcat - DCAT-AP-luokitus    timeout=20
     Wait until page contains    31.12.2016 - 30.12.2018    timeout=20
-    Wait until page contains element    ${MEMBERS_INFO_TAB}    timeout=30
-    Click element    ${MEMBERS_INFO_TAB}
+    Wait until page contains element    ${MEMBERS_TAB}    timeout=30
+    Click element    ${MEMBERS_TAB}
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
     Wait until page contains element    //*[contains(text(), "Jäsen1 · Testikoodi 01")]    timeout=20
     Click element    //*[contains(text(), "Jäsen1 · Testikoodi 01")]
@@ -492,28 +495,40 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Wait until page contains    Tila    timeout=20
     Wait until page contains    Luonnos    timeout=20
     Wait until page contains    Voimassa oleva    timeout=20
+    Wait until page contains element    //*[contains(@id,'2_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'2_breadcrumb_link')]
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_TYPE_EXCEL}
+    Sleep    5
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_TYPE_CSV}
+    Sleep    5
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_19}    ${CODE_LIST_14}
 
-612. Add code list to extension and add codes to member
-    [Documentation]    Import new code list and create calculation hierarchy extension and member manually
-    ...    Add code list to extension and add codes from that code list to member.
+612. Import members with invalid member value
+    [Documentation]    Import members with invalid unary operator value to calculation hierarchy extension
+    ...    and check error message.
     [Tags]    regression    koodistot
-    [Setup]    Test Case Setup Superuser
+    [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
-    Wait until page contains    testcode28 - Testcode 28    timeout=20
-    Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-AP-luokitus
-    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    dcat - DCAT-AP-luokitus    Energia
-    Wait until page contains    - Member 1 · Energia - DCAT-AP-luokitus <=    timeout=20
-    Wait until page contains    ENER - Energia - DCAT-AP-luokitus - Euroopan unionin koodistot    timeout=20
-    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
-    Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "- Member 1 · Energia <=")]    timeout=20
-    Wait until page contains    Extension 1    timeout=20
-    Sleep    1
+    Wait until page contains    30 koodia    timeout=20
+    Upload extension    ${Extension_calculation_hierarchy}
+    Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'555_view_extension')]
+    Upload members    ${Invalid_unaryoperator_value}    ${FILE_FORMAT_EXCEL}
+    Sleep    5
+    Wait until page contains    ${Error_member_value_invalid}    timeout=20
+    Cancel code import
+    Sleep    2
+    Upload members    ${Invalid_unaryoperator_value_csv}    ${FILE_FORMAT_CSV}
+    Wait until page contains    ${Error_member_value_invalid}    timeout=20
+    Cancel code import
+    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
