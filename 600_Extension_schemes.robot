@@ -498,7 +498,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
 612. Add code list to extension and add codes to member
     [Documentation]    Import new code list and create calculation hierarchy extension and member manually
     ...    Add code list to extension and add codes from that code list to member.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -507,11 +507,11 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-AP-luokitus
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    dcat - DCAT-AP-luokitus    Energia
     Wait until page contains    - Member 1 · Energia - DCAT-AP-luokitus <=    timeout=20
-    Wait until page contains    ENER - Energia - DCAT-AP-luokitus - Testirekisteri test    timeout=20
+    Wait until page contains    ENER - Energia - DCAT-AP-luokitus - Euroopan unionin koodistot    timeout=20
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "- Member 1 · Energia - DCAT-AP-luokitus <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Energia <=")]    timeout=20
     Wait until page contains    Extension 1    timeout=20
     Sleep    1
     Return to Koodistot frontpage
