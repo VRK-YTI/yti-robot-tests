@@ -62,7 +62,7 @@ ${CONFIRM_ADD_PROPERTIES}    id=confirm_properties_from_class_button
 ${SAVE_CLASS}     //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
 ${MODIFY_CLASS}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[3]/span
 ${ADD_PROPERTY_DDL}    id=class_options_button_add_property_dropdown_title
-${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaOminaisuus_dropdown_option
+${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaAttribuuttiTaiAssosiaatio_dropdown_option
 ${SEARCH_ATTRIBUTE_INPUT}    id=text_filter_search_input
 ${USE_SELECTION_BTN}    //div[1]/div/div/form/div[3]/button[1]
 ${ALL_TYPES_DDL}    id=type
