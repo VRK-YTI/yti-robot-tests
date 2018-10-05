@@ -595,7 +595,6 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Page should contain    Koodisto7000
     Page should contain    koodisto7000
     Page should contain    Testirekisteri
-    Page should contain    Testiorganisaatio
     Page should contain    Asuminen
     Page should contain    Työ ja työttömyys
     Page should contain    Elinkeinot
