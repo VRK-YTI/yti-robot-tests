@@ -131,9 +131,8 @@ ${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnis
 
 107. Guide through creating new Core Vocabulary
     [Documentation]    Guide through creating new Core Vocabulary
-    [Tags]    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup
-    [Timeout]    15 minutes
     Wait until page contains element    ${GUIDE_FRONT_PAGE}    timeout=20
     Click element    ${GUIDE_FRONT_PAGE}
     Wait until page contains element    ${GUIDE_CORE_VOCABULARY}    timeout=20
@@ -143,7 +142,7 @@ ${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnis
 
 108. Guide through creating new Application Profile
     [Documentation]    Guide through creating new Application Profile
-    [Tags]    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup
     Wait until page contains element    ${GUIDE_FRONT_PAGE}    timeout=20
     Click element    ${GUIDE_FRONT_PAGE}
