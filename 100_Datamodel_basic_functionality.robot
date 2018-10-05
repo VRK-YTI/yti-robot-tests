@@ -133,6 +133,7 @@ ${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnis
     [Documentation]    Guide through creating new Core Vocabulary
     [Tags]    regression
     [Setup]    Test Case Setup
+    [Timeout]    15 minutes
     Wait until page contains element    ${GUIDE_FRONT_PAGE}    timeout=20
     Click element    ${GUIDE_FRONT_PAGE}
     Wait until page contains element    ${GUIDE_CORE_VOCABULARY}    timeout=20
