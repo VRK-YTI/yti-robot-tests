@@ -4,6 +4,10 @@ Suite Teardown    Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Datamodel_Resources.robot
 
+*** Variables ***
+${Application_profile_text}    Onnittelut soveltamisprofiilin luomisessa onnistumisesta!
+${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnistumisesta!
+
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
@@ -125,6 +129,28 @@ Resource          resources/Datamodel_Resources.robot
     Wait until page contains    User right management
     Close All Browsers
 
+107. Guide through creating new Core Vocabulary
+    [Documentation]    Guide through creating new Core Vocabulary
+    [Tags]    regression
+    [Setup]    Test Case Setup
+    Wait until page contains element    ${GUIDE_FRONT_PAGE}    timeout=20
+    Click element    ${GUIDE_FRONT_PAGE}
+    Wait until page contains element    ${GUIDE_CORE_VOCABULARY}    timeout=20
+    Click element    ${GUIDE_CORE_VOCABULARY}
+    Click through guide    ${Core_vocabulary_text}
+    Close All Browsers
+
+108. Guide through creating new Application Profile
+    [Documentation]    Guide through creating new Application Profile
+    [Tags]    regression
+    [Setup]    Test Case Setup
+    Wait until page contains element    ${GUIDE_FRONT_PAGE}    timeout=20
+    Click element    ${GUIDE_FRONT_PAGE}
+    Wait until page contains element    ${GUIDE_APPLICATION_PROFILE}    timeout=20
+    Click element    ${GUIDE_APPLICATION_PROFILE}
+    Click through guide    ${Application_profile_text}
+    Close All Browsers
+
 *** Keywords ***
 Restore Finnish language
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
@@ -151,3 +177,17 @@ Change user interface language
     Sleep    2
     Click element    ${language}
     Sleep    2
+
+Click through guide
+    [Arguments]    ${final_text}
+    : FOR    ${ClickNext}    IN RANGE    300
+    \    ${Next}    Get Text    //*[contains(text(), "seuraava")]
+    \    Page Should Contain    ${Next}
+    \    Wait until page contains element    ${GUIDE_NEXT_BTN}    timeout=20
+    \    Click element    ${GUIDE_NEXT_BTN}
+    \    Sleep    1
+    \    ${exit}=    Run Keyword And Return Status    Page Should Contain element    //*[contains(text(), "${final_text}")]
+    \    Exit For Loop If    ${exit}
+    Wait until page contains element    //*[contains(text(), "sulje")]    timeout=20
+    Click element    //*[contains(text(), "sulje")]
+    Sleep    3
