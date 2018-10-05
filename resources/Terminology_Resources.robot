@@ -114,7 +114,7 @@ Test Case Setup Create Terminological Vocabulary without concepts
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto2")]
-    run keyword if    ${vocabulary_exists}    Delete existing terminolgical vocabulary and create new
+    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
     ...    ELSE    Create Terminological Vocabulary without concepts
     Go back to Sanastot frontpage
 

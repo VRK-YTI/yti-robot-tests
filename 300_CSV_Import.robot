@@ -191,6 +191,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    henkilö, joka hotkii kaiken2
     Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
+    Sleep    3
     Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
     Click element    //*[contains(text(), "${TERM_2}")]
     Sleep    2
