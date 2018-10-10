@@ -63,6 +63,9 @@ ${REMOVE_CONCEPT_BTN}    id=concept_editable_remove_button
 ${CONFIRM_REMOVE_CONCEPT_BTN}    id=delete_confirmation_yes_button
 ${IMPORT_CANCEL_BTN}    id=import_cancel_button
 ${IMPORT_YES_BTN}    id=import_yes_button
+${EDIT_CONCEPT_BTN}    id=concept_editable_start_editing_button
+${CONCEPT_LIST_SEARCH_INPUT}    id=concept_list_search_concept_input
+${REMOVE_LINK_CONFIRMATION_BTN}    id=remove_link_confirmation_yes_button
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
@@ -330,3 +333,48 @@ Delete Terminological Vocabulary
     Sleep    1
     Log to Console    Terminological Vocabulary deleted
     Close All Browsers
+
+Edit concept
+    [Arguments]    ${concept}
+    Wait until page contains element    ${CONCEPT_LIST_SEARCH_INPUT}    timeout=30
+    Input text    ${CONCEPT_LIST_SEARCH_INPUT}    ${concept}
+    Wait until page contains element    //*[contains(text(), "${concept}")]
+    Click element    //*[contains(text(), "${concept}")]
+    Wait until page contains element    ${EDIT_CONCEPT_BTN}    timeout=30
+    Click element    ${EDIT_CONCEPT_BTN}
+    Sleep    1
+
+Delete Terminological Dictionary
+    [Arguments]    ${dictionary}
+    Wait until page contains element    //*[contains(text(), "${dictionary}")]    timeout=30
+    Click element    //*[contains(text(), "${dictionary}")]
+    Wait until page contains    ${dictionary}    timeout=30
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains    ${dictionary}    timeout=20
+    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${REMOVE_VOCABULARY_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${dictionary}
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${dictionary}")]
+    Sleep    1
+    Log to Console    ${dictionary} Terminological Dictionary deleted
+    Close All Browsers
+
+Select dictionary
+    [Arguments]    ${dictionary}
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${dictionary}
+    Wait until page contains element    //*[contains(text(), "${dictionary}")]    timeout=30
+    Click element    //*[contains(text(), "${dictionary}")]
+    Wait until page contains    ${dictionary}    timeout=30
+    Log to Console    ${dictionary} selcted
+    Sleep    1
+
+Save concept
+    Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
+    Click element    ${SAVE_CONCEPT_BTN}
+    Sleep    1

@@ -113,6 +113,31 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Testiautomaatiosanasto
 
+204. Remove related concept and check confirmation
+    [Documentation]    Add new Terminological Dictionary, import vocabulary, delete related concept
+    ...    and check remove confirmation, YTI-768.
+    [Tags]    regression    sanastot    test
+    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    Go back to Sanastot frontpage
+    Select dictionary    ${VOCABULARY_2}
+    Edit concept    tutkija
+    Wait until page contains element    //*[contains(@id,'concept-3_concept_related_concept_')]    timeout=30
+    Click element    //*[contains(@id,'concept-3_concept_related_concept_')]
+    Save concept
+    Wait until page contains    Seuraava viite poistuu kokonaan tallennuksen yhteydessä    timeout=30
+    Wait until page contains    Viitteen tyyppi    timeout=30
+    Wait until page contains    Kohteen sijainti    timeout=30
+    Wait until page contains    Kohde    timeout=30
+    Wait until page contains    Liittyvä käsite    timeout=30
+    Wait until page contains    hutkija    timeout=30
+    Wait until page contains element    ${REMOVE_LINK_CONFIRMATION_BTN}    timeout=30
+    Click element    ${REMOVE_LINK_CONFIRMATION_BTN}
+    Sleep    2
+    Page should not contain    Liittyvä käsite
+    Log to Console    Related concept removed
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
