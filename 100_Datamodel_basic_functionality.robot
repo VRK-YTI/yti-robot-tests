@@ -7,6 +7,11 @@ Resource          resources/Datamodel_Resources.robot
 *** Variables ***
 ${Application_profile_text}    Onnittelut soveltamisprofiilin luomisessa onnistumisesta!
 ${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnistumisesta!
+${Namespace_text}    Onnittelut nimiavaruuden lisäämisessä onnistumisesta!
+${Create_class_text}    Onnittelut uuden luokan lisäämisessä onnistumisesta!
+${Specialize_class_text}    Onnittelut luokan erikoistamisessa onnistumisesta!
+${Add_attribute_text}    Onnittelut attribuutin lisäämisessä onnstumisesta!
+${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisesta!
 
 *** Test Cases ***
 100. Open Information about the service page
@@ -133,8 +138,8 @@ ${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnis
     [Documentation]    Guide through creating new Core Vocabulary
     [Tags]    tietomallit
     [Setup]    Test Case Setup
-    Wait until page contains element    ${GUIDE_FRONT_PAGE}    timeout=20
-    Click element    ${GUIDE_FRONT_PAGE}
+    Wait until page contains element    ${GUIDE_BTN}    timeout=20
+    Click element    ${GUIDE_BTN}
     Wait until page contains element    ${GUIDE_CORE_VOCABULARY}    timeout=20
     Click element    ${GUIDE_CORE_VOCABULARY}
     Click through guide    ${Core_vocabulary_text}
@@ -144,12 +149,82 @@ ${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnis
     [Documentation]    Guide through creating new Application Profile
     [Tags]    tietomallit
     [Setup]    Test Case Setup
-    Wait until page contains element    ${GUIDE_FRONT_PAGE}    timeout=20
-    Click element    ${GUIDE_FRONT_PAGE}
+    Wait until page contains element    ${GUIDE_BTN}    timeout=20
+    Click element    ${GUIDE_BTN}
     Wait until page contains element    ${GUIDE_APPLICATION_PROFILE}    timeout=20
     Click element    ${GUIDE_APPLICATION_PROFILE}
     Click through guide    ${Application_profile_text}
     Close All Browsers
+
+109. Guide through requiring a namespace
+    [Documentation]    Guide through requiring a namespace
+    [Tags]    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select model    ${MODEL_1}
+    Wait until page contains element    ${GUIDE_BTN}    timeout=20
+    Click element    ${GUIDE_BTN}
+    Sleep    1
+    Wait until page contains element    ${GUIDE_NAMESPACE}    timeout=20
+    Click element    ${GUIDE_NAMESPACE}
+    Click through guide    ${Namespace_text}
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+110. Guide through creating a class
+    [Documentation]    Guide through creating a class
+    [Tags]    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select model    ${MODEL_1}
+    Wait until page contains element    ${GUIDE_BTN}    timeout=20
+    Click element    ${GUIDE_BTN}
+    Sleep    1
+    Wait until page contains element    ${GUIDE_CREATE_CLASS}    timeout=20
+    Click element    ${GUIDE_CREATE_CLASS}
+    Click through guide    ${Create_class_text}
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+111. Guide through specializing a class
+    [Documentation]    Guide through specializing a class
+    [Tags]    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select model    ${MODEL_1}
+    Wait until page contains element    ${GUIDE_BTN}    timeout=20
+    Click element    ${GUIDE_BTN}
+    Sleep    1
+    Wait until page contains element    ${GUIDE_SPECIALIZE_CLASS}    timeout=20
+    Click element    ${GUIDE_SPECIALIZE_CLASS}
+    Click through guide    ${Specialize_class_text}
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+112. Guide through adding an attribute
+    [Documentation]    Guide through adding an attribute
+    [Tags]    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select model    ${MODEL_1}
+    Wait until page contains element    ${GUIDE_BTN}    timeout=20
+    Click element    ${GUIDE_BTN}
+    Sleep    1
+    Wait until page contains element    ${GUIDE_ADD_ATTRIBUTE}    timeout=20
+    Click element    ${GUIDE_ADD_ATTRIBUTE}
+    Click through guide    ${Add_attribute_text}
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+113. Guide through adding an association
+    [Documentation]    Guide through adding an association
+    [Tags]    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select model    ${MODEL_1}
+    Wait until page contains element    ${GUIDE_BTN}    timeout=20
+    Click element    ${GUIDE_BTN}
+    Sleep    1
+    Wait until page contains element    ${GUIDE_ADD_ASSOCIATION}    timeout=20
+    Click element    ${GUIDE_ADD_ASSOCIATION}
+    Click through guide    ${Add_association_text}
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
 
 *** Keywords ***
 Restore Finnish language
@@ -190,4 +265,5 @@ Click through guide
     \    Exit For Loop If    ${exit}
     Wait until page contains element    //*[contains(text(), "sulje")]    timeout=20
     Click element    //*[contains(text(), "sulje")]
+    Log to Console    Guide through succesfully!
     Sleep    3

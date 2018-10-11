@@ -23,9 +23,14 @@ ${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${TEXT_FILTER_SEARCH_INPUT}    id=text_filter_search_input
 ${FRONTPAGE_ADVANCED_SEARCH}    id=advanced_search_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
-${GUIDE_FRONT_PAGE}    //application/ng-container/navigation-bar/nav/ul/li[1]/a/i
-${GUIDE_CORE_VOCABULARY}    //div[1]/div/div/div/div[2]/div/div/div[1]/div/div[1]
-${GUIDE_APPLICATION_PROFILE}    //div[1]/div/div/div/div[2]/div/div/div[2]/div/div[1]
+${GUIDE_BTN}      id=start_help_link
+${GUIDE_CORE_VOCABULARY}    id=OhjeUudenTietokomponenttikirjastonLuomiseen_help_link
+${GUIDE_APPLICATION_PROFILE}    id=OhjeUudenSoveltamisprofiilinLuomiseen_help_link
+${GUIDE_NAMESPACE}    id=NimiavaruudenLisaamisenOhjeistus_help_link
+${GUIDE_CREATE_CLASS}    id=UudenLuokanLuomisenOhjeistus_help_link
+${GUIDE_SPECIALIZE_CLASS}    id=LuokanErikoistamisenOhjeistus_help_link
+${GUIDE_ADD_ATTRIBUTE}    id=AttribuutinLisaamisenOhjeistus_help_link
+${GUIDE_ADD_ASSOCIATION}    id=AssosiaationLisaamisenOhjeistus_help_link
 ${GUIDE_NEXT_BTN}    //help-popover/div/button[2]
 #Buttons and links
 ${ADD_CLASS_BTN}    id=add_new_class_button
@@ -276,3 +281,34 @@ Delete existing core vocabulary and create new
     Wait Until Page Contains    tietomallia    timeout=30
     Log to Console    Automaatiokirjasto Core Vocabulary deleted
     Create Automaatiokirjasto Core Vocabulary
+
+Select model
+    [Arguments]    ${model}
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${model}
+    Wait until page contains element    //*[contains(text(), "${model}")]    timeout=30
+    Sleep    1
+    Click element    //*[contains(text(), "${model}")]
+    Wait until page contains    ${model}    timeout=30
+    Log to Console    ${model} selected
+    Sleep    1
+
+Delete profile
+    [Arguments]    ${profile}
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Wait until page contains element    //*[contains(text(), "${profile}")]    timeout=30
+    Click Element    //*[contains(text(), "${profile}")]
+    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
+    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${REMOVE_MODEL_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Sleep    2
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Wait Until Page Contains    tietomallia    timeout=30
+    Log to Console    ${profile} profile deleted
+    Sleep    2
+    Close All Browsers
