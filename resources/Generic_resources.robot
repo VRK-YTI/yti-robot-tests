@@ -40,7 +40,7 @@ ${SAVE_REGISTRY}    id=editable_save_button
 ${DELETE_REGISTRY}    id=delete_registry_button
 ${REGISTRY_DDL}    id=registryDropdown
 #Code list buttons
-${ADD_CLASSIFICATION_BTN}    id=add_classification_button
+${ADD_CLASSIFICATION_BTN}    id=add_infodomain_button
 ${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
 ${CODE_LIST_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
 ${CODE_LIST_STATUS_DDL}    id=selected_status_input_dropdown
