@@ -103,7 +103,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains    T200
     Wait until page contains    Rekisteri
     Wait until page contains    Testirekisteri
-    Wait until page contains    Luokitus
+    Wait until page contains    Tietoalue
     Wait until page contains    Eläkkeet
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_7}
