@@ -329,7 +329,7 @@ Create code list
     Click element    //*[contains(text(), "${organization}")]
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}
     Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
-    Click button    Lisää luokitus
+    Click button    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
     Click element    //*[contains(text(), "${classification}")]
@@ -543,7 +543,7 @@ Create new version of code list
     Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
-    Click button    Lisää luokitus
+    Click button    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
     Click element    //*[contains(text(), "${classification}")]

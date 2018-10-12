@@ -288,7 +288,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click button    ${REGISTRY_1}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
-    Click button    Lisää luokitus
+    Click button    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
     Click element    //*[contains(text(), "Asuminen")]
@@ -616,7 +616,7 @@ Check values from Draft Code list
     Page should contain    koodisto6000
     Page should contain    Rekisteri
     Page should contain    Testirekisteri
-    Page should contain    Luokitus
+    Page should contain    Tietoalue
     Page should contain    Asuminen
     Page should contain    Työ ja työttömyys
     Page should contain    Elinkeinot
@@ -628,7 +628,7 @@ Check values from Valid Code list
     Page should contain    koodisto7000
     Page should contain    Rekisteri
     Page should contain    Testirekisteri
-    Page should contain    Luokitus
+    Page should contain    Tietoalue
     Page should contain    Asuminen
     Page should contain    Työ ja työttömyys
     Page should contain    Elinkeinot
