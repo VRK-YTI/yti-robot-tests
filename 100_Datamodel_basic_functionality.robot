@@ -66,14 +66,12 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Search for DRAFT model with frontpage search function.
     [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait until page contains element    //*[contains(text(), "${MODEL_1}")]    timeout=30
-    Sleep    1
-    Click element    //*[contains(text(), "${MODEL_1}")]
-    Wait until page contains    ${MODEL_1}    timeout=30
+    Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
+    Click Element    //*[contains(text(), "Testiautomaatio")]
     Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_MODEL_DETAILS_BTN}
+    Click Element    ${SHOW_MODEL_DETAILS_BTN}
     Wait until page contains element    ${ADD_CLASS_BTN}    timeout=30
     Sleep    5
     Go back to Data Vocabularies frontpage
