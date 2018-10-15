@@ -265,6 +265,7 @@ Click through guide
     \    ${Next}    Get Text    //*[contains(text(), "seuraava")]
     \    Page Should Contain    ${Next}
     \    Wait until page contains element    ${GUIDE_NEXT_BTN}    timeout=20
+    \    Sleep    1
     \    Click element    ${GUIDE_NEXT_BTN}
     \    Sleep    1
     \    ${exit}=    Run Keyword And Return Status    Page Should Contain element    //*[contains(text(), "${final_text}")]
