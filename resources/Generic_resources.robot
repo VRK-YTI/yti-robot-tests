@@ -84,6 +84,9 @@ ${CODE_LIST_DDL}    id=codeSchemeDropdown
 ${EXPORT_DDL}     id=exportDropdown
 ${VERSION_TAB}    id=codelist_versionhistory_tab
 ${CLOSE_ERROR_MODAL_BTN}    id=close_error_modal_button
+${OPEN_TERMINOLOGY_MODAL_BTN}    id=open_terminology_modal_button
+${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
+${CLOSE_MODAL_LINK}    id=close_modal_link
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
