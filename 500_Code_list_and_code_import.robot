@@ -814,10 +814,6 @@ Continue code creation with concept
     Click element    ${SAVE_NEW_CODE_BTN}
 
 Suggest concept to Controlled Vocabularies
-    #Wait until page contains element    ${OPEN_TERMINOLOGY_MODAL_BTN}    timeout=20
-    #Sleep    3
-    #Click element    ${OPEN_TERMINOLOGY_MODAL_BTN}
-    #Sleep    3
     Wait until page contains element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]    timeout=20
     Click element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]
     Wait until page contains    Halautko ehdottaa käsitettä    timeout=20

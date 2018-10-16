@@ -25,7 +25,7 @@ ${Code_list_invalid_classification_csv}    ${DATAFOLDER}${/}Code_list_incorrect_
 ${Code_list_invalid_codeValue_csv}    ${DATAFOLDER}${/}Code_list_with_invalid_codevalue_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 2.
-${Error_no_classification_value}    Aineistolle annettua luokitusta ei löydy.
+${Error_no_classification_value}    Aineistolle annettua tietoaluetta ei löydy.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 2.
 ${Error_invalid_status_value}    Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu.
 ${Error_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja.
