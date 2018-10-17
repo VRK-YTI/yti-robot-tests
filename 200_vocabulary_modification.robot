@@ -138,6 +138,26 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
+205. Add collection for vocabulary
+    [Documentation]    Add new collection to vocabulary and delete collection.
+    [Tags]    regression    sanastot    test
+    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    Go back to Sanastot frontpage
+    Select dictionary    ${VOCABULARY_2}
+    Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
+    Add collection broader    hotkija    hutkija
+    Add member    tutkija    tutkimus
+    Wait until page contains element    //*[contains(@id,'1_collection_list_listitem')]    timeout=30
+    Wait until page contains element    ${REMOVE_COLLECTION_BTN}    timeout=30
+    Click element    ${REMOVE_COLLECTION_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_BTN}
+    Sleep    2
+    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain    Testikäsitevalikoima
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
