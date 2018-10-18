@@ -79,6 +79,8 @@ ${SAVE_COLLECTION_BTN}    id=collection_editable_save_edited_button
 ${EDIT_COLLECTION_BTN}    id=collection_editable_start_editing_button
 ${REMOVE_COLLECTION_BTN}    id=collection_editable_remove_button
 ${CONFIRM_REMOVE_BTN}    id=delete_confirmation_yes_button
+${CONCEPTS_ALPHABETICAL_TAB}    id=concepts_alphabetic_tab
+${CONCEPTS_HIERARCHIAL_TAB}    id=concepts_hierarchical_tab
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
@@ -415,11 +417,14 @@ Save collection
     Click element    ${SAVE_COLLECTION_BTN}
     Sleep    3
 
-Add collection broader
+Edit collection
+    Wait until page contains element    ${EDIT_COLLECTION_BTN}    timeout=30
+    Click Element    ${EDIT_COLLECTION_BTN}
+    Sleep    1
+
+Add broader concepts for collection
     [Arguments]    @{concept_items}
     : FOR    ${concept_item}    IN    @{concept_items}
-    \    Wait until page contains element    ${EDIT_COLLECTION_BTN}    timeout=30
-    \    Click Element    ${EDIT_COLLECTION_BTN}
     \    Wait until page contains element    ${COLLECTION_BROADER_CONCEPT_BTN}    timeout=30
     \    Click Element    ${COLLECTION_BROADER_CONCEPT_BTN}
     \    Wait until page contains element    //*[contains(text(), "${concept_item}")]    timeout=30
@@ -427,16 +432,11 @@ Add collection broader
     \    Wait until page contains    ${concept_item}
     \    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
     \    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    \    Wait until page contains element    ${SAVE_COLLECTION_BTN}    timeout=30
-    \    Click element    ${SAVE_COLLECTION_BTN}
-    \    Log to Console    ${concept_item} added to broader collection
-    \    Sleep    2
+    \    Sleep    1
 
-Add member
+Add members for collection
     [Arguments]    @{concept_items}
     : FOR    ${concept_item}    IN    @{concept_items}
-    \    Wait until page contains element    ${EDIT_COLLECTION_BTN}    timeout=30
-    \    Click Element    ${EDIT_COLLECTION_BTN}
     \    Wait until page contains element    ${COLLECTION_MEMBER_CONCEPT_BTN}    timeout=30
     \    Click Element    ${COLLECTION_MEMBER_CONCEPT_BTN}
     \    Wait until page contains element    //*[contains(text(), "${concept_item}")]    timeout=30
@@ -444,7 +444,4 @@ Add member
     \    Wait until page contains    ${concept_item}
     \    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
     \    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    \    Wait until page contains element    ${SAVE_COLLECTION_BTN}    timeout=30
-    \    Click element    ${SAVE_COLLECTION_BTN}
-    \    Log to Console    Member ${concept_item} added to collection
-    \    Sleep    2
+    \    Sleep    1

@@ -145,14 +145,25 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_2}
     Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
-    Add collection broader    hotkija    hutkija
-    Add member    tutkija    tutkimus
+    Edit collection
+    Add broader concepts for collection    hotkija    hutkija
+    Add members for collection    tutkija    tutkimus
+    Save collection
     Wait until page contains element    //*[contains(@id,'1_collection_list_listitem')]    timeout=30
     Wait until page contains element    ${REMOVE_COLLECTION_BTN}    timeout=30
     Click element    ${REMOVE_COLLECTION_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_BTN}
     Sleep    2
+    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain    Testikäsitevalikoima
+    Wait until page contains element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
+    Click element    ${CONCEPTS_ALPHABETICAL_TAB}
+    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain    Testikäsitevalikoima
+    Sleep    1
+    Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
+    Click element    ${CONCEPTS_HIERARCHIAL_TAB}
     Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Go back to Sanastot frontpage
