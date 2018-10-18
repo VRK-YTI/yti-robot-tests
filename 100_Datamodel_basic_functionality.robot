@@ -164,7 +164,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 109. Guide through requiring a namespace
     [Documentation]    Guide through requiring a namespace
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -178,7 +178,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 110. Guide through creating a class
     [Documentation]    Guide through creating a class
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -192,7 +192,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 111. Guide through specializing a class
     [Documentation]    Guide through specializing a class
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -206,7 +206,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 112. Guide through adding an attribute
     [Documentation]    Guide through adding an attribute
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -220,7 +220,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 113. Guide through adding an association
     [Documentation]    Guide through adding an association
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
