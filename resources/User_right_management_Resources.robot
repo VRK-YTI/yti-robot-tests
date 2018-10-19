@@ -6,15 +6,15 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://rhp-dev.suomi.fi/
 #${USER_1}        //a[@class='dropdown-item ng-binding ng-scope'][contains(text(),'Testi Admin')]
-${LANGUAGE_EN}    //app-root/app-navigation-bar/nav/ul/li[2]/div/a[2]/span
-${LANGUAGE_FI}    //app-root/app-navigation-bar/nav/ul/li[2]/div/a[1]/span
+${LANGUAGE_EN}    id=en_available_language
+${LANGUAGE_FI}    id=fi_available_language
 ${ORGANIZATION_1}    Testiorganisaatio
 #Buttons and links
-${LANGUAGE_DROPDOWN_BTN}    //app-root/app-navigation-bar/nav/ul/li[2]/a
+${LANGUAGE_DROPDOWN_BTN}    id=lang_selection_dropdown
 #${IMPERSONATE_USER_DROPDOWN}    //application/ng-container/navigation-bar/nav/ul/li[1]/a
-${FRONTPAGE_SEARCH_BOX}    //app-root/div/app-frontpage/div/ngb-tabset/div/div/app-organizations/div/div[1]/div[1]/input
-${ADD_ORGANIZATION_BTN}    //*[@id="ngb-tab-0-panel"]/app-organizations/div/div[1]/button/span
-${EDIT_ORGANIZATION_BTN}    //app-root/div/app-organization/div/div/button/span
+${FRONTPAGE_SEARCH_BOX}    id=search_organization_input
+${ADD_ORGANIZATION_BTN}    id=add_new_organization_button
+${EDIT_ORGANIZATION_BTN}    id=edit_organization_button
 ${ID_ELEMENT_HOOK_XPATH}    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/content/form/div[1]/div/div[1]/div/div[1]/input
 ${ID_ELEMENT_HOOK}    id=identifierId
 ${PASSWORD_ELEMENT_HOOK}    //*[contains(@name,'password')]
@@ -32,6 +32,7 @@ Test Case Setup
     #eDuuni Login
 
 eDuuni Login
+    Set Selenium Speed    0.5
     Wait until page contains element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    timeout=30
     Click element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
     Select From List    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    ${GOOGLE_LOGIN_SELECTION}
