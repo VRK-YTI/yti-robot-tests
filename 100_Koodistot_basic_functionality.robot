@@ -8,6 +8,8 @@ Resource          resources/Generic_resources.robot
 *** Variables ***
 ${navigation_menu_link}    Käyttäjätiedot
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
+#Excel paths
+${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
 
 *** Test Cases ***
 100. Open Information about the service page
@@ -294,6 +296,44 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Select Window    title=Koodistot
     Sleep    1
     Close All Browsers
+
+113. Change content language for code list
+    [Documentation]    Change content language for code list and check
+    ...    that language change applies to code level as well. YTI-1053
+    [Tags]    regression    test
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
+    Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
+    Wait until page contains element    ${CONTENT_LANGUAGE_DDL}    timeout=20
+    Click button    ${CONTENT_LANGUAGE_DDL}
+    Wait until page contains element    ${CONTENT_LANGUAGE_EN}    timeout=20
+    Click button    ${CONTENT_LANGUAGE_EN}
+    Wait until page contains element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
+    Click element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
+    Page should contain    Koodisto
+    Page should contain    Test dataset classification
+    Page should contain    Koodin arvo
+    Page should contain    AGRI
+    Page should contain    Koodin nimi
+    Page should contain    Agriculture, fisheries, forestry and food
+    Page should contain    Voimassa oleva
+    Page should contain    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.
+    Page should contain    URI
+    Page should contain    Viimeisin muokkaus
+    Sleep    5
+    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
+    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Page should contain    Tunnus
+    Page should contain    dcat01
+    Page should contain    Koodiston nimi
+    Page should contain    Test dataset classification
+    Page should contain    Rekisteri
+    Page should contain    Test registry
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_20}
 
 *** Keywords ***
 Restore Finnish language

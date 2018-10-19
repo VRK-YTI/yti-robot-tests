@@ -617,17 +617,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
-    Input Text    ${SEARCH_CONCEPT_INPUT}    automobiili
-    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
-    Click element    ${VOCABULARY_SELECTION_DDL}
-    Click Button    Testiautomaatiosanasto
-    Wait until page contains element    ${OPEN_TERMINOLOGY_MODAL_BTN}    timeout=20
-    Click element    ${OPEN_TERMINOLOGY_MODAL_BTN}
-    Sleep    2
-    Wait until page contains    Halautko ehdottaa käsitettä automobiili sanastoon anden hassut sanastot?
-    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click element    ${CONFIRMATION_YES_BTN}
+    Suggest concept to Controlled Vocabularies    automobiili    Testiautomaatiosanasto    Tämä on ajoneuvo
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
@@ -813,13 +803,37 @@ Continue code creation with concept
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
 
-Suggest concept to Controlled Vocabularies
+Suggest concept to Controlled Vocabularies2
     Wait until page contains element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]    timeout=20
     Click element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]
     Wait until page contains    Halautko ehdottaa käsitettä    timeout=20
     Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
     Sleep    1
+
+Suggest concept to Controlled Vocabularies
+    [Arguments]    ${concept}    ${codelist}    ${definition}
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Click element    ${CREATE CODE_LIST_BTN}
+    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept}
+    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
+    Click element    ${VOCABULARY_SELECTION_DDL}
+    Click Button    ${codelist}
+    Wait until page contains element    ${OPEN_TERMINOLOGY_MODAL_BTN}    timeout=20
+    Click element    ${OPEN_TERMINOLOGY_MODAL_BTN}
+    Wait until page contains element    ${CONCEPT_DEFINITION_INPUT}    timeout=20
+    Input Text    ${CONCEPT_DEFINITION_INPUT}    ${definition}
+    Wait until page contains element    ${SAVE_CONCEPT_SUGGESTION_BTN}    timeout=20
+    Click element    ${SAVE_CONCEPT_SUGGESTION_BTN}
+    Sleep    2
+    Wait until page contains    Halautko ehdottaa käsitettä ${concept} sanastoon ${codelist}?
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
+    Log to Console    Concept suggested succesfully to Controlled Vocabularies
+    Sleep    2
 
 Remove Code list with concept from Controlled Vocabularies
     Wait Until Element Is Visible    id=search_box_input    timeout=30
