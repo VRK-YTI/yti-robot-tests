@@ -19,6 +19,7 @@ ${ORGANIZATION_1}    Testiorganisaatio
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_link
 ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
 ${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
+${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
@@ -87,6 +88,9 @@ ${CLOSE_ERROR_MODAL_BTN}    id=close_error_modal_button
 ${OPEN_TERMINOLOGY_MODAL_BTN}    id=open_terminology_modal_button
 ${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
 ${CLOSE_MODAL_LINK}    id=close_modal_link
+${CONCEPT_DEFINITION_INPUT}    id=concept_suggestion_definition_input
+${SAVE_CONCEPT_SUGGESTION_BTN}    id=save_concept_suggestion_button
+${CONTENT_LANGUAGE_DDL}    id=content_language_dropdown_button
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -181,6 +185,7 @@ ${CODE_LIST_16}    Koodisto600
 ${CODE_LIST_17}    Koodisto700
 ${CODE_LIST_18}    Koodisto701
 ${CODE_LIST_19}    Testikoodisto3 pitkillä arvoilla
+${CODE_LIST_20}    Testi dcat
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000
