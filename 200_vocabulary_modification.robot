@@ -44,14 +44,14 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]    timeout=30
     Click element    //*[contains(text(), "${ORGANIZATION_1}")]
     Log to Console    Organization added
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}    timeout=30
     Click element    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]    timeout=30
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Log to Console    Classification added
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
@@ -87,7 +87,7 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${ADD_NEW_CONCEPT_BTN}
     Wait until page contains element    ${TERM_LITERAL_VALUE_INPUT}    timeout=30
     Input text    ${TERM_LITERAL_VALUE_INPUT}    ${TERM_1}
-    Wait until page contains element    ${ADD_NEW_CONCEPT}
+    Wait until page contains element    ${ADD_NEW_CONCEPT}    timeout=30
     Click element    ${ADD_NEW_CONCEPT}
     Wait until page contains element    ${SOURCE_INPUT}    timeout=30
     Input text    ${SOURCE_INPUT}    Lähde
@@ -162,6 +162,46 @@ Resource          resources/Terminology_Resources.robot
     Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Sleep    1
+    Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
+    Click element    ${CONCEPTS_HIERARCHIAL_TAB}
+    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain    Testikäsitevalikoima
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
+206. Modify concept which is defined in collection
+    [Documentation]    Add new collection to vocabulary and modify concept which is
+    ...    defined in collection broader. Check that collection is not listed
+    ...    in alphabetic or hierarchial listing. YTI-1181.
+    [Tags]    regression    sanastot    test
+    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    Go back to Sanastot frontpage
+    Select dictionary    ${VOCABULARY_2}
+    Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
+    Edit collection
+    Add broader concepts for collection    tutkija    tutkimus
+    Add members for collection    hotkija    hutkija
+    Save collection
+    Wait until page contains element    //*[contains(@id,'1_collection_list_listitem')]    timeout=30
+    Wait until page contains element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
+    Click element    ${CONCEPTS_ALPHABETICAL_TAB}
+    Wait until page contains element    //*[contains(@id,'concept-2_concept_list_listitem')]    timeout=30
+    Click element    //*[contains(@id,'concept-2_concept_list_listitem')]
+    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain    Testikäsitevalikoima
+    Sleep    1
+    Edit concept    tutkija
+    Wait until page contains element    ${ADD_BROADER_CONCEPT_BTN}    timeout=30
+    Click element    ${ADD_BROADER_CONCEPT_BTN}
+    Wait until page contains element    //*[contains(@id,'concept-1_search_result_concept')]    timeout=30
+    Click element    //*[contains(@id,'concept-1_search_result_concept')]
+    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    Save concept
+    Wait until page contains element    //*[contains(@id,'concept-1_concept_broader_concept_reference_remove_reference_link')]    timeout=30
+    Reload page
+    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain    Testikäsitevalikoima
     Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
     Click element    ${CONCEPTS_HIERARCHIAL_TAB}
     Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
