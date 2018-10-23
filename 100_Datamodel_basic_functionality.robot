@@ -10,7 +10,7 @@ ${Core_vocabulary_text}    Onnittelut tietokomponenttikirjaston luomisessa onnis
 ${Namespace_text}    Onnittelut nimiavaruuden lisäämisessä onnistumisesta!
 ${Create_class_text}    Onnittelut uuden luokan lisäämisessä onnistumisesta!
 ${Specialize_class_text}    Onnittelut luokan erikoistamisessa onnistumisesta!
-${Add_attribute_text}    Onnittelut attribuutin lisäämisessä onnstumisesta!
+${Add_attribute_text}    Onnittelut attribuutin lisäämisessä onnistumisesta!
 ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisesta!
 
 *** Test Cases ***
