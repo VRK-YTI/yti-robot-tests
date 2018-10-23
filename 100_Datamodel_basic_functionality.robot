@@ -262,13 +262,13 @@ Change user interface language
 Click through guide
     [Arguments]    ${final_text}
     : FOR    ${ClickNext}    IN RANGE    300
-    \    ${Next}    Get Text    //*[contains(text(), "seuraava")]
+    \    ${Next}    Get Text    ${GUIDE_NEXT_BTN}
     \    Page Should Contain    ${Next}
     \    Wait until page contains element    ${GUIDE_NEXT_BTN}    timeout=20
     \    Click element    ${GUIDE_NEXT_BTN}
     \    ${exit}=    Run Keyword And Return Status    Page Should Contain element    //*[contains(text(), "${final_text}")]
     \    Exit For Loop If    ${exit}
-    Wait until page contains element    //*[contains(text(), "sulje")]    timeout=20
-    Click element    //*[contains(text(), "sulje")]
+    Wait until page contains element    ${GUIDE_CLOSE_BTN}    timeout=20
+    Click element    ${GUIDE_CLOSE_BTN}
     Log to Console    Guide through succesfully!
     Sleep    3

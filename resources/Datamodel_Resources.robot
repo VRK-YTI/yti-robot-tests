@@ -31,7 +31,8 @@ ${GUIDE_CREATE_CLASS}    id=UudenLuokanLuomisenOhjeistus_help_link
 ${GUIDE_SPECIALIZE_CLASS}    id=LuokanErikoistamisenOhjeistus_help_link
 ${GUIDE_ADD_ATTRIBUTE}    id=AttribuutinLisaamisenOhjeistus_help_link
 ${GUIDE_ADD_ASSOCIATION}    id=AssosiaationLisaamisenOhjeistus_help_link
-${GUIDE_NEXT_BTN}    //help-popover/div/button[2]
+${GUIDE_NEXT_BTN}    id=help_popover_next_button
+${GUIDE_CLOSE_BTN}    id=help_popover_close_button
 #Buttons and links
 ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
