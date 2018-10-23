@@ -209,6 +209,40 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
+207. Modify concept
+    [Documentation]    Create new vocabulary, import concepts and modify concept.
+    [Tags]    regression    sanastot    test
+    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    Go back to Sanastot frontpage
+    Select dictionary    ${VOCABULARY_2}
+    Sleep    1
+    Edit concept    tutkija
+    Wait until page contains element    ${ADD_PREFERRED_TERM_BTN}    timeout=30
+    Click element    ${ADD_PREFERRED_TERM_BTN}
+    Wait until page contains element    ${ADD_PREFERRED_TERM_SV}    timeout=30
+    Click element    ${ADD_PREFERRED_TERM_SV}
+    Wait until page contains element    ${PREFERRED_TERM_INPUT}    timeout=30
+    Input Text    ${PREFERRED_TERM_INPUT}    Forskaren
+    Wait until page contains element    ${ADD_SYNONYM_BTN}    timeout=30
+    Click element    ${ADD_SYNONYM_BTN}
+    Wait until page contains element    ${ADD_SYNONYM_EN}    timeout=30
+    Click element    ${ADD_SYNONYM_EN}
+    Wait until page contains element    ${SYNONYM_INPUT}    timeout=30
+    Input Text    ${SYNONYM_INPUT}    Oppinut henkilö
+    Wait until page contains element    ${NOT_SYNONYM_BTN}    timeout=30
+    Click element    ${NOT_SYNONYM_BTN}
+    Wait until page contains element    ${NOT_SYNONYM_EN}    timeout=30
+    Click element    ${NOT_SYNONYM_EN}
+    Wait until page contains element    ${NOT_SYNONYM_INPUT}    timeout=30
+    Input Text    ${NOT_SYNONYM_INPUT}    Tarkastelija
+    Save concept
+    Sleep    5
+    Wait until page contains    Forskaren    timeout=30
+    Wait until page contains    Oppinut henkilö    timeout=30
+    Wait until page contains    Tarkastelija    timeout=30
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
