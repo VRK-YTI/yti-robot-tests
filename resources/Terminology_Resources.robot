@@ -115,6 +115,14 @@ ${HIDDEN_TERM_CHANGENOTE_INPUT}    id=concept_hiddenTerm_0_changeNote_textarea
 ${HIDDEN_TERM_STATUS_DDL}    id=selected_concept_hiddenTerm_0_status_input_dropdown
 ${HIDDEN_TERM_STATUS_VALID}    id=VALID_concept_hiddenTerm_0_status_input_dropdown
 ${HIDDEN_TERM}    id=concept_hiddenTerm_0_term_accordion_chevron
+${ADD_CONCEPT_DEFINITION_BTN}    id=concept_definition_add_button
+${CONCEPT_DEFINITION_EN}    id=add_new_concept_definition_en_button
+${CONCEPT_DEFINITION_INPUT}    id=concept_definition_en_1_semantic_text_input
+${ADD_CONCEPT_NOTE_BTN}    id=concept_note_add_button
+${CONCEPT_NOTE_EN}    id=add_new_concept_note_en_button
+${CONCEPT_NOTE_INPUT}    id=concept_note_en_1_semantic_text_input
+${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    id=add_new_concept_editorialNote_value_button
+${CONCEPT_EDITORIAL_NOTE_INPUT}    id=concept_editorialNote_0_textarea
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv

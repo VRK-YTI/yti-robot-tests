@@ -309,6 +309,75 @@ Resource          resources/Terminology_Resources.robot
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
+209. Modify concept
+    [Documentation]    Create new vocabulary, import concepts and mdify concept values.
+    [Tags]    sanastot
+    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    Maximize Browser Window
+    Go back to Sanastot frontpage
+    Select dictionary    ${VOCABULARY_2}
+    Sleep    1
+    Edit concept    tutkija
+    Wait until page contains element    ${ADD_CONCEPT_DEFINITION_BTN}    timeout=30
+    Click element    ${ADD_CONCEPT_DEFINITION_BTN}
+    Click element    ${CONCEPT_DEFINITION_EN}
+    Input Text    ${CONCEPT_DEFINITION_INPUT}    Käsitteen määritelmä englanniksi
+    Wait until page contains element    ${ADD_CONCEPT_NOTE_BTN}    timeout=30
+    Click element    ${ADD_CONCEPT_NOTE_BTN}
+    Click element    ${CONCEPT_NOTE_EN}
+    Input Text    ${CONCEPT_NOTE_INPUT}    Käsitteen huomautus englanniksi
+    Wait until page contains element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    timeout=30
+    Click element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}
+    Wait until page contains element    ${ADD_HIDDEN_TERM_SOURCE_BTN}    timeout=30
+    Click element    ${ADD_HIDDEN_TERM_SOURCE_BTN}
+    Input Text    ${HIDDEN_TERM_SOURCE_INPUT}    Ohjaustermin lähde
+    Wait until page contains element    ${HIDDEN_TERM_SCOPE_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_SCOPE_INPUT}    Ohjaustermin ala
+    Wait until page contains element    ${HIDDEN_TERM_STYLE_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_STYLE_INPUT}    Älykkö
+    Wait until page contains element    ${HIDDEN_TERM_FAMILY_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_FAMILY_INPUT}    Feminiini
+    Wait until page contains element    ${HIDDEN_TERM_CONJUGATION_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_CONJUGATION_INPUT}    Yksikkö
+    Wait until page contains element    ${HIDDEN_TERM_EQUIVALENCY_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_EQUIVALENCY_INPUT}    >
+    Wait until page contains element    ${HIDDEN_TERM_WORD_CLASS_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_WORD_CLASS_INPUT}    Eri sanaluokka
+    Wait until page contains element    ${HIDDEN_TERM_HOMOGRPAH_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_HOMOGRPAH_INPUT}    9
+    Wait until page contains element    ${HIDDEN_TERM_NOTE_BTN}    timeout=30
+    Click element    ${HIDDEN_TERM_NOTE_BTN}
+    Input Text    ${HIDDEN_TERM_NOTE_INPUT}    Huomio
+    Wait until page contains element    ${HIDDEN_TERM_COMMENT_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_COMMENT_INPUT}    Kommentti
+    Wait until page contains element    ${HIDDEN_TERM_HISTORY_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_HISTORY_INPUT}    Termin historia
+    Wait until page contains element    ${HIDDEN_TERM_CHANGENOTE_INPUT}    timeout=30
+    Input Text    ${HIDDEN_TERM_CHANGENOTE_INPUT}    Termin muutoshistoriatieto
+    Wait until page contains element    ${HIDDEN_TERM_STATUS_DDL}    timeout=30
+    Click element    ${HIDDEN_TERM_STATUS_DDL}
+    Click element    ${HIDDEN_TERM_STATUS_VALID}
+    Save concept
+    Sleep    5
+    Wait until page contains element    ${HIDDEN_TERM}    timeout=30
+    Click Element    ${HIDDEN_TERM}
+    Wait until page contains    Voimassa oleva    timeout=30
+    Wait until page contains    Tieteilijä    timeout=30
+    Wait until page contains    Ohjaustermin lähde    timeout=30
+    Wait until page contains    Ohjaustermin ala    timeout=30
+    Wait until page contains    Älykkö    timeout=30
+    Wait until page contains    Feminiini    timeout=30
+    Wait until page contains    Yksikkö    timeout=30
+    Wait until page contains    >    timeout=30
+    Wait until page contains    Eri sanaluokka    timeout=30
+    Wait until page contains    9    timeout=30
+    Wait until page contains    Huomio    timeout=30
+    Wait until page contains    Kommentti    timeout=30
+    Wait until page contains    Termin historia    timeout=30
+    Wait until page contains    Termin muutoshistoriatieto    timeout=30
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
