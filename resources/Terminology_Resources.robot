@@ -14,7 +14,7 @@ ${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
 ${ORGANIZATION_2}    Testiorganisaatio
 ${CLASSIFICATION_1}    Ympäristö
 ${CLASSIFICATION_2}    Eläkkeet
-${PREFIX_1}       111
+${PREFIX_1}       898
 ${PREFIX_2}       222
 ${PREFIX_3}       333
 ${TERM_1}         Automaatio
@@ -39,7 +39,7 @@ ${ADD_ORGANIZATION_BTN}    id=vocabulary_contributor_add_organization_button
 ${SEARCH_ORGANIZATION_INPUT}    id=search_organization_link
 ${ADD_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_domain_button
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_domain_link
-${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_input
+${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_label
 ${VOCABULARY_TYPE_DDL}    id=selected_vocabulary_type_dropdown
 ${TITLE_INPUT_FI}    id=vocabulary_prefLabel_fi_0_input
 ${PREFIX_INPUT}    id=vocabulary_prefix_input
@@ -48,6 +48,8 @@ ${REMOVE_VOCABULARY_BTN}    id=vocabulary_editable_remove_button
 ${CONFIRM_REMOVE_VOCABULARY_BTN}    id=delete_confirmation_yes_button
 ${ADD_DESCRIPTION_DDL}    id=vocabulary_description_add_button
 ${NEW_DESCRIPTION_FI}    id=add_new_vocabulary_description_fi_button
+${FILE_UPLOAD_INPUT}    id=fileupload_input
+${FILE_UPLOAD_BTN}    id=upload_file_button
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -243,9 +245,13 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Click button    Kyllä
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
     Sleep    3
     Log to Console    Testiautomaatiosanasto created
 
@@ -315,9 +321,13 @@ Create Terminological Dictionary and import vocabulary
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${test_concepts}
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Click button    Kyllä
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
     Sleep    3
     Log to Console    Terminological Dictionary created
 

@@ -15,7 +15,10 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${invalid_related_concepts}
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${invalid_related_concepts}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    Tuodaan 4 käsitettä
     Page should contain    4: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
@@ -39,8 +42,11 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${empty_related_concepts}
-    Sleep    2
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${empty_related_concepts}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
+    Sleep    3
     Page should contain    Tuodaan 1 käsitettä
     Page should contain    tutkimus
     Page should contain    research
@@ -74,8 +80,11 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_empty_status}
-    Sleep    2
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_empty_status}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
+    Sleep    3
     Page should contain    Tuodaan 1 käsitettä
     Page should contain    tutkimus
     Page should contain    research
@@ -110,8 +119,11 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_missing_status}
-    Sleep    2
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_missing_status}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
+    Sleep    3
     Page should contain    Tuodaan 1 käsitettä
     Page should contain    tutkimus
     Page should contain    research
@@ -147,7 +159,10 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_invalid_column}
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_column}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    Ominaisuus “definition” täytyy olla määritelty kielen kanssa
     Log to Console    Import is not successful and error message is dispalyed when column name is invalid
@@ -165,7 +180,10 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_invalid_status_value}
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_status_value}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    3: Virheellinen tila “xxxxx”
     log to Console    Import is not successful and error message is dispalyed when status value is invalid
@@ -183,7 +201,10 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
     Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Choose file    ${IMPORT_VOCABULARY_BTN}    ${concepts_with_duplicate_definition_columns}
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_duplicate_definition_columns}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    systemaattista ja luovaa toimintaa2
     Page should contain    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta2
