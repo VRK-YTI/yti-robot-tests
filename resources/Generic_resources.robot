@@ -92,6 +92,7 @@ ${CONCEPT_DEFINITION_INPUT}    id=concept_suggestion_definition_input
 ${SAVE_CONCEPT_SUGGESTION_BTN}    id=save_concept_suggestion_button
 ${CONTENT_LANGUAGE_DDL}    id=content_language_dropdown_button
 ${CREATE_CODELIST_VERSION_AS_EMPTY}    id=new_codescheme_version_create_as_empty
+${CREATE_CODELIST_VERSION_FROM_FILE}    id=clone_codelist_from_file_button
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -237,6 +238,7 @@ ${testiautomaatiokoodisto2_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodist
 ${testiautomaatiokoodisto1_with_codes}    ${DATAFOLDER}${/}testiautomaatiokoodisto1_with_codes.xlsx
 ${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
 ${Code_filter}    ${DATAFOLDER}${/}Code_filter.xlsx
+${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_version_creation.xlsx
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
