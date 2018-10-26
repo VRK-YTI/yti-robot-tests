@@ -30,6 +30,7 @@ ${Invalid_unaryoperator_value}    ${DATAFOLDER}${/}Calculation_members_invalid_u
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
 ${Invalid_unaryoperator_value_csv}    ${DATAFOLDER}${/}Calculation_members_invalid_unary_operator_csv.csv
+${Calc_def_hierarchy_extensions_csv}    ${DATAFOLDER}${/}Calculation_definition_extensions_csv.csv
 #error messages
 ${Error_missing_codeschemes}    Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen liitettyihin koodistoihin.
 ${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa.
@@ -121,7 +122,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Wait until page contains    30 koodia    timeout=20
-    Upload extension    ${Extension_definition_hierarchy}
+    Upload extension    ${Extension_definition_hierarchy}    ${FILE_FORMAT_EXCEL}
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
@@ -198,7 +199,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Upload extension    ${Extension_calculation_hierarchy}
+    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
     Sleep    2
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
@@ -259,7 +260,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Upload extension    ${Extension_calculation_hierarchy}
+    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
@@ -344,7 +345,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Upload extension    ${Extension_calculation_hierarchy}
+    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
@@ -518,7 +519,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
     Wait until page contains    30 koodia    timeout=20
-    Upload extension    ${Extension_calculation_hierarchy}
+    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Upload members    ${Invalid_unaryoperator_value}    ${FILE_FORMAT_EXCEL}
@@ -554,20 +555,42 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_14}
 
+614. Import extensions in CSV format
+    [Documentation]    Import code list with codes and import extension,
+    ...    Import members in CSV format and export CSV.
+    [Tags]    regression    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    testcode29 - Testcode 29    timeout=20
+    Upload extension    ${Calc_def_hierarchy_extensions_csv}    ${FILE_FORMAT_CSV}
+    Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
+    Wait until page contains element    ${CALC_HIERARCHY_TAB}    timeout=20
+    Click Element    ${CALC_HIERARCHY_TAB}
+    Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
+
 *** Keywords ***
 Upload extension
-    [Arguments]    ${extension}
+    [Arguments]    ${extension}    ${file_format}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${IMPORT_EXTENSIONS_BTN}    timeout=30
     Click element    ${IMPORT_EXTENSIONS_BTN}
+    Wait until page contains element    ${FILE_FORMAT_UPLOAD}    timeout=20
+    Click element    ${FILE_FORMAT_UPLOAD}
+    Wait until page contains element    ${file_format}    timeout=20
+    Click element    ${file_format}
     Sleep    2
     Choose file    ${EXTENSION_FILE_UPLOAD}    ${extension}
     Sleep    2
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
     Sleep    2
-    Wait until page contains element    ${EXTENSIONS__TAB}    timeout=20
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
     Log to Console    Extension imported
     Sleep    1
