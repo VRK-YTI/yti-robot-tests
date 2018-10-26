@@ -91,6 +91,7 @@ ${CLOSE_MODAL_LINK}    id=close_modal_link
 ${CONCEPT_DEFINITION_INPUT}    id=concept_suggestion_definition_input
 ${SAVE_CONCEPT_SUGGESTION_BTN}    id=save_concept_suggestion_button
 ${CONTENT_LANGUAGE_DDL}    id=content_language_dropdown_button
+${CREATE_CODELIST_VERSION_AS_EMPTY}    id=new_codescheme_version_create_as_empty
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
