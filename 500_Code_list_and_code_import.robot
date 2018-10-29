@@ -701,17 +701,30 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click Element    ${SELECT_LINK_BTN}
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
+    Click element    ${ADD_LINK_DDL}
+    Click element    ${DROPDOWN_ITEM_LINK}
+    Sleep    1
+    Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
+    #Click element    ${LINK_URL_INPUT}
+    Sleep    1
+    Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
+    Wait until page contains element    ${ADD_BTN}    timeout=20
+    Click element    ${ADD_BTN}
+    Sleep    1
+    Wait until page contains    Muu linkki
+    Page should contain    https://www.suomi.fi/etusivu/
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
-    Log to Console    Save button clicked
-    Sleep    5
+    Sleep    1
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Log to Console    Add link button is found and CC by 4.0 is there
+    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
+    Log to Console    links are saved
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click button    ${CODE_LIST_DDL}
+    Sleep    2
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click button    ${CREATE_NEW_VERSION_BTN}
     Sleep    7
@@ -727,14 +740,14 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
-    Log to Console    Code list save pressed
+    Log to Console    Code list saved
+    Log to Console    New code list version created as empty
     Page should not contain    10 koodia    timeout=20
     Page should not contain    testikoodi01 - Testikoodi 01    timeout=20
     Log to Console    Codes were not copied
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Log to Console    Codelist info tab clicked
-    Sleep    5
+    Sleep    1
     Wait until page contains    englanti    timeout=20
     Wait until page contains    suomi    timeout=20
     Wait until page contains    ruotsi    timeout=20
@@ -745,10 +758,12 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    lähdeFI    timeout=20
     Wait until page contains    lakiperusteFI    timeout=20
     Wait until page contains    sitovuustasoFI    timeout=20
-    Page should not contain    Linkit
-    Page should not contain    Lisenssi    timeout=20
-    Page should not contain    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Log to Console    Links are not copied
+    Wait until page contains    Linkit
+    Wait until page contains    Lisenssi    timeout=20
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
+    Log to Console    Links are copied
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
