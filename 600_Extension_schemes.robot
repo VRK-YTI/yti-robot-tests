@@ -573,6 +573,45 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
+615. Import extensions to the versioned code list
+    [Documentation]    Import code list with codes, create new version from file and import extensions
+    ...    in CSV format to the new code list version. Check that versions are listed correctly, YTI-1163.
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    testcode29 - Testcode 29    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload extension    ${Calc_def_hierarchy_extensions_csv}    ${FILE_FORMAT_CSV}
+    Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
+    Click element    //*[contains(@id,'111_view_extension')]
+    Sleep    2
+    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
+    Click Element    ${EXTENSION_BACK_BTN}
+    Sleep    2
+    Wait until page contains element    ${VERSION_TAB}    timeout=30
+    Click element    ${VERSION_TAB}
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    Koodisto700    timeout=20
+    Wait until page contains    01.01.2018 - 01.01.2019    timeout=20
+    Wait until page contains    Luonnos    timeout=20
+    Log to Console    All versions are listed
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_17}
+
 *** Keywords ***
 Upload extension
     [Arguments]    ${extension}    ${file_format}
