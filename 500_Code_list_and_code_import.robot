@@ -19,6 +19,7 @@ ${Codelist_with_defaultcode}    ${DATAFOLDER}${/}Codelist_with_defaultcode.xlsx
 ${Variant_code_list}    ${DATAFOLDER}${/}Variant_code_list_and_codes.xlsx
 ${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_version_creation.xlsx
 ${Code_list_with_languagecode}    ${DATAFOLDER}${/}Code_list_with_languagecodes.xlsx
+${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -751,6 +752,39 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
+521. Create new version of code list from file
+    [Documentation]    Import VALID code list with codes and create new version of code list
+    ...    from file. YTI-1163.
+    [Tags]    regression    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Sleep    2
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains element    ${VERSION_TAB}    timeout=20
+    Click element    ${VERSION_TAB}
+    Log to Console    Codelist info tab clicked
+    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    koodisto7000    timeout=20
+    Wait until page contains    Luonnos    timeout=20
+    Wait until page contains    Voimassa oleva    timeout=20
+    Sleep    1
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_9}
 
 *** Keywords ***
 Check values from Draft Code list
