@@ -256,7 +256,7 @@ Test Case Setup Superuser
 
 Select user
     [Arguments]    ${user_id}    ${user_name}
-    Wait until page contains element    //*[@class="nav-link dropdown-toggle"]    timeout=30
+    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
     Sleep    1
     Click element    ${user_id}
