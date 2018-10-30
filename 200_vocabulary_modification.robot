@@ -198,6 +198,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
     Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     Save concept
+    Sleep    5
     Wait until page contains element    //*[contains(@id,'concept-1_concept_broader_concept_reference_remove_reference_link')]    timeout=30
     Reload page
     Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
