@@ -195,7 +195,7 @@ ${Error_only_one_code_list}    Tiedostossa saa olla vain yksi koodisto.
 309. Create new version of code list from invalid file
     [Documentation]    Create new version of code list from file which contains two code lists
     ...    and check error message
-    [Tags]    regression    test
+    [Tags]    regression
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
