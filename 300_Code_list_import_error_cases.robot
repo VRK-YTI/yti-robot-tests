@@ -35,6 +35,7 @@ ${Error_duplicate_code_lists}    Aineistosta löytyi useita rivejä samalla CODE
 ${Error_invalid_code_list}    Tunnus on virheellinen rivillä 2. Sallitut merkit ovat: a-zA-Z0-9_-
 ${Error_codes_max_hierarchy_level}    Koodien maksimi hierarkkinen taso ylittyi.
 ${Error_only_one_code_list}    Tiedostossa saa olla vain yksi koodisto.
+${Error_code_list_exists}    Koodisto on jo olemassa.
 
 *** Test Cases ***
 300. Import Code list with missing codeValue
@@ -208,15 +209,39 @@ ${Error_only_one_code_list}    Tiedostossa saa olla vain yksi koodisto.
     Click element    ${FILE_FORMAT_BTN}
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Choose file    ${FILE_UPLOAD_BTN}    ${2x_code_list}
     Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_only_one_code_list}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_9}
+
+310. Create new version of code list from file with same codevalue
+    [Documentation]    Create new version of code list from file with same codevalue
+    ...    and check error message
+    [Tags]    regression
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Sleep    2
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_Codes_new_version}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Wait until page contains    ${Error_code_list_exists}    timeout=20
     Cancel code list import
     Sleep    2
     Return to Koodistot frontpage
