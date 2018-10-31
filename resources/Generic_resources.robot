@@ -19,6 +19,7 @@ ${ORGANIZATION_1}    Testiorganisaatio
 ${CCBY4.0}        id=CreativeCommonsNimea4.0Kansainvalinen(CCBY4.0)_Https://creativecommons.org/licenses/by/4.0/_external_reference_link
 ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
 ${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
+${VALID_STATUS}    id=VALID_status_input_dropdown
 ${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
@@ -562,3 +563,10 @@ Create new version of code list
     Save code list
     Log to Console    New version ${codelist_name} created
     Sleep    5
+
+Modify code list
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Sleep    2
