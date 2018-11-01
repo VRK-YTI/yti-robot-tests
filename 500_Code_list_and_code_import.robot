@@ -786,9 +786,6 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click element    ${FILE_FORMAT_BTN}
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains element    ${VERSION_TAB}    timeout=20
@@ -829,8 +826,10 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Sleep    2
     Click button    ${VALID_STATUS}
     Save code list
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
     Sleep    5
-    Wait until page contains element    ${VALID_STATUS}    timeout=20
+    Wait until page contains    Voimassa oleva    timeout=20
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
@@ -842,7 +841,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Upload codelist    ${Code_list_version3}    ${CODE_LIST_11}
     Wait until page contains element    ${VERSION_TAB}    timeout=20
     Click element    ${VERSION_TAB}
-    #Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Page should not contain    03.03.2018 - 31.03.2018
     Wait until page contains    koodisto7000    timeout=20
     Wait until page contains    koodisto7001    timeout=20
     Wait until page contains    koodisto7002    timeout=20
@@ -855,11 +855,13 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}}")]
+    Click element    //*[contains(text(), "${CODE_LIST_10}")]
     Wait until page contains    ${CODE_LIST_10}
     Wait until page contains element    ${VERSION_TAB}    timeout=20
     Click element    ${VERSION_TAB}
-    #Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Sleep    8
+    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Page should not contain    03.03.2018 - 31.03.2018
     Page should not contain    koodisto7000
     Wait until page contains    koodisto7001    timeout=20
     Wait until page contains    koodisto7002    timeout=20
