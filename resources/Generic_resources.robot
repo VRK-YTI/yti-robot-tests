@@ -94,6 +94,7 @@ ${SAVE_CONCEPT_SUGGESTION_BTN}    id=save_concept_suggestion_button
 ${CONTENT_LANGUAGE_DDL}    id=content_language_dropdown_button
 ${CREATE_CODELIST_VERSION_AS_EMPTY}    id=new_codescheme_version_create_as_empty
 ${CREATE_CODELIST_VERSION_FROM_FILE}    id=clone_codelist_from_file_button
+${CONCEPT_SUGGESTION_NAME_INPUT}    id=concept_suggestion_name_input
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
