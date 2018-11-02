@@ -272,7 +272,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 511. Create code list and get concept for code list from Controlled Vocabularies
     [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787.
-    [Tags]    regression    test
+    [Tags]    koodistot
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -316,7 +316,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 512. Create code to code list and get concept for code from Controlled Vocabularies
     [Documentation]    Create code to code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in code, YTI-787.
-    [Tags]    regression    test
+    [Tags]    koodistot
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
