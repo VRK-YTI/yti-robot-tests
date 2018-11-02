@@ -61,6 +61,7 @@ ${REMOVE_CONCEPT_BTN}    id=concept_editable_remove_button
 ${CONFIRM_REMOVE_CONCEPT_BTN}    id=delete_confirmation_yes_button
 ${IMPORT_CANCEL_BTN}    id=import_cancel_button
 ${IMPORT_YES_BTN}    id=import_yes_button
+${CONCEPT_LIST_SEARCH_INPUT}    id=concept_list_search_concept_input
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
@@ -203,4 +204,24 @@ Delete Testiautomaatiosanasto
     Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
     Sleep    1
     Log to Console    Testiautomaatiosanasto deleted
+    Close All Browsers
+
+Check concept suggestion in controlled Vocabularies
+    Terminology Test Case Setup
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Sleep    3
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait until page contains    Testiautomaatiosanasto    timeout=20
+    Wait until page contains element    ${CONCEPT_LIST_SEARCH_INPUT}    timeout=30
+    Input text    ${CONCEPT_LIST_SEARCH_INPUT}    automobiili
+    Wait until page contains element    //*[contains(text(), "automobiili")]
+    Click element    //*[contains(text(), "automobiili")]
+    Wait until page contains    Ehdotus    timeout=20
+    Wait until page contains    Tämä on kulkuneuvo    timeout=20
+    Wait until page contains    Testi Admin    timeout=20
+    Log to Console    Concept suggestion ok in Controlled Vocabularies
+    Sleep    1
     Close All Browsers

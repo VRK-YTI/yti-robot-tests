@@ -311,7 +311,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     Return to Koodistot frontpage
-    [Teardown]    Test Case Teardown Controlled Vocabularies
+    [Teardown]    Test Case Teardown concept for code list from Controlled Vocabularies
 
 512. Create code to code list and get concept for code from Controlled Vocabularies
     [Documentation]    Create code to code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
@@ -331,7 +331,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Check values from Draft Code list
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
     Click element    ${CODELIST_CODES_TAB}
-    Create new code to code list with concept    tutkija
+    Create new code to code list with concept    tutkija    Testiautomaatiosanasto
     Wait until page contains    NewCode001 - tutkija
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
     Return to Koodistot frontpage
@@ -614,14 +614,14 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 518. Create code list and suggest concept to Controlled Vocabularies
     [Documentation]    Create code list and suggest concept to Controlled Vocabularies
     ...    YTI-848.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
     Sleep    2
-    Suggest concept to Controlled Vocabularies    automob    Testiautomaatiosanasto    automobiili    Tämä on ajoneuvo
+    Suggest concept to Controlled Vocabularies    automob    Testiautomaatiosanasto    automobiili    Tämä on kulkuneuvo
     Sleep    2
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
@@ -644,32 +644,39 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodisto6000    timeout=20
-    Wait until page contains    tutkija    timeout=20
+    Wait until page contains    automobiili    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
-    Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
+    #Wait until page contains    Tämä on kulkuneuvo    timeout=20
     Return to Koodistot frontpage
+    Close All Browsers
+    Check concept suggestion in controlled Vocabularies
     [Teardown]    Test Case Teardown Controlled Vocabularies
 
 519. Create code to code list list and suggest concept to Controlled Vocabularies
     [Documentation]    Create code to code list list and suggest concept to Controlled Vocabularies
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
+    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
     Sleep    1
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    1
-    Wait until page contains    ${CODE_LIST_8}    timeout=20
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Check values from Draft Code list
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Create new code to code list with concept    automobiili
-    Wait until page contains element    ${CLOSE_MODAL_LINK}    timeout=20
-    Click element    ${CLOSE_MODAL_LINK}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
+    Click element    ${CREATE_CODE_BTN}
+    Suggest concept to Controlled Vocabularies    automob    Testiautomaatiosanasto    automobiili    Tämä on kulkuneuvo
+    Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
+    Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
+    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click element    ${SAVE_NEW_CODE_BTN}
+    Sleep    3
+    Wait until page contains    Koodisto6000    timeout=20
+    Wait until page contains    automobiili    timeout=20
+    Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
+    #Wait until page contains    Tämä on kulkuneuvo    timeout=20
+    Return to Koodistot frontpage
+    Close All Browsers
+    Check concept suggestion in controlled Vocabularies
     [Teardown]    Test Case Teardown Code with concept
 
 520. Create new version of code list as empty
@@ -805,7 +812,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 522. Create new versions of code list from file and remove original code list
     [Documentation]    Import VALID code list with codes and create new versions of code list
     ...    from file. Remove original code list and check that version listing is updated. YTI-1163.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -844,7 +851,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${VERSION_TAB}    timeout=20
     Click element    ${VERSION_TAB}
     Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    Page should not contain    03.03.2018 - 31.03.2018
+    #Page should not contain    03.03.2018 - 31.03.2018
     Wait until page contains    koodisto7000    timeout=20
     Wait until page contains    koodisto7001    timeout=20
     Wait until page contains    koodisto7002    timeout=20
@@ -863,7 +870,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click element    ${VERSION_TAB}
     Sleep    8
     Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    Page should not contain    03.03.2018 - 31.03.2018
+    #Page should not contain    03.03.2018 - 31.03.2018
     Page should not contain    koodisto7000
     Wait until page contains    koodisto7001    timeout=20
     Wait until page contains    koodisto7002    timeout=20
@@ -986,7 +993,7 @@ Check updated code listing
     Wait until page contains    koodi505 - Koodi505    timeout=20
 
 Create new code to code list with concept
-    [Arguments]    ${concept}
+    [Arguments]    ${concept}    ${vocabulary}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
@@ -995,57 +1002,39 @@ Create new code to code list with concept
     Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept}
     Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
     Click element    ${VOCABULARY_SELECTION_DDL}
-    Click Button    Testiautomaatiosanasto
-    Sleep    1
-    ${concept_does_not_exist}=    Run Keyword And Return Status    Page Should Contain    Ei hakutuloksia
-    run keyword if    ${concept_does_not_exist}    Suggest concept to Controlled Vocabularies
-    ...    ELSE    Continue code creation with concept    ${concept}
-
-Continue code creation with concept
-    [Arguments]    ${concept}
+    Click Button    ${vocabulary}
     Wait until page contains element    //*[contains(text(), "${concept}")]
     Click element    //*[contains(text(), "${concept}")]
     Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
-
-Suggest concept to Controlled Vocabularies2
-    Wait until page contains element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]    timeout=20
-    Click element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]
-    Wait until page contains    Halautko ehdottaa käsitettä    timeout=20
-    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click element    ${CONFIRMATION_YES_BTN}
-    Sleep    1
+    Sleep    2
 
 Suggest concept to Controlled Vocabularies
     [Arguments]    ${concept}    ${codelist}    ${concept_name}    ${definition}
-    #Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    #Click element    ${ADD_CODE_LIST_BTN}
-    #Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
-    #Click element    ${CREATE CODE_LIST_BTN}
     Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
     Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept}
     Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
     Click element    ${VOCABULARY_SELECTION_DDL}
     Click Button    ${codelist}
-    Sleep    1
-    #Wait until page contains element    ${OPEN_TERMINOLOGY_MODAL_BTN}    timeout=20
-    #Click element    ${OPEN_TERMINOLOGY_MODAL_BTN}
-    Wait until page contains element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]    timeout=20
-    Click element    //*[contains(text(), "Ehdota käsitettä Sanastot-työkaluun")]
+    Sleep    5
+    Wait until page contains element    ${OPEN_TERMINOLOGY_MODAL_BTN}    timeout=20
+    Click element    ${OPEN_TERMINOLOGY_MODAL_BTN}
+    Sleep    5
     Wait until page contains element    ${CONCEPT_SUGGESTION_NAME_INPUT}    timeout=20
     Input Text    ${CONCEPT_SUGGESTION_NAME_INPUT}    ${concept_name}
     Wait until page contains element    ${CONCEPT_DEFINITION_INPUT}    timeout=20
     Input Text    ${CONCEPT_DEFINITION_INPUT}    ${definition}
     Wait until page contains element    ${SAVE_CONCEPT_SUGGESTION_BTN}    timeout=20
     Click element    ${SAVE_CONCEPT_SUGGESTION_BTN}
-    Sleep    2
+    Sleep    5
     Wait until page contains    Haluatko ehdottaa käsitettä ${concept_name} sanastoon ${codelist}?
     Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
-    Log to Console    Concept suggested succesfully to Controlled Vocabularies
-    Sleep    5
+    Sleep    3
+    Log to Console    Concept ${concept_name} suggested succesfully to Controlled Vocabularies
+    Sleep    2
 
 Remove Code list with concept from Controlled Vocabularies
     Wait Until Element Is Visible    id=search_box_input    timeout=30
@@ -1069,32 +1058,21 @@ Remove Code list with concept from Controlled Vocabularies
     Close All Browsers
 
 Test Case Setup Controlled Vocabularies
-    Log To Console    Terminology Setup start
     Terminology Setup
-    Log To Console    Terminology Setup end
-    Log To Console    Test Case Setup Superuser start
-    Test Case Setup Superuser
-    Log To Console    Test Case Setup Superuser end
+    #Test Case Setup Superuser
+    Test Case Setup Admin
 
 Test Case Teardown Controlled Vocabularies
-    Log To Console    Controlled Vocabularies teardown start
     Terminology Teardown
-    Log To Console    Controlled Vocabularies teardown end
-    Log To Console    Test Case Setup Superuser start
     Test Case Setup Superuser
-    Log To Console    Test Case Setup Superuser end
-    Log To Console    Remove Code list with concept from Controlled Vocabularies start
-    #Remove Code list with concept from Controlled Vocabularies
+    Remove code lists    automobiili
+
+Test Case Teardown concept for code list from Controlled Vocabularies
+    Terminology Teardown
+    Test Case Setup Superuser
     Remove code lists    tutkija
-    Log To Console    Remove Code list with concept from Controlled Vocabularies end
 
 Test Case Teardown Code with concept
-    Log To Console    Terminology Teardown start
     Terminology Teardown
-    Log To Console    Terminology Teardown end
-    Log To Console    Test Case Setup Superuser start
     Test Case Setup Superuser
-    Log To Console    Test Case Setup Superuser end
-    Log To Console    Remove imported Draft code list start
     Remove code lists    ${CODE_LIST_8}
-    Log To Console    Remove imported Draft code list end
