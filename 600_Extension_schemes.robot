@@ -26,6 +26,7 @@ ${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensi
 ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
 ${Extensions_new_version_creation}    ${DATAFOLDER}${/}Extensions_and_members_for_new_version_creation.xlsx
 ${Invalid_unaryoperator_value}    ${DATAFOLDER}${/}Calculation_members_invalid_unary_operator.xlsx
+${Code_list_extensions_broader_members}    ${DATAFOLDER}${/}Codelist_with_codes_extensions_ and_broader_members.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
@@ -240,7 +241,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    Member 1    timeout=20
     Wait until page contains    Koodi    timeout=20
     Wait until page contains    testcode57 - Testcode 57
-    Page should not contain    Testcode 29
+    Page should not contain    - Jäsen2 · Testcode 29 <=
     Log to Console    Member modified
     Sleep    2
     Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
