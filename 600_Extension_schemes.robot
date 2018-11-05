@@ -656,6 +656,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=30
     Input text    ${CODE_LIST_NAME_INPUT}    uusi nimi koodistolle
     Save code list
+    Log to Console    Code list name changed
     Sleep    4
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=30
     Click element    ${CODELIST_CODES_TAB}
@@ -667,6 +668,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Input text    ${CODE_NAME_INPUT}    koodin uusi nimi
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
+    Log to Console    Code name changed
     Sleep    4
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
@@ -689,6 +691,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains element    ${MEMBERS_TAB}    timeout=20
     Click Element    ${MEMBERS_TAB}
     Wait until page contains element    //*[contains(text(), "- Member 1 · koodin uusi nimi <=")]    timeout=20
+    Log to Console    Code list and code name changed in extension and in member
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    uusi nimi koodistolle
 
