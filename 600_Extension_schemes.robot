@@ -613,6 +613,85 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_17}
 
+616. Modify code list and codes attached to extensions and members
+    [Documentation]    Modify the name of the code list and code that are attached to extensions and members.
+    ...    Check that changes take effect on extensions and members.
+    [Tags]    regression    koodistot
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Return to Koodistot frontpage
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Sleep    2
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click Element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains    Koodisto    timeout=20
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    Laajennuksen tunnus    timeout=20
+    Wait until page contains    extension1    timeout=20
+    Wait until page contains    Laajennuksen nimi    timeout=20
+    Wait until page contains    Extension 1    timeout=20
+    Wait until page contains    Laajennuksen tyyppi    timeout=20
+    Wait until page contains    Laskentahierarkia    timeout=20
+    Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
+    Sleep    1
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
+    Wait until page contains    Koodi1000 - Koodi1000    timeout=20
+    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'3_breadcrumb_link')]
+    Sleep    5
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_2}")]
+    Wait until page contains    ${CODE_LIST_2}
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=30
+    Input text    ${CODE_LIST_NAME_INPUT}    uusi nimi koodistolle
+    Save code list
+    Sleep    4
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=30
+    Click element    ${CODELIST_CODES_TAB}
+    Wait until page contains element    //*[contains(text(), "Koodi1000 - Koodi1000")]    timeout=20
+    Click element    //*[contains(text(), "Koodi1000 - Koodi1000")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Input text    ${CODE_NAME_INPUT}    koodin uusi nimi
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Sleep    4
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_16}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_16}")]
+    Wait until page contains    ${CODE_LIST_16}
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=30
+    Click element    ${EXTENSIONS_TAB}
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "extension1 - Extension 1")]    timeout=20
+    Click element    //*[contains(text(), "extension1 - Extension 1")]
+    Wait until page contains element    ${EXTENSION_INFO_TAB}    timeout=20
+    Click Element    ${EXTENSION_INFO_TAB}
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    extension1    timeout=20
+    Wait until page contains    Extension 1    timeout=20
+    Wait until page contains    Laskentahierarkia    timeout=20
+    Wait until page contains    testiautomaatiokoodisto - uusi nimi koodistolle    timeout=20
+    Wait until page contains element    ${MEMBERS_TAB}    timeout=20
+    Click Element    ${MEMBERS_TAB}
+    Wait until page contains element    //*[contains(text(), "- Member 1 · koodin uusi nimi <=")]    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    uusi nimi koodistolle
+
 *** Keywords ***
 Upload extension
     [Arguments]    ${extension}    ${file_format}
