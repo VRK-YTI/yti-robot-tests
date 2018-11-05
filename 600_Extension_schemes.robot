@@ -244,11 +244,12 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Page should not contain    - Jäsen2 · Testcode 29 <=
     Log to Console    Member modified
     Sleep    2
-    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
-    Click element    ${MEMBER_BACK_BTN}
+    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    3
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 <=")]    timeout=20
+    Page should not contain element    ${EXPAND_ALL_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
