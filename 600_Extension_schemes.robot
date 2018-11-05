@@ -672,6 +672,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Log to Console    Code name changed
     Sleep    4
     Return to Koodistot frontpage
+    Sleep    2
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_16}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
@@ -692,6 +693,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains element    ${MEMBERS_TAB}    timeout=20
     Click Element    ${MEMBERS_TAB}
     Wait until page contains element    //*[contains(text(), "- Member 1 · koodin uusi nimi <=")]    timeout=20
+    Click element    //*[contains(text(), "- Member 1 · koodin uusi nimi <=")]
+    Wait until page contains    Koodi1000 - koodin uusi nimi - uusi nimi koodistolle - Testirekisteri    timeout=20
     Log to Console    Code list and code name changed in extension and in member
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    uusi nimi koodistolle
