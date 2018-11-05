@@ -851,7 +851,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${VERSION_TAB}    timeout=20
     Click element    ${VERSION_TAB}
     Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    #Page should not contain    03.03.2018 - 31.03.2018
+    Page should not contain    03.03.2018 - 31.03.2018
     Wait until page contains    koodisto7000    timeout=20
     Wait until page contains    koodisto7001    timeout=20
     Wait until page contains    koodisto7002    timeout=20
@@ -870,7 +870,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click element    ${VERSION_TAB}
     Sleep    8
     Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    #Page should not contain    03.03.2018 - 31.03.2018
+    Page should not contain    03.03.2018 - 31.03.2018
     Page should not contain    koodisto7000
     Wait until page contains    koodisto7001    timeout=20
     Wait until page contains    koodisto7002    timeout=20
