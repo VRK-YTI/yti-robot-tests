@@ -221,7 +221,7 @@ Check concept suggestion in controlled Vocabularies
     Click element    //*[contains(text(), "automobiili")]
     Wait until page contains    Ehdotus    timeout=20
     Wait until page contains    Tämä on kulkuneuvo    timeout=20
-    Wait until page contains    Testi Admin    timeout=20
+    Wait until page contains    Testi Superuser    timeout=20
     Log to Console    Concept suggestion ok in Controlled Vocabularies
     Sleep    1
     Close All Browsers

@@ -1059,8 +1059,7 @@ Remove Code list with concept from Controlled Vocabularies
 
 Test Case Setup Controlled Vocabularies
     Terminology Setup
-    #Test Case Setup Superuser
-    Test Case Setup Admin
+    Test Case Setup Superuser
 
 Test Case Teardown Controlled Vocabularies
     Terminology Teardown
