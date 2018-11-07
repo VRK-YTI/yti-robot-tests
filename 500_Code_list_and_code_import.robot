@@ -22,6 +22,7 @@ ${Code_list_with_languagecode}    ${DATAFOLDER}${/}Code_list_with_languagecodes.
 ${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
 ${Code_list_version2}    ${DATAFOLDER}${/}Code_list_version2.xlsx
 ${Code_list_version3}    ${DATAFOLDER}${/}Code_list_version3.xlsx
+${Variant_no_end_date}    ${DATAFOLDER}${/}Variant_code_list_and_codes_no_end_date.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -880,6 +881,65 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_11}
+
+523. Validity date change in variant listing
+    [Documentation]    Import two code lists, attach variant to code list 1,
+    ...    change validity date of the code list 1 and check that date change is
+    ...    updated in code list 2 variant listing.
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Superuser
+    Import codelist in Excel format
+    Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Return to Koodistot frontpage
+    Sleep    2
+    Import code list in Excel format
+    Upload code list    ${Variant_no_end_date}    ${CODE_LIST_8}
+    Sleep    2
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click element    ${ATTACH_VARIANT_BTN}
+    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Sleep    2
+    Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
+    Sleep    2
+    Click element    //*[contains(text(), "koodisto7000")]
+    Sleep    2
+    Log to Console    koodisto7000 attached to koodisto6000 as a variant
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click element    ${CODELIST_VARIANTS_TAB}
+    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait until page contains    Voimassaolo    timeout=20
+    Wait until page contains    Nimi    timeout=20
+    Wait until page contains    Tila    timeout=20
+    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait until page contains    koodisto7000    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    01.11.2018 -    timeout=20
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Sleep    2
+    Wait until page contains element    ${END_DATE_INPUT}    timeout=20
+    Input Text    ${END_DATE_INPUT}    2018-11-30
+    Save code list
+    Sleep    2
+    Wait until page contains    01.11.2018 - 30.11.2018    timeout=20
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click element    ${CODELIST_VARIANTS_TAB}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=20
+    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Sleep    3
+    Select Window    url=https://koodistot-dev.suomi.fi/codescheme;registryCode=test;schemeCode=Koodisto7000
+    Wait until page contains    koodisto7000    timeout=20
+    Sleep    2
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click element    ${CODELIST_VARIANTS_TAB}
+    Wait until page contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
+    Wait until page contains    koodisto6000    timeout=20
+    Wait until page contains    01.11.2018 - 30.11.2018    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
 
 *** Keywords ***
 Check values from Draft Code list
