@@ -646,7 +646,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Koodisto6000    timeout=20
     Wait until page contains    automobiili    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
-    #Wait until page contains    Tämä on kulkuneuvo    timeout=20
+    Wait until page contains    Tämä on kulkuneuvo    timeout=20
     Return to Koodistot frontpage
     Close All Browsers
     Check concept suggestion in controlled Vocabularies
@@ -673,7 +673,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Koodisto6000    timeout=20
     Wait until page contains    automobiili    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
-    #Wait until page contains    Tämä on kulkuneuvo    timeout=20
+    Wait until page contains    Tämä on kulkuneuvo    timeout=20
     Return to Koodistot frontpage
     Close All Browsers
     Check concept suggestion in controlled Vocabularies
