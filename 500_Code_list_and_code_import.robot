@@ -886,7 +886,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Documentation]    Import two code lists, attach variant to code list 1,
     ...    change validity date of the code list 1 and check that date change is
     ...    updated in code list 2 variant listing.
-    [Tags]    koodistot
+    [Tags]    koodistot    regression    test
     [Setup]    Test Case Setup Superuser
     Import codelist in Excel format
     Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
@@ -930,7 +930,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_LIST_9}")]
     Sleep    3
-    Select Window    url=https://koodistot-dev.suomi.fi/codescheme;registryCode=test;schemeCode=Koodisto7000
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    url=https://koodistot-dev.suomi.fi/codescheme;registryCode=test;schemeCode=Koodisto7000
+    ...    ELSE    Select Window    url=https://koodistot-test.suomi.fi/codescheme;registryCode=test;schemeCode=Koodisto7000
     Wait until page contains    koodisto7000    timeout=20
     Sleep    2
     Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
