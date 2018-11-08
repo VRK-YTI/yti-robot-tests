@@ -743,8 +743,6 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Log to Console    Create new version button pressed
     Wait until page contains element    ${CREATE_CODELIST_VERSION_AS_EMPTY}    timeout=20
     Click element    ${CREATE_CODELIST_VERSION_AS_EMPTY}
-    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click element    ${CONFIRMATION_YES_BTN}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}    timeout=20
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
@@ -752,6 +750,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
     Log to Console    Code list saved
     Log to Console    New code list version created as empty
     Page should not contain    10 koodia    timeout=20
