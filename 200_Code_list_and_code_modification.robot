@@ -32,7 +32,8 @@ Resource          resources/Generic_resources.robot
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 201. Add link to the DRAFT Code
-    [Documentation]    Add link to the draft code, check link functionalty and remove the link.
+    [Documentation]    Add link to the draft code, check link functionalty, check that it is not possible to add
+    ...    same link url again and remove the link.
     [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -66,19 +67,32 @@ Resource          resources/Generic_resources.robot
     Select Window    title=Koodistot
     Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=20
     Click element    ${LINK_MODAL_OK_BTN}
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    2
-    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${DELETE_LINK_ICON}
+    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
+    Click element    ${ADD_LINK_DDL}
+    Sleep    1
+    Wait until page contains element    ${LINK_BTN}    timeout=20
+    Click element    ${LINK_BTN}
+    Sleep    1
+    Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
+    Click element    ${LINK_URL_INPUT}
+    Sleep    1
+    Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
+    Wait until page contains    Linkki on jo käytössä tässä koodistossa.    timeout=20
+    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click element    ${CANCEL_CREATION_BTN}
+    Wait until page contains element    ${DELETE_LINK_ICON}    timeout=20
     Click element    ${DELETE_LINK_ICON}
     Sleep    1
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
     Click Element    ${REMOVE_LINK_CONF_BTN}
     Sleep    1
     Page should not contain    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    1
     Go back to Koodistot frontpage
