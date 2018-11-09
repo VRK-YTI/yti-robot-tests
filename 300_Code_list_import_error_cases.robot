@@ -19,6 +19,7 @@ ${Code_list_exists}    ${DATAFOLDER}${/}Code_list_exists.xlsx
 ${Code_list_invalid_codeValue}    ${DATAFOLDER}${/}Code_list_with_invalid_codevalue.xlsx
 ${Code_list_max_hierarchy_level_codes}    ${DATAFOLDER}${/}Code_list_and_codes_with_max_hierarchy_level.xlsx
 ${2x_code_list}    ${DATAFOLDER}${/}2x_codelists.xlsx
+${Code_list_invalid_propertytype}    ${DATAFOLDER}${/}Code_list_with_links_invalid_propertytype.xlsx
 #CSV paths
 ${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
 ${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
@@ -36,6 +37,7 @@ ${Error_invalid_code_list}    Tunnus on virheellinen rivillä 2. Sallitut merkit
 ${Error_codes_max_hierarchy_level}    Koodien maksimi hierarkkinen taso ylittyi.
 ${Error_only_one_code_list}    Tiedostossa saa olla vain yksi koodisto.
 ${Error_code_list_exists}    Koodisto on jo olemassa.
+${Error_invalid_propertytype}    Linkkiin liitettyä tyypitystä ei ole olemassa.
 
 *** Test Cases ***
 300. Import Code list with missing codeValue
@@ -246,6 +248,20 @@ ${Error_code_list_exists}    Koodisto on jo olemassa.
     Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
+
+311. Import Code list with invalid propertytype in external references
+    [Documentation]    Import Code list with links and with invalid propertytype in external references and check error message
+    [Tags]    regression    test
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_propertytype}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_invalid_propertytype}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
 
 *** Keywords ***
 Go back to Koodistot frontpage
