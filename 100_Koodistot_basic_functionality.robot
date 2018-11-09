@@ -274,14 +274,14 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
     Sleep    1
     Select navigation menu link    Rekisterit
     Wait until page contains    Rekisterit
-    Wait until page contains element    ${REGISTRY_DDL}
+    Wait until page contains element    ${REGISTRY_DDL}    timeout=40
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
     Select Window    title=Koodistot
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    title=Sanastot
+    Select Window    title=DEV - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
