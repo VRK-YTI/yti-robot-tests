@@ -69,17 +69,17 @@ Resource          resources/Login_details.robot
     [Tags]    regression    test
     [Setup]    Test Case Setup
     Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot
-    Wait until page contains    Nimi
-    Wait until page contains    Sähköposti
-    Wait until page contains    Organisaatio ja roolit
+    Wait until page contains    Käyttäjätiedot    timeout=40
+    Wait until page contains    Nimi    timeout=40
+    Wait until page contains    Sähköposti    timeout=40
+    Wait until page contains    Organisaatio ja roolit    timeout=40
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
     Select Window    title=Yhteentoimivuusalustan oikeuksienhallinta
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    title=Sanastot
+    Select Window    title=DEV - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
