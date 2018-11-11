@@ -62,8 +62,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
     Sleep    5
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Check values from Valid Code list
@@ -117,8 +117,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    NewCode001    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    newCode001    timeout=20
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Remove code    NewCode001 - newCode001
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
@@ -165,8 +165,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
     Sleep    5
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Return to Koodistot frontpage
     Sleep    3
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
@@ -382,8 +382,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    3
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Sleep    3
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
@@ -447,8 +447,8 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Log to Console    Testikoodi 02 clicked
     Wait until page contains    Muu linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Sleep    7
     Log to Console    Code back button pressed
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20

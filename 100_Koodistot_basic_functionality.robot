@@ -322,8 +322,8 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
     Page should contain    URI
     Page should contain    Viimeisin muokkaus
     Sleep    5
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Page should contain    Tunnus

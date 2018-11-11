@@ -44,7 +44,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 600. Import code list with extension
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
     ...    modify member, export Excel and remove code list.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Codelist_Extensions_members}    ${CODE_LIST_14}
@@ -58,8 +58,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Page should contain    testcode25
     Page should contain    Testikoodi 25
     Page should contain    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/code/testcode25
-    Wait until page contains element    ${CODE_BACK_BTN}    timeout=20
-    Click element    ${CODE_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
@@ -101,11 +101,11 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    testcode25 - Testikoodi 25
     Wait until page contains    Laajennus
     Wait until page contains    Koulutus, kulttuuri ja urheilu
-    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
-    Click element    ${MEMBER_BACK_BTN}
+    Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
+    Click element    ${3_BREADCRUMB_LINK}
     Sleep    3
-    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
-    Click element    ${EXTENSION_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
     Sleep    3
     Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
@@ -116,7 +116,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 
 601. Import code list with codes and import extension and members
     [Documentation]    Import code list with codes and import extension and members.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -137,15 +137,15 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    suomi    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
-    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
-    Click element    ${MEMBER_BACK_BTN}
+    Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
+    Click element    ${3_BREADCRUMB_LINK}
     Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
 602. Import new code list and create extension and members
     [Documentation]    Import new code list and create calculation hierarchy extension and member manually
-    [Tags]    regression    koodistot
+    [Tags]    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -165,7 +165,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 
 603. Delete extension and member
     [Documentation]    Import new code list and create and delete calculation hierarchy extension and member.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -194,7 +194,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 
 604. Modify extension member
     [Documentation]    Import new code list, import calculation hierarchy extension and members and modify member.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -256,7 +256,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 605. Import members in CSV format
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -282,8 +282,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    <=    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
-    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
-    Click element    ${MEMBER_BACK_BTN}
+    Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
+    Click element    ${3_BREADCRUMB_LINK}
     Sleep    5
     Wait until page contains element    id=exportDropdown    timeout=20
     Click element    id=exportDropdown
@@ -296,7 +296,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 606. Import code list with extension and without CODESCHEMES value
     [Documentation]    Import code list with extension. Check error message when CODESCHEME value
     ...    for external code list is missing from Extensions sheet in Excel. YTI-853
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_without_codeschemes_value}
@@ -312,7 +312,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 607. Import code list with extension and with invalid code
     [Documentation]    Import code list (Excel) with extension. Check error message when
     ...    code in extensions sheet is not included to the code list. YTI-853
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_invalid_code_in_members_sheet}
@@ -327,7 +327,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 608. Import code list with extension and members that exceed maximum hierarchy level
     [Documentation]    Import code list with extension and members that exceed maximum hierarchy level and
     ...    Check error message . YTI-844
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
@@ -342,7 +342,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 609. Import members with missing member value
     [Documentation]    Import members with missing member value to calculation hierarchy extension
     ...    and check error message.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -365,7 +365,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 610. Add code list to the extension
     [Documentation]    Add code list to the calculation hierarchy extension and
     ...    add codes from that code list to the extension member.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -388,8 +388,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Sleep    1
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
-    Wait until page contains element    ${MEMBER_BACK_BTN}    timeout=20
-    Click element    ${MEMBER_BACK_BTN}
+    Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
+    Click element    ${3_BREADCRUMB_LINK}}
     Sleep    5
     Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
     Return to Koodistot frontpage
@@ -399,7 +399,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    create new version of code list. Check that all values for codes, extensions and members are copied to the new
     ...    code list version. Export Excel and CSV for new code list version.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Extensions_new_version_creation}    ${CODE_LIST_14}
@@ -515,7 +515,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 612. Import members with invalid member value
     [Documentation]    Import members with invalid unary operator value to calculation hierarchy extension
     ...    and check error message.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -539,7 +539,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 613. Remove code list when codes are in use in other resources
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    Try to remove code list when codes are in use in other resources and check error message.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Extensions_new_version_creation}    ${CODE_LIST_14}
@@ -560,7 +560,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 614. Import extensions in CSV format
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -578,7 +578,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 615. Import extensions to the versioned code list
     [Documentation]    Import code list with codes, create new version from file and import extensions
     ...    in CSV format to the new code list version. Check that versions are listed correctly, YTI-1163.
-    [Tags]    koodistot
+    [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
@@ -592,17 +592,14 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Click element    ${FILE_FORMAT_BTN}
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Upload extension    ${Calc_def_hierarchy_extensions_csv}    ${FILE_FORMAT_CSV}
     Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
     Click element    //*[contains(@id,'111_view_extension')]
     Sleep    2
-    Wait until page contains element    ${EXTENSION_BACK_BTN}    timeout=20
-    Click Element    ${EXTENSION_BACK_BTN}
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click Element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Wait until page contains element    ${VERSION_TAB}    timeout=30
     Click element    ${VERSION_TAB}
@@ -617,7 +614,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 616. Modify code list and codes attached to extensions and members
     [Documentation]    Modify the name of the code list and code that are attached to extensions and members.
     ...    Check that changes take effect on extensions and members.
-    [Tags]    regression    koodistot
+    [Tags]    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
