@@ -378,7 +378,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
     Sleep    1
-    Wait until page contains    Muu linkki
+    Wait until page contains    Liittyvä linkki
     Page should contain    https://www.suomi.fi/etusivu/
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
@@ -440,7 +440,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Click element    //*[contains(text(), "testikoodi02 - Testikoodi 02")]
     Sleep    2
     Log to Console    Testikoodi 02 clicked
-    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Log to Console    Code links copied
     Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
@@ -717,14 +717,14 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
     Sleep    1
-    Wait until page contains    Muu linkki
+    Wait until page contains    Liittyvä linkki
     Page should contain    https://www.suomi.fi/etusivu/
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
     Sleep    1
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Log to Console    links are saved
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
@@ -766,7 +766,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Linkit
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Log to Console    Links are copied
     Sleep    1
@@ -957,7 +957,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
@@ -975,7 +975,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Uusi lisenssi    timeout=20
     Wait until page contains    Lähde    timeout=20
     Wait until page contains    Uusi lähde    timeout=20
-    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    käyttöohje.fi    timeout=20
     Wait until page contains    Normilinkki_fi    timeout=20
     Return to Koodistot frontpage

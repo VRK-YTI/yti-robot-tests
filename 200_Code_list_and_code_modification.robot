@@ -55,7 +55,7 @@ Resource          resources/Generic_resources.robot
     Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
     Sleep    1
-    Wait until page contains    Muu linkki
+    Wait until page contains    Liittyvä linkki
     Page should contain    https://www.suomi.fi/etusivu/
     Click element    //*[contains(text(), "https://www.suomi.fi/etusivu/")]
     Sleep    1
@@ -156,7 +156,7 @@ Resource          resources/Generic_resources.robot
     Click element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Click Element    ${ADD_BTN}
-    Wait until page contains    Muu linkki
+    Wait until page contains    Liittyvä linkki
     Save code modification
     Sleep    3
     Modify code
@@ -168,7 +168,7 @@ Resource          resources/Generic_resources.robot
     Input Text    ${LINK_NAME_INPUT}    www.suomi.fi
     Wait until page contains element    ${SAVE_LINK_MODIFY_BTN}    timeout=20
     Click Element    ${SAVE_LINK_MODIFY_BTN}
-    Wait until page contains    Muu linkki
+    Wait until page contains    Liittyvä linkki
     Page should contain    www.suomi.fi
     Save code modification
     Reload Page
