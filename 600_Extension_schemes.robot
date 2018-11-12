@@ -107,8 +107,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    3
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Click element    id=exportDropdown
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
     Return to Koodistot frontpage
@@ -285,8 +285,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    5
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Click element    id=exportDropdown
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
     Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
     Log to Console    CSV exported

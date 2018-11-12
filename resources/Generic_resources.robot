@@ -192,6 +192,7 @@ ${CODE_LIST_17}    Koodisto700
 ${CODE_LIST_18}    Koodisto701
 ${CODE_LIST_19}    Testikoodisto3 pitkillä arvoilla
 ${CODE_LIST_20}    Testi dcat
+${CODE_LIST_21}    Linkkikoodisto
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000

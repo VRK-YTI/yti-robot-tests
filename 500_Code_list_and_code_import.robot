@@ -23,6 +23,7 @@ ${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
 ${Code_list_version2}    ${DATAFOLDER}${/}Code_list_version2.xlsx
 ${Code_list_version3}    ${DATAFOLDER}${/}Code_list_version3.xlsx
 ${Variant_no_end_date}    ${DATAFOLDER}${/}Variant_code_list_and_codes_no_end_date.xlsx
+${Code_list_with_links}    ${DATAFOLDER}${/}Code_list_with_links.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -33,7 +34,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 *** Test Cases ***
 500. Import DRAFT Code list without codes
     [Documentation]    Import DRAFT code list without codes, check that import is successful and remove code list
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
@@ -46,7 +47,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 501. Import VALID Code list with codes
     [Documentation]    Import VALID code list with codes, check that import is successful and remove code list
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_codes}    ${CODE_LIST_9}
@@ -72,7 +73,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 502. Import DRAFT codes to existing code list
     [Documentation]    Import DRAFT codes to existing code list, check that import is successful and remove code list
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
@@ -104,7 +105,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 504. Create new code list and codes
     [Documentation]    Create new code list and codes manually and remove code and code list
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Sleep    2
@@ -130,7 +131,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 505. Create new code list with existing codeValue
     [Documentation]    Create new code list with existing codeValue and check error message from
     ...    code list value input field
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -142,7 +143,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 506. Import multiple code lists with codes
     [Documentation]    Import multiple code list with codes, check that import is successful. Remove code lists and codes.
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Multiple_codelists_and_codes}    ${CODE_LIST_10}
@@ -196,7 +197,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 508. Import DRAFT code list with codes and DEFAULT CODE
     [Documentation]    Import code list with codes and DEFAULT CODE, check that import is successful and DEFAULT CODE is
     ...    defined in information tab. Remove code list.
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Codelist_with_defaultcode}    ${CODE_LIST_15}
@@ -216,7 +217,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 509. Create code list and add DEFAULT CODE
     [Documentation]    Create new code list and import codes. Add DEFAULT CODE manually,
     ...    remove DEFAULT CODE and code list.
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
@@ -257,7 +258,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 510. Import DRAFT codes (CSV) to existing code list
     [Documentation]    Import DRAFT codes (CSV) to existing code list, check that import is successful and remove code list
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import codelist in Excel format
     Upload code list    ${Code_list_without_codes}    ${CODE_LIST_8}
@@ -341,7 +342,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 513. Import VALID code list with codes and create new version of code list
     [Documentation]    Import VALID code list with codes and create new version of code list.
     ...    Check that links and codes from the original code list are copied to the new version, YTI-979.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -469,7 +470,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 514. Create and delete registry
     [Documentation]    Create registry and attach code list to that registry. Check that deleting
     ...    registry with code lists is not possible, remove code list and delete empty registry.
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
@@ -489,7 +490,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 515. Create registry with existing registry code value
     [Documentation]    Create registry with existing registry code value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Sleep    2
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
@@ -503,7 +504,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 516. Import new VALID code list and attach variant
     [Documentation]    Import two code lists, attach variant to both code lists
     ...    and remove link between variant and code list from the first code list.
-    [Tags]    regression    test    koodistot
+    [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import codelist in Excel format
     Upload code list    ${Variant_code_list}    ${CODE_LIST_8}
@@ -581,7 +582,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 517. Import Code list with LANGUAGECODES
     [Documentation]    Import code list with language codes and check that
     ...    those are taken into use.
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_languagecode}    ${CODE_LIST_9}
@@ -607,7 +608,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 518. Create code list and suggest concept to Controlled Vocabularies
     [Documentation]    Create code list and suggest concept to Controlled Vocabularies
     ...    YTI-848.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    500
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -647,7 +648,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 519. Create code to code list list and suggest concept to Controlled Vocabularies
     [Documentation]    Create code to code list list and suggest concept to Controlled Vocabularies
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    500
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
@@ -675,7 +676,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 520. Create new version of code list as empty
     [Documentation]    Import VALID code list with codes and create new version of code list
     ...    without codes. YTI-1163.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -775,7 +776,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 521. Create new version of code list from file
     [Documentation]    Import VALID code list with codes and create new version of code list
     ...    from file. YTI-1163.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -805,7 +806,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 522. Create new versions of code list from file and remove original code list
     [Documentation]    Import VALID code list with codes and create new versions of code list
     ...    from file. Remove original code list and check that version listing is updated. YTI-1163.
-    [Tags]    regression    koodistot
+    [Tags]    regression    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -878,7 +879,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     [Documentation]    Import two code lists, attach variant to code list 1,
     ...    change validity date of the code list 1 and check that date change is
     ...    updated in code list 2 variant listing.
-    [Tags]    koodistot    regression    test
+    [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import codelist in Excel format
     Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
@@ -933,6 +934,52 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    01.11.2018 - 30.11.2018    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
+
+524. Import code list with links
+    [Documentation]    Import code list with links, check that links are imported successfully and
+    ...    export code list. YTI-1182.
+    [Tags]    regression    test    500
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_links}    ${CODE_LIST_21}
+    Sleep    2
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    Käyttöedellytys    timeout=20
+    Wait until page contains    Testikäyttöedellytys    timeout=20
+    Wait until page contains    Käyttökohde    timeout=20
+    Wait until page contains    Testikäyttökohde    timeout=20
+    Wait until page contains    Käyttöohje    timeout=20
+    Wait until page contains    Testikäyttöohje    timeout=20
+    Wait until page contains    Liittyvä standardi    timeout=20
+    Wait until page contains    Testi liittyvä standardi    timeout=20
+    Wait until page contains    Lisenssi    timeout=20
+    Wait until page contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=20
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_TYPE_EXCEL}
+    Sleep    2
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_TYPE_CSV}
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait until page contains    Lisenssi    timeout=20
+    Wait until page contains    Uusi lisenssi    timeout=20
+    Wait until page contains    Lähde    timeout=20
+    Wait until page contains    Uusi lähde    timeout=20
+    Wait until page contains    Muu linkki    timeout=20
+    Wait until page contains    käyttöohje.fi    timeout=20
+    Wait until page contains    Normilinkki_fi    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_21}
 
 *** Keywords ***
 Check values from Draft Code list
