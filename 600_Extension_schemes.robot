@@ -44,7 +44,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 600. Import code list with extension
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
     ...    modify member, export Excel and remove code list.
-    [Tags]    koodistot    600
+    [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Codelist_Extensions_members}    ${CODE_LIST_14}
@@ -145,7 +145,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 
 602. Import new code list and create extension and members
     [Documentation]    Import new code list and create calculation hierarchy extension and member manually
-    [Tags]    koodistot    600
+    [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -365,7 +365,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 610. Add code list to the extension
     [Documentation]    Add code list to the calculation hierarchy extension and
     ...    add codes from that code list to the extension member.
-    [Tags]    koodistot    600
+    [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -389,7 +389,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
     Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
-    Click element    ${3_BREADCRUMB_LINK}}
+    Click element    ${3_BREADCRUMB_LINK}
     Sleep    5
     Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
     Return to Koodistot frontpage
@@ -614,7 +614,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 616. Modify code list and codes attached to extensions and members
     [Documentation]    Modify the name of the code list and code that are attached to extensions and members.
     ...    Check that changes take effect on extensions and members.
-    [Tags]    koodistot    600
+    [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
