@@ -249,8 +249,8 @@ ${Error_invalid_propertytype}    Linkkiin liitettyä tyypitystä ei ole olemassa
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
 
-311. Import Code list with invalid propertytype in external references
-    [Documentation]    Import Code list with links and with invalid propertytype in external references and check error message
+311. Import Code list with invalid propertytype in links
+    [Documentation]    Import Code list with links and with invalid propertytype in links sheet and check error message
     [Tags]    regression    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
