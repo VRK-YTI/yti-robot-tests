@@ -539,7 +539,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
 613. Remove code list when codes are in use in other resources
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    Try to remove code list when codes are in use in other resources and check error message.
-    [Tags]    regression    koodistot    600
+    [Tags]    koodistot    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Extensions_new_version_creation}    ${CODE_LIST_14}
