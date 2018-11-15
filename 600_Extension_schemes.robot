@@ -696,6 +696,55 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    uusi nimi koodistolle
 
+617. Remove code list which is linked to other resources
+    [Documentation]    Remove code list which has codes attached to other code list extension.
+    ...    Check that removing the code list is not possible. YTI-1229.
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Return to Koodistot frontpage
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Sleep    2
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click Element    //*[contains(text(), "TIEDOT")]
+    Wait until page contains    Koodisto    timeout=20
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    Laajennuksen tunnus    timeout=20
+    Wait until page contains    extension1    timeout=20
+    Wait until page contains    Laajennuksen nimi    timeout=20
+    Wait until page contains    Extension 1    timeout=20
+    Wait until page contains    Laajennuksen tyyppi    timeout=20
+    Wait until page contains    Laskentahierarkia    timeout=20
+    Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
+    Sleep    1
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
+    Wait until page contains    Koodi1000 - Koodi1000    timeout=20
+    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'3_breadcrumb_link')]
+    Sleep    5
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_2}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_2}")]
+    Wait until page contains    ${CODE_LIST_2}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait until page contains    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/extension/extension1    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
+    Log to Console    Removing linked code list is not possible
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_2}
+
 *** Keywords ***
 Upload extension
     [Arguments]    ${extension}    ${file_format}
