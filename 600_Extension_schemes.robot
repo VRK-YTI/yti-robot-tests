@@ -536,10 +536,10 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
-613. Remove code list when codes are in use in other resources
+613. Remove code list when codes are in use in other resources in the same code list
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
-    ...    Try to remove code list when codes are in use in other resources and check error message.
-    [Tags]    koodistot    600
+    ...    Check that it is possible to remove code list when codes are in use in other resources in the same code list.
+    [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Extensions_new_version_creation}    ${CODE_LIST_14}
@@ -550,12 +550,11 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Click element    ${DELETE_CODE_LIST_BTN}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait until page contains    ${Error_codes_linked}    timeout=20
-    Sleep    1
-    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
-    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists with extensions    ${CODE_LIST_14}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_14}
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Log to Console    ${CODE_LIST_14} removed
 
 614. Import extensions in CSV format
     [Documentation]    Import code list with codes and import extension,
