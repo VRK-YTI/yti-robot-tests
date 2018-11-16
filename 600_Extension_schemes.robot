@@ -152,7 +152,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
-    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    600 - Koodisto600    Testcode 57
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    600 - Koodisto600    Testcode 57    ${EMPTY}
     Wait until page contains    - Member 1 · Testcode 57 <=    timeout=20
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
@@ -172,7 +172,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${EMPTY}
-    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testcode 57
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testcode 57    ${EMPTY}
     Wait until page contains    Koodisto
     Wait until page contains    Koodisto600
     Wait until page contains    Laajennus
@@ -386,7 +386,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    Laskentahierarkia    timeout=20
     Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
     Sleep    1
-    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000    ${EMPTY}
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
     Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
     Click element    ${3_BREADCRUMB_LINK}
@@ -634,7 +634,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    Laskentahierarkia    timeout=20
     Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
     Sleep    1
-    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000    ${EMPTY}
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
@@ -719,7 +719,7 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Wait until page contains    Laskentahierarkia    timeout=20
     Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
     Sleep    1
-    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000    ${EMPTY}
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
@@ -743,6 +743,34 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Log to Console    Removing linked code list is not possible
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_2}
+
+618. Create member with broader member
+    [Documentation]    Import new code list and create calculation hierarchy extension. Create member with broader member manually.
+    [Tags]    koodistot    600
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Extensions_new_version_creation}    ${CODE_LIST_14}
+    Wait until page contains    testcode01 - Testikoodi 01    timeout=20
+    Wait until page contains    25 koodia    timeout=20
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    ${CALC_HIERARCHY_TAB}    timeout=20
+    Click element    ${CALC_HIERARCHY_TAB}
+    Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
+    Click element    //*[contains(@id,'222_view_extension')]
+    Create member for calculation hierarchy    Jäsen10    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testikoodi 01    Jäsen9
+    Wait until page contains    - Jäsen10 · Testikoodi 01 <=    timeout=20
+    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'3_breadcrumb_link')]
+    Wait until page contains    Testilaajennus22    timeout=20
+    Wait until page contains    10 jäsentä    timeout=20
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=30
+    Click element    ${EXPAND_ALL_BTN}
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "- Jäsen10 · Testikoodi 01 <=")]    timeout=20
+    Sleep    1
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_14}
 
 *** Keywords ***
 Upload extension
@@ -844,7 +872,7 @@ Create member for definition hierarchy
     Sleep    2
 
 Create member for calculation hierarchy
-    [Arguments]    ${member_name}    ${comparison_operator}    ${unary_operator}    ${code_list_name}    ${code}
+    [Arguments]    ${member_name}    ${comparison_operator}    ${unary_operator}    ${code_list_name}    ${code}    ${broader_member}
     Wait until page contains element    ${EXTENSION_DDL}    timeout=30
     Click button    ${EXTENSION_DDL}
     Wait until page contains element    ${CREATE_MEMBER_BTN}    timeout=30
@@ -858,9 +886,21 @@ Create member for calculation hierarchy
     ${code_list_name_length}=    Get Length    ${code_list_name}
     run keyword if    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
+    ${broader_member_length}=    Get Length    ${broader_member}
+    run keyword if    ${broader_member_length} > 0    Add broader member    ${broader_member}
     Wait until page contains element    ${SAVE_MEMBER}    timeout=30
     Click button    ${SAVE_MEMBER}
     Log to Console    ${member_name} created
+    Sleep    2
+
+Add broader member
+    [Arguments]    ${broader_member}
+    Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=30
+    Click button    ${ADD_MEMBER_BTN}
+    Wait until page contains element    ${SEARCH_MEMBER_INPUT}    timeout=30
+    Input Text    ${SEARCH_MEMBER_INPUT}    ${broader_member}
+    Wait until page contains element    //*[contains(text(), "${broader_member}")]    timeout=30
+    Click element    //*[contains(text(), "${broader_member}")]
     Sleep    2
 
 Add code to member from code list

@@ -281,7 +281,8 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
     Close Window
     Select Window    title=Koodistot
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    title=DEV - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    ...    ELSE    Select Window    title=TEST - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
