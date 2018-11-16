@@ -109,7 +109,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Close Window
     Select Window    title=Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    title=DEV - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    ...    ELSE    Select Window    title=TEST - Sanastot
     Wait until page contains    Sanastot
     Wait until page contains    Hae sanastoja
     Wait until page contains    Rajaa tietoalueella
