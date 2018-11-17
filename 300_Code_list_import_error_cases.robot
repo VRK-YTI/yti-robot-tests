@@ -200,7 +200,7 @@ ${Error_invalid_enddate}    Virheellinen loppupäivä rivillä 2.
 309. Create new version of code list from invalid file
     [Documentation]    Create new version of code list from file which contains two code lists
     ...    and check error message
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -227,7 +227,7 @@ ${Error_invalid_enddate}    Virheellinen loppupäivä rivillä 2.
 310. Create new version of code list from file with same codevalue
     [Documentation]    Create new version of code list from file with same codevalue
     ...    and check error message
-    [Tags]    regression
+    [Tags]    regression    test
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}

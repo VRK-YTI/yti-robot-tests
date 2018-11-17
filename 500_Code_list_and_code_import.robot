@@ -608,7 +608,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 518. Create code list and suggest concept to Controlled Vocabularies
     [Documentation]    Create code list and suggest concept to Controlled Vocabularies
     ...    YTI-848.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -648,7 +648,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 
 519. Create code to code list list and suggest concept to Controlled Vocabularies
     [Documentation]    Create code to code list list and suggest concept to Controlled Vocabularies
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
@@ -676,7 +676,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 520. Create new version of code list as empty
     [Documentation]    Import VALID code list with codes and create new version of code list
     ...    without codes. YTI-1163.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -776,7 +776,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 521. Create new version of code list from file
     [Documentation]    Import VALID code list with codes and create new version of code list
     ...    from file. YTI-1163.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -806,7 +806,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 522. Create new versions of code list from file and remove original code list
     [Documentation]    Import VALID code list with codes and create new versions of code list
     ...    from file. Remove original code list and check that version listing is updated. YTI-1163.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
