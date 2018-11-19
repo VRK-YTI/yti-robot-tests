@@ -333,12 +333,14 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Sleep    1
     Wait until page contains    ${CODE_LIST_8}    timeout=20
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Log to Console    Code list without codes imported
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
     Click element    ${CODELIST_CODES_TAB}
     Create new code to code list with concept    tutkija    Testiautomaatiosanasto
+    Log to Console    New code "tutkija" created
     Wait until page contains    NewCode001 - tutkija
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
     Return to Koodistot frontpage
@@ -1180,5 +1182,7 @@ Test Case Teardown concept for code list from Controlled Vocabularies
 
 Test Case Teardown Code with concept
     Terminology Teardown
+    Log to Console    Test Case Teardown Code with concept done
     Test Case Setup Superuser
+    Log to Console    Test Case Setup Superuser done
     Remove code lists    ${CODE_LIST_8}
