@@ -182,6 +182,7 @@ Create Testiautomaatiosanasto and import vocabulary
 
 Delete Testiautomaatiosanasto
     Terminology Test Case Setup
+    Log to console    Terminology test case setup done
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
@@ -198,6 +199,7 @@ Delete Testiautomaatiosanasto
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Sleep    3
+    Log to console    Vocabulary remove done
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Sleep    1

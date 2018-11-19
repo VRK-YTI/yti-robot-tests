@@ -276,6 +276,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787.
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Controlled Vocabularies
+    Log to Console    Vocabulary added
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
@@ -288,9 +289,11 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    //*[contains(text(), "tutkija")]
     Click element    //*[contains(text(), "tutkija")]
     Sleep    7
+    Log to Console    Concept added
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
+    Log to Console    Registry added
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
     Click button    ${ADD_CLASSIFICATION_BTN}
@@ -305,6 +308,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
+    Log to Console    Code list saved
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
@@ -312,6 +316,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    tutkija    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
+    Log to Console    Code list values checked
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown concept for code list from Controlled Vocabularies
 
@@ -1168,7 +1173,9 @@ Test Case Teardown Controlled Vocabularies
 
 Test Case Teardown concept for code list from Controlled Vocabularies
     Terminology Teardown
+    Log to Console    Terminology teardown done
     Test Case Setup Superuser
+    Log to Console    Test Case Setup Superuser done
     Remove code lists    tutkija
 
 Test Case Teardown Code with concept
