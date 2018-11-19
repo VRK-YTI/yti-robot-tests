@@ -32,7 +32,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
     Log to Console    EUPL-1.2 license page opened
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
 
 102. Open Description of file page
@@ -89,7 +89,7 @@ Resource          resources/Terminology_Resources.robot
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
     Select navigation menu link    Suomi.fi-koodistot
     Select Window    title=Koodistot
@@ -97,13 +97,13 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    Hae koodistoa    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
     Select Window    title=Tietomallit
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
     Close All Browsers
 
