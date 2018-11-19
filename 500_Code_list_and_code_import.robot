@@ -88,7 +88,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 503. Import DRAFT codes to existing code list and update codes with import functionality
     [Documentation]    Import DRAFT codes to existing code list, check that import is successful,
     ...    update codes and remove code list
-    [Tags]    regression    test
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
@@ -274,7 +274,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 511. Create code list and get concept for code list from Controlled Vocabularies
     [Documentation]    Create code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787.
-    [Tags]    koodistot
+    [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Controlled Vocabularies
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
@@ -318,7 +318,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 512. Create code to code list and get concept for code from Controlled Vocabularies
     [Documentation]    Create code to code list and search for a concept from Controlled Vocabularies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in code, YTI-787.
-    [Tags]    koodistot
+    [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Controlled Vocabularies
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
@@ -342,7 +342,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 513. Import VALID code list with codes and create new version of code list
     [Documentation]    Import VALID code list with codes and create new version of code list.
     ...    Check that links and codes from the original code list are copied to the new version, YTI-979.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
