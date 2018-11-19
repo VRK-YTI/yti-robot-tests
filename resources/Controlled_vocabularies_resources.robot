@@ -210,6 +210,7 @@ Delete Testiautomaatiosanasto
 
 Check concept suggestion in controlled Vocabularies
     Terminology Test Case Setup
+    Log to Console    Terminology Test Case Setup done
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
@@ -217,6 +218,7 @@ Check concept suggestion in controlled Vocabularies
     Sleep    3
     Wait until page contains    ${VOCABULARY_1}    timeout=30
     Wait until page contains    Testiautomaatiosanasto    timeout=20
+    Log to Console    Vocabulary found
     Wait until page contains element    ${CONCEPT_LIST_SEARCH_INPUT}    timeout=30
     Input text    ${CONCEPT_LIST_SEARCH_INPUT}    automobiili
     Wait until page contains element    //*[contains(text(), "automobiili")]
@@ -224,6 +226,7 @@ Check concept suggestion in controlled Vocabularies
     Wait until page contains    Ehdotus    timeout=20
     Wait until page contains    Tämä on kulkuneuvo    timeout=20
     Wait until page contains    Testi Superuser    timeout=20
+    Log to Console    Concept found
     Log to Console    Concept suggestion ok in Controlled Vocabularies
     Sleep    1
     Close All Browsers

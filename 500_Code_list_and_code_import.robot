@@ -661,20 +661,24 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
     Sleep    1
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Log to Console    Code list without codes imported
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
     Click element    ${CREATE_CODE_BTN}
     Suggest concept to Controlled Vocabularies    automob    Testiautomaatiosanasto    automobiili    Tämä on kulkuneuvo
+    Log to Console    Concept suggested to vocabularies
     Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
-    Sleep    3
+    Log to Console    New code name saved
+    Sleep    5
     Wait until page contains    Koodisto6000    timeout=20
     Wait until page contains    automobiili    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait until page contains    Tämä on kulkuneuvo    timeout=20
+    Log to Console    Code values checked
     Return to Koodistot frontpage
     Close All Browsers
     Check concept suggestion in controlled Vocabularies
