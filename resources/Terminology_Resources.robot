@@ -119,12 +119,25 @@ ${HIDDEN_TERM_STATUS_VALID}    id=VALID_concept_hiddenTerm_0_status_input_dropdo
 ${HIDDEN_TERM}    id=concept_hiddenTerm_0_term_accordion_chevron
 ${ADD_CONCEPT_DEFINITION_BTN}    id=concept_definition_add_button
 ${CONCEPT_DEFINITION_EN}    id=add_new_concept_definition_en_button
-${CONCEPT_DEFINITION_INPUT}    id=concept_definition_en_1_semantic_text_input
+${CONCEPT_DEFINITION_EN_1_INPUT}    id=concept_definition_en_1_semantic_text_input
 ${ADD_CONCEPT_NOTE_BTN}    id=concept_note_add_button
 ${CONCEPT_NOTE_EN}    id=add_new_concept_note_en_button
 ${CONCEPT_NOTE_INPUT}    id=concept_note_en_1_semantic_text_input
 ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    id=add_new_concept_editorialNote_value_button
 ${CONCEPT_EDITORIAL_NOTE_INPUT}    id=concept_editorialNote_0_textarea
+${CONCEPT_EXAMPLE_ADD_BTN}    id=concept_example_add_button
+${CONCEPT_EXAMPLE_EN}    id=add_new_concept_example_en_button
+${CONCEPT_EXAMPLE_EN_TEXTAREA}    id=concept_example_en_1_textarea
+${CONCEPT_DEFINITION_FI}    id=add_new_concept_definition_fi_button
+${CONCEPT_DEFINITION_FI_1_INPUT}    id=concept_definition_fi_1_semantic_text_input
+${CONCEPT_SCOPE_INPUT}    id=concept_conceptScope_textarea
+${CONCEPT_SCOPE_CLASS_INPUT}    id=concept_conceptClass_input
+${CONCEPT_WORD_CLASS_INPUT}    id=concept_wordClass_input
+${CONCEPT_CHNAGE NOTE_INPUT}    id=concept_changeNote_textarea
+${CONCEPT_HISTORY_NOTE_INPUT}    id=concept_historyNote_textarea
+${CONCEPT_CONCEPT_NOTATION_INPUT}    id=concept_notation_input
+${CONCEPT_STATUS_DDL}    id=selected_concept_status_input_dropdown
+${CONCEPT_STATUS_VALID}    id=VALID_concept_status_input_dropdown
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
