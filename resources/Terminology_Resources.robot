@@ -138,6 +138,10 @@ ${CONCEPT_HISTORY_NOTE_INPUT}    id=concept_historyNote_textarea
 ${CONCEPT_CONCEPT_NOTATION_INPUT}    id=concept_notation_input
 ${CONCEPT_STATUS_DDL}    id=selected_concept_status_input_dropdown
 ${CONCEPT_STATUS_VALID}    id=VALID_concept_status_input_dropdown
+${CONCEPT_FILTER_BTN}    id=concept_list_filter_results_tooltip_overlay
+${CONCEPT_FILTER_DDL}    id=selected_status_filter_dropdown
+${CONCEPT_INCOMPLETE_STATUS}    id=INCOMPLETE_status_filter_dropdown
+${CONCEPT_DRAFT_STATUS}    id=DRAFT_status_filter_dropdown
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
@@ -152,6 +156,7 @@ ${concepts_with_isPartOf_and_status}    ${DATAFOLDER}${/}test_concepts_to_thesau
 ${test_concepts_to_thesaurus}    ${DATAFOLDER}${/}test_concept_import_to_thesaurus_csv.csv
 ${test_concepts_to_thesaurus_invalid_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_invalid_column_name_csv.csv
 ${test_concepts_to_thesaurus_incorrect_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_incorrect_column_name_csv.csv
+${test_concepts_for_status_filter}    ${DATAFOLDER}${/}test_concepts_filter_csv.csv
 
 *** Keywords ***
 Terminology Suite Setup

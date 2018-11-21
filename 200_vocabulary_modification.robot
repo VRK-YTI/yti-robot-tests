@@ -8,7 +8,7 @@ Resource          resources/Terminology_Resources.robot
 *** Test Cases ***
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select and edit Draft vocabulary
     Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
@@ -37,7 +37,7 @@ Resource          resources/Terminology_Resources.robot
 
 201. Add new organization and classification for DRAFT vocabulary
     [Documentation]    Add new organization and classification for DRAFT vocabulary
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select and edit Draft vocabulary
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
@@ -73,14 +73,14 @@ Resource          resources/Terminology_Resources.robot
 
 202. Add new Terminological Dictionary and import vocabulary
     [Documentation]    Add new Terminological Dictionary, import vocabulary and delete dictionary
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Vocabulary
 
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Testiautomaatiosanasto
     Select Draft vocabulary
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
@@ -116,7 +116,7 @@ Resource          resources/Terminology_Resources.robot
 204. Remove related concept and check confirmation
     [Documentation]    Add new Terminological Dictionary, import vocabulary, delete related concept
     ...    and check remove confirmation, YTI-768.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_2}
@@ -140,7 +140,7 @@ Resource          resources/Terminology_Resources.robot
 
 205. Add collection for vocabulary
     [Documentation]    Add new collection to vocabulary and delete collection.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_2}
@@ -173,7 +173,7 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Add new collection to vocabulary and modify concept which is
     ...    defined in collection broader. Check that collection is not listed
     ...    in alphabetic or hierarchial listing. YTI-1181.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_2}
@@ -213,7 +213,7 @@ Resource          resources/Terminology_Resources.robot
 207. Add preferred term and synonym for concept
     [Documentation]    Create new vocabulary, import concepts and modify concept
     ...    by adding preferred term, synonym and non-recommended synonym.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_2}
@@ -247,7 +247,7 @@ Resource          resources/Terminology_Resources.robot
 
 208. Add hidden term for concept
     [Documentation]    Create new vocabulary, import concepts and add hidden term for concept
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Maximize Browser Window
     Go back to Sanastot frontpage
@@ -312,7 +312,7 @@ Resource          resources/Terminology_Resources.robot
 
 209. Modify concept
     [Documentation]    Create new vocabulary, import concepts and modify concept values.
-    [Tags]    sanastot    regression    test
+    [Tags]    sanastot    regression    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
     Maximize Browser Window
     Go back to Sanastot frontpage
@@ -356,6 +356,42 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    Concept notation    timeout=30
     Wait until page contains    Voimassa oleva    timeout=30
     Log to Console    Concept values modified
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
+210. Import Concepts to the Terminological Vocabulary and filter concepts with status value
+    [Documentation]    Import Concepts to the Terminological Vocabulary and filter
+    ...    concepts with status value.
+    [Tags]    regression    sanastot    test    200
+    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
+    Select Terminological Vocabulary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts_for_status_filter}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
+    Sleep    3
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Sleep    3
+    Log to Console    Concept import ok
+    Wait until page contains element    ${CONCEPT_FILTER_BTN}    timeout=30
+    Click element    ${CONCEPT_FILTER_BTN}
+    Wait until page contains element    ${CONCEPT_FILTER_DDL}    timeout=30
+    Click element    ${CONCEPT_FILTER_DDL}
+    Click element    ${CONCEPT_INCOMPLETE_STATUS}
+    Wait until page contains    Venus    timeout=20
+    Page should not contain    Maa    timeout=20
+    Wait until page contains element    ${CONCEPT_FILTER_DDL}    timeout=30
+    Click element    ${CONCEPT_FILTER_DDL}
+    Click element    ${CONCEPT_DRAFT_STATUS}
+    Wait until page contains    Merkurius    timeout=20
+    Page should not contain    Maa    timeout=20
+    Page should not contain    Jupiter    timeout=20
+    Page should not contain    Kuu    timeout=20
+    Page should not contain    Mars    timeout=20
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
