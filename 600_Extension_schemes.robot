@@ -340,8 +340,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Return to Koodistot frontpage
 
 609. Import members with missing member value
-    [Documentation]    Import members with missing member value to calculation hierarchy extension
-    ...    and check error message.
+    [Documentation]    Import members with missing unaryoperator value to calculation hierarchy extension
+    ...    and check that import is successful.
     [Tags]    regression    koodistot    600
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
@@ -352,12 +352,8 @@ ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen k
     Click Element    //*[contains(@id,'555_view_extension')]
     Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
     Sleep    5
-    Wait until page contains    ${Error_member_value_missing}    timeout=20
-    Cancel code import
-    Sleep    2
-    Upload members    ${Unaryoperator_value_missing_csv}    ${FILE_FORMAT_CSV}
-    Wait until page contains    ${Error_member_value_missing}    timeout=20
-    Cancel code import
+    Wait until page contains    14 jäsentä    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]    timeout=20
     Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
