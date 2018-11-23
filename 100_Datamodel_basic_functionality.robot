@@ -118,7 +118,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select Window    title=Tietomallit
     Sleep    1
     Select navigation menu link    Suomi.fi-koodistot
-    Select Window    title=Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
+    ...    ELSE    Select Window    title=TEST - Koodistot
     Wait until page contains    Koodistot
     Wait until page contains    Etusivu
     Close Window
