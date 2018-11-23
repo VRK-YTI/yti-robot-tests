@@ -92,7 +92,8 @@ Resource          resources/Terminology_Resources.robot
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
     Select navigation menu link    Suomi.fi-koodistot
-    Select Window    title=Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
+    ...    ELSE    Select Window    title=TEST - Koodistot
     Wait until page contains    Koodistot    timeout=40
     Wait until page contains    Hae koodistoa    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
