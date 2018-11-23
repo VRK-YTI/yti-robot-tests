@@ -64,7 +64,8 @@ Resource          resources/Generic_resources.robot
     Sleep    1
     Select Window    title=Etusivu - Suomi.fi
     Sleep    1
-    Select Window    title=Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
+    ...    ELSE    Select Window    title=TEST - Koodistot
     Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=20
     Click element    ${LINK_MODAL_OK_BTN}
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
