@@ -140,6 +140,8 @@ ${DEF_HIERARCHY_TAB}    id=codelist_extension_M (0)_tab
 ${EXTENSION_INFO_TAB}    id=extension_info_tab
 ${MEMBERS_TAB}    id=extension_members_tab
 ${MEMBER_INFO_TAB}    id=member_info_tab
+#DPM extensions
+${CREATE_DPM_METRIC_BTN}    id=create_extension_dpmmetric_button
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
