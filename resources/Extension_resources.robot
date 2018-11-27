@@ -19,6 +19,7 @@ ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_val
 ${Extensions_new_version_creation}    ${DATAFOLDER}${/}Extensions_and_members_for_new_version_creation.xlsx
 ${Invalid_unaryoperator_value}    ${DATAFOLDER}${/}Calculation_members_invalid_unary_operator.xlsx
 ${Code_list_extensions_broader_members}    ${DATAFOLDER}${/}Codelist_with_codes_extensions_ and_broader_members.xlsx
+${Modify_dpm_metric}    ${DATAFOLDER}${/}Modify_dpm_metric.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
