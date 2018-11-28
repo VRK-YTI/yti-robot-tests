@@ -24,10 +24,12 @@ ${Code_list_version2}    ${DATAFOLDER}${/}Code_list_version2.xlsx
 ${Code_list_version3}    ${DATAFOLDER}${/}Code_list_version3.xlsx
 ${Variant_no_end_date}    ${DATAFOLDER}${/}Variant_code_list_and_codes_no_end_date.xlsx
 ${Code_list_with_links}    ${DATAFOLDER}${/}Code_list_with_links.xlsx
+${Code_list_with_sub_code_list_in_code}    ${DATAFOLDER}${/}Code_list_with_sub_code_list_in_code.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv.csv
+${Codes_update_sub_code_list_csv}    ${DATAFOLDER}${/}Codes_update_sub_code_list_csv.csv
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/code/testcode29
@@ -1055,6 +1057,34 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    ${Error_linked_codelist}    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_21}
+
+526. Code list import with sub code list for code
+    [Documentation]    Import code list with sub code list for code.
+    ...    Update sub code lists for codes with CSV code import. YTI-317.
+    [Tags]    regression    test    koodistot    500
+    [Setup]    Test Case Setup Superuser
+    Import codelist in Excel format
+    Upload code list    ${Code_list_with_links}    ${CODE_LIST_21}
+    Return to Koodistot frontpage
+    Sleep    2
+    Import code list in Excel format
+    Upload code list    ${Code_list_with_sub_code_list_in_code}    ${CODE_LIST_16}
+    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait until page contains    Liittyvä koodisto    timeout=20
+    Wait until page contains    200 - Linkkikoodisto    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Sleep    1
+    Import codes in CSV format
+    Upload codes    ${Codes_update_sub_code_list_csv}
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait until page contains    Liittyvä koodisto    timeout=20
+    Wait until page contains    200 - Linkkikoodisto    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_21}
 
