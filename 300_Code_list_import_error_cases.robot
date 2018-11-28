@@ -43,12 +43,12 @@ ${Error_code_list_exists}    Koodisto on jo olemassa.
 ${Error_invalid_propertytype}    Linkkiin liitettyä tyypitystä ei ole olemassa.
 ${Error_invalid_enddate}    Virheellinen loppupäivä rivillä 2.
 ${Error_same_sub_code_list}    Liittyvä koodisto on sama kuin koodin koodisto.
-${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
+${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy tunnisteella: 4c6c0ced-7e52-4e01-a985-000003ec223c
 
 *** Test Cases ***
 300. Import code list with missing codeValue
     [Documentation]    Import Code list (Excel, CSV) with missing codeValue and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_codeValue}
@@ -69,7 +69,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 301. Import code list with missing CLASSIFICATION value
     [Documentation]    Import Code list with missing CLASSIFICATION value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification}
@@ -90,7 +90,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 302. Import code list with invalid CLASSIFICATION value
     [Documentation]    Import Code list (Excel, CSV) with invalid CLASSIFICATION value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification}
@@ -111,7 +111,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 303. Import code list with missing STATUS value
     [Documentation]    Import Code list with missing STATUS value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_status_value}
@@ -125,7 +125,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 304. Import code list with invalid STATUS value
     [Documentation]    Import Code list with invalid STATUS value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_status_value}
@@ -139,7 +139,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 305. Import code list with duplicate columns
     [Documentation]    Import Code list with duplicate columns and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_columns}
@@ -153,7 +153,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 306. Import code list with duplicate code lists
     [Documentation]    Import Code list with duplicate Code lists and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists}
@@ -167,7 +167,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 307. Import code list with invalid codeValue
     [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue}
@@ -189,7 +189,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 308. Import code list with maximum hierarchies reached for codes
     [Documentation]    Import Code list (Excel) with maximum hierarchies reached
     ...    for codes and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_max_hierarchy_level_codes}
@@ -204,7 +204,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 309. Create new version of code list from invalid file
     [Documentation]    Create new version of code list from file which contains two code lists
     ...    and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -231,7 +231,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 310. Create new version of code list from file with same codevalue
     [Documentation]    Create new version of code list from file with same codevalue
     ...    and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
@@ -257,7 +257,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 311. Import code list with invalid propertytype in links
     [Documentation]    Import code list with links and with invalid propertytype in links sheet and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_propertytype}
@@ -271,7 +271,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 312. Import code list with invalid end date
     [Documentation]    Import code list with invalid end date and check error message. YTI-290.
-    [Tags]    regression    test
+    [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_enddate}
@@ -279,6 +279,34 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    Tuo
     Wait until page contains    ${Error_invalid_enddate}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
+313. Import code list with same sub code list
+    [Documentation]    Import code list with same sub code list and check error message. YTI-317.
+    [Tags]    regression    test    300
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Same_sub_code_list}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_same_sub_code_list}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Go back to Koodistot frontpage
+
+314. Import code list with unknown sub code list
+    [Documentation]    Import code list with unknown sub code list and check error message. YTI-317.
+    [Tags]    regression    test    300
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Unknown_sub_code_list}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_unknown_sub_code_list}    timeout=20
     Cancel code list import
     Sleep    2
     Go back to Koodistot frontpage
