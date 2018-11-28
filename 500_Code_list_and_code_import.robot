@@ -30,6 +30,7 @@ ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv.csv
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
+${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/code/testcode29
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -991,6 +992,71 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
     Wait until page contains    Normilinkki_fi    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_21}
+
+525. Link sub code list for code
+    [Documentation]    Import two code lists and link sub code list for code in other code list.
+    ...    Try to remove linked code list and check error message. YTI-317.
+    [Tags]    regression    test    koodistot    500
+    [Setup]    Test Case Setup Superuser
+    Import codelist in Excel format
+    Upload code list    ${Code_list_with_links}    ${CODE_LIST_21}
+    Return to Koodistot frontpage
+    Sleep    2
+    Import code list in Excel format
+    Upload code list    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains element    //*[contains(text(), "testcode29 - Testcode 29")]    timeout=20
+    Click element    //*[contains(text(), "testcode29 - Testcode 29")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${SUB_CODE_LIST_BTN}    timeout=20
+    Click element    ${SUB_CODE_LIST_BTN}
+    Wait until page contains element    ${SEARCH_SUB_CODE_LIST_INPUT}    timeout=20
+    Input text    ${SEARCH_SUB_CODE_LIST_INPUT}    Linkkikoodisto
+    Wait until page contains element    //*[contains(text(), "Linkkikoodisto")]    timeout=20
+    Click element    //*[contains(text(), "Linkkikoodisto")]
+    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click element    ${SAVE_NEW_CODE_BTN}
+    Sleep    3
+    Wait until page contains    Liittyvä koodisto    timeout=20
+    Wait until page contains    200 - Linkkikoodisto    timeout=20
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    id=remove_200_code_scheme_link    timeout=20
+    Click element    id=remove_200_code_scheme_link
+    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click element    ${SAVE_NEW_CODE_BTN}
+    Sleep    3
+    Page should not contain    200 - Linkkikoodisto    timeout=20
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${SUB_CODE_LIST_BTN}    timeout=20
+    Click element    ${SUB_CODE_LIST_BTN}
+    Wait until page contains element    ${SEARCH_SUB_CODE_LIST_INPUT}    timeout=20
+    Input text    ${SEARCH_SUB_CODE_LIST_INPUT}    Linkkikoodisto
+    Wait until page contains element    //*[contains(text(), "Linkkikoodisto")]    timeout=20
+    Click element    //*[contains(text(), "Linkkikoodisto")]
+    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click element    ${SAVE_NEW_CODE_BTN}
+    Sleep    3
+    Wait until page contains    Liittyvä koodisto    timeout=20
+    Wait until page contains    200 - Linkkikoodisto    timeout=20
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_21}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_21}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_21}")]
+    Wait until page contains    ${CODE_LIST_21}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click element    ${DELETE_CODE_LIST_BTN}
+    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait until page contains    ${Error_linked_codelist}    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_21}
 
 *** Keywords ***
 Check values from Draft Code list

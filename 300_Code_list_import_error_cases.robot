@@ -21,6 +21,8 @@ ${Code_list_max_hierarchy_level_codes}    ${DATAFOLDER}${/}Code_list_and_codes_w
 ${2x_code_list}    ${DATAFOLDER}${/}2x_codelists.xlsx
 ${Code_list_invalid_propertytype}    ${DATAFOLDER}${/}Code_list_with_links_invalid_propertytype.xlsx
 ${Code_list_invalid_enddate}    ${DATAFOLDER}${/}Code_list_with_links_invalid_endate.xlsx
+${Same_sub_code_list}    ${DATAFOLDER}${/}same_sub_code_list.xlsx
+${Unknown_sub_code_list}    ${DATAFOLDER}${/}unknown_sub_code_list.xlsx
 #CSV paths
 ${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
 ${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
@@ -40,6 +42,8 @@ ${Error_only_one_code_list}    Tiedostossa saa olla vain yksi koodisto.
 ${Error_code_list_exists}    Koodisto on jo olemassa.
 ${Error_invalid_propertytype}    Linkkiin liitettyä tyypitystä ei ole olemassa.
 ${Error_invalid_enddate}    Virheellinen loppupäivä rivillä 2.
+${Error_same_sub_code_list}    Liittyvä koodisto on sama kuin koodin koodisto.
+${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy.
 
 *** Test Cases ***
 300. Import code list with missing codeValue

@@ -172,6 +172,8 @@ ${EXTENSION_BACK_BTN}    id=extension_back_button
 ${CODE_STATUS_DDL}    id=selected_status_input_dropdown
 ${CODE_DDL}       id=codeDropdown
 ${CODE_SCHEME_DDL_BTN}    id=code_scheme_dropdown_button
+${SUB_CODE_LIST_BTN}    id=add_codelist_button
+${SEARCH_SUB_CODE_LIST_INPUT}    id=search_linked_code-scheme_input
 #Code lists and Codes
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
