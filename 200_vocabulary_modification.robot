@@ -383,15 +383,14 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${CONCEPT_FILTER_DDL}
     Click element    ${CONCEPT_INCOMPLETE_STATUS}
     Wait until page contains    Venus    timeout=20
-    Page should not contain    Maa    timeout=20
+    Page should not contain    Jupiter
     Wait until page contains element    ${CONCEPT_FILTER_DDL}    timeout=30
     Click element    ${CONCEPT_FILTER_DDL}
     Click element    ${CONCEPT_DRAFT_STATUS}
     Wait until page contains    Merkurius    timeout=20
-    Page should not contain    Maa    timeout=20
-    Page should not contain    Jupiter    timeout=20
-    Page should not contain    Kuu    timeout=20
-    Page should not contain    Mars    timeout=20
+    Page should not contain    Jupiter
+    Page should not contain    Kuu
+    Page should not contain    Mars
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
