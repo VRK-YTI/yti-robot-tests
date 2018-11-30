@@ -143,6 +143,11 @@ ${MEMBER_INFO_TAB}    id=member_info_tab
 #DPM extensions
 #DPM Metric
 ${CREATE_DPM_METRIC_BTN}    id=create_extension_dpmmetric_button
+${DPM_BALANCE_TYPE_INPUT}    id=code_inline_membervalue_dpmMetric_dpmBalanceType _input
+${DPM_METRIC_DATA_TYPE_INPUT}    id=code_inline_membervalue_dpmMetric_dpmMetricDataType _input
+${DPM_DOMAIN_REFERENCE_INPUT}    id=code_inline_membervalue_dpmMetric_dpmDomainReference _input
+${DPM_FLOW_TYPE_INPUT}    id=code_inline_membervalue_dpmMetric_dpmFlowType _input
+${DPM_HIERARCHY_REFERENCE_INPUT}    id=code_inline_membervalue_dpmMetric_dpmHierarchyReference _input
 #DPM Explicit domain
 ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    id=create_extension_dpmexplicitdomain_button
 ${DPM_EXPLICIT_DOMAIN_INPUT}    id=code_inline_membervalue_dpmExplicitDomain_dpmMemberXBRLCodePrefix _input

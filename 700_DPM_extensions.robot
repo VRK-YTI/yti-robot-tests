@@ -8,7 +8,7 @@ Resource          resources/Controlled_vocabularies_resources.robot
 Resource          resources/Extension_resources.robot
 
 *** Test Cases ***
-700. Create DPM Metric extension
+700. Create DPM Metric extension and update code extensions
     [Documentation]    Import new code list and create DPM Metric extension.
     ...    Update code extensions with Excel import and export Excel and CSV.
     [Tags]    koodistot    regression    700
@@ -57,7 +57,7 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
-701. Update DPM Metric extension
+701. Update DPM Metric extension with invalid Excel sheet
     [Documentation]    Import new code list and try to update DPM Metric extension
     ...    with invalid Excel sheet with two DMP Metric values defined. Check error message.
     [Tags]    koodistot    700
@@ -78,9 +78,52 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
-702. Create DPM explicit domain extension
-    [Documentation]    Import new code list and Create DPM explicit domain extension. Set Member XBRL code prefix value for code.
-    ...    Update all code extensions in code list with Excel import and export Excel and CSV.
+702. Create DPM Metric extension
+    [Documentation]    Import new code list and create DPM Metric extension.
+    ...    set DPM Metric values for code.
+    [Tags]    koodistot    regression    700
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Create DPM extension    ${CREATE_DPM_METRIC_BTN}    ${DRAFT_STATUS}
+    Wait until page contains    DPM Metric (en)    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${DPM_BALANCE_TYPE_INPUT}    timeout=20
+    Input Text    ${DPM_BALANCE_TYPE_INPUT}    aaa
+    Wait until page contains element    ${DPM_METRIC_DATA_TYPE_INPUT}    timeout=20
+    Input Text    ${DPM_METRIC_DATA_TYPE_INPUT}    bbb
+    Wait until page contains element    ${DPM_DOMAIN_REFERENCE_INPUT}    timeout=20
+    Input Text    ${DPM_DOMAIN_REFERENCE_INPUT}    ccc
+    Wait until page contains element    ${DPM_FLOW_TYPE_INPUT}    timeout=20
+    Input Text    ${DPM_FLOW_TYPE_INPUT}    ddd
+    Wait until page contains element    ${DPM_HIERARCHY_REFERENCE_INPUT}    timeout=20
+    Input Text    ${DPM_HIERARCHY_REFERENCE_INPUT}    eee
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Sleep    3
+    Wait until page contains    DPM Metric (en)    timeout=20
+    Wait until page contains    Balance type (en)    timeout=20
+    Wait until page contains    aaa    timeout=20
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    bbb    timeout=20
+    Wait until page contains    Domain reference (en)    timeout=20
+    Wait until page contains    ccc    timeout=20
+    Wait until page contains    Flow type (en)    timeout=20
+    Wait until page contains    ddd    timeout=20
+    Wait until page contains    Hierarchy reference (en)    timeout=20
+    Wait until page contains    eee    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+703. Create DPM explicit domain extension
+    [Documentation]    Import new code list and Create DPM explicit domain extension. Modify extension name.
+    ...    Set Member XBRL code prefix value for code. Update all code extensions in code list with Excel import and export Excel and CSV.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
