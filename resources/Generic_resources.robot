@@ -151,6 +151,9 @@ ${DPM_HIERARCHY_REFERENCE_INPUT}    id=code_inline_membervalue_dpmMetric_dpmHier
 #DPM Explicit domain
 ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    id=create_extension_dpmexplicitdomain_button
 ${DPM_EXPLICIT_DOMAIN_INPUT}    id=code_inline_membervalue_dpmExplicitDomain_dpmMemberXBRLCodePrefix _input
+#DPM Dimension
+${CREATE_DPM_DIMENSION_BTN}    id=create_extension_dpmdimension_button
+${DPM_DIMENSION_DOMAIN_REFERENCE_INPUT}    id=code_inline_membervalue_dpmDimension_dpmDomainReference _input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button
