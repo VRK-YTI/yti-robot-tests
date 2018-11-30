@@ -141,7 +141,11 @@ ${EXTENSION_INFO_TAB}    id=extension_info_tab
 ${MEMBERS_TAB}    id=extension_members_tab
 ${MEMBER_INFO_TAB}    id=member_info_tab
 #DPM extensions
+#DPM Metric
 ${CREATE_DPM_METRIC_BTN}    id=create_extension_dpmmetric_button
+#DPM Explicit domain
+${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    id=create_extension_dpmexplicitdomain_button
+${DPM_EXPLICIT_DOMAIN_INPUT}    id=code_inline_membervalue_dpmExplicitDomain_dpmMemberXBRLCodePrefix _input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button

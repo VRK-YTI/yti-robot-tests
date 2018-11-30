@@ -77,3 +77,60 @@ Resource          resources/Extension_resources.robot
     Cancel code list import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+702. Create DPM explicit domain extension
+    [Documentation]    Import new code list and Create DPM explicit domain extension. Set Member XBRL code prefix value for code.
+    ...    Update all code extensions in code list with Excel import and export Excel and CSV.
+    [Tags]    koodistot    regression    700
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Create DPM extension    ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    ${DRAFT_STATUS}
+    Wait until page contains    DPM Explicit Domain (en)    timeout=20
+    Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=30
+    Click element    ${MODIFY_EXTENSION_BTN}
+    Wait until page contains element    ${EXTENSION_NAME_INPUT}
+    Input text    ${EXTENSION_NAME_INPUT}    DPM Explicit Domain laajennus
+    Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
+    Click button    ${SAVE_EXTENSION}
+    Sleep    2
+    Wait until page contains    DPM Explicit Domain laajennus    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
+    #Wait until page contains    DPM Explicit Domain laajennus    timeout=20
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${DPM_EXPLICIT_DOMAIN_INPUT}    timeout=20
+    Input Text    ${DPM_EXPLICIT_DOMAIN_INPUT}    yyy
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Sleep    3
+    Wait until page contains    DPM Explicit Domain laajennus    timeout=20
+    Wait until page contains    Member XBRL code prefix (en)    timeout=20
+    Wait until page contains    yyy    timeout=20
+    Return to Koodistot frontpage
+    Import code list in Excel format
+    Upload codelist    ${Modify_DPM_explicit_domain}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait until page contains    DPM Explicit Domain laajennus    timeout=20
+    Wait until page contains    Member XBRL code prefix (en)    timeout=20
+    Wait until page contains    yyy    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_TYPE_EXCEL}
+    Sleep    2
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_TYPE_CSV}
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
