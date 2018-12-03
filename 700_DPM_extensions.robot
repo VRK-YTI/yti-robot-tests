@@ -204,3 +204,26 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    aaa    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+705. Import DPM Dimension extension
+    [Documentation]    Import new code list with codes and DPM Dimension extension.
+    ...    Check Domain reference values for codes.
+    [Tags]    koodistot    regression    700
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_codes_DPM_Dimension_extension}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait until page contains    DPM Dimension laajennus    timeout=20
+    Wait until page contains    Domain reference (en)    timeout=20
+    Wait until page contains    yyy    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait until page contains    DPM Dimension laajennus    timeout=20
+    Wait until page contains    Domain reference (en)    timeout=20
+    Wait until page contains    yyy    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
