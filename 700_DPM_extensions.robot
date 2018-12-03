@@ -227,3 +227,44 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    yyy    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+706. Import all DPM extensions
+    [Documentation]    Import new code list with codes and all DPM extensions.
+    ...    Check extension values for codes.
+    [Tags]    koodistot    regression    700
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait until page contains    DPM Dimension laajennus    timeout=20
+    Wait until page contains    Domain reference (en)    timeout=20
+    Wait until page contains    yyy    timeout=20
+    Wait until page contains    DPM Typed Domain laajennus    timeout=20
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    zzz    timeout=20
+    Wait until page contains    DPM Metric laajennus    timeout=20
+    Wait until page contains    Balance type (en)    timeout=20
+    Wait until page contains    aaa    timeout=20
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    bbb    timeout=20
+    Wait until page contains    Domain reference (en)    timeout=20
+    Wait until page contains    ccc    timeout=20
+    Wait until page contains    Flow type (en)    timeout=20
+    Wait until page contains    ddd    timeout=20
+    Wait until page contains    Hierarchy reference (en)    timeout=20
+    Wait until page contains    eee    timeout=20
+    Wait until page contains    DPM Explicit Domain laajennus    timeout=20
+    Wait until page contains    Member XBRL code prefix (en)    timeout=20
+    Wait until page contains    xxx    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    //*[contains(text(), "dpmDimension - DPM Dimension laajennus")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "dpmExplicitDomain - DPM Explicit Domain laajennus")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "dpmMetric - DPM Metric laajennus")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "dpmTypedDomain - DPM Typed Domain laajennus")]    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
