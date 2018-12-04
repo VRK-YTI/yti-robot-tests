@@ -268,3 +268,18 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(text(), "dpmTypedDomain - DPM Typed Domain laajennus")]    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+707. Import DPM extensions when members contain relations to other members
+    [Documentation]    Import new code list with codes and all DPM extensions.
+    ...    Check error message when code extension members contain relations to other members.
+    [Tags]    koodistot    regression    700
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${DPM_extension_relations_to_other_members}
+    Sleep    2
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    Tuo
+    Wait until page contains    ${Error_relations_to_other_members}    timeout=20
+    Cancel code list import
+    Sleep    2
+    Return to Koodistot frontpage

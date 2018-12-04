@@ -24,6 +24,7 @@ ${2_dpms_should_fail}    ${DATAFOLDER}${/}Modify_dpm_metric_2_dpms_should_fail.x
 ${Modify_DPM_explicit_domain}    ${DATAFOLDER}${/}Modify_DPM_explicit_domain_extension.xlsx
 ${Code_list_codes_DPM_Dimension_extension}    ${DATAFOLDER}${/}Code_list_codes_DPM_Dimension_extension.xlsx
 ${Code_list_codes_DPM_extension_all}    ${DATAFOLDER}${/}Code_list_codes_DPM_all.xlsx
+${DPM_extension_relations_to_other_members}    ${DATAFOLDER}${/}DPM_extensions_relations_to_other_members.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
@@ -36,6 +37,7 @@ ${Error_max_hierarchy_level}    Jäsenten maksimi hierarkkinen taso ylittyi.
 ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä 6.
 ${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 3.
 ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa:
+${Error_relations_to_other_members}    Koodilaajennuksissa ei sallita jäsenten välisiä linkityksiä.
 
 *** Keywords ***
 Upload extension

@@ -343,8 +343,3 @@ Import code list in CSV format
     Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
     Click element    ${FILE_FORMAT_CSV}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
-Cancel code list import
-    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}

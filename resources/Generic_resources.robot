@@ -590,3 +590,8 @@ Modify code list
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Sleep    2
+
+Cancel code list import
+    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
+    Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
+    Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}
