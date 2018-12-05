@@ -119,6 +119,7 @@ ${HIDDEN_TERM_STATUS_VALID}    id=VALID_concept_hiddenTerm_0_status_input_dropdo
 ${HIDDEN_TERM}    id=concept_hiddenTerm_0_term_accordion_chevron
 ${ADD_CONCEPT_DEFINITION_BTN}    id=concept_definition_add_button
 ${CONCEPT_DEFINITION_EN}    id=add_new_concept_definition_en_button
+${CONCEPT_DEFINITION_FI_0_INPUT}    id=concept_definition_fi_0_semantic_text_input
 ${CONCEPT_DEFINITION_EN_1_INPUT}    id=concept_definition_en_1_semantic_text_input
 ${ADD_CONCEPT_NOTE_BTN}    id=concept_note_add_button
 ${CONCEPT_NOTE_EN}    id=add_new_concept_note_en_button
@@ -142,6 +143,10 @@ ${CONCEPT_FILTER_BTN}    id=concept_list_filter_results_tooltip_overlay
 ${CONCEPT_FILTER_DDL}    id=selected_status_filter_dropdown
 ${CONCEPT_INCOMPLETE_STATUS}    id=INCOMPLETE_status_filter_dropdown
 ${CONCEPT_DRAFT_STATUS}    id=DRAFT_status_filter_dropdown
+${ADD_LINK}       id=concept_definition_fi_0_semantic_text_input_extlink_popover_button
+${ADD_CONCEPT_REFERENCE}    id=concept_definition_fi_0_semantic_text_input_link_popover_button
+${SELECT_LINK_CONFRIM_BTN}    id=select_link_target_confirm_button
+${SELECT_LINK_URL_INPUT}    id=select_link_target_url_input
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
@@ -157,6 +162,7 @@ ${test_concepts_to_thesaurus}    ${DATAFOLDER}${/}test_concept_import_to_thesaur
 ${test_concepts_to_thesaurus_invalid_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_invalid_column_name_csv.csv
 ${test_concepts_to_thesaurus_incorrect_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_incorrect_column_name_csv.csv
 ${test_concepts_for_status_filter}    ${DATAFOLDER}${/}test_concepts_filter_csv.csv
+${concept_reference}    ${DATAFOLDER}${/}Concept_reference_csv.csv
 
 *** Keywords ***
 Terminology Suite Setup
