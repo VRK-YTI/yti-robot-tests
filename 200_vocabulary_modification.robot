@@ -8,6 +8,7 @@ Resource          resources/Terminology_Resources.robot
 *** Variables ***
 ${EXT_LINK}       //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
 ${CONCEPT_REF}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
+${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div[2]/div[2]/div/div/div/div/p/a
 
 *** Test Cases ***
 200. Modify DRAFT vocabulary
@@ -480,6 +481,42 @@ ${CONCEPT_REF}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-c
     Sleep    2
     Wait until page contains    Planeetta    timeout=30
     Wait until page contains element    ${CONCEPT_REF}    timeout=30
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
+213. Add definition for concept
+    [Documentation]    Create new vocabulary and import concepts. Add another definition in Finnish and concept reference for concept.
+    [Tags]    sanastot    regression    test    200
+    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    Maximize Browser Window
+    Go back to Sanastot frontpage
+    Select dictionary    ${VOCABULARY_2}
+    Sleep    1
+    Edit concept    tutkija
+    Wait until page contains element    ${ADD_CONCEPT_DEFINITION_BTN}    timeout=30
+    Click element    ${ADD_CONCEPT_DEFINITION_BTN}
+    Wait until page contains element    ${CONCEPT_DEFINITION_FI}    timeout=30
+    Click element    ${CONCEPT_DEFINITION_FI}
+    Wait until page contains element    ${CONCEPT_DEFINITION_FI_1_INPUT}    timeout=30
+    Click element    ${CONCEPT_DEFINITION_FI_1_INPUT}
+    Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    h
+    Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    u
+    Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    t
+    Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    k
+    Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    i
+    Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    j
+    Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    a
+    Wait until page contains element    ${ADD_CONCEPT_REFERENCE_1}    timeout=30
+    Click element    ${ADD_CONCEPT_REFERENCE_1}
+    Wait until page contains element    //*[contains(@id,'_search_result_concept')]
+    Click element    //*[contains(@id,'_search_result_concept')]
+    Sleep    1
+    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    Save concept
+    Sleep    5
+    Wait until page contains    hutkija    timeout=30
+    Wait until page contains element    ${CONCEPT_REF_2}    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
