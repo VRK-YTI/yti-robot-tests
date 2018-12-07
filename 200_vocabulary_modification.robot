@@ -7,6 +7,7 @@ Resource          resources/Terminology_Resources.robot
 
 *** Variables ***
 ${EXT_LINK}       //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
+${CONCEPT_REF}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
 
 *** Test Cases ***
 200. Modify DRAFT vocabulary
@@ -397,8 +398,8 @@ ${EXT_LINK}       //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-c
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
-211. Add concept reference
-    [Documentation]    Create new vocabulary, import concepts and add concept reference.
+211. Add external link for concept
+    [Documentation]    Create new vocabulary, import concepts and add external link for concept.
     [Tags]    sanastot    regression    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Maximize Browser Window
@@ -436,6 +437,49 @@ ${EXT_LINK}       //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-c
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
     Sleep    1
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
+212. Add concept reference
+    [Documentation]    Create new vocabulary, import concepts and add concept reference.
+    [Tags]    sanastot    regression    test    200
+    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
+    Maximize Browser Window
+    Select Terminological Vocabulary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
+    Sleep    3
+    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Sleep    3
+    Log to Console    Concept import ok
+    Sleep    1
+    Edit concept    Merkurius
+    Sleep    2
+    Wait until page contains element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
+    Click element    ${CONCEPT_DEFINITION_FI_0_INPUT}
+    Wait until page contains element    ${ADD_CONCEPT_REFERENCE}    timeout=30
+    Click element    ${ADD_CONCEPT_REFERENCE}
+    Wait until page contains element    //*[contains(@id,'_search_result_concept')]
+    Click element    //*[contains(@id,'_search_result_concept')]
+    Sleep    1
+    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    Wait until page contains element    ${SELECT_CONCEPT_REFERENCE_DDL}    timeout=30
+    Click element    ${SELECT_CONCEPT_REFERENCE_DDL}
+    Wait until page contains element    ${BROADER_CONCEPT_BTN}    timeout=30
+    Click element    ${BROADER_CONCEPT_BTN}
+    Wait until page contains element    ${SELECT_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click element    ${SELECT_CONCEPT_CONFIRM_BTN}
+    Save concept
+    Sleep    2
+    Wait until page contains    Planeetta    timeout=30
+    Wait until page contains element    ${CONCEPT_REF}    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
