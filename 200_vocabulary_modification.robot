@@ -5,6 +5,9 @@ Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
+*** Variables ***
+${EXT_LINK}       //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
+
 *** Test Cases ***
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
@@ -396,7 +399,7 @@ Resource          resources/Terminology_Resources.robot
 
 211. Add concept reference
     [Documentation]    Create new vocabulary, import concepts and add concept reference.
-    [Tags]    sanastot    200
+    [Tags]    sanastot    regression    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Maximize Browser Window
     Select Terminological Vocabulary
@@ -412,8 +415,6 @@ Resource          resources/Terminology_Resources.robot
     Click element    ${IMPORT_YES_BTN}
     Sleep    3
     Log to Console    Concept import ok
-    #Go back to Sanastot frontpage
-    #Select dictionary    ${VOCABULARY_2}
     Sleep    1
     Edit concept    Merkurius
     Sleep    2
@@ -426,8 +427,10 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    ${SELECT_LINK_CONFRIM_BTN}    timeout=30
     Click element    ${SELECT_LINK_CONFRIM_BTN}
     Save concept
-    Wait until page contains element    //*[contains(text(), "Ulkoinen linkki")]    timeout=30
-    Click element    //*[contains(text(), "Ulkoinen linkki")]
+    Wait until page contains    Planeetta    timeout=30
+    Wait until page contains element    ${EXT_LINK}    timeout=30
+    Click element    ${EXT_LINK}
+    Sleep    5
     Select Window    title=Etusivu - Suomi.fi
     Close Window
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
