@@ -60,13 +60,12 @@ Resource          resources/Extension_resources.robot
 701. Update DPM Metric extension with invalid Excel sheet
     [Documentation]    Import new code list and try to update DPM Metric extension
     ...    with invalid Excel sheet with two DMP Metric values defined. Check error message.
-    [Tags]    koodistot    700
+    [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Sleep    2
-    Wait until page contains    DPM Metric laajennus    timeout=20
     Return to Koodistot frontpage
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${2_dpms_should_fail}

@@ -38,6 +38,7 @@ ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jä
 ${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 3.
 ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa:
 ${Error_relations_to_other_members}    Koodilaajennuksissa ei sallita jäsenten välisiä linkityksiä.
+${Error_2_dpms}    Aineistossa on useita samantyyppisiä koodilaajennuksia.
 
 *** Keywords ***
 Upload extension
