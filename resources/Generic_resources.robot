@@ -340,6 +340,10 @@ Remove code lists
 
 Create code list
     [Arguments]    ${registry}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
+    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
+    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
@@ -595,3 +599,55 @@ Cancel code list import
     Click button    ${CLOSE_ERROR_MESSAGE_BTN}
     Wait until page contains element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    ${CANCEL_IMPORT_CODE_LIST_BTN}
+
+Upload codelist in Excel format
+    [Arguments]    ${codelist}    ${codelist_name}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
+    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
+    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+    Log to Console    Code list ${codelist_name} imported
+
+Upload codelist in CSV format
+    [Arguments]    ${codelist}    ${codelist_name}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
+    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
+    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click element    ${ADD_CODE_LIST_BTN}
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
+    Click element    ${FILE_FORMAT_CSV}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click button    ${UPLOAD_FILE_BTN}
+    Sleep    6
+    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+    Log to Console    Code list ${codelist_name} imported

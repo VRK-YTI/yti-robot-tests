@@ -39,8 +39,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Documentation]    Import DRAFT code list without codes, check that import is successful and remove code list
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
