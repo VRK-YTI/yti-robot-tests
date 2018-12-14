@@ -51,8 +51,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Documentation]    Import VALID code list with codes, check that import is successful and remove code list
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -77,8 +76,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Documentation]    Import DRAFT codes to existing code list, check that import is successful and remove code list
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
     Wait until page contains    koodi500 - Koodi500    timeout=20
@@ -92,8 +90,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    update codes and remove code list
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
     Wait until page contains    koodi500 - Koodi500    timeout=20
