@@ -132,10 +132,9 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    code list value input field
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Return to Koodistot frontpage
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_2}    Asuminen
+    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_9}    Asuminen
     Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
