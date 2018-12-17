@@ -94,13 +94,13 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${DPM_BALANCE_TYPE_INPUT}    timeout=20
-    Input Text    ${DPM_BALANCE_TYPE_INPUT}    aaa
+    Input Text    ${DPM_BALANCE_TYPE_INPUT}    Credit
     Wait until page contains element    ${DPM_METRIC_DATA_TYPE_INPUT}    timeout=20
-    Input Text    ${DPM_METRIC_DATA_TYPE_INPUT}    bbb
+    Input Text    ${DPM_METRIC_DATA_TYPE_INPUT}    Integer
     Wait until page contains element    ${DPM_DOMAIN_REFERENCE_INPUT}    timeout=20
     Input Text    ${DPM_DOMAIN_REFERENCE_INPUT}    ccc
     Wait until page contains element    ${DPM_FLOW_TYPE_INPUT}    timeout=20
-    Input Text    ${DPM_FLOW_TYPE_INPUT}    ddd
+    Input Text    ${DPM_FLOW_TYPE_INPUT}    Duration
     Wait until page contains element    ${DPM_HIERARCHY_REFERENCE_INPUT}    timeout=20
     Input Text    ${DPM_HIERARCHY_REFERENCE_INPUT}    eee
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
@@ -108,13 +108,13 @@ Resource          resources/Extension_resources.robot
     Sleep    3
     Wait until page contains    DPM Metric (en)    timeout=20
     Wait until page contains    Balance type (en)    timeout=20
-    Wait until page contains    aaa    timeout=20
+    Wait until page contains    Credit    timeout=20
     Wait until page contains    Data type (en)    timeout=20
-    Wait until page contains    bbb    timeout=20
+    Wait until page contains    Integer    timeout=20
     Wait until page contains    Domain reference (en)    timeout=20
     Wait until page contains    ccc    timeout=20
     Wait until page contains    Flow type (en)    timeout=20
-    Wait until page contains    ddd    timeout=20
+    Wait until page contains    Duration    timeout=20
     Wait until page contains    Hierarchy reference (en)    timeout=20
     Wait until page contains    eee    timeout=20
     Return to Koodistot frontpage
@@ -242,16 +242,16 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    yyy    timeout=20
     Wait until page contains    DPM Typed Domain laajennus    timeout=20
     Wait until page contains    Data type (en)    timeout=20
-    Wait until page contains    zzz    timeout=20
+    Wait until page contains    Boolean    timeout=20
     Wait until page contains    DPM Metric laajennus    timeout=20
     Wait until page contains    Balance type (en)    timeout=20
-    Wait until page contains    aaa    timeout=20
+    Wait until page contains    Debit    timeout=20
     Wait until page contains    Data type (en)    timeout=20
-    Wait until page contains    bbb    timeout=20
+    Wait until page contains    Isin    timeout=20
     Wait until page contains    Domain reference (en)    timeout=20
     Wait until page contains    ccc    timeout=20
     Wait until page contains    Flow type (en)    timeout=20
-    Wait until page contains    ddd    timeout=20
+    Wait until page contains    Duration    timeout=20
     Wait until page contains    Hierarchy reference (en)    timeout=20
     Wait until page contains    eee    timeout=20
     Wait until page contains    DPM Explicit Domain laajennus    timeout=20
