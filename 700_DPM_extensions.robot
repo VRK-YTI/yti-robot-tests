@@ -33,13 +33,13 @@ Resource          resources/Extension_resources.robot
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
     Wait until page contains    DPM Metric laajennus    timeout=20
     Wait until page contains    Balance type (en)    timeout=20
-    Wait until page contains    aaa    timeout=20
+    Wait until page contains    Debit    timeout=20
     Wait until page contains    Data type (en)    timeout=20
-    Wait until page contains    bbb    timeout=20
+    Wait until page contains    Isin    timeout=20
     Wait until page contains    Domain reference (en)    timeout=20
     Wait until page contains    ccc    timeout=20
     Wait until page contains    Flow type (en)    timeout=20
-    Wait until page contains    ddd    timeout=20
+    Wait until page contains    Duration    timeout=20
     Wait until page contains    Hierarchy reference (en)    timeout=20
     Wait until page contains    eee    timeout=20
     Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
