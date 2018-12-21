@@ -140,6 +140,7 @@ ${DEF_HIERARCHY_TAB}    id=codelist_extension_M (0)_tab
 ${EXTENSION_INFO_TAB}    id=extension_info_tab
 ${MEMBERS_TAB}    id=extension_members_tab
 ${MEMBER_INFO_TAB}    id=member_info_tab
+${AUTO_CREATE_MEMBERS_CHECKBOX}    id=auto_create_members_checkbox
 #DPM extensions
 #DPM Metric
 ${CREATE_DPM_METRIC_BTN}    id=create_extension_dpmmetric_button
@@ -209,6 +210,7 @@ ${CODE_LIST_18}    Koodisto701
 ${CODE_LIST_19}    Testikoodisto3 pitkillä arvoilla
 ${CODE_LIST_20}    Testi dcat
 ${CODE_LIST_21}    Linkkikoodisto
+${CODE_LIST_22}    Koodisto800
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000
@@ -236,6 +238,8 @@ ${ALL_STATUSES_FI}    Kaikki tilat
 #Code list export
 ${EXPORT_TYPE_EXCEL}    id=codelist_export_excel_link
 ${EXPORT_TYPE_CSV}    id=codelist_export_csv_link
+${EXPORT_CROSS_REFERENCE_EXCEL}    id=codelist_export_cross_reference_excel_link
+${EXPORT_CROSS_REFERENCE_CSV}    id=codelist_export_cross_reference_csv_link
 #link buttons
 ${ADD_NEW_LINK_BTN}    id=add_new_link_button
 ${LINK_TYPE_DROPDOWN}    id=propertytype_dropdown_button

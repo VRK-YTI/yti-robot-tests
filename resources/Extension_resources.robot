@@ -1,6 +1,7 @@
 *** Variables ***
 ${CALCULATION_HIERARCHY}    id=create_extension_calculationhierarchy_button
 ${DEFINITION_HIERARCHY}    id=create_extension_definitionhierarchy_button
+${CROSS_REFERENCE_LIST}    id=create_extension_cross-reference-list_button
 #Excel paths
 ${DATAFOLDER}     ${CURDIR}${/}test_files
 ${Codelist_Extensions_members}    ${DATAFOLDER}${/}Codelist_with_def_hierarchy_extensions_and_members.xlsx
@@ -25,6 +26,7 @@ ${Modify_DPM_explicit_domain}    ${DATAFOLDER}${/}Modify_DPM_explicit_domain_ext
 ${Code_list_codes_DPM_Dimension_extension}    ${DATAFOLDER}${/}Code_list_codes_DPM_Dimension_extension.xlsx
 ${Code_list_codes_DPM_extension_all}    ${DATAFOLDER}${/}Code_list_codes_DPM_all.xlsx
 ${DPM_extension_relations_to_other_members}    ${DATAFOLDER}${/}DPM_extensions_relations_to_other_members.xlsx
+${Code_list_for_cross_reference_list_creation}    ${DATAFOLDER}${/}Code_list_and_codes_for_cross_reference_list.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
@@ -81,7 +83,7 @@ Upload members
     Sleep    2
 
 Create extension
-    [Arguments]    ${property_type}    ${extension_codevalue}    ${extension_name}    ${extension_status}    ${code_list_name}
+    [Arguments]    ${property_type}    ${extension_codevalue}    ${extension_name}    ${extension_status}    ${code_list_name}    ${member_auto_create}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${property_type}    timeout=30
@@ -98,6 +100,10 @@ Create extension
     ${code_list_name_length}=    Get Length    ${code_list_name}
     run keyword if    ${code_list_name_length} > 0    Add code list to extension    ${code_list_name}
     Sleep    1
+    Run Keyword If    '${member_auto_create}' == 'True'    Click element    ${AUTO_CREATE_MEMBERS_CHECKBOX}
+    Sleep    1
+    Capture Page Screenshot
+    Sleep    2
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
     Click button    ${SAVE_EXTENSION}
     Log to Console    ${extension_name} created

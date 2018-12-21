@@ -118,7 +118,7 @@ Resource          resources/Extension_resources.robot
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus    False
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    600 - Koodisto600    Testcode 57    ${EMPTY}
     Wait until page contains    - Member 1 · Testcode 57 <=    timeout=20
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
@@ -138,7 +138,7 @@ Resource          resources/Extension_resources.robot
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${EMPTY}
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${EMPTY}    False
     Sleep    2
     Capture Page Screenshot
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testcode 57    ${EMPTY}
@@ -338,7 +338,7 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}    False
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click Element    //*[contains(text(), "TIEDOT")]
     Wait until page contains    Koodisto    timeout=20
@@ -586,7 +586,7 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}    False
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click Element    //*[contains(text(), "TIEDOT")]
     Wait until page contains    Koodisto    timeout=20
@@ -671,7 +671,7 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}    False
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click Element    //*[contains(text(), "TIEDOT")]
     Wait until page contains    Koodisto    timeout=20
@@ -736,3 +736,51 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
+
+619. Import code list, create members and create cross-reference list
+    [Documentation]    Import code list, create members and create cross-reference list, export cross_reference list Excel and CSV
+    ...    and delete cross-reference list and code lists.
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
+    Wait until page contains    30 koodia    timeout=20
+    Return to Koodistot frontpage
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    30 koodia    timeout=20
+    Create extension    ${CROSS_REFERENCE_LIST}    koodiliitoslaajennus    Koodiliitoslaajennus    ${DRAFT_STATUS}    ${CODE_LIST_22}    True
+    Sleep    5
+    Wait until page contains    60 jäsentä    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 30 · Testcode 30")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 30 · Testcode 30")]
+    Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
+    Click element    ${MODIFY_MEMBER_BTN}
+    Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
+    Click element    ${ADD_MEMBER_BTN}
+    Wait until page contains element    ${CODE_SCHEME_DDL_BTN}    timeout=20
+    Click element    ${CODE_SCHEME_DDL_BTN}
+    Sleep    10
+    Wait until page contains element    //*[contains(text(), "800 - Koodisto800")]    timeout=20
+    Click element    //*[contains(text(), "800 - Koodisto800")]
+    Wait until page contains element    //*[contains(text(), "testcode63 - Testcode 63")]    timeout=20
+    Click element    //*[contains(text(), "testcode63 - Testcode 63")]
+    Sleep    1
+    Wait until page contains element    ${SAVE_MEMBER}    timeout=20
+    Click element    ${SAVE_MEMBER}
+    Sleep    3
+    Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
+    Click element    //*[contains(@id,'3_breadcrumb_link')]
+    Wait until page contains element    //*[contains(text(), "testcode30 - Testcode 30")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "testcode63 - Testcode 63")]    timeout=20
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_CROSS_REFERENCE_EXCEL}
+    Sleep    1
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Click element    ${EXPORT_CROSS_REFERENCE_CSV}
+    Sleep    1
+    Delete extension
+    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
