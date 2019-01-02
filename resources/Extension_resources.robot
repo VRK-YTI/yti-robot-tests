@@ -280,12 +280,14 @@ Delete extension before code list
     Continue code list deletion    ${code_list_item}
 
 Create DPM extension
-    [Arguments]    ${extension_type}    ${extension_status}
+    [Arguments]    ${extension_type}    ${member_auto_create}    ${extension_status}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${extension_type}    timeout=30
     Click element    ${extension_type}
     Sleep    2
+    Run Keyword If    '${member_auto_create}' == 'True'    Click element    ${AUTO_CREATE_MEMBERS_CHECKBOX}
+    Sleep    1
     Wait until page contains element    ${START_DATE_INPUT}    timeout=20
     Input text    ${START_DATE_INPUT}    2018-11-01
     Wait until page contains element    ${END_DATE_INPUT}    timeout=20
@@ -297,4 +299,4 @@ Create DPM extension
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
     Click button    ${SAVE_EXTENSION}
     Log to Console    ${extension_type} created
-    Sleep    3
+    Sleep    5

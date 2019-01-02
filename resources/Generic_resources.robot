@@ -155,6 +155,9 @@ ${DPM_EXPLICIT_DOMAIN_INPUT}    id=code_inline_membervalue_dpmExplicitDomain_dpm
 #DPM Dimension
 ${CREATE_DPM_DIMENSION_BTN}    id=create_extension_dpmdimension_button
 ${DPM_DIMENSION_DOMAIN_REFERENCE_INPUT}    id=code_inline_membervalue_dpmDimension_dpmDomainReference _input
+#DPM Typed Domain
+${CREATE_DPM_TYPED_DOMAIN_BTN}    id=create_extension_dpmdtypeddomain_button
+${DPM_DATA_TYPE_INPUT}    id=code_inline_membervalue_dpmTypedDomain_dpmDomainDataType _input
 #Code buttons
 ${EXPAND_ALL_BTN}    id=expand_all_button
 ${COLLAPSE_ALL_BTN}    id=collapse_all_button

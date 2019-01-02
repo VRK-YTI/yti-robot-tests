@@ -16,7 +16,7 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
-    Create DPM extension    ${CREATE_DPM_METRIC_BTN}    ${DRAFT_STATUS}
+    Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Metric (en)    timeout=20
     Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=30
     Click element    ${MODIFY_EXTENSION_BTN}
@@ -85,7 +85,7 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
-    Create DPM extension    ${CREATE_DPM_METRIC_BTN}    ${DRAFT_STATUS}
+    Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Metric (en)    timeout=20
     Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
     Click element    ${2_BREADCRUMB_LINK}
@@ -128,7 +128,7 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
-    Create DPM extension    ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    ${DRAFT_STATUS}
+    Create DPM extension    ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Explicit Domain (en)    timeout=20
     Wait until page contains element    ${MODIFY_EXTENSION_BTN}    timeout=30
     Click element    ${MODIFY_EXTENSION_BTN}
@@ -185,7 +185,7 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
-    Create DPM extension    ${CREATE_DPM_DIMENSION_BTN}    ${DRAFT_STATUS}
+    Create DPM extension    ${CREATE_DPM_DIMENSION_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Dimension (en)    timeout=20
     Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
     Click element    ${2_BREADCRUMB_LINK}
@@ -282,3 +282,40 @@ Resource          resources/Extension_resources.robot
     Cancel code list import
     Sleep    2
     Return to Koodistot frontpage
+
+708. Create DPM Typed Domain extension with automatic member creation
+    [Documentation]    Import new code list and create Typed Domain extension with automatic member creation.
+    ...    Check and modify Typed Domain value for code.
+    [Tags]    koodistot    regression    700
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Create DPM extension    ${CREATE_DPM_TYPED_DOMAIN_BTN}    True    ${DRAFT_STATUS}
+    Sleep    6
+    Wait until page contains    DPM Typed Domain (en)    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait until page contains    DPM Typed Domain (en)    timeout=20
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    -    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    //*[contains(text(), "testcode54 - Testcode 54")]    timeout=20
+    Click element    //*[contains(text(), "testcode54 - Testcode 54")]
+    Wait until page contains    DPM Typed Domain (en)    timeout=20
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    -    timeout=20
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${DPM_DATA_TYPE_INPUT}    timeout=20
+    Input Text    ${DPM_DATA_TYPE_INPUT}    Boolean
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Sleep    3
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    Boolean    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
