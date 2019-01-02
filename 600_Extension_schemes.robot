@@ -784,3 +784,18 @@ Resource          resources/Extension_resources.robot
     Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
+
+620. Automatic member creation for codes
+    [Documentation]    Import two code lists with codes, create calculation hierarchy extension and add other code list to the extension.
+    ...    Create automatically members and check that members are created for each code from both code lists.
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
+    Wait until page contains    30 koodia    timeout=20
+    Return to Koodistot frontpage
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_22}    True
+    Wait until page contains    60 jäsentä    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
