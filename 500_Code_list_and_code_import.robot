@@ -109,7 +109,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Sleep    2
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
     Sleep    5
     Wait until page contains    NewCode001 - newCode001
     Wait until page contains    koodisto6000    timeout=20
@@ -484,7 +484,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Sleep    5
     Create code list    ${REGISTRY_2}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}
+    Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
     Sleep    3
     Return to Koodistot frontpage
     Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
@@ -1082,6 +1082,35 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    200 - Linkkikoodisto    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_21}
+
+527. Create new code with sub code list
+    [Documentation]    Create new code list and create code with with sub coce list.
+    [Tags]    regression    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Return to Koodistot frontpage
+    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
+    Sleep    2
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${CODE_LIST_9}
+    Sleep    5
+    Wait until page contains    NewCode001 - newCode001
+    Wait until page contains    koodisto6000    timeout=20
+    Wait until page contains    Koodin arvo    timeout=20
+    Wait until page contains    NewCode001    timeout=20
+    Wait until page contains    Koodin nimi    timeout=20
+    Wait until page contains    newCode001    timeout=20
+    Wait until page contains    Koodisto7000 - koodisto7000    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Sleep    2
+    Remove code    NewCode001 - newCode001
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    koodisto6000    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
 
 *** Keywords ***
 Check values from Draft Code list

@@ -459,7 +459,7 @@ Import codes in CSV format
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
 
 Create new code to code list
-    [Arguments]    ${code_value}    ${code_name}    ${code_status}
+    [Arguments]    ${code_value}    ${code_name}    ${code_status}    ${sub_code_list}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
@@ -475,9 +475,19 @@ Create new code to code list
     Click element    ${CODE_STATUS_DDL}
     Wait until page contains element    ${code_status}    timeout=20
     Click element    ${code_status}
+    ${sub_code_list_length}=    Get Length    ${sub_code_list}
+    run keyword if    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
     Log to Console    ${code_name} created
+    Sleep    5
+
+Add sub code list
+    [Arguments]    ${sub_code_list}
+    Wait until page contains element    ${SUB_CODE_LIST_BTN}    timeout=20
+    Click element    ${SUB_CODE_LIST_BTN}
+    Input text    ${SEARCH_LINKED_CODE_INPUT}    ${sub_code_list}
+    Click element    //*[contains(text(), "${sub_code_list}")]
     Sleep    2
 
 Remove code
