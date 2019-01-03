@@ -34,7 +34,7 @@ ${Invalid_unaryoperator_value_csv}    ${DATAFOLDER}${/}Calculation_members_inval
 ${Calc_def_hierarchy_extensions_csv}    ${DATAFOLDER}${/}Calculation_definition_extensions_csv.csv
 #error messages
 ${Error_missing_codeschemes}    Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen liitettyihin koodistoihin.
-${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa.
+${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa tunnisteella:
 ${Error_max_hierarchy_level}    Jäsenten maksimi hierarkkinen taso ylittyi.
 ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä 6.
 ${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 3.
