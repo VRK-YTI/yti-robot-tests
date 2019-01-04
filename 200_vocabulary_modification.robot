@@ -556,6 +556,23 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
+215. Import Concepts in xml format and check concept description links
+    [Documentation]    Import Concepts in xml format and check concept description links. YTI-400.
+    [Tags]    regression    sanastot    test    200
+    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
+    Select Terminological Vocabulary
+    Import concepts    ${XML_FORMAT_BTN}    ${tax}
+    Select concept    verotuspäätös
+    Wait until page contains element    //*[contains(text(), "Verovelvolliselle")]    timeout=30
+    Click element    //*[contains(text(), "Verovelvolliselle")]
+    Wait until page contains    verovelvollinen    timeout=30
+    Select concept    verotuspäätös
+    Wait until page contains element    //*[contains(text(), "veronpalautuksesta")]    timeout=30
+    Click element    //*[contains(text(), "veronpalautuksesta")]
+    Wait until page contains    veronpalautus    timeout=30
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30

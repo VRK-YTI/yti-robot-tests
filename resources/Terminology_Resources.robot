@@ -50,6 +50,9 @@ ${ADD_DESCRIPTION_DDL}    id=vocabulary_description_add_button
 ${NEW_DESCRIPTION_FI}    id=add_new_vocabulary_description_fi_button
 ${FILE_UPLOAD_INPUT}    id=fileupload_input
 ${FILE_UPLOAD_BTN}    id=upload_file_button
+${FILE_FORMAT_DROPDOWN_BTN}    id=file_format_dropdown_button
+${CSV_FORMAT_BTN}    id=csv_format_dropdown_button
+${XML_FORMAT_BTN}    id=ntrf_xml_format_dropdown_button
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -169,6 +172,8 @@ ${test_concepts_to_thesaurus_invalid_column}    ${DATAFOLDER}${/}test_concepts_t
 ${test_concepts_to_thesaurus_incorrect_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_incorrect_column_name_csv.csv
 ${test_concepts_for_status_filter}    ${DATAFOLDER}${/}test_concepts_filter_csv.csv
 ${concept_reference}    ${DATAFOLDER}${/}Concept_reference_csv.csv
+#xml paths
+${tax}            ${DATAFOLDER}${/}Verotussanasto_xml.xml
 
 *** Keywords ***
 Terminology Suite Setup
@@ -533,3 +538,30 @@ Add members for collection
     \    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
     \    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     \    Sleep    3
+
+Import concepts
+    [Arguments]    ${file_format}    ${file}
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait until page contains element    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
+    Click element    ${FILE_FORMAT_DROPDOWN_BTN}
+    Click element    ${file_format}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${file}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
+    #Sleep    3
+    Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Sleep    5
+    Log to Console    Concept import ok
+
+Select concept
+    [Arguments]    ${concept}
+    Wait until page contains element    ${CONCEPT_LIST_SEARCH_INPUT}    timeout=30
+    Input text    ${CONCEPT_LIST_SEARCH_INPUT}    ${concept}
+    Wait until page contains element    //*[contains(text(), "${concept}")]
+    Click element    //*[contains(text(), "${concept}")]
+    Log to Console    Concept ${concept} selected
+    Sleep    1
