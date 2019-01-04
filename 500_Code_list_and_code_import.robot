@@ -946,7 +946,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
 
 524. Import code list with links
     [Documentation]    Import code list with links, check that links are imported successfully and
-    ...    export code list. YTI-1182.
+    ...    export code list. YTI-1182, YTI-7.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -968,6 +968,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
+    Wait until page contains    Julkaisu    timeout=20
+    Wait until page contains    Testijulkaisu_fi    timeout=20
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
     Click element    ${EXPORT_TYPE_EXCEL}
@@ -987,6 +989,16 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    käyttöohje.fi    timeout=20
     Wait until page contains    Normilinkki_fi    timeout=20
+    Wait until page contains    Julkaisu    timeout=20
+    Wait until page contains    Testijulkaisu_fi    timeout=20
+    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait until page contains    Lisenssi    timeout=20
+    Wait until page contains    Uusi lisenssi    timeout=20
+    Wait until page contains    Lähde    timeout=20
+    Wait until page contains    Uusi lähde    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_21}
 
