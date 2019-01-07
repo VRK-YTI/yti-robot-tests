@@ -573,6 +573,38 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
+216. Import Concepts in xml format and check import warnings
+    [Documentation]    Import Concepts in xml format and check import warnings
+    [Tags]    sanastot    200
+    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
+    Select Terminological Vocabulary
+    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait until page contains element    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
+    Click element    ${FILE_FORMAT_DROPDOWN_BTN}
+    Click element    ${XML_FORMAT_BTN}
+    Choose file    ${FILE_UPLOAD_INPUT}    ${Concepts_with_dropped_items}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Click element    ${FILE_UPLOAD_BTN}
+    Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=30
+    Wait until page contains    67 kohdetta luotu. Virheitä: 0. Varoituksia: 11.    timeout=30
+    Wait until page contains element    //*[contains(text(), "Näytä viestit")]    timeout=30
+    Click element    //*[contains(text(), "Näytä viestit")]
+    Wait until page contains    Dropping 'ulottuvuus' type record    timeout=20
+    Wait until page contains    c2
+    Wait until page contains    c68    timeout=20
+    Wait until page contains    [DIAG:c70 LINK-target #c46 <[kasvupalvelu palvelun sisällön mukaan]> not added into the collection]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Piilota viestit")]    timeout=30
+    Click element    //*[contains(text(), "Piilota viestit")]
+    Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=30
+    Click element    ${IMPORT_YES_BTN}
+    Sleep    5
+    Log to Console    Concept import ok
+    Go back to Sanastot frontpage
+    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
 *** Keywords ***
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30

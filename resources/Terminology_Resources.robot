@@ -174,6 +174,7 @@ ${test_concepts_for_status_filter}    ${DATAFOLDER}${/}test_concepts_filter_csv.
 ${concept_reference}    ${DATAFOLDER}${/}Concept_reference_csv.csv
 #xml paths
 ${tax}            ${DATAFOLDER}${/}Verotussanasto_xml.xml
+${Concepts_with_dropped_items}    ${DATAFOLDER}${/}Concepts_with_dropped_items_xml.xml
 
 *** Keywords ***
 Terminology Suite Setup
