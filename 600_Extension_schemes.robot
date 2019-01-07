@@ -374,14 +374,14 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=30
     Click element    ${CREATE_NEW_VERSION_BTN}
     Sleep    3
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}    timeout=30
+    Wait Until Element Is Enabled    ${CODE_LIST_VALUE_INPUT}    timeout=30
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=30
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_19}
     Sleep    2
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    3
+    Sleep    7
     Wait until page contains    25 koodia    timeout=20
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
     Log to Console    New version of code list created
