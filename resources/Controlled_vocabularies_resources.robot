@@ -208,7 +208,7 @@ Delete Testiautomaatiosanasto
     Log to Console    Testiautomaatiosanasto deleted
     Close All Browsers
 
-Check concept suggestion in controlled Vocabularies
+Check concept suggestion in Terminologies
     Terminology Test Case Setup
     Log to Console    Terminology Test Case Setup done
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -227,6 +227,6 @@ Check concept suggestion in controlled Vocabularies
     Wait until page contains    Tämä on kulkuneuvo    timeout=20
     Wait until page contains    Testi Superuser    timeout=20
     Log to Console    Concept found
-    Log to Console    Concept suggestion ok in Controlled Vocabularies
+    Log to Console    Concept suggestion ok in Terminologies
     Sleep    1
     Close All Browsers
