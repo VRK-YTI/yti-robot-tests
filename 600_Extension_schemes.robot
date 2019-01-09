@@ -124,7 +124,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Wait until page contains    Extension 1    timeout=20
     Sleep    1
     Return to Koodistot frontpage
@@ -177,8 +177,8 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members}    ${FILE_FORMAT_EXCEL}
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 <=")]
-    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 · Koodisto600 · Testirekisteri <=")]
+    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]
     Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
@@ -237,9 +237,9 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members_csv}    ${FILE_FORMAT_CSV}
-    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 <=")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]    timeout=20
-    Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]
+    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 · Koodisto600 · Testirekisteri <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
+    Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennus    timeout=20
     Wait until page contains    Testilaajennus55    timeout=20
@@ -322,7 +322,7 @@ Resource          resources/Extension_resources.robot
     Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
     Sleep    5
     Wait until page contains    14 jäsentä    timeout=20
-    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
@@ -356,7 +356,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${3_BREADCRUMB_LINK}    timeout=20
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    5
-    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 · testiautomaatiokoodisto1 · Testirekisteri <=")]    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_2}
 
@@ -443,8 +443,8 @@ Resource          resources/Extension_resources.robot
     Click element    //*[contains(@id,'222_view_extension')]
     Wait until page contains    9 jäsentä    timeout=20
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testikoodi 08 <=")]    timeout=20
-    Click element    //*[contains(text(), "- Jäsen1 · Testikoodi 08 <=")]
+    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testikoodi 08 · Testikoodisto3 pitkillä arvoilla · Testirekisteri <=")]    timeout=20
+    Click element    //*[contains(text(), "- Jäsen1 · Testikoodi 08 · Testikoodisto3 pitkillä arvoilla · Testirekisteri <=")]
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testilaajennus22    timeout=20
     Wait until page contains    Jäsen1    timeout=20
@@ -604,7 +604,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    5
-    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 · testiautomaatiokoodisto1 · Testirekisteri <=")]    timeout=20
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_2}
@@ -689,7 +689,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    5
-    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 · testiautomaatiokoodisto1 · Testirekisteri <=")]    timeout=20
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_2}
@@ -751,8 +751,8 @@ Resource          resources/Extension_resources.robot
     Create extension    ${CROSS_REFERENCE_LIST}    koodiliitoslaajennus    Koodiliitoslaajennus    ${DRAFT_STATUS}    ${CODE_LIST_22}    True
     Sleep    5
     Wait until page contains    60 jäsentä    timeout=20
-    Wait until page contains element    //*[contains(text(), "Testcode 30 · Testcode 30")]    timeout=20
-    Click element    //*[contains(text(), "Testcode 30 · Testcode 30")]
+    Wait until page contains element    //*[contains(text(), "Testcode 30 · Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 30 · Testcode 30 · Koodisto600 · Testirekisteri")]
     Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
     Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
@@ -770,8 +770,8 @@ Resource          resources/Extension_resources.robot
     Sleep    3
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
-    Wait until page contains element    //*[contains(text(), "testcode30 - Testcode 30")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "testcode63 - Testcode 63")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 30 · Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 63 · Testcode 63 · Koodisto800 · Testirekisteri")]    timeout=20
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
     Click element    ${EXPORT_CROSS_REFERENCE_EXCEL}
