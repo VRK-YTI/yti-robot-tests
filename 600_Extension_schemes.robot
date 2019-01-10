@@ -120,10 +120,13 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus    False
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    600 - Koodisto600    Testcode 57    ${EMPTY}
+    Sleep    1
+    Capture Page Screenshot
     Wait until page contains    - Member 1 · Testcode 57 <=    timeout=20
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    2
+    Capture Page Screenshot
     Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Wait until page contains    Extension 1    timeout=20
     Sleep    1
