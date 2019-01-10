@@ -180,9 +180,9 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members}    ${FILE_FORMAT_EXCEL}
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 · Koodisto600 · Testirekisteri <=")]
+    Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
-    Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 <=")]
+    Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]
     Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
     Sleep    2
@@ -202,6 +202,7 @@ Resource          resources/Extension_resources.robot
     Sleep    3
     Wait until page contains element    ${REMOVE_MEMBER_LINK}    timeout=20
     Click element    ${REMOVE_MEMBER_LINK}
+    Sleep    1
     Wait until page contains element    ${SAVE_MEMBER}    timeout=20
     Click element    ${SAVE_MEMBER}
     Sleep    4
@@ -220,7 +221,7 @@ Resource          resources/Extension_resources.robot
     Click element    //*[contains(@id,'3_breadcrumb_link')]
     Sleep    3
     Wait until page contains    Testilaajennus55    timeout=20
-    Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Member 1 · Testcode 57 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Page should not contain element    ${EXPAND_ALL_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
