@@ -345,9 +345,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    Check that links and codes from the original code list are copied to the new version, YTI-979.
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Sleep    2
+    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -413,7 +412,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click button    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click button    ${CREATE_NEW_VERSION_BTN}
-    Sleep    7
+    Sleep    10
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}    timeout=20
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
@@ -507,12 +506,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    and remove link between variant and code list from the first code list.
     [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Superuser
-    Import codelist in Excel format
-    Upload code list    ${Variant_code_list}    ${CODE_LIST_8}
+    Upload codelist in Excel format    ${Variant_code_list}    ${CODE_LIST_8}
     Return to Koodistot frontpage
     Sleep    2
-    Import code list in Excel format
-    Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
     Sleep    2
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
