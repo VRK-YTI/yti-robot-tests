@@ -650,6 +650,7 @@ Resource          resources/Extension_resources.robot
     Click element    //*[contains(text(), "extension1 - Extension 1")]
     Wait until page contains element    ${EXTENSION_INFO_TAB}    timeout=20
     Click Element    ${EXTENSION_INFO_TAB}
+    Capture Page Screenshot
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    extension1    timeout=20
     Wait until page contains    Extension 1    timeout=20
@@ -657,8 +658,9 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testiautomaatiokoodisto - uusi nimi koodistolle    timeout=20
     Wait until page contains element    ${MEMBERS_TAB}    timeout=20
     Click Element    ${MEMBERS_TAB}
-    Wait until page contains element    //*[contains(text(), "- Member 1 · koodin uusi nimi <=")]    timeout=20
-    Click element    //*[contains(text(), "- Member 1 · koodin uusi nimi <=")]
+    Wait until page contains element    //*[contains(text(), "- Member 1 · koodin uusi nimi · uusi nimi koodistolle · Testirekisteri <=")]    timeout=20
+    Click element    //*[contains(text(), "- Member 1 · koodin uusi nimi · uusi nimi koodistolle · Testirekisteri <=")]
+    Capture Page Screenshot
     Wait until page contains    Koodi1000 - koodin uusi nimi - uusi nimi koodistolle - Testirekisteri    timeout=20
     Log to Console    Code list and code name changed in extension and in member
     Return to Koodistot frontpage
