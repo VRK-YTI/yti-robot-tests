@@ -79,6 +79,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains    6 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
@@ -93,11 +94,13 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains    6 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Import codes in Excel format
     Upload codes    ${Update_Codes}
+    Wait until page contains    6 koodia    timeout=20
     Check updated code listing
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
@@ -133,6 +136,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Wait until page contains    8 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_9}    Asuminen
     Sleep    2
@@ -143,15 +147,14 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Documentation]    Import multiple code list with codes, check that import is successful. Remove code lists and codes.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Multiple_codelists_and_codes}    ${CODE_LIST_10}
-    Log to Console    Code lists imported
+    Upload codelist in Excel format    ${Multiple_codelists_and_codes}    ${CODE_LIST_10}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_10}")]
     Wait until page contains    ${CODE_LIST_10}    timeout=20
     Log to Console    koodisto7001 found
+    Wait until page contains    10 koodia    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -174,6 +177,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    //*[contains(text(), "${CODE_LIST_11}")]
     Wait until page contains    ${CODE_LIST_11}    timeout=20
     Log to Console    koodisto7002 found
+    Wait until page contains    10 koodia    timeout=20
     Wait until page contains    testikoodi11 - Testikoodi 11    timeout=20
     Wait until page contains    testikoodi14 - Testikoodi 14    timeout=20
     Wait until page contains    testikoodi16 - Testikoodi 16    timeout=20
@@ -185,6 +189,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    //*[contains(text(), "${CODE_LIST_12}")]
     Wait until page contains    ${CODE_LIST_12}    timeout=20
     Log to Console    koodisto7003 found
+    Wait until page contains    10 koodia    timeout=20
     Wait until page contains    testikoodi21 - Testikoodi 21    timeout=20
     Wait until page contains    testikoodi24 - Testikoodi 24    timeout=20
     Wait until page contains    testikoodi26 - Testikoodi 26    timeout=20
@@ -197,8 +202,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    defined in information tab. Remove code list.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Codelist_with_defaultcode}    ${CODE_LIST_15}
+    Upload codelist in Excel format    ${Codelist_with_defaultcode}    ${CODE_LIST_15}
+    Wait until page contains    6 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
@@ -221,6 +226,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains    6 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
@@ -258,11 +264,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Documentation]    Import DRAFT codes (CSV) to existing code list, check that import is successful and remove code list
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import codelist in Excel format
-    Upload code list    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in CSV format
     Upload codes    ${Draft_Codes_with_broader_csv}
-    Sleep    1
+    Wait until page contains    6 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
@@ -323,15 +328,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    Check that the name and definition of the concept will be copied in their respective fields in code, YTI-787.
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Terminologies
-    Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_without_codes}
-    Sleep    1
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click button    ${UPLOAD_FILE_BTN}
-    Sleep    1
-    Wait until page contains    ${CODE_LIST_8}    timeout=20
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
-    Log to Console    Code list without codes imported
+    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
