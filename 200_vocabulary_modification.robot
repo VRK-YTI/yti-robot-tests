@@ -612,8 +612,8 @@ Select and edit Draft vocabulary
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto    timeout=20
     Wait until page contains    Testiorganisaatio    timeout=20
     Wait until page contains    Eläkkeet    timeout=20
@@ -630,8 +630,8 @@ Select Draft vocabulary
     Wait until page contains    ${VOCABULARY_1}    timeout=30
 
 Restore organization and classification for DRAFT vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=30
     Click element    ${EDIT_VOCABULARY_BTN}
     Wait until page contains element    ${REMOVE_ORGANIZATION_1}    timeout=30
@@ -654,8 +654,8 @@ Delete Terminological Vocabulary
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_2}")]
     Wait until page contains    ${VOCABULARY_2}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto2    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}

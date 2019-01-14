@@ -19,8 +19,8 @@ ${PREFIX_2}       222
 ${PREFIX_3}       333
 ${TERM_1}         Automaatio
 ${TERM_2}         tutkimus
-${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
-${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
+${REMOVE_ORGANIZATION_1}    //*[contains(@id,'_CSC-TieteenTietotekniikanKeskus_remove_organization_reference_link')]
+${REMOVE_CLASSIFICATION_1}    //*[@id="vocabulary_inGroup_http://urn.fi/URN:NBN:fi:au:ptvl/v1184_remove_domain_reference_link"]
 #Frontpage Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${IMPERSONATE_USER_DROPDOWN}    id=fakeable_user_dropdown
@@ -53,6 +53,8 @@ ${FILE_UPLOAD_BTN}    id=upload_file_button
 ${FILE_FORMAT_DROPDOWN_BTN}    id=file_format_dropdown_button
 ${CSV_FORMAT_BTN}    id=csv_format_dropdown_button
 ${XML_FORMAT_BTN}    id=ntrf_xml_format_dropdown_button
+${TERMINOLOGY_TAB}    id=terminologyTab
+${CONCEPTS_TAB}    id=conceptsTab
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -278,8 +280,6 @@ Create Testiautomaatiosanasto and import vocabulary
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
@@ -298,8 +298,8 @@ Delete Testiautomaatiosanasto
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}
@@ -318,8 +318,8 @@ Delete existing terminological vocabulary and create new
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}
@@ -354,8 +354,6 @@ Create Terminological Dictionary and import vocabulary
     Input text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
@@ -371,8 +369,8 @@ Delete existing terminological vocabulary 2 and create new
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_2}")]
     Wait until page contains    ${VOCABULARY_2}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto2    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}
@@ -422,8 +420,8 @@ Delete Terminological Vocabulary
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_2}")]
     Wait until page contains    ${VOCABULARY_2}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto2    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}
@@ -452,8 +450,8 @@ Delete Terminological Dictionary
     Wait until page contains element    //*[contains(text(), "${dictionary}")]    timeout=30
     Click element    //*[contains(text(), "${dictionary}")]
     Wait until page contains    ${dictionary}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    ${dictionary}    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}
@@ -542,8 +540,6 @@ Add members for collection
 
 Import concepts
     [Arguments]    ${file_format}    ${file}
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Wait until page contains element    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30

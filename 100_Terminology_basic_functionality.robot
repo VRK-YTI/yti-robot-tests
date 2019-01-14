@@ -68,7 +68,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
     Log to Console    Testiautomaatiosanasto found
     Go back to Sanastot frontpage
