@@ -91,13 +91,13 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Wait until page contains    30 koodia    timeout=20
     Upload extension    ${Extension_definition_hierarchy}    ${FILE_FORMAT_EXCEL}
-    Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
+    Wait until element is enabled    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Definition_hierarchy_members}    ${FILE_FORMAT_EXCEL}
-    Wait until page contains element    //*[contains(text(), "Testcode 28")]
-    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Wait until element is visible    //*[contains(text(), "Testcode 28")]
+    Wait until element is visible    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennus    timeout=20

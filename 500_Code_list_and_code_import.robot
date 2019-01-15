@@ -1081,7 +1081,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Import codes in CSV format
     Upload codes    ${Codes_update_sub_code_list_csv}
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Wait until element is visible    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
     Wait until page contains    Liittyvä koodisto    timeout=20
     Wait until page contains    200 - Linkkikoodisto    timeout=20
