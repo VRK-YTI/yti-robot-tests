@@ -757,8 +757,8 @@ Resource          resources/Extension_resources.robot
     Create extension    ${CROSS_REFERENCE_LIST}    koodiliitoslaajennus    Koodiliitoslaajennus    ${DRAFT_STATUS}    ${CODE_LIST_22}    True
     Sleep    5
     Wait until page contains    60 jäsentä    timeout=20
-    Wait until page contains element    //*[contains(text(), "Testcode 30 · Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
-    Click element    //*[contains(text(), "Testcode 30 · Testcode 30 · Koodisto600 · Testirekisteri")]
+    Wait until page contains element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]
     Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
     Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
@@ -768,16 +768,16 @@ Resource          resources/Extension_resources.robot
     Sleep    10
     Wait until page contains element    //*[contains(text(), "800 - Koodisto800")]    timeout=20
     Click element    //*[contains(text(), "800 - Koodisto800")]
-    Wait until page contains element    //*[contains(text(), "testcode63 - Testcode 63")]    timeout=20
-    Click element    //*[contains(text(), "testcode63 - Testcode 63")]
+    Wait until page contains element    //*[contains(text(), "Testcode 63 - Koodisto800")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 63 - Koodisto800")]
     Sleep    1
     Wait until page contains element    ${SAVE_MEMBER}    timeout=20
     Click element    ${SAVE_MEMBER}
     Sleep    3
     Wait until page contains element    //*[contains(@id,'3_breadcrumb_link')]    timeout=30
     Click element    //*[contains(@id,'3_breadcrumb_link')]
-    Wait until page contains element    //*[contains(text(), "Testcode 30 · Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "Testcode 63 · Testcode 63 · Koodisto800 · Testirekisteri")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 63 · Koodisto800 · Testirekisteri")]    timeout=20
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
     Click element    ${EXPORT_CROSS_REFERENCE_EXCEL}
