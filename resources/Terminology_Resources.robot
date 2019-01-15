@@ -153,6 +153,7 @@ ${CONCEPT_DRAFT_STATUS}    id=DRAFT_status_filter_dropdown
 ${ADD_LINK}       id=concept_definition_fi_0_semantic_text_input_extlink_popover_button
 ${ADD_CONCEPT_REFERENCE}    id=concept_definition_fi_0_semantic_text_input_link_popover_button
 ${ADD_CONCEPT_REFERENCE_1}    id=concept_definition_fi_1_semantic_text_input_link_popover_button
+${ADD_CONCEPT_NOTE_REFERENCE_1}    id=concept_note_fi_1_semantic_text_input_link_popover_button
 ${SELECT_LINK_CONFRIM_BTN}    id=select_link_target_confirm_button
 ${SELECT_LINK_URL_INPUT}    id=select_link_target_url_input
 ${SELECT_CONCEPT_REFERENCE_DDL}    id=selected_select_concept_reference_dropdown

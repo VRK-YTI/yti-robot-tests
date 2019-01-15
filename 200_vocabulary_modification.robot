@@ -6,9 +6,10 @@ Library           SeleniumLibrary
 Resource          resources/Terminology_Resources.robot
 
 *** Variables ***
-${EXT_LINK}       //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
-${CONCEPT_REF}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
-${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div[2]/div[2]/div/div/div/div/p/a
+${EXT_LINK}       //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
+${CONCEPT_REF}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
+${CONCEPT_REF_2}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div[2]/div[2]/div/div/div/div/p/a
+${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[2]/dl/dd/app-localized-input/div/div[2]/div[2]/div/div/div/div/p/a
 
 *** Test Cases ***
 200. Modify DRAFT vocabulary
@@ -370,8 +371,6 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts_for_status_filter}
@@ -405,8 +404,6 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Maximize Browser Window
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
@@ -430,6 +427,7 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     Click element    ${SELECT_LINK_CONFRIM_BTN}
     Save concept
     Wait until page contains    Planeetta    timeout=30
+    Sleep    2
     Wait until page contains element    ${EXT_LINK}    timeout=30
     Click element    ${EXT_LINK}
     Sleep    5
@@ -447,8 +445,6 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Maximize Browser Window
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
@@ -478,7 +474,7 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     Wait until page contains element    ${SELECT_CONCEPT_CONFIRM_BTN}    timeout=30
     Click element    ${SELECT_CONCEPT_CONFIRM_BTN}
     Save concept
-    Sleep    2
+    Sleep    5
     Wait until page contains    Planeetta    timeout=30
     Wait until page contains element    ${CONCEPT_REF}    timeout=30
     Go back to Sanastot frontpage
@@ -532,7 +528,7 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     Wait until page contains element    ${ADD_CONCEPT_NOTE_BTN}    timeout=30
     Click element    ${ADD_CONCEPT_NOTE_BTN}
     Wait until page contains element    ${CONCEPT_NOTE_FI}    timeout=30
-    Click element    ${CONCEPT_NOTE_FI}}
+    Click element    ${CONCEPT_NOTE_FI}
     Wait until page contains element    ${CONCEPT_NOTE_FI_1_INPUT}    timeout=30
     Click element    ${CONCEPT_NOTE_FI_1_INPUT}
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    h
@@ -542,8 +538,8 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    i
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    j
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    a
-    Wait until page contains element    ${ADD_CONCEPT_REFERENCE_1}    timeout=30
-    Click element    ${ADD_CONCEPT_REFERENCE_1}
+    Wait until page contains element    ${ADD_CONCEPT_NOTE_REFERENCE_1}    timeout=30
+    Click element    ${ADD_CONCEPT_NOTE_REFERENCE_1}
     Wait until page contains element    //*[contains(@id,'_search_result_concept')]
     Click element    //*[contains(@id,'_search_result_concept')]
     Sleep    1
@@ -552,7 +548,7 @@ ${CONCEPT_REF_2}    //app-root/div/app-concepts/div/div[2]/div/div[3]/div[1]/app
     Save concept
     Sleep    5
     Wait until page contains    hutkija    timeout=30
-    Wait until page contains element    ${CONCEPT_REF_2}    timeout=30
+    Wait until page contains element    ${CONCEPT_REF_3}    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
