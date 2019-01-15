@@ -24,7 +24,6 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${FRONTPAGE_SEARCH_BOX}    id=vocabularies_search_input
 ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
 #Vocabulary buttons
-${SHOW_VOCABULARY_DETAILS_BTN}    id=vocabulary_show_details_button
 ${EDIT_VOCABULARY_BTN}    id=vocabulary_editable_start_editing_button
 ${VOCABULARY_TITLE_TEXTAREA}    id=vocabulary_prefLabel_fi_0_input
 ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    id=vocabulary_description_fi_0_textarea
@@ -47,6 +46,8 @@ ${NEW_DESCRIPTION_FI}    id=add_new_vocabulary_description_fi_button
 ${FILE_UPLOAD_INPUT}    id=fileupload_input
 ${UPLOAD_FILE}    id=upload_file_button
 ${IMPORT_YES_BTN}    id=import_yes_button
+${TERMINOLOGY_TAB}    id=terminologyTab
+${CONCEPTS_TAB}    id=conceptsTab
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -165,9 +166,6 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Sleep    3
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
-    Sleep    3
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_from_controlled_vocabularies}
@@ -189,8 +187,8 @@ Delete Testiautomaatiosanasto
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Sleep    3
     Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
     Sleep    3
     Wait until page contains    Testiautomaatiosanasto    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
