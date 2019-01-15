@@ -12,8 +12,6 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${invalid_related_concepts}
@@ -39,8 +37,6 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${empty_related_concepts}
@@ -77,8 +73,6 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_empty_status}
@@ -116,8 +110,6 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_missing_status}
@@ -156,8 +148,6 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_column}
@@ -177,8 +167,6 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_status_value}
@@ -198,8 +186,6 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${SHOW_VOCABULARY_DETAILS_BTN}    timeout=30
-    Click element    ${SHOW_VOCABULARY_DETAILS_BTN}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_duplicate_definition_columns}
