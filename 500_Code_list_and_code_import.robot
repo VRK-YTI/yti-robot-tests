@@ -64,7 +64,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
     Sleep    5
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
@@ -120,7 +120,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    NewCode001    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    newCode001    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Remove code    NewCode001 - newCode001
@@ -167,7 +167,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Page should contain    Koodin nimi
     Page should contain    Testikoodi 02
     Sleep    5
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Return to Koodistot frontpage
     Sleep    3
@@ -247,7 +247,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Sleep    2
     Wait until page contains    Vakiokoodi    timeout=20
     Wait until page contains    koodi505 - Koodi505    timeout=20
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    #Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Sleep    2
     Wait until page contains element    ${REMOVE_DEFAULTCODE}    timeout=20
@@ -383,7 +384,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    3
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    3
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
@@ -443,7 +444,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Log to Console    Code links copied
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    7
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
@@ -984,7 +985,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    Normilinkki_fi    timeout=20
     Wait until page contains    Julkaisu    timeout=20
     Wait until page contains    Testijulkaisu_fi    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
@@ -1075,7 +1076,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
     Wait until page contains    Liittyvä koodisto    timeout=20
     Wait until page contains    200 - Linkkikoodisto    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Import codes in CSV format
@@ -1107,7 +1108,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    newCode001    timeout=20
     Wait until page contains    Koodisto7000 - koodisto7000    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Remove code    NewCode001 - newCode001

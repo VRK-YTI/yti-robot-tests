@@ -640,7 +640,7 @@ Upload codelist in Excel format
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    6
-    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=60
     Log to Console    Code list ${codelist_name} imported
 
 Upload codelist in CSV format
@@ -666,5 +666,5 @@ Upload codelist in CSV format
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Sleep    6
-    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=60
     Log to Console    Code list ${codelist_name} imported

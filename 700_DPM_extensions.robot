@@ -13,8 +13,7 @@ Resource          resources/Extension_resources.robot
     ...    Update code extensions with Excel import and export Excel and CSV.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Metric (en)    timeout=20
@@ -42,7 +41,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Duration    timeout=20
     Wait until page contains    Hierarchy reference (en)    timeout=20
     Wait until page contains    eee    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
@@ -62,8 +61,7 @@ Resource          resources/Extension_resources.robot
     ...    with invalid Excel sheet with two DMP Metric values defined. Check error message.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Sleep    2
     Return to Koodistot frontpage
@@ -82,12 +80,11 @@ Resource          resources/Extension_resources.robot
     ...    set DPM Metric values for code.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Metric (en)    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
@@ -125,8 +122,7 @@ Resource          resources/Extension_resources.robot
     ...    Set Member XBRL code prefix value for code. Update all code extensions in code list with Excel import and export Excel and CSV.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Explicit Domain (en)    timeout=20
@@ -138,7 +134,7 @@ Resource          resources/Extension_resources.robot
     Click button    ${SAVE_EXTENSION}
     Sleep    2
     Wait until page contains    DPM Explicit Domain laajennus    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
@@ -162,7 +158,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    DPM Explicit Domain laajennus    timeout=20
     Wait until page contains    Member XBRL code prefix (en)    timeout=20
     Wait until page contains    yyy    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
@@ -182,12 +178,11 @@ Resource          resources/Extension_resources.robot
     ...    set DPM Dimension values for code.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_DIMENSION_BTN}    False    ${DRAFT_STATUS}
     Wait until page contains    DPM Dimension (en)    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
@@ -197,7 +192,8 @@ Resource          resources/Extension_resources.robot
     Input Text    ${DPM_DIMENSION_DOMAIN_REFERENCE_INPUT}    aaa
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    3
+    Sleep    1
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=60
     Wait until page contains    DPM Dimension (en)    timeout=20
     Wait until page contains    Domain reference (en)    timeout=20
     Wait until page contains    aaa    timeout=20
@@ -209,15 +205,14 @@ Resource          resources/Extension_resources.robot
     ...    Check Domain reference values for codes.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_codes_DPM_Dimension_extension}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_codes_DPM_Dimension_extension}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
     Wait until page contains    DPM Dimension laajennus    timeout=20
     Wait until page contains    Domain reference (en)    timeout=20
     Wait until page contains    yyy    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
@@ -232,8 +227,7 @@ Resource          resources/Extension_resources.robot
     ...    Check extension values for codes.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
@@ -257,7 +251,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    DPM Explicit Domain laajennus    timeout=20
     Wait until page contains    Member XBRL code prefix (en)    timeout=20
     Wait until page contains    xxx    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
@@ -288,20 +282,18 @@ Resource          resources/Extension_resources.robot
     ...    Check and modify Typed Domain value for code.
     [Tags]    koodistot    regression    700
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_TYPED_DOMAIN_BTN}    True    ${DRAFT_STATUS}
-    Sleep    6
     Wait until page contains    DPM Typed Domain (en)    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
     Wait until page contains    DPM Typed Domain (en)    timeout=20
     Wait until page contains    Data type (en)    timeout=20
     Wait until page contains    -    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode54 - Testcode 54")]    timeout=20
     Click element    //*[contains(text(), "testcode54 - Testcode 54")]
@@ -315,6 +307,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    3
+    Wait until element is visible    ${MODIFY_CODE_BTN}    timeout=60
     Wait until page contains    Data type (en)    timeout=20
     Wait until page contains    Boolean    timeout=20
     Return to Koodistot frontpage
