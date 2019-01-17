@@ -106,6 +106,7 @@ Create extension
     Sleep    2
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
     Click button    ${SAVE_EXTENSION}
+    Wait until element is visible    ${MEMBERS_TAB}    timeout=60
     Log to Console    ${extension_name} created
     Sleep    2
 
@@ -142,6 +143,7 @@ Create member for definition hierarchy
     ...    ELSE    Add code to member    ${code}
     Wait until page contains element    ${SAVE_MEMBER}    timeout=30
     Click button    ${SAVE_MEMBER}
+    Wait until element is visible    ${MODIFY_MEMBER_BTN}    timeout=60
     Log to Console    ${member_name} created
     Sleep    2
 
@@ -164,6 +166,7 @@ Create member for calculation hierarchy
     run keyword if    ${broader_member_length} > 0    Add broader member    ${broader_member}
     Wait until page contains element    ${SAVE_MEMBER}    timeout=30
     Click button    ${SAVE_MEMBER}
+    Wait until element is visible    ${MODIFY_MEMBER_BTN}    timeout=60
     Log to Console    ${member_name} created
     Sleep    2
 
