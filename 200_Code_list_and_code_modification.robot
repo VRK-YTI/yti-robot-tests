@@ -70,6 +70,7 @@ Resource          resources/Generic_resources.robot
     Click element    ${LINK_MODAL_OK_BTN}
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=120
     Sleep    2
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
@@ -95,6 +96,7 @@ Resource          resources/Generic_resources.robot
     Page should not contain    https://www.suomi.fi/etusivu/
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=120
     Sleep    1
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_4}

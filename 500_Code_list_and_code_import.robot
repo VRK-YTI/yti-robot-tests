@@ -244,10 +244,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    //*[contains(text(), "Koodi505")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
     Sleep    2
     Wait until page contains    Vakiokoodi    timeout=20
     Wait until page contains    koodi505 - Koodi505    timeout=20
-    #Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Sleep    2
@@ -255,9 +255,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    ${REMOVE_DEFAULTCODE}
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    3
-    Page should not contain    Vakiokoodi    timeout=20
-    Page should not contain    koodi505 - Koodi505    timeout=20
+    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
+    Sleep    1
+    Page should not contain    Vakiokoodi
+    Page should not contain    koodi505 - Koodi505
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
