@@ -141,6 +141,7 @@ ${EXTENSION_INFO_TAB}    id=extension_info_tab
 ${MEMBERS_TAB}    id=extension_members_tab
 ${MEMBER_INFO_TAB}    id=member_info_tab
 ${AUTO_CREATE_MEMBERS_CHECKBOX}    id=auto_create_members_checkbox
+${CREATE_MISSING_MEMBERS_BTN}    id=create_missing_members_button
 #DPM extensions
 #DPM Metric
 ${CREATE_DPM_METRIC_BTN}    id=create_extension_dpmmetric_button
@@ -230,6 +231,8 @@ ${CODE_LIST_VALUE_4}    testiautomaatiokoodisto
 ${CODE_LIST_VALUE_5}    O1234567890123456789012345678901234567333
 ${EXTENSION_VALUE_1}    extension1
 ${EXTENSION_NAME_1}    Extension 1
+${EXTENSION_VALUE_2}    extension2
+${EXTENSION_NAME_2}    Extension 2
 ${MEMBER_VALUE_1}    member1
 ${MEMBER_NAME_1}    Member 1
 ${COMPARISON_OPERATOR_1}    <=

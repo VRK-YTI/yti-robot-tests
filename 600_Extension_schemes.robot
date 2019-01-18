@@ -777,7 +777,7 @@ Resource          resources/Extension_resources.robot
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
 
 620. Automatic member creation for codes
-    [Documentation]    Import two code lists with codes, create calculation hierarchy extension and add other code list to the extension.
+    [Documentation]    Import two code lists with codes, create calculation hierarchy extension and add another code list to the extension.
     ...    Create automatically members and check that members are created for each code from both code lists.
     [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Superuser
@@ -787,6 +787,66 @@ Resource          resources/Extension_resources.robot
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_22}    True
+    Wait until page contains    60 jäsentä    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
+
+621. Create missing members for the extensions
+    [Documentation]    Import two code lists with codes, create calculation definition hierarchy extensions without member creation
+    ...    and add other code list to the extension. Create missing members for the extensions and check that members are created
+    ...    for each code from both code lists.
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
+    Wait until page contains    30 koodia    timeout=20
+    Return to Koodistot frontpage
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_22}    False
+    Wait until page contains    Tällä laajennuksella ei ole yhtään jäsentä.    timeout=30
+    Wait until page contains element    ${EXTENSION_DDL}    timeout=20
+    Click element    ${EXTENSION_DDL}
+    Wait until page contains element    ${CREATE_MISSING_MEMBERS_BTN}    timeout=20
+    Click element    ${CREATE_MISSING_MEMBERS_BTN}
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
+    Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto600 · Testirekisteri")]    timeout=60
+    Wait until page contains    60 jäsentä    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Create extension    ${DEFINITION_HIERARCHY}    ${EXTENSION_VALUE_2}    ${EXTENSION_NAME_2}    ${DRAFT_STATUS}    ${CODE_LIST_22}    False
+    Wait until page contains    Tällä laajennuksella ei ole yhtään jäsentä.    timeout=30
+    Wait until page contains element    ${EXTENSION_DDL}    timeout=20
+    Click element    ${EXTENSION_DDL}
+    Wait until page contains element    ${CREATE_MISSING_MEMBERS_BTN}    timeout=20
+    Click element    ${CREATE_MISSING_MEMBERS_BTN}
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
+    Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto600 · Testirekisteri")]    timeout=60
+    Wait until page contains    60 jäsentä    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
+
+622. Create missing members for the cross-reference list
+    [Documentation]    Import code list and create cross-reference list. Create missing members for the cross-reference list.
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
+    Wait until page contains    30 koodia    timeout=20
+    Return to Koodistot frontpage
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    30 koodia    timeout=20
+    Create extension    ${CROSS_REFERENCE_LIST}    koodiliitoslaajennus    Koodiliitoslaajennus    ${DRAFT_STATUS}    ${CODE_LIST_22}    False
+    Wait until element is visible    ${MEMBERS_TAB}    timeout=60
+    Wait until page contains    Tällä laajennuksella ei ole yhtään jäsentä.    timeout=20
+    Wait until page contains element    ${EXTENSION_DDL}    timeout=20
+    Click element    ${EXTENSION_DDL}
+    Wait until page contains element    ${CREATE_MISSING_MEMBERS_BTN}    timeout=20
+    Click element    ${CREATE_MISSING_MEMBERS_BTN}
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
+    Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto600 · Testirekisteri")]    timeout=60
     Wait until page contains    60 jäsentä    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
