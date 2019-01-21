@@ -850,3 +850,55 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    60 jäsentä    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
+
+623. Remove code that is in use in cross-reference list
+    [Documentation]    Try to remove code that is in use in cross-reference list and check error message
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
+    Wait until page contains    30 koodia    timeout=20
+    Return to Koodistot frontpage
+    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    30 koodia    timeout=20
+    Create extension    ${CROSS_REFERENCE_LIST}    koodiliitoslaajennus    Koodiliitoslaajennus    ${DRAFT_STATUS}    ${CODE_LIST_22}    True
+    Wait until page contains    60 jäsentä    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]
+    Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
+    Click element    ${MODIFY_MEMBER_BTN}
+    Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
+    Click element    ${ADD_MEMBER_BTN}
+    Wait until page contains element    ${CODE_SCHEME_DDL_BTN}    timeout=20
+    Click element    ${CODE_SCHEME_DDL_BTN}
+    Wait until element is visible    //*[contains(text(), "800 - Koodisto800")]    timeout=20
+    Click element    //*[contains(text(), "800 - Koodisto800")]
+    Wait until page contains element    //*[contains(text(), "Testcode 63 - Koodisto800")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 63 - Koodisto800")]
+    Wait until page contains element    ${SAVE_MEMBER}    timeout=20
+    Click element    ${SAVE_MEMBER}
+    Wait until element is visible    ${MODIFY_MEMBER_BTN}    timeout=60
+    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=60
+    Click element    ${3_BREADCRUMB_LINK}
+    Wait until page contains element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Testcode 63 · Koodisto800 · Testirekisteri")]    timeout=20
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_22}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_22}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_22}")]
+    Wait until page contains    ${CODE_LIST_22}
+    Wait until element is visible    //*[contains(text(), "testcode63 - Testcode 63")]    timeout=20
+    Click element    //*[contains(text(), "testcode63 - Testcode 63")]
+    Wait until page contains    testcode63 - Testcode 63    timeout=20
+    Wait until element is visible    ${CODE_DDL}    timeout=20
+    Click element    ${CODE_DDL}
+    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_BTN}
+    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_CONF_BTN}
+    #Wait until page contains    teksti tähän    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
