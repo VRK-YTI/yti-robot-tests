@@ -792,9 +792,9 @@ Resource          resources/Extension_resources.robot
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
 
 621. Create missing members for the extensions
-    [Documentation]    Import two code lists with codes, create calculation definition hierarchy extensions without member creation
-    ...    and add other code list to the extension. Create missing members for the extensions and check that members are created
-    ...    for each code from both code lists.
+    [Documentation]    Import two code lists with codes, create calculation hierarchy and definition hierarchy extensions
+    ...    without member creation and add other code list to the extension. Create missing members for the extensions
+    ...    and check that members are created for each code from both code lists.
     [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
