@@ -902,3 +902,38 @@ Resource          resources/Extension_resources.robot
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
+
+624. Create missing members for the extension and verify code list values
+    [Documentation]    Create missing members for the extension and verify that code list values are correct after member creation.
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_with_links_and_default_code}    ${CODE_LIST_23}
+    Wait until page contains    30 koodia    timeout=20
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${EMPTY}    False
+    Wait until page contains    Tällä laajennuksella ei ole yhtään jäsentä.    timeout=30
+    Wait until page contains element    ${EXTENSION_DDL}    timeout=20
+    Click element    ${EXTENSION_DDL}
+    Wait until page contains element    ${CREATE_MISSING_MEMBERS_BTN}    timeout=20
+    Click element    ${CREATE_MISSING_MEMBERS_BTN}
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
+    Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto300 · Testirekisteri")]    timeout=60
+    Wait until page contains    30 jäsentä    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=30
+    Click element    ${CODELIST_INFO_TAB}
+    #Wait until page contains    Asuminen    timeout=20
+    #Wait until page contains    Vakiokoodi    timeout=20
+    #Wait until page contains    testcode28 - Testcode 28    timeout=20
+    #Wait until page contains    Testijulkaisu_fi    timeout=20
+    #Wait until page contains    Testikäyttöedelletys    timeout=20
+    #Wait until page contains    Testikäyttökohde    timeout=20
+    #Wait until page contains    Testikäyttöohje    timeout=20
+    #Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
+    #Wait until page contains    Testi liittyvä standardi    timeout=20
+    #Wait until page contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=20
+    #Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    #Wait until page contains    Testilähde    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_23}
