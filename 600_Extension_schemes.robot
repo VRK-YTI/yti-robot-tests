@@ -923,17 +923,17 @@ Resource          resources/Extension_resources.robot
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=30
     Click element    ${CODELIST_INFO_TAB}
-    #Wait until page contains    Asuminen    timeout=20
+    Wait until page contains    Asuminen    timeout=20
     #Wait until page contains    Vakiokoodi    timeout=20
     #Wait until page contains    testcode28 - Testcode 28    timeout=20
-    #Wait until page contains    Testijulkaisu_fi    timeout=20
-    #Wait until page contains    Testikäyttöedelletys    timeout=20
-    #Wait until page contains    Testikäyttökohde    timeout=20
-    #Wait until page contains    Testikäyttöohje    timeout=20
-    #Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
-    #Wait until page contains    Testi liittyvä standardi    timeout=20
-    #Wait until page contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=20
-    #Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    #Wait until page contains    Testilähde    timeout=20
+    Wait until page contains    Testijulkaisu_fi    timeout=20
+    Wait until page contains    Testikäyttöedellytys    timeout=20
+    Wait until page contains    Testikäyttökohde    timeout=20
+    Wait until page contains    Testikäyttöohje    timeout=20
+    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
+    Wait until page contains    Testi liittyvä standardi    timeout=20
+    Wait until page contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=20
+    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait until page contains    Testilähde    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_23}
