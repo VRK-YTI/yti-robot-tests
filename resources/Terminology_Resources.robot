@@ -458,7 +458,7 @@ Delete Terminological Dictionary
     Click element    ${REMOVE_VOCABULARY_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${dictionary}
     Sleep    2
     Page should not contain element    //*[contains(text(), "${dictionary}")]
@@ -549,8 +549,7 @@ Import concepts
     Choose file    ${FILE_UPLOAD_INPUT}    ${file}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
-    #Sleep    3
-    Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=30
+    Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=120
     Click element    ${IMPORT_YES_BTN}
     Sleep    5
     Log to Console    Concept import ok
