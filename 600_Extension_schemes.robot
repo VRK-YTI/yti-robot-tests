@@ -827,8 +827,8 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
 
-622. Create missing members for the cross-reference list
-    [Documentation]    Import code list and create cross-reference list. Create missing members for the cross-reference list.
+622. Create missing members for the Cross-Reference list
+    [Documentation]    Import code list and create Cross-Reference list. Create missing members for the Cross-Reference list.
     [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
@@ -851,8 +851,8 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_22}
 
-623. Remove code that is in use in cross-reference list
-    [Documentation]    Try to remove code that is in use in cross-reference list and check error message
+623. Remove code that is in use in Cross-Reference list
+    [Documentation]    Try to remove code that is in use in Cross-Reference list and check error message
     [Tags]    koodistot    regression    600
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
@@ -937,3 +937,23 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Testilähde    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_23}
+
+625. Import code list with Cross-Reference list extension
+    [Documentation]    Import code list with Cross-Reference list extension and members, check that import is successfull,
+    [Tags]    koodistot    regression    600
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_with_cross_reference_list}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=60
+    Wait until element is visible    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    //*[contains(@id,'test_600crossrefrencelist_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'test_600crossrefrencelist_view_extension')]
+    Wait until element is visible    ${CROSS_REFERENCE_LIST_TAB}    timeout=20
+    Click element    ${CROSS_REFERENCE_LIST_TAB}
+    Page should not contain    Tällä laajennuksella ei ole vielä yhtään koodiliitosta.    timeout=20
+    Wait until page contains element    //*[contains(text(), "Jäsen02 · Testcode 29 · Koodisto600 · Testirekisteri")]    timeout=20
+    Wait until page contains element    ${MEMBERS_TAB}    timeout=30
+    Click element    ${MEMBERS_TAB}
+    Wait until page contains    30 jäsentä    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}

@@ -138,6 +138,7 @@ ${UNARY_OPERATOR_INPUT}    id=member_membervalue_unaryOperator _input
 ${CALC_HIERARCHY_TAB}    id=codelist_extension_L (0)_tab
 ${DEF_HIERARCHY_TAB}    id=codelist_extension_M (0)_tab
 ${EXTENSION_INFO_TAB}    id=extension_info_tab
+${CROSS_REFERENCE_LIST_TAB}    id=extension_crossreferencelist_tab
 ${MEMBERS_TAB}    id=extension_members_tab
 ${MEMBER_INFO_TAB}    id=member_info_tab
 ${AUTO_CREATE_MEMBERS_CHECKBOX}    id=auto_create_members_checkbox
