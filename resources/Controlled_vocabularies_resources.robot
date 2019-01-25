@@ -81,7 +81,7 @@ ${concepts_from_controlled_vocabularies}    ${DATAFOLDER}${/}concepts_from_contr
 
 *** Keywords ***
 Terminology Setup
-    Create Testiautomaatiosanasto and import vocabulary
+    Test Case Setup Create Testiautomaatiosanasto
 
 Terminology Teardown
     Delete Testiautomaatiosanasto
@@ -130,6 +130,34 @@ Go back to Sanastot frontpage
     Click element    //*[contains(text(), "Etusivu")]
     Sleep    3
 
+Test Case Setup Create Testiautomaatiosanasto
+    Terminology Test Case Setup
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
+    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
+    ...    ELSE    Create Testiautomaatiosanasto and import vocabulary
+    Go back to Sanastot frontpage
+
+Delete existing terminological vocabulary and create new
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Click element    ${TERMINOLOGY_TAB}
+    Wait until page contains    Testiautomaatiosanasto    timeout=20
+    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${REMOVE_VOCABULARY_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Sleep    3
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
+    Log to Console    Testiautomaatiosanasto deleted
+    Create Testiautomaatiosanasto and import vocabulary
+
 Create Testiautomaatiosanasto and import vocabulary
     Terminology Test Case Setup
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
@@ -175,8 +203,6 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Sleep    6
-    Go back to Sanastot frontpage
-    Close All Browsers
 
 Delete Testiautomaatiosanasto
     Terminology Test Case Setup
