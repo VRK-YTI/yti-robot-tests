@@ -62,17 +62,18 @@ Resource          resources/Terminology_Resources.robot
 104. Search for DRAFT vocabulary
     [Documentation]    Search for DRAFT vocabulary with frontpage search function.
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup Create Testiautomaatiosanasto
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_2}")]
+    Wait until page contains    ${VOCABULARY_2}    timeout=30
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
-    Log to Console    Testiautomaatiosanasto found
+    Log to Console    Terminology found
     Go back to Sanastot frontpage
-    [Teardown]    Delete Testiautomaatiosanasto
+    [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 105. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
