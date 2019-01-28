@@ -315,12 +315,10 @@ Resource          resources/Generic_resources.robot
     Sleep    1
     Save code list
     Sleep    5
-    Wait until page contains element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    //*[contains(text(), "Koulutus")]
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
-    Sleep    2
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "Koulutus")]    timeout=20
+    Go back to Koodistot frontpage
+    Wait until element is visible    ${STATUS_DROPDOWN_BTN}    timeout=60
     Click element    ${STATUS_DROPDOWN_BTN}
     Sleep    1
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]

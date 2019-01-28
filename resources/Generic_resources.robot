@@ -344,7 +344,7 @@ Remove code lists
     \    Click element    ${DELETE_CODE_LIST_BTN}
     \    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     \    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
     \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     \    Log to Console    ${code_list_item} removed
