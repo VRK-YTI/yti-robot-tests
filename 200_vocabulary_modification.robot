@@ -15,7 +15,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Testiautomaatiosanasto
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select and edit Draft vocabulary
     Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
     Input text    ${VOCABULARY_TITLE_TEXTAREA}    Uusi sanasto
@@ -23,7 +24,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Uusi kuvaus
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Sleep    5
+    Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=60
     Wait until page contains    Uusi sanasto    timeout=20
     Wait until page contains    Uusi kuvaus    timeout=20
     Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=30
@@ -34,17 +35,19 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Sleep    5
+    Wait until element is visible    ${EDIT_VOCABULARY_BTN}    timeout=60
+    Sleep    1
     Wait until page contains    Testiautomaatiosanasto    timeout=30
     Wait until page contains    Tämä on kuvaus    timeout=30
     Log to console    Title and description of Terminological Vocabulary modified
     Go back to Sanastot frontpage
-    [Teardown]    Delete Testiautomaatiosanasto
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 201. Add new organization and classification for DRAFT vocabulary
     [Documentation]    Add new organization and classification for DRAFT vocabulary
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Testiautomaatiosanasto
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select and edit Draft vocabulary
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Click element    ${ADD_ORGANIZATION_BTN}
@@ -62,7 +65,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Log to Console    Classification added
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Sleep    10
+    Wait until element is visible    ${EDIT_VOCABULARY_BTN}    timeout=60
+    Sleep    1
     Go back to Sanastot frontpage
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
@@ -75,19 +79,13 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    Terminologinen sanasto    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Restore organization and classification for DRAFT vocabulary
-    [Teardown]    Delete Testiautomaatiosanasto
-
-202. Add new Terminological Dictionary and import vocabulary
-    [Documentation]    Add new Terminological Dictionary, import vocabulary and delete dictionary
-    [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
-    Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Vocabulary
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
-    [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Testiautomaatiosanasto
+    [Tags]    sanastot    test    200
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select Draft vocabulary
     Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
     Click element    ${ADD_NEW_CONCEPT_BTN}
@@ -108,28 +106,28 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains element    ${TERM_STATUS_DDL}    timeout=30
     Click element    ${TERM_STATUS_DDL}
     Click button    Voimassa oleva
-    Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
-    Click element    ${SAVE_CONCEPT_BTN}
-    Sleep    2
+    Save concept
     Wait until page contains    Automaatio    timeout=30
     Log to Console    New concept "Automaatio" added
     Go back to Sanastot frontpage
     Delete concept from Testiautomaatiosanasto vocabulary
     Log to console    Concept "Automaatio" deleted
     Go back to Sanastot frontpage
-    [Teardown]    Delete Testiautomaatiosanasto
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 204. Remove related concept and check confirmation
     [Documentation]    Add new Terminological Dictionary, import vocabulary, delete related concept
     ...    and check remove confirmation, YTI-768.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Edit concept    tutkija
     Wait until page contains element    //*[contains(@id,'concept-3_concept_related_concept_')]    timeout=30
     Click element    //*[contains(@id,'concept-3_concept_related_concept_')]
-    Save concept
+    Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
+    Click element    ${SAVE_CONCEPT_BTN}
     Wait until page contains    Seuraava viite poistuu kokonaan tallennuksen yhteydessä    timeout=30
     Wait until page contains    Viitteen tyyppi    timeout=30
     Wait until page contains    Kohteen sijainti    timeout=30
@@ -138,18 +136,20 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    hutkija    timeout=30
     Wait until page contains element    ${REMOVE_LINK_CONFIRMATION_BTN}    timeout=30
     Click element    ${REMOVE_LINK_CONFIRMATION_BTN}
+    Wait until element is visible    ${EDIT_CONCEPT_BTN}    timeout=60
     Sleep    2
     Page should not contain    Liittyvä käsite
     Log to Console    Related concept removed
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 205. Add collection for vocabulary
     [Documentation]    Add new collection to vocabulary and delete collection.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
     Add broader concepts for collection    hotkija    hutkija
@@ -173,16 +173,17 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 206. Modify concept which is defined in collection
     [Documentation]    Add new collection to vocabulary and modify concept which is
     ...    defined in collection broader. Check that collection is not listed
     ...    in alphabetic or hierarchial listing. YTI-1181.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
     Add broader concepts for collection    tutkija    tutkimus
@@ -214,15 +215,16 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 207. Add preferred term and synonym for concept
     [Documentation]    Create new vocabulary, import concepts and modify concept
     ...    by adding preferred term, synonym and non-recommended synonym.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait until page contains element    ${ADD_PREFERRED_TERM_BTN}    timeout=30
@@ -249,15 +251,16 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    Oppinut henkilö    timeout=30
     Wait until page contains    Tarkastelija    timeout=30
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 208. Add hidden term for concept
     [Documentation]    Create new vocabulary, import concepts and add hidden term for concept
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait until page contains element    ${ADD_HIDDEN_TERM_BTN}    timeout=30
@@ -314,15 +317,16 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    Termin historia    timeout=30
     Wait until page contains    Termin muutoshistoriatieto    timeout=30
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 209. Modify concept
     [Documentation]    Create new vocabulary, import concepts and modify concept values.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait until page contains element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    timeout=30
@@ -363,14 +367,17 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    Voimassa oleva    timeout=30
     Log to Console    Concept values modified
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 210. Import Concepts to the Terminological Vocabulary and filter concepts with status value
     [Documentation]    Import Concepts to the Terminological Vocabulary and filter
     ...    concepts with status value.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
-    Select Terminological Vocabulary
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
+    Maximize Browser Window
+    Go back to Sanastot frontpage
+    Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts_for_status_filter}
@@ -396,14 +403,15 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Page should not contain    Kuu
     Page should not contain    Mars
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 211. Add external link for concept
     [Documentation]    Create new vocabulary, import concepts and add external link for concept.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
-    Select Terminological Vocabulary
+    Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
@@ -437,14 +445,15 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     ...    ELSE    Select Window    title=TEST - Sanastot
     Sleep    1
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 212. Add concept reference
     [Documentation]    Create new vocabulary, import concepts and add concept reference.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
-    Select Terminological Vocabulary
+    Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
@@ -453,7 +462,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    3
     Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
-    Sleep    3
+    Wait until element is enabled    ${IMPORT_VOCABULARY_BTN}    timeout=120
+    Sleep    1
     Log to Console    Concept import ok
     Sleep    1
     Edit concept    Merkurius
@@ -478,15 +488,16 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    Planeetta    timeout=30
     Wait until page contains element    ${CONCEPT_REF}    timeout=30
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 213. Add definition for concept
     [Documentation]    Create new vocabulary and import concepts. Add another definition in Finnish and concept reference for concept.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait until page contains element    ${ADD_CONCEPT_DEFINITION_BTN}    timeout=30
@@ -514,15 +525,16 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    hutkija    timeout=30
     Wait until page contains element    ${CONCEPT_REF_2}    timeout=30
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 214. Add note for concept
     [Documentation]    Create new vocabulary and import concepts. Add another note in Finnish and concept reference for concept.
     [Tags]    sanastot    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary with concepts
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait until page contains element    ${ADD_CONCEPT_NOTE_BTN}    timeout=30
@@ -550,13 +562,15 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains    hutkija    timeout=30
     Wait until page contains element    ${CONCEPT_REF_3}    timeout=30
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 215. Import Concepts in xml format and check concept description links
     [Documentation]    Import Concepts in xml format and check concept description links. YTI-400.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
-    Select Terminological Vocabulary
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
+    Maximize Browser Window
+    Select dictionary    ${VOCABULARY_2}
     Import concepts    ${XML_FORMAT_BTN}    ${tax}
     Select concept    verotuspäätös
     Wait until page contains element    //*[contains(text(), "Verovelvolliselle")]    timeout=30
@@ -567,7 +581,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click element    //*[contains(text(), "veronpalautuksesta")]
     Wait until page contains    veronpalautus    timeout=30
     Go back to Sanastot frontpage
-    [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+    [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 216. Import Concepts in xml format and check import warnings
     [Documentation]    Import Concepts in xml format and check import warnings
@@ -611,10 +625,9 @@ Select and edit Draft vocabulary
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto    timeout=20
-    Wait until page contains    Testiorganisaatio    timeout=20
     Wait until page contains    Eläkkeet    timeout=20
+    Wait until page contains    Testiorganisaatio    timeout=20
     Wait until page contains    Luonnos    timeout=20
-    Wait until page contains    Tämä on kuvaus    timeout=20
     Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=30
     Click element    ${EDIT_VOCABULARY_BTN}
 
@@ -636,7 +649,8 @@ Restore organization and classification for DRAFT vocabulary
     Click element    ${REMOVE_CLASSIFICATION_1}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Sleep    5
+    Wait until element is visible    ${EDIT_VOCABULARY_BTN}    timeout=60
+    Sleep    1
     Page should not contain    ${ORGANIZATION_1}
     Page should not contain    ${CLASSIFICATION_1}
     Log to Console    Vocabulary changes restored
@@ -678,6 +692,8 @@ Delete concept from Testiautomaatiosanasto vocabulary
     Click element    ${REMOVE_CONCEPT_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
+    Wait until element is visible    ${EDIT_CONCEPT_BTN}    timeout=60
+    Sleep    5
     Log to Console    Concept removed from Terminological Vocabulary
     Go back to Sanastot frontpage
     Sleep    1

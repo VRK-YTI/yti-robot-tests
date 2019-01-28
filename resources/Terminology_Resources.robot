@@ -201,22 +201,22 @@ Test Case Setup Create Testiautomaatiosanasto
     ...    ELSE    Create Testiautomaatiosanasto and import vocabulary
     Go back to Sanastot frontpage
 
-Test Case Setup Create Terminological Vocabulary with concepts
-    Test Case Setup
+Create Terminological Vocabulary with concepts
+    [Arguments]    ${terminology}
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto2")]
-    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary 2 and create new
-    ...    ELSE    Create Terminological Dictionary and import vocabulary
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
+    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new    ${terminology}
+    ...    ELSE    Create Terminological Dictionary and import vocabulary    ${terminology}
     Go back to Sanastot frontpage
 
-Test Case Setup Create Terminological Vocabulary without concepts
-    Test Case Setup
+Create Terminological Vocabulary without concepts
+    [Arguments]    ${terminology}
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto2")]
-    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
-    ...    ELSE    Create Terminological Vocabulary without concepts
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
+    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new without concepts    ${terminology}
+    ...    ELSE    Create Terminological Dictionary without concepts    ${terminology}
     Go back to Sanastot frontpage
 
 Test Case Teardown
@@ -281,7 +281,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
@@ -299,10 +299,10 @@ Delete Testiautomaatiosanasto
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Wait until element is visible    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click element    ${REMOVE_VOCABULARY_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
@@ -315,47 +315,100 @@ Delete Testiautomaatiosanasto
     Log to Console    Testiautomaatiosanasto deleted
     Close All Browsers
 
-Delete existing terminological vocabulary and create new
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+Delete Terminology
+    [Arguments]    ${terminology}
+    Test Case Setup
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=30
+    Click element    //*[contains(text(), "${terminology}")]
+    Wait until page contains    ${terminology}    timeout=30
+    Sleep    2
+    Wait until element is visible    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
-    Wait until page contains    Testiautomaatiosanasto    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Sleep    1
+    #Wait until page contains    ${terminology}    timeout=20
+    Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click element    ${REMOVE_VOCABULARY_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Sleep    3
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${terminology}")]
+    Sleep    1
+    Log to Console    ${terminology} deleted
+    Close All Browsers
+
+Delete existing terminological vocabulary and create new
+    [Arguments]    ${terminology}
+    Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=30
+    Click element    //*[contains(text(), "${terminology}")]
+    Wait until page contains    ${terminology}    timeout=30
+    Wait until element is visible    ${TERMINOLOGY_TAB}    timeout=60
+    Click element    ${TERMINOLOGY_TAB}
+    Wait until page contains    ${terminology}    timeout=20
+    Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
+    Click element    ${REMOVE_VOCABULARY_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Sleep    3
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Sleep    2
-    Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
-    Log to Console    Testiautomaatiosanasto deleted
-    Create Testiautomaatiosanasto and import vocabulary
+    Page should not contain element    //*[contains(text(), "${terminology}")]
+    Log to Console    ${terminology} deleted
+    Create Terminological Dictionary and import vocabulary    ${terminology}
+
+Delete existing terminological vocabulary and create new without concepts
+    [Arguments]    ${terminology}
+    Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=30
+    Click element    //*[contains(text(), "${terminology}")]
+    Wait until page contains    ${terminology}    timeout=30
+    Wait until element is visible    ${TERMINOLOGY_TAB}    timeout=60
+    Click element    ${TERMINOLOGY_TAB}
+    Wait until page contains    ${terminology}    timeout=20
+    Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
+    Click element    ${REMOVE_VOCABULARY_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Sleep    3
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Sleep    2
+    Page should not contain element    //*[contains(text(), "${terminology}")]
+    Log to Console    ${terminology} deleted
+    Create Terminological Dictionary without concepts    ${terminology}
 
 Create Terminological Dictionary and import vocabulary
+    [Arguments]    ${terminology}
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
-    Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_2}
+    Input text    ${TITLE_INPUT_FI}    ${terminology}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Click element    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]
-    Click element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
+    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_2}")]
+    Click element    //*[contains(text(), "${ORGANIZATION_2}")]
     Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_2}
+    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_2}")]
+    Click element    //*[contains(text(), "${CLASSIFICATION_2}")]
+    Wait until page contains element    ${ADD_DESCRIPTION_DDL}    timeout=30
+    Click element    ${ADD_DESCRIPTION_DDL}
+    Click button    ${NEW_DESCRIPTION_FI}
+    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
+    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
@@ -363,21 +416,22 @@ Create Terminological Dictionary and import vocabulary
     Sleep    3
     Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
-    Sleep    3
-    Log to Console    Terminological Dictionary created
+    Wait until element is enabled    ${IMPORT_VOCABULARY_BTN}    timeout=120
+    Sleep    1
+    Log to Console    ${terminology} created
 
 Delete existing terminological vocabulary 2 and create new
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_2}")]
     Wait until page contains    ${VOCABULARY_2}    timeout=30
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
+    Wait until element is visible    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto2    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click element    ${REMOVE_VOCABULARY_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Sleep    2
     Page should not contain element    //*[contains(text(), "${VOCABULARY_2}")]
@@ -385,11 +439,12 @@ Delete existing terminological vocabulary 2 and create new
     Log to Console    Terminological Dictionary deleted
     Create Terminological Dictionary and import vocabulary
 
-Create Terminological Vocabulary without concepts
+Create Terminological Dictionary without concepts
+    [Arguments]    ${terminology}
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
-    Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_2}
+    Input text    ${TITLE_INPUT_FI}    ${terminology}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Click element    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
@@ -406,8 +461,9 @@ Create Terminological Vocabulary without concepts
     Input text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
+    Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Sleep    1
-    Log to Console    Terminological Vocabulary without concepts created
+    Log to Console    ${terminology} without concepts created
 
 Select Terminological Vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -424,11 +480,11 @@ Delete Terminological Vocabulary
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    Testiautomaatiosanasto2    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click element    ${REMOVE_VOCABULARY_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Sleep    2
     Page should not contain element    //*[contains(text(), "${VOCABULARY_2}")]
@@ -454,7 +510,7 @@ Delete Terminological Dictionary
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
     Wait until page contains    ${dictionary}    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click element    ${REMOVE_VOCABULARY_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
@@ -479,6 +535,7 @@ Select dictionary
 Save concept
     Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
     Click element    ${SAVE_CONCEPT_BTN}
+    Wait until element is visible    ${EDIT_CONCEPT_BTN}    timeout=60
     Sleep    1
 
 Add collection for vocabulary
@@ -497,6 +554,7 @@ Add collection for vocabulary
     Sleep    1
     Wait until page contains element    ${SAVE_COLLECTION_BTN}    timeout=30
     Click element    ${SAVE_COLLECTION_BTN}
+    Wait until element is visible    ${EDIT_COLLECTION_BTN}    timeout=60
     Sleep    2
 
 Save collection
