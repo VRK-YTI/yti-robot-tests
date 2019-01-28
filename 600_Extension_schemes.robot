@@ -11,7 +11,7 @@ Resource          resources/Extension_resources.robot
 600. Import code list with extension
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
     ...    modify member, export Excel and remove code list.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Codelist_Extensions_members}    ${CODE_LIST_14}
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
@@ -82,7 +82,7 @@ Resource          resources/Extension_resources.robot
 
 601. Import code list with codes and import extension and members
     [Documentation]    Import code list with codes and import extension and members.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
@@ -110,7 +110,7 @@ Resource          resources/Extension_resources.robot
 
 602. Import new code list and create extension and members
     [Documentation]    Import new code list and create calculation hierarchy extension and member manually
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
@@ -132,7 +132,7 @@ Resource          resources/Extension_resources.robot
 
 603. Delete extension and member
     [Documentation]    Import new code list and create and delete calculation hierarchy extension and member.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
@@ -162,7 +162,7 @@ Resource          resources/Extension_resources.robot
 
 604. Modify extension member
     [Documentation]    Import new code list, import calculation hierarchy extension and members and modify member.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
@@ -224,7 +224,7 @@ Resource          resources/Extension_resources.robot
 605. Import members in CSV format
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
@@ -263,7 +263,7 @@ Resource          resources/Extension_resources.robot
 606. Import code list with extension and without CODESCHEMES value
     [Documentation]    Import code list with extension. Check error message when CODESCHEME value
     ...    for external code list is missing from Extensions sheet in Excel. YTI-853
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_without_codeschemes_value}
@@ -279,7 +279,7 @@ Resource          resources/Extension_resources.robot
 607. Import code list with extension and with invalid code
     [Documentation]    Import code list (Excel) with extension. Check error message when
     ...    code in extensions sheet is not included to the code list. YTI-853
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_invalid_code_in_members_sheet}
@@ -294,7 +294,7 @@ Resource          resources/Extension_resources.robot
 608. Import code list with extension and members that exceed maximum hierarchy level
     [Documentation]    Import code list with extension and members that exceed maximum hierarchy level and
     ...    Check error message . YTI-844
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
@@ -309,7 +309,7 @@ Resource          resources/Extension_resources.robot
 609. Import members with missing member value
     [Documentation]    Import members with missing unaryoperator value to calculation hierarchy extension
     ...    and check that import is successful.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
@@ -327,7 +327,7 @@ Resource          resources/Extension_resources.robot
 610. Add code list to the extension
     [Documentation]    Add code list to the calculation hierarchy extension and
     ...    add codes from that code list to the extension member.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Admin
     Upload codelist in excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Return to Koodistot frontpage
@@ -359,7 +359,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    create new version of code list. Check that all values for codes, extensions and members are copied to the new
     ...    code list version. Export Excel and CSV for new code list version.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
@@ -473,7 +473,7 @@ Resource          resources/Extension_resources.robot
 612. Import members with invalid member value
     [Documentation]    Import members with invalid unary operator value to calculation hierarchy extension
     ...    and check error message.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
@@ -496,7 +496,7 @@ Resource          resources/Extension_resources.robot
 613. Remove code list when codes are in use in other resources in the same code list
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    Check that it is possible to remove code list when codes are in use in other resources in the same code list.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
@@ -515,7 +515,7 @@ Resource          resources/Extension_resources.robot
 614. Import extensions in CSV format
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -532,7 +532,7 @@ Resource          resources/Extension_resources.robot
 615. Import extensions to the versioned code list
     [Documentation]    Import code list with codes, create new version from file and import extensions
     ...    in CSV format to the new code list version. Check that versions are listed correctly, YTI-1163.
-    [Tags]    regression    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
     Wait until page contains    30 koodia    timeout=20
@@ -567,7 +567,7 @@ Resource          resources/Extension_resources.robot
 616. Modify code list and codes attached to extensions and members
     [Documentation]    Modify the name of the code list and code that are attached to extensions and members.
     ...    Check that changes take effect on extensions and members.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Admin
     Upload codelist in excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Return to Koodistot frontpage
@@ -655,7 +655,7 @@ Resource          resources/Extension_resources.robot
 617. Remove code list which is linked to other resources
     [Documentation]    Remove code list which has codes attached to other code list extension.
     ...    Check that removing the code list is not possible. YTI-1229.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Admin
     Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Return to Koodistot frontpage
@@ -730,7 +730,7 @@ Resource          resources/Extension_resources.robot
 619. Import code list, create members and create cross-reference list
     [Documentation]    Import code list, create members and create cross-reference list, export cross_reference list Excel and CSV
     ...    and delete cross-reference list and code lists.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -779,7 +779,7 @@ Resource          resources/Extension_resources.robot
 620. Automatic member creation for codes
     [Documentation]    Import two code lists with codes, create calculation hierarchy extension and add another code list to the extension.
     ...    Create automatically members and check that members are created for each code from both code lists.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -795,7 +795,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Import two code lists with codes, create calculation hierarchy and definition hierarchy extensions
     ...    without member creation and add other code list to the extension. Create missing members for the extensions
     ...    and check that members are created for each code from both code lists.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -829,7 +829,7 @@ Resource          resources/Extension_resources.robot
 
 622. Create missing members for the Cross-Reference list
     [Documentation]    Import code list and create Cross-Reference list. Create missing members for the Cross-Reference list.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -853,7 +853,7 @@ Resource          resources/Extension_resources.robot
 
 623. Remove code that is in use in Cross-Reference list
     [Documentation]    Try to remove code that is in use in Cross-Reference list and check error message
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_for_cross_reference_list_creation}    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -905,7 +905,7 @@ Resource          resources/Extension_resources.robot
 
 624. Create missing members for the extension and verify code list values
     [Documentation]    Create missing members for the extension and verify that code list values are correct after member creation.
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_links_and_default_code}    ${CODE_LIST_23}
     Wait until page contains    30 koodia    timeout=20
@@ -940,7 +940,7 @@ Resource          resources/Extension_resources.robot
 
 625. Import code list with Cross-Reference list extension
     [Documentation]    Import code list with Cross-Reference list extension and members, check that import is successfull,
-    [Tags]    koodistot    regression    600
+    [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_cross_reference_list}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=60

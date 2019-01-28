@@ -11,7 +11,7 @@ Resource          resources/Extension_resources.robot
 700. Create DPM Metric extension and update code extensions
     [Documentation]    Import new code list and create DPM Metric extension.
     ...    Update code extensions with Excel import and export Excel and CSV.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -59,7 +59,7 @@ Resource          resources/Extension_resources.robot
 701. Update DPM Metric extension with invalid Excel sheet
     [Documentation]    Import new code list and try to update DPM Metric extension
     ...    with invalid Excel sheet with two DMP Metric values defined. Check error message.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -78,7 +78,7 @@ Resource          resources/Extension_resources.robot
 702. Create DPM Metric extension
     [Documentation]    Import new code list and create DPM Metric extension.
     ...    set DPM Metric values for code.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -120,7 +120,7 @@ Resource          resources/Extension_resources.robot
 703. Create DPM explicit domain extension
     [Documentation]    Import new code list and Create DPM explicit domain extension. Modify extension name.
     ...    Set Member XBRL code prefix value for code. Update all code extensions in code list with Excel import and export Excel and CSV.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -176,7 +176,7 @@ Resource          resources/Extension_resources.robot
 704. Create DPM Dimension extension
     [Documentation]    Import new code list and create DPM Dimension extension.
     ...    set DPM Dimension values for code.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -203,7 +203,7 @@ Resource          resources/Extension_resources.robot
 705. Import DPM Dimension extension
     [Documentation]    Import new code list with codes and DPM Dimension extension.
     ...    Check Domain reference values for codes.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_codes_DPM_Dimension_extension}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -225,7 +225,7 @@ Resource          resources/Extension_resources.robot
 706. Import all DPM extensions
     [Documentation]    Import new code list with codes and all DPM extensions.
     ...    Check extension values for codes.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
@@ -265,7 +265,7 @@ Resource          resources/Extension_resources.robot
 707. Import DPM extensions when members contain relations to other members
     [Documentation]    Import new code list with codes and all DPM extensions.
     ...    Check error message when code extension members contain relations to other members.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${DPM_extension_relations_to_other_members}
@@ -280,7 +280,7 @@ Resource          resources/Extension_resources.robot
 708. Create DPM Typed Domain extension with automatic member creation
     [Documentation]    Import new code list and create Typed Domain extension with automatic member creation.
     ...    Check and modify Typed Domain value for code.
-    [Tags]    koodistot    regression    700
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
