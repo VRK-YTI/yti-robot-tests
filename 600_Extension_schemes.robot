@@ -702,7 +702,7 @@ Resource          resources/Extension_resources.robot
 
 618. Create member with broader member
     [Documentation]    Import new code list and create calculation hierarchy extension. Create member with broader member manually.
-    [Tags]    koodistot    600
+    [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
@@ -715,6 +715,7 @@ Resource          resources/Extension_resources.robot
     Click element    //*[contains(@id,'222_view_extension')]
     Create member for calculation hierarchy    Jäsen10    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testikoodi 01    Jäsen9
     Wait until page contains    - Jäsen10 · Testikoodi 01 <=    timeout=20
+    Wait until page contains    - Jäsen9 · Testikoodi 16 · Testikoodisto2 pitkillä arvoilla · Testirekisteri <=    timeout=20
     Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Wait until page contains    Testilaajennus22    timeout=20
@@ -722,7 +723,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=30
     Click element    ${EXPAND_ALL_BTN}
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "- Jäsen10 · Testikoodi 01 <=")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "- Jäsen10 · Testikoodi 01 · Testikoodisto2 pitkillä arvoilla · Testirekisteri <=")]    timeout=20
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
