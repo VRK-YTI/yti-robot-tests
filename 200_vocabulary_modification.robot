@@ -83,7 +83,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
-    [Tags]    sanastot    test    200
+    [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select Draft vocabulary
