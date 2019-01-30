@@ -811,6 +811,9 @@ Resource          resources/Extension_resources.robot
     Click element    ${CREATE_MISSING_MEMBERS_BTN}
     Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
+    Wait until page contains    60 puuttunutta jäsentä luotu.    timeout=120
+    Wait until page contains element    ${CLOSE_ALERT_MODAL_LINK}    timeout=120
+    Click element    ${CLOSE_ALERT_MODAL_LINK}
     Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto600 · Testirekisteri")]    timeout=60
     Wait until page contains    60 jäsentä    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
@@ -823,6 +826,9 @@ Resource          resources/Extension_resources.robot
     Click element    ${CREATE_MISSING_MEMBERS_BTN}
     Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
+    Wait until page contains    60 puuttunutta jäsentä luotu.    timeout=120
+    Wait until page contains element    ${CLOSE_ALERT_MODAL_LINK}    timeout=120
+    Click element    ${CLOSE_ALERT_MODAL_LINK}
     Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto600 · Testirekisteri")]    timeout=60
     Wait until page contains    60 jäsentä    timeout=20
     Return to Koodistot frontpage
@@ -847,6 +853,9 @@ Resource          resources/Extension_resources.robot
     Click element    ${CREATE_MISSING_MEMBERS_BTN}
     Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
+    Wait until page contains    60 puuttunutta jäsentä luotu.    timeout=120
+    Wait until page contains element    ${CLOSE_ALERT_MODAL_LINK}    timeout=120
+    Click element    ${CLOSE_ALERT_MODAL_LINK}
     Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto600 · Testirekisteri")]    timeout=60
     Wait until page contains    60 jäsentä    timeout=20
     Return to Koodistot frontpage
@@ -918,6 +927,9 @@ Resource          resources/Extension_resources.robot
     Click element    ${CREATE_MISSING_MEMBERS_BTN}
     Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
+    Wait until page contains    30 puuttunutta jäsentä luotu.    timeout=120
+    Wait until page contains element    ${CLOSE_ALERT_MODAL_LINK}    timeout=120
+    Click element    ${CLOSE_ALERT_MODAL_LINK}
     Wait until element is visible    //*[contains(text(), "Testcode 28 · Koodisto300 · Testirekisteri")]    timeout=60
     Wait until page contains    30 jäsentä    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30

@@ -143,6 +143,7 @@ ${MEMBERS_TAB}    id=extension_members_tab
 ${MEMBER_INFO_TAB}    id=member_info_tab
 ${AUTO_CREATE_MEMBERS_CHECKBOX}    id=auto_create_members_checkbox
 ${CREATE_MISSING_MEMBERS_BTN}    id=create_missing_members_button
+${CLOSE_ALERT_MODAL_LINK}    id=close_alert_modal_link
 #DPM extensions
 #DPM Metric
 ${CREATE_DPM_METRIC_BTN}    id=create_extension_dpmmetric_button
