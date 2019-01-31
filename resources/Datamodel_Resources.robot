@@ -15,6 +15,7 @@ ${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
 ${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable_button
 ${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
 ${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
+${NAMESPACE_1}    Julkishallinnon tietokomponentit
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
@@ -87,6 +88,7 @@ ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
 ${SHOW_HISTORY_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/history/button/span
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
 ${REMOVE_CLASS_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[4]/span
+${CLASS_MODEL_DDL}    id=model
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
