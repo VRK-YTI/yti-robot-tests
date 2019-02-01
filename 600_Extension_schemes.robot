@@ -115,7 +115,7 @@ Resource          resources/Extension_resources.robot
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
-    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-luokitus    False
+    Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-AP-luokitus    False
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    600 - Koodisto600    Testcode 57    ${EMPTY}
     Sleep    1
     Capture Page Screenshot
@@ -383,7 +383,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    O1234567890123456789012345678901234567333    timeout=20
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testirekisteri    timeout=20
-    Wait until page contains    Testiorganisaatio    timeout=20
+    #Wait until page contains    Testiorganisaatio    timeout=20
     Wait until page contains    Asuminen    timeout=20
     Wait until page contains    Rakennettu ympäristö    timeout=20
     Wait until page contains    Yleiset tieto- ja hallintopalvelut    timeout=20
