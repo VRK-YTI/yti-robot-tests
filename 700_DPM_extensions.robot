@@ -312,3 +312,45 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Boolean    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+709. Remove code with code extension member
+    [Documentation]    Import new code list with codes and all DPM extensions. Check that removing code
+    ...    with code extension member is successful.
+    [Tags]    koodistot    regression    700    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait until page contains    DPM Dimension laajennus    timeout=20
+    Wait until page contains    Domain reference (en)    timeout=20
+    Wait until page contains    yyy    timeout=20
+    Wait until page contains    DPM Typed Domain laajennus    timeout=20
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    Boolean    timeout=20
+    Wait until page contains    DPM Metric laajennus    timeout=20
+    Wait until page contains    Balance type (en)    timeout=20
+    Wait until page contains    Debit    timeout=20
+    Wait until page contains    Data type (en)    timeout=20
+    Wait until page contains    Isin    timeout=20
+    Wait until page contains    Domain reference (en)    timeout=20
+    Wait until page contains    ccc    timeout=20
+    Wait until page contains    Flow type (en)    timeout=20
+    Wait until page contains    Duration    timeout=20
+    Wait until page contains    Hierarchy reference (en)    timeout=20
+    Wait until page contains    eee    timeout=20
+    Wait until page contains    DPM Explicit Domain laajennus    timeout=20
+    Wait until page contains    Member XBRL code prefix (en)    timeout=20
+    Wait until page contains    xxx    timeout=20
+    Remove code    testcode57 - Testcode 57
+    Wait until page does not contain element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    //*[contains(text(), "dpmDimension - DPM Dimension laajennus")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "dpmExplicitDomain - DPM Explicit Domain laajennus")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "dpmMetric - DPM Metric laajennus")]    timeout=20
+    Wait until page contains element    //*[contains(text(), "dpmTypedDomain - DPM Typed Domain laajennus")]    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
