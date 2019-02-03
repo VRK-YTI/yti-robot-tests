@@ -84,7 +84,7 @@ Resource          resources/Login_details.robot
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
     ...    ELSE    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
     Select navigation menu link    Suomi.fi-sanastot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
