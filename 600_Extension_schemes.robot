@@ -970,3 +970,40 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    30 jäsentä    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
+
+626. Remove code from versioned code list with extensions
+    [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
+    ...    create new version of code list. Try to remove code from code list and check that proper error message is displayed.
+    ...    YTI-452.
+    [Tags]    regression    koodistot    600    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
+    Wait until page contains    25 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=30
+    Click element    ${CREATE_NEW_VERSION_BTN}
+    Wait Until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=30
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_19}
+    Sleep    2
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=30
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60}    timeout=60
+    Wait until page contains    25 koodia    timeout=120
+    Wait until element is visible    //*[contains(text(), "testcode01 - Testikoodi 01")]    timeout=20
+    Click element    //*[contains(text(), "testcode01 - Testikoodi 01")]
+    Wait until page contains    testcode01 - Testikoodi 01    timeout=20
+    Wait until page contains element    ${CODE_DDL}    timeout=20
+    Click element    ${CODE_DDL}
+    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_BTN}
+    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_CONF_BTN}
+    Sleep    1
+    Wait until page contains    ${Error_linked_code}    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists with extensions    ${CODE_LIST_19}    ${CODE_LIST_14}
