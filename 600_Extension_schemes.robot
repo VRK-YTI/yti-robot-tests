@@ -29,8 +29,8 @@ Resource          resources/Extension_resources.robot
     Sleep    2
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
-    Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
-    Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
+    Wait until element is visible    //*[contains(@id,'222_view_extension')]    timeout=30
+    Wait until element is visible    //*[contains(@id,'111_view_extension')]    timeout=30
     Click Element    //*[contains(@id,'111_view_extension')]
     Wait until page contains    9 jäsentä    timeout=20
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
