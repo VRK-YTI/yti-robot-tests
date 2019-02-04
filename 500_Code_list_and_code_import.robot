@@ -1119,6 +1119,42 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
 
+528. Remove code from versioned code list
+    [Documentation]    Import VALID code list with codes and create new version of code list.
+    ...    Remove code from versioned code list and check that version history tab does not disappear. YTI-451.
+    [Tags]    regression    koodistot    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Click element    ${EXPAND_ALL_BTN}
+    Sleep    1
+    Log to Console    Expand all pressed
+    Wait until page contains    10 koodia    timeout=20
+    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Remove code    testikoodi01 - Testikoodi 01
+    Wait until page contains    koodisto7001    timeout=20
+    Wait until page contains    testikoodi02 - Testikoodi 02    timeout=20
+    Page should not contain    testikoodi01 - Testikoodi 01    timeout=20
+    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    Log to console    Version history tab exists after code was removed
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus
