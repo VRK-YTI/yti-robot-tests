@@ -529,7 +529,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 
 214. Add note for concept
     [Documentation]    Create new vocabulary and import concepts. Add another note in Finnish and concept reference for concept.
-    [Tags]    sanastot    200
+    [Tags]    regression    sanastot    200    test
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
