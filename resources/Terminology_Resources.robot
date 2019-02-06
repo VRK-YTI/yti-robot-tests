@@ -620,3 +620,15 @@ Select concept
     Click element    //*[contains(text(), "${concept}")]
     Log to Console    Concept ${concept} selected
     Sleep    1
+
+Delete concept
+    [Arguments]    ${concept}
+    Wait until page contains element    //*[contains(text(), "${concept}")]    timeout=30
+    Click element    //*[contains(text(), "${concept}")]
+    Wait until page contains element    ${REMOVE_CONCEPT_BTN}    timeout=30
+    Click element    ${REMOVE_CONCEPT_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
+    Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
+    Wait Until Element Is Enabled    ${EDIT_CONCEPT_BTN}    timeout=60
+    Log to Console    ${concept} removed
+    Sleep    1

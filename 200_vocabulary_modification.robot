@@ -109,9 +109,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Save concept
     Wait until page contains    Automaatio    timeout=30
     Log to Console    New concept "Automaatio" added
-    Go back to Sanastot frontpage
-    Delete concept from Testiautomaatiosanasto vocabulary
-    Log to console    Concept "Automaatio" deleted
+    Delete concept    Automaatio
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
