@@ -25,6 +25,7 @@ ${Code_list_version3}    ${DATAFOLDER}${/}Code_list_version3.xlsx
 ${Variant_no_end_date}    ${DATAFOLDER}${/}Variant_code_list_and_codes_no_end_date.xlsx
 ${Code_list_with_links}    ${DATAFOLDER}${/}Code_list_with_links.xlsx
 ${Code_list_with_sub_code_list_in_code}    ${DATAFOLDER}${/}Code_list_with_sub_code_list_in_code.xlsx
+${Code_list_with_default_code_new_version}    ${DATAFOLDER}${/}Code_list_codes_default_code_for_new_version_valid.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -1152,6 +1153,39 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Page should not contain    testikoodi01 - Testikoodi 01    timeout=20
     Wait until element is visible    ${VERSION_TAB}    timeout=20
     Log to console    Version history tab exists after code was removed
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
+529. Create new version of code list with default code
+    [Documentation]    Import code list with default code and create new version.
+    ...    Check that new version is created succesfully and default code is copied.
+    [Tags]    regression    koodistot    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Sleep    1
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    2
+    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Wait until page contains    10 koodia    timeout=20
+    Log to Console    All codes are copied
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Log to Console    Default code is copied
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
