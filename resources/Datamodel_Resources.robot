@@ -508,8 +508,8 @@ Create new shape by referencing external uri
     Click Element    ${CREATE_NEW_SHAPE_BY_REF_URI}
     Sleep    2
     Input Text    ${EXTERNAL_URI_INPUT}    ${external_uri}
-    Sleep    2
-    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Sleep    3
+    Wait until element is visible    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
