@@ -9,8 +9,6 @@ ${SUPER_USER_NAME}    Testi Superuser
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
-${REGISTRY_1}     Testirekisteri
-${REGISTRY_2}     Automaatiorekisteri
 ${ORGANIZATION_1}    Testiorganisaatio
 ${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
 ${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
@@ -19,15 +17,11 @@ ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
-${SEARCH_CODE_CHECKBOX}    id=search_code_details_checkbox
 ${FRONTPAGE_LINK}    id=main_page_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
-${NAVIGATION_MENU_REGISTRIES}    id=navigation_link_registries
-${REGISTRY_FILTER_DDL}    id=selected_registry_filter_dropdown
 ${SEARCH_BOX_INPUT}    id=search_box_input
 ${INFORMATION_LINK}    id=information_link
 ${NAVIGATION_MENU_USER_DETAILS}    id=navigation_link_user_details
-${LICENSE_LINK}    id=license_link
 ${DESCRIPTION_OF_FILE_LINK}    id=description_of_file_link
 #Status
 ${STATUS_DRAFT_FI}    Luonnos
