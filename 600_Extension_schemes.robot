@@ -1008,7 +1008,7 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_19}    ${CODE_LIST_14}
 
-627. Extend front page serach to extensions
+627. Extend front page search to extensions
     [Documentation]    Import two code lists with extensions. Check that front page search with extensions is successfull.
     [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
