@@ -29,6 +29,19 @@ ${STATUS_VALID_FI}    Voimassa oleva
 ${ALL_STATUSES_FI}    Kaikki tilat
 ${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
 ${VALID_STATUS}    id=VALID_status_input_dropdown
+#Comment round
+${SEARCH_LINKED_SOURCE_INPUT}    id=search_linked_source_input
+${INTEGRATION_FILTER_DDL}    id=selected_integration_filter_dropdown
+${COMMENTROUND_NAME_INPUT}    id=commentround_name_input
+${COMMENTROUND_DESCRIPTION_INPUT}    id=commentround_description_input
+${COMMENTROUND_START_DATE_INPUT}    id=start_date_input
+${COMMENTROUND_END_DATE_INPUT}    id=end_date_input
+${ONLY_SELCTED_RESOURCES_CHECKBOX}    id=commentround_fixedthreads_textarea
+${ALLOW_NEW_COMMENT_CHECKBOX}    id=commentround_openthreads_input
+${COMMENTROUND_ADD_ORGANIZATION_BTN}    id=add_organization_button
+${COMMENTROUND_ORGANIZATION_INPUT}    id=search_linked_organization_input
+${SAVE_COMMENTROUND}    id=editable_save_button
+${CANCEL_COMMENTROUND}    id=editable_cancel_button
 
 *** Keywords ***
 Test Case Setup Admin
