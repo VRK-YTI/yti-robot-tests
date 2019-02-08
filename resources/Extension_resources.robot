@@ -29,6 +29,8 @@ ${DPM_extension_relations_to_other_members}    ${DATAFOLDER}${/}DPM_extensions_r
 ${Code_list_for_cross_reference_list_creation}    ${DATAFOLDER}${/}Code_list_and_codes_for_cross_reference_list.xlsx
 ${Code_list_with_links_and_default_code}    ${DATAFOLDER}${/}Code_list_with_links_and_default_code.xlsx
 ${Code_list_with_cross_reference_list}    ${DATAFOLDER}${/}Code_list_with_cross_reference_list.xlsx
+${filter_1_Code_list_three_extensions}    ${DATAFOLDER}${/}filter_1_Code_list_three_extensions.xlsx
+${filter_2_Code_list_one_extension}    ${DATAFOLDER}${/}filter_2_Code_list_one_extension.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv

@@ -33,6 +33,10 @@ ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
 ${NAVIGATION_MENU_REGISTRIES}    id=navigation_link_registries
 ${REGISTRY_FILTER_DDL}    id=selected_registry_filter_dropdown
 ${SEARCH_BOX_INPUT}    id=search_box_input
+${SEARCH_EXTENSION_CHECKBOX}    id=search_extension_details_checkbox
+${PROPERTYTYPE_FILTER_DDL}    id=selected_propertytype_filter_dropdown
+${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    id=Extension_crossReferenceList_propertytype_filter_dropdown
+${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    id=Extension_calculationHierarchy_propertytype_filter_dropdown
 #Registry
 ${CREATE_REGISTRY_BTN}    id=create_registry_button
 ${REGISTRY_VALUE_INPUT}    id=registry_value_input

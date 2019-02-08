@@ -1007,3 +1007,37 @@ Resource          resources/Extension_resources.robot
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_19}    ${CODE_LIST_14}
+
+627. Extend front page serach to extensions
+    [Documentation]    Import two code lists with extensions. Check that front page search with extensions is successfull.
+    [Tags]    koodistot    regression    600    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${filter_1_Code_list_three_extensions}    ${CODE_LIST_16}
+    Wait until page contains    25 koodia    timeout=20
+    Return to Koodistot frontpage
+    Upload codelist in excel format    ${filter_2_Code_list_one_extension}    ${CODE_LIST_17}
+    Wait until page contains    25 koodia    timeout=20
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    rty789
+    Wait Until Element Is Visible    ${SEARCH_EXTENSION_CHECKBOX}    timeout=30
+    Click Element    ${SEARCH_EXTENSION_CHECKBOX}
+    Wait Until Element Is Visible    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
+    Click Element    ${PROPERTYTYPE_FILTER_DDL}
+    Wait Until Element Is Visible    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
+    Click Element    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}
+    Wait until page contains    hakutulos    timeout=30
+    Wait until page contains element    //*[contains(text(), "Koodisto600")]    timeout=30
+    Page should not contain element    //*[contains(text(), "Koodisto700")]
+    Sleep    1
+    Capture Page Screenshot
+    Wait Until Element Is Visible    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
+    Click Element    ${PROPERTYTYPE_FILTER_DDL}
+    Wait Until Element Is Visible    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
+    Click Element    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}
+    Wait until page contains    hakutulos    timeout=30
+    Wait until page contains element    //*[contains(text(), "Koodisto700")]    timeout=30
+    Page should not contain element    //*[contains(text(), "Koodisto600")]
+    Sleep    1
+    Capture Page Screenshot
+    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_17}
