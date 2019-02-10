@@ -141,8 +141,8 @@ Go back to Data Vocabularies frontpage and close browsers
     Close All Browsers
 
 Go back to Data Vocabularies frontpage
-    Wait until element is visible    ${MAIN_PAGE_LINK}    timeout=60
-    Sleep    1
+    Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=60
+    Sleep    3
     Click element    ${MAIN_PAGE_LINK}
     Sleep    2
 

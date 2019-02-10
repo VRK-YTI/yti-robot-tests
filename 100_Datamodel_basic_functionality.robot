@@ -130,7 +130,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Click element    ${NAVIGATION_MENU_DDL}
     Wait until page contains    User details
     Wait until page contains    yhteentoimiva.suomi.fi
-    Wait until page contains    Suomi.fi Controlled Vocabularies
+    Wait until page contains    Suomi.fi Terminologies
     Wait until page contains    Suomi.fi Reference Data
     Wait until page contains    User right management
     Close All Browsers
