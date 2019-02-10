@@ -23,6 +23,7 @@ ${SEARCH_BOX_INPUT}    id=search_box_input
 ${INFORMATION_LINK}    id=information_link
 ${NAVIGATION_MENU_USER_DETAILS}    id=navigation_link_user_details
 ${DESCRIPTION_OF_FILE_LINK}    id=description_of_file_link
+${LICENSE_LINK}    id=license_link
 #Status
 ${STATUS_DRAFT_FI}    Luonnos
 ${STATUS_VALID_FI}    Voimassa oleva
