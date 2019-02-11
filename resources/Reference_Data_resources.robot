@@ -299,11 +299,11 @@ Open Koodistot
     Wait until page contains    KIRJAUDU SISÄÄN    timeout=60
 
 Reference Data Open Browser with Settings
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Reference Data Open Chrome to Environment
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Reference Data Open Chrome to Environment
     ...    ELSE    Open Browser    ${REFERENCE_DATA_ENVIRONMENT_URL}    browser=${BROWSER}
 
-Open Chrome to Environment
+Reference Data Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    --headless
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
