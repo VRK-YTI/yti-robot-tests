@@ -13,6 +13,9 @@ ${ORGANIZATION_1}    Testiorganisaatio
 ${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
 ${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
 ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
+${REFERENCE_DATA_TOOL}    id=codelist_integration_container_type_filter_dropdown
+${TERMINOLOGIES_TOOL}    id=terminology_integration_container_type_filter_dropdown
+${DATA_VOCABULARIES_TOOL}    id=datamodel_integration_container_type_filter_dropdown
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
@@ -43,6 +46,12 @@ ${COMMENTROUND_ADD_ORGANIZATION_BTN}    id=add_organization_button
 ${COMMENTROUND_ORGANIZATION_INPUT}    id=search_linked_organization_input
 ${SAVE_COMMENTROUND}    id=editable_save_button
 ${CANCEL_COMMENTROUND}    id=editable_cancel_button
+${CREATE_COMMENT_ROUND_BTN}    id=create_commentround_button
+${SELECT_TOOL_DDL}    id=selected_integration_container_type_filter_dropdown
+${COMMENTROUND_ADD_ORGANIZATION}    id=add_organization_button
+${EDIT_COMMENTROUND}    id=editable_edit_button
+${DELETE_COMMENTROUND_BTN}    id=delete_commentround_button
+${CONFIRM_COMMENTROUND_DELETE_BTN}    id=confirm_confirmation_modal_button
 
 *** Keywords ***
 Test Case Setup Admin
@@ -82,7 +91,57 @@ Open Chrome to Environment
     Set Window Size    1920    1080
     Go To    ${ENVIRONMENT_URL}
 
-Return to Comments frontpage
+Return To Comments Frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=60
     Click element    ${FRONTPAGE_LINK}
     Sleep    1
+
+Create Comment Round
+    [Arguments]    ${tool}    ${code_list}    ${round_name}    ${description}
+    Wait Until Page Contains Element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
+    Click Element    ${CREATE_COMMENT_ROUND_BTN}
+    Wait Until Page Contains Element    ${SELECT_TOOL_DDL}    timeout=20
+    Click Element    ${SELECT_TOOL_DDL}
+    Wait Until Page Contains Element    ${tool}    timeout=30
+    Click Element    ${tool}
+    Wait Until Page Contains Element    ${SEARCH_LINKED_SOURCE_INPUT}    timeout=30
+    Input Text    ${SEARCH_LINKED_SOURCE_INPUT}    ${code_list}
+    Wait Until Page Contains Element    //*[contains(text(), "${code_list}")]    timeout=30
+    Click Element    //*[contains(text(), "${code_list}")]
+    Wait Until Page Contains Element    ${COMMENTROUND_NAME_INPUT}    timeout=30
+    Input Text    ${COMMENTROUND_NAME_INPUT}    ${round_name}
+    Wait Until Page Contains Element    ${COMMENTROUND_DESCRIPTION_INPUT}    timeout=30
+    Input Text    ${COMMENTROUND_DESCRIPTION_INPUT}    ${description}
+    Wait Until Page Contains Element    ${COMMENTROUND_ADD_ORGANIZATION}    timeout=20
+    Click Element    ${COMMENTROUND_ADD_ORGANIZATION}
+    Wait Until Page Contains Element    ${COMMENTROUND_ORGANIZATION_INPUT}    timeout=20
+    Input Text    ${COMMENTROUND_ORGANIZATION_INPUT}    Testiorganisaatio
+    Click Element    //*[contains(text(), "Testiorganisaatio")]
+    Wait Until Page Contains Element    ${SAVE_COMMENTROUND}    timeout=20
+    Click Element    ${SAVE_COMMENTROUND}
+    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
+    Log To Console    Comment round created
+
+Delete Comment Round
+    [Arguments]    ${comment_round_name}
+    Test Case Setup Superuser
+    Wait until page contains element    //*[contains(text(), "${comment_round_name}")]    timeout=60
+    Click Element    //*[contains(text(), "${comment_round_name}")]
+    Wait until page contains element    //*[contains(text(), "${comment_round_name}")]    timeout=60
+    Wait until page contains element    ${DELETE_COMMENTROUND_BTN}    timeout=20
+    Click Element    ${DELETE_COMMENTROUND_BTN}
+    Wait until page contains element    ${CONFIRM_COMMENTROUND_DELETE_BTN}    timeout=20
+    Click Element    ${CONFIRM_COMMENTROUND_DELETE_BTN}
+    Wait until page contains element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
+    Wait until page does not contain element    //*[contains(text(), "${comment_round_name}")]    timeout=60
+    Log To Console    ${comment_round_name} Deleted
+
+Test Case Setup Reference Data
+    Reference Data Setup
+    Test Case Setup Superuser
+
+Test Case Teardown Reference Data
+    [Arguments]    ${comment_round_name}
+    Reference Data Test Case Setup Superuser
+    Reference Data Teardown
+    Delete Comment Round    ${comment_round_name}
