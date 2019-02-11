@@ -299,7 +299,7 @@ Select user
     Sleep    1
     Click element    ${user_id}
     Sleep    5
-    Wait Until Page Contains    ${user_name}
+    Wait Until Page Contains    ${user_name}    timeout=30
     Sleep    5
 
 Open Koodistot
@@ -394,12 +394,12 @@ Create code list
     Log to Console    ${codelist_name} created
 
 Cancel code list creation
-    Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}
+    Wait until page contains element    ${CANCEL_CODE_CREATE_BTN}    timeout=30
     Click element    ${CANCEL_CODE_CREATE_BTN}
     Sleep    2
 
 Save code list
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click element    ${SAVE_NEW_CODE_LIST}
 
 Close error modal
@@ -522,11 +522,11 @@ Delete registry with code lists
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click element    ${NAVIGATION_MENU_DDL}
     Click element    ${NAVIGATION_MENU_REGISTRIES}
-    Wait until page contains element    //*[contains(text(), "${registry}")]
+    Wait until page contains element    //*[contains(text(), "${registry}")]    timeout=30
     Click element    //*[contains(text(), "${registry}")]
-    Wait until page contains element    ${REGISTRY_DDL}
+    Wait until page contains element    ${REGISTRY_DDL}    timeout=30
     Click element    ${REGISTRY_DDL}
-    Wait until page contains element    ${DELETE_REGISTRY}
+    Wait until page contains element    ${DELETE_REGISTRY}    timeout=30
     Click element    ${DELETE_REGISTRY}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
@@ -543,11 +543,11 @@ Delete empty registry
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click element    ${NAVIGATION_MENU_DDL}
     Click element    ${NAVIGATION_MENU_REGISTRIES}
-    Wait until page contains element    //*[contains(text(), "${registry}")]
+    Wait until page contains element    //*[contains(text(), "${registry}")]    timeout=30
     Click element    //*[contains(text(), "${registry}")]
     Wait until page contains element    ${REGISTRY_DDL}
     Click element    ${REGISTRY_DDL}
-    Wait until page contains element    ${DELETE_REGISTRY}
+    Wait until page contains element    ${DELETE_REGISTRY}    timeout=30
     Click element    ${DELETE_REGISTRY}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
@@ -584,7 +584,7 @@ Continue registry creation
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
     Click element    //*[contains(text(), "${organization}")]
-    Wait until page contains element    ${SAVE_REGISTRY}
+    Wait until page contains element    ${SAVE_REGISTRY}    timeout=30
     Click element    ${SAVE_REGISTRY}
     Log to Console    ${registry_name} created
     Sleep    5

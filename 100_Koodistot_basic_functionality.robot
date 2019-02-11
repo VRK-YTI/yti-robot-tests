@@ -18,12 +18,12 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
     [Setup]    Test Case Setup Admin
     Wait until page contains element    id=information_link    timeout=20
     Click element    id=information_link
-    Wait until page contains    Tietoa Koodistoista
-    Wait until page contains    Hyödyt käyttäjille
-    Wait until page contains    Miten Koodistot-työkalu toimii?
-    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi
-    Wait until page contains    Katso myös
-    Wait until page contains    Ota yhteyttä
+    Wait until page contains    Tietoa Koodistoista    timeout=30
+    Wait until page contains    Hyödyt käyttäjille    timeout=30
+    Wait until page contains    Miten Koodistot-työkalu toimii?    timeout=30
+    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi    timeout=30
+    Wait until page contains    Katso myös    timeout=30
+    Wait until page contains    Ota yhteyttä    timeout=30
     [Teardown]    Go back to Koodistot frontpage
 
 101. Open EUPL-1.2 license page
@@ -33,7 +33,7 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
     Wait until page contains element    id=license_link    timeout=20
     Click element    id=license_link
     Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
+    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=30
     Sleep    2
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
     ...    ELSE    Select Window    title=TEST - Koodistot
@@ -424,15 +424,15 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
 
 *** Keywords ***
 Restore Finnish language
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    1
     Click element    ${LANGUAGE_FI}
     Wait until page contains    ${CODE_LIST_1}
-    Wait until page contains    Kaikki tilat
-    Wait until page contains    Kaikki rekisterit
-    Wait until page contains    Kaikki organisaatiot
-    Wait until page contains    Luokitus
+    Wait until page contains    Kaikki tilat    timeout=30
+    Wait until page contains    Kaikki rekisterit    timeout=30
+    Wait until page contains    Kaikki organisaatiot    timeout=30
+    Wait until page contains    Luokitus    timeout=30
     Close All Browsers
 
 Go back to Koodistot frontpage
