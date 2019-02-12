@@ -1312,6 +1312,52 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
 		Log to console    Version history tab exists in the new version too after code was updated
 		[Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
+532. Create a new code in versioned code list's newest version
+		[Documentation]    Import VALID code list with codes and create new version of code list.
+		...    Update a code's attributes in the latest code list and check that version history tab does not disappear from any of the versions.
+		[Tags]    regression    koodistot    test    500
+		[Setup]    Test Case Setup Superuser
+		Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+		Wait until page contains    10 koodia    timeout=20
+		Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+		Click button    ${CODE_LIST_DDL}
+		Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+		Click button    ${CREATE_NEW_VERSION_BTN}
+		Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+		Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+		Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+		Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+		Click element    ${SAVE_NEW_CODE_LIST}
+		Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
+		Log to Console    New version of code list created
+		Sleep    1
+		Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
+		Sleep    5
+		Wait until page contains    NewCode001 - newCode001
+		Wait until page contains    Koodin arvo    timeout=20
+		Wait until page contains    NewCode001    timeout=20
+		Wait until page contains    Koodin nimi    timeout=20
+		Wait until page contains    newCode001    timeout=20
+		Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+		Click element    ${2_BREADCRUMB_LINK}
+		Sleep    2
+		Wait until element is visible    ${VERSION_TAB}    timeout=20
+		Log to console    Version history tab exists on current ie. latest version after code was created
+		Return to Koodistot frontpage
+		Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
+		Click element    ${STATUS_DROPDOWN_BTN}
+		Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+		Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+		Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
+		Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+		Sleep    2
+		Click element    //*[contains(text(), "${CODE_LIST_9}")]
+		Sleep    2
+		Wait until element is visible    ${VERSION_TAB}    timeout=20
+		Log to console    Version history tab exists on also the 2nd latest version after code was created
+		[Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus
