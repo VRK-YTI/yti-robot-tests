@@ -98,7 +98,7 @@ Return To Comments Frontpage
     Sleep    1
 
 Create Comment Round
-    [Arguments]    ${tool}    ${code_list}    ${round_name}    ${description}
+    [Arguments]    ${tool}    ${source}    ${round_name}    ${description}
     Wait Until Page Contains Element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
     Click Element    ${CREATE_COMMENT_ROUND_BTN}
     Wait Until Page Contains Element    ${SELECT_TOOL_DDL}    timeout=20
@@ -106,9 +106,9 @@ Create Comment Round
     Wait Until Page Contains Element    ${tool}    timeout=30
     Click Element    ${tool}
     Wait Until Page Contains Element    ${SEARCH_LINKED_SOURCE_INPUT}    timeout=30
-    Input Text    ${SEARCH_LINKED_SOURCE_INPUT}    ${code_list}
-    Wait Until Page Contains Element    //*[contains(text(), "${code_list}")]    timeout=30
-    Click Element    //*[contains(text(), "${code_list}")]
+    Input Text    ${SEARCH_LINKED_SOURCE_INPUT}    ${source}
+    Wait Until Page Contains Element    //*[contains(text(), "${source}")]    timeout=30
+    Click Element    //*[contains(text(), "${source}")]
     Wait Until Page Contains Element    ${COMMENTROUND_NAME_INPUT}    timeout=30
     Input Text    ${COMMENTROUND_NAME_INPUT}    ${round_name}
     Wait Until Page Contains Element    ${COMMENTROUND_DESCRIPTION_INPUT}    timeout=30
@@ -156,4 +156,13 @@ Test Case Setup Terminology
 Test Case Teardown Terminology
     [Arguments]    ${comment_round_name}
     Terminology Teardown
+    Delete Comment Round    ${comment_round_name}
+
+Test Case Setup Data Vocabularies
+    Data Vocabularies Setup
+    Test Case Setup Superuser
+
+Test Case Teardown Data Vocabularies
+    [Arguments]    ${comment_round_name}
+    Data Vocabularies Teardown
     Delete Comment Round    ${comment_round_name}
