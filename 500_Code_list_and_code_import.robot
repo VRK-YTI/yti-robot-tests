@@ -1314,7 +1314,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
 
 532. Create a new code in versioned code list's newest version
 		[Documentation]    Import VALID code list with codes and create new version of code list.
-		...    Update a code's attributes in the latest code list and check that version history tab does not disappear from any of the versions.
+		...    Create a new code in the latest code list and check that version history tab does not disappear from any of the versions.
 		[Tags]    regression    koodistot    test    500
 		[Setup]    Test Case Setup Superuser
 		Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
