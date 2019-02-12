@@ -52,6 +52,7 @@ ${COMMENTROUND_ADD_ORGANIZATION}    id=add_organization_button
 ${EDIT_COMMENTROUND}    id=editable_edit_button
 ${DELETE_COMMENTROUND_BTN}    id=delete_commentround_button
 ${CONFIRM_COMMENTROUND_DELETE_BTN}    id=confirm_confirmation_modal_button
+${COMMENTROUND_DDL}    id=commentRoundDropdown
 
 *** Keywords ***
 Test Case Setup Admin
@@ -128,12 +129,14 @@ Delete Comment Round
     Wait until page contains element    //*[contains(text(), "${comment_round_name}")]    timeout=60
     Click Element    //*[contains(text(), "${comment_round_name}")]
     Wait until page contains element    //*[contains(text(), "${comment_round_name}")]    timeout=60
+    Wait until page contains element    ${COMMENTROUND_DDL}    timeout=20
+    Click Element    ${COMMENTROUND_DDL}
     Wait until page contains element    ${DELETE_COMMENTROUND_BTN}    timeout=20
     Click Element    ${DELETE_COMMENTROUND_BTN}
     Wait until page contains element    ${CONFIRM_COMMENTROUND_DELETE_BTN}    timeout=20
     Click Element    ${CONFIRM_COMMENTROUND_DELETE_BTN}
     Wait until page contains element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
-    Wait until page does not contain element    //*[contains(text(), "${comment_round_name}")]    timeout=60
+    Wait until page does not contain element    //*[contains(text(), "${comment_round_name}")]    timeout=10
     Log To Console    ${comment_round_name} Deleted
 
 Test Case Setup Reference Data
@@ -144,4 +147,13 @@ Test Case Teardown Reference Data
     [Arguments]    ${comment_round_name}
     Reference Data Test Case Setup Superuser
     Reference Data Teardown
+    Delete Comment Round    ${comment_round_name}
+
+Test Case Setup Terminology
+    Terminology Setup
+    Test Case Setup Superuser
+
+Test Case Teardown Terminology
+    [Arguments]    ${comment_round_name}
+    Terminology Teardown
     Delete Comment Round    ${comment_round_name}
