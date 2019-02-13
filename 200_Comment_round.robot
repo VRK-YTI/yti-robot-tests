@@ -35,3 +35,13 @@ Resource          resources/Data_Vocabularies_resources.robot
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros
+
+203. Add resources from Reference Data for comment round
+    [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
+    ...    Add new resources for comment round and delete code list and comment round.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Reference Data
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    Koodisto600    Testiautomaatiokierros    kuvaus
+    Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
+    Return To Comments Frontpage
+    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros

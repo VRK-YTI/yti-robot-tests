@@ -27,12 +27,14 @@ ${INFORMATION_LINK}    id=information_link
 ${NAVIGATION_MENU_USER_DETAILS}    id=navigation_link_user_details
 ${DESCRIPTION_OF_FILE_LINK}    id=description_of_file_link
 ${LICENSE_LINK}    id=license_link
-#Status
-${STATUS_DRAFT_FI}    Luonnos
-${STATUS_VALID_FI}    Voimassa oleva
-${ALL_STATUSES_FI}    Kaikki tilat
-${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
-${VALID_STATUS}    id=VALID_status_input_dropdown
+#Comment resource status
+${PRPOPOSED_STATUS_NOSTATUS}    id=NOSTATUS_undefined
+${PRPOPOSED_STATUS_DRAFT}    id=DRAFT_undefined
+${PRPOPOSED_STATUS_SUBMITTED}    id=SUBMITTED_undefined
+${PRPOPOSED_STATUS_VALID}    id=VALID_undefined
+${PRPOPOSED_STATUS_SUPERSEDED}    id=SUPERSEDED_undefined
+${PRPOPOSED_STATUS_RETIRED}    id=RETIRED_undefined
+${PRPOPOSED_STATUS_INVALID}    id=INVALID_undefined
 #Comment round
 ${SEARCH_LINKED_SOURCE_INPUT}    id=search_linked_source_input
 ${INTEGRATION_FILTER_DDL}    id=selected_integration_filter_dropdown
@@ -53,6 +55,9 @@ ${EDIT_COMMENTROUND}    id=editable_edit_button
 ${DELETE_COMMENTROUND_BTN}    id=delete_commentround_button
 ${CONFIRM_COMMENTROUND_DELETE_BTN}    id=confirm_confirmation_modal_button
 ${COMMENTROUND_DDL}    id=commentRoundDropdown
+${ADD_NEW_RESOURCE_BTN}    id=create_commentthread_button
+${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
+${PROPOSED_STATUS_DDL}    id=selected_undefined
 
 *** Keywords ***
 Test Case Setup Admin
@@ -138,6 +143,26 @@ Delete Comment Round
     Wait until page contains element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
     Wait until page does not contain element    //*[contains(text(), "${comment_round_name}")]    timeout=10
     Log To Console    ${comment_round_name} Deleted
+
+Add Resource For Comment Round
+    [Arguments]    ${resource}    ${comment}    ${status}
+    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
+    Click Element    ${EDIT_COMMENTROUND}
+    Wait until page contains element    ${ADD_NEW_RESOURCE_BTN}    timeout=30
+    Click element    ${ADD_NEW_RESOURCE_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${resource}")]    timeout=30
+    Click element    //*[contains(text(), "${resource}")]
+    Wait until page contains element    ${COMMENT_TEXT_INPUT}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT}    ${comment}
+    Wait until page contains element    ${PROPOSED_STATUS_DDL}    timeout=30
+    Click element    ${PROPOSED_STATUS_DDL}
+    Wait until page contains element    ${status}    timeout=30
+    Click Element    ${status}
+    Wait until page contains element    ${SAVE_COMMENTROUND}    timeout=30
+    Click Element    ${SAVE_COMMENTROUND}
+    Wait until element is visible    ${EDIT_COMMENTROUND}    timeout=30
+    Log To Console    ${resource} added for comment round
+    Capture Page Screenshot
 
 Test Case Setup Reference Data
     Reference Data Setup
