@@ -1190,173 +1190,173 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 530. Update code attributes in versioned code list's newest version
-		[Documentation]    Import VALID code list with codes and create new version of code list.
-		...    Update a code's attributes in the latest code list and check that version history tab does not disappear from any of the versions.
-		[Tags]    regression    koodistot    test    500
-		[Setup]    Test Case Setup Superuser
-		Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-		Wait until page contains    10 koodia    timeout=20
-		Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-		Click button    ${CODE_LIST_DDL}
-		Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-		Click button    ${CREATE_NEW_VERSION_BTN}
-		Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-		Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-		Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-		Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-		Click element    ${SAVE_NEW_CODE_LIST}
-		Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
-		Log to Console    New version of code list created
-		Sleep    1
-		Wait until page contains    10 koodia    timeout=20
-		Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
-		Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
-		Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-		Click element    //*[contains(text(), "Testikoodi 01")]
-		Wait until page contains element    ${MODIFY_CODE_BTN}
-		Click element    ${MODIFY_CODE_BTN}
-		Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
-		Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
-		Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
-		Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
-		Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
-		Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
-		Wait until page contains element    ${SAVE_CODE_MOD_BTN}
-		Click element    ${SAVE_CODE_MOD_BTN}
-		Wait until page contains    Tämä on uusi nimi koodille
-		Wait until page contains    Tämä on uusi kuvaus koodille
-		Wait until page contains    Tämä on uusi lyhyt nimi
-		Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-		Click element    //*[contains(text(), "${CODE_LIST_10}")]
-		Wait until element is visible    ${VERSION_TAB}    timeout=20
-		Log to console    Version history tab exists after code was updated
-		Return to Koodistot frontpage
-		Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-		Click element    ${STATUS_DROPDOWN_BTN}
-		Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
-		Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-		Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
-		Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
-		Sleep    2
-		Click element    //*[contains(text(), "${CODE_LIST_9}")]
-		Sleep    2
-		Wait until element is visible    ${VERSION_TAB}    timeout=20
-		[Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+    [Documentation]    Import VALID code list with codes and create new version of code list.
+    ...    Update a code's attributes in the latest code list and check that version history tab does not disappear from any of the versions.
+    [Tags]    regression    koodistot    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Sleep    1
+    Wait until page contains    10 koodia    timeout=20
+    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Click element    //*[contains(text(), "Testikoodi 01")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
+    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
+    Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
+    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains    Tämä on uusi nimi koodille
+    Wait until page contains    Tämä on uusi kuvaus koodille
+    Wait until page contains    Tämä on uusi lyhyt nimi
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    Log to console    Version history tab exists after code was updated
+    Return to Koodistot frontpage
+    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click element    ${STATUS_DROPDOWN_BTN}
+    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Sleep    2
+    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Sleep    2
+    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 531. Update code attributes in versioned code list's second newest version
-		[Documentation]    Import VALID code list with codes and create new version of code list.
-		...    Update a code's attributes in the second latest code list and check that version history tab does not disappear from any of the versions.
-		[Tags]    regression    koodistot    test    500
-		[Setup]    Test Case Setup Superuser
-		Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-		Wait until page contains    10 koodia    timeout=20
-		Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-		Click button    ${CODE_LIST_DDL}
-		Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-		Click button    ${CREATE_NEW_VERSION_BTN}
-		Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-		Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-		Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-		Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-		Click element    ${SAVE_NEW_CODE_LIST}
-		Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
-		Log to Console    New version of code list created
-		Sleep    1
+    [Documentation]    Import VALID code list with codes and create new version of code list.
+    ...    Update a code's attributes in the second latest code list and check that version history tab does not disappear from any of the versions.
+    [Tags]    regression    koodistot    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Sleep    1
     Return to Koodistot frontpage
-		Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-		Click element    ${STATUS_DROPDOWN_BTN}
-		Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
-		Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-		Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
-		Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
-		Sleep    2
-		Click element    //*[contains(text(), "${CODE_LIST_9}")]
-		Sleep    2
-		Wait until page contains    10 koodia    timeout=20
-		Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
-		Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
-		Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-		Click element    //*[contains(text(), "Testikoodi 01")]
-		Wait until page contains element    ${MODIFY_CODE_BTN}
-		Click element    ${MODIFY_CODE_BTN}
-		Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
-		Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
-		Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
-		Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
-		Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
-		Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
-		Wait until page contains element    ${SAVE_CODE_MOD_BTN}
-		Click element    ${SAVE_CODE_MOD_BTN}
-		Wait until page contains    Tämä on uusi nimi koodille
-		Wait until page contains    Tämä on uusi kuvaus koodille
-		Wait until page contains    Tämä on uusi lyhyt nimi
-		Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click element    ${STATUS_DROPDOWN_BTN}
+    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Sleep    2
+    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Sleep    2
+    Wait until page contains    10 koodia    timeout=20
+    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Click element    //*[contains(text(), "Testikoodi 01")]
+    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
+    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
+    Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
+    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains    Tämä on uusi nimi koodille
+    Wait until page contains    Tämä on uusi kuvaus koodille
+    Wait until page contains    Tämä on uusi lyhyt nimi
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_9}")]
     Wait until element is visible    ${VERSION_TAB}    timeout=20
     Log to console    Version history tab exists after code was updated
     Return to Koodistot frontpage
-		Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-		Click element    ${STATUS_DROPDOWN_BTN}
-		Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
-		Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-		Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
-		Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-		Sleep    2
-		Click element    //*[contains(text(), "${CODE_LIST_10}")]
-		Sleep    2
-		Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-		Click element    //*[contains(text(), "${CODE_LIST_10}")]
-		Wait until element is visible    ${VERSION_TAB}    timeout=20
-		Log to console    Version history tab exists in the new version too after code was updated
-		[Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click element    ${STATUS_DROPDOWN_BTN}
+    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Sleep    2
+    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    Log to console    Version history tab exists in the new version too after code was updated
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 532. Create a new code in versioned code list's newest version
-		[Documentation]    Import VALID code list with codes and create new version of code list.
-		...    Create a new code in the latest code list and check that version history tab does not disappear from any of the versions.
-		[Tags]    regression    koodistot    test    500
-		[Setup]    Test Case Setup Superuser
-		Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-		Wait until page contains    10 koodia    timeout=20
-		Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-		Click button    ${CODE_LIST_DDL}
-		Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-		Click button    ${CREATE_NEW_VERSION_BTN}
-		Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-		Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-		Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-		Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-		Click element    ${SAVE_NEW_CODE_LIST}
-		Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
-		Log to Console    New version of code list created
-		Sleep    1
-		Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
-		Sleep    5
-		Wait until page contains    NewCode001 - newCode001
-		Wait until page contains    Koodin arvo    timeout=20
-		Wait until page contains    NewCode001    timeout=20
-		Wait until page contains    Koodin nimi    timeout=20
-		Wait until page contains    newCode001    timeout=20
-		Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-		Click element    ${2_BREADCRUMB_LINK}
-		Sleep    2
-		Wait until element is visible    ${VERSION_TAB}    timeout=20
-		Log to console    Version history tab exists on current ie. latest version after code was created
-		Return to Koodistot frontpage
-		Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-		Click element    ${STATUS_DROPDOWN_BTN}
-		Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
-		Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-		Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
-		Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
-		Sleep    2
-		Click element    //*[contains(text(), "${CODE_LIST_9}")]
-		Sleep    2
-		Wait until element is visible    ${VERSION_TAB}    timeout=20
-		Log to console    Version history tab exists on also the 2nd latest version after code was created
-		[Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+    [Documentation]    Import VALID code list with codes and create new version of code list.
+    ...    Create a new code in the latest code list and check that version history tab does not disappear from any of the versions.
+    [Tags]    regression    koodistot    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Sleep    1
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
+    Sleep    5
+    Wait until page contains    NewCode001 - newCode001
+    Wait until page contains    Koodin arvo    timeout=20
+    Wait until page contains    NewCode001    timeout=20
+    Wait until page contains    Koodin nimi    timeout=20
+    Wait until page contains    newCode001    timeout=20
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Sleep    2
+    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    Log to console    Version history tab exists on current ie. latest version after code was created
+    Return to Koodistot frontpage
+    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click element    ${STATUS_DROPDOWN_BTN}
+    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Sleep    2
+    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Sleep    2
+    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    Log to console    Version history tab exists on also the 2nd latest version after code was created
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 533. Create new version of code list with default code and change the default code
     [Documentation]    Import code list with default code and create new version.
@@ -1364,11 +1364,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    Then manually change the default code and ensure that the version history tab is intact.
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
-    Import library  Dialogs
+    Import library    Dialogs
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
     Wait until page contains    10 koodia    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
@@ -1389,42 +1388,43 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Log to Console    All codes are copied
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Log to Console    Default code is copied
-
-		Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-		Log to Console    AFTER_DEBUUUG
-		Click element    ${MODIFY_CODE_LIST}
-		Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
-		Click element    ${ADD_DEFAULTCODE_BTN}
-		#Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
-		#Pause Execution		message=Test execution paused. Press OK to continue.
-		#Input Text    ${SEARCH_DEFAULTCODE_INPUT}    04 //HUOM TÄMÄ ON MUUALTA APINOITU MUTTA VAIKUTTAA OIKEASTI TARPEETTOMALTA TÄSSÄ
-		#Wait until page contains element    //*[contains(text(), "testikoodi04")]	timeout=20
-		#Pause Execution		message=jotain
-		#Click element    //*[contains(text(), "Peruuta")] //TÄTÄKIN TESTATTU ETTÄ VOIKO EDES TOTA PERUUTALINKKIÄ CLICKATA EIKÄ SEKÄÄN TUNNU TOIMIVAN
-		Click element    //*[contains(text(), "testikoodi04")]
-		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-		#Pause Execution		message=Test execution paused. Press OK to continue.
-		Click element    ${SAVE_NEW_CODE_LIST}
-		Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
-		Sleep    2
-		Wait until page contains    Vakiokoodi    timeout=20
-		Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-		Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
-		Click element    ${MODIFY_CODE_LIST}
-		Sleep    2
-		Wait until page contains element    ${REMOVE_DEFAULTCODE}    timeout=20
-		Click element    ${REMOVE_DEFAULTCODE}
-		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-		Click element    ${SAVE_NEW_CODE_LIST}
-		Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
-		Sleep    1
-		Page should not contain    Vakiokoodi
-		Page should not contain    testikoodi04 - Testikoodi 04
-		Return to Koodistot frontpage
-
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Log to Console    AFTER_DEBUUUG
+    Click element    ${MODIFY_CODE_LIST}
+    Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
+    Click element    ${ADD_DEFAULTCODE_BTN}
+    #Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
+    #Pause Execution    message=Test execution paused. Press OK to continue.
+    #Input Text    ${SEARCH_DEFAULTCODE_INPUT}    04 //HUOM TÄMÄ ON MUUALTA APINOITU MUTTA VAIKUTTAA OIKEASTI TARPEETTOMALTA TÄSSÄ
+    #Wait until page contains element    //*[contains(text(), "testikoodi04")]    timeout=20
+    #Pause Execution    message=jotain
+    #Click element    //*[contains(text(), "Peruuta")] //TÄTÄKIN TESTATTU ETTÄ VOIKO EDES TOTA PERUUTALINKKIÄ CLICKATA EIKÄ SEKÄÄN TUNNU TOIMIVAN
+    #Click element    //*[contains(text(), "testikoodi04")]
+    Sleep    1
+    Wait until element is visible    //*[contains(text(), "Testikoodi 01")]    timeout=20
+    Click element    //*[contains(text(), "Testikoodi 01")]
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    #Pause Execution    message=Test execution paused. Press OK to continue.
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
+    Sleep    2
+    Wait until page contains    Vakiokoodi    timeout=20
+    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    #Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
+    #Click element    ${MODIFY_CODE_LIST}
+    #Sleep    2
+    #Wait until page contains element    ${REMOVE_DEFAULTCODE}    timeout=20
+    #Click element    ${REMOVE_DEFAULTCODE}
+    #Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    #Click element    ${SAVE_NEW_CODE_LIST}
+    #Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
+    #Sleep    1
+    #Page should not contain    Vakiokoodi
+    #Page should not contain    testikoodi04 - Testikoodi 04
+    Return to Koodistot frontpage
     #----
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
