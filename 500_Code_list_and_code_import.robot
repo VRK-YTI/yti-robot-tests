@@ -1358,6 +1358,76 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
 		Log to console    Version history tab exists on also the 2nd latest version after code was created
 		[Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
+533. Create new version of code list with default code and change the default code
+    [Documentation]    Import code list with default code and create new version.
+    ...    Check that new version is created succesfully and default code is copied.
+    ...    Then manually change the default code and ensure that the version history tab is intact.
+    [Tags]    regression    koodistot    test    500
+    [Setup]    Test Case Setup Superuser
+    Import library  Dialogs
+    Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Sleep    1
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    2
+    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Wait until page contains    10 koodia    timeout=20
+    Log to Console    All codes are copied
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Log to Console    Default code is copied
+
+		Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+		Log to Console    AFTER_DEBUUUG
+		Click element    ${MODIFY_CODE_LIST}
+		Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
+		Click element    ${ADD_DEFAULTCODE_BTN}
+		#Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
+		#Pause Execution		message=Test execution paused. Press OK to continue.
+		#Input Text    ${SEARCH_DEFAULTCODE_INPUT}    04 //HUOM TÄMÄ ON MUUALTA APINOITU MUTTA VAIKUTTAA OIKEASTI TARPEETTOMALTA TÄSSÄ
+		#Wait until page contains element    //*[contains(text(), "testikoodi04")]	timeout=20
+		#Pause Execution		message=jotain
+		#Click element    //*[contains(text(), "Peruuta")] //TÄTÄKIN TESTATTU ETTÄ VOIKO EDES TOTA PERUUTALINKKIÄ CLICKATA EIKÄ SEKÄÄN TUNNU TOIMIVAN
+		Click element    //*[contains(text(), "testikoodi04")]
+		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+		#Pause Execution		message=Test execution paused. Press OK to continue.
+		Click element    ${SAVE_NEW_CODE_LIST}
+		Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
+		Sleep    2
+		Wait until page contains    Vakiokoodi    timeout=20
+		Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+		Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
+		Click element    ${MODIFY_CODE_LIST}
+		Sleep    2
+		Wait until page contains element    ${REMOVE_DEFAULTCODE}    timeout=20
+		Click element    ${REMOVE_DEFAULTCODE}
+		Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+		Click element    ${SAVE_NEW_CODE_LIST}
+		Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
+		Sleep    1
+		Page should not contain    Vakiokoodi
+		Page should not contain    testikoodi04 - Testikoodi 04
+		Return to Koodistot frontpage
+
+    #----
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus
