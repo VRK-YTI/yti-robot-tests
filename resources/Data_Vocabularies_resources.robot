@@ -16,6 +16,8 @@ ${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable
 ${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
 ${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 ${NAMESPACE_1}    Julkishallinnon tietokomponentit
+${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
+${class_2}        automobiili
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
@@ -106,6 +108,10 @@ Data Vocabularies Setup
 
 Data Vocabularies Teardown
     Delete Data Vocabularies Profile
+
+Data Vocabularies Setup With New Class
+    Test Case Setup Create Profile
+    Create New Class For Profile    ${new_class_link}    ${class_2}
 
 Test Case Setup
     Open Tietomallit
@@ -199,6 +205,7 @@ Create Data Vocabulary Profile
     Wait until element is visible    ${SHOW_MODEL_DETAILS_BTN}    timeout=90
     Log to Console    Testiautomaatio profile created
     Sleep    2
+    #Go back to Data Vocabularies frontpage
 
 Delete Data Vocabularies Profile
     Test Case Setup
@@ -307,8 +314,8 @@ Select model
     Sleep    1
 
 Select and edit Testiautomaatio profile
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
+    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
+    Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
     Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=60
@@ -540,3 +547,16 @@ Delete profile
     Log to Console    "${profile}" profile deleted
     Sleep    2
     Close All Browsers
+
+Create New Class For Profile
+    [Arguments]    ${new_class_link}    ${class_2}
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Hide model details
+    Create new class without referencing concept    ${new_class_link}    ${class_2}
+    Save class
+    Wait until page contains    Automobiili    timeout=30
+    Log to Console    Class "Automobiili" added without referencing concept
+    Go back to Data Vocabularies frontpage

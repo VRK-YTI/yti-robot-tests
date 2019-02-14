@@ -187,6 +187,10 @@ Test Case Setup Data Vocabularies
     Data Vocabularies Setup
     Test Case Setup Superuser
 
+Test Case Setup Data Vocabularies With New Class
+    Data Vocabularies Setup With New Class
+    Test Case Setup Superuser
+
 Test Case Teardown Data Vocabularies
     [Arguments]    ${comment_round_name}
     Data Vocabularies Teardown
