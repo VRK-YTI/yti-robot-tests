@@ -664,11 +664,11 @@ Upload codelist in CSV format
 
 Reference Data Setup
     Reference Data Test Case Setup Superuser
-    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Wait until page contains    30 koodia    timeout=20
     Return to Koodistot frontpage
 
 Reference Data Teardown
     Reference Data Test Case Setup Superuser
-    Remove code lists    ${CODE_LIST_16}
+    Remove code lists    ${CODE_LIST_8}
     Close All Browsers

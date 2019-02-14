@@ -14,7 +14,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    Koodisto600    Testiautomaatiokierros    kuvaus
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
 
@@ -41,7 +41,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Add new codes for comment round and delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    Koodisto600    Testiautomaatiokierros    kuvaus
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus
     Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
