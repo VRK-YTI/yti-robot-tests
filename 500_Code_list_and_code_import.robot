@@ -1364,7 +1364,6 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    Then manually change the default code and ensure that the version history tab is intact.
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
-    Import library    Dialogs
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
     Wait until page contains    10 koodia    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
@@ -1391,41 +1390,20 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
     Log to Console    Default code is copied
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Log to Console    AFTER_DEBUUUG
     Click element    ${MODIFY_CODE_LIST}
     Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
     Click element    ${ADD_DEFAULTCODE_BTN}
-    #Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
-    #Pause Execution    message=Test execution paused. Press OK to continue.
-    #Input Text    ${SEARCH_DEFAULTCODE_INPUT}    04 //HUOM TÄMÄ ON MUUALTA APINOITU MUTTA VAIKUTTAA OIKEASTI TARPEETTOMALTA TÄSSÄ
-    #Wait until page contains element    //*[contains(text(), "testikoodi04")]    timeout=20
-    #Pause Execution    message=jotain
-    #Click element    //*[contains(text(), "Peruuta")] //TÄTÄKIN TESTATTU ETTÄ VOIKO EDES TOTA PERUUTALINKKIÄ CLICKATA EIKÄ SEKÄÄN TUNNU TOIMIVAN
-    #Click element    //*[contains(text(), "testikoodi04")]
     Sleep    1
     Wait until element is visible    //*[contains(text(), "Testikoodi 01")]    timeout=20
     Click element    //*[contains(text(), "Testikoodi 01")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-    #Pause Execution    message=Test execution paused. Press OK to continue.
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
     Sleep    2
     Wait until page contains    Vakiokoodi    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait until element is visible    ${VERSION_TAB}    timeout=20
-    #Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
-    #Click element    ${MODIFY_CODE_LIST}
-    #Sleep    2
-    #Wait until page contains element    ${REMOVE_DEFAULTCODE}    timeout=20
-    #Click element    ${REMOVE_DEFAULTCODE}
-    #Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-    #Click element    ${SAVE_NEW_CODE_LIST}
-    #Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
-    #Sleep    1
-    #Page should not contain    Vakiokoodi
-    #Page should not contain    testikoodi04 - Testikoodi 04
     Return to Koodistot frontpage
-    #----
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 *** Keywords ***
