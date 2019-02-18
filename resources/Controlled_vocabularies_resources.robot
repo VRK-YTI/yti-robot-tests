@@ -89,7 +89,6 @@ Terminology Teardown
 Terminology Test Case Setup
     Open Sanastot
     Set Selenium Speed    0.5
-    Sleep    5
     Terminology Select user
 
 Terminology Test Case Teardown
@@ -112,12 +111,10 @@ Terminology Open Chrome to Environment
 Terminology Select user
     Wait until page contains element    ${TERMINOLOGY_USER_DROPDOWN}    timeout=30
     Click element    ${TERMINOLOGY_USER_DROPDOWN}
-    Sleep    1
-    #Wait until page contains element    ${USER_1}
+    Wait until page contains element    ${USER_1}    timeout=30
     Click element    ${USER_1}
-    Sleep    3
     Wait Until Page Contains    Testi Admin    timeout=20
-    Sleep    5
+    Sleep    1
 
 Open Sanastot
     Terminology Open Browser with Settings
@@ -162,47 +159,36 @@ Create Testiautomaatiosanasto and import vocabulary
     Terminology Test Case Setup
     Wait until page contains element    ${ADD_VOCABULARY_BTN}    timeout=30
     Click element    ${ADD_VOCABULARY_BTN}
-    Sleep    3
     Wait until page contains element    ${TITLE_INPUT_FI}    timeout=30
     Input text    ${TITLE_INPUT_FI}    ${VOCABULARY_1}
     Wait until page contains element    ${ADD_VOCABULARY_ORGANIZATION_BTN}    timeout=30
-    Sleep    3
     Click element    ${ADD_VOCABULARY_ORGANIZATION_BTN}
-    Sleep    3
     Wait until page contains element    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    timeout=30
     Input text    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
     Wait until page contains element    //*[contains(text(), "${ORGANIZATION_2}")]
-    Click element    //*[contains(text(), "${ORGANIZATION_2}")]
-    Sleep    3
     Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click element    ${ADD_NEW_CLASSIFICATION_BTN}
-    Sleep    3
     Wait until page contains element    ${TERMINOLOGY_CLASSIFICATION_INPUT}    timeout=30
     Input text    ${TERMINOLOGY_CLASSIFICATION_INPUT}    ${TERMINOLOGY_CLASSIFICATION_2}
     Wait until page contains element    //*[contains(text(), "${TERMINOLOGY_CLASSIFICATION_2}")]
     Click element    //*[contains(text(), "${TERMINOLOGY_CLASSIFICATION_2}")]
-    Sleep    3
     Wait until page contains element    ${ADD_DESCRIPTION_DDL}    timeout=30
     Click element    ${ADD_DESCRIPTION_DDL}
     Click button    ${NEW_DESCRIPTION_FI}
-    Sleep    3
     Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
-    Sleep    3
     Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Sleep    3
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_from_controlled_vocabularies}
     Wait until page contains element    ${UPLOAD_FILE}    timeout=30
     Click element    ${UPLOAD_FILE}
-    Sleep    2
     Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
-    Sleep    6
+    Wait until element is visible    ${ADD_NEW_CONCEPT_BTN}    timeout=90
 
 Delete Testiautomaatiosanasto
     Terminology Test Case Setup
@@ -211,15 +197,12 @@ Delete Testiautomaatiosanasto
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    Sleep    3
     Wait until page contains    ${VOCABULARY_1}    timeout=30
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
-    Sleep    3
     Wait until page contains    Testiautomaatiosanasto    timeout=20
     Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${REMOVE_VOCABULARY_BTN}
-    Sleep    3
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Sleep    3

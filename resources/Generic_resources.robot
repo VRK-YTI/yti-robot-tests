@@ -296,17 +296,15 @@ Select user
     [Arguments]    ${user_id}    ${user_name}
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
-    Sleep    1
+    Wait until page contains element    ${user_id}    timeout=30
     Click element    ${user_id}
-    Sleep    5
-    Wait Until Page Contains    ${user_name}    timeout=30
-    Sleep    5
+    Wait Until Page Contains    ${user_name}    timeout=60
+    Sleep    1
 
 Open Koodistot
     Open Browser with Settings
-    Sleep    5
-    Page should contain    Koodistot
-    Page should contain    KIRJAUDU SISÄÄN
+    Wait until page contains    Koodistot    timeout=60
+    Wait until page contains    KIRJAUDU SISÄÄN    timeout=60
 
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
@@ -331,7 +329,7 @@ Open Chrome to Environment
 Return to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
     Click element    ${FRONTPAGE_LINK}
-    Sleep    2
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
 
 Remove code lists
     [Arguments]    @{code_list_items}
@@ -353,7 +351,7 @@ Remove code lists
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
     \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     \    Log to Console    ${code_list_item} removed
-    \    Sleep    6
+    \    Sleep    1
 
 Create code list
     [Arguments]    ${registry}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
@@ -369,8 +367,7 @@ Create code list
     run keyword if    ${vocabularies_error}    Close error modal
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
-    Sleep    5
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=60
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${registry}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
@@ -386,11 +383,11 @@ Create code list
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
     Click element    //*[contains(text(), "${classification}")]
-    Sleep    2
+    Sleep    1
     ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
     run keyword if    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list
-    Sleep    5
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
     Log to Console    ${codelist_name} created
 
 Cancel code list creation
@@ -477,8 +474,7 @@ Create new code to code list
     Click element    ${CREATE_CODE_BTN}
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
-    Sleep    5
-    Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
+    Wait until element is visible    ${CODE_CODEVALUE_INPUT}    timeout=60
     Input text    ${CODE_CODEVALUE_INPUT}    ${code_value}
     Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
     Input text    ${CODE_NAME_INPUT}    ${code_name}
@@ -490,8 +486,8 @@ Create new code to code list
     run keyword if    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=60
     Log to Console    ${code_name} created
-    Sleep    5
 
 Add sub code list
     [Arguments]    ${sub_code_list}
@@ -647,10 +643,8 @@ Upload codelist in Excel format
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
-    Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
-    Sleep    6
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=60
     Log to Console    Code list ${codelist_name} imported
 

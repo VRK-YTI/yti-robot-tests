@@ -60,11 +60,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click button    ${EXPAND_ALL_BTN}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Page should contain    Koodin arvo
-    Page should contain    testikoodi02
-    Page should contain    Koodin nimi
-    Page should contain    Testikoodi 02
-    Sleep    5
+    Wait until page contains    Koodin arvo    timeout=20
+    Wait until page contains    testikoodi02    timeout=20
+    Wait until page contains    Koodin nimi    timeout=20
+    Wait until page contains    Testikoodi 02    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
@@ -111,11 +110,9 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Sleep    2
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep    5
-    Wait until page contains    NewCode001 - newCode001
+    Wait until page contains    NewCode001 - newCode001    timeout=30
     Wait until page contains    koodisto6000    timeout=20
     Wait until page contains    Koodin arvo    timeout=20
     Wait until page contains    NewCode001    timeout=20
@@ -123,7 +120,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    newCode001    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
-    Sleep    2
+    Sleep    1
     Remove code    NewCode001 - newCode001
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Click element    ${CODELIST_INFO_TAB}
@@ -140,7 +137,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    8 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_9}    Asuminen
-    Sleep    2
+    Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -163,15 +160,13 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click button    ${EXPAND_ALL_BTN}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Page should contain    Koodin arvo
-    Page should contain    testikoodi02
-    Page should contain    Koodin nimi
-    Page should contain    Testikoodi 02
-    Sleep    5
+    Wait until page contains    Koodin arvo    timeout=20
+    Wait until page contains    testikoodi02    timeout=20
+    Wait until page contains    Koodin nimi    timeout=20
+    Wait until page contains    Testikoodi 02    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Return to Koodistot frontpage
-    Sleep    3
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_11}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
@@ -182,7 +177,6 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    testikoodi11 - Testikoodi 11    timeout=20
     Wait until page contains    testikoodi14 - Testikoodi 14    timeout=20
     Wait until page contains    testikoodi16 - Testikoodi 16    timeout=20
-    Sleep    3
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_12}
@@ -194,7 +188,6 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    testikoodi21 - Testikoodi 21    timeout=20
     Wait until page contains    testikoodi24 - Testikoodi 24    timeout=20
     Wait until page contains    testikoodi26 - Testikoodi 26    timeout=20
-    Sleep    3
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_11}    ${CODE_LIST_12}
 
@@ -210,11 +203,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Page should contain    T1333
-    Page should contain    Vakiokoodikoodisto
-    Page should contain    Vakiokoodi
-    Page should contain    koodi502 - Koodi502
-    Sleep    2
+    Wait until page contains    T1333    timeout=20
+    Wait until page contains    Vakiokoodikoodisto    timeout=20
+    Wait until page contains    Vakiokoodi    timeout=20
+    Wait until page contains    koodi502 - Koodi502    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_15}
 
@@ -231,10 +223,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
     Wait until page contains    koodi504 - Koodi504    timeout=20
-    Sleep    2
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Sleep    2
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
@@ -246,7 +236,6 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
-    Sleep    2
     Wait until page contains    Vakiokoodi    timeout=20
     Wait until page contains    koodi505 - Koodi505    timeout=20
     Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
@@ -294,9 +283,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
     Wait until page contains element    //*[contains(text(), "tutkija")]
     Click element    //*[contains(text(), "tutkija")]
-    Sleep    7
     Log to Console    Concept added
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Wait until element is visible    ${SELECT_REGISTRY_BTN}    timeout=30
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${REGISTRY_1}
     Log to Console    Registry added
@@ -313,7 +301,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    5
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=20
     Log to Console    Code list saved
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
