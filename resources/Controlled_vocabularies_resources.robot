@@ -118,7 +118,6 @@ Terminology Select user
 
 Open Sanastot
     Terminology Open Browser with Settings
-    Sleep    5
     Wait until page contains    Sanastot    timeout=20
     Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
 
@@ -166,6 +165,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Wait until page contains element    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    timeout=30
     Input text    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
     Wait until page contains element    //*[contains(text(), "${ORGANIZATION_2}")]
+    Click element    //*[contains(text(), "${ORGANIZATION_2}")]
     Wait until page contains element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait until page contains element    ${TERMINOLOGY_CLASSIFICATION_INPUT}    timeout=30
@@ -211,7 +211,6 @@ Delete Testiautomaatiosanasto
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Sleep    1
     Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
-    Sleep    1
     Log to Console    Testiautomaatiosanasto deleted
     Close All Browsers
 

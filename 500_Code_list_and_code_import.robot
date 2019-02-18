@@ -326,8 +326,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
     Click element    ${CODELIST_CODES_TAB}
     Create new code to code list with concept    tutkija    Testiautomaatiosanasto (Luonnos)
-    Wait until page contains    NewCode001 - tutkija
-    Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
+    Wait until page contains    NewCode001 - tutkija    timeout=20
+    Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Code with concept
 
@@ -344,42 +344,34 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
     Log to Console    Codes visible and expand button shown
     Click button    ${EXPAND_ALL_BTN}
-    Sleep    3
     Log to Console    Expand all button clicked
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Sleep    3
-    Page should contain    Koodin arvo
-    Page should contain    testikoodi02
-    Page should contain    Koodin nimi
-    Page should contain    Testikoodi 02
+    Wait until page contains    Koodin arvo    timeout=20
+    Wait until page contains    testikoodi02    timeout=20
+    Wait until page contains    Koodin nimi    timeout=20
+    Wait until page contains    Testikoodi 02    timeout=20
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
-    Log to Console    Modify button clicked
+    Log to Console    Modify code button clicked
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Click element    ${ADD_LINK_DDL}
-    Sleep    1
     Wait until page contains element    ${LINK_BTN}    timeout=20
     Click element    ${LINK_BTN}
-    Sleep    1
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
     Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait until page contains element    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
-    Sleep    1
-    Wait until page contains    Liittyvä linkki
-    Page should contain    https://www.suomi.fi/etusivu/
+    Wait until page contains    Liittyvä linkki    timeout=20
+    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    3
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
-    Sleep    3
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Sleep    2
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
@@ -393,9 +385,9 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click Element    ${SELECT_LINK_BTN}
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    5
+    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_LIST_MOD_BTN}
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=60
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Log to Console    CC by 4.0 added
@@ -403,18 +395,17 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click button    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click button    ${CREATE_NEW_VERSION_BTN}
-    Sleep    10
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}    timeout=20
+    Sleep    1
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    2
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Log to Console    New version of code list created
     Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
     Click element    ${EXPAND_ALL_BTN}
-    Sleep    2
     Log to Console    Expand all pressed
     Wait until page contains    10 koodia    timeout=20
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
@@ -429,17 +420,15 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    testikoodi10 - Testikoodi 10    timeout=20
     Log to Console    All codes are copied
     Click element    //*[contains(text(), "testikoodi02 - Testikoodi 02")]
-    Sleep    2
+    Sleep    1
     Log to Console    Testikoodi 02 clicked
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Log to Console    Code links copied
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
-    Sleep    7
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Sleep    5
     Wait until page contains    englanti    timeout=20
     Wait until page contains    suomi    timeout=20
     Wait until page contains    ruotsi    timeout=20
@@ -454,7 +443,6 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Log to Console    All code list values and links copied
-    Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
@@ -463,15 +451,12 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    registry with code lists is not possible, remove code list and delete empty registry.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Sleep    2
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
-    Sleep    5
     Create code list    ${REGISTRY_2}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep    3
     Return to Koodistot frontpage
     Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
@@ -483,11 +468,8 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Documentation]    Create registry with existing registry code value and check error message
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Sleep    2
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
-    Sleep    2
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
-    Sleep    2
     Return to Koodistot frontpage
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
     [Teardown]    Delete empty registry    Rekisteri123 - Automaatiorekisteri
@@ -1444,7 +1426,7 @@ Create new code to code list with concept
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
-    Sleep    2
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=30
     Log to Console    New code "${concept}" created
 
 Suggest concept to Terminologies
