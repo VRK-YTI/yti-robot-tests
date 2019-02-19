@@ -1042,8 +1042,8 @@ Resource          resources/Extension_resources.robot
     Capture Page Screenshot
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_17}
 
-628. Clear values for Calculation hierarchy member
-    [Documentation]    Check that clearing the Comparison operator and Unary operator values
+628. Clear values for calculation hierarchy member
+    [Documentation]    Check that clearing the comparison operator and unary operator values
     ...    for Calculation hierarchy member is successfull, YTI-468.
     [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
@@ -1074,5 +1074,33 @@ Resource          resources/Extension_resources.robot
     Page should not contain    <=
     Page should not contain    +
     Capture Page Screenshot
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_14}
+
+629. Add values for new calculation hierarchy member
+    [Documentation]    Add new calculation hierarchy member without unary operator and comparison operator values.
+    ...    Check that modifying only one value (unary operator) for member is successful after member creation, YTI-468.
+    [Tags]    koodistot    regression    600    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_with_calculation_hierarchy_members}    ${CODE_LIST_14}
+    Wait until page contains    25 koodia    timeout=20
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    ${CALC_HIERARCHY_TAB}    timeout=20
+    Click element    ${CALC_HIERARCHY_TAB}
+    Wait until element is visible    //*[contains(@id,'222_view_extension')]    timeout=30
+    Click Element    //*[contains(@id,'222_view_extension')]
+    Wait until page contains    9 jäsentä    timeout=20
+    Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${EMPTY}    ${EMPTY}    ${EMPTY}    Testikoodi 18    ${EMPTY}
+    Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
+    Click element    ${MODIFY_MEMBER_BTN}
+    Wait until page contains element    ${COMPARISON_OPERATOR_INPUT}    timeout=20
+    Click element    ${COMPARISON_OPERATOR_INPUT}
+    Input Text    ${COMPARISON_OPERATOR_INPUT}    <=
+    Wait until page contains element    ${SAVE_MEMBER}    timeout=30
+    Click button    ${SAVE_MEMBER}
+    Sleep    2
+    Wait until element is visible    ${MODIFY_MEMBER_BTN}    timeout=60
+    Wait until page contains    <=    timeout=30
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}

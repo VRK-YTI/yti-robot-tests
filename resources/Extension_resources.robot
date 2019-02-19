@@ -161,10 +161,10 @@ Create member for calculation hierarchy
     Click button    ${CREATE_MEMBER_BTN}
     Wait until page contains element    ${MEMBER_NAME_INPUT}    timeout=30
     Input Text    ${MEMBER_NAME_INPUT}    ${member_name}
-    Wait until page contains element    ${COMPARISON_OPERATOR_INPUT}    timeout=30
-    Input Text    ${COMPARISON_OPERATOR_INPUT}    ${comparison_operator}
-    Wait until page contains element    ${UNARY_OPERATOR_INPUT}    timeout=30
-    Input Text    ${UNARY_OPERATOR_INPUT}    ${unary_operator}
+    ${comparison_operator_length}=    Get Length    ${comparison_operator}
+    run keyword if    ${comparison_operator_length} > 0    Add comparison operator    ${comparison_operator}
+    ${unary_operator_length}=    Get Length    ${unary_operator}
+    run keyword if    ${unary_operator_length} > 0    Add unary operator    ${unary_operator}
     ${code_list_name_length}=    Get Length    ${code_list_name}
     run keyword if    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
@@ -175,6 +175,16 @@ Create member for calculation hierarchy
     Wait until element is visible    ${MODIFY_MEMBER_BTN}    timeout=60
     Log to Console    ${member_name} created
     Sleep    2
+
+Add comparison operator
+    [Arguments]    ${comparison_operator}
+    Wait until page contains element    ${COMPARISON_OPERATOR_INPUT}    timeout=30
+    Input Text    ${COMPARISON_OPERATOR_INPUT}    ${comparison_operator}
+
+Add unary operator
+    [Arguments]    ${unary_operator}
+    Wait until page contains element    ${UNARY_OPERATOR_INPUT}    timeout=30
+    Input Text    ${UNARY_OPERATOR_INPUT}    ${unary_operator}
 
 Add broader member
     [Arguments]    ${broader_member}
