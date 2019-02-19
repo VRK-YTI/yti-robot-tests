@@ -366,8 +366,10 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Click element    ${ADD_BTN}
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Wait until element is visible    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=60
+    Sleep    3
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
