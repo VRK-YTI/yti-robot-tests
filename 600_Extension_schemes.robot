@@ -907,7 +907,7 @@ Resource          resources/Extension_resources.robot
     Click element    ${REMOVE_CODE_BTN}
     Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_CONF_BTN}
-    #Wait until page contains    teksti tähän    timeout=20
+    Wait until page contains    ${Error_remove_linked_code}    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Return to Koodistot frontpage
