@@ -387,9 +387,10 @@ Create code list
     Sleep    1
     ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
     run keyword if    ${code_value_exists}    Cancel code list creation
-    ...    ELSE    Save code list after creation
+    ...    ELSE    Save code list after creation    ${codelist_name}
 
 Save code list after creation
+    [Arguments]    ${codelist_name}
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
