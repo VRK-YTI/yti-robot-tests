@@ -102,7 +102,6 @@ Resource          resources/Extension_resources.robot
     Input Text    ${DPM_HIERARCHY_REFERENCE_INPUT}    eee
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    3
     Wait until page contains    DPM Metric (en)    timeout=20
     Wait until page contains    Balance type (en)    timeout=20
     Wait until page contains    Credit    timeout=20
@@ -145,7 +144,7 @@ Resource          resources/Extension_resources.robot
     Input Text    ${DPM_EXPLICIT_DOMAIN_INPUT}    yyy
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    3
+    Sleep    1
     Wait until page contains    DPM Explicit Domain laajennus    timeout=20
     Wait until page contains    Member XBRL code prefix (en)    timeout=20
     Wait until page contains    yyy    timeout=20

@@ -315,6 +315,6 @@ Create DPM extension
     Click element    ${extension_status}
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
     Click button    ${SAVE_EXTENSION}
+    Sleep    2
     Wait until element is visible    ${MODIFY_EXTENSION_BTN}    timeout=60
     Log to Console    DPM extension created
-    Sleep    3
