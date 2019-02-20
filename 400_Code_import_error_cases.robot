@@ -63,7 +63,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with missing codeValue and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -81,7 +81,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 401. Import Codes with missing STATUS value
     [Documentation]    Import Codes (Excel, CSV) with missing STATUS value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -99,7 +99,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 402. Import Codes with invalid STATUS value
     [Documentation]    Import Codes (Excel, CSV) with invalid STATUS value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -117,7 +117,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 403. Import Codes with invalid BROADER value
     [Documentation]    Import Codes (Excel, CSV) with invalid BROADER value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -135,7 +135,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 404. Code import when BROADER code references code value of the code itself
     [Documentation]    Import Codes (Excel, CSV) when BROADER code references code value of the code itself and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -153,7 +153,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 405. Import codes with duplicate comlumns
     [Documentation]    Import Codes (Excel, CSV) with duplicate columns and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -171,7 +171,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 406. Import codes with invalid HIERARCHYLEVEL value
     [Documentation]    Import Codes (Excel, CSV) with invalid HIERARCHYLEVEL value and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -189,7 +189,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 407. Import codes with CODEVALUE column missing
     [Documentation]    Import codes (Excel, CSV) with CODEVALUE column missing and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -207,7 +207,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 408. Import codes with invalid start date
     [Documentation]    Import codes (Excel, CSV) with invalid start date and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -225,7 +225,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 409. Import codes with invalid ID values
     [Documentation]    Import codes (Excel, CSV) with invalid ID values and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -243,7 +243,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 410. Update code status from VALID to DRAFT
     [Documentation]    Update Code status from VALID to DRAFT with import function (Excel, CSV) and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -261,7 +261,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 411. Import codes with duplicate CODEVALUES
     [Documentation]    Import codes (Excel, CSV) with duplicate CODEVALUES and check error message
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -279,7 +279,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 412. Import Codes with invalid CODEVALUE
     [Documentation]    Import Codes (Excel, CSV) with invalid CODEVALUE and check error message. YTI-703
-    [Tags]    regression    test
+    [Tags]    regression    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -315,7 +315,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 
 414. Import Codes with same ORDER values
     [Documentation]    Import Codes with same ORDER values in Excel/CSV and check error message
-    [Tags]    regression    koodistot    test
+    [Tags]    regression    koodistot    test    400
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
