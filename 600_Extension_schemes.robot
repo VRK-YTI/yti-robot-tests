@@ -19,11 +19,10 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    25 koodia    timeout=20
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_6}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_6}")]
-    Sleep    5
-    Page should contain    Testikoodisto2 pitkillä arvoilla
-    Page should contain    testcode25
-    Page should contain    Testikoodi 25
-    Page should contain    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/code/testcode25
+    Wait until page contains    Testikoodisto2 pitkillä arvoilla    timeout=20
+    Wait until page contains    testcode25    timeout=20
+    Wait until page contains    Testikoodi 25    timeout=20
+    Wait until page contains    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/code/testcode25    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    2
@@ -317,7 +316,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
-    Sleep    5
     Wait until page contains    14 jäsentä    timeout=20
     Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Sleep    2

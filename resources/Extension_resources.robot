@@ -61,10 +61,8 @@ Upload extension
     Click element    ${file_format}
     Sleep    2
     Choose file    ${EXTENSION_FILE_UPLOAD}    ${extension}
-    Sleep    2
     Wait until page contains element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click button    ${EXTENSION_UPLOAD_BTN}
-    Sleep    2
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
     Log to Console    Extension imported
@@ -86,7 +84,7 @@ Upload members
     Wait until page contains element    ${MEMBER_UPLOAD_BTN}    timeout=20
     Click button    ${MEMBER_UPLOAD_BTN}
     Log to Console    Member imported
-    Sleep    2
+    Sleep    1
 
 Create extension
     [Arguments]    ${property_type}    ${extension_codevalue}    ${extension_name}    ${extension_status}    ${code_list_name}    ${member_auto_create}
