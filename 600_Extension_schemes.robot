@@ -733,8 +733,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    30 koodia    timeout=20
     Create extension    ${CROSS_REFERENCE_LIST}    koodiliitoslaajennus    Koodiliitoslaajennus    ${DRAFT_STATUS}    ${CODE_LIST_22}    True
-    Sleep    5
-    Wait until page contains    60 jäsentä    timeout=20
+    Wait until page contains    60 jäsentä    timeout=60
     Wait until page contains element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
     Click element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]
     Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
@@ -743,8 +742,8 @@ Resource          resources/Extension_resources.robot
     Click element    ${ADD_MEMBER_BTN}
     Wait until page contains element    ${CODE_SCHEME_DDL_BTN}    timeout=20
     Click element    ${CODE_SCHEME_DDL_BTN}
-    Sleep    10
-    Wait until page contains element    //*[contains(text(), "800 - Koodisto800")]    timeout=20
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "800 - Koodisto800")]    timeout=60
     Click element    //*[contains(text(), "800 - Koodisto800")]
     Wait until page contains element    //*[contains(text(), "Testcode 63 - Koodisto800")]    timeout=20
     Click element    //*[contains(text(), "Testcode 63 - Koodisto800")]
