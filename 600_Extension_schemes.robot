@@ -929,8 +929,8 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=30
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Asuminen    timeout=20
-    #Wait until page contains    Vakiokoodi    timeout=20
-    #Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Wait until page contains    Vakiokoodi    timeout=20
+    Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    Testijulkaisu_fi    timeout=20
     Wait until page contains    Testikäyttöedellytys    timeout=20
     Wait until page contains    Testikäyttökohde    timeout=20
