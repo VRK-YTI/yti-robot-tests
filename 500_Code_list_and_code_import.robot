@@ -1305,8 +1305,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Log to Console    New version of code list created
     Sleep    1
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep    5
-    Wait until page contains    NewCode001 - newCode001
+    Wait until page contains    NewCode001 - newCode001    timeout=20
     Wait until page contains    Koodin arvo    timeout=20
     Wait until page contains    NewCode001    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
