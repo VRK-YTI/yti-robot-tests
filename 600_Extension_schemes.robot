@@ -348,7 +348,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
     Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
-    Sleep    5
     Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 · testiautomaatiokoodisto1 · Testirekisteri <=")]    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}    ${CODE_LIST_2}
@@ -381,7 +380,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    O1234567890123456789012345678901234567333    timeout=20
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testirekisteri    timeout=20
-    #Wait until page contains    Testiorganisaatio    timeout=20
     Wait until page contains    Asuminen    timeout=20
     Wait until page contains    Rakennettu ympäristö    timeout=20
     Wait until page contains    Yleiset tieto- ja hallintopalvelut    timeout=20
@@ -480,7 +478,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Upload members    ${Invalid_unaryoperator_value}    ${FILE_FORMAT_EXCEL}
-    Sleep    5
     Wait until page contains    ${Error_member_value_invalid}    timeout=20
     Cancel code import
     Sleep    2
@@ -585,12 +582,10 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testiautomaatiokoodisto - testiautomaatiokoodisto1    timeout=20
     Sleep    1
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000    ${EMPTY}
-    Sleep    5
     Capture Page Screenshot
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
     Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
-    Sleep    5
     Capture Page Screenshot
     Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 · testiautomaatiokoodisto1 · Testirekisteri <=")]    timeout=20
     Return to Koodistot frontpage
