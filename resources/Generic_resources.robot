@@ -53,11 +53,13 @@ ${SELECT_TOOL_DDL}    id=selected_integration_container_type_filter_dropdown
 ${COMMENTROUND_ADD_ORGANIZATION}    id=add_organization_button
 ${EDIT_COMMENTROUND}    id=editable_edit_button
 ${DELETE_COMMENTROUND_BTN}    id=delete_commentround_button
-${CONFIRM_COMMENTROUND_DELETE_BTN}    id=confirm_confirmation_modal_button
+${CONFIRM_BTN}    id=confirm_confirmation_modal_button
 ${COMMENTROUND_DDL}    id=commentRoundDropdown
 ${ADD_NEW_RESOURCE_BTN}    id=create_commentthread_button
 ${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
 ${PROPOSED_STATUS_DDL}    id=selected_undefined
+${START_COMMENT_ROUND_BTN}    id=start_commentround_button
+${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
 
 *** Keywords ***
 Test Case Setup Admin
@@ -103,7 +105,7 @@ Return To Comments Frontpage
     Sleep    1
 
 Create Comment Round
-    [Arguments]    ${tool}    ${source}    ${round_name}    ${description}
+    [Arguments]    ${tool}    ${source}    ${round_name}    ${description}    ${only_selected_resources}
     Wait Until Page Contains Element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
     Click Element    ${CREATE_COMMENT_ROUND_BTN}
     Wait Until Page Contains Element    ${SELECT_TOOL_DDL}    timeout=20
@@ -118,6 +120,7 @@ Create Comment Round
     Input Text    ${COMMENTROUND_NAME_INPUT}    ${round_name}
     Wait Until Page Contains Element    ${COMMENTROUND_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${COMMENTROUND_DESCRIPTION_INPUT}    ${description}
+    Run Keyword if    '${only_selected_resources}' == 'True'    Uncheck Only Selected Resources Checkbox    ${only_selected_resources}
     Wait Until Page Contains Element    ${COMMENTROUND_ADD_ORGANIZATION}    timeout=20
     Click Element    ${COMMENTROUND_ADD_ORGANIZATION}
     Wait Until Page Contains Element    ${COMMENTROUND_ORGANIZATION_INPUT}    timeout=20
@@ -127,6 +130,12 @@ Create Comment Round
     Click Element    ${SAVE_COMMENTROUND}
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
     Log To Console    Comment round created
+
+Uncheck Only Selected Resources Checkbox
+    [Arguments]    ${only_selected_resources}
+    Wait Until Page Contains Element    ${ONLY_SELCTED_RESOURCES_CHECKBOX}    timeout=30
+    Click element    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
+    Checkbox Should Not Be Selected    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
 
 Delete Comment Round
     [Arguments]    ${comment_round_name}
@@ -138,8 +147,8 @@ Delete Comment Round
     Click Element    ${COMMENTROUND_DDL}
     Wait until page contains element    ${DELETE_COMMENTROUND_BTN}    timeout=20
     Click Element    ${DELETE_COMMENTROUND_BTN}
-    Wait until page contains element    ${CONFIRM_COMMENTROUND_DELETE_BTN}    timeout=20
-    Click Element    ${CONFIRM_COMMENTROUND_DELETE_BTN}
+    Wait until page contains element    ${CONFIRM_BTN}    timeout=20
+    Click Element    ${CONFIRM_BTN}
     Wait until page contains element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
     Wait until page does not contain element    //*[contains(text(), "${comment_round_name}")]    timeout=10
     Log To Console    ${comment_round_name} Deleted
@@ -154,15 +163,37 @@ Add Resource For Comment Round
     Click element    //*[contains(text(), "${resource}")]
     Wait until page contains element    ${COMMENT_TEXT_INPUT}    timeout=30
     Input Text    ${COMMENT_TEXT_INPUT}    ${comment}
-    Wait until page contains element    ${PROPOSED_STATUS_DDL}    timeout=30
-    Click element    ${PROPOSED_STATUS_DDL}
-    Wait until page contains element    ${status}    timeout=30
-    Click Element    ${status}
+    ${status_length}=    Get Length    ${status}
+    run keyword if    ${status_length} > 0    Add Resource Status    ${status}
     Wait until page contains element    ${SAVE_COMMENTROUND}    timeout=30
     Click Element    ${SAVE_COMMENTROUND}
     Wait until element is visible    ${EDIT_COMMENTROUND}    timeout=30
     Log To Console    ${resource} added for comment round
-    Capture Page Screenshot
+
+Add Resource Status
+    [Arguments]    ${status}
+    Wait until page contains element    ${PROPOSED_STATUS_DDL}    timeout=30
+    Click element    ${PROPOSED_STATUS_DDL}
+    Wait until page contains element    ${status}    timeout=30
+    Click Element    ${status}
+
+Start Comment Round
+    Wait until page contains element    ${COMMENTROUND_DDL}    timeout=20
+    Click Element    ${COMMENTROUND_DDL}
+    Wait until page contains element    ${START_COMMENT_ROUND_BTN}    timeout=20
+    Click Element    ${START_COMMENT_ROUND_BTN}
+    Wait until page contains element    ${CONFIRM_BTN}    timeout=20
+    Click Element    ${CONFIRM_BTN}
+    Wait until page contains    Käynnissä    timeout=20
+
+Close Comment Round
+    Wait until page contains element    ${COMMENTROUND_DDL}    timeout=20
+    Click Element    ${COMMENTROUND_DDL}
+    Wait until page contains element    ${CLOSE_COMMENT_ROUND_BTN}    timeout=20
+    Click Element    ${CLOSE_COMMENT_ROUND_BTN}
+    Wait until page contains element    ${CONFIRM_BTN}    timeout=20
+    Click Element    ${CONFIRM_BTN}
+    Wait until page contains    Suljettu    timeout=20
 
 Test Case Setup Reference Data
     Reference Data Setup
