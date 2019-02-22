@@ -1071,11 +1071,9 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until page contains    10 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Sleep    2
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${CODE_LIST_9}
-    Sleep    5
-    Wait until page contains    NewCode001 - newCode001
+    Wait until page contains    NewCode001 - newCode001    timeout=20
     Wait until page contains    koodisto6000    timeout=20
     Wait until page contains    Koodin arvo    timeout=20
     Wait until page contains    NewCode001    timeout=20

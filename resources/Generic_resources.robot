@@ -478,6 +478,8 @@ Create new code to code list
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
     Click element    ${CREATE_CODE_BTN}
+    ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
+    run keyword if    ${vocabularies_error}    Close error modal
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
     Wait until element is visible    ${CODE_CODEVALUE_INPUT}    timeout=60
@@ -500,6 +502,7 @@ Add sub code list
     Wait until page contains element    ${SUB_CODE_LIST_BTN}    timeout=20
     Click element    ${SUB_CODE_LIST_BTN}
     Input text    ${SEARCH_LINKED_CODE_INPUT}    ${sub_code_list}
+    Wait until page contains element    //*[contains(text(), "${sub_code_list}")]    timeout=30
     Click element    //*[contains(text(), "${sub_code_list}")]
     Sleep    2
 
