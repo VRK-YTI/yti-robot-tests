@@ -459,12 +459,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Create code list    ${REGISTRY_2}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
-    Return to Koodistot frontpage
-    Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
-    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-    Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_8}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
-    Close All Browsers
+    [Teardown]    Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
 
 515. Create registry with existing registry code value
     [Documentation]    Create registry with existing registry code value and check error message
