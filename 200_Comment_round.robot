@@ -79,3 +79,19 @@ Resource          resources/Data_Vocabularies_resources.robot
     Close Comment Round
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+
+207. Send comment for Reference Data resource
+    [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
+    ...    Add new code for commenting, select another user and send comment.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Reference Data
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
+    Start Comment Round
+    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Comment Resource    Ehdotetaan uutta tilaa    ${PRPOPOSED_STATUS_SUPERSEDED}
+    Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
+    Wait Until Page Contains    Korvattu    timeout=20
+    Return To Comments Frontpage
+    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros

@@ -3,6 +3,7 @@ ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://kommentit-dev.suomi.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
+${SUPER_USER_ID}    id=testisuperuser@localhost
 ${ADMIN_USER_NAME}    Testi Admin
 ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${SUPER_USER_NAME}    Testi Superuser
@@ -60,6 +61,10 @@ ${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
 ${PROPOSED_STATUS_DDL}    id=selected_undefined
 ${START_COMMENT_ROUND_BTN}    id=start_commentround_button
 ${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
+# Commenting
+${START_COMMENTING_BTN}    id=start_commenting_button
+${SEND_COMMENTS_BTN_BOTTOM}    id=send_comments_button_bottom
+${SEND_COMMENTS_BTN}    id=send_comments_button
 
 *** Keywords ***
 Test Case Setup Admin
@@ -194,6 +199,19 @@ Close Comment Round
     Wait until page contains element    ${CONFIRM_BTN}    timeout=20
     Click Element    ${CONFIRM_BTN}
     Wait until page contains    Suljettu    timeout=20
+
+Comment Resource
+    [Arguments]    ${comment}    ${status}
+    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
+    Click Element    ${START_COMMENTING_BTN}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT}    ${comment}
+    ${status_length}=    Get Length    ${status}
+    run keyword if    ${status_length} > 0    Add Resource Status    ${status}
+    Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
+    Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
+    Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
+    Log To Console    ${comment} added
 
 Test Case Setup Reference Data
     Reference Data Setup
