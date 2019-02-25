@@ -65,6 +65,7 @@ ${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
 ${START_COMMENTING_BTN}    id=start_commenting_button
 ${SEND_COMMENTS_BTN_BOTTOM}    id=send_comments_button_bottom
 ${SEND_COMMENTS_BTN}    id=send_comments_button
+${REMOVE_COMMENT_THREAD_0_BTN}    id=remove_commentthread_0_button
 
 *** Keywords ***
 Test Case Setup Admin

@@ -95,3 +95,33 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+
+208. Remove Reference Data resources from comment round
+    [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
+    ...    Add new codes for commenting, remove selected codes from comment round.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Reference Data
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
+    Add Resource For Comment Round    Testcode 30    kommentti2    ${PRPOPOSED_STATUS_VALID}
+    Add Resource For Comment Round    Testcode 35    kommentti3    ${PRPOPOSED_STATUS_VALID}
+    Wait Until Page Contains Element    ${EDIT_COMMENTROUND}    timeout=20
+    Click Element    ${EDIT_COMMENTROUND}
+    Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
+    Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Log To Console    First resource removed
+    Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
+    Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Log To Console    Second resource removed
+    Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
+    Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Log To Console    Third resource removed
+    Wait Until Page Contains Element    ${SAVE_COMMENTROUND}    timeout=20
+    Click Element    ${SAVE_COMMENTROUND}
+    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
+    Page Should Not Contain    Testcode 28
+    Page Should Not Contain    Testcode 30
+    Page Should Not Contain    Testcode 35
+    Return To Comments Frontpage
+    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
