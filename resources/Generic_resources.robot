@@ -134,6 +134,7 @@ Create Comment Round
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait Until Page Contains Element    ${SAVE_COMMENTROUND}    timeout=20
     Click Element    ${SAVE_COMMENTROUND}
+    Sleep    1
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
     Log To Console    Comment round created
 
@@ -216,6 +217,10 @@ Comment Resource
 
 Test Case Setup Reference Data
     Reference Data Setup
+    Test Case Setup Superuser
+
+Test Case Setup Reference Data And Code Without prefLabel
+    Reference Data Setup And Code Without prefLabel
     Test Case Setup Superuser
 
 Test Case Teardown Reference Data

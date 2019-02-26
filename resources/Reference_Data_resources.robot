@@ -272,6 +272,7 @@ ${LICENSE_BTN}    id=ExternalReference_license_propertytype_dropdown_button
 #Excel paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
+${Code_list_Code_without_prefLabel}    ${DATAFOLDER}${/}Code_list_Code_without_preflabel.xlsx
 
 *** Keywords ***
 Reference Data Test Case Setup Admin
@@ -665,6 +666,12 @@ Upload codelist in CSV format
 Reference Data Setup
     Reference Data Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
+    Wait until page contains    30 koodia    timeout=20
+    Return to Koodistot frontpage
+
+Reference Data Setup And Code Without prefLabel
+    Reference Data Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_Code_without_prefLabel}    ${CODE_LIST_8}
     Wait until page contains    30 koodia    timeout=20
     Return to Koodistot frontpage
 
