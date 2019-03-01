@@ -101,6 +101,7 @@ ${CONTENT_LANGUAGE_DDL}    id=content_language_dropdown_button
 ${CREATE_CODELIST_VERSION_AS_EMPTY}    id=new_codescheme_version_create_as_empty
 ${CREATE_CODELIST_VERSION_FROM_FILE}    id=clone_codelist_from_file_button
 ${CONCEPT_SUGGESTION_NAME_INPUT}    id=concept_suggestion_name_input
+${CREATE_CUMULATIVE_CODE_LIST}    id=create_new_codescheme_as_cumulative
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -355,7 +356,7 @@ Remove code lists
     \    Sleep    1
 
 Create code list
-    [Arguments]    ${registry}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
+    [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
@@ -371,6 +372,7 @@ Create code list
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=60
     Click element    ${SELECT_REGISTRY_BTN}
     Click button    ${registry}
+    Run Keyword if    '${cumulative}' == 'Cumulative'    Select Cumulative Code List Checkbox    ${cumulative}
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
@@ -388,6 +390,12 @@ Create code list
     ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
     run keyword if    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list after creation    ${codelist_name}
+
+Select Cumulative Code List Checkbox
+    [Arguments]    ${cumulative}
+    Wait Until Page Contains Element    ${CREATE_CUMULATIVE_CODE_LIST}    timeout=30
+    Click element    ${CREATE_CUMULATIVE_CODE_LIST}
+    Checkbox Should Be Selected    ${CREATE_CUMULATIVE_CODE_LIST}
 
 Save code list after creation
     [Arguments]    ${codelist_name}

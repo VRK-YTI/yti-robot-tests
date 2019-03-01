@@ -34,6 +34,7 @@ ${Codes_update_sub_code_list_csv}    ${DATAFOLDER}${/}Codes_update_sub_code_list
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/code/testcode29
+${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon.
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -109,7 +110,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     [Documentation]    Create new code list and codes manually and remove code and code list
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
+    Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
     Wait until page contains    NewCode001 - newCode001    timeout=30
@@ -136,7 +137,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Wait until page contains    8 koodia    timeout=20
     Return to Koodistot frontpage
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_9}    Asuminen
+    Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_9}    Asuminen
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -215,7 +216,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     ...    remove DEFAULT CODE and code list.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
+    Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
@@ -456,7 +457,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
-    Create code list    ${REGISTRY_2}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
+    Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
     [Teardown]    Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
@@ -1065,7 +1066,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
     Wait until page contains    10 koodia    timeout=20
     Return to Koodistot frontpage
-    Create code list    ${REGISTRY_1}    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
+    Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${CODE_LIST_9}
     Wait until page contains    NewCode001 - newCode001    timeout=20
@@ -1369,6 +1370,69 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
     Wait until element is visible    ${VERSION_TAB}    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
+534. Create new version of cumulative code list and try to remove code
+    [Documentation]    Create new version of cumulative code list
+    ...    and check that the code can not be deleted.
+    [Tags]    regression    koodistot    500
+    [Setup]    Test Case Setup Superuser
+    Create code list    ${REGISTRY_1}    Cumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
+    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
+    Import codes in Excel format
+    Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains    6 koodia    timeout=20
+    Wait until page contains    koodi500 - Koodi500    timeout=20
+    Wait until page contains    koodi503 - Koodi503    timeout=20
+    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Modify code list
+    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
+    Click element    ${CODE_LIST_STATUS_DDL}
+    Sleep    2
+    Click button    ${VALID_STATUS}
+    Save code list
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
+    Sleep    5
+    Wait until page contains    Voimassa oleva    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Sleep    1
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    2
+    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Wait until page contains    6 koodia    timeout=20
+    Log to Console    All codes are copied
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
+    Wait until element is visible    //*[contains(text(), "koodi500 - Koodi500")]    timeout=20
+    Click element    //*[contains(text(), "koodi500 - Koodi500")]
+    Wait until page contains element    ${CODE_DDL}    timeout=20
+    Click element    ${CODE_DDL}
+    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_BTN}
+    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_CONF_BTN}
+    Wait until page contains    ${Error_cumulative_codelist}    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_8}
 
 *** Keywords ***
 Check values from Draft Code list
