@@ -122,8 +122,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_1}
     Edit concept    tutkija
-    Wait until page contains element    //*[contains(@id,'concept-3_concept_related_concept_')]    timeout=30
-    Click element    //*[contains(@id,'concept-3_concept_related_concept_')]
+    Wait until page contains element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]    timeout=30
+    Click element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]
     Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
     Click element    ${SAVE_CONCEPT_BTN}
     Wait until page contains    Seuraava viite poistuu kokonaan tallennuksen yhteydessä    timeout=30
@@ -153,22 +153,22 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Add broader concepts for collection    hotkija    hutkija
     Add members for collection    tutkija    tutkimus
     Save collection
-    Wait until page contains element    //*[contains(@id,'1_collection_list_listitem')]    timeout=30
+    Wait until page contains element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
     Wait until page contains element    ${REMOVE_COLLECTION_BTN}    timeout=30
     Click element    ${REMOVE_COLLECTION_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_BTN}
     Sleep    2
-    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Wait until page contains element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
     Click element    ${CONCEPTS_ALPHABETICAL_TAB}
-    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Sleep    1
     Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
     Click element    ${CONCEPTS_HIERARCHIAL_TAB}
-    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
@@ -187,30 +187,30 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Add broader concepts for collection    tutkija    tutkimus
     Add members for collection    hotkija    hutkija
     Save collection
-    Wait until page contains element    //*[contains(@id,'1_collection_list_listitem')]    timeout=30
+    Wait until page contains element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
     Wait until page contains element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
     Click element    ${CONCEPTS_ALPHABETICAL_TAB}
     Wait until page contains element    //*[contains(@id,'concept-2_concept_list_listitem')]    timeout=30
     Click element    //*[contains(@id,'concept-2_concept_list_listitem')]
-    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Sleep    1
     Edit concept    tutkija
     Wait until page contains element    ${ADD_BROADER_CONCEPT_BTN}    timeout=30
     Click element    ${ADD_BROADER_CONCEPT_BTN}
-    Wait until page contains element    //*[contains(@id,'concept-1_search_result_concept')]    timeout=30
-    Click element    //*[contains(@id,'concept-1_search_result_concept')]
+    Wait until page contains element    //*[contains(@id,'concept-0_search_result_concept')]    timeout=30
+    Click element    //*[contains(@id,'concept-0_search_result_concept')]
     Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
     Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     Save concept
     Sleep    5
-    Wait until page contains element    //*[contains(@id,'concept-1_concept_broader_concept_reference_concept_link')]    timeout=30
+    Wait until page contains element    //*[contains(@id,'concept-0_concept_broader_concept_reference_concept_link')]    timeout=30
     Reload page
-    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
     Click element    ${CONCEPTS_HIERARCHIAL_TAB}
-    Page should not contain element    //*[contains(@id,'1_collection_list_listitem')]
+    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
