@@ -1434,6 +1434,49 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_8}
 
+535. Change code list as cumulative after import and create new cumulative code list version
+    [Documentation]    Change code list as cumulative after import and
+    ...    create new cumulative code list version.
+    [Tags]    koodistot
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
+    Wait until page contains    10 koodia    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    Wait until page contains    Ei    timeout=20
+    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Click element    ${MODIFY_CODE_LIST}
+    Wait until page contains element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    timeout=20
+    Click element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
+    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    #Wait until page contains    Kyllä    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click button    ${CODE_LIST_DDL}
+    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click button    ${CREATE_NEW_VERSION_BTN}
+    Sleep    1
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click element    ${SAVE_NEW_CODE_LIST}
+    Sleep    2
+    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Log to Console    New version of code list created
+    Wait until page contains    10 koodia    timeout=20
+    Log to Console    All codes are copied
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Log to Console    Default code is copied
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus
