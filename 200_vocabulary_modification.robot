@@ -583,7 +583,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 
 216. Import Concepts in xml format and check import warnings
     [Documentation]    Import Concepts in xml format and check import warnings
-    [Tags]    sanastot    200
+    [Tags]    sanastot
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
