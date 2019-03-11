@@ -951,10 +951,10 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    30 koodia    timeout=60
     Wait until element is visible    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
-    Wait until page contains element    //*[contains(@id,'test_600crossrefrencelist_view_extension')]    timeout=20
-    Click Element    //*[contains(@id,'test_600crossrefrencelist_view_extension')]
     Wait until element is visible    ${CROSS_REFERENCE_LIST_TAB}    timeout=20
     Click element    ${CROSS_REFERENCE_LIST_TAB}
+    Wait until page contains element    //*[contains(@id,'test_600crossrefrencelist_view_extension')]    timeout=20
+    Click Element    //*[contains(@id,'test_600crossrefrencelist_view_extension')]
     Page should not contain    Tällä laajennuksella ei ole vielä yhtään koodiliitosta.    timeout=20
     Wait until page contains element    //*[contains(text(), "Jäsen02 · Testcode 29 · Koodisto600 · Testirekisteri")]    timeout=20
     Wait until page contains element    ${MEMBERS_TAB}    timeout=30
