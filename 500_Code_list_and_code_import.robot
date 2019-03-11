@@ -1436,8 +1436,8 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
 
 535. Change code list as cumulative after import and create new cumulative code list version
     [Documentation]    Change code list as cumulative after import and
-    ...    create new cumulative code list version.
-    [Tags]    koodistot
+    ...    create new cumulative code list version and check that codes can not be deleted.
+    [Tags]    koodistot    regression    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
     Wait until page contains    10 koodia    timeout=20
@@ -1453,7 +1453,7 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    #Wait until page contains    Kyllä    timeout=20
+    Wait until page contains    Kyllä    timeout=20
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click button    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
@@ -1472,8 +1472,20 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Log to Console    All codes are copied
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Log to Console    Default code is copied
+    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
+    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Wait until page contains element    ${CODE_DDL}    timeout=20
+    Click element    ${CODE_DDL}
+    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_BTN}
+    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_CONF_BTN}
+    Wait until page contains    ${Error_cumulative_codelist}    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
