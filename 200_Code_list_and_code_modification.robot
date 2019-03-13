@@ -4,11 +4,12 @@ Suite Teardown    Close all Browsers
 Test Teardown     Close all browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
+Resource          resources/Extension_resources.robot
 
 *** Test Cases ***
 200. Modify DRAFT Code
     [Documentation]    Modify name, description and short name values for DRAFT code.
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
@@ -34,7 +35,7 @@ Resource          resources/Generic_resources.robot
 201. Add link to the DRAFT Code
     [Documentation]    Add link to the draft code, check link functionalty, check that it is not possible to add
     ...    same link url again and remove the link.
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
@@ -103,7 +104,7 @@ Resource          resources/Generic_resources.robot
 
 202. Add Creative Commons license to DRAFT Code
     [Documentation]    Add Creative Commons license to draft code and remove the license.
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
@@ -143,15 +144,15 @@ Resource          resources/Generic_resources.robot
 203. Modify link for DRAFT Code
     [Documentation]    Add link to the DRAFT code, modify link name, check the name from TIEDOT-tab
     ...    and remove the link. YTI-444, YTI-614.
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Wait until page contains element    //*[contains(text(), "${CODE_1000}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_1000}")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${ADD_LINK_DDL}
+    Wait until page contains element    ${ADD_LINK_DDL}    timeout=20
     Click element    ${ADD_LINK_DDL}
     Wait until page contains element    ${LINK_BTN}    timeout=20
     Click element    ${LINK_BTN}
@@ -180,7 +181,7 @@ Resource          resources/Generic_resources.robot
 204. Set start date and end date for Code
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.
     ...    YTI-438
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
@@ -213,7 +214,7 @@ Resource          resources/Generic_resources.robot
 
 205. Set end date before start date for Code list
     [Documentation]    Set end date before start date for code list and check error message.
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
@@ -250,7 +251,7 @@ Resource          resources/Generic_resources.robot
 
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
@@ -271,7 +272,7 @@ Resource          resources/Generic_resources.robot
 
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
@@ -301,7 +302,7 @@ Resource          resources/Generic_resources.robot
 208. Modify classification for DRAFT Code list
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
     ...    remove classification.
-    [Tags]    regression    test
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
@@ -331,6 +332,44 @@ Resource          resources/Generic_resources.robot
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
+209. Add broader code for code when code is not found from the system
+    [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 29")]
+    Sleep    1
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Click element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${ADD_BROADER_CODE}    timeout=20
+    Click element    ${ADD_BROADER_CODE}
+    Wait until page contains element    //*[contains(text(), "Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "Testcode 28")]
+    Sleep    2
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Open Browser    https://koodistot-dev.suomi.fi/codescheme;registryCode=test;schemeCode=600    Chrome
+    ...    ELSE    Open Browser    https://koodistot-test.suomi.fi/codescheme;registryCode=test;schemeCode=600    Chrome
+    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Wait until page contains element    ${CODE_DDL}    timeout=30
+    Click element    ${CODE_DDL}
+    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
+    Click element    ${REMOVE_CODE_BTN}
+    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click element    ${CONFIRMATION_YES_BTN}
+    Switch Browser    1
+    Sleep    3
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains    Koodia ei löydy.    timeout=20
+    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Sleep    1
+    Go back to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
+
 *** Keywords ***
 Go back to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
@@ -359,12 +398,12 @@ Save code list
     Sleep    1
 
 Modify code
-    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Sleep    1
 
 Save code modification
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Sleep    4
 
