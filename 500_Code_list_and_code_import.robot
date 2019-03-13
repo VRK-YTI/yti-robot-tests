@@ -1434,9 +1434,9 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_8}
 
-535. Change code list as cumulative after import and create new cumulative code list version
+535. Change code list as cumulative after import and create new cumulative code list version and add new code
     [Documentation]    Change code list as cumulative after import and
-    ...    create new cumulative code list version and check that codes can not be deleted.
+    ...    create new cumulative code list version and check that codes can not be deleted but new code can be added.
     [Tags]    koodistot    regression    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
@@ -1486,6 +1486,12 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains    ${Error_cumulative_codelist}    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until element is visible    //*[contains(text(), "NewCode001 - newCode001")]    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
