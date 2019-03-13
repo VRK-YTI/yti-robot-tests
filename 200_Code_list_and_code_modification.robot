@@ -334,7 +334,7 @@ Resource          resources/Extension_resources.robot
 
 209. Add broader code for code when code is not found from the system
     [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
-    [Tags]    regression    test    200
+    [Tags]    local
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
