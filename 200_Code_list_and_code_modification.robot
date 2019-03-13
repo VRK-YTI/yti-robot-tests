@@ -334,7 +334,7 @@ Resource          resources/Extension_resources.robot
 
 209. Add broader code for code when code is not found from the system
     [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
-    [Tags]    local
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -348,8 +348,11 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(text(), "Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
     Sleep    2
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Open Browser    https://koodistot-dev.suomi.fi/codescheme;registryCode=test;schemeCode=600    Chrome
-    ...    ELSE    Open Browser    https://koodistot-test.suomi.fi/codescheme;registryCode=test;schemeCode=600    Chrome
+    Open Koodistot
+    Set Selenium Speed    0.5
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Go To    https://koodistot-dev.suomi.fi/codescheme;registryCode=test;schemeCode=600
+    ...    ELSE    Go To    https://koodistot-test.suomi.fi/codescheme;registryCode=test;schemeCode=600
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
