@@ -295,7 +295,7 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
     ...    ELSE    Select Window    title=TEST - Koodistot
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Select Window    title=Tietomallit
+    Select Window    title=DEV - Tietomallit
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
