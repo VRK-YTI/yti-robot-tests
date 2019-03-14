@@ -38,7 +38,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
-    Select Window    title=Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
     Close All Browsers
 
 102. Open Description of file page
@@ -49,7 +50,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Click element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
-    Select Window    title=Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
     Close All Browsers
 
 103. Change user interface language
@@ -107,7 +109,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Select Window    title=Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
@@ -115,7 +118,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait until page contains    Hae sanastoja
     Wait until page contains    Rajaa tietoalueella
     Close Window
-    Select Window    title=Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
     Sleep    1
     Select navigation menu link    Suomi.fi-koodistot
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
@@ -123,7 +127,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait until page contains    Koodistot
     Wait until page contains    Etusivu
     Close Window
-    Select Window    title=Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
     Sleep    1
     Change user interface language    ${LANGUAGE_EN}
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
