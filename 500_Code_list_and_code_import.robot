@@ -827,7 +827,7 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains    Korvattu    timeout=20
     Sleep    1
     Return to Koodistot frontpage
-    Remove code lists    ${CODE_LIST_9}
+    Remove code lists and leave browser open    ${CODE_LIST_9}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30

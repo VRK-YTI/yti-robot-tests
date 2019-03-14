@@ -356,13 +356,36 @@ Remove code lists
     \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
     \    Log to Console    ${code_list_item} removed
     \    Sleep    1
+    Close All Browsers
+
+Remove code lists and leave browser open
+    [Arguments]    @{code_list_items}
+    : FOR    ${code_list_item}    IN    @{code_list_items}
+    \    Return to Koodistot frontpage
+    \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+    \    Wait until page contains element    //*[contains(text(), "${code_list_item}")]    timeout=30
+    \    Click element    //*[contains(text(), "${code_list_item}")]
+    \    Wait until page contains    ${code_list_item}
+    \    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    \    Click element    ${CODE_LIST_DDL}
+    \    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    \    Click element    ${DELETE_CODE_LIST_BTN}
+    \    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    \    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
+    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+    \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    \    Log to Console    ${code_list_item} removed
+    \    Sleep    1
 
 Create code list
     [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    run keyword if    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
@@ -548,7 +571,7 @@ Delete registry with code lists
     Wait until page contains    ${Error_registry_with_codelists}    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
-    Remove code lists    ${code_list}
+    Remove code lists and leave browser open    ${code_list}
     Delete empty registry    ${registry}
 
 Delete empty registry
@@ -646,7 +669,7 @@ Upload codelist in Excel format
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    run keyword if    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
@@ -670,7 +693,7 @@ Upload codelist in CSV format
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    run keyword if    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20

@@ -260,6 +260,7 @@ Remove code lists with extensions
     \    run keyword if    ${extension_exists}    Delete extension before code list    ${code_list_item}
     \    ...    ELSE    Continue code list deletion    ${code_list_item}
     \    Sleep    2
+    Close All Browsers
 
 Continue code list deletion
     [Arguments]    ${code_list_item}
