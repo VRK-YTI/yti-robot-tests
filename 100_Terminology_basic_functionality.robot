@@ -103,7 +103,8 @@ Resource          resources/Terminology_Resources.robot
     ...    ELSE    Select Window    title=TEST - Sanastot
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Select Window    title=Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
     Close Window
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
     ...    ELSE    Select Window    title=TEST - Sanastot
