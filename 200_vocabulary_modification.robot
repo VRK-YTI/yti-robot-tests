@@ -570,11 +570,13 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
     Import concepts    ${XML_FORMAT_BTN}    ${tax}
-    Select concept    verotuspäätös
+    Wait until page contains element    //*[contains(@id,'c40_concept_list_listitem')]
+    Click element    //*[contains(@id,'c40_concept_list_listitem')]
     Wait until page contains element    //*[contains(text(), "Verovelvolliselle")]    timeout=30
     Click element    //*[contains(text(), "Verovelvolliselle")]
     Wait until page contains    verovelvollinen    timeout=30
-    Select concept    verotuspäätös
+    Wait until page contains element    //*[contains(@id,'c40_concept_list_listitem')]
+    Click element    //*[contains(@id,'c40_concept_list_listitem')]
     Wait until page contains element    //*[contains(text(), "veronpalautuksesta")]    timeout=30
     Click element    //*[contains(text(), "veronpalautuksesta")]
     Wait until page contains    veronpalautus    timeout=30
