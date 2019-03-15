@@ -88,6 +88,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Wait until page contains    30 koodia    timeout=20
     Upload extension    ${Extension_definition_hierarchy}    ${FILE_FORMAT_EXCEL}
+    Sleep    2
     Wait until element is enabled    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
