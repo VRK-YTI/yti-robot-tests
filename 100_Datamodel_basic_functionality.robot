@@ -73,10 +73,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
     Wait until page contains element    ${ADD_CLASS_BTN}    timeout=30
-    Sleep    5
+    Sleep    1
     Go back to Data Vocabularies frontpage
     [Teardown]    Test Case Teardown Delete Testiautomaatio profile
 
@@ -142,7 +140,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 107. Guide through creating new Core Vocabulary
     [Documentation]    Guide through creating new Core Vocabulary
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Go back to Data Vocabularies frontpage
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -157,7 +155,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 108. Guide through creating new Application Profile
     [Documentation]    Guide through creating new Application Profile
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Go back to Data Vocabularies frontpage
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -172,7 +170,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 109. Guide through requiring a namespace
     [Documentation]    Guide through requiring a namespace
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -186,7 +184,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 110. Guide through creating a class
     [Documentation]    Guide through creating a class
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -200,7 +198,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 111. Guide through specializing a class
     [Documentation]    Guide through specializing a class
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -214,7 +212,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 112. Guide through adding an attribute
     [Documentation]    Guide through adding an attribute
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
@@ -228,7 +226,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 113. Guide through adding an association
     [Documentation]    Guide through adding an association
-    [Tags]    tietomallit    regression
+    [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
     Wait until page contains element    ${GUIDE_BTN}    timeout=20
