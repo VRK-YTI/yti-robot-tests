@@ -41,7 +41,7 @@ ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
 #Model
 ${MODEL_DETAILS_TAB}    id=modelDetailsTab
-${SHOW_MODEL_DETAILS_BTN}    id=show_model_details_button
+${MODEL_DATA_TAB}    id=dataTab
 ${MODEL_LABEL_INPUT}    id=modelLabel
 ${MODEL_DESCRIPTION_INPUT}    id=modelComment
 ${MODEL_PREFIX_INTPUT}    id=modelPrefix
@@ -49,13 +49,13 @@ ${ADD_CLASSIFICATION}    id=add_classification_button
 ${ADD_CONTRIBUTOR}    id=add_contributor_button
 ${ADD_VOCABULARY}    id=add_vocabulary_button
 ${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
-${REMOVE_MODEL_BTN}    //*[@id="modelDetailsTab-panel"]/model-view/div/form/fieldset/div/editable-entity-buttons/div/button[4]/span
+${REMOVE_MODEL_BTN}    id=model_edit_buttons_remove
 ${CONFIRM_REMOVE_MODEL_BTN}    id=confirm_modal_template_button
 ${ADD_LINK}       id=add_link_button
 ${LINK_URL_INPUT}    //div[1]/div/div/form/div[2]/editable[1]/div/div/input
 ${LINK_NAME_INPUT}    //div[1]/div/div/form/div[2]/editable[2]/div/div/input
 ${LINK_DESCRIPTION_INPUT}    //div[1]/div/div/form/div[2]/editable[3]/div/div/textarea
-${MODIFY_MODEL}    //*[@id="modelDetailsTab-panel"]/model-view/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
+${MODIFY_MODEL}    id=model_edit_buttons_edit
 #${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
 ${CREATE_NEW_LINK}    //div[1]/div/div/form/div[3]/button[1]
 ${IMPORT_NAMESPACE}    id=add_imported_namespace_button
@@ -88,7 +88,7 @@ ${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaam
 ${EXTERNAL_URI_INPUT}    id=externalUri
 ${CHANGE_CONCEPT}    id=class_subject_change_concept_button
 ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
-${SHOW_HISTORY_BTN}    //*[@id="modelDetailsTab-panel"]/model-view/div/form/fieldset/div/editable-entity-buttons/div/ng-transclude/history/button/span
+${SHOW_HISTORY_BTN}    id=model_edit_buttons_history
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
 ${REMOVE_CLASS_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[4]/span
 ${CLASS_MODEL_DDL}    id=model
