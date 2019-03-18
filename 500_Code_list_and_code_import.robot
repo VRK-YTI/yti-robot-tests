@@ -1489,9 +1489,16 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
+    Sleep    3
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until element is visible    //*[contains(text(), "NewCode001 - newCode001")]    timeout=20
+    Import codes in Excel format
+    Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains    17 koodia    timeout=20
+    Wait until page contains    koodi500 - Koodi500    timeout=20
+    Wait until page contains    koodi503 - Koodi503    timeout=20
+    Wait until page contains    koodi504 - Koodi504    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
