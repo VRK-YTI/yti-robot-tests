@@ -494,8 +494,6 @@ Delete Terminological Vocabulary
 
 Edit concept
     [Arguments]    ${concept}
-    Wait until page contains element    ${CONCEPT_LIST_SEARCH_INPUT}    timeout=30
-    Input text    ${CONCEPT_LIST_SEARCH_INPUT}    ${concept}
     Wait until page contains element    //*[contains(text(), "${concept}")]
     Click element    //*[contains(text(), "${concept}")]
     Wait until page contains element    ${EDIT_CONCEPT_BTN}    timeout=30
@@ -572,9 +570,6 @@ Add broader concepts for collection
     : FOR    ${concept_item}    IN    @{concept_items}
     \    Wait until page contains element    ${COLLECTION_BROADER_CONCEPT_BTN}    timeout=30
     \    Click element    ${COLLECTION_BROADER_CONCEPT_BTN}
-    \    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept_item}
-    \    Sleep    1
     \    Wait until page contains element    //*[contains(text(), "${concept_item}")]    timeout=30
     \    Click element    //*[contains(text(), "${concept_item}")]
     \    Wait until page contains    ${concept_item}    timeout=30
@@ -587,9 +582,6 @@ Add members for collection
     : FOR    ${concept_item}    IN    @{concept_items}
     \    Wait until page contains element    ${COLLECTION_MEMBER_CONCEPT_BTN}    timeout=30
     \    Click element    ${COLLECTION_MEMBER_CONCEPT_BTN}
-    \    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept_item}
-    \    Sleep    1
     \    Wait until page contains element    //*[contains(text(), "${concept_item}")]    timeout=30
     \    Click element    //*[contains(text(), "${concept_item}")]
     \    Wait until page contains    ${concept_item}    timeout=30
