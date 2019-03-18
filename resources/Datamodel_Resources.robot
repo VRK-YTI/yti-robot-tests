@@ -48,6 +48,7 @@ ${MODEL_PREFIX_INTPUT}    id=modelPrefix
 ${ADD_CLASSIFICATION}    id=add_classification_button
 ${ADD_CONTRIBUTOR}    id=add_contributor_button
 ${ADD_VOCABULARY}    id=add_vocabulary_button
+${SAVE_NEW_MODEL_BTN}    id=save_new_model_button
 ${SAVE_MODEL_BTN}    id=model_edit_buttons_save
 ${REMOVE_MODEL_BTN}    id=model_edit_buttons_remove
 ${CONFIRM_REMOVE_MODEL_BTN}    id=confirm_modal_template_button
@@ -97,6 +98,7 @@ ${CORE_VOCABULARY_PREFIX_INPUT}    id=modelPrefix
 ${VOCABULARY_ADD_CLASSIFICATION}    id=add_classification_button
 ${VOCABULARY_ADD_CONTRIBUTOR}    id=add_contributor_button
 ${SAVE_CORE_VOCABULARY_BTN}    id=model_edit_buttons_save
+${SAVE_NEW_CORE_VOCABULARY_BTN}    id=save_new_model_button
 ${MODIFY_CORE_VOCABULARY_BTN}    id=model_edit_buttons_edit
 
 *** Keywords ***
@@ -188,8 +190,8 @@ Create Testiautomaatio profile
     Click Element    ${ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_MODEL_BTN}    timeout=30
-    Click Element    ${SAVE_MODEL_BTN}
+    Wait until page contains element    ${SAVE_NEW_MODEL_BTN}    timeout=30
+    Click Element    ${SAVE_NEW_MODEL_BTN}
     Log to Console    Testiautomaatio profile created
     Sleep    2
 
@@ -247,8 +249,8 @@ Create Automaatiokirjasto Core Vocabulary
     Click Element    ${VOCABULARY_ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_CORE_VOCABULARY_BTN}    timeout=30
-    Click Element    ${SAVE_CORE_VOCABULARY_BTN}
+    Wait until page contains element    ${SAVE_NEW_CORE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_NEW_CORE_VOCABULARY_BTN}
     Log to Console    Automaatiokirjasto Core Vocabulary created
     Sleep    2
 
