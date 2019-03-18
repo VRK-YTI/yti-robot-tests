@@ -48,18 +48,16 @@ ${MODEL_PREFIX_INTPUT}    id=modelPrefix
 ${ADD_CLASSIFICATION}    id=add_classification_button
 ${ADD_CONTRIBUTOR}    id=add_contributor_button
 ${ADD_VOCABULARY}    id=add_vocabulary_button
-${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
+${SAVE_MODEL_BTN}    id=model_edit_buttons_save
 ${REMOVE_MODEL_BTN}    id=model_edit_buttons_remove
 ${CONFIRM_REMOVE_MODEL_BTN}    id=confirm_modal_template_button
 ${ADD_LINK}       id=add_link_button
-${LINK_URL_INPUT}    //div[1]/div/div/form/div[2]/editable[1]/div/div/input
-${LINK_NAME_INPUT}    //div[1]/div/div/form/div[2]/editable[2]/div/div/input
-${LINK_DESCRIPTION_INPUT}    //div[1]/div/div/form/div[2]/editable[3]/div/div/textarea
-${MODIFY_MODEL}    id=model_edit_buttons_edit
-#${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
-${CREATE_NEW_LINK}    //div[1]/div/div/form/div[3]/button[1]
+${LINK_URL_INPUT}    id=add_link_url_input
+${LINK_NAME_INPUT}    id=add_link_title_input
+${LINK_DESCRIPTION_INPUT}    id=add_link_description_textarea
+${CREATE_NEW_LINK}    id=create_link_button
 ${IMPORT_NAMESPACE}    id=add_imported_namespace_button
-${SEARCH_NAMESPACE_INPUT}    //div[1]/div/div/div/div[2]/div[1]/div/text-filter/div/input
+${SEARCH_NAMESPACE_INPUT}    id=text_filter_search_input
 ${SEARCH_VOCABULARY_INPUT}    id=text_filter_search_input
 ${HIDE_MODEL_DETAILS_BTN}    id=hide_model_details_button
 ${ADD_REF_DATA_BTN}    id=add_reference_data_button
@@ -73,8 +71,8 @@ ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
 ${SPECIALIZE_CLASS}    //div[1]/div/div/form/div[3]/button[1]
 ${CONFIRM_ADD_PROPERTIES}    id=confirm_properties_from_class_button
-${SAVE_CLASS}     //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
-${MODIFY_CLASS}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[3]/span
+${SAVE_CLASS}     id=class_edit_buttons_save
+${MODIFY_CLASS}    id=class_edit_buttons_edit
 ${ADD_PROPERTY_DDL}    id=class_options_button_add_property_dropdown_title
 ${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaAttribuuttiTaiAssosiaatio_dropdown_option
 ${SEARCH_ATTRIBUTE_INPUT}    id=text_filter_search_input
@@ -90,16 +88,16 @@ ${CHANGE_CONCEPT}    id=class_subject_change_concept_button
 ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
 ${SHOW_HISTORY_BTN}    id=model_edit_buttons_history
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
-${REMOVE_CLASS_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[4]/span
+${REMOVE_CLASS_BTN}    id=class_edit_buttons_remove
 ${CLASS_MODEL_DDL}    id=model
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
 ${CORE_VOCABULARY_PREFIX_INPUT}    id=modelPrefix
-${VOCABULARY_ADD_CLASSIFICATION}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[2]/div[2]/classifications-view/h4/button/span
-${VOCABULARY_ADD_CONTRIBUTOR}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[2]/div[2]/contributors-view/h4/button/span
-${SAVE_CORE_VOCABULARY_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
-${MODIFY_CORE_VOCABULARY_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
+${VOCABULARY_ADD_CLASSIFICATION}    id=add_classification_button
+${VOCABULARY_ADD_CONTRIBUTOR}    id=add_contributor_button
+${SAVE_CORE_VOCABULARY_BTN}    id=model_edit_buttons_save
+${MODIFY_CORE_VOCABULARY_BTN}    id=model_edit_buttons_edit
 
 *** Keywords ***
 Test Case Setup

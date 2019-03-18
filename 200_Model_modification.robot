@@ -89,7 +89,6 @@ ${class_item_3}    Ajanjakso
     [Documentation]    Add new Core Vocabulary and delete Core Vocabulary
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
-    #Create Automaatiokirjasto Core Vocabulary
     Log to Console    Automaatiokirjasto Core Vocabulary created
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete Automaatiokirjasto Core Vocabulary
