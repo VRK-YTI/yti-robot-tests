@@ -35,7 +35,7 @@ eDuuni Login
     Set Selenium Speed    0.5
     Wait until page contains element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    timeout=30
     Click element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
-    Select From List    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    ${GOOGLE_LOGIN_SELECTION}
+    Select From List By Value    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    ${GOOGLE_LOGIN_SELECTION}
     Wait Until Page Contains element    id=ContentPlaceHolder1_Button1    timeout=30
     Click element    id=ContentPlaceHolder1_Button1
     Sleep    5
