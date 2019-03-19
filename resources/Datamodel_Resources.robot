@@ -67,6 +67,7 @@ ${SEARCH_REF_DATA_INPUT}    id=text_filter_search_input
 ${USE_SELCTION_BTN}    //div[1]/div/div/form/div[3]/button[1]/span[2]
 ${ADD_PROFILE_BTN}    id=add_profile_button
 ${ADD_LIBRARY_BTN}    id=add_library_button
+${MODIFY_MODEL}    id=model_edit_buttons_edit
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
@@ -405,11 +406,6 @@ Save class
     Wait until element is visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
 
-Hide model details
-    Wait until page contains element    ${HIDE_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${HIDE_MODEL_DETAILS_BTN}
-    Sleep    2
-
 Confirm all properties for class and save
     Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
@@ -439,7 +435,7 @@ Add attribute
     Click Element    ${ADD_PROPERTY_DDL}
     Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
-    Sleep    4
+    Sleep    8
     Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     Sleep    2
@@ -459,7 +455,7 @@ Add association
     Click Element    ${ADD_PROPERTY_DDL}
     Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
-    Sleep    4
+    Sleep    8
     Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     Sleep    2

@@ -147,7 +147,8 @@ ${class_item_3}    Ajanjakso
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Hide model details
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Add class    Rooli    ${NAMESPACE_1}
     Sleep    2
     Confirm all properties for class and save
@@ -173,6 +174,8 @@ ${class_item_3}    Ajanjakso
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Add class    Rooli    ${NAMESPACE_1}
     Sleep    2
     Confirm all properties for class and save
