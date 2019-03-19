@@ -212,7 +212,8 @@ ${class_item_3}    Ajanjakso
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Hide model details
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Create new class without referencing concept    ${new_class_link}    automobiili
     Save class
     Wait until page contains    Automobiili    timeout=30
@@ -228,7 +229,8 @@ ${class_item_3}    Ajanjakso
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Hide model details
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Create new shape by referencing external uri    ${external_uri}    ${class}
     Confirm all properties for class and save
     Wait until page contains    Maksu    timeout=30
@@ -240,11 +242,13 @@ ${class_item_3}    Ajanjakso
     [Documentation]    Add new class to profile and remove properties
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Hide model details
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Add class    Postiosoite    ${NAMESPACE_1}
     Sleep    2
     Deselect properties for class and save    ${class_property_po_box}    ${class_property_post_code}    ${class_property_post_name}
@@ -260,6 +264,7 @@ ${class_item_3}    Ajanjakso
     [Documentation]    Create new class and add referencing concept
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
@@ -267,7 +272,8 @@ ${class_item_3}    Ajanjakso
     Save model
     Log to Console    Namespace "Julkishallinnon tietokomponentit" added
     Log to Console    Vocabulary "Verotussanasto" added
-    Hide model details
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Create new class without referencing concept    ${new_class_link}    liksa
     Page should contain    Liksa
     Log to Console    Class "Liksa" added without referencing concept
@@ -284,11 +290,13 @@ ${class_item_3}    Ajanjakso
     [Documentation]    Add several classes to profile, check class history information and remove one class
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Hide model details
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Add several classes    ${class_item_1}    ${class_item_2}    ${class_item_3}
     Wait until page contains element    //*[contains(@id, 'Ajanjakso_tabset_link')]    timeout=30
     Wait until page contains element    //*[contains(@id, 'Rooli_tabset_link')]    timeout=30
@@ -298,8 +306,8 @@ ${class_item_3}    Ajanjakso
     Log to Console    Class "Ajanjakso" added
     Wait until page contains element    //*[contains(@id, 'Ajanjakso_tabset_link')]    timeout=30
     Click Element    //*[contains(@id, 'Ajanjakso_tabset_link')]
-    Wait until page contains element    ${SHOW_HISTORY_BTN}    timeout=30
-    Click Element    ${SHOW_HISTORY_BTN}
+    Wait until page contains element    ${SHOW_CLASS_HISTORY_BTN}    timeout=30
+    Click Element    ${SHOW_CLASS_HISTORY_BTN}
     Wait until page contains    Historialliset versiot    timeout=10
     Log to Console    History for class "Ajanjakso" opened
     Wait until page contains element    ${CLOSE_HISTORY_BTN}    timeout=30
@@ -317,6 +325,7 @@ ${class_item_3}    Ajanjakso
     [Documentation]    Create profile and add reference data for that profile
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Wait until page contains element    ${ADD_REF_DATA_BTN}    timeout=30
