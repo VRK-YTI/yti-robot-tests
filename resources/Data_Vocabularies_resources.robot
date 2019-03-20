@@ -42,40 +42,41 @@ ${MAIN_PAGE_LINK}    id=main_page_link
 ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
 #Model
-${SHOW_MODEL_DETAILS_BTN}    id=show_model_details_button
+${MODEL_DETAILS_TAB}    id=modelDetailsTab
+${MODEL_DATA_TAB}    id=dataTab
 ${MODEL_LABEL_INPUT}    id=modelLabel
 ${MODEL_DESCRIPTION_INPUT}    id=modelComment
 ${MODEL_PREFIX_INTPUT}    id=modelPrefix
 ${ADD_CLASSIFICATION}    id=add_classification_button
 ${ADD_CONTRIBUTOR}    id=add_contributor_button
 ${ADD_VOCABULARY}    id=add_vocabulary_button
-${SAVE_MODEL_BTN}    //application/ng-container/div/div/new-model-page/div/form/fieldset/div[1]/button[2]/span
-${REMOVE_MODEL_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[4]/span
+${SAVE_NEW_MODEL_BTN}    id=save_new_model_button
+${SAVE_MODEL_BTN}    id=model_edit_buttons_save
+${REMOVE_MODEL_BTN}    id=model_edit_buttons_remove
 ${CONFIRM_REMOVE_MODEL_BTN}    id=confirm_modal_template_button
 ${ADD_LINK}       id=add_link_button
-${LINK_URL_INPUT}    //div[1]/div/div/form/div[2]/editable[1]/div/div/input
-${LINK_NAME_INPUT}    //div[1]/div/div/form/div[2]/editable[2]/div/div/input
-${LINK_DESCRIPTION_INPUT}    //div[1]/div/div/form/div[2]/editable[3]/div/div/textarea
-${MODIFY_MODEL}    //*[@id="'model'"]/div/form/fieldset/div/editable-entity-buttons/div/button[3]/span
-#${CREATE_NEW_LINK}    //div[1]/div/div/form/modal-template/div[3]/div/modal-buttons/button[1]
-${CREATE_NEW_LINK}    //div[1]/div/div/form/div[3]/button[1]
+${LINK_URL_INPUT}    id=add_link_url_input
+${LINK_NAME_INPUT}    id=add_link_title_input
+${LINK_DESCRIPTION_INPUT}    id=add_link_description_textarea
+${MODIFY_MODEL}    id=model_edit_buttons_edit
+${CREATE_NEW_LINK}    id=create_link_button
 ${IMPORT_NAMESPACE}    id=add_imported_namespace_button
-${SEARCH_NAMESPACE_INPUT}    //div[1]/div/div/div/div[2]/div[1]/div/text-filter/div/input
+${SEARCH_NAMESPACE_INPUT}    id=text_filter_search_input
 ${SEARCH_VOCABULARY_INPUT}    id=text_filter_search_input
-${HIDE_MODEL_DETAILS_BTN}    id=hide_model_details_button
 ${ADD_REF_DATA_BTN}    id=add_reference_data_button
 ${REF_DATA_FILTER_DDL}    id=reference_data_status_filter_dropdown
 ${SEARCH_REF_DATA_INPUT}    id=text_filter_search_input
 ${USE_SELCTION_BTN}    //div[1]/div/div/form/div[3]/button[1]/span[2]
 ${ADD_PROFILE_BTN}    id=add_profile_button
 ${ADD_LIBRARY_BTN}    id=add_library_button
+${SAVE_NEW_MODEL_BTN}    id=save_new_model_button
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
 ${SPECIALIZE_CLASS}    //div[1]/div/div/form/div[3]/button[1]
 ${CONFIRM_ADD_PROPERTIES}    id=confirm_properties_from_class_button
-${SAVE_CLASS}     //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[2]/span
-${MODIFY_CLASS}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[3]/span
+${SAVE_CLASS}     id=class_edit_buttons_save
+${MODIFY_CLASS}    id=class_edit_buttons_edit
 ${ADD_PROPERTY_DDL}    id=class_options_button_add_property_dropdown_title
 ${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaAttribuuttiTaiAssosiaatio_dropdown_option
 ${SEARCH_ATTRIBUTE_INPUT}    id=text_filter_search_input
@@ -89,9 +90,9 @@ ${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaam
 ${EXTERNAL_URI_INPUT}    id=externalUri
 ${CHANGE_CONCEPT}    id=class_subject_change_concept_button
 ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
-${SHOW_HISTORY_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/history/button/span
+${SHOW_CLASS_HISTORY_BTN}    id=class_edit_buttons_history
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
-${REMOVE_CLASS_BTN}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/button[4]/span
+${REMOVE_CLASS_BTN}    id=class_edit_buttons_remove
 ${CLASS_MODEL_DDL}    id=model
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
@@ -200,12 +201,11 @@ Create Data Vocabulary Profile
     Click Element    ${ADD_CONTRIBUTOR}
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_MODEL_BTN}    timeout=30
-    Click Element    ${SAVE_MODEL_BTN}
-    Wait until element is visible    ${SHOW_MODEL_DETAILS_BTN}    timeout=90
+    Wait until page contains element    ${SAVE_NEW_MODEL_BTN}    timeout=30
+    Click Element    ${SAVE_NEW_MODEL_BTN}
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=90
     Log to Console    Testiautomaatio profile created
     Sleep    2
-    #Go back to Data Vocabularies frontpage
 
 Delete Data Vocabularies Profile
     Test Case Setup
@@ -213,8 +213,8 @@ Delete Data Vocabularies Profile
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
     Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -230,8 +230,8 @@ Delete Data Vocabularies Profile
 Delete existing profile and create new
     Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
     Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -272,8 +272,8 @@ Delete Automaatiokirjasto Core Vocabulary
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
     Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -289,8 +289,8 @@ Delete Automaatiokirjasto Core Vocabulary
 Delete existing core vocabulary and create new
     Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
     Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -318,8 +318,8 @@ Select and edit Testiautomaatio profile
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=60
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
     Wait until page contains element    ${MODIFY_MODEL}    timeout=30
     Click Element    ${MODIFY_MODEL}
 
@@ -328,8 +328,8 @@ Select and edit Automaatiokirjasto Core Vocabulary
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=60
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
     Wait until page contains element    ${MODIFY_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${MODIFY_CORE_VOCABULARY_BTN}
 
@@ -370,6 +370,7 @@ Import namespace
     Wait until page contains element    ${SEARCH_NAMESPACE_INPUT}    timeout=30
     Input Text    ${SEARCH_NAMESPACE_INPUT}    ${namespace}
     Sleep    1
+    Wait until page contains element    //*[contains(text(), "${namespace}")]    timeout=30
     Click Element    //*[contains(text(), "${namespace}")]
     Sleep    2
     Log to Console    New namespace ${namespace} added
@@ -416,11 +417,6 @@ Save class
     Wait until page contains element    ${SAVE_CLASS}    timeout=30
     Click Element    ${SAVE_CLASS}
     Wait until element is visible    ${MODIFY_CLASS}    timeout=60
-    Sleep    2
-
-Hide model details
-    Wait until page contains element    ${HIDE_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${HIDE_MODEL_DETAILS_BTN}
     Sleep    2
 
 Confirm all properties for class and save
@@ -534,8 +530,8 @@ Delete profile
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait until page contains element    //*[contains(text(), "${profile}")]    timeout=30
     Click Element    //*[contains(text(), "${profile}")]
-    Wait until page contains element    ${SHOW_MODEL_DETAILS_BTN}    timeout=30
-    Click Element    ${SHOW_MODEL_DETAILS_BTN}
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
     Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -554,7 +550,8 @@ Create New Class For Profile
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Hide model details
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
     Create new class without referencing concept    ${new_class_link}    ${class_2}
     Save class
     Wait until page contains    Automobiili    timeout=30
