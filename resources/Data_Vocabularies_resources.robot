@@ -500,6 +500,7 @@ Create new class without referencing concept
     Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class_2}
     Sleep    2
+    Wait until page contains element    ${new_class_link}    timeout=30
     Click Element    ${new_class_link}
     Sleep    8
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
