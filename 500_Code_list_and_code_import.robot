@@ -1374,7 +1374,7 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
 534. Create new version of cumulative code list and try to remove code
     [Documentation]    Create new version of cumulative code list
     ...    and check that the code can not be deleted.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    Cumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
@@ -1437,7 +1437,7 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
 535. Change code list as cumulative after import and create new cumulative code list version and add new code
     [Documentation]    Change code list as cumulative after import and
     ...    create new cumulative code list version and check that codes can not be deleted but new code can be added.
-    [Tags]    koodistot    regression    500
+    [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
     Wait until page contains    10 koodia    timeout=20
