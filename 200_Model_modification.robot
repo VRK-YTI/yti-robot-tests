@@ -14,12 +14,10 @@ ${association}    Jäsen
 ${classification}    Asuminen
 ${contributor}    Testiorganisaatio
 ${vocabulary}     Verotussanasto
-${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${external_uri}    http://uri.suomi.fi/datamodel/ns/jhs#Maksu
 ${class_property_po_box}    id=select_property_attribute_Postilokero-osoite_checkbox
 ${class_property_post_code}    id=select_property_attribute_Postinumero_checkbox
 ${class_property_post_name}    id=select_property_attribute_Postitoimipaikka_checkbox
-${concept}        ansiotulo
 ${class_item_1}    Rooli
 ${class_item_2}    Maksu
 ${class_item_3}    Ajanjakso
@@ -214,7 +212,7 @@ ${class_item_3}    Ajanjakso
     Save model
     Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    ${new_class_link}    automobiili
+    Create new class without referencing concept    automobiili
     Save class
     Wait until page contains    Automobiili    timeout=30
     Log to Console    Class "Automobiili" added without referencing concept
@@ -274,11 +272,11 @@ ${class_item_3}    Ajanjakso
     Log to Console    Vocabulary "Verotussanasto" added
     Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    ${new_class_link}    liksa
+    Create new class without referencing concept    liksa
     Page should contain    Liksa
     Log to Console    Class "Liksa" added without referencing concept
     Sleep    1
-    Change concept for class    ${concept}
+    Change concept for class    ansiotulo
     Save class
     Wait until page contains    Käsitteen määritelmä    timeout=30
     Wait until page contains    muu tulo kuin pääomatulo    timeout=30
@@ -358,5 +356,84 @@ ${class_item_3}    Ajanjakso
     Wait until element is visible    ${MODIFY_MODEL}    timeout=30
     Wait until page contains    Kunnat 2018    timeout=30
     Log to Console    Reference data "Kunnat 2018" added for profile
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+212. Remove INCOMPLETE status profile, class, attribute and association
+    [Documentation]    Create new profile, class, attribute and association.
+    ...    Change status as INCOMPLETE and check that deletion of profile, class,
+    ...    attribute and association is possible.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka
+    Save class
+    Wait until page contains    Testiluokka    timeout=30
+    Log to Console    Class "Testiluokka" added without referencing concept
+    Create new attribute    Testiattribuutti
+    Create new association    Testiassosiaatio
+    Wait until page contains element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_BTN}
+    Wait until page contains element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
+    Click Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span
+    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
+    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Wait until page contains element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait until page contains    Keskeneräinen    timeout=30
+    Wait until page contains element    ${PREDICATE_REMOVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_REMOVE_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Log to Console    Incomplete state attribute removed
+    Wait until page contains element    ${ATTRIBUTE_TAB}    timeout=30
+    Click Element    ${ATTRIBUTE_TAB}
+    Wait until page contains element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
+    Click Element    //*[contains(@id,'testiattribuutti_tabset_link')]
+    Wait until page contains element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_BTN}
+    Wait until page contains element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
+    Click Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span
+    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
+    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Wait until page contains element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait until page contains    Keskeneräinen    timeout=30
+    Wait until page contains element    ${PREDICATE_REMOVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_REMOVE_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Log to Console    Incomplete state association removed
+    Wait until page contains element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
+    Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
+    Wait until page contains element    ${MODIFY_CLASS}    timeout=60
+    Click Element    ${MODIFY_CLASS}
+    Wait until page contains element    //*[@id="classState"]/div/div/iow-selection-transclude/span    timeout=30
+    Click Element    //*[@id="classState"]/div/div/iow-selection-transclude/span
+    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
+    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Save class
+    Wait until page contains element    ${REMOVE_CLASS_BTN}    timeout=60
+    Click Element    ${REMOVE_CLASS_BTN}
+    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Wait until page does not contain element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
+    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
+    Wait until page contains element    ${MODIFY_MODEL}    timeout=30
+    Click Element    ${MODIFY_MODEL}
+    Wait until page contains element    //*[@id="modelState"]/div/div/iow-selection-transclude/span    timeout=30
+    Click Element    //*[@id="modelState"]/div/div/iow-selection-transclude/span
+    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
+    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Wait until page contains element    ${SAVE_MODEL_BTN}    timeout=30
+    Click Element    ${SAVE_MODEL_BTN}
+    Wait until page contains    Keskeneräinen    timeout=30
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}

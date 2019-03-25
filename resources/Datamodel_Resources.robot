@@ -93,6 +93,25 @@ ${SHOW_CLASS_HISTORY_BTN}    id=class_edit_buttons_history
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
 ${REMOVE_CLASS_BTN}    id=class_edit_buttons_remove
 ${CLASS_MODEL_DDL}    id=model
+${CREATE_NEW_CLASS_LINK}    //*[contains(@id,'create_new_LuoUusiLuokka')]
+#Attributes
+${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
+${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
+${CREATE_NEW_ATTRIBUTE_LINK}    //*[contains(@id,'create_new_LisaaUusiAttribuutti')]
+${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    id=create_new_LuoUusiAttribuuttiIlmanKasiteviitetta_link
+${CREATE_NEW_ATTRIBUTE_BTN}    //div[1]/div/div/form/div[3]/button[1]
+${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
+${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
+${PREDICATE_STATE_DDL}    id=predicateState
+${PREDICATE_REMOVE_BTN}    id=predicate_edit_buttons_remove
+#Associations
+${ASSOCIATION_TAB}    id=association_tab_heading_link
+${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
+${ADD_NEW_ASSOCIATION_BTN}    id=add_new_association_button
+${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}    id=create_new_LuoUusiAssosiaatioIlmanKasiteviitetta_link
+${CREATE_NEW_ASSOCIATION_BTN}    //div[1]/div/div/form/div[3]/button[1]
+${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
+${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
@@ -402,7 +421,7 @@ Add several classes
     \    Sleep    2
 
 Save class
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Wait until page contains element    ${SAVE_CLASS}    timeout=60
     Click Element    ${SAVE_CLASS}
     Wait until element is visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
@@ -448,6 +467,48 @@ Add attribute
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
+Create new attribute
+    [Arguments]    ${attribute}
+    Wait until page contains element    ${ATTRIBUTE_TAB}    timeout=30
+    Click Element    ${ATTRIBUTE_TAB}
+    Wait until page contains element    ${ADD_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ATTRIBUTE_BTN}
+    Wait until page contains element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${attribute}
+    Wait until element is visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
+    Wait until page contains element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}
+    Wait until page contains element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
+    Wait until element is visible    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait until element is visible    ${PREDICATE_EDIT_BTN}    timeout=60
+    Wait until page contains    ${attribute}    timeout=60
+    Log To Console    New attribute "${attribute}" added
+    Sleep    1
+
+Create new association
+    [Arguments]    ${association}
+    Wait until page contains element    ${ASSOCIATION_TAB}    timeout=30
+    Click Element    ${ASSOCIATION_TAB}
+    Wait until page contains element    ${ADD_NEW_ASSOCIATION_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ASSOCIATION_BTN}
+    Wait until page contains element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
+    Wait until element is visible    ${CREATE_NEW_ASSOCIATION_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ASSOCIATION_LINK}
+    Wait until page contains element    ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}
+    Wait until page contains element    ${CREATE_NEW_ASSOCIATION_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_ASSOCIATION_BTN}
+    Wait until element is visible    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait until element is visible    ${PREDICATE_EDIT_BTN}    timeout=60
+    Wait until page contains    ${association}    timeout=60
+    Log To Console    New association "${association}" added
+    Sleep    1
+
 Add association
     [Arguments]    ${association}
     Wait until page contains element    ${MODIFY_CLASS}    timeout=30
@@ -477,18 +538,18 @@ Change concept for class
     Wait until page contains element    //*[contains(text(), "${concept}")]    timeout=30
     Click Element    //*[contains(text(), "${concept}")]
     Sleep    2
-    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Wait until element is visible    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Create new class without referencing concept
-    [Arguments]    ${new_class_link}    ${class_2}
+    [Arguments]    ${class}
     Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
     Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
-    Input Text    ${SEARCH_CLASS_INPUT}    ${class_2}
+    Input Text    ${SEARCH_CLASS_INPUT}    ${class}
     Sleep    2
-    Click Element    ${new_class_link}
+    Click Element    ${CREATE_NEW_CLASS_LINK}
     Sleep    8
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
     sleep    2
