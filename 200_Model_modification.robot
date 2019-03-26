@@ -437,3 +437,49 @@ ${class_item_3}    Ajanjakso
     Wait until page contains    Keskeneräinen    timeout=30
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
+
+213. Convert attribute to association
+    [Documentation]    Create new profile, attribute and association.
+    ...    Check that converting attribute to association and vice versa is successful.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka
+    Save class
+    Wait until page contains    Testiluokka    timeout=30
+    Log to Console    Class "Testiluokka" added without referencing concept
+    Create new attribute    Testiattribuutti
+    Create new attribute    Testiattribuutti2
+    Create new association    Testiassosiaatio
+    Wait until page contains element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_BTN}
+    Wait until page contains element    ${CONVERT_TO_ATTRIBUTE}    timeout=30
+    Click Element    ${CONVERT_TO_ATTRIBUTE}
+    Wait until page contains element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait until element is visible    ${PREDICATE_EDIT_BTN}    timeout=30
+    Wait until page contains element    ${ASSOCIATION_TAB}    timeout=30
+    Click Element    ${ASSOCIATION_TAB}
+    Page should not contain element    //*[contains(@id,'testiassosiaatio_tabset_link')]    timeout=60
+    Wait until page contains element    ${ATTRIBUTE_TAB}    timeout=30
+    Click Element    ${ATTRIBUTE_TAB}
+    Wait until page contains element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
+    Click Element    //*[contains(@id,'testiattribuutti_tabset_link')]
+    Wait until page contains element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_BTN}
+    Wait until page contains element    ${CONVERT_TO_ASSOCIATION}    timeout=30
+    Click Element    ${CONVERT_TO_ASSOCIATION}
+    Wait until page contains element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait until element is visible    ${PREDICATE_EDIT_BTN}    timeout=30
+    Wait until page contains element    ${ATTRIBUTE_TAB}    timeout=30
+    Click Element    ${ATTRIBUTE_TAB}
+    Page should not contain element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
