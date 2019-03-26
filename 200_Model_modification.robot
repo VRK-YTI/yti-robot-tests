@@ -21,6 +21,7 @@ ${class_property_post_name}    id=select_property_attribute_Postitoimipaikka_che
 ${class_item_1}    Rooli
 ${class_item_2}    Maksu
 ${class_item_3}    Ajanjakso
+${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraavat resurssit käyttävät sitä
 
 *** Test Cases ***
 200. Modify profile
@@ -455,7 +456,6 @@ ${class_item_3}    Ajanjakso
     Wait until page contains    Testiluokka    timeout=30
     Log to Console    Class "Testiluokka" added without referencing concept
     Create new attribute    Testiattribuutti
-    Create new attribute    Testiattribuutti2
     Create new association    Testiassosiaatio
     Wait until page contains element    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
@@ -481,5 +481,44 @@ ${class_item_3}    Ajanjakso
     Wait until page contains element    ${ATTRIBUTE_TAB}    timeout=30
     Click Element    ${ATTRIBUTE_TAB}
     Page should not contain element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+214. Convert attribute to association when it is used by a resource
+    [Documentation]    Create new profile and attribute and check that converting attribute
+    ...    to association is not possible when it is used by the profile.
+    ...    Check that error message is displayed.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka
+    Save class
+    Wait until page contains    Testiluokka    timeout=30
+    Log to Console    Class "Testiluokka" added without referencing concept
+    Create new attribute    Testiattribuutti
+    Wait until page contains element    ${CLASS_TAB}    timeout=60
+    Click Element    ${CLASS_TAB}
+    Wait until page contains element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
+    Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
+    Add attribute    Testiattribuutti
+    Save class
+    Wait until page contains element    ${ATTRIBUTE_TAB}    timeout=30
+    Click Element    ${ATTRIBUTE_TAB}
+    Wait until page contains element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
+    Click Element    //*[contains(@id,'testiattribuutti_tabset_link')]
+    Wait until page contains element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_BTN}
+    Wait until page contains element    ${CONVERT_TO_ASSOCIATION}    timeout=30
+    Click Element    ${CONVERT_TO_ASSOCIATION}
+    Wait until page contains    ${predicate_change_error}    timeout=30
+    Click element    ${CLOSE_BTN}
+    Wait until page contains element    ${PREDICATE_EDIT_CANCEL_BTN}    timeout=30
+    Click Element    ${PREDICATE_EDIT_CANCEL_BTN}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}

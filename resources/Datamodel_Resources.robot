@@ -39,6 +39,7 @@ ${MAIN_PAGE_LINK}    id=main_page_link
 #Buttons and links
 ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
+${CLOSE_BTN}      //div[1]/div/div/div[3]/button
 #Model
 ${MODEL_DETAILS_TAB}    id=modelDetailsTab
 ${MODEL_DATA_TAB}    id=dataTab
@@ -94,6 +95,7 @@ ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
 ${REMOVE_CLASS_BTN}    id=class_edit_buttons_remove
 ${CLASS_MODEL_DDL}    id=model
 ${CREATE_NEW_CLASS_LINK}    //*[contains(@id,'create_new_LuoUusiLuokka')]
+${CLASS_TAB}      id=class_tab_heading_link
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -105,6 +107,7 @@ ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
 ${PREDICATE_STATE_DDL}    id=predicateState
 ${PREDICATE_REMOVE_BTN}    id=predicate_edit_buttons_remove
 ${CONVERT_TO_ASSOCIATION}    //*[@id="predicate"]/div[1]/div/button
+${PREDICATE_EDIT_CANCEL_BTN}    id=predicate_edit_buttons_cancel
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
