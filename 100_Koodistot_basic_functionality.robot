@@ -99,7 +99,6 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
     Wait until page contains element    id=content_language_dropdown_button    timeout=20
     Wait until page contains element    id=exportDropdown    timeout=20
     Wait until page contains    ${CODE_LIST_7}    timeout=20
-    Wait until page contains element    //*[contains(text(), "KOODIT")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Click element    //*[contains(text(), "TIEDOT")]
     Wait until page contains    Tunnus    timeout=20

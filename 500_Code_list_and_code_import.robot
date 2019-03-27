@@ -42,7 +42,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
@@ -80,6 +79,8 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
     Wait until page contains    6 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
@@ -111,7 +112,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
     Wait until page contains    NewCode001 - newCode001    timeout=30
     Wait until page contains    koodisto6000    timeout=20
@@ -123,7 +123,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Remove code    NewCode001 - newCode001
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
@@ -217,9 +216,10 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
     Wait until page contains    6 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
@@ -304,7 +304,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=20
     Log to Console    Code list saved
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodisto6000    timeout=20
@@ -324,8 +323,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
     Create new code to code list with concept    tutkija    Testiautomaatiosanasto (Luonnos)
     Wait until page contains    NewCode001 - tutkija    timeout=20
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
@@ -458,7 +455,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
     [Teardown]    Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
 
@@ -555,7 +551,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_languagecode}    ${CODE_LIST_9}
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Page should contain    Koodisto7000
@@ -603,7 +598,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    5
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodisto6000    timeout=20
@@ -622,7 +616,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Import code list in Excel format
     Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
     Sleep    1
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Log to Console    Code list without codes imported
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
@@ -1067,7 +1060,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains    10 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${CODE_LIST_9}
     Wait until page contains    NewCode001 - newCode001    timeout=20
     Wait until page contains    koodisto6000    timeout=20
@@ -1080,7 +1072,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Remove code    NewCode001 - newCode001
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
@@ -1377,7 +1368,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    Cumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
@@ -1585,7 +1575,6 @@ Remove Code list with concept from Terminologies
     Input Text    id=search_box_input    ${CODE_LIST_8}
     Wait until page contains element    //*[contains(text(), "tutkija")]    timeout=30
     Click element    //*[contains(text(), "tutkija")]
-    Wait until page contains    Tällä koodistolla ei ole yhtään koodia.    timeout=20
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Page should contain    Tunnus
