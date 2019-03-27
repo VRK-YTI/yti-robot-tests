@@ -383,8 +383,8 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Click Element    ${PREDICATE_EDIT_BTN}
     Wait until page contains element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span
-    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
-    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Wait until page contains element    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
+    Click Element    ${PREDICATE_STATE_INCOMPLETE}
     Wait until page contains element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
     Click Element    ${PREDICATE_EDIT_SAVE_BTN}
     Wait until page contains    Keskeneräinen    timeout=30
@@ -401,8 +401,8 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Click Element    ${PREDICATE_EDIT_BTN}
     Wait until page contains element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span
-    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
-    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Wait until page contains element    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
+    Click Element    ${PREDICATE_STATE_INCOMPLETE}
     Wait until page contains element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
     Click Element    ${PREDICATE_EDIT_SAVE_BTN}
     Wait until page contains    Keskeneräinen    timeout=30
@@ -417,8 +417,8 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Click Element    ${MODIFY_CLASS}
     Wait until page contains element    //*[@id="classState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="classState"]/div/div/iow-selection-transclude/span
-    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
-    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Wait until page contains element    ${CLASS_STATE_INCOMPLETE}    timeout=30
+    Click Element    ${CLASS_STATE_INCOMPLETE}
     Save class
     Wait until page contains element    ${REMOVE_CLASS_BTN}    timeout=60
     Click Element    ${REMOVE_CLASS_BTN}
@@ -431,8 +431,8 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Click Element    ${MODIFY_MODEL}
     Wait until page contains element    //*[@id="modelState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="modelState"]/div/div/iow-selection-transclude/span
-    Wait until page contains element    //*[contains(text(), "Keskeneräinen")]    timeout=30
-    Click Element    //*[contains(text(), "Keskeneräinen")]
+    Wait until page contains element    ${MODEL_STATE_INCOMPLETE}    timeout=30
+    Click Element    ${MODEL_STATE_INCOMPLETE}
     Wait until page contains element    ${SAVE_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_MODEL_BTN}
     Wait until page contains    Keskeneräinen    timeout=30

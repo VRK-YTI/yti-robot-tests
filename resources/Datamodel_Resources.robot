@@ -70,6 +70,7 @@ ${ADD_PROFILE_BTN}    id=add_profile_button
 ${ADD_LIBRARY_BTN}    id=add_library_button
 ${MODIFY_MODEL}    id=model_edit_buttons_edit
 ${SHOW_HISTORY_BTN}    id=model_edit_buttons_history
+${MODEL_STATE_INCOMPLETE}    id=modelState_INCOMPLETE
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
@@ -96,6 +97,7 @@ ${REMOVE_CLASS_BTN}    id=class_edit_buttons_remove
 ${CLASS_MODEL_DDL}    id=model
 ${CREATE_NEW_CLASS_LINK}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${CLASS_TAB}      id=class_tab_heading_link
+${CLASS_STATE_INCOMPLETE}    id=classState_INCOMPLETE
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -106,8 +108,9 @@ ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
 ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
 ${PREDICATE_STATE_DDL}    id=predicateState
 ${PREDICATE_REMOVE_BTN}    id=predicate_edit_buttons_remove
-${CONVERT_TO_ASSOCIATION}    //*[@id="predicate"]/div[1]/div/button
+${CONVERT_TO_ASSOCIATION}    id=predicate_change_type
 ${PREDICATE_EDIT_CANCEL_BTN}    id=predicate_edit_buttons_cancel
+${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
@@ -116,7 +119,7 @@ ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}    id=create_new_LuoUusiAssosiaatioIl
 ${CREATE_NEW_ASSOCIATION_BTN}    //div[1]/div/div/form/div[3]/button[1]
 ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
 ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
-${CONVERT_TO_ATTRIBUTE}    //*[@id="predicate"]/div[1]/div/button
+${CONVERT_TO_ATTRIBUTE}    id=predicate_change_type
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
