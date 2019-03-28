@@ -1371,8 +1371,6 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
     Wait until page contains    6 koodia    timeout=20
