@@ -522,3 +522,42 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Click Element    ${PREDICATE_EDIT_CANCEL_BTN}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
+
+215. Add new attribute for unsaved class
+    [Documentation]    Create new profile and two classes. Add new attribute for class before saving the class.
+    ...    Check that new class is created.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka
+    Save class
+    Wait until page contains element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
+    Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
+    Create new class without referencing concept    Testiluokka2
+    Wait until element is visible    ${ADD_PROPERTY_DDL}    timeout=30
+    Click Element    ${ADD_PROPERTY_DDL}
+    Wait until element is visible    ${ADD_PROPERTY_BTN}    timeout=30
+    Click Element    ${ADD_PROPERTY_BTN}
+    Wait until page contains element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    testiattribuutti
+    Wait until element is visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
+    Wait until page contains element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}
+    Wait until page contains element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
+    Wait until page contains element    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
+    Click Element    ${CREATE_AND_USE_ATTRIBUTE}
+    Sleep    2
+    Save class
+    Wait until page contains    Testiluokka2    timeout=30
+    Wait until page contains element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
+    Wait until page contains element    //*[contains(@id,'Testiluokka2_tabset_link')]    timeout=60
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}

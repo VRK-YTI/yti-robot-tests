@@ -111,6 +111,7 @@ ${PREDICATE_REMOVE_BTN}    id=predicate_edit_buttons_remove
 ${CONVERT_TO_ASSOCIATION}    id=predicate_change_type
 ${PREDICATE_EDIT_CANCEL_BTN}    id=predicate_edit_buttons_cancel
 ${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
+${CREATE_AND_USE_ATTRIBUTE}    //div[1]/div/div/form/div[3]/button[1]
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
