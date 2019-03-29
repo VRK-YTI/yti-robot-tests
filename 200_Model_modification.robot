@@ -565,9 +565,9 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
-216. Create new class and suggest concept for Terminologies
-    [Documentation]    Create new class to profile and suggest concept for Terminologies.
-    [Tags]    tietomallit
+216. Create new class and suggest concept to Terminologies tool
+    [Documentation]    Create new class to profile and suggest concept to Terminologies tool.
+    [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies
     Maximize Browser Window
     Select and edit Testiautomaatio profile
@@ -580,11 +580,24 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Create new class and suggest concept to terminologies    Testiluokka    Testiluokan määritelmä
     Save class
     Wait until page contains    Testiluokka    timeout=30
-    Wait until page contains    Käsiteen määritelmä    timeout=30
+    Wait until page contains    Käsitteen määritelmä    timeout=30
     Wait until page contains    Testiluokan määritelmä    timeout=30
     Wait until page contains    Sanasto    timeout=30
     Wait until page contains    Testiautomaatiosanasto    timeout=30
     Go back to Data Vocabularies frontpage
+    Close All Browsers
+    Terminology Test Case Setup
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait until page contains element    ${CONCEPTS_TAB}    timeout=30
+    Click element    ${CONCEPTS_TAB}
+    Wait until page contains element    //*[contains(@id,'concept-4_concept_list_listitem')]    timeout=30
+    Click element    //*[contains(@id,'concept-4_concept_list_listitem')]
+    Wait until page contains    Testiluokka    timeout=30
+    Close All Browsers
     [Teardown]    Test Case Teardown Terminologies
 
 *** Keywords ***
@@ -593,5 +606,6 @@ Test Case Setup Terminologies
     Test Case Setup Create Testiautomaatio profile
 
 Test Case Teardown Terminologies
+    Test Case Setup
     Delete profile    ${MODEL_1}
     Terminology Teardown
