@@ -5,7 +5,7 @@ Library           SeleniumLibrary
 *** Variables ***
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
-${USER_1}         //a[@class='dropdown-item ng-binding ng-scope'][contains(text(),'Testi Admin')]
+${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatio
@@ -98,6 +98,8 @@ ${CLASS_MODEL_DDL}    id=model
 ${CREATE_NEW_CLASS_LINK}    //*[contains(@id,'create_new_LuoUusiLuokka')]
 ${CLASS_TAB}      id=class_tab_heading_link
 ${CLASS_STATE_INCOMPLETE}    id=classState_INCOMPLETE
+${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
+${CONCEPT_DEFINITION_INPUT}    id=conceptDefinition
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -562,6 +564,23 @@ Create new class without referencing concept
     Sleep    8
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
     sleep    2
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Sleep    2
+
+Create new class and suggest concept to terminologies
+    [Arguments]    ${class}    ${concept_definition}
+    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    Click Element    ${ADD_NEW_CLASS}
+    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Sleep    2
+    Wait until page contains element    ${CREATE_NEW_CLASS_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_CLASS_LINK}
+    Wait until page contains element    ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    timeout=30
+    Click Element    ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}
+    Wait until page contains element    ${CONCEPT_DEFINITION_INPUT}    timeout=30
+    Input Text    ${CONCEPT_DEFINITION_INPUT}    ${concept_definition}
     Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2

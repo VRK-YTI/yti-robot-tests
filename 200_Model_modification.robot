@@ -4,6 +4,7 @@ Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Datamodel_Resources.robot
+Resource          resources/Terminologies_Resources.robot
 
 *** Variables ***
 ${class}          Maksu
@@ -259,8 +260,8 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
-209. Create new class and add referencing concept
-    [Documentation]    Create new class and add referencing concept
+209. Create new class and add referencing concept and vocabulary
+    [Documentation]    Create new class and add referencing concept and vocabulary
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
@@ -392,7 +393,7 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Click Element    ${PREDICATE_REMOVE_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
-    Log to Console    Incomplete state attribute removed
+    Log to Console    Incomplete state association removed
     Wait until page contains element    ${ATTRIBUTE_TAB}    timeout=30
     Click Element    ${ATTRIBUTE_TAB}
     Wait until page contains element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
@@ -410,7 +411,9 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Click Element    ${PREDICATE_REMOVE_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
-    Log to Console    Incomplete state association removed
+    Log to Console    Incomplete state attribute removed
+    Wait until page contains element    ${CLASS_TAB}    timeout=30
+    Click Element    ${CLASS_TAB}
     Wait until page contains element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
     Wait until page contains element    ${MODIFY_CLASS}    timeout=60
@@ -561,3 +564,34 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Wait until page contains element    //*[contains(@id,'Testiluokka2_tabset_link')]    timeout=60
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
+
+216. Create new class and suggest concept for Terminologies
+    [Documentation]    Create new class to profile and suggest concept for Terminologies.
+    [Tags]    tietomallit
+    [Setup]    Test Case Setup Terminologies
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Add vocabulary    Testiautomaatiosanasto
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class and suggest concept to terminologies    Testiluokka    Testiluokan määritelmä
+    Save class
+    Wait until page contains    Testiluokka    timeout=30
+    Wait until page contains    Käsiteen määritelmä    timeout=30
+    Wait until page contains    Testiluokan määritelmä    timeout=30
+    Wait until page contains    Sanasto    timeout=30
+    Wait until page contains    Testiautomaatiosanasto    timeout=30
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Test Case Teardown Terminologies
+
+*** Keywords ***
+Test Case Setup Terminologies
+    Terminology Setup
+    Test Case Setup Create Testiautomaatio profile
+
+Test Case Teardown Terminologies
+    Delete profile    ${MODEL_1}
+    Terminology Teardown
