@@ -71,6 +71,12 @@ ${ADD_LIBRARY_BTN}    id=add_library_button
 ${MODIFY_MODEL}    id=model_edit_buttons_edit
 ${SHOW_HISTORY_BTN}    id=model_edit_buttons_history
 ${MODEL_STATE_INCOMPLETE}    id=modelState_INCOMPLETE
+#namespace
+${CREATE_NEW_NAMESPACE}    //div[1]/div/div/div/div[2]/div[2]/div/button
+${NAMESPACE_LABEL}    id=label
+${NAMESPACE_PREFIX}    id=prefix
+${NAMESPACE_CREATE}    //div[1]/div/div/form/div[3]/button[1]
+${NAMESPACE_VALUE}    id=namespace
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
