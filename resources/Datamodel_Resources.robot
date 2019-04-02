@@ -120,6 +120,7 @@ ${CONVERT_TO_ASSOCIATION}    id=predicate_change_type
 ${PREDICATE_EDIT_CANCEL_BTN}    id=predicate_edit_buttons_cancel
 ${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
 ${CREATE_AND_USE_ATTRIBUTE}    //div[1]/div/div/form/div[3]/button[1]
+${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
@@ -129,6 +130,7 @@ ${CREATE_NEW_ASSOCIATION_BTN}    //div[1]/div/div/form/div[3]/button[1]
 ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
 ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
 ${CONVERT_TO_ATTRIBUTE}    id=predicate_change_type
+${SUGGEST_ASSOCIATION_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment

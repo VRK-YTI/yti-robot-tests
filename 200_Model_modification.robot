@@ -600,7 +600,99 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Close All Browsers
     [Teardown]    Test Case Teardown Terminologies
 
-217. Create new namespace
+217. Create new attribute and association and suggest concepts to Terminologies tool
+    [Documentation]    Create new attribute and association for profile and suggest concepts to Terminologies tool.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Terminologies
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Add vocabulary    Testiautomaatiosanasto
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka1
+    Wait until element is visible    ${ADD_PROPERTY_DDL}    timeout=30
+    Click Element    ${ADD_PROPERTY_DDL}
+    Wait until element is visible    ${ADD_PROPERTY_BTN}    timeout=30
+    Click Element    ${ADD_PROPERTY_BTN}
+    Wait until page contains element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    Testiattribuutti
+    Wait until element is visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
+    Wait until page contains element    ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    timeout=30
+    Click Element    ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}
+    Wait until page contains element    ${CONCEPT_DEFINITION_INPUT}    timeout=30
+    Input Text    ${CONCEPT_DEFINITION_INPUT}    Testiattribuutin määritelmä
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Sleep    4
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Sleep    2
+    Save class
+    Wait until page contains element    //*[contains(text(), "Testiattribuutti")]    timeout=30
+    Click element    //*[contains(text(), "Testiattribuutti")]
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "autom:testiattribuutti")]    timeout=30
+    Click element    //*[contains(text(), "autom:testiattribuutti")]
+    Wait until page contains    Testiattribuutti    timeout=30
+    Wait until page contains    Käsitteen määritelmä    timeout=30
+    Wait until page contains    Testiattribuutin määritelmä    timeout=30
+    Wait until page contains    Sanasto    timeout=30
+    Wait until page contains    Testiautomaatiosanasto    timeout=30
+    Wait until page contains element    ${MODIFY_CLASS}    timeout=30
+    Click Element    ${MODIFY_CLASS}
+    Wait until element is visible    ${ADD_PROPERTY_DDL}    timeout=30
+    Click Element    ${ADD_PROPERTY_DDL}
+    Wait until element is visible    ${ADD_PROPERTY_BTN}    timeout=30
+    Click Element    ${ADD_PROPERTY_BTN}
+    Wait until page contains element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    Testiassosiaatio
+    Wait until element is visible    ${CREATE_NEW_ASSOCIATION_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ASSOCIATION_LINK}
+    Wait until page contains element    ${SUGGEST_ASSOCIATION_TO_TERMINOLOGIES}    timeout=30
+    Click Element    ${SUGGEST_ASSOCIATION_TO_TERMINOLOGIES}
+    Wait until page contains element    ${CONCEPT_DEFINITION_INPUT}    timeout=30
+    Input Text    ${CONCEPT_DEFINITION_INPUT}    Testiassosiaation määritelmä
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Sleep    4
+    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Click Element    ${USE_SELECTION_BTN}
+    Sleep    2
+    Wait until page contains element    //*[contains(text(), "autom:testiassosiaatio")]    timeout=30
+    Click element    //*[contains(text(), "autom:testiassosiaatio")]
+    Wait until page contains    Testiassosiaatio    timeout=30
+    Wait until page contains    Käsitteen määritelmä    timeout=30
+    Wait until page contains    Testiassosiaation määritelmä    timeout=30
+    Wait until page contains    Sanasto    timeout=30
+    Wait until page contains    Testiautomaatiosanasto    timeout=30
+    Save class
+    Sleep    1
+    Go back to Data Vocabularies frontpage
+    Close All Browsers
+    Terminology Test Case Setup
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait until page contains element    ${CONCEPTS_TAB}    timeout=30
+    Click element    ${CONCEPTS_TAB}
+    Wait until page contains element    //*[contains(@id,'concept-4_concept_list_listitem')]    timeout=30
+    Click element    //*[contains(@id,'concept-4_concept_list_listitem')]
+    Wait until page contains    Testiattribuutti    timeout=30
+    Sleep    1
+    Wait until page contains element    //*[contains(@id,'concept-5_concept_list_listitem')]    timeout=30
+    Click element    //*[contains(@id,'concept-5_concept_list_listitem')]
+    Wait until page contains    Testiassosiaatio    timeout=30
+    Sleep    1
+    Close All Browsers
+    [Teardown]    Test Case Teardown Terminologies
+
+218. Create new namespace
     [Documentation]    Create new profile and create new namespace. Add two classes.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile

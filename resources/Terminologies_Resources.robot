@@ -193,9 +193,9 @@ Create Testiautomaatiosanasto and import vocabulary
 Delete Testiautomaatiosanasto
     Terminology Test Case Setup
     Log to console    Terminology test case setup done
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=90
     Input Text    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=90
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
