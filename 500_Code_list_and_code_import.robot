@@ -26,6 +26,8 @@ ${Variant_no_end_date}    ${DATAFOLDER}${/}Variant_code_list_and_codes_no_end_da
 ${Code_list_with_links}    ${DATAFOLDER}${/}Code_list_with_links.xlsx
 ${Code_list_with_sub_code_list_in_code}    ${DATAFOLDER}${/}Code_list_with_sub_code_list_in_code.xlsx
 ${Code_list_with_default_code_new_version}    ${DATAFOLDER}${/}Code_list_codes_default_code_for_new_version_valid.xlsx
+${Code_list_with_30_Codes_updated}    ${DATAFOLDER}${/}Code_list_with_30_Codes_updated.xlsx
+${Code_list_with_30_Codes_invalid_codevalue}    ${DATAFOLDER}${/}Code_list_with_30_Codes_invalid_codevalue.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -1489,6 +1491,47 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
+
+536. Update code list
+    [Documentation]    Import code list and update code list from file. Check that other code lists
+    ...    can not be updated with this function.
+    [Tags]    regression    koodistot    500
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Sleep    2
+    Wait until page contains    30 koodia    timeout=20
+    Update code list    ${Code_list_with_30_Codes_updated}    ${CODE_LIST_24}
+    Sleep    1
+    Wait until page contains    31 koodia    timeout=20
+    Wait until element is visible    //*[contains(text(), "testcode58 - Testcode 58")]    timeout=20
+    Click Element    //*[contains(text(), "testcode58 - Testcode 58")]
+    Wait until page contains    Voimassa oleva    timeout=20
+    Wait until page contains    Uuden koodin kuvaus    timeout=20
+    Wait until page contains    01.01.2019 - 01.01.2020    timeout=20
+    Sleep    3
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    Koodiston uusi kuvaus    timeout=20
+    #Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    #Click element    ${CODE_LIST_DDL}
+    #Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    #Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    #Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    #Click element    ${FILE_FORMAT_BTN}
+    #Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    #Click element    ${FILE_FORMAT_Excel}
+    #Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    #Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue}
+    #Sleep    2
+    #Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    #Click Element    ${UPLOAD_FILE_BTN}
+    #Wait until page contains    ${error}    timeout=20
+    #Cancel code list import
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_24}
 
 *** Keywords ***
 Check values from Draft Code list

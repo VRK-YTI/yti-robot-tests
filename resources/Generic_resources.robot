@@ -103,6 +103,7 @@ ${CREATE_CODELIST_VERSION_FROM_FILE}    id=clone_codelist_from_file_button
 ${CONCEPT_SUGGESTION_NAME_INPUT}    id=concept_suggestion_name_input
 ${CREATE_CUMULATIVE_CODE_LIST}    id=create_new_codescheme_as_cumulative
 ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    id=mark_codelist_cumulative_checkbox
+${UPDATE_CODE_LIST_FROM_FILE_BTN}    id=update_codelist_from_file_button
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -225,6 +226,7 @@ ${CODE_LIST_20}    Testi dcat
 ${CODE_LIST_21}    Linkkikoodisto
 ${CODE_LIST_22}    Koodisto800
 ${CODE_LIST_23}    Koodisto300
+${CODE_LIST_24}    Koodisto606
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000
@@ -452,6 +454,25 @@ Upload codelist
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
     Log to Console    Code list ${codelist_name} imported
+
+Update code list
+    [Arguments]    ${code_list}    ${codelist_name}
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${code_list}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click Element    ${UPLOAD_FILE_BTN}
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
+    Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
+    Log to Console    Code list ${codelist_name} updated
 
 Import code list in Excel format
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
