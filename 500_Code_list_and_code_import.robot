@@ -33,6 +33,8 @@ ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
 ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv.csv
 ${Codes_update_sub_code_list_csv}    ${DATAFOLDER}${/}Codes_update_sub_code_list_csv.csv
+${Code_list_with_30_Codes_updated_csv}    ${DATAFOLDER}${/}Code_list_with_30_Codes_updated_csv.csv
+${Code_list_with_30_Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Code_list_with_30_Codes_invalid_codevalue_csv.csv
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/code/testcode29
@@ -1496,13 +1498,13 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
 536. Update code list
     [Documentation]    Import code list and update code list from file. Check that other code lists
     ...    can not be updated with this function.
-    [Tags]    regression    koodistot    test    500
+    [Tags]    regression    koodistot    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
     Wait until page contains    30 koodia    timeout=20
-    Update code list    ${Code_list_with_30_Codes_updated}    ${CODE_LIST_24}
+    Update code list    ${Code_list_with_30_Codes_updated}    ${CODE_LIST_24}    ${FILE_FORMAT_Excel}
     Sleep    1
     Wait until page contains    31 koodia    timeout=20
     Wait until element is visible    //*[contains(text(), "testcode58 - Testcode 58")]    timeout=20
@@ -1516,6 +1518,11 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodiston uusi kuvaus    timeout=20
+    Update code list    ${Code_list_with_30_Codes_updated_csv}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    Koodiston uusi kuvaus numero 2    timeout=20
+    Wait until page contains    Koodiston uusi määritelmä numero 2    timeout=20
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
@@ -1531,6 +1538,21 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Click Element    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_codevalue}    timeout=20
     Cancel code list import
+    #Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    #Click element    ${CODE_LIST_DDL}
+    #Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    #Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    #Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    #Click element    ${FILE_FORMAT_BTN}
+    #Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
+    #Click element    ${FILE_FORMAT_CSV}
+    #Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    #Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue_csv}
+    #Sleep    2
+    #Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    #Click Element    ${UPLOAD_FILE_BTN}
+    #Wait until page contains    ${Error_invalid_codevalue}    timeout=20
+    #Cancel code list import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_24}
 

@@ -26,6 +26,7 @@ ${Codes_with_missing_order_value}    ${DATAFOLDER}${/}Codes_with_missing_order.x
 ${Same_order_values}    ${DATAFOLDER}${/}Codes_with_same_order_values.xlsx
 ${Codes_with_order_values}    ${DATAFOLDER}${/}Codes_with_order_values.xlsx
 ${Codes_with_existing_order_values}    ${DATAFOLDER}${/}Codes_with_existing_order_values.xlsx
+${Codes_with_invalid_order_values}    ${DATAFOLDER}${/}Codes_with_invalid_order_values.xlsx
 #CSV paths
 ${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.csv
 ${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
@@ -42,6 +43,7 @@ ${Duplicate_Codes_csv}    ${DATAFOLDER}${/}Duplicate_codes_csv.csv
 ${Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Codes_invalid_codevalue_csv.csv
 ${Codes_with_missing_order_value_csv}    ${DATAFOLDER}${/}Codes_with_missing_order_csv.csv
 ${Same_order_values_csv}    ${DATAFOLDER}${/}Codes_with_same_order_values_csv.csv
+${Codes_with_invalid_order_values_csv}    ${DATAFOLDER}${/}Codes_with_invalid_order_values_csv.csv
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
@@ -59,6 +61,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen rivillä 9. Sallitut merkit
 ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
 ${Error_same_order_values}    Koodin order-sarakkeen kentistä löytyi samoja arvoja.
 ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä koodistossa.
+${Error_invalid_order_value}    ORDER-sarakkeessa on viallinen arvo rivillä 2.
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
@@ -340,6 +343,24 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
     Import codes in Excel format
     Upload codes    ${Codes_with_order_values}
     Wait until page contains    ${Error_existing_order_values}    timeout=20
+    Cancel code import
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
+
+416. Import Codes with invalid ORDER values
+    [Documentation]    Import Codes with invalid ORDER values in Excel/CSV and check error message
+    [Tags]    regression    koodistot    test    400
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Import codes in Excel format
+    Upload codes    ${Codes_with_invalid_order_values}
+    Wait until page contains    ${Error_invalid_order_value}    timeout=20
+    Cancel code import
+    Import codes in CSV format
+    Upload codes    ${Codes_with_invalid_order_values_csv}
+    Wait until page contains    ${Error_invalid_order_value}    timeout=20
     Cancel code import
     Sleep    2
     Return to Koodistot frontpage

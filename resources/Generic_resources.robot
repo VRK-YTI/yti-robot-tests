@@ -456,15 +456,15 @@ Upload codelist
     Log to Console    Code list ${codelist_name} imported
 
 Update code list
-    [Arguments]    ${code_list}    ${codelist_name}
+    [Arguments]    ${code_list}    ${codelist_name}    ${file_format}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
     Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
     Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
     Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${file_format}    timeout=20
+    Click element    ${file_format}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Choose file    ${FILE_UPLOAD_BTN}    ${code_list}
     Sleep    2
