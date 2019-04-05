@@ -37,6 +37,7 @@ ${Codes_update_sub_code_list_csv}    ${DATAFOLDER}${/}Codes_update_sub_code_list
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/code/testcode29
 ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon.
+${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen kohteena oleva koodisto.
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -1495,7 +1496,7 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
 536. Update code list
     [Documentation]    Import code list and update code list from file. Check that other code lists
     ...    can not be updated with this function.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -1515,21 +1516,21 @@ ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kum
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodiston uusi kuvaus    timeout=20
-    #Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    #Click element    ${CODE_LIST_DDL}
-    #Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
-    #Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
-    #Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    #Click element    ${FILE_FORMAT_BTN}
-    #Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    #Click element    ${FILE_FORMAT_Excel}
-    #Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    #Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue}
-    #Sleep    2
-    #Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    #Click Element    ${UPLOAD_FILE_BTN}
-    #Wait until page contains    ${error}    timeout=20
-    #Cancel code list import
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click Element    ${UPLOAD_FILE_BTN}
+    Wait until page contains    ${Error_invalid_codevalue}    timeout=20
+    Cancel code list import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_24}
 
