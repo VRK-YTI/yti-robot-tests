@@ -61,7 +61,7 @@ ${Error_invalid_codeValue}    Tunnus on virheellinen rivillä 9. Sallitut merkit
 ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
 ${Error_same_order_values}    Koodin order-sarakkeen kentistä löytyi samoja arvoja.
 ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä koodistossa.
-${Error_invalid_order_value}    ORDER-sarakkeessa on viallinen arvo rivillä 2.
+${Error_invalid_order_value}    ORDER-sarakkeen arvo ei ole sallittu rivillä 2.
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
