@@ -964,10 +964,10 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists with extensions    ${CODE_LIST_16}
 
-626. Remove code from versioned code list with extensions
+626. Remove code and extension from versioned code list
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    create new version of code list. Try to remove code from code list and check that proper error message is displayed.
-    ...    YTI-452.
+    ...    Remove extension and check that code list version history does not disappear. YTI-452, YTI-566.
     [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
@@ -998,8 +998,17 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    ${Error_linked_code}    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Sleep    2
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait until element is visible    ${EXTENSIONS_TAB}    timeout=30
+    Click element    ${EXTENSIONS_TAB}
+    Wait until element is visible    //*[contains(@id,'111_view_extension')]    timeout=30
+    Click Element    //*[contains(@id,'111_view_extension')]
+    Delete extension
+    Wait until element is visible    ${VERSION_TAB}    timeout=30
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists with extensions    ${CODE_LIST_19}    ${CODE_LIST_14}
+    [Teardown]    Remove code lists    ${CODE_LIST_19}    ${CODE_LIST_14}
 
 627. Extend front page search to extensions
     [Documentation]    Import two code lists with extensions. Check that front page search with extensions is successfull.
