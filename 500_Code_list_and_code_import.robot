@@ -1498,7 +1498,7 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
 536. Update code list
     [Documentation]    Import code list and update code list from file. Check that other code lists
     ...    can not be updated with this function.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -1519,7 +1519,9 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodiston uusi kuvaus    timeout=20
     Update code list    ${Code_list_with_30_Codes_updated_csv}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
+    Sleep    2
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Sleep    1
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodiston uusi kuvaus numero 2    timeout=20
     Wait until page contains    Koodiston uusi määritelmä numero 2    timeout=20
@@ -1538,21 +1540,21 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Click Element    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_codevalue}    timeout=20
     Cancel code list import
-    #Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    #Click element    ${CODE_LIST_DDL}
-    #Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
-    #Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
-    #Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    #Click element    ${FILE_FORMAT_BTN}
-    #Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
-    #Click element    ${FILE_FORMAT_CSV}
-    #Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    #Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue_csv}
-    #Sleep    2
-    #Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
-    #Click Element    ${UPLOAD_FILE_BTN}
-    #Wait until page contains    ${Error_invalid_codevalue}    timeout=20
-    #Cancel code list import
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
+    Click element    ${FILE_FORMAT_CSV}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue_csv}
+    Sleep    2
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click Element    ${UPLOAD_FILE_BTN}
+    Wait until page contains    ${Error_invalid_codevalue}    timeout=20
+    Cancel code list import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_24}
 
