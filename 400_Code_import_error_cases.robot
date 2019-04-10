@@ -27,6 +27,9 @@ ${Same_order_values}    ${DATAFOLDER}${/}Codes_with_same_order_values.xlsx
 ${Codes_with_order_values}    ${DATAFOLDER}${/}Codes_with_order_values.xlsx
 ${Codes_with_existing_order_values}    ${DATAFOLDER}${/}Codes_with_existing_order_values.xlsx
 ${Codes_with_invalid_order_values}    ${DATAFOLDER}${/}Codes_with_invalid_order_values.xlsx
+${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto.
+${empty}          ${DATAFOLDER}${/}empty.xlsx
+${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
 #CSV paths
 ${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.csv
 ${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
@@ -62,6 +65,8 @@ ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
 ${Error_same_order_values}    Koodin order-sarakkeen kentistä löytyi samoja arvoja.
 ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä koodistossa.
 ${Error_invalid_order_value}    ORDER-sarakkeen arvo ei ole sallittu rivillä 2.
+${Error_no_codevalue}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
+${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö on määritelty oikein ja yritä uudelleen.
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE
@@ -361,6 +366,24 @@ ${Error_invalid_order_value}    ORDER-sarakkeen arvo ei ole sallittu rivillä 2.
     Import codes in CSV format
     Upload codes    ${Codes_with_invalid_order_values_csv}
     Wait until page contains    ${Error_invalid_order_value}    timeout=20
+    Cancel code import
+    Sleep    2
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_2}
+
+417. Import Codes with empty Excel file and Excel file with no content
+    [Documentation]    Import Codes with Excel-file with no content and check error message
+    [Tags]    regression    koodistot    test    400
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Import codes in Excel format
+    Upload codes    ${empty}
+    Wait until page contains    ${Error_empty_Excel}    timeout=20
+    Cancel code import
+    Import codes in Excel format
+    Upload codes    ${No_content_excel}
+    Wait until page contains    ${Error_no_content}    timeout=20
     Cancel code import
     Sleep    2
     Return to Koodistot frontpage
