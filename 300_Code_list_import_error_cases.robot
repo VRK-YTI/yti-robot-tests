@@ -47,7 +47,7 @@ ${Error_invalid_enddate}    Virheellinen loppupäivä rivillä 2.
 ${Error_same_sub_code_list}    Liittyvä koodisto on sama kuin koodin koodisto.
 ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy tunnisteella: 4c6c0ced-7e52-4e01-a985-000003ec223c
 ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto.
-${Error_no_codevalue}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
+${Error_codevalue_missing}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
 ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö on määritelty oikein ja yritä uudelleen.
 
 *** Test Cases ***
@@ -332,7 +332,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    Tuo
-    Wait until page contains    ${Error_no_codevalue}    timeout=20
+    Wait until page contains    ${Error_codevalue_missing}    timeout=20
     Cancel code list import
     Sleep    2
     Go back to Koodistot frontpage

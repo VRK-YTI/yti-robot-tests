@@ -1564,10 +1564,13 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     ...    variant listing do not disappear after code list update.YTI-498.
     [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Sleep    2
     Wait until page contains    10 koodia    timeout=20
+    Return to Koodistot frontpage
+    Upload codelist in Excel format    ${Variant_code_list}    ${CODE_LIST_8}
+    Sleep    2
+    Wait until page contains    25 koodia    timeout=20
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
@@ -1580,11 +1583,8 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Wait until page contains element    ${VERSION_TAB}    timeout=20
     Click element    ${VERSION_TAB}
     Log to Console    Codelist info tab clicked
-    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait until page contains    koodisto6000    timeout=20
     Wait until page contains    Koodisto600    timeout=20
-    Wait until page contains    koodisto7000    timeout=20
-    Wait until page contains    Luonnos    timeout=20
-    Wait until page contains    Voimassa oleva    timeout=20
     Sleep    1
     Modify code list
     Wait Until Page Contains Element    ${CREATE_CUMULATIVE_CODE_LIST}    timeout=30
@@ -1593,6 +1593,21 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Save code list
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
     Wait until page contains    Kyllä    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click element    ${ATTACH_VARIANT_BTN}
+    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Sleep    2
+    Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
+    Sleep    2
+    Click element    //*[contains(text(), "koodisto7000")]
+    Sleep    2
+    Log to Console    koodisto7000 attached to Koodisto600 as a variant
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click element    ${CODELIST_VARIANTS_TAB}
+    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait until page contains    koodisto7000    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_9}
 
