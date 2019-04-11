@@ -1562,10 +1562,9 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     [Documentation]    Create new version of code list from file, add variant, change code list as cumulative
     ...    and update code list from file. Check that code list remains as cumulative and version history and
     ...    variant listing do not disappear after code list update.YTI-498.
-    [Tags]    koodistot
+    [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
-    Sleep    2
+    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
     Wait until page contains    10 koodia    timeout=20
     Return to Koodistot frontpage
     Upload codelist in Excel format    ${Variant_code_list}    ${CODE_LIST_8}
@@ -1587,9 +1586,8 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Wait until page contains    Koodisto600    timeout=20
     Sleep    1
     Modify code list
-    Wait Until Page Contains Element    ${CREATE_CUMULATIVE_CODE_LIST}    timeout=30
-    Click element    ${CREATE_CUMULATIVE_CODE_LIST}
-    Checkbox Should Be Selected    ${CREATE_CUMULATIVE_CODE_LIST}
+    Wait Until Page Contains Element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    timeout=30
+    Click element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}
     Save code list
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
     Wait until page contains    Kyllä    timeout=20
@@ -1600,16 +1598,22 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
     Sleep    2
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
-    Sleep    2
+    Wait Until Page Contains Element    //*[contains(text(), "koodisto7000")]
     Click element    //*[contains(text(), "koodisto7000")]
-    Sleep    2
     Log to Console    koodisto7000 attached to Koodisto600 as a variant
     Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
     Click element    ${CODELIST_VARIANTS_TAB}
     Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
     Wait until page contains    koodisto7000    timeout=20
+    Update code list    ${Code_list_with_30_Codes_updated}    ${CODE_LIST_24}    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Wait until page contains element    ${VERSION_TAB}    timeout=20
+    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Click element    ${CODELIST_INFO_TAB}
+    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    Wait until page contains    Kyllä    timeout=20
     Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_9}
+    [Teardown]    Remove code lists    ${CODE_LIST_24}    ${CODE_LIST_8}    ${CODE_LIST_9}
 
 *** Keywords ***
 Check values from Draft Code list
