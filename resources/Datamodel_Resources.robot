@@ -71,6 +71,10 @@ ${ADD_LIBRARY_BTN}    id=add_library_button
 ${MODIFY_MODEL}    id=model_edit_buttons_edit
 ${SHOW_HISTORY_BTN}    id=model_edit_buttons_history
 ${MODEL_STATE_INCOMPLETE}    id=modelState_INCOMPLETE
+${MAXIMAXE_BTN}    id=maximize_button
+${DOWNLOAD_DDL}    id=download_dropdown
+${PNG_DOWNLOAD}    id=PNG_download_dropdown
+${SVG_DOWNLOAD}    id=SVG_download_dropdown
 #namespace
 ${CREATE_NEW_NAMESPACE}    //div[1]/div/div/div/div[2]/div[2]/div/button
 ${NAMESPACE_LABEL}    id=label
@@ -106,6 +110,7 @@ ${CLASS_TAB}      id=class_tab_heading_link
 ${CLASS_STATE_INCOMPLETE}    id=classState_INCOMPLETE
 ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 ${CONCEPT_DEFINITION_INPUT}    id=conceptDefinition
+${EXPORT_CLASS_DDL}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/button
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -140,6 +145,9 @@ ${VOCABULARY_ADD_CONTRIBUTOR}    id=add_contributor_button
 ${SAVE_CORE_VOCABULARY_BTN}    id=model_edit_buttons_save
 ${SAVE_NEW_CORE_VOCABULARY_BTN}    id=save_new_model_button
 ${MODIFY_CORE_VOCABULARY_BTN}    id=model_edit_buttons_edit
+${EXPORT_JSON_LD}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/div/a[1]
+${EXPORT_Turtle}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/div/a[2]
+${EXPORT_RDF}     //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/div/a[3]
 
 *** Keywords ***
 Test Case Setup

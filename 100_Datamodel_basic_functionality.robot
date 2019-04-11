@@ -240,9 +240,9 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 *** Keywords ***
 Restore Finnish language
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
     Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait until page contains element    ${LANGUAGE_FI}
+    Wait until page contains element    ${LANGUAGE_FI}    timeout=20
     Click element    ${LANGUAGE_FI}
     Wait until page contains    Kaikki organisaatiot    timeout=20
     Wait until page contains    Kaikki tyypit    timeout=20
@@ -259,7 +259,7 @@ Select navigation menu link
 
 Change user interface language
     [Arguments]    ${language}
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    2
     Click element    ${language}

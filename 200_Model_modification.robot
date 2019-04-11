@@ -23,6 +23,9 @@ ${class_item_1}    Rooli
 ${class_item_2}    Maksu
 ${class_item_3}    Ajanjakso
 ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraavat resurssit käyttävät sitä
+${class_json_ld_url}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
+${class_turtle}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
+${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
 
 *** Test Cases ***
 200. Modify profile
@@ -724,6 +727,49 @@ ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraav
     Confirm all properties for class and save
     Wait until page contains element    //*[contains(@id,'Rooli_tabset_link')]    timeout=30
     Log to Console    Class "Rooli" added
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+219. Export class in different formats
+    [Documentation]    Create new profile and class.
+    ...    Check that export is succesfull in all formats.
+    [Tags]    regression    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka
+    Save class
+    Wait until page contains    Testiluokka    timeout=30
+    Log to Console    Class "Testiluokka" added without referencing concept
+    Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
+    Click Element    ${EXPORT_CLASS_DDL}
+    Wait until element is visible    ${EXPORT_JSON_LD}    timeout=30
+    Click Element    ${EXPORT_JSON_LD}
+    Select Window    url=${class_json_ld_url}
+    Wait until page contains    "@id" : "autom:Testiluokka",    timeout=30
+    Page should not contain    {"errorMessage":"Not found"}
+    Close Window
+    Sleep    1
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Sleep    1
+    Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
+    Click Element    ${EXPORT_CLASS_DDL}
+    Wait until element is visible    ${EXPORT_Turtle}    timeout=30
+    Click Element    ${EXPORT_Turtle}
+    Select Window    url=${class_turtle}
+    Wait until page contains    <http://uri.suomi.fi/datamodel/ns/autom>    timeout=30
+    Wait until page contains    "Testiluokka"@fi    timeout=30
+    Page should not contain    {"errorMessage":"Not found"}
+    Close Window
+    Sleep    1
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
