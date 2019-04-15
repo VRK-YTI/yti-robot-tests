@@ -735,7 +735,7 @@ ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph
 219. Export class in different formats
     [Documentation]    Create new profile and class.
     ...    Check that export is succesfull in all formats.
-    [Tags]    regression    tietomallit    200
+    [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
     Select and edit Testiautomaatio profile
