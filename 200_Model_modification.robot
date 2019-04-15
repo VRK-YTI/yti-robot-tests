@@ -24,7 +24,9 @@ ${class_item_2}    Maksu
 ${class_item_3}    Ajanjakso
 ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraavat resurssit käyttävät sitä
 ${class_json_ld_url}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
+${class_json_ld_url_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
 ${class_turtle}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
+${class_turtle_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
 ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
 
 *** Test Cases ***
@@ -750,7 +752,8 @@ ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_LD}    timeout=30
     Click Element    ${EXPORT_JSON_LD}
-    Select Window    url=${class_json_ld_url}
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_json_ld_url}
+    ...    ELSE    Select Window    url=${class_json_ld_url_test}
     Wait until page contains    "@id" : "autom:Testiluokka",    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Close Window
@@ -762,7 +765,8 @@ ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_Turtle}    timeout=30
     Click Element    ${EXPORT_Turtle}
-    Select Window    url=${class_turtle}
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_turtle}
+    ...    ELSE    Select Window    url=${class_turtle_test}
     Wait until page contains    <http://uri.suomi.fi/datamodel/ns/autom>    timeout=30
     Wait until page contains    "Testiluokka"@fi    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
