@@ -110,7 +110,7 @@ ${CLASS_TAB}      id=class_tab_heading_link
 ${CLASS_STATE_INCOMPLETE}    id=classState_INCOMPLETE
 ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 ${CONCEPT_DEFINITION_INPUT}    id=conceptDefinition
-${EXPORT_CLASS_DDL}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/button
+${EXPORT_CLASS_DDL}    id=class_export_dropdown
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -145,9 +145,10 @@ ${VOCABULARY_ADD_CONTRIBUTOR}    id=add_contributor_button
 ${SAVE_CORE_VOCABULARY_BTN}    id=model_edit_buttons_save
 ${SAVE_NEW_CORE_VOCABULARY_BTN}    id=save_new_model_button
 ${MODIFY_CORE_VOCABULARY_BTN}    id=model_edit_buttons_edit
-${EXPORT_JSON_LD}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/div/a[1]
-${EXPORT_Turtle}    //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/div/a[2]
-${EXPORT_RDF}     //*[@id="class"]/form/fieldset/div/selection-view/div/div[2]/editable-entity-buttons/div/ng-transclude/div/selection-buttons/export/div/div/a[3]
+#Export
+${EXPORT_JSON_LD}    id=class_export_show_application_ld_json
+${EXPORT_Turtle}    id=class_export_show_text_turtle
+${EXPORT_RDF}     id=class_export_show_application_rdf_xml
 
 *** Keywords ***
 Test Case Setup

@@ -28,6 +28,12 @@ ${class_json_ld_url_test}    https://tietomallit-test.suomi.fi/api/rest/exportRe
 ${class_turtle}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
 ${class_turtle_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
 ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
+${class_rdf_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
+${class_xml_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
+${class_json_schema_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+${class_json_ld_context_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
+${class_json_ld_frame_test}    blob:https://tietomallit-test.suomi.fi/a93dc0f7-ee66-48ea-8723-85c89ea28e9c
+${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-faee-4aca-942c-2775ef13e268
 
 *** Test Cases ***
 200. Modify profile
@@ -734,7 +740,7 @@ ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph
 
 219. Export class in different formats
     [Documentation]    Create new profile and class.
-    ...    Check that export is succesfull in all formats.
+    ...    Check that export for class is succesfull in all formats.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
@@ -756,6 +762,7 @@ ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph
     ...    ELSE    Select Window    url=${class_json_ld_url_test}
     Wait until page contains    "@id" : "autom:Testiluokka",    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
+    Page should not contain    Whitelabel Error Page
     Close Window
     Sleep    1
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
@@ -770,6 +777,20 @@ ${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph
     Wait until page contains    <http://uri.suomi.fi/datamodel/ns/autom>    timeout=30
     Wait until page contains    "Testiluokka"@fi    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
+    Page should not contain    Whitelabel Error Page
+    Close Window
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Sleep    1
+    Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
+    Click Element    ${EXPORT_CLASS_DDL}
+    Wait until element is visible    ${EXPORT_RDF}    timeout=30
+    Click Element    ${EXPORT_RDF}
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_rdf}
+    ...    ELSE    Select Window    ${class_rdf_test}
+    Wait until page contains    xmlns:autom="http://uri.suomi.fi/datamodel/ns/autom#"    timeout=30
+    Page should not contain    {"errorMessage":"Not found"}
+    Page should not contain    Whitelabel Error Page
     Close Window
     Sleep    1
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
