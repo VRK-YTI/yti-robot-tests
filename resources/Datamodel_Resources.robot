@@ -149,6 +149,9 @@ ${MODIFY_CORE_VOCABULARY_BTN}    id=model_edit_buttons_edit
 ${EXPORT_JSON_LD}    id=class_export_show_application_ld_json
 ${EXPORT_Turtle}    id=class_export_show_text_turtle
 ${EXPORT_RDF}     id=class_export_show_application_rdf_xml
+${EXPORT_XML}     id=class_export_show_application_xml
+${EXPORT_JSON_Schema}    id=class_export_show_application_schema_json
+${EXPORT_JSON_LD_Context}    id=class_export_show_application_ld_json_context
 
 *** Keywords ***
 Test Case Setup
