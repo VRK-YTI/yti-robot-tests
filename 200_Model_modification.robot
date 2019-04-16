@@ -787,7 +787,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Wait until element is visible    ${EXPORT_RDF}    timeout=30
     Click Element    ${EXPORT_RDF}
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_rdf}
-    ...    ELSE    Select Window    ${class_rdf_test}
+    ...    ELSE    Select Window    url=${class_rdf_test}
     Wait until page contains    xmlns:autom="http://uri.suomi.fi/datamodel/ns/autom#"    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
