@@ -33,6 +33,8 @@ ${class_xml}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph
 ${class_xml_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
 ${class_json_schema}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
 ${class_json_schema_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+${model_json_schema}    https://tietomallit-dev.suomi.fi/api/rest/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+${model_json_schema_test}    https://tietomallit-test.suomi.fi/api/rest/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
 ${class_json_ld_context}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
 ${class_json_ld_context_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
 ${class_json_ld_frame}    blob:https://tietomallit-dev.suomi.fi/46f77ed0-82b6-4d57-b771-fc9a92bf1f17
@@ -838,6 +840,43 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    Whitelabel Error Page
     Close Window
     Sleep    1
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
+    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+220. Deactivate class and export class in JSON Schema format
+    [Documentation]    Create new profile and class.
+    ...    Deactivate class and check that deactivated class is not used in JSON Schema generation.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log to Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka
+    Wait until page contains element    ${DEACTIVATED_CHECKBOX}    timeout=30
+    Click Element    ${DEACTIVATED_CHECKBOX}
+    Save class
+    Sleep    10
+    Wait until page contains    Testiluokka    timeout=30
+    Wait until page contains    Deaktivoitu    timeout=30
+    Wait until page contains    Kyllä    timeout=30
+    Log to Console    Class "Testiluokka" deactivated
+    Sleep    1
+    Wait until page contains element    ${EXPORT_MODEL_DDL}    timeout=30
+    Click Element    ${EXPORT_MODEL_DDL}
+    Wait until element is visible    ${EXPORT_MODEL_JSON_Schema}    timeout=30
+    Click Element    ${EXPORT_MODEL_JSON_Schema}
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${model_json_schema}
+    ...    ELSE    Select Window    url=${model_json_schema_test}
+    Page should not contain    "@id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"
+    Page should not contain    Whitelabel Error Page
+    Page should not contain    {"errorMessage":"Not found"}
+    Close Window
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
     ...    ELSE    Select Window    title=TEST - Tietomallit
     Go back to Data Vocabularies frontpage

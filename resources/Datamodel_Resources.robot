@@ -75,6 +75,7 @@ ${MAXIMAXE_BTN}    id=maximize_button
 ${DOWNLOAD_DDL}    id=download_dropdown
 ${PNG_DOWNLOAD}    id=PNG_download_dropdown
 ${SVG_DOWNLOAD}    id=SVG_download_dropdown
+${EXPORT_MODEL_DDL}    id=model_export_dropdown
 #namespace
 ${CREATE_NEW_NAMESPACE}    //div[1]/div/div/div/div[2]/div[2]/div/button
 ${NAMESPACE_LABEL}    id=label
@@ -111,6 +112,7 @@ ${CLASS_STATE_INCOMPLETE}    id=classState_INCOMPLETE
 ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 ${CONCEPT_DEFINITION_INPUT}    id=conceptDefinition
 ${EXPORT_CLASS_DDL}    id=class_export_dropdown
+${DEACTIVATED_CHECKBOX}    id=deactivated
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -151,6 +153,7 @@ ${EXPORT_Turtle}    id=class_export_show_text_turtle
 ${EXPORT_RDF}     id=class_export_show_application_rdf_xml
 ${EXPORT_XML}     id=class_export_show_application_xml
 ${EXPORT_JSON_Schema}    id=class_export_show_application_schema_json
+${EXPORT_MODEL_JSON_Schema}    id=model_export_show_application_schema_json
 ${EXPORT_JSON_LD_Context}    id=class_export_show_application_ld_json_context
 
 *** Keywords ***
