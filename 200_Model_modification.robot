@@ -759,7 +759,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Save class
     Wait until page contains    Testiluokka    timeout=30
     Log to Console    Class "Testiluokka" added without referencing concept
-    Sleep    10
+    Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_LD}    timeout=30
