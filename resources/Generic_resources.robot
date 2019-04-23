@@ -58,7 +58,7 @@ ${CONFIRM_BTN}    id=confirm_confirmation_modal_button
 ${COMMENTROUND_DDL}    id=commentRoundDropdown
 ${ADD_NEW_RESOURCE_BTN}    id=create_commentthread_button
 ${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
-${PROPOSED_STATUS_DDL}    id=selected_undefined
+${PROPOSED_STATUS_DDL}    id=selected_proposed_status_undefined
 ${START_COMMENT_ROUND_BTN}    id=start_commentround_button
 ${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
 # Commenting
