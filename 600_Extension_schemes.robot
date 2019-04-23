@@ -366,7 +366,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=30
     Click element    ${CREATE_NEW_VERSION_BTN}
     Sleep    3
-    Wait Until Element Is Enabled    ${CODE_LIST_VALUE_INPUT}    timeout=30
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=30
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_19}
