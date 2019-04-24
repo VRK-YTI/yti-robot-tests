@@ -40,6 +40,9 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/code/testcode29
 ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon.
 ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen kohteena oleva koodisto.
+#Concept URI
+${concept_uri_dev}    http://uri.suomi.fi/terminology/111/concept-1?env=dev
+${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -274,7 +277,8 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
 
 511. Create code list and get concept for code list from Terminologies
     [Documentation]    Create code list and search for a concept from Terminologies and bring it to Reference Data.
-    ...    Check that the name and definition of the concept will be copied in their respective fields. YTI-787.
+    ...    Check that the name and definition of the concept will be copied in their respective fields
+    ...    and concept URI is correct. YTI-787.
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Terminologies
     Log to Console    Vocabulary added
@@ -315,7 +319,18 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
     Wait until page contains    tutkija    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
-    Log to Console    Code list values checked
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Click element    //*[contains(text(), "${concept_uri_dev}")]
+    ...    ELSE    Click element    //*[contains(text(), "${concept_uri_test}")]
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
+    ...    ELSE    Select Window    title=TEST - Sanastot
+    Wait until page contains    Suositettava termi    timeout=60
+    Wait until page contains    tutkija    timeout=60
+    Wait until page contains    Person who does the research    timeout=60
+    Wait until page contains    http://uri.suomi.fi/terminology/111/concept-1    timeout=60
+    Close Window
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
+    ...    ELSE    Select Window    title=TEST - Koodistot
+    Log to Console    Code list values and concept URI checked
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown concept for code list from Terminologies
 
