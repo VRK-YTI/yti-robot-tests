@@ -42,7 +42,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
-    Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
+    Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
 
@@ -52,7 +52,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Terminology
     Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False
-    Add Resource For Comment Round    Saturnus    kommentti1    ${PRPOPOSED_STATUS_RETIRED}
+    Add Resource For Comment Round    Saturnus    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${RETIRED_0}
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros
 
@@ -62,7 +62,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Data Vocabularies With New Class
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False
-    Add Resource For Comment Round    Automobiili    kommentti1    ${PRPOPOSED_STATUS_SUPERSEDED}
+    Add Resource For Comment Round    Automobiili    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros
 
@@ -73,9 +73,9 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    True
-    Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
+    Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
-    Add Resource For Comment Round    Testcode 57    kommentti22    ${EMPTY}
+    Add Resource For Comment Round    Testcode 57    ${COMMENT_TEXT_INPUT_1}    kommentti22    ${EMPTY}    ${EMPTY}
     Close Comment Round
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
@@ -87,10 +87,10 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Reference Data
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
-    Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
+    Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
     Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
-    Comment Resource    Ehdotetaan uutta tilaa    ${PRPOPOSED_STATUS_SUPERSEDED}
+    Comment Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
@@ -103,9 +103,9 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Reference Data
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
-    Add Resource For Comment Round    Testcode 28    kommentti1    ${PRPOPOSED_STATUS_VALID}
-    Add Resource For Comment Round    Testcode 30    kommentti2    ${PRPOPOSED_STATUS_VALID}
-    Add Resource For Comment Round    Testcode 35    kommentti3    ${PRPOPOSED_STATUS_VALID}
+    Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
+    Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
+    Add Resource For Comment Round    Testcode 35    ${COMMENT_TEXT_INPUT_2}    kommentti3    ${STATUS_DDL_2}    ${VALID_2}
     Wait Until Page Contains Element    ${EDIT_COMMENTROUND}    timeout=20
     Click Element    ${EDIT_COMMENTROUND}
     Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
@@ -133,7 +133,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Reference Data And Code Without prefLabel
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
-    Add Resource For Comment Round    http://uri.suomi.fi/codelist/test/6000/code/testcode40    kommentti1    ${PRPOPOSED_STATUS_VALID}
+    Add Resource For Comment Round    http://uri.suomi.fi/codelist/test/6000/code/testcode40    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Wait Until Page Contains    kommentti1    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]    timeout=60
     Click Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]

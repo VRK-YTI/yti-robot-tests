@@ -29,13 +29,11 @@ ${NAVIGATION_MENU_USER_DETAILS}    id=navigation_link_user_details
 ${DESCRIPTION_OF_FILE_LINK}    id=description_of_file_link
 ${LICENSE_LINK}    id=license_link
 #Comment resource status
-${PRPOPOSED_STATUS_NOSTATUS}    id=NOSTATUS_undefined
-${PRPOPOSED_STATUS_DRAFT}    id=DRAFT_undefined
-${PRPOPOSED_STATUS_SUBMITTED}    id=SUBMITTED_undefined
-${PRPOPOSED_STATUS_VALID}    id=VALID_undefined
-${PRPOPOSED_STATUS_SUPERSEDED}    id=SUPERSEDED_undefined
-${PRPOPOSED_STATUS_RETIRED}    id=RETIRED_undefined
-${PRPOPOSED_STATUS_INVALID}    id=INVALID_undefined
+${VALID_0}        id=VALID_0
+${VALID_1}        id=VALID_1
+${VALID_2}        id=VALID_2
+${RETIRED_0}      id=RETIRED_0
+${SUPERSEDED_0}    id=SUPERSEDED_0
 #Comment round
 ${SEARCH_LINKED_SOURCE_INPUT}    id=search_linked_source_input
 ${INTEGRATION_FILTER_DDL}    id=selected_integration_filter_dropdown
@@ -61,11 +59,19 @@ ${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
 ${PROPOSED_STATUS_DDL}    id=selected_proposed_status_undefined
 ${START_COMMENT_ROUND_BTN}    id=start_commentround_button
 ${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
+${COMMENT_TEXT_INPUT_0}    id=commentthread_proposed_text_input_0
+${COMMENT_TEXT_INPUT_1}    id=commentthread_proposed_text_input_1
+${COMMENT_TEXT_INPUT_2}    id=commentthread_proposed_text_input_2
+${STATUS_DDL_0}    id=selected_proposed_status_0
+${STATUS_DDL_1}    id=selected_proposed_status_1
+${STATUS_DDL_2}    id=selected_proposed_status_2
 # Commenting
 ${START_COMMENTING_BTN}    id=start_commenting_button
 ${SEND_COMMENTS_BTN_BOTTOM}    id=send_comments_button_bottom
 ${SEND_COMMENTS_BTN}    id=send_comments_button
 ${REMOVE_COMMENT_THREAD_0_BTN}    id=remove_commentthread_0_button
+${REMOVE_COMMENT_THREAD_1_BTN}    id=remove_commentthread_1_button
+${REMOVE_COMMENT_THREAD_2_BTN}    id=remove_commentthread_2_button
 
 *** Keywords ***
 Test Case Setup Admin
@@ -161,26 +167,26 @@ Delete Comment Round
     Log To Console    ${comment_round_name} Deleted
 
 Add Resource For Comment Round
-    [Arguments]    ${resource}    ${comment}    ${status}
+    [Arguments]    ${resource}    ${comment_box}    ${comment}    ${status_ddl}    ${status}
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
     Click Element    ${EDIT_COMMENTROUND}
     Wait until page contains element    ${ADD_NEW_RESOURCE_BTN}    timeout=30
     Click element    ${ADD_NEW_RESOURCE_BTN}
     Wait Until Page Contains Element    //*[contains(text(), "${resource}")]    timeout=30
     Click element    //*[contains(text(), "${resource}")]
-    Wait until page contains element    ${COMMENT_TEXT_INPUT}    timeout=30
-    Input Text    ${COMMENT_TEXT_INPUT}    ${comment}
-    ${status_length}=    Get Length    ${status}
-    run keyword if    ${status_length} > 0    Add Resource Status    ${status}
+    Wait until page contains element    ${comment_box}    timeout=30
+    Input Text    ${comment_box}    ${comment}
+    ${status_length}=    Get Length    ${status_ddl}
+    run keyword if    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
     Wait until page contains element    ${SAVE_COMMENTROUND}    timeout=30
     Click Element    ${SAVE_COMMENTROUND}
     Wait until element is visible    ${EDIT_COMMENTROUND}    timeout=30
     Log To Console    ${resource} added for comment round
 
 Add Resource Status
-    [Arguments]    ${status}
-    Wait until page contains element    ${PROPOSED_STATUS_DDL}    timeout=30
-    Click element    ${PROPOSED_STATUS_DDL}
+    [Arguments]    ${status_ddl}    ${status}
+    Wait until page contains element    ${status_ddl}    timeout=30
+    Click element    ${status_ddl}
     Wait until page contains element    ${status}    timeout=30
     Click Element    ${status}
 
@@ -203,17 +209,17 @@ Close Comment Round
     Wait until page contains    Suljettu    timeout=20
 
 Comment Resource
-    [Arguments]    ${comment}    ${status}
+    [Arguments]    ${comment_box}    ${comment}    ${status_ddl}    ${status}
     Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
     Click Element    ${START_COMMENTING_BTN}
-    Wait until page contains element    ${COMMENT_TEXT_INPUT}    timeout=30
-    Input Text    ${COMMENT_TEXT_INPUT}    ${comment}
-    ${status_length}=    Get Length    ${status}
-    run keyword if    ${status_length} > 0    Add Resource Status    ${status}
+    Wait until page contains element    ${comment_box}    timeout=30
+    Input Text    ${comment_box}    ${comment}
+    ${status_length}=    Get Length    ${status_ddl}
+    run keyword if    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
     Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
     Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
     Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
-    Log To Console    ${comment} added
+    Log To Console    Comment added
 
 Test Case Setup Reference Data
     Reference Data Setup
