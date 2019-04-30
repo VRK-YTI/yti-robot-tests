@@ -90,7 +90,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
     Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
-    Comment Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
+    Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
@@ -144,5 +144,89 @@ Resource          resources/Data_Vocabularies_resources.robot
     Close Window
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
     ...    ELSE    Select Window    title=TEST - Kommentit
+    Return To Comments Frontpage
+    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+
+210. Check comment round results
+    [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
+    ...    Add resources for commenting, send comments from three users and check comment round results.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Reference Data
+    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
+    Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
+    Start Comment Round
+    Wait Until Element Is Visible    ${COMMENTS_TAB}    timeout=30
+    Click Element    ${COMMENTS_TAB}
+    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
+    Click Element    ${START_COMMENTING_BTN}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_0}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_0}    Kommentti 1
+    Wait until page contains element    ${STATUS_DDL_0}    timeout=30
+    Click element    ${STATUS_DDL_0}
+    Wait until page contains element    ${SUPERSEDED_0}    timeout=30
+    Click Element    ${SUPERSEDED_0}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_1}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_1}    Kommentti 2
+    Wait until page contains element    ${STATUS_DDL_1}    timeout=30
+    Click element    ${STATUS_DDL_1}
+    Wait until page contains element    ${VALID_1}    timeout=30
+    Click Element    ${VALID_1}
+    Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
+    Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
+    Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
+    Log To Console    First commenter's comments added
+    Select user    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
+    Wait Until Element Is Visible    ${COMMENTS_TAB}    timeout=30
+    Click Element    ${COMMENTS_TAB}
+    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
+    Click Element    ${START_COMMENTING_BTN}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_0}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_0}    Kommentti 3
+    Wait until page contains element    ${STATUS_DDL_0}    timeout=30
+    Click element    ${STATUS_DDL_0}
+    Wait until page contains element    ${INVALID_0}    timeout=30
+    Click Element    ${INVALID_0}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_1}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_1}    Kommentti 4
+    Wait until page contains element    ${STATUS_DDL_1}    timeout=30
+    Click element    ${STATUS_DDL_1}
+    Wait until page contains element    ${VALID_1}    timeout=30
+    Click Element    ${VALID_1}
+    Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
+    Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
+    Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
+    Log To Console    Second commenter's comments added
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Wait Until Element Is Visible    ${COMMENTS_TAB}    timeout=30
+    Click Element    ${COMMENTS_TAB}
+    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
+    Click Element    ${START_COMMENTING_BTN}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_0}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_0}    Kommentti 5
+    Wait until page contains element    ${STATUS_DDL_0}    timeout=30
+    Click element    ${STATUS_DDL_0}
+    Wait until page contains element    ${INVALID_0}    timeout=30
+    Click Element    ${INVALID_0}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_1}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_1}    Kommentti 6
+    Wait until page contains element    ${STATUS_DDL_1}    timeout=30
+    Click element    ${STATUS_DDL_1}
+    Wait until page contains element    ${VALID_1}    timeout=30
+    Click Element    ${VALID_1}
+    Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
+    Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
+    Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
+    Log To Console    Third commenter's comments added
+    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Close Comment Round
+    Sleep    1
+    Wait Until Page Contains    Korvattu:    timeout=20
+    Wait Until Page Contains    (33.33 %)    timeout=20
+    Wait Until Page Contains    Virheellinen:    timeout=20
+    Wait Until Page Contains    (66.67 %)    timeout=20
+    Wait Until Page Contains    Voimassa oleva:    timeout=20
+    Wait Until Page Contains    (100.00 %)    timeout=20
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros

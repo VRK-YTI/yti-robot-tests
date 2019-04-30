@@ -7,6 +7,8 @@ ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${ADMIN_USER_NAME}    Testi Admin
 ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${SUPER_USER_NAME}    Testi Superuser
+${TESTGROUP_USER_ID}    id=dummy2@localhost
+${TESTGROUP_USER_NAME}    Test TestGroup
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
@@ -33,7 +35,14 @@ ${VALID_0}        id=VALID_0
 ${VALID_1}        id=VALID_1
 ${VALID_2}        id=VALID_2
 ${RETIRED_0}      id=RETIRED_0
+${RETIRED_1}      id=RETIRED_1
+${RETIRED_2}      id=RETIRED_2
 ${SUPERSEDED_0}    id=SUPERSEDED_0
+${SUPERSEDED_1}    id=SUPERSEDED_1
+${SUPERSEDED_2}    id=SUPERSEDED_2
+${INVALID_0}      id=INVALID_0
+${INVALID_1}      id=INVALID_1
+${INVALID_2}      id=INVALID_2
 #Comment round
 ${SEARCH_LINKED_SOURCE_INPUT}    id=search_linked_source_input
 ${INTEGRATION_FILTER_DDL}    id=selected_integration_filter_dropdown
@@ -57,6 +66,7 @@ ${COMMENTROUND_DDL}    id=commentRoundDropdown
 ${ADD_NEW_RESOURCE_BTN}    id=create_commentthread_button
 ${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
 ${PROPOSED_STATUS_DDL}    id=selected_proposed_status_undefined
+${COMMENTS_TAB}    id=commentround_comments_tab
 ${START_COMMENT_ROUND_BTN}    id=start_commentround_button
 ${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
 ${COMMENT_TEXT_INPUT_0}    id=commentthread_proposed_text_input_0
@@ -208,7 +218,7 @@ Close Comment Round
     Click Element    ${CONFIRM_BTN}
     Wait until page contains    Suljettu    timeout=20
 
-Comment Resource
+Comment On Resource
     [Arguments]    ${comment_box}    ${comment}    ${status_ddl}    ${status}
     Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
     Click Element    ${START_COMMENTING_BTN}
