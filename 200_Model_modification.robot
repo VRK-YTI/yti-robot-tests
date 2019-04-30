@@ -835,7 +835,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_JSON_LD_Context}
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_json_ld_context}
     ...    ELSE    Select Window    url=${class_json_ld_context_test}
-    Wait until page contains    "@id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka",    timeout=30
+    Wait until page contains    "@context":{    timeout=30
+    Wait until page contains    "Testiluokka":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
