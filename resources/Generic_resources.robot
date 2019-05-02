@@ -84,12 +84,12 @@ ${REMOVE_COMMENT_THREAD_0_BTN}    id=remove_commentthread_0_button
 ${REMOVE_COMMENT_THREAD_1_BTN}    id=remove_commentthread_1_button
 ${REMOVE_COMMENT_THREAD_2_BTN}    id=remove_commentthread_2_button
 #Inline comments
-${VIEW_COMMENT_BUBLE_0}    id='view_commentthread_0_comments_button'
-#${REPLY_BTN_0}    id=comment_ad380756-fd53-42f8-8195-2dcc3bb062eb_reply_button
-${INLINE_REPLY_BTN_0}    //*[contains(@id,'_reply_button')]
-${INLINE_REPLY_INPUT_0}    //*[contains(@id,'comment')][contains(@id,'_input')]
-${INLINE_SEND_REPLY_BTN_0}    //*[contains(@id,'_send_button')]
-${CLOSE_INLINE_COMMENT_0}    //*[contains(@id,'close_commentthread_')]
+${VIEW_COMMENT_BUBLE_0}    id=view_commentthread_0_comments_button
+${INLINE_COMMENT_PREFIX}    id=comment_
+${INLINE_REPLY_BTN_SUFFIX}    _reply_button
+${INLINE_REPLY_INPUT_SUFFIX}    _input
+${INLINE_SEND_REPLY_BTN_SUFFIX}    _send_button
+${CLOSE_INLINE_COMMENT_BUTTON}    close_commentthread_0_comments_button
 
 *** Keywords ***
 Test Case Setup Admin

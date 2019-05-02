@@ -3,6 +3,7 @@ Documentation     Test Suite for creating comment round
 Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
+Library           Collections
 Resource          resources/Generic_resources.robot
 Resource          resources/Reference_Data_resources.robot
 Resource          resources/Terminologies_resources.robot
@@ -274,17 +275,23 @@ Resource          resources/Data_Vocabularies_resources.robot
     Click Element    ${RESOURCES_TAB}
     Wait Until Element Is Visible    ${VIEW_COMMENT_BUBLE_0}    timeout=30
     Click Element    ${VIEW_COMMENT_BUBLE_0}
-    Wait Until Element Is Visible    ${INLINE_REPLY_BTN_0}    timeout=30
-    Click Element    ${INLINE_REPLY_BTN_0}
-    Wait Until Element Is Visible    ${INLINE_REPLY_INPUT_0}    timeout=30
-    Click Element    ${INLINE_REPLY_INPUT_0}
-    Input Text    ${INLINE_REPLY_INPUT_0}    Inline kommentti 1
-    Wait Until Element Is Visible    ${INLINE_SEND_REPLY_BTN_0}    timeout=30
-    Click Element    ${INLINE_SEND_REPLY_BTN_0}
+    ${elements} =    Get WebElements    //app-hierarchical-comment
+    ${element} =    Get From List    ${elements}    0
+    Log To Console    ${element}
+    ${elementId} =    Set Variable    ${element.get_attribute('id')}
+    Log To Console    Element id:
+    Log To Console    ${elementId}
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_INPUT_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_INPUT_SUFFIX}
+    Input Text    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_INPUT_SUFFIX}    Inline kommentti 1
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_SEND_REPLY_BTN_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_SEND_REPLY_BTN_SUFFIX}
     Wait Until Page Contains    Inline kommentti 1    timeout=20
     Capture Page Screenshot
-    Wait Until Element Is Visible    ${CLOSE_INLINE_COMMENT_0}    timeout=30
-    Click Element    ${CLOSE_INLINE_COMMENT_0}
+    Wait Until Element Is Visible    ${CLOSE_INLINE_COMMENT_BUTTON}    timeout=30
+    Click Element    ${CLOSE_INLINE_COMMENT_BUTTON}
     Page Should Not Contain    Inline kommentti 1    timeout=20
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
