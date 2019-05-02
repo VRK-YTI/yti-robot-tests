@@ -67,6 +67,7 @@ ${ADD_NEW_RESOURCE_BTN}    id=create_commentthread_button
 ${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
 ${PROPOSED_STATUS_DDL}    id=selected_proposed_status_undefined
 ${COMMENTS_TAB}    id=commentround_comments_tab
+${RESOURCES_TAB}    id=commentround_resources_tab-panel
 ${START_COMMENT_ROUND_BTN}    id=start_commentround_button
 ${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
 ${COMMENT_TEXT_INPUT_0}    id=commentthread_proposed_text_input_0
@@ -75,13 +76,20 @@ ${COMMENT_TEXT_INPUT_2}    id=commentthread_proposed_text_input_2
 ${STATUS_DDL_0}    id=selected_proposed_status_0
 ${STATUS_DDL_1}    id=selected_proposed_status_1
 ${STATUS_DDL_2}    id=selected_proposed_status_2
-# Commenting
+#Commenting
 ${START_COMMENTING_BTN}    id=start_commenting_button
 ${SEND_COMMENTS_BTN_BOTTOM}    id=send_comments_button_bottom
 ${SEND_COMMENTS_BTN}    id=send_comments_button
 ${REMOVE_COMMENT_THREAD_0_BTN}    id=remove_commentthread_0_button
 ${REMOVE_COMMENT_THREAD_1_BTN}    id=remove_commentthread_1_button
 ${REMOVE_COMMENT_THREAD_2_BTN}    id=remove_commentthread_2_button
+#Inline comments
+${VIEW_COMMENT_BUBLE_0}    id='view_commentthread_0_comments_button'
+#${REPLY_BTN_0}    id=comment_ad380756-fd53-42f8-8195-2dcc3bb062eb_reply_button
+${INLINE_REPLY_BTN_0}    //*[contains(@id,'_reply_button')]
+${INLINE_REPLY_INPUT_0}    //*[contains(@id,'comment')][contains(@id,'_input')]
+${INLINE_SEND_REPLY_BTN_0}    //*[contains(@id,'_send_button')]
+${CLOSE_INLINE_COMMENT_0}    //*[contains(@id,'close_commentthread_')]
 
 *** Keywords ***
 Test Case Setup Admin
