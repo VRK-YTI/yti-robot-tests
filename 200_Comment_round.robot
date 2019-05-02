@@ -279,8 +279,6 @@ Resource          resources/Data_Vocabularies_resources.robot
     ${element} =    Get From List    ${elements}    0
     Log To Console    ${element}
     ${elementId} =    Set Variable    ${element.get_attribute('id')}
-    Log To Console    Element id:
-    Log To Console    ${elementId}
     Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}
     Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_INPUT_SUFFIX}    timeout=30
