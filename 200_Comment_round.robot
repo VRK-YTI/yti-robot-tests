@@ -277,7 +277,6 @@ Resource          resources/Data_Vocabularies_resources.robot
     Click Element    ${VIEW_COMMENT_BUBLE_0}
     ${elements} =    Get WebElements    //app-hierarchical-comment
     ${element} =    Get From List    ${elements}    0
-    Log To Console    ${element}
     ${elementId} =    Set Variable    ${element.get_attribute('id')}
     Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}
