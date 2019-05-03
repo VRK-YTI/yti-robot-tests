@@ -234,8 +234,8 @@ Resource          resources/Data_Vocabularies_resources.robot
 
 211. Send inline comment for resource
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
-    ...    Add resources for commenting, send comments from two users and inline comment from one user.
-    [Tags]    comments
+    ...    Add resources for commenting, send comments from two users and inline comments from one user.
+    [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data
     Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
@@ -277,7 +277,9 @@ Resource          resources/Data_Vocabularies_resources.robot
     Click Element    ${VIEW_COMMENT_BUBLE_0}
     ${elements} =    Get WebElements    //app-hierarchical-comment
     ${element} =    Get From List    ${elements}    0
+    ${element_1} =    Get From List    ${elements}    1
     ${elementId} =    Set Variable    ${element.get_attribute('id')}
+    ${elementId_1} =    Set Variable    ${element_1.get_attribute('id')}
     Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_BTN_SUFFIX}
     Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_INPUT_SUFFIX}    timeout=30
@@ -285,10 +287,21 @@ Resource          resources/Data_Vocabularies_resources.robot
     Input Text    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_REPLY_INPUT_SUFFIX}    Inline kommentti 1
     Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_SEND_REPLY_BTN_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${elementId}${INLINE_SEND_REPLY_BTN_SUFFIX}
+    Log To Console    First inline comment added
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId_1}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${elementId_1}${INLINE_REPLY_BTN_SUFFIX}
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId_1}${INLINE_REPLY_INPUT_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${elementId_1}${INLINE_REPLY_INPUT_SUFFIX}
+    Input Text    ${INLINE_COMMENT_PREFIX}${elementId_1}${INLINE_REPLY_INPUT_SUFFIX}    Inline kommentti 2
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${elementId_1}${INLINE_SEND_REPLY_BTN_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${elementId_1}${INLINE_SEND_REPLY_BTN_SUFFIX}
+    Log To Console    Second inline comment added
     Wait Until Page Contains    Inline kommentti 1    timeout=20
+    Wait Until Page Contains    Inline kommentti 2    timeout=20
     Capture Page Screenshot
     Wait Until Element Is Visible    ${CLOSE_INLINE_COMMENT_BUTTON}    timeout=30
     Click Element    ${CLOSE_INLINE_COMMENT_BUTTON}
     Page Should Not Contain    Inline kommentti 1    timeout=20
+    Page Should Not Contain    Inline kommentti 2    timeout=20
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros

@@ -89,7 +89,7 @@ ${INLINE_COMMENT_PREFIX}    id=comment_
 ${INLINE_REPLY_BTN_SUFFIX}    _reply_button
 ${INLINE_REPLY_INPUT_SUFFIX}    _input
 ${INLINE_SEND_REPLY_BTN_SUFFIX}    _send_button
-${CLOSE_INLINE_COMMENT_BUTTON}    close_commentthread_0_comments_button
+${CLOSE_INLINE_COMMENT_BUTTON}    id=close_commentthread_0_comments_button
 
 *** Keywords ***
 Test Case Setup Admin
