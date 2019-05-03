@@ -89,7 +89,7 @@ ${INLINE_COMMENT_PREFIX}    id=comment_
 ${INLINE_REPLY_BTN_SUFFIX}    _reply_button
 ${INLINE_REPLY_INPUT_SUFFIX}    _input
 ${INLINE_SEND_REPLY_BTN_SUFFIX}    _send_button
-${CLOSE_INLINE_COMMENT_BUTTON}    id=close_commentthread_0_comments_button
+${CLOSE_INLINE_COMMENT_0_BTN}    id=close_commentthread_0_comments_button
 
 *** Keywords ***
 Test Case Setup Admin
@@ -238,6 +238,45 @@ Comment On Resource
     Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
     Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
     Log To Console    Comment added
+
+Start Commenting
+    Wait Until Element Is Visible    ${COMMENTS_TAB}    timeout=30
+    Click Element    ${COMMENTS_TAB}
+    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
+    Click Element    ${START_COMMENTING_BTN}
+
+Comment On Resource 0
+    [Arguments]    ${comment}    ${status}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_0}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_0}    ${comment}
+    Wait until page contains element    ${STATUS_DDL_0}    timeout=30
+    Click element    ${STATUS_DDL_0}
+    Wait until page contains element    ${status}    timeout=30
+    Click Element    ${status}
+
+Comment On Resource 1
+    [Arguments]    ${comment}    ${status}
+    Wait until page contains element    ${COMMENT_TEXT_INPUT_1}    timeout=30
+    Input Text    ${COMMENT_TEXT_INPUT_1}    ${comment}
+    Wait until page contains element    ${STATUS_DDL_1}    timeout=30
+    Click element    ${STATUS_DDL_1}
+    Wait until page contains element    ${status}    timeout=30
+    Click Element    ${status}
+
+Send Comments
+    Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
+    Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
+    Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
+
+Send Inline Comment For Comment Thread
+    [Arguments]    ${id}    ${comment}
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}
+    Input Text    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    ${comment}
+    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}    timeout=30
+    Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}
 
 Test Case Setup Reference Data
     Reference Data Setup
