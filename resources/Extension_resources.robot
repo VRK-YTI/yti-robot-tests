@@ -32,6 +32,8 @@ ${Code_list_with_cross_reference_list}    ${DATAFOLDER}${/}Code_list_with_cross_
 ${filter_1_Code_list_three_extensions}    ${DATAFOLDER}${/}filter_1_Code_list_three_extensions.xlsx
 ${filter_2_Code_list_one_extension}    ${DATAFOLDER}${/}filter_2_Code_list_one_extension.xlsx
 ${Code_list_with_calculation_hierarchy_members}    ${DATAFOLDER}${/}Code_list_calc_hier_members.xlsx
+${Code_list_with_definition_hierarchy_members}    ${DATAFOLDER}${/}Code_list_with_def_hierarchy_extension_and_members.xlsx
+${Code_list_with_duplicate_member_sequence_id}    ${DATAFOLDER}${/}Update_code_list_with_duplicate_member_sequence_id.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
