@@ -353,3 +353,36 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(text(), "dpmTypedDomain - DPM Typed Domain laajennus")]    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+710. Update DPM Metric members with and without sequence ID values
+    [Documentation]    Import new code list with DPM Metric extension.
+    ...    Check that correct error message is displayed when trying to import members without sequence IDs,
+    ...    Check that updating DPM Metric values is successful with correct sequence ID values in Excel sheet. YTI-612.
+    [Tags]    koodistot    regression    600    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_with_DPM_Metric_extension}    ${CODE_LIST_16}
+    Wait until page contains    30 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_DPM_Metric_Credit_no_sequence_id}
+    Sleep    1
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click element    ${UPLOAD_FILE_BTN}
+    Wait until page contains    ${Error_duplicate_members_for_same_code}    timeout=20
+    Cancel code import
+    Update code list    ${Code_list_DPM_Metric_Credit}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
+    Sleep    8
+    Wait until element is enabled    //*[contains(text(), "testcode29 - Testcode 29")]    timeout=60
+    Click Element    //*[contains(text(), "testcode29 - Testcode 29")]
+    Wait until page contains    Balance type (en)    timeout=20
+    Wait until page contains    Credit    timeout=20
+    Sleep    1
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
