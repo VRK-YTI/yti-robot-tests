@@ -61,7 +61,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Change user interface language    ${LANGUAGE_EN}
     Wait until page contains    Data Vocabularies    timeout=20
     Wait until page contains    All organizations    timeout=20
-    Wait until page contains    All types    timeout=20
+    Wait until page contains    All model types    timeout=20
     [Teardown]    Change user interface language    ${LANGUAGE_FI}
 
 104. Search for DRAFT model
