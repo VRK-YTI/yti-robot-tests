@@ -137,7 +137,6 @@ Resource          resources/Extension_resources.robot
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
-    #Wait until page contains    DPM Explicit Domain laajennus    timeout=20
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${DPM_EXPLICIT_DOMAIN_INPUT}    timeout=20
@@ -371,7 +370,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_DPM_Metric_Credit_no_sequence_id}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_DPM_Metric_Credit_no_member}
     Sleep    1
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click element    ${UPLOAD_FILE_BTN}

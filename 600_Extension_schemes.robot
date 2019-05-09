@@ -8,7 +8,7 @@ Resource          resources/Controlled_vocabularies_resources.robot
 Resource          resources/Extension_resources.robot
 
 *** Variables ***
-${Error_duplicate_sequence_id}    SEQUENCE_ID-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
+${Error_duplicate_member_values}    MEMBER-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
 
 *** Test Cases ***
 600. Import code list with extension
@@ -1110,9 +1110,9 @@ ${Error_duplicate_sequence_id}    SEQUENCE_ID-sarakkeessa esiintyvät seuraavat 
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
 
-630. Update members with duplicate sequence_id values
+630. Update members with duplicate member values
     [Documentation]    Import new code list with definition hierarchy extension and members.
-    ...    Check that correct error message is dispalyed when trying to import members with duplicate sequence IDs, YTI-503.
+    ...    Check that correct error message is dispalyed when trying to import members with duplicate member values, YTI-503.
     [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_definition_hierarchy_members}    ${CODE_LIST_16}
@@ -1126,11 +1126,11 @@ ${Error_duplicate_sequence_id}    SEQUENCE_ID-sarakkeessa esiintyvät seuraavat 
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_member_sequence_id}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_member_values}
     Sleep    1
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click element    ${UPLOAD_FILE_BTN}
-    Wait until page contains    ${Error_duplicate_sequence_id}    timeout=20
+    Wait until page contains    ${Error_duplicate_member_values}    timeout=20
     Cancel code import
     Sleep    1
     Return to Koodistot frontpage
