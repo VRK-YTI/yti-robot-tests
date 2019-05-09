@@ -1132,3 +1132,28 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+631. Update member relations with member URI, code URI and member ID
+    [Documentation]    Import code list and update member relations with member URI, code URI and member ID. YTI-639.
+    [Tags]    regression    koodistot    test    500
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_extensions_broader_members}    ${CODE_LIST_14}
+    Sleep    2
+    Wait until page contains    25 koodia    timeout=20
+    Update code list    ${Code_list_with_update_members}    ${CODE_LIST_14}    ${FILE_FORMAT_Excel}
+    Sleep    8
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=60
+    Click element    ${EXTENSIONS_TAB}
+    Wait until element is visible    //*[contains(@id,'222_view_extension')]    timeout=30
+    Click Element    //*[contains(@id,'222_view_extension')]
+    Page Should Not Contain Element    //*[contains(text(), "Jäsen2")]
+    Page Should Not Contain Element    //*[contains(text(), "Jäsen4")]
+    Page Should Not Contain Element    //*[contains(text(), "Jäsen9")]
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=30
+    Click element    ${EXPAND_ALL_BTN}
+    Page Should Contain Element    //*[contains(text(), "Jäsen2")]
+    Page Should Contain Element    //*[contains(text(), "Jäsen4")]
+    Page Should Contain Element    //*[contains(text(), "Jäsen9")]
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_14}

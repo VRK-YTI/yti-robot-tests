@@ -19,7 +19,7 @@ ${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensi
 ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
 ${Extensions_new_version_creation}    ${DATAFOLDER}${/}Extensions_and_members_for_new_version_creation.xlsx
 ${Invalid_unaryoperator_value}    ${DATAFOLDER}${/}Calculation_members_invalid_unary_operator.xlsx
-${Code_list_extensions_broader_members}    ${DATAFOLDER}${/}Codelist_with_codes_extensions_ and_broader_members.xlsx
+${Code_list_extensions_broader_members}    ${DATAFOLDER}${/}Codelist_with_codes_extensions_and_broader_members.xlsx
 ${Modify_dpm_metric}    ${DATAFOLDER}${/}Modify_dpm_metric.xlsx
 ${2_dpms_should_fail}    ${DATAFOLDER}${/}Modify_dpm_metric_2_dpms_should_fail.xlsx
 ${Modify_DPM_explicit_domain}    ${DATAFOLDER}${/}Modify_DPM_explicit_domain_extension.xlsx
@@ -37,6 +37,7 @@ ${Code_list_with_duplicate_member_id_values}    ${DATAFOLDER}${/}Update_code_lis
 ${Code_list_with_DPM_Metric_extension}    ${DATAFOLDER}${/}Code_list_with_DPM_Metric_extension.xlsx
 ${Code_list_DPM_Metric_Credit}    ${DATAFOLDER}${/}DPM_Metric_Credit.xlsx
 ${Code_list_DPM_Metric_Credit_no_member_id}    ${DATAFOLDER}${/}DPM_Metric_Credit_no_member_id.xlsx
+${Code_list_with_update_members}    ${DATAFOLDER}${/}Code_list_with_update_members.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
