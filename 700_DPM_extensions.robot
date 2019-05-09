@@ -370,7 +370,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_DPM_Metric_Credit_no_member}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_DPM_Metric_Credit_no_member_id}
     Sleep    1
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click element    ${UPLOAD_FILE_BTN}

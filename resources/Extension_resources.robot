@@ -33,10 +33,10 @@ ${filter_1_Code_list_three_extensions}    ${DATAFOLDER}${/}filter_1_Code_list_th
 ${filter_2_Code_list_one_extension}    ${DATAFOLDER}${/}filter_2_Code_list_one_extension.xlsx
 ${Code_list_with_calculation_hierarchy_members}    ${DATAFOLDER}${/}Code_list_calc_hier_members.xlsx
 ${Code_list_with_definition_hierarchy_members}    ${DATAFOLDER}${/}Code_list_with_def_hierarchy_extension_and_members.xlsx
-${Code_list_with_duplicate_member_values}    ${DATAFOLDER}${/}Update_code_list_with_duplicate_member_values.xlsx
+${Code_list_with_duplicate_member_id_values}    ${DATAFOLDER}${/}Update_code_list_with_duplicate_member_id_values.xlsx
 ${Code_list_with_DPM_Metric_extension}    ${DATAFOLDER}${/}Code_list_with_DPM_Metric_extension.xlsx
 ${Code_list_DPM_Metric_Credit}    ${DATAFOLDER}${/}DPM_Metric_Credit.xlsx
-${Code_list_DPM_Metric_Credit_no_member}    ${DATAFOLDER}${/}DPM_Metric_Credit_no_member.xlsx
+${Code_list_DPM_Metric_Credit_no_member_id}    ${DATAFOLDER}${/}DPM_Metric_Credit_no_member_id.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
@@ -53,6 +53,7 @@ ${Error_relations_to_other_members}    Koodilaajennuksissa ei sallita jäsenten 
 ${Error_2_dpms}    Aineistossa on useita samantyyppisiä koodilaajennuksia.
 ${Error_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567333/extension/O1234567890123456789012345678901234567111/member/
 ${Error_duplicate_members_for_same_code}    Koodilaajennuksella ei voi olla useita jäseniä samalla koodilla.
+${Error_duplicate_member_id_values}    MEMBER_ID-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
 
 *** Keywords ***
 Upload extension

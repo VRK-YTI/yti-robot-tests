@@ -7,9 +7,6 @@ Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
 Resource          resources/Extension_resources.robot
 
-*** Variables ***
-${Error_duplicate_member_values}    MEMBER-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
-
 *** Test Cases ***
 600. Import code list with extension
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
@@ -1126,11 +1123,11 @@ ${Error_duplicate_member_values}    MEMBER-sarakkeessa esiintyvät seuraavat arv
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_member_values}
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_member_id_values}
     Sleep    1
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click element    ${UPLOAD_FILE_BTN}
-    Wait until page contains    ${Error_duplicate_member_values}    timeout=20
+    Wait until page contains    ${Error_duplicate_member_id_values}    timeout=20
     Cancel code import
     Sleep    1
     Return to Koodistot frontpage
