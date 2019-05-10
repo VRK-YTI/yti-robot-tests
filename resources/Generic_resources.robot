@@ -258,6 +258,8 @@ ${EXPORT_TYPE_EXCEL}    id=codelist_export_excel_link
 ${EXPORT_TYPE_CSV}    id=codelist_export_csv_link
 ${EXPORT_CROSS_REFERENCE_EXCEL}    id=codelist_export_cross_reference_excel_link
 ${EXPORT_CROSS_REFERENCE_CSV}    id=codelist_export_cross_reference_csv_link
+${EXPORT_JSON_AS_FILE_BTN}    id=codelist_export_json_inline_link
+${EXPORT_JSON}    id=codelist_export_json_as_file_link
 #link buttons
 ${ADD_NEW_LINK_BTN}    id=add_new_link_button
 ${LINK_TYPE_DROPDOWN}    id=propertytype_dropdown_button

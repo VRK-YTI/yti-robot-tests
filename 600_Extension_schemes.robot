@@ -1157,3 +1157,31 @@ Resource          resources/Extension_resources.robot
     Page Should Contain Element    //*[contains(text(), "Jäsen9")]
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
+
+632. Export JSON for code list
+    [Documentation]    Import code list with codes, extensions and members,
+    ...    Check that JSON export for code list is successful. YTI-18
+    [Tags]    regression    koodistot    600    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
+    Wait until page contains    25 koodia    timeout=20
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Wait until page contains element    ${EXPORT_JSON}    timeout=20
+    Click element    ${EXPORT_JSON}
+    Sleep    2
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    url=${code_list_json_url_dev}
+    ...    ELSE    Select Window    url=${code_list_json_url_test}
+    Page should contain    "codeValue" : "O1234567890123456789012345678901234567111",
+    Page should contain    "uri" : "http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111",
+    Close Window
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
+    ...    ELSE    Select Window    title=TEST - Koodistot
+    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Click element    ${EXPORT_DDL}
+    Wait until page contains element    ${EXPORT_JSON_AS_FILE_BTN}    timeout=20
+    Click element    ${EXPORT_JSON_AS_FILE_BTN}
+    Sleep    5
+    Log To Console    JSON Export done
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_14}
