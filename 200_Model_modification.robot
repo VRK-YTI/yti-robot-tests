@@ -711,7 +711,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     [Teardown]    Test Case Teardown Terminologies
 
 218. Create new namespace
-    [Documentation]    Create new profile and create new namespace. Add two classes.
+    [Documentation]    Create new profile and create new namespace. Check that namespace prefix can not be
+    ...    "example" or same as the model prefix. Add two classes.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
@@ -727,6 +728,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Wait until page contains element    ${NAMESPACE_VALUE}    timeout=30
     Input Text    ${NAMESPACE_VALUE}    http://uri.suomi.fi/datamodel/ns/autom1/
     Wait until page contains element    ${NAMESPACE_PREFIX}    timeout=30
+    Input Text    ${NAMESPACE_PREFIX}    autom
+    Wait until page contains    Tunniste on jo käytössä    timeout=30
+    Sleep    1
+    Input Text    ${NAMESPACE_PREFIX}    example
+    Wait until page contains    Tunniste on jo käytössä    timeout=30
+    Sleep    1
     Input Text    ${NAMESPACE_PREFIX}    autom1
     Wait until page contains element    ${NAMESPACE_CREATE}    timeout=30
     Click Element    ${NAMESPACE_CREATE}
