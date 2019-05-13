@@ -111,12 +111,18 @@ Resource          resources/Data_Vocabularies_resources.robot
     Click Element    ${EDIT_COMMENTROUND}
     Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
     Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Wait Until Page Contains Element    ${CONFIRMATION_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_BTN}
     Log To Console    First resource removed
     Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
     Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Wait Until Page Contains Element    ${CONFIRMATION_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_BTN}
     Log To Console    Second resource removed
     Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
     Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Wait Until Page Contains Element    ${CONFIRMATION_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_BTN}
     Log To Console    Third resource removed
     Wait Until Page Contains Element    ${SAVE_COMMENTROUND}    timeout=20
     Click Element    ${SAVE_COMMENTROUND}

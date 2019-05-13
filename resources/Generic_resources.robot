@@ -76,6 +76,7 @@ ${COMMENT_TEXT_INPUT_2}    id=commentthread_proposed_text_input_2
 ${STATUS_DDL_0}    id=selected_proposed_status_0
 ${STATUS_DDL_1}    id=selected_proposed_status_1
 ${STATUS_DDL_2}    id=selected_proposed_status_2
+${CONFIRMATION_BTN}    id=confirm_confirmation_modal_button
 #Commenting
 ${START_COMMENTING_BTN}    id=start_commenting_button
 ${SEND_COMMENTS_BTN_BOTTOM}    id=send_comments_button_bottom
