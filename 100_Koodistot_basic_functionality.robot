@@ -9,7 +9,6 @@ Resource          resources/Generic_resources.robot
 ${navigation_menu_link}    Käyttäjätiedot
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 #Excel paths
-${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
 
 *** Test Cases ***
 100. Open Information about the service page

@@ -1630,6 +1630,22 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_24}    ${CODE_LIST_8}    ${CODE_LIST_9}
 
+538. JSON array export for code list codes
+    [Documentation]    Import code list and check that JSON array export is successful for code list codes. YTI-645.
+    [Tags]    regression    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_test_dcat}    ${CODE_LIST_20}
+    Sleep    2
+    Open Koodistot
+    Set Selenium Speed    0.5
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Go To    ${Json_array_dcat_dev}
+    ...    ELSE    Go To    ${Json_array_dcat_test}
+    Wait until page contains    ${Json_export_dcat}    timeout=20
+    Switch Browser    1
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_20}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus

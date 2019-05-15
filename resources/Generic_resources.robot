@@ -284,10 +284,15 @@ ${testiautomaatiokoodisto1_with_codes}    ${DATAFOLDER}${/}testiautomaatiokoodis
 ${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
 ${Code_filter}    ${DATAFOLDER}${/}Code_filter.xlsx
 ${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_version_creation.xlsx
+${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 ${Error_remove_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/extension/koodiliitoslaajennus/member/
+#JSON Export
+${Json_export_dcat}    ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR","JUST","REGI","SOCI","TECH","TRAN"]
+${Json_array_dcat_dev}    https://koodistot-dev.suomi.fi/codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
+${Json_array_dcat_test}    https://koodistot-test.suomi.fi/codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
 
 *** Keywords ***
 Test Case Setup Admin
