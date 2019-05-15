@@ -324,10 +324,10 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "Asuminen")]
+    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=60
     Click element    //*[contains(text(), "Asuminen")]
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]
+    Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=60
     Sleep    2
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_4}
