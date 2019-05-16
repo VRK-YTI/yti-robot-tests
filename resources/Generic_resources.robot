@@ -255,7 +255,7 @@ ${STATUS_VALID_FI}    Voimassa oleva
 ${ALL_STATUSES_FI}    Kaikki tilat
 #Code list export
 ${EXPORT_TYPE_EXCEL}    id=codelist_export_excel_link
-${EXPORT_TYPE_CSV}    id=codelist_export_csv_link
+${EXPORT_TYPE_CSV}    id=codelist_export_codes_csv_link
 ${EXPORT_CROSS_REFERENCE_EXCEL}    id=codelist_export_cross_reference_excel_link
 ${EXPORT_CROSS_REFERENCE_CSV}    id=codelist_export_cross_reference_csv_link
 ${EXPORT_JSON_AS_FILE_BTN}    id=codelist_export_json_inline_link
