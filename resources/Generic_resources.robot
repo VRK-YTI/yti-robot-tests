@@ -21,6 +21,9 @@ ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
 ${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
 ${VALID_STATUS}    id=VALID_status_input_dropdown
 ${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
+${CONTENT_LANGUAGE_FI}    id=fi_content_lang_dropdown_button
+${CONTENT_LANGUAGE_SV}    id=sv_content_lang_dropdown_button
+${CONTENT_LANGUAGE_SW_UG}    id=sw-UG_content_lang_dropdown_button
 ${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
 ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
 #Frontpage buttons
@@ -286,6 +289,8 @@ ${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
 ${Code_filter}    ${DATAFOLDER}${/}Code_filter.xlsx
 ${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_version_creation.xlsx
 ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
+${Code_list_codes_with_languages}    ${DATAFOLDER}${/}Code_list_codes_with_languages.xlsx
+${Code_list_codes_with_languages_empty}    ${DATAFOLDER}${/}Code_list_codes_with_languages_empty.xlsx
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
@@ -743,3 +748,11 @@ Upload codelist in CSV format
     Sleep    6
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=60
     Log to Console    Code list ${codelist_name} imported
+
+Change content language
+    [Arguments]    ${language}
+    Wait until page contains element    ${CONTENT_LANGUAGE_DDL}    timeout=20
+    Click button    ${CONTENT_LANGUAGE_DDL}
+    Wait until page contains element    ${language}    timeout=20
+    Click button    ${language}
+    Sleep    1
