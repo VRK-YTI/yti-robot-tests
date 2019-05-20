@@ -23,6 +23,7 @@ ${VALID_STATUS}    id=VALID_status_input_dropdown
 ${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_FI}    id=fi_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_SV}    id=sv_content_lang_dropdown_button
+${CONTENT_LANGUAGE_AR_SO}    id=ar-SO_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_SW_UG}    id=sw-UG_content_lang_dropdown_button
 ${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
 ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
@@ -291,6 +292,7 @@ ${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_v
 ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
 ${Code_list_codes_with_languages}    ${DATAFOLDER}${/}Code_list_codes_with_languages.xlsx
 ${Code_list_codes_with_languages_empty}    ${DATAFOLDER}${/}Code_list_codes_with_languages_empty.xlsx
+${Update_codes_with_languages}    ${DATAFOLDER}${/}Update_codes_with_languages.xlsx
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.

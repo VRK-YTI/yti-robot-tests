@@ -382,7 +382,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    30 koodia    timeout=60
     Update code list    ${Code_list_codes_with_languages}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
     Wait until page contains    30 koodia    timeout=60
-    Wait until element is visible    //*[contains(text(), "testcode28 - Testcode 28_fi")]    timeout=20
+    Wait until element is visible    //*[contains(text(), "testcode28 - Testcode 28_fi")]    timeout=60
     Click Element    //*[contains(text(), "testcode28 - Testcode 28_fi")]
     Wait until page contains    Koodisto600    timeout=60
     Wait until page contains    Testcode 28_fi    timeout=60
@@ -410,6 +410,17 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Kuvaus_sv    timeout=60
     Wait until page contains    Määritelmä_sv    timeout=60
     Wait until page contains    muutostieto_sv    timeout=60
+    Import codes in Excel format
+    Upload codes    ${Update_codes_with_languages}
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
+    Wait until page contains    30 koodia    timeout=60
+    Wait until element is visible    //*[contains(text(), "testcode28 - Testcode 28_sv")]    timeout=60
+    Click Element    //*[contains(text(), "testcode28 - Testcode 28_sv")]
+    Change content language    ${CONTENT_LANGUAGE_AR_SO}
+    Wait until page contains    Testcode 28_ar    timeout=60
+    Wait until page contains    Kuvaus_ar    timeout=60
+    Wait until page contains    Määritelmä_ar    timeout=60
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
