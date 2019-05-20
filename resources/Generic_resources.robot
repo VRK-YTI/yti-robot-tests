@@ -256,6 +256,7 @@ ${ALL_STATUSES_FI}    Kaikki tilat
 #Code list export
 ${EXPORT_TYPE_EXCEL}    id=codelist_export_excel_link
 ${EXPORT_TYPE_CSV}    id=codelist_export_codes_csv_link
+${EXPORT_MEMBERS_TYPE_CSV}    id=codelist_export_csv_link
 ${EXPORT_CROSS_REFERENCE_EXCEL}    id=codelist_export_cross_reference_excel_link
 ${EXPORT_CROSS_REFERENCE_CSV}    id=codelist_export_cross_reference_csv_link
 ${EXPORT_JSON_AS_FILE_BTN}    id=codelist_export_json_inline_link
@@ -625,7 +626,7 @@ Delete empty registry
     Sleep    1
 
 Create registry
-    [Arguments]    ${registry_value}    ${registry_name}    ${registry_description}    ${organization}
+    [Arguments]    ${registry_value}    ${registry_name}    ${organization}    ${registry_description}
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click element    ${NAVIGATION_MENU_DDL}
     Click element    ${NAVIGATION_MENU_REGISTRIES}
@@ -633,21 +634,22 @@ Create registry
     Click element    ${REGISTRY_DDL}
     Wait until page contains element    ${CREATE_REGISTRY_BTN}    timeout=60
     Click element    ${CREATE_REGISTRY_BTN}
+    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
+    Input Text    ${REGISTRY_VALUE_INPUT}    ${registry_value}
+    Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
+    Input Text    ${REGISTRY_NAME_INPUT}    ${registry_name}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
     Click button    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
     Click element    //*[contains(text(), "${organization}")]
-    Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
-    Input Text    ${REGISTRY_VALUE_INPUT}    ${registry_value}
+    Sleep    5
     ${code_value_exists}=    Run Keyword And Return Status    Page Should Contain    Rekisterin tunnus on jo käytössä.
     run keyword if    ${code_value_exists}    Cancel registry creation
-    ...    ELSE    Continue registry creation    ${registry_name}    ${registry_description}    ${organization}
+    ...    ELSE    Continue registry creation    ${registry_description}    ${registry_name}
 
 Continue registry creation
-    [Arguments]    ${registry_name}    ${registry_description}    ${organization}
-    Wait until page contains element    ${REGISTRY_NAME_INPUT}    timeout=20
-    Input Text    ${REGISTRY_NAME_INPUT}    ${registry_name}
+    [Arguments]    ${registry_description}    ${registry_name}
     Wait until page contains element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
     Input text    ${REGISTRY_DESCRIPTION_INPUT}    ${registry_description}
     Wait until page contains element    ${SAVE_REGISTRY}    timeout=30

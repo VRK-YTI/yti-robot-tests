@@ -254,7 +254,7 @@ Resource          resources/Extension_resources.robot
     Sleep    5
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
-    Click element    ${EXPORT_TYPE_CSV}
+    Click element    ${EXPORT_MEMBERS_TYPE_CSV}
     Sleep    5
     Log to Console    CSV exported
     Return to Koodistot frontpage

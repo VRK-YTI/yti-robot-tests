@@ -471,7 +471,7 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     ...    registry with code lists is not possible, remove code list and delete empty registry.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
+    Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
@@ -482,10 +482,10 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     [Documentation]    Create registry with existing registry code value and check error message
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
+    Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
     Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
-    Create registry    Rekisteri123    Automaatiorekisteri    Kuvaus    Testiorganisaatio
+    Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
     [Teardown]    Delete empty registry    Rekisteri123 - Automaatiorekisteri
 
 516. Import new VALID code list and attach variant
