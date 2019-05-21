@@ -485,6 +485,7 @@ Update code list
     Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Element    ${UPLOAD_FILE_BTN}
+    Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator    timeout=90
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=120
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
     Log to Console    Code list ${codelist_name} updated

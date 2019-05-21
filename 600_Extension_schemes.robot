@@ -1142,7 +1142,6 @@ Resource          resources/Extension_resources.robot
     Sleep    2
     Wait until page contains    25 koodia    timeout=20
     Update code list    ${Code_list_with_update_members}    ${CODE_LIST_14}    ${FILE_FORMAT_Excel}
-    Wait until page does not contain element    //app-ajax-loading-indicator    timeout=90
     Wait until page contains element    ${EXTENSIONS_TAB}    timeout=60
     Click element    ${EXTENSIONS_TAB}
     Wait until element is visible    //*[contains(@id,'222_view_extension')]    timeout=30
