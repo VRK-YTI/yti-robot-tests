@@ -23,20 +23,6 @@ ${class_item_1}    Rooli
 ${class_item_2}    Maksu
 ${class_item_3}    Ajanjakso
 ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraavat resurssit käyttävät sitä
-${class_json_ld_url}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
-${class_json_ld_url_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
-${class_turtle}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
-${class_turtle_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
-${class_rdf}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
-${class_rdf_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
-${class_xml}      https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
-${class_xml_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
-${class_json_schema}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
-${class_json_schema_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
-${model_json_schema}    https://tietomallit-dev.suomi.fi/api/rest/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
-${model_json_schema_test}    https://tietomallit-test.suomi.fi/api/rest/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
-${class_json_ld_context}    https://tietomallit-dev.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
-${class_json_ld_context_test}    https://tietomallit-test.suomi.fi/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
 ${class_json_ld_frame}    blob:https://tietomallit-dev.suomi.fi/46f77ed0-82b6-4d57-b771-fc9a92bf1f17
 ${class_json_ld_frame_test}    blob:https://tietomallit-test.suomi.fi/a93dc0f7-ee66-48ea-8723-85c89ea28e9c
 ${class_framed_json_ld}    blob:https://tietomallit-dev.suomi.fi/61658254-be26-4815-a168-a9f4325d8d15
@@ -773,83 +759,77 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_LD}    timeout=30
     Click Element    ${EXPORT_JSON_LD}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_json_ld_url}
-    ...    ELSE    Select Window    url=${class_json_ld_url_test}
+    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
     Wait until page contains    "@id" : "autom:Testiluokka",    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
     Sleep    1
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_Turtle}    timeout=30
     Click Element    ${EXPORT_Turtle}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_turtle}
-    ...    ELSE    Select Window    url=${class_turtle_test}
+    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
     Wait until page contains    <http://uri.suomi.fi/datamodel/ns/autom>    timeout=30
     Wait until page contains    "Testiluokka"@fi    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_RDF}    timeout=30
     Click Element    ${EXPORT_RDF}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_rdf}
-    ...    ELSE    Select Window    url=${class_rdf_test}
+    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
     Wait until page contains    xmlns:autom="http://uri.suomi.fi/datamodel/ns/autom#"    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_XML}    timeout=30
     Click Element    ${EXPORT_XML}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_xml}
-    ...    ELSE    Select Window    url=${class_xml_test}
+    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
     Wait until page contains    sawsdl:modelReference="http://uri.suomi.fi/datamodel/ns/autom#Testiluokka">    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_Schema}    timeout=30
     Click Element    ${EXPORT_JSON_Schema}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_json_schema}
-    ...    ELSE    Select Window    url=${class_json_schema_test}
+    Select Window    url=${ENVIRONMENT_URL}/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
     Wait until page contains    "id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka.jschema",    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_LD_Context}    timeout=30
     Click Element    ${EXPORT_JSON_LD_Context}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${class_json_ld_context}
-    ...    ELSE    Select Window    url=${class_json_ld_context_test}
+    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
     Wait until page contains    "@context":{    timeout=30
     Wait until page contains    "Testiluokka":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
     Sleep    1
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
@@ -879,14 +859,13 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_MODEL_DDL}
     Wait until element is visible    ${EXPORT_MODEL_JSON_Schema}    timeout=30
     Click Element    ${EXPORT_MODEL_JSON_Schema}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    url=${model_json_schema}
-    ...    ELSE    Select Window    url=${model_json_schema_test}
+    Select Window    url=${ENVIRONMENT_URL}api/rest/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
     Page should not contain    "@id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"
     Page should not contain    Whitelabel Error Page
     Page should not contain    {"errorMessage":"Not found"}
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
