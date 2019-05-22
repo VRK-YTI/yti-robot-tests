@@ -53,7 +53,8 @@ ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä
 ${Error_with_invalid_status}    Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu.
 ${Error_with_invalid_broader}    Aineistossa olevaa BROADER-sarakkeen koodia ei löydy tunnuksella koodi1007.
 ${Error_with_same_broader}    BROADER-sarakkeen arvo viittaa koodiin itseensä.
-${Error_with_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja.
+${Error_with_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja: STATUS
+${Error_with_duplicate_columns_csv}    Aineistosta löytyi sama sarake useita kertoja.
 ${Error_with_invalid_HL_value}    HIERARCHYLEVEL-sarakkeen arvo ei ole sallittu.
 ${Error_with_codevalue_column_missing}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
 ${Error_with_invalid_startdate}    Virheellinen alkupäivä rivillä 5.
@@ -171,7 +172,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_with_duplicate_columns_csv}
-    Wait until page contains    ${Error_with_duplicate_columns}    timeout=20
+    Wait until page contains    ${Error_with_duplicate_columns_csv}    timeout=20
     Cancel code import
     Sleep    2
     Return to Koodistot frontpage
