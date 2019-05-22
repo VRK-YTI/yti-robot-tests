@@ -439,8 +439,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    5
     Select Window    title=Etusivu - Suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
-    ...    ELSE    Select Window    title=TEST - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Sanastot
+    ...    ELSE    Select Window    title=DEV - Sanastot
     Sleep    1
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
