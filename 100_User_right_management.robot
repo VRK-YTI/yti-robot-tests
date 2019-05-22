@@ -26,8 +26,8 @@ Resource          resources/Login_details.robot
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
-    ...    ELSE    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-test.suomi.fi/"    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    ...    ELSE    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Close All Browsers
 
@@ -39,8 +39,8 @@ Resource          resources/Login_details.robot
     Click element    //app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
-    ...    ELSE    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-test.suomi.fi/"    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    ...    ELSE    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Close All Browsers
 
@@ -81,26 +81,26 @@ Resource          resources/Login_details.robot
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
-    ...    ELSE    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-test.suomi.fi/"    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    ...    ELSE    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
     Select navigation menu link    Suomi.fi-sanastot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
-    ...    ELSE    Select Window    title=TEST - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-test.suomi.fi/"    Select Window    title=TEST - Sanastot
+    ...    ELSE    Select Window    title=DEV - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
-    ...    ELSE    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-test.suomi.fi/"    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    ...    ELSE    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-dev.suomi.fi/"    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
-    ...    ELSE    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://rhp-test.suomi.fi/"    Select Window    title=TEST - Yhteentoimivuusalustan oikeuksienhallinta
+    ...    ELSE    Select Window    title=DEV - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Close All Browsers
 
