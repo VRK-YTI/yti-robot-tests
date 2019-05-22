@@ -65,8 +65,8 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Select Window    title=Etusivu - Suomi.fi
     Sleep    1
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=20
     Click element    ${LINK_MODAL_OK_BTN}
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
@@ -351,8 +351,7 @@ Resource          resources/Extension_resources.robot
     Open Koodistot
     Set Selenium Speed    0.5
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Go To    https://koodistot-dev.suomi.fi/codescheme;registryCode=test;schemeCode=600
-    ...    ELSE    Go To    https://koodistot-test.suomi.fi/codescheme;registryCode=test;schemeCode=600
+    GO To    ${ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=600
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}

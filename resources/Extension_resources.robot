@@ -55,9 +55,6 @@ ${Error_2_dpms}    Aineistossa on useita samantyyppisiä koodilaajennuksia.
 ${Error_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567333/extension/O1234567890123456789012345678901234567111/member/
 ${Error_duplicate_members_for_same_code}    Koodilaajennuksella ei voi olla useita jäseniä samalla koodilla.
 ${Error_duplicate_member_id_values}    MEMBER_ID-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
-#url
-${code_list_json_url_dev}    https://koodistot-dev.suomi.fi/codelist-api/api/v1/coderegistries/test/codeschemes/O1234567890123456789012345678901234567111/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty
-${code_list_json_url_test}    https://koodistot-test.suomi.fi/codelist-api/api/v1/coderegistries/test/codeschemes/O1234567890123456789012345678901234567111/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty
 
 *** Keywords ***
 Upload extension

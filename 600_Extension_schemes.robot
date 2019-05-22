@@ -1169,13 +1169,12 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${EXPORT_JSON}    timeout=20
     Click element    ${EXPORT_JSON}
     Sleep    2
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    url=${code_list_json_url_dev}
-    ...    ELSE    Select Window    url=${code_list_json_url_test}
+    Select Window    url=${ENVIRONMENT_URL}/codelist-api/api/v1/coderegistries/test/codeschemes/O1234567890123456789012345678901234567111/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty
     Page should contain    "codeValue" : "O1234567890123456789012345678901234567111",
     Page should contain    "uri" : "http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111",
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
     Wait until page contains element    ${EXPORT_JSON_AS_FILE_BTN}    timeout=20

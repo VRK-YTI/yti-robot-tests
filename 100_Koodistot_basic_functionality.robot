@@ -34,8 +34,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=30
     Sleep    2
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Close All Browsers
 
 102. Open Description of file page
@@ -174,8 +174,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     #Select Window    title=Yhteentoimivuusalustan oikeuksienhallinta
     #Wait until page contains    Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    2
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    1
@@ -185,8 +185,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)
     Click element    ${USER_RIGHT_MANAGEMENT}
     Sleep    2
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Reference Data
-    ...    ELSE    Select Window    title=TEST - Reference Data
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Reference Data
+    ...    ELSE    Select Window    title=DEV - Reference Data
     [Teardown]    Restore Finnish language
 
 109. Check ChangeNote information from code list
@@ -280,26 +280,26 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Select navigation menu link    Suomi.fi-sanastot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
-    ...    ELSE    Select Window    title=TEST - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Sanastot
+    ...    ELSE    Select Window    title=DEV - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Sleep    1
     Close All Browsers
 
