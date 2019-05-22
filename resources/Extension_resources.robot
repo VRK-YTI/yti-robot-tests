@@ -142,6 +142,8 @@ Add code list to extension
     Sleep    2
     Wait until page contains element    ${SEARCH_LINKED_CODE_INPUT}    timeout=30
     Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${code_list_name}
+    Sleep    1
+    Wait until page contains element    //*[contains(text(), "${code_list_name}")]    timeout=30
     Click element    //*[contains(text(), "${code_list_name}")]
     Sleep    2
 
