@@ -144,13 +144,13 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Page Contains    kommentti1    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]    timeout=60
     Click Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Wait Until Page Contains    koodisto6000    timeout=20
     Wait Until Page Contains    testcode40    timeout=20
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
-    ...    ELSE    Select Window    title=TEST - Kommentit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
+    ...    ELSE    Select Window    title=DEV - Kommentit
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
 

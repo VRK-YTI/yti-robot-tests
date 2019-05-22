@@ -25,8 +25,8 @@ Resource          resources/Generic_resources.robot
     Click element    ${LICENSE_LINK}
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
-    ...    ELSE    Select Window    title=TEST - Kommentit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
+    ...    ELSE    Select Window    title=DEV - Kommentit
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly
@@ -36,8 +36,8 @@ Resource          resources/Generic_resources.robot
     Click element    ${DESCRIPTION_OF_FILE_LINK}
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    1
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
-    ...    ELSE    Select Window    title=TEST - Kommentit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
+    ...    ELSE    Select Window    title=DEV - Kommentit
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -48,8 +48,8 @@ Resource          resources/Generic_resources.robot
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_EN}    timeout=20
     Click element    ${LANGUAGE_EN}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Wait until page contains    Comments - DEV    timeout=30
-    ...    ELSE    Wait until page contains    Comments - TEST    timeout=30
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Wait until page contains    Comments - TEST    timeout=30
+    ...    ELSE    Wait until page contains    Comments - DEV    timeout=30
     Wait until page contains    Add new comment round    timeout=30
     Wait until page contains    All tools    timeout=30
     Wait until page contains    All organizations    timeout=30
@@ -74,35 +74,35 @@ Resource          resources/Generic_resources.robot
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
-    ...    ELSE    Select Window    title=TEST - Kommentit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
+    ...    ELSE    Select Window    title=DEV - Kommentit
     Select navigation menu link    Suomi.fi-koodistot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Koodistot
-    ...    ELSE    Select Window    title=TEST - Koodistot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Koodistot
+    ...    ELSE    Select Window    title=DEV - Koodistot
     Wait until page contains    Koodistot    timeout=40
     Wait until page contains    Hae koodistoa    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
-    ...    ELSE    Select Window    title=TEST - Kommentit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
+    ...    ELSE    Select Window    title=DEV - Kommentit
     Select navigation menu link    Suomi.fi-sanastot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Sanastot
-    ...    ELSE    Select Window    title=TEST - Sanastot
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Sanastot
+    ...    ELSE    Select Window    title=DEV - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
-    ...    ELSE    Select Window    title=TEST - Kommentit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
+    ...    ELSE    Select Window    title=DEV - Kommentit
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Tietomallit
-    ...    ELSE    Select Window    title=TEST - Tietomallit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
+    ...    ELSE    Select Window    title=DEV - Tietomallit
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Select Window    title=DEV - Kommentit
-    ...    ELSE    Select Window    title=TEST - Kommentit
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
+    ...    ELSE    Select Window    title=DEV - Kommentit
     Sleep    1
     Close All Browsers
 
@@ -112,8 +112,8 @@ Restore Finnish language
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_FI}    timeout=20
     Click element    ${LANGUAGE_FI}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-dev.suomi.fi/"    Wait until page contains    Kommentit - DEV    timeout=30
-    ...    ELSE    Wait until page contains    Kommentit - TEST    timeout=30
+    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Wait until page contains    Kommentit - TEST    timeout=30
+    ...    ELSE    Wait until page contains    Kommentit - DEV    timeout=30
     Wait until page contains    Luo uusi kommentointikierros    timeout=30
     Wait until page contains    Kaikki työkalut    timeout=20
     Wait until page contains    Kaikki organisaatiot    timeout=20
