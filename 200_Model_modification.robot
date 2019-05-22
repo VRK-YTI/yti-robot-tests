@@ -809,7 +809,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_Schema}    timeout=30
     Click Element    ${EXPORT_JSON_Schema}
-    Select Window    url=${ENVIRONMENT_URL}/api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
     Wait until page contains    "id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka.jschema",    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
