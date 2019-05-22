@@ -909,7 +909,7 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_LIST_9}")]
     Sleep    3
-    Select Window    url=${ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=Koodisto7000
+    Select Window    url=${ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=Koodisto7000
     Wait until page contains    koodisto7000    timeout=20
     Sleep    2
     Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
