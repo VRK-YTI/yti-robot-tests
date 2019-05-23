@@ -479,7 +479,7 @@ Select Terminological Vocabulary
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
     Click element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait until page contains    ${VOCABULARY_2}    timeout=30
+    Wait Until Page Contains Element    xpath://h2[@id='vocabulary_main_label' and .='${VOCABULARY_2}']
     Log to Console    Terminological Vocabulary selected
 
 Delete Terminological Vocabulary
@@ -540,7 +540,7 @@ Select dictionary
     Sleep    1
     Wait until page contains element    //*[contains(text(), "${dictionary}")]    timeout=30
     Click element    //*[contains(text(), "${dictionary}")]
-    Wait until page contains    ${dictionary}    timeout=30
+    Wait Until Page Contains Element    xpath://h2[@id='vocabulary_main_label' and .='${dictionary}']
     Log to Console    ${dictionary} selected
 
 Save concept
