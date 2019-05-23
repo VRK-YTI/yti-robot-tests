@@ -45,23 +45,21 @@ Resource          resources/Extension_resources.robot
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Click element    ${ADD_LINK_DDL}
-    Sleep    1
     Wait until page contains element    ${LINK_BTN}    timeout=20
     Click element    ${LINK_BTN}
-    Sleep    1
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
     Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${ADD_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
     Sleep    1
     Wait until page contains    Liittyvä linkki    timeout=20
-    Page should contain    https://www.suomi.fi/etusivu/
+    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Click element    //*[contains(text(), "https://www.suomi.fi/etusivu/")]
-    Sleep    1
-    Wait until page contains element    ${LINK_1}    timeout=20
-    Click element    ${LINK_1}
+    Click element    id=external_ref_url_link
+    Wait until page contains element    id=external_ref_url_link
+    Click Element    id=external_ref_url_link
     Sleep    1
     Select Window    title=Etusivu - Suomi.fi
     Sleep    1
@@ -159,14 +157,13 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
+    Wait Until Element Is Enabled    ${ADD_BTN}    timeout=20
     Click Element    ${ADD_BTN}
     Wait until page contains    Liittyvä linkki    timeout=20
     Save code modification
-    Sleep    3
     Modify code
     Wait until page contains element    ${MODIFY_LINK_ICON}    timeout=20
     Click element    ${MODIFY_LINK_ICON}
-    Sleep    1
     Wait until page contains element    ${LINK_NAME_INPUT}    timeout=20
     Click element    ${LINK_NAME_INPUT}
     Input Text    ${LINK_NAME_INPUT}    www.suomi.fi
@@ -187,7 +184,7 @@ Resource          resources/Extension_resources.robot
     Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${CODE_START_DATE_BTN}    timeout=20
     Click element    ${CODE_START_DATE_BTN}
@@ -196,20 +193,15 @@ Resource          resources/Extension_resources.robot
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(1)
     Wait until page contains element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(2)
-    Sleep    5
     Wait until page contains element    ${CODE_END_DATE_BTN}    timeout=20
     Click element    ${CODE_END_DATE_BTN}
-    Sleep    1
     Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=20
     Click element    css=select.custom-select:nth-child(1)
-    Sleep    1
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(2)
     Wait until page contains element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(2)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(2)
-    Sleep    1
     Save code modification
-    Sleep    3
-    Page should contain    02.01.2018 - 27.02.2018
+    Wait Until Page Contains    02.01.2018 - 27.02.2018    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 205. Set end date before start date for Code list
@@ -226,23 +218,19 @@ Resource          resources/Extension_resources.robot
     Click element    ${CODE_LIST_START_DATE_BTN}
     Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=20
     Click element    css=select.custom-select:nth-child(1)
-    Sleep    1
     Wait until page contains element    css=select.custom-select:nth-child(1) > option:nth-child(2)    timeout=20
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(2)
     Wait until page contains element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(3)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(6) > div:nth-child(3)
-    Sleep    2
     Wait until page contains element    ${CODE_LIST_END_DATE_BTN}    timeout=20
     Click element    ${CODE_LIST_END_DATE_BTN}
     Wait until page contains element    css=select.custom-select:nth-child(1)    timeout=20
     Click element    css=select.custom-select:nth-child(1)
     Wait until page contains element    css=select.custom-select:nth-child(1) > option:nth-child(1)
     Click element    css=select.custom-select:nth-child(1) > option:nth-child(1)
-    Sleep    2
     Wait until page contains element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)    timeout=20
     Click element    css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)
     Save code list
-    Sleep    5
     Wait until page contains    ${Error_end_date_before_start_date}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
     Wait until page contains element    ${CANCEL_CODE_MOD_BTN}    timeout=20
@@ -258,14 +246,11 @@ Resource          resources/Extension_resources.robot
     Modify code list
     Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click element    ${CODE_LIST_STATUS_DDL}
-    Sleep    2
     Page should not contain    Luonnos
     Page should not contain    Odottaa hyväksyntää
     Click button    Korvattu
     Save code list
-    Sleep    5
     Wait until page contains element    //*[contains(text(), "Korvattu")]    timeout=20
-    Sleep    2
     Go back to Koodistot frontpage
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     [Teardown]    Remove code lists    ${CODE_LIST_6}
@@ -279,23 +264,18 @@ Resource          resources/Extension_resources.robot
     Modify code list
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
-    Sleep    1
     Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=20
     Input text    ${CODE_LIST_DESC_INPUT}    Uusi kuvaus
-    Sleep    1
     Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=20
     Input text    ${CODE_LIST_DEF_INPUT}    Uusi määritelmä
-    Sleep    1
     Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input text    ${CODE_LIST_CHANGENOTE_INPUT}    Uusi muutostieto
-    Sleep    1
     Save code list
-    Sleep    2
-    Page should contain    Testinimi
-    Page should contain    Uusi kuvaus
-    Page should contain    Uusi määritelmä
-    Page should contain    Uusi muutostieto
-    Page should contain    Oikeusturva
+    Wait until page contains    Testinimi    timeout=20
+    Wait until page contains    Uusi kuvaus    timeout=20
+    Wait until page contains    Uusi määritelmä    timeout=20
+    Wait until page contains    Uusi muutostieto    timeout=20
+    Wait until page contains    Oikeusturva    timeout=20
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    Testinimi
 
@@ -313,22 +293,16 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
     Click element    //*[contains(text(), "Asuminen")]
-    Sleep    1
     Save code list
-    Sleep    5
     Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=20
     Wait until page contains element    //*[contains(text(), "Koulutus")]    timeout=20
     Go back to Koodistot frontpage
     Wait until element is visible    ${STATUS_DROPDOWN_BTN}    timeout=60
     Click element    ${STATUS_DROPDOWN_BTN}
-    Sleep    1
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
-    Sleep    1
     Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=60
     Click element    //*[contains(text(), "Asuminen")]
-    Sleep    1
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=60
-    Sleep    2
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
@@ -340,16 +314,14 @@ Resource          resources/Extension_resources.robot
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 29")]
-    Sleep    1
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${ADD_BROADER_CODE}    timeout=20
     Click element    ${ADD_BROADER_CODE}
     Wait until page contains element    //*[contains(text(), "Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
-    Sleep    2
     Open Koodistot
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     GO To    ${ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=600
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
@@ -362,13 +334,11 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
     Switch Browser    1
-    Sleep    3
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Wait until page contains    Koodia ei löydy.    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
-    Sleep    1
     Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
@@ -392,13 +362,11 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Testcode 28_en    timeout=60
     Wait until page contains    Kuvaus_en    timeout=60
     Wait until page contains    Määritelmä_en    timeout=60
-    Sleep    1
     Change content language    ${CONTENT_LANGUAGE_SW_UG}
     Wait until page contains    Koodisto600_sw    timeout=60
     Wait until page contains    Testcode 28_sw    timeout=60
     Wait until page contains    Kuvaus_sw    timeout=60
     Wait until page contains    Määritelmä_sw    timeout=60
-    Sleep    3
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=60
     Click element    ${2_BREADCRUMB_LINK}
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
@@ -448,17 +416,12 @@ Choose testiautomaatiokoodisto and edit
 Save code list
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
-    Sleep    1
+    Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=90
 
 Modify code
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Sleep    1
-
-Save code modification
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    4
 
 Modify code list
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20

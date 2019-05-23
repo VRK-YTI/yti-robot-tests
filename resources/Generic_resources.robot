@@ -510,9 +510,9 @@ Upload codes
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
+    Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator    timeout=90
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
     Log to Console    Codes imported
-    Sleep    2
 
 Cancel code import
     Click button    ${CLOSE_ERROR_MESSAGE_BTN}
@@ -766,3 +766,8 @@ Change UI Language
     Wait until page contains element    ${language}    timeout=20
     Click Element    ${language}
     Sleep    1
+
+Save code modification
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}
