@@ -286,7 +286,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click element    ${IMPORT_VOCABULARY_BTN}
@@ -469,7 +469,7 @@ Create Terminological Dictionary without concepts
     Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_2}
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Sleep    1
