@@ -5,6 +5,7 @@ Library           SeleniumLibrary
 *** Variables ***
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
+${ENVIRONMENT_TITLE_PREFIX}    DEV - 
 ${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
@@ -289,11 +290,11 @@ Create Testiautomaatiosanasto and import vocabulary
     Click element    ${SAVE_VOCABULARY_BTN}
     Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
-    Sleep    3
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Sleep    3
     Log to Console    Testiautomaatiosanasto created
@@ -418,10 +419,11 @@ Create Terminological Dictionary and import vocabulary
     Click element    ${SAVE_VOCABULARY_BTN}
     Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
     Wait until element is enabled    ${IMPORT_VOCABULARY_BTN}    timeout=1
@@ -606,7 +608,7 @@ Import concepts
     Click element    ${FILE_FORMAT_DROPDOWN_BTN}
     Click element    ${file_format}
     Choose file    ${FILE_UPLOAD_INPUT}    ${file}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=120
     Click element    ${IMPORT_YES_BTN}

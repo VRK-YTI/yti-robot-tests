@@ -377,11 +377,11 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts_for_status_filter}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
-    Sleep    3
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Sleep    3
     Log to Console    Concept import ok
@@ -411,17 +411,15 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
-    Sleep    3
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Sleep    3
     Log to Console    Concept import ok
-    Sleep    1
     Edit concept    Merkurius
-    Sleep    2
     Wait until page contains element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
     Click element    ${CONCEPT_DEFINITION_FI_0_INPUT}
     Wait until page contains element    ${ADD_LINK}    timeout=30
@@ -438,8 +436,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    5
     Select Window    title=Etusivu - Suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Sanastot
-    ...    ELSE    Select Window    title=DEV - Sanastot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Sleep    1
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
@@ -453,11 +450,11 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
-    Sleep    3
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Wait until element is enabled    ${IMPORT_VOCABULARY_BTN}    timeout=120
     Sleep    1
@@ -595,7 +592,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click element    ${FILE_FORMAT_DROPDOWN_BTN}
     Click element    ${XML_FORMAT_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${Concepts_with_dropped_items}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=120
     Wait until page contains    67 kohdetta luotu. Virheitä: 0. Varoituksia: 21.    timeout=30

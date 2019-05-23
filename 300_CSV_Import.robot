@@ -16,8 +16,9 @@ Resource          resources/Terminology_Resources.robot
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${invalid_related_concepts}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    Tuodaan 4 käsitettä
@@ -43,8 +44,9 @@ Resource          resources/Terminology_Resources.robot
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${empty_related_concepts}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    Tuodaan 1 käsitettä
@@ -55,7 +57,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    huomio
     Page should contain    esim
     Page should contain    Voimassa oleva
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
     Click element    //*[contains(text(), "${TERM_2}")]
@@ -81,8 +83,9 @@ Resource          resources/Terminology_Resources.robot
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_empty_status}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    Tuodaan 1 käsitettä
@@ -93,7 +96,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    huomio
     Page should contain    esim
     Page should contain    Luonnos
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
     Click element    //*[contains(text(), "${TERM_2}")]
@@ -120,8 +123,9 @@ Resource          resources/Terminology_Resources.robot
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_missing_status}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    Tuodaan 1 käsitettä
@@ -133,7 +137,7 @@ Resource          resources/Terminology_Resources.robot
     Page should contain    huomio
     Page should contain    esimerkki
     Page should contain    Luonnos
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
     Click element    //*[contains(text(), "${TERM_2}")]
@@ -160,8 +164,9 @@ Resource          resources/Terminology_Resources.robot
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_column}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    Ominaisuus “definition” täytyy olla määritelty kielen kanssa
@@ -181,8 +186,9 @@ Resource          resources/Terminology_Resources.robot
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_status_value}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    3: Virheellinen tila “xxxxx”
@@ -202,15 +208,16 @@ Resource          resources/Terminology_Resources.robot
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_duplicate_definition_columns}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Page should contain    systemaattista ja luovaa toimintaa2
     Page should contain    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta2
     Page should contain    henkilö, joka hutkii ammatikseen2
     Page should contain    henkilö, joka hotkii kaiken2
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Sleep    3
     Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30

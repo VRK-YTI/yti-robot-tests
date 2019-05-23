@@ -32,8 +32,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
     Log to Console    EUPL-1.2 license page opened
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Sanastot
-    ...    ELSE    Select Window    title=DEV - Sanastot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
@@ -44,7 +43,7 @@ Resource          resources/Terminology_Resources.robot
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Log to Console    Description of file page opened
-    Select Window    title=DEV - Sanastot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -90,24 +89,19 @@ Resource          resources/Terminology_Resources.robot
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Sanastot
-    ...    ELSE    Select Window    title=DEV - Sanastot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Select navigation menu link    Suomi.fi-koodistot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
-    ...    ELSE    Select Window    title=DEV - Koodistot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
     Wait until page contains    Koodistot    timeout=40
     Wait until page contains    Hae koodistoa    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Sanastot
-    ...    ELSE    Select Window    title=DEV - Sanastot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://sanastot-test.suomi.fi/"    Select Window    title=TEST - Sanastot
-    ...    ELSE    Select Window    title=DEV - Sanastot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Close All Browsers
 
 *** Keywords ***
