@@ -13,7 +13,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly. YTI-460
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Wait until page contains element    id=information_link    timeout=20
     Click element    id=information_link
@@ -27,7 +27,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly. YTI-457
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Wait until page contains element    id=license_link    timeout=20
     Click element    id=license_link
@@ -51,7 +51,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 103. Search for VALID code list
     [Documentation]    Search for VALID code list with frontpage search function.
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
@@ -81,7 +81,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 104. Search for code list with codeValue
     [Documentation]    Search for code list with codeValue with frontpage search function. YTI-651
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Testikoodisto_T200}    ${CODE_LIST_7}
@@ -111,7 +111,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 105. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Sleep    2
     Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
@@ -133,7 +133,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Teardown]    Restore Finnish language
 
 106. Export Excel and CSV for Kunnat 2018 Code list
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_1}")]
@@ -149,7 +149,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Teardown]    Go back to Koodistot frontpage
 
 107. Export Excel and CSV for Palveluluokitus Code list
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_3}")]
@@ -166,7 +166,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 108. Check User right management link
     [Documentation]    Check User right management link functionality. YTI-449
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Wait until page contains element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)    timeout=20
     Click element    css=.btn-menu > app-menu:nth-child(1) > svg:nth-child(1)
@@ -191,7 +191,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 109. Check ChangeNote information from code list
     [Documentation]    Check ChangeNote information from Code list. YTI-489
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_5}
@@ -207,7 +207,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 110. Search for code list and extend search to codes
     [Documentation]    Search for code list with frontpage search function and extend search to codes.
     ...    Check that the correct code list which contains the searched code is listed as a result.
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -236,7 +236,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 111. Filter Codes by codeValue and prefLabel
     [Documentation]    Import codelist and filter Codes by codeValue and prefLabel
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_filter}    ${CODE_LIST_13}
@@ -265,7 +265,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 112. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Select navigation menu link    Käyttäjätiedot
     Wait until page contains    Käyttäjätiedot
@@ -306,7 +306,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 113. Change content language for code list
     [Documentation]    Change content language for code list and check
     ...    that language change applies to code level as well. YTI-1053
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
@@ -340,7 +340,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 114. Check user interface language and content language in page reload
     [Documentation]    Check that user interface language and content language settings are correct after page reload. YTI-1222.
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
