@@ -46,7 +46,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
-    Select Window    title=Koodistot
+    Select Window    title=DEV - Koodistot
     Close All Browsers
 
 103. Search for VALID code list
@@ -311,10 +311,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Import code list in Excel format
     Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
     Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
-    Wait until page contains element    ${CONTENT_LANGUAGE_DDL}    timeout=20
-    Click button    ${CONTENT_LANGUAGE_DDL}
-    Wait until page contains element    ${CONTENT_LANGUAGE_EN}    timeout=20
-    Click button    ${CONTENT_LANGUAGE_EN}
+    Change content language    ${CONTENT_LANGUAGE_EN}
     Wait until page contains element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
     Click element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
     Page should contain    Koodisto
@@ -348,11 +345,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Import code list in Excel format
     Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
     Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Sleep    2
-    Click element    ${LANGUAGE_EN}
-    Sleep    2
+    Change UI Language    ${LANGUAGE_EN}
     Wait until page contains    Test dataset classification    timeout=30
     Wait until page contains element    //*[contains(text(), "CODES")]    timeout=30
     Wait until page contains element    //*[contains(text(), "INFORMATION")]    timeout=30
@@ -367,57 +360,50 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait until page contains element    //*[contains(text(), "Test registry")]    timeout=30
     Wait until page contains element    //*[contains(text(), "General information and administrative services")]    timeout=30
     Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Sleep    2
-    Click element    ${LANGUAGE_FI}
-    Sleep    2
+    Change UI Language    ${LANGUAGE_FI}
     Wait until page contains    Testi dcat    timeout=30
     Wait until page contains element    //*[contains(text(), "KOODIT")]    timeout=30
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=30
     Wait until page contains element    //*[contains(text(), "Testirekisteri")]    timeout=30
     Wait until page contains element    //*[contains(text(), "Yleiset tieto- ja hallintopalvelut")]    timeout=30
     Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
-    Wait until page contains element    ${CONTENT_LANGUAGE_DDL}    timeout=20
-    Click button    ${CONTENT_LANGUAGE_DDL}
-    Wait until page contains element    ${CONTENT_LANGUAGE_EN}    timeout=20
-    Click button    ${CONTENT_LANGUAGE_EN}
+    Change content language    ${CONTENT_LANGUAGE_EN}
     Wait until page contains element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
     Click element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
-    Page should contain    Koodisto
-    Page should contain    Test dataset classification
-    Page should contain    Koodin arvo
-    Page should contain    AGRI
-    Page should contain    Koodin nimi
-    Page should contain    Agriculture, fisheries, forestry and food
-    Page should contain    Voimassa oleva
-    Page should contain    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.
-    Page should contain    URI
-    Page should contain    Viimeisin muokkaus
+    Wait until page contains    Koodisto    timeout=30
+    Wait until page contains    Test dataset classification    timeout=30
+    Wait until page contains    Koodin arvo    timeout=30
+    Wait until page contains    AGRI    timeout=30
+    Wait until page contains    Koodin nimi    timeout=30
+    Wait until page contains    Agriculture, fisheries, forestry and food    timeout=30
+    Wait until page contains    Voimassa oleva    timeout=30
+    Wait until page contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=30
+    Wait until page contains    URI    timeout=30
+    Wait until page contains    Viimeisin muokkaus    timeout=30
     Reload Page
     Sleep    2
-    Page should contain    Koodisto
-    Page should contain    Test dataset classification
-    Page should contain    Koodin arvo
-    Page should contain    AGRI
-    Page should contain    Koodin nimi
-    Page should contain    Agriculture, fisheries, forestry and food
-    Page should contain    Voimassa oleva
-    Page should contain    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.
-    Page should contain    URI
-    Page should contain    Viimeisin muokkaus
+    Wait until page contains    Koodisto    timeout=30
+    Wait until page contains    Test dataset classification    timeout=30
+    Wait until page contains    Koodin arvo    timeout=30
+    Wait until page contains    AGRI    timeout=30
+    Wait until page contains    Koodin nimi    timeout=30
+    Wait until page contains    Agriculture, fisheries, forestry and food    timeout=30
+    Wait until page contains    Voimassa oleva    timeout=30
+    Wait until page contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=30
+    Wait until page contains    URI    timeout=30
+    Wait until page contains    Viimeisin muokkaus    timeout=30
     Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Page should contain    Tunnus
-    Page should contain    dcat01
-    Page should contain    Koodiston nimi
-    Page should contain    Test dataset classification
-    Page should contain    Rekisteri
-    Page should contain    Test registry
-    Page should contain    Tietoalue
-    Page should contain    Yleiset tieto- ja hallintopalvelut
+    Wait until page contains    Tunnus    timeout=30
+    Wait until page contains    dcat01    timeout=30
+    Wait until page contains    Koodiston nimi    timeout=30
+    Wait until page contains    Test dataset classification    timeout=30
+    Wait until page contains    Rekisteri    timeout=30
+    Wait until page contains    Test registry    timeout=30
+    Wait until page contains    Tietoalue    timeout=30
+    Wait until page contains    Yleiset tieto- ja hallintopalvelut    timeout=30
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_20}
 
