@@ -21,6 +21,9 @@ ${TERM_1}         Automaatio
 ${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_1}    //*[contains(@id,'_CSC-TieteenTietotekniikanKeskus_remove_organization_reference_link')]
 ${REMOVE_CLASSIFICATION_1}    //*[@id="vocabulary_inGroup_http://urn.fi/URN:NBN:fi:au:ptvl/v1184_remove_domain_reference_link"]
+${SELENIUM_SPEED}    0.5
+#Generic locators
+${OPEN_MODAL}    class=modal-open
 #Frontpage Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${IMPERSONATE_USER_DROPDOWN}    id=fakeable_user_dropdown
@@ -188,8 +191,7 @@ Terminology Suite Teardown
 
 Test Case Setup
     Open Sanastot
-    Set Selenium Speed    0.5
-    Sleep    5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Select user
 
 Test Case Setup Create Testiautomaatiosanasto
@@ -239,15 +241,12 @@ Open Chrome to Environment
 Select user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
-    Sleep    1
-    #Wait until page contains element    ${USER_1}
+    Wait Until Element Is Visible    ${USER_1}
     Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=20
-    Sleep    2
+    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), 'Testi Admin')]    timeout=20
 
 Open Sanastot
     Open Browser with Settings
-    Sleep    5
     Wait until page contains    Sanastot    timeout=20
     Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
 
@@ -320,24 +319,20 @@ Delete Terminology
     Test Case Setup
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=30
     Click element    //*[contains(text(), "${terminology}")]
     Wait until page contains    ${terminology}    timeout=30
-    Sleep    2
     Wait until element is visible    ${TERMINOLOGY_TAB}    timeout=30
     Click element    ${TERMINOLOGY_TAB}
-    Sleep    1
-    #Wait until page contains    ${terminology}    timeout=20
     Wait until element is visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click element    ${REMOVE_VOCABULARY_BTN}
     Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Sleep    3
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
     Sleep    2
     Page should not contain element    //*[contains(text(), "${terminology}")]
-    Sleep    1
     Log to Console    ${terminology} deleted
     Close All Browsers
 
@@ -406,18 +401,17 @@ Create Terminological Dictionary and import vocabulary
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_2}
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
     Wait until element is visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
-    Sleep    3
     Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
-    Wait until element is enabled    ${IMPORT_VOCABULARY_BTN}    timeout=120
-    Sleep    1
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
+    Wait until element is enabled    ${IMPORT_VOCABULARY_BTN}    timeout=1
     Log to Console    ${terminology} created
 
 Delete existing terminological vocabulary 2 and create new
@@ -496,6 +490,7 @@ Edit concept
     [Arguments]    ${concept}
     Wait until page contains element    //*[contains(text(), "${concept}")]
     Click element    //*[contains(text(), "${concept}")]
+    Wait until page contains element    //h3[contains(text(), "${concept}")]
     Wait until page contains element    ${EDIT_CONCEPT_BTN}    timeout=30
     Click element    ${EDIT_CONCEPT_BTN}
     Sleep    1
@@ -524,11 +519,11 @@ Select dictionary
     [Arguments]    ${dictionary}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${dictionary}
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "${dictionary}")]    timeout=30
     Click element    //*[contains(text(), "${dictionary}")]
     Wait until page contains    ${dictionary}    timeout=30
     Log to Console    ${dictionary} selected
-    Sleep    1
 
 Save concept
     Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
@@ -549,21 +544,19 @@ Add collection for vocabulary
     Click element    ${COLLECTION_DEFINITION_FI_BTN}
     Wait until page contains element    ${COLLECTION_DEFINITION_FI_TEXTAREA}    timeout=30
     Input Text    ${COLLECTION_DEFINITION_FI_TEXTAREA}    ${definition}
-    Sleep    1
-    Wait until page contains element    ${SAVE_COLLECTION_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_COLLECTION_BTN}    timeout=30
     Click element    ${SAVE_COLLECTION_BTN}
-    Wait until element is visible    ${EDIT_COLLECTION_BTN}    timeout=60
-    Sleep    2
+    Wait Until Element Is Enabled    ${EDIT_COLLECTION_BTN}    timeout=60
 
 Save collection
-    Wait until page contains element    ${SAVE_COLLECTION_BTN}    timeout=30
+    Wait Until Element Is Visible    ${SAVE_COLLECTION_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_COLLECTION_BTN}    timeout=30
     Click element    ${SAVE_COLLECTION_BTN}
-    Sleep    3
+    Wait Until Element Is Visible    ${EDIT_COLLECTION_BTN}    timeout=30
 
 Edit collection
     Wait until page contains element    ${EDIT_COLLECTION_BTN}    timeout=30
     Click Element    ${EDIT_COLLECTION_BTN}
-    Sleep    1
 
 Add broader concepts for collection
     [Arguments]    @{concept_items}
@@ -573,9 +566,8 @@ Add broader concepts for collection
     \    Wait until page contains element    //*[contains(text(), "${concept_item}")]    timeout=30
     \    Click element    //*[contains(text(), "${concept_item}")]
     \    Wait until page contains    ${concept_item}    timeout=30
-    \    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
+    \    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
     \    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    \    Sleep    3
 
 Add members for collection
     [Arguments]    @{concept_items}
@@ -585,9 +577,8 @@ Add members for collection
     \    Wait until page contains element    //*[contains(text(), "${concept_item}")]    timeout=30
     \    Click element    //*[contains(text(), "${concept_item}")]
     \    Wait until page contains    ${concept_item}    timeout=30
-    \    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
+    \    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
     \    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    \    Sleep    3
 
 Import concepts
     [Arguments]    ${file_format}    ${file}

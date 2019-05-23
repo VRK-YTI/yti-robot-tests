@@ -154,18 +154,17 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Add members for collection    tutkija    tutkimus
     Save collection
     Wait until page contains element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
-    Wait until page contains element    ${REMOVE_COLLECTION_BTN}    timeout=30
+    Wait Until Element Is Visible    ${REMOVE_COLLECTION_BTN}    timeout=30
     Click element    ${REMOVE_COLLECTION_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_BTN}    timeout=30
+    Wait Until Element Is Visible    ${CONFIRM_REMOVE_BTN}    timeout=30
     Click element    ${CONFIRM_REMOVE_BTN}
-    Sleep    2
-    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}
+    Wait Until Page Does Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]    timeout=5
     Page should not contain    Testikäsitevalikoima
     Wait until page contains element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
     Click element    ${CONCEPTS_ALPHABETICAL_TAB}
     Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
-    Sleep    1
     Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
     Click element    ${CONCEPTS_HIERARCHIAL_TAB}
     Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
@@ -193,17 +192,17 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait until page contains element    //*[contains(@id,'concept-2_concept_list_listitem')]    timeout=30
     Click element    //*[contains(@id,'concept-2_concept_list_listitem')]
     Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
-    Page should not contain    Testikäsitevalikoima
     Sleep    1
+    Page should not contain    Testikäsitevalikoima
     Edit concept    tutkija
     Wait until page contains element    ${ADD_BROADER_CONCEPT_BTN}    timeout=30
     Click element    ${ADD_BROADER_CONCEPT_BTN}
     Wait until page contains element    //*[contains(@id,'concept-0_search_result_concept')]    timeout=30
     Click element    //*[contains(@id,'concept-0_search_result_concept')]
-    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
     Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     Save concept
-    Sleep    5
+    Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}
     Wait until page contains element    //*[contains(@id,'concept-0_concept_broader_concept_reference_concept_link')]    timeout=30
     Reload page
     Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
