@@ -331,7 +331,12 @@ Delete Terminology
     Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=30
+    Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=20
+    # Cut teardown execution if terminology does not exist
+    ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
+    Run Keyword Unless    ${terminology_exists}    Run Keywords
+    ...    Log To Console    Delete Terminology ${terminology} did not find the terminology to delete
+    ...    AND    Return From Keyword
     Click element    //*[contains(text(), "${terminology}")]
     Wait until page contains    ${terminology}    timeout=30
     Wait until element is visible    ${TERMINOLOGY_TAB}    timeout=30
