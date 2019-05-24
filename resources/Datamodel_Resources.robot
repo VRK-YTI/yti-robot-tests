@@ -16,6 +16,7 @@ ${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable
 ${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
 ${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 ${NAMESPACE_1}    Julkishallinnon tietokomponentit
+${ENVIRONMENT_TITLE_PREFIX}    DEV - \
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown

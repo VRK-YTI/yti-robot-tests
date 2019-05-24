@@ -765,8 +765,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    Whitelabel Error Page
     Close Window
     Sleep    1
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
@@ -778,8 +777,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
@@ -790,8 +788,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
@@ -802,8 +799,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
@@ -814,8 +810,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Sleep    1
     Wait until page contains element    ${EXPORT_CLASS_DDL}    timeout=30
     Click Element    ${EXPORT_CLASS_DDL}
@@ -828,8 +823,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    Whitelabel Error Page
     Close Window
     Sleep    1
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
@@ -864,8 +858,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Page should not contain    Whitelabel Error Page
     Page should not contain    {"errorMessage":"Not found"}
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://tietomallit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
