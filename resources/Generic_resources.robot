@@ -1,4 +1,5 @@
 *** Variables ***
+${SELENIUM_SPEED}    0
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
@@ -304,12 +305,12 @@ ${Json_export_dcat}    ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR",
 *** Keywords ***
 Test Case Setup Admin
     Open Koodistot
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
 
 Test Case Setup Superuser
     Open Koodistot
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
 
 Select user
@@ -510,9 +511,9 @@ Upload codes
     Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
     Click button    Tuo
+    Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator    timeout=90
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
     Log to Console    Codes imported
-    Sleep    2
 
 Cancel code import
     Click button    ${CLOSE_ERROR_MESSAGE_BTN}
@@ -758,3 +759,16 @@ Change content language
     Wait until page contains element    ${language}    timeout=20
     Click button    ${language}
     Sleep    1
+
+Change UI Language
+    [Arguments]    ${language}
+    Wait Until Element Is Visible    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait until page contains element    ${language}    timeout=20
+    Click Element    ${language}
+    Sleep    1
+
+Save code modification
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}
