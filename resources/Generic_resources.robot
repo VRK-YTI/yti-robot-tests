@@ -1,5 +1,5 @@
 *** Variables ***
-${SELENIUM_SPEED}    0
+${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
