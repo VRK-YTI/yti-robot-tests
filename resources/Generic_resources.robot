@@ -19,6 +19,7 @@ ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
 ${REFERENCE_DATA_TOOL}    id=codelist_integration_container_type_filter_dropdown
 ${TERMINOLOGIES_TOOL}    id=terminology_integration_container_type_filter_dropdown
 ${DATA_VOCABULARIES_TOOL}    id=datamodel_integration_container_type_filter_dropdown
+${ENVIRONMENT_TITLE_PREFIX}    DEV - \
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown

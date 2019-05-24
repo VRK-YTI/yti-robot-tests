@@ -25,8 +25,7 @@ Resource          resources/Generic_resources.robot
     Click element    ${LICENSE_LINK}
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
-    ...    ELSE    Select Window    title=DEV - Kommentit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Kommentit
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly
@@ -36,8 +35,7 @@ Resource          resources/Generic_resources.robot
     Click element    ${DESCRIPTION_OF_FILE_LINK}
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    1
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
-    ...    ELSE    Select Window    title=DEV - Kommentit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Kommentit
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -74,35 +72,28 @@ Resource          resources/Generic_resources.robot
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
-    ...    ELSE    Select Window    title=DEV - Kommentit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Kommentit
     Select navigation menu link    Suomi.fi-koodistot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Koodistot
-    ...    ELSE    Select Window    title=DEV - Koodistot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
     Wait until page contains    Koodistot    timeout=40
     Wait until page contains    Hae koodistoa    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
-    ...    ELSE    Select Window    title=DEV - Kommentit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Kommentit
     Select navigation menu link    Suomi.fi-sanastot
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Sanastot
-    ...    ELSE    Select Window    title=DEV - Sanastot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
-    ...    ELSE    Select Window    title=DEV - Kommentit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Kommentit
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Tietomallit
-    ...    ELSE    Select Window    title=DEV - Tietomallit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Select Window    title=TEST - Kommentit
-    ...    ELSE    Select Window    title=DEV - Kommentit
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Kommentit
     Sleep    1
     Close All Browsers
 
