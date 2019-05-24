@@ -1173,8 +1173,7 @@ Resource          resources/Extension_resources.robot
     Page should contain    "codeValue" : "O1234567890123456789012345678901234567111",
     Page should contain    "uri" : "http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111",
     Close Window
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Select Window    title=TEST - Koodistot
-    ...    ELSE    Select Window    title=DEV - Koodistot
+    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
     Wait until page contains element    ${EXPORT_JSON_AS_FILE_BTN}    timeout=20
