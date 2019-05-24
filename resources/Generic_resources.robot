@@ -1,5 +1,5 @@
 *** Variables ***
-${DATAMODEL_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
+${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/

@@ -246,7 +246,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Close Window
     Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
     Select navigation menu link    Suomi.fi-tietomallit
-    Select Window    url=${DATAMODEL_ENVIRONMENT_URL}
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
