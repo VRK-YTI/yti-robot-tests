@@ -1,4 +1,5 @@
 *** Variables ***
+${DATAMODEL_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
@@ -463,8 +464,7 @@ Close error modal
 Upload codelist
     [Arguments]    ${codelist}    ${codelist_name}
     Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
-    Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=30
@@ -772,3 +772,10 @@ Save code modification
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Visible    ${MODIFY_CODE_BTN}
+
+Select navigation menu link
+    [Arguments]    ${navigation_menu_link}
+    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click element    ${NAVIGATION_MENU_DDL}
+    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
