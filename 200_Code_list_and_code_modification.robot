@@ -28,8 +28,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Tämä on uusi nimi koodille    timeout=20
     Wait until page contains    Tämä on uusi kuvaus koodille    timeout=20
     Wait until page contains    Tämä on uusi lyhyt nimi    timeout=20
-    Sleep    1
-    Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 201. Add link to the DRAFT Code
@@ -49,54 +47,40 @@ Resource          resources/Extension_resources.robot
     Click element    ${LINK_BTN}
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
-    Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait Until Element Is Enabled    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
-    Sleep    1
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Click element    //*[contains(text(), "https://www.suomi.fi/etusivu/")]
-    Click element    id=external_ref_url_link
     Wait until page contains element    id=external_ref_url_link
     Click Element    id=external_ref_url_link
-    Sleep    1
-    Select Window    title=Etusivu - Suomi.fi
-    Sleep    1
+    Select Window    url=https://www.suomi.fi/etusivu/
     Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
     Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=20
     Click element    ${LINK_MODAL_OK_BTN}
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=120
-    Sleep    2
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
     Click element    ${MODIFY_CODE_BTN}
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Click element    ${ADD_LINK_DDL}
-    Sleep    1
     Wait until page contains element    ${LINK_BTN}    timeout=20
     Click element    ${LINK_BTN}
-    Sleep    1
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Click element    ${LINK_URL_INPUT}
-    Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait until page contains    Linkki on jo käytössä tässä koodistossa.    timeout=20
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
     Wait until page contains element    ${DELETE_LINK_ICON}    timeout=20
     Click element    ${DELETE_LINK_ICON}
-    Sleep    1
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
     Click Element    ${REMOVE_LINK_CONF_BTN}
-    Sleep    1
-    Page should not contain    https://www.suomi.fi/etusivu/
+    Wait Until Page Does Not Contain    https://www.suomi.fi/etusivu/    timeout=20
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=120
-    Sleep    1
-    Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 202. Add Creative Commons license to DRAFT Code
@@ -113,29 +97,25 @@ Resource          resources/Extension_resources.robot
     Click element    ${ADD_LINK_DDL}
     Wait until page contains element    ${LICENSE_BTN}    timeout=20
     Click element    ${LICENSE_BTN}
-    Sleep    1
     Wait until page contains element    ${CCBY4.0}    timeout=20
     Click Element    ${CCBY4.0}
     Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
     Click Element    ${SELECT_LINK_BTN}
-    Wait until page contains    Lisenssi
+    Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    2
+    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=90
     Modify code
-    Wait until page contains    Lisenssi
+    Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${DELETE_LINK_ICON}    timeout=20
     Click element    ${DELETE_LINK_ICON}
-    Sleep    1
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
     Click Element    ${REMOVE_LINK_CONF_BTN}
-    Sleep    1
-    Page should not contain    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Page Does Not Contain    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Sleep    2
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 203. Modify link for DRAFT Code
@@ -275,7 +255,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Uusi määritelmä    timeout=20
     Wait until page contains    Uusi muutostieto    timeout=20
     Wait until page contains    Oikeusturva    timeout=20
-    Go back to Koodistot frontpage
     [Teardown]    Remove code lists    Testinimi
 
 208. Modify classification for DRAFT Code list
@@ -302,12 +281,11 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=60
     Click element    //*[contains(text(), "Asuminen")]
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=60
-    Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 209. Add broader code for code when code is not found from the system
     [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
-    [Tags]    regression    test    200
+    [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -338,7 +316,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Koodia ei löydy.    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
-    Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 210. Update code list values vith different languages
@@ -387,7 +364,6 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Testcode 28_ar    timeout=60
     Wait until page contains    Kuvaus_ar    timeout=60
     Wait until page contains    Määritelmä_ar    timeout=60
-    Go back to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 *** Keywords ***
@@ -416,15 +392,3 @@ Save code list
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=90
-
-Modify code
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    ${MODIFY_CODE_BTN}
-    Sleep    1
-
-Modify code list
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
-    Sleep    2

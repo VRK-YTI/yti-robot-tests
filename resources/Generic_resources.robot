@@ -695,7 +695,7 @@ Modify code list
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
-    Sleep    2
+    Wait Until Element Is Enabled    ${SAVE_CODE_LIST_MOD_BTN}
 
 Cancel code list import
     Click button    ${CLOSE_ERROR_MESSAGE_BTN}
@@ -779,3 +779,7 @@ Select navigation menu link
     Click element    ${NAVIGATION_MENU_DDL}
     Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]
+
+Modify code
+    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
+    Click element    ${MODIFY_CODE_BTN}
