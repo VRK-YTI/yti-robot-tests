@@ -1133,7 +1133,7 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
-631. Update member relations with member URI, code URI and member ID
+631. Update member relations with member URI, code URI and codeValue
     [Documentation]    Import code list and update member relations with member URI, code URI and member ID. YTI-639.
     [Tags]    regression    koodistot    test    600
     [Setup]    Test Case Setup Superuser
