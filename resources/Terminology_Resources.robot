@@ -24,7 +24,7 @@ ${REMOVE_ORGANIZATION_1}    //*[contains(@id,'_CSC-TieteenTietotekniikanKeskus_r
 ${REMOVE_CLASSIFICATION_1}    //*[@id="vocabulary_inGroup_http://urn.fi/URN:NBN:fi:au:ptvl/v1184_remove_domain_reference_link"]
 ${SELENIUM_SPEED}    0.5
 #Generic locators
-${OPEN_MODAL}    class=modal-open
+${OPEN_MODAL}     class=modal-open
 #Frontpage Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${IMPERSONATE_USER_DROPDOWN}    id=fakeable_user_dropdown
@@ -334,8 +334,7 @@ Delete Terminology
     Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=20
     # Cut teardown execution if terminology does not exist
     ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
-    Run Keyword Unless    ${terminology_exists}    Run Keywords
-    ...    Log To Console    Delete Terminology ${terminology} did not find the terminology to delete
+    Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${terminology} did not find the terminology to delete
     ...    AND    Return From Keyword
     Click element    //*[contains(text(), "${terminology}")]
     Wait until page contains    ${terminology}    timeout=30

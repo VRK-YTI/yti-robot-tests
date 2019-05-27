@@ -79,27 +79,29 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    test
     [Setup]    Test Case Setup
     Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot
-    Wait until page contains    Nimi
-    Wait until page contains    Testi Admin
-    Wait until page contains    Sähköposti
-    Wait until page contains    Organisaatiot ja roolit
-    Wait until page contains    Lähetä käyttöoikeuspyyntö
-    Sleep    1
+    Wait until page contains    Käyttäjätiedot    timeout=60
+    Wait until page contains    Nimi    timeout=60
+    Wait until page contains    Testi Admin    timeout=60
+    Wait until page contains    Sähköposti    timeout=60
+    Wait until page contains    Organisaatiot ja roolit    timeout=60
+    Wait until page contains    Lähetä käyttöoikeuspyyntö    timeout=60
     Select navigation menu link    yhteentoimiva.suomi.fi
-    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Wait until page contains    Yhteentoimivuusalusta ja -menetelmä    timeout=60
     Close Window
     Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Select navigation menu link    Suomi.fi-koodistot
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
     Wait until page contains    Koodistot    timeout=40
     Wait until page contains    Hae koodistoa    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
-    Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Wait until page contains    Tietomallit    timeout=40
+    Wait until page contains    Hae tietomallia    timeout=40
+    Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Close All Browsers
@@ -119,4 +121,3 @@ Select navigation menu link
     Click element    ${NAVIGATION_MENU_DDL}
     Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]
-    Sleep    2
