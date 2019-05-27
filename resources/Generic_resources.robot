@@ -519,9 +519,8 @@ Import code list in CSV format
 Upload codes
     [Arguments]    ${codes}
     Choose file    ${FILE_UPLOAD_BTN}    ${codes}
-    Sleep    1
     Wait until page contains element    ${IMPORT_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${IMPORT_BTN}
     Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator    timeout=90
     Wait until element is visible    ${CODE_LIST_DDL}    timeout=120
     Log to Console    Codes imported

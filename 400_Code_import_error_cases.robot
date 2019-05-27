@@ -84,7 +84,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_codevalue_missing_csv}
     Wait until page contains    ${Error_no_codeValue}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -102,7 +101,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_status_missing_csv}
     Wait until page contains    ${Error_no_status_value}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -120,7 +118,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_invalid_status_csv}
     Wait until page contains    ${Error_with_invalid_status}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -138,7 +135,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_invalid_broader_csv}
     Wait until page contains    ${Error_with_invalid_broader}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -156,7 +152,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_same_broader_csv}
     Wait until page contains    ${Error_with_same_broader}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -174,7 +169,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_duplicate_columns_csv}
     Wait until page contains    ${Error_with_duplicate_columns_csv}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -192,7 +186,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_invalid_HL_csv}
     Wait until page contains    ${Error_with_invalid_HL_value}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -210,7 +203,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_without_codevalue_column_csv}
     Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -228,7 +220,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_invalid_startdate_csv}
     Wait until page contains    ${Error_with_invalid_startdate}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -246,7 +237,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_invalid_ID_csv}
     Wait until page contains    ${Error_with_invalid_ID}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -264,7 +254,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Update_Code_valid_draft_csv}
     Wait until page contains    ${Error_with_update_code_valid_draft}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -282,7 +271,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Duplicate_Codes_csv}
     Wait until page contains    ${Error_with_duplicate_codes}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -300,7 +288,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_invalid_codevalue_csv}
     Wait until page contains    ${Error_invalid_codeValue}    timeout=20
     Cancel code import
-    Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -318,7 +305,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_missing_order_value_csv}
     Wait until page contains    ${Error_missing_order}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -336,7 +322,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Same_order_values_csv}
     Wait until page contains    ${Error_same_order_values}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -350,7 +335,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_order_values}
     Wait until page contains    ${Error_existing_order_values}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -368,7 +352,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${Codes_with_invalid_order_values_csv}
     Wait until page contains    ${Error_invalid_order_value}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -386,6 +369,5 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codes    ${No_content_excel}
     Wait until page contains    ${Error_no_content}    timeout=20
     Cancel code import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
