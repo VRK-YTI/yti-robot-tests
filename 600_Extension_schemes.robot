@@ -1134,7 +1134,7 @@ Resource          resources/Extension_resources.robot
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 631. Update member relations with member URI, code URI and codeValue
-    [Documentation]    Import code list and update member relations with member URI, code URI and member ID. YTI-639.
+    [Documentation]    Import code list and update member relations with member URI, code URI and codeValue. YTI-639.
     [Tags]    regression    koodistot    test    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
