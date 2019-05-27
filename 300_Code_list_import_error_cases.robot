@@ -146,7 +146,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists
+    Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists}
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_duplicate_code_lists}    timeout=20
