@@ -371,7 +371,7 @@ Remove code lists
     \    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    \    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.    timeout=90
     \    Log to Console    ${code_list_item} removed
     \    Sleep    1
     Close All Browsers
@@ -491,19 +491,30 @@ Update code list
     Log to Console    Code list ${codelist_name} updated
 
 Import code list in Excel format
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=60
     Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=60
     Click element    ${IMPORT_CODE_LIST_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=60
     Click element    ${SELECT_REGISTRY_BTN}
-    #Wait until page contains element    ${REGISTRY_1}    timeout=20
     Click button    ${REGISTRY_1}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=60
     Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=60
     Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=60
+
+Import code list in CSV format
+    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=60
+    Click element    ${IMPORT_CODE_LIST_BTN}
+    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=60
+    Click element    ${SELECT_REGISTRY_BTN}
+    Click button    ${REGISTRY_1}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=60
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=60
+    Click element    ${FILE_FORMAT_CSV}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=60
 
 Upload codes
     [Arguments]    ${codes}
@@ -771,7 +782,7 @@ Change UI Language
 Save code modification
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
-    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}
+    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=90
 
 Select navigation menu link
     [Arguments]    ${navigation_menu_link}

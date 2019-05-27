@@ -57,20 +57,17 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_codeValue}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_no_codeValue}    timeout=20
     Cancel code list import
     Import code list in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_codeValue_csv}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_no_codeValue}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 301. Import code list with missing CLASSIFICATION value
     [Documentation]    Import Code list with missing CLASSIFICATION value and check error message
@@ -78,20 +75,17 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    Tuo
     Wait until page contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
     Import code list in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification_csv}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click button    Tuo
     Wait until page contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 302. Import code list with invalid CLASSIFICATION value
     [Documentation]    Import Code list (Excel, CSV) with invalid CLASSIFICATION value and check error message
@@ -99,20 +93,17 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
     Import code list in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification_csv}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 303. Import code list with missing STATUS value
     [Documentation]    Import Code list with missing STATUS value and check error message
@@ -120,13 +111,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_status_value}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_no_status_value}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 304. Import code list with invalid STATUS value
     [Documentation]    Import Code list with invalid STATUS value and check error message
@@ -134,13 +123,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_status_value}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_status_value}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 305. Import code list with duplicate columns
     [Documentation]    Import Code list with duplicate columns and check error message
@@ -148,27 +135,23 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_columns}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_duplicate_columns}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 306. Import code list with duplicate code lists
     [Documentation]    Import Code list with duplicate Code lists and check error message
     [Tags]    regression    test    300
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists}
-    Sleep    2
+    Choose file    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_duplicate_code_lists}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 307. Import code list with invalid codeValue
     [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
@@ -176,20 +159,17 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_code_list}    timeout=20
     Cancel code list import
     Import code list in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue_csv}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_code_list}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 308. Import code list with maximum hierarchies reached for codes
     [Documentation]    Import Code list (Excel) with maximum hierarchies reached
@@ -198,13 +178,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_max_hierarchy_level_codes}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_codes_max_hierarchy_level}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 309. Create new version of code list from invalid file
     [Documentation]    Create new version of code list from file which contains two code lists
@@ -213,7 +191,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Sleep    2
     Wait until page contains    10 koodia    timeout=20
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
@@ -224,12 +201,10 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Choose file    ${FILE_UPLOAD_BTN}    ${2x_code_list}
-    Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_only_one_code_list}    timeout=20
     Cancel code list import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
 
@@ -240,7 +215,6 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Sleep    2
     Wait until page contains    10 koodia    timeout=20
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
@@ -251,12 +225,10 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_Codes_new_version}
-    Sleep    2
     Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
     Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_code_list_exists}    timeout=20
     Cancel code list import
-    Sleep    2
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
 
@@ -266,13 +238,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_propertytype}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_propertytype}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 312. Import code list with invalid end date
     [Documentation]    Import code list with invalid end date and check error message. YTI-290.
@@ -280,13 +250,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_enddate}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_enddate}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 313. Import code list with same sub code list
     [Documentation]    Import code list with same sub code list and check error message. YTI-317.
@@ -294,13 +262,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Same_sub_code_list}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_same_sub_code_list}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 314. Import code list with unknown sub code list
     [Documentation]    Import code list with unknown sub code list and check error message. YTI-317.
@@ -308,13 +274,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Unknown_sub_code_list}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_unknown_sub_code_list}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 315. Import empty Excel file
     [Documentation]    Import empty Excel file and check error message. YTI-569.
@@ -322,20 +286,17 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${empty}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_empty_Excel}    timeout=20
     Cancel code list import
     Import code list in CSV format
     Choose file    ${FILE_UPLOAD_BTN}    ${empty}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_codevalue_missing}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
+    Return to Koodistot frontpage
 
 316. Import Excel file with no content
     [Documentation]    Import Excel file with no content and check error message. YTI-574.
@@ -343,43 +304,8 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${No_content_excel}
-    Sleep    2
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_no_content}    timeout=20
     Cancel code list import
-    Sleep    2
-    Go back to Koodistot frontpage
-
-*** Keywords ***
-Go back to Koodistot frontpage
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
-    Click element    ${FRONTPAGE_LINK}
-    Sleep    2
-    Close All Browsers
-
-Import code list in Excel format
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click element    ${IMPORT_CODE_LIST_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-
-Import code list in CSV format
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click element    ${IMPORT_CODE_LIST_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
-    Click element    ${FILE_FORMAT_CSV}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Return to Koodistot frontpage
