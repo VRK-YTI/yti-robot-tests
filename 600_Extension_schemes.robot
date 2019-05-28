@@ -1133,8 +1133,9 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
-631. Update member relations with member URI, code URI and codeValue
-    [Documentation]    Import code list and update member relations with member URI, code URI and codeValue. YTI-639.
+631. Update member relations with member URI, code URI, codeValue and MEMBER_ID
+    [Documentation]    Import code list and update member relations with member URI, code URI,
+    ...    codeValue and MEMBER_ID. YTI-639, YTI-696.
     [Tags]    regression    koodistot    test    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
@@ -1180,5 +1181,30 @@ Resource          resources/Extension_resources.robot
     Click element    ${EXPORT_JSON_AS_FILE_BTN}
     Sleep    5
     Log To Console    JSON Export done
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_14}
+
+633. Update members with invalid relation value
+    [Documentation]    Update members with invalid relation value
+    ...    and check error message
+    [Tags]    regression    test    300
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_extensions_broader_members}    ${CODE_LIST_14}
+    Wait until page contains    25 koodia    timeout=20
+    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Click element    ${CODE_LIST_DDL}
+    Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Click element    ${FILE_FORMAT_BTN}
+    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Click element    ${FILE_FORMAT_Excel}
+    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose file    ${FILE_UPLOAD_BTN}    ${Update_members_invalid_relation}
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Click element    ${UPLOAD_FILE_BTN}
+    Wait until page contains    ${Error_invalid_member_relation}    timeout=20
+    Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
