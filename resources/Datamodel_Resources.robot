@@ -447,7 +447,8 @@ Add several classes
     \    Click Element    ${ADD_NEW_CLASS}
     \    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     \    Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
-    \    Click Element    //*[contains(text(), "${class_item}")]
+    \    Wait until page contains element    //*[contains(@id,'${class_item}_search_result_link')]    timeout=60
+    \    Click Element    //*[contains(@id,'${class_item}_search_result_link')]
     \    Sleep    2
     \    Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
     \    Click Element    ${SPECIALIZE_CLASS}
