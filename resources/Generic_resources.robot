@@ -402,6 +402,7 @@ Create code list
     [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
+    Sleep    1
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
     run keyword if    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
@@ -716,7 +717,8 @@ Upload codelist in Excel format
     [Arguments]    ${codelist}    ${codelist_name}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
-    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
+    Sleep    1
+    ${code_list_exists}=    Run Keyword And Return Status    Page Should Not Contain    Haulla ei löytynyt yhtään koodistoa.
     run keyword if    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}

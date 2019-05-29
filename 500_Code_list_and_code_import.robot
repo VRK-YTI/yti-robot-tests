@@ -286,13 +286,14 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
-    Input Text    ${SEARCH_CONCEPT_INPUT}    tutkija
     Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
     Click element    ${VOCABULARY_SELECTION_DDL}
+    Wait until page contains element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
     Click element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
-    Wait until page contains element    //*[contains(text(), "tutkija")]
-    Click element    //*[contains(text(), "tutkija")]
+    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Input Text    ${SEARCH_CONCEPT_INPUT}    tutkija
+    Wait until page contains element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]    timeout=60
+    Click element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]
     Log to Console    Concept added
     Wait until element is visible    ${SELECT_REGISTRY_BTN}    timeout=30
     Click element    ${SELECT_REGISTRY_BTN}
@@ -321,7 +322,8 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Click element    //*[contains(text(), "${concept_uri_test}")]
     ...    ELSE    Click element    //*[contains(text(), "${concept_uri_dev}")]
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    #Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Wait until page contains    Suositettava termi    timeout=60
     Wait until page contains    tutkija    timeout=60
     Wait until page contains    Person who does the research    timeout=60
@@ -341,7 +343,7 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
-    Create new code to code list with concept    tutkija    Testiautomaatiosanasto (Luonnos)
+    Create new code to code list with concept    Tutkija    Testiautomaatiosanasto
     Wait until page contains    NewCode001 - tutkija    timeout=20
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     Return to Koodistot frontpage
@@ -378,7 +380,7 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Click element    ${LINK_URL_INPUT}
     Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${ADD_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${ADD_BTN}    timeout=60
     Click element    ${ADD_BTN}
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
@@ -1681,18 +1683,19 @@ Create new code to code list with concept
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
     Click element    ${CREATE_CODE_BTN}
-    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
-    Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept}
     Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
     Click element    ${VOCABULARY_SELECTION_DDL}
-    Click Button    ${vocabulary}
-    Wait until page contains element    //*[contains(text(), "${concept}")]
-    Click element    //*[contains(text(), "${concept}")]
+    Wait until page contains element    //*[contains(@id, '${vocabulary}')]
+    Click element    //*[contains(@id, '${vocabulary}')]
+    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept}
+    Wait until page contains element    //*[@id="${vocabulary}_${concept}_concept_link"]    timeout=60
+    Click element    //*[@id="${vocabulary}_${concept}_concept_link"]
     Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
-    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_BTN}    timeout=60
     Click element    ${SAVE_NEW_CODE_BTN}
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=30
+    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=60
     Log to Console    New code "${concept}" created
 
 Suggest concept to Terminologies
