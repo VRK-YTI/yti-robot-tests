@@ -16,7 +16,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
-    [Tags]    regression    tietomallit    test
+    [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
     Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
     Click element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a
@@ -31,7 +31,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
-    [Tags]    regression    tietomallit    test
+    [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
     Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[3]/a    timeout=20
     Click element    //application/ng-container/app-footer/div/div[2]/div[3]/a
@@ -54,7 +54,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
-    [Tags]    regression    tietomallit    test
+    [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
     Change user interface language    ${LANGUAGE_EN}
     Wait until page contains    Data Vocabularies    timeout=20
@@ -64,7 +64,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 104. Search for DRAFT model
     [Documentation]    Search for DRAFT model with frontpage search function.
-    [Tags]    regression    tietomallit    test
+    [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Go back to Data Vocabularies frontpage
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -78,7 +78,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 105. Frontpage advanced search
     [Documentation]    Search attribute with frontpage advanced search function.
-    [Tags]    regression    tietomallit    test
+    [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
     Wait Until Element Is Visible    ${FRONTPAGE_ADVANCED_SEARCH}    timeout=30
     Click Element    ${FRONTPAGE_ADVANCED_SEARCH}
@@ -94,7 +94,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 106. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
-    [Tags]    regression    test
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup
     Select navigation menu link    Käyttäjätiedot
     Wait until page contains    Käyttäjätiedot
