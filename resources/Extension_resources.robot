@@ -56,7 +56,7 @@ ${Error_2_dpms}    Aineistossa on useita samantyyppisiä koodilaajennuksia.
 ${Error_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567333/extension/O1234567890123456789012345678901234567111/member/
 ${Error_duplicate_members_for_same_code}    Koodilaajennuksella ei voi olla useita jäseniä samalla koodilla.
 ${Error_duplicate_member_id_values}    MEMBER_ID-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
-${Error_invalid_member_relation}    Member relation definition not allowed with value: testcode10
+${Error_invalid_member_relation}    Jäsentä ei voitu määrittää tunnisteella: testcode10
 
 *** Keywords ***
 Upload extension
