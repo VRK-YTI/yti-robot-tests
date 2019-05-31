@@ -1208,3 +1208,29 @@ Resource          resources/Extension_resources.robot
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
+
+634. Import code list and extensions with 100 members
+    [Documentation]    Import Code list with extensions and 100 members, check that import is successfull. YTI-691
+    [Tags]    koodistot    regression    600    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${code_list_extensions_100_members}    ${CODE_LIST_25}
+    Wait until page contains    115 koodia    timeout=90
+    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait until page contains element    id=test_100ext1_view_extension    timeout=30
+    Click element    id=test_100ext1_view_extension
+    Wait until page contains    115 jäsentä    timeout=20
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Sleep    3
+    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element is Visible    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait Until Element is Visible    ${CALC_HIERARCHY_TAB}    timeout=20
+    Click element    ${CALC_HIERARCHY_TAB}
+    Wait until page contains element    id=test_100ext2_view_extension    timeout=30
+    Click element    id=test_100ext2_view_extension
+    Wait until page contains    9 jäsentä    timeout=20
+    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_25}

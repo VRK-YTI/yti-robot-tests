@@ -234,6 +234,7 @@ ${CODE_LIST_21}    Linkkikoodisto
 ${CODE_LIST_22}    Koodisto800
 ${CODE_LIST_23}    Koodisto300
 ${CODE_LIST_24}    Koodisto606
+${CODE_LIST_25}    Koodisto100
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000
