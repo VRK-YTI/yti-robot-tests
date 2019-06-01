@@ -400,11 +400,10 @@ Add vocabulary
     Click Element    ${ADD_VOCABULARY}
     Wait until page contains element    ${SEARCH_VOCABULARY_INPUT}    timeout=30
     Input Text    ${SEARCH_VOCABULARY_INPUT}    ${vocabulary}
+    Wait until page contains element    //*[contains(text(), "${vocabulary}")]    timeout=60
     Click Element    //*[contains(text(), "${vocabulary}")]
-    Sleep    2
-    Wait until page contains element    //*[contains(text(), "${vocabulary}")]    timeout=30
-    Click Element    //*[contains(text(), "${vocabulary}")]
-    Sleep    2
+    Sleep    1
+    Log to Console    New vocabulary ${vocabulary} added
 
 Import namespace
     [Arguments]    ${namespace}
@@ -412,9 +411,9 @@ Import namespace
     Click Element    ${IMPORT_NAMESPACE}
     Wait until page contains element    ${SEARCH_NAMESPACE_INPUT}    timeout=30
     Input Text    ${SEARCH_NAMESPACE_INPUT}    ${namespace}
-    Sleep    1
+    Wait until page contains element    //*[contains(text(), "${namespace}")]    timeout=60
     Click Element    //*[contains(text(), "${namespace}")]
-    Sleep    2
+    Sleep    1
     Log to Console    New namespace ${namespace} added
 
 Save model
