@@ -565,19 +565,19 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Upload codelist    ${Code_list_with_languagecode}    ${CODE_LIST_9}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
-    Page should contain    Koodisto7000
-    Page should contain    koodisto7000
-    Page should contain    Testirekisteri
-    Page should contain    Asuminen
-    Page should contain    Työ ja työttömyys
-    Page should contain    Elinkeinot
-    Page should contain    Kielikoodi
-    Page should contain    asu
-    Page should contain    bemba
-    Page should contain    englanti
-    Page should contain    ruotsi
-    Page should contain    suomi
-    Page should contain    swahili (Tansania)
+    Wait until page contains    Koodisto7000    timeout=20
+    Wait until page contains    koodisto7000    timeout=20
+    Wait until page contains    Testirekisteri    timeout=20
+    Wait until page contains    Asuminen    timeout=20
+    Wait until page contains    Työ ja työttömyys    timeout=20
+    Wait until page contains    Elinkeinot    timeout=20
+    Wait until page contains    Kielikoodi    timeout=20
+    Wait until page contains    asu    timeout=20
+    Wait until page contains    bemba    timeout=20
+    Wait until page contains    englanti    timeout=20
+    Wait until page contains    ruotsi    timeout=20
+    Wait until page contains    suomi    timeout=20
+    Wait until page contains    swahili (Tansania)    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
 
