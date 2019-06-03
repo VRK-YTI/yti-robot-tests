@@ -304,11 +304,13 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Click button    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=60
     Click element    //*[contains(text(), "Asuminen")]
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
     Click button    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
     Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
+    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=60
     Click element    //*[contains(text(), "Testiorganisaatio")]
     Wait until page contains element    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
@@ -323,7 +325,6 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Click element    //*[contains(text(), "${concept_uri_test}")]
     ...    ELSE    Click element    //*[contains(text(), "${concept_uri_dev}")]
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
-    #Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Wait until page contains    Suositettava termi    timeout=60
     Wait until page contains    tutkija    timeout=60
     Wait until page contains    Person who does the research    timeout=60
@@ -407,7 +408,7 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_LIST_MOD_BTN}
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=60
+    Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=60
     Wait until page contains    Lisenssi    timeout=20
     Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Log to Console    CC by 4.0 added
@@ -420,11 +421,10 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=60
     Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
     Log to Console    New version of code list created
-    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
+    Wait Until Element Is Visible    ${EXPAND_ALL_BTN}    timeout=60
     Click element    ${EXPAND_ALL_BTN}
     Log to Console    Expand all pressed
     Wait until page contains    10 koodia    timeout=20
@@ -503,11 +503,9 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
     Click element    ${ATTACH_VARIANT_BTN}
     Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
-    Sleep    2
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto6000
-    Sleep    2
+    Wait until page contains element    //*[contains(text(), "koodisto6000")]    timeout=20
     Click element    //*[contains(text(), "koodisto6000")]
-    Sleep    2
     Log to Console    koodisto6000 attached to koodisto7000
     Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
     Click element    ${CODELIST_VARIANTS_TAB}
@@ -522,21 +520,17 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_8}
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_8}")]
-    Sleep    5
-    Wait until page contains    ${CODE_LIST_8}
-    Sleep    2
+    Wait until page contains    ${CODE_LIST_8}    timeout=30
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
     Click element    ${ATTACH_VARIANT_BTN}
     Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
-    Sleep    2
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
-    Sleep    2
+    Wait until page contains element    //*[contains(text(), "koodisto7000")]    timeout=20
     Click element    //*[contains(text(), "koodisto7000")]
-    Sleep    2
     Log to Console    koodisto7000 attached to koodisto6000
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Wait Until Element Is Enabled    ${CODELIST_VARIANTS_TAB}    timeout=30
     Click element    ${CODELIST_VARIANTS_TAB}
     Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
     Wait until page contains    Voimassaolo    timeout=20
@@ -547,11 +541,9 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Wait until page contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
     Wait until page contains element    //*[contains(@id,'detach_variant_')]    timeout=20
     Click Element    //*[contains(@id,'detach_variant_')]
-    Sleep    3
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Sleep    5
-    Page should not contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait Until Page Does Not Contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=60
     Log to Console    Variant removed
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_LIST_8}")]
@@ -1638,7 +1630,7 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Open Koodistot
     Set Selenium Speed    0.5
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    Go To    ${ENVIRONMENT_URL}/codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
+    Go To    ${ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
     Wait until page contains    ${Json_export_dcat}    timeout=20
     Switch Browser    1
     Return to Koodistot frontpage

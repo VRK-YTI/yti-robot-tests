@@ -406,30 +406,34 @@ Create code list
     Sleep    1
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
     run keyword if    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${ADD_CODE_LIST_BTN}    timeout=60
     Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${CREATE CODE_LIST_BTN}    timeout=60
     Click element    ${CREATE CODE_LIST_BTN}
     ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
     run keyword if    ${vocabularies_error}    Close error modal
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=60
+    Sleep    2
+    Wait Until Element Is Enabled    ${SELECT_REGISTRY_BTN}    timeout=60
     Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${registry}
+    Wait Until Element Is Enabled    //*[contains(text(), "${registry}")]    timeout=60
+    Click Element    //*[contains(text(), "${registry}")]
     Run Keyword if    '${cumulative}' == 'Cumulative'    Select Cumulative Code List Checkbox    ${cumulative}
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
+    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}    timeout=20
     Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
     Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
     Click button    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Wait until page contains element    //*[contains(text(), "${organization}")]    timeout=20
     Click element    //*[contains(text(), "${organization}")]
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}
+    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
     Click button    ${ADD_CLASSIFICATION_BTN}
     Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
+    Wait until page contains element    //*[contains(text(), "${classification}")]    timeout=20
     Click element    //*[contains(text(), "${classification}")]
     Sleep    1
     ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
@@ -649,6 +653,7 @@ Create registry
     [Arguments]    ${registry_value}    ${registry_name}    ${organization}    ${registry_description}
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click element    ${NAVIGATION_MENU_DDL}
+    Wait Until Element Is Enabled    ${NAVIGATION_MENU_REGISTRIES}    timeout=20
     Click element    ${NAVIGATION_MENU_REGISTRIES}
     Wait until page contains element    ${REGISTRY_DDL}    timeout=60
     Click element    ${REGISTRY_DDL}
@@ -662,7 +667,8 @@ Create registry
     Click button    ${ADD_ORGANIZATION_BTN}
     Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
     Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
-    Click element    //*[contains(text(), "${organization}")]
+    Wait until page contains element    //*[@id="${organization}_organization_link"]    timeout=20
+    Click element    //*[@id="${organization}_organization_link"]
     Sleep    5
     ${code_value_exists}=    Run Keyword And Return Status    Page Should Contain    Rekisterin tunnus on jo käytössä.
     run keyword if    ${code_value_exists}    Cancel registry creation
@@ -672,9 +678,9 @@ Continue registry creation
     [Arguments]    ${registry_description}    ${registry_name}
     Wait until page contains element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
     Input text    ${REGISTRY_DESCRIPTION_INPUT}    ${registry_description}
-    Wait until page contains element    ${SAVE_REGISTRY}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_REGISTRY}    timeout=30
     Click element    ${SAVE_REGISTRY}
-    Wait until page contains element    ${REGISTRY_DDL}    timeout=30
+    Wait Until Element Is Enabled    ${REGISTRY_DDL}    timeout=30
     Log to Console    ${registry_name} created
 
 Cancel registry creation
