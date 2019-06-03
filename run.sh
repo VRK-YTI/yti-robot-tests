@@ -1,0 +1,1 @@
+rm -rf tmp && time robot -d tmp -v 'ENVIRONMENT_URL:http://127.0.0.1:4200/' -v 'ENVIRONMENT_TITLE_PREFIX:LOCAL - ' -v 'DATAFOLDER:C:\Repos\YTI\yti-terminology-robot\test_files' -v 'SELENIUM_SPEED:0' --include 200 *.robot
