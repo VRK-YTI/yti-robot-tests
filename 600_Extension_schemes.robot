@@ -4,7 +4,7 @@ Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
-Resource          resources/Controlled_vocabularies_resources.robot
+Resource          resources/Terminologies_resources.robot
 Resource          resources/Extension_resources.robot
 
 *** Test Cases ***

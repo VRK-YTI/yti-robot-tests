@@ -5,7 +5,7 @@ Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Library           String
 Resource          resources/Generic_resources.robot
-Resource          resources/Controlled_vocabularies_resources.robot
+Resource          resources/Terminologies_resources.robot
 
 *** Variables ***
 #Excel paths
