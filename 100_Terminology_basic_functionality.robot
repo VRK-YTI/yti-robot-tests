@@ -32,7 +32,7 @@ Resource          resources/Terminology_Resources.robot
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
     Log to Console    EUPL-1.2 license page opened
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
@@ -43,7 +43,7 @@ Resource          resources/Terminology_Resources.robot
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Log to Console    Description of file page opened
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -89,21 +89,21 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Wait until page contains    Yhteentoimivuusalusta ja -menetelmä    timeout=60
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Select navigation menu link    Suomi.fi-koodistot
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait until page contains    Koodistot    timeout=40
     Wait until page contains    Hae koodistoa    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Select navigation menu link    Suomi.fi-tietomallit
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Hae tietomallia    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Close All Browsers
 
 *** Keywords ***

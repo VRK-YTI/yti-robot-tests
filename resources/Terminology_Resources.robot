@@ -5,7 +5,7 @@ Library           SeleniumLibrary
 *** Variables ***
 ${BROWSER}        chrome
 ${ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
-${ENVIRONMENT_TITLE_PREFIX}    DEV - \
+${ENVIRONMENT_IDENTIFIER}    DEV
 ${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link

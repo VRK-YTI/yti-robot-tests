@@ -436,7 +436,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    5
     Select Window    title=Etusivu - Suomi.fi
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Sleep    1
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
