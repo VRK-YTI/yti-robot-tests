@@ -3,6 +3,7 @@ Documentation     Test Suite for Code list and Code import
 Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
+Library           String
 Resource          resources/Generic_resources.robot
 Resource          resources/Controlled_vocabularies_resources.robot
 
@@ -41,9 +42,7 @@ ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai se
 ${Error_cumulative_codelist}    Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon.
 ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen kohteena oleva koodisto.
 #Concept URI
-${concept_uri_dev}    http://uri.suomi.fi/terminology/111/concept-1?env=dev
-${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
-${concept_uri_aws}    http://uri.suomi.fi/terminology/111/concept-1?env=awsdev
+${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -325,9 +324,9 @@ ${concept_uri_aws}    http://uri.suomi.fi/terminology/111/concept-1?env=awsdev
     Wait until page contains    tutkija    timeout=20
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Click element    //*[contains(text(), "${concept_uri_test}")]
-    ...    ELSE IF    "${ENVIRONMENT_URL}" == "https://koodistot-dev.yti.vrk-kubernetes.net/"    Click element    //*[contains(text(), "${concept_uri_aws}")]
-    ...    ELSE    Click element    //*[contains(text(), "${concept_uri_dev}")]
+    ${uri_environment}=    Convert To Lowercase    ${ENVIRONMENT_IDENTIFIER}
+    ${concept_uri}=    Catenate    SEPARATOR=    ${concept_uri_prefix}    ${uri_environment}
+    Click element    //*[contains(text(), "${concept_uri}")]
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait until page contains    Suositettava termi    timeout=60
     Wait until page contains    tutkija    timeout=60
