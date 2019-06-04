@@ -24,7 +24,7 @@ ${GOOGLE_LOGIN_SELECTION}    https://googlelogin.eduuni.fi
 ${NAVIGATION_MENU_DDL}    id=app_menu_dropdown
 ${NAVIGATION_LOGIN_LINK}    id=navigation_login_link
 ${LOGIN_MODAL_BTN}    id=login_modal_button
-${ENVIRONMENT_TITLE_PREFIX}    DEV - \
+${ENVIRONMENT_IDENTIFIER}    DEV
 
 *** Keywords ***
 Test Case Setup

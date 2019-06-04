@@ -26,7 +26,7 @@ Resource          resources/Login_details.robot
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Yhteentoimivuusalustan oikeuksienhallinta
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Close All Browsers
 
@@ -38,7 +38,7 @@ Resource          resources/Login_details.robot
     Click element    //app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Yhteentoimivuusalustan oikeuksienhallinta
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Close All Browsers
 
@@ -79,21 +79,21 @@ Resource          resources/Login_details.robot
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Yhteentoimivuusalustan oikeuksienhallinta
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Yhteentoimivuusalustan oikeuksienhallinta
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Yhteentoimivuusalustan oikeuksienhallinta
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Close All Browsers
 
