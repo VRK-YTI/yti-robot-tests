@@ -344,13 +344,13 @@ Create code list
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    Run Keyword If    ${code_list_exists}    Remove code lists    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
     Click element    ${CREATE CODE_LIST_BTN}
     ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
-    run keyword if    ${vocabularies_error}    Close error modal
+    Run Keyword If    ${vocabularies_error}    Close error modal
     Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
     Sleep    5
@@ -372,7 +372,7 @@ Create code list
     Click element    //*[contains(text(), "${classification}")]
     Sleep    2
     ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
-    run keyword if    ${code_value_exists}    Cancel code list creation
+    Run Keyword If    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list
     Sleep    5
     Log to Console    ${codelist_name} created
@@ -471,7 +471,7 @@ Create new code to code list
     Wait until page contains element    ${code_status}    timeout=20
     Click element    ${code_status}
     ${sub_code_list_length}=    Get Length    ${sub_code_list}
-    run keyword if    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
+    Run Keyword If    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
     Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click element    ${SAVE_NEW_CODE_BTN}
     Log to Console    ${code_name} created
@@ -554,7 +554,7 @@ Create registry
     Wait until page contains element    ${REGISTRY_VALUE_INPUT}    timeout=20
     Input Text    ${REGISTRY_VALUE_INPUT}    ${registry_value}
     ${code_value_exists}=    Run Keyword And Return Status    Page Should Contain    Rekisterin tunnus on jo käytössä.
-    run keyword if    ${code_value_exists}    Cancel registry creation
+    Run Keyword If    ${code_value_exists}    Cancel registry creation
     ...    ELSE    Continue registry creation    ${registry_name}    ${registry_description}    ${organization}
 
 Continue registry creation
@@ -617,7 +617,7 @@ Upload codelist in Excel format
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    Run Keyword If    ${code_list_exists}    Remove code lists    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
@@ -642,7 +642,7 @@ Upload codelist in CSV format
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    run keyword if    ${code_list_exists}    Remove code lists    ${codelist_name}
+    Run Keyword If    ${code_list_exists}    Remove code lists    ${codelist_name}
     Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click element    ${ADD_CODE_LIST_BTN}
     Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20

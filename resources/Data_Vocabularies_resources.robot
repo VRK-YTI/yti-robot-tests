@@ -163,7 +163,7 @@ Test Case Setup Create Profile
     Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
-    run keyword if    ${model_exists}    Delete existing profile and create new
+    Run Keyword If    ${model_exists}    Delete existing profile and create new
     ...    ELSE    Create Data Vocabulary Profile
     Go back to Data Vocabularies frontpage
 
@@ -175,7 +175,7 @@ Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
-    run keyword if    ${model_exists}    Delete existing core vocabulary and create new
+    Run Keyword If    ${model_exists}    Delete existing core vocabulary and create new
     ...    ELSE    Create Automaatiokirjasto Core Vocabulary
     Go back to Data Vocabularies frontpage
 

@@ -197,7 +197,7 @@ Add Resource For Comment Round
     Wait until page contains element    ${comment_box}    timeout=30
     Input Text    ${comment_box}    ${comment}
     ${status_length}=    Get Length    ${status_ddl}
-    run keyword if    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
+    Run Keyword If    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
     Wait until page contains element    ${SAVE_COMMENTROUND}    timeout=30
     Click Element    ${SAVE_COMMENTROUND}
     Wait until element is visible    ${EDIT_COMMENTROUND}    timeout=30
@@ -235,7 +235,7 @@ Comment On Resource
     Wait until page contains element    ${comment_box}    timeout=30
     Input Text    ${comment_box}    ${comment}
     ${status_length}=    Get Length    ${status_ddl}
-    run keyword if    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
+    Run Keyword If    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
     Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
     Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
     Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
