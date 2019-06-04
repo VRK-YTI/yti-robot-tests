@@ -38,7 +38,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Close All Browsers
 
 102. Open Description of file page
@@ -49,7 +49,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Click element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Close All Browsers
 
 103. Change user interface language
@@ -105,21 +105,21 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait until page contains    Sanastot
     Wait until page contains    Hae sanastoja
     Wait until page contains    Rajaa tietoalueella
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
     Select navigation menu link    Suomi.fi-koodistot
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait until page contains    Koodistot
     Wait until page contains    Etusivu
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Tietomallit
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
     Change user interface language    ${LANGUAGE_EN}
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
