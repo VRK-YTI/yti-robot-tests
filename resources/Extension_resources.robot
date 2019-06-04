@@ -331,5 +331,5 @@ Create DPM extension
     Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
     Click button    ${SAVE_EXTENSION}
     Sleep    2
-    Wait until element is visible    ${MODIFY_EXTENSION_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${MODIFY_EXTENSION_BTN}    timeout=60
     Log to Console    DPM extension created

@@ -722,7 +722,7 @@ Cancel code list import
 
 Upload codelist in Excel format
     [Arguments]    ${codelist}    ${codelist_name}
-    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=90
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     Sleep    1
     ${code_list_exists}=    Run Keyword And Return Status    Page Should Not Contain    Haulla ei löytynyt yhtään koodistoa.
@@ -733,14 +733,15 @@ Upload codelist in Excel format
     Click element    ${IMPORT_CODE_LIST_BTN}
     Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Wait until page contains element    //*[contains(text(), "${REGISTRY_1}")]    timeout=60
+    Click Element    //*[contains(text(), "${REGISTRY_1}")]
+    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=60
     Click element    ${FILE_FORMAT_BTN}
     Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=60
     Click button    ${UPLOAD_FILE_BTN}
     Wait until page contains element    //*[contains(text(), "${codelist_name}")]    timeout=60
     Log to Console    Code list ${codelist_name} imported
