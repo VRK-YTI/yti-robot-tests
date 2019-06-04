@@ -46,8 +46,7 @@ Resource          resources/Generic_resources.robot
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_EN}    timeout=20
     Click element    ${LANGUAGE_EN}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Wait until page contains    Comments - TEST    timeout=30
-    ...    ELSE    Wait until page contains    Comments - DEV    timeout=30
+    Wait until page contains    Comments - ${ENVIRONMENT_IDENTIFIER}    timeout=30
     Wait until page contains    Add new comment round    timeout=30
     Wait until page contains    All tools    timeout=30
     Wait until page contains    All organizations    timeout=30
@@ -103,8 +102,7 @@ Restore Finnish language
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_FI}    timeout=20
     Click element    ${LANGUAGE_FI}
-    Run Keyword If    "${ENVIRONMENT_URL}" == "https://kommentit-test.suomi.fi/"    Wait until page contains    Kommentit - TEST    timeout=30
-    ...    ELSE    Wait until page contains    Kommentit - DEV    timeout=30
+    Wait until page contains    Kommentit - ${ENVIRONMENT_IDENTIFIER}    timeout=30
     Wait until page contains    Luo uusi kommentointikierros    timeout=30
     Wait until page contains    Kaikki työkalut    timeout=20
     Wait until page contains    Kaikki organisaatiot    timeout=20
