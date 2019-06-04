@@ -43,6 +43,7 @@ ${Error_invalid_codevalue}    Tiedostossa on eri koodisto kuin päivityksen koht
 #Concept URI
 ${concept_uri_dev}    http://uri.suomi.fi/terminology/111/concept-1?env=dev
 ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
+${concept_uri_aws}    http://uri.suomi.fi/terminology/111/concept-1?env=awsdev
 
 *** Test Cases ***
 500. Import DRAFT Code list without codes
@@ -282,11 +283,11 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Terminologies
     Log to Console    Vocabulary added
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=60
     Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=60
     Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
+    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=60
     Click element    ${VOCABULARY_SELECTION_DDL}
     Wait until page contains element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
     Click element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
@@ -297,7 +298,8 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Log to Console    Concept added
     Wait until element is visible    ${SELECT_REGISTRY_BTN}    timeout=30
     Click element    ${SELECT_REGISTRY_BTN}
-    Click button    ${REGISTRY_1}
+    Wait Until Element Is Enabled    //*[contains(text(), "${REGISTRY_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${REGISTRY_1}")]
     Log to Console    Registry added
     Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
@@ -312,9 +314,10 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
     Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=60
     Click element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}
+    Sleep    2
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}
     Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until element is visible    ${CODE_LIST_DDL}    timeout=20
+    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
     Log to Console    Code list saved
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
@@ -323,6 +326,7 @@ ${concept_uri_test}    http://uri.suomi.fi/terminology/111/concept-1?env=test
     Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Click element    //*[contains(text(), "${concept_uri_test}")]
+    ...    ELSE IF    "${ENVIRONMENT_URL}" == "https://koodistot-dev.yti.vrk-kubernetes.net/"    Click element    //*[contains(text(), "${concept_uri_aws}")]
     ...    ELSE    Click element    //*[contains(text(), "${concept_uri_dev}")]
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
     Wait until page contains    Suositettava termi    timeout=60
