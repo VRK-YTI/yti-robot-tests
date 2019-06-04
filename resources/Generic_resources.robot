@@ -29,7 +29,7 @@ ${CONTENT_LANGUAGE_AR_SO}    id=ar-SO_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_SW_UG}    id=sw-UG_content_lang_dropdown_button
 ${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
 ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
-${ENVIRONMENT_TITLE_PREFIX}    DEV - \
+${ENVIRONMENT_IDENTIFIER}    DEV
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown

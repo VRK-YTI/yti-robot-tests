@@ -34,7 +34,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    id=license_link
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=30
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Close All Browsers
 
 102. Open Description of file page
@@ -45,7 +45,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Close All Browsers
 
 103. Search for VALID code list
@@ -237,20 +237,20 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link    Suomi.fi-sanastot
     Select Window    url=${TERMINOLOGY_ENVIRONMENT_URL}
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link    Suomi.fi-tietomallit
     Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}
     Wait until page contains    Tietomallit    timeout=40
     Wait until page contains    Etusivu    timeout=40
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Close All Browsers
 
 113. Change content language for code list

@@ -56,7 +56,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    id=external_ref_url_link
     Click Element    id=external_ref_url_link
     Select Window    url=https://www.suomi.fi/etusivu/
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=20
     Click element    ${LINK_MODAL_OK_BTN}
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20

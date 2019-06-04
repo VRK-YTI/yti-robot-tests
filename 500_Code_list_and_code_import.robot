@@ -328,13 +328,13 @@ ${concept_uri_aws}    http://uri.suomi.fi/terminology/111/concept-1?env=awsdev
     Run Keyword If    "${ENVIRONMENT_URL}" == "https://koodistot-test.suomi.fi/"    Click element    //*[contains(text(), "${concept_uri_test}")]
     ...    ELSE IF    "${ENVIRONMENT_URL}" == "https://koodistot-dev.yti.vrk-kubernetes.net/"    Click element    //*[contains(text(), "${concept_uri_aws}")]
     ...    ELSE    Click element    //*[contains(text(), "${concept_uri_dev}")]
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Sanastot
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait until page contains    Suositettava termi    timeout=60
     Wait until page contains    tutkija    timeout=60
     Wait until page contains    Person who does the research    timeout=60
     Wait until page contains    http://uri.suomi.fi/terminology/111/concept-1    timeout=60
     Close Window
-    Select Window    title=${ENVIRONMENT_TITLE_PREFIX}Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Log to Console    Code list values and concept URI checked
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown concept for code list from Terminologies
