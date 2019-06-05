@@ -188,7 +188,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Click element    ${UPLOAD_FILE}
     Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
-    Wait until element is visible    ${ADD_NEW_CONCEPT_BTN}    timeout=90
+    Wait Until Element Is Enabled    ${ADD_NEW_CONCEPT_BTN}    timeout=90
 
 Delete Testiautomaatiosanasto
     Terminology Test Case Setup
