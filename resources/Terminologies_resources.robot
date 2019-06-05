@@ -18,6 +18,8 @@ ${TERM_1}         Automaatio
 ${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
 ${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
+${SELENIUM_SPEED}    0.5
+${FRONTPAGE_LINK}    id=0_breadcrumb_link
 #Frontpage Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
@@ -88,7 +90,7 @@ Terminology Teardown
 
 Terminology Test Case Setup
     Open Sanastot
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Terminology Select user
 
 Terminology Test Case Teardown
@@ -109,26 +111,26 @@ Terminology Open Chrome to Environment
     Go To    ${TERMINOLOGY_ENVIRONMENT_URL}
 
 Terminology Select user
-    Wait until page contains element    ${TERMINOLOGY_USER_DROPDOWN}    timeout=30
+    Wait until page contains element    ${TERMINOLOGY_USER_DROPDOWN}    timeout=60
     Click element    ${TERMINOLOGY_USER_DROPDOWN}
-    Wait until page contains element    ${USER_1}    timeout=30
+    Wait until page contains element    ${USER_1}    timeout=60
     Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=20
+    Wait Until Page Contains    Testi Admin    timeout=60
     Sleep    1
 
 Open Sanastot
     Terminology Open Browser with Settings
-    Wait until page contains    Sanastot    timeout=20
-    Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
+    Wait until page contains    Sanastot    timeout=90
+    Wait until page contains    KIRJAUDU SISÄÄN    timeout=90
 
 Go back to Sanastot frontpage
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
-    Sleep    3
+    Sleep    1
+    Wait Until Element Is Enabled    ${FRONTPAGE_LINK}    timeout=60
+    Click element    ${FRONTPAGE_LINK}
 
 Test Case Setup Create Testiautomaatiosanasto
     Terminology Test Case Setup
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
     run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
@@ -179,23 +181,30 @@ Create Testiautomaatiosanasto and import vocabulary
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_from_controlled_vocabularies}
-    Wait until page contains element    ${UPLOAD_FILE}    timeout=30
+    Wait Until Element Is Enabled    ${UPLOAD_FILE}    timeout=30
     Click element    ${UPLOAD_FILE}
-    Wait until page contains element    ${IMPORT_YES_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Wait Until Element Is Enabled    ${ADD_NEW_CONCEPT_BTN}    timeout=90
+    Sleep    2
+    Log to Console    Testiautomaatiosanasto created
 
 Delete Testiautomaatiosanasto
     Terminology Test Case Setup
     Log to console    Terminology test case setup done
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Sleep    1
     Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    # Cut teardown execution if terminology does not exist
+    ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${VOCABULARY_1}")]
+    Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${VOCABULARY_1} did not find the terminology to delete
+    ...    AND    Return From Keyword
     Click element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait until page contains    ${VOCABULARY_1}    timeout=30
     Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30

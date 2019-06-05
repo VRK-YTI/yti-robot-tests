@@ -350,23 +350,23 @@ Open Chrome to Environment
     Go To    ${ENVIRONMENT_URL}
 
 Return to Koodistot frontpage
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
+    Wait Until Element Is Enabled    ${FRONTPAGE_LINK}    timeout=60
     Click element    ${FRONTPAGE_LINK}
-    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
+    Wait Until Element Is Enabled    ${SEARCH_BOX_INPUT}    timeout=60
 
 Remove code lists
     [Arguments]    @{code_list_items}
     : FOR    ${code_list_item}    IN    @{code_list_items}
     \    Return to Koodistot frontpage
     \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    \    Wait Until Element Is enabled    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait until page contains element    //*[contains(text(), "${code_list_item}")]    timeout=30
+    \    Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=60
     \    Click element    //*[contains(text(), "${code_list_item}")]
-    \    Wait until page contains    ${code_list_item}
-    \    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    \    Wait until page contains    ${code_list_item}    timeout=60
+    \    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     \    Click element    ${CODE_LIST_DDL}
-    \    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    \    Wait Until Element Is Enabled    ${DELETE_CODE_LIST_BTN}    timeout=20
     \    Click element    ${DELETE_CODE_LIST_BTN}
     \    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     \    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
@@ -412,7 +412,7 @@ Create code list
     Click element    ${CREATE CODE_LIST_BTN}
     ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
     run keyword if    ${vocabularies_error}    Close error modal
-    Wait until page contains element    ${CANCEL_CREATION_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${CANCEL_CREATION_BTN}    timeout=20
     Click element    ${CANCEL_CREATION_BTN}
     Sleep    2
     Wait Until Element Is Enabled    ${SELECT_REGISTRY_BTN}    timeout=60
@@ -459,11 +459,11 @@ Cancel code list creation
     Sleep    2
 
 Save code list
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click element    ${SAVE_NEW_CODE_LIST}
 
 Close error modal
-    Wait until page contains element    ${CLOSE_ERROR_MODAL_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${CLOSE_ERROR_MODAL_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MODAL_BTN}
     Sleep    1
 
