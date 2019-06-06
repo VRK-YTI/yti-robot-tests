@@ -340,7 +340,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    //*[contains(text(), "Voimassa oleva")]
     Wait until page contains element    ${SEARCH_REF_DATA_INPUT}    timeout=30
     Input Text    ${SEARCH_REF_DATA_INPUT}    Kunnat 2018
-    Wait until element is visible    //*[contains(text(), "Kunnat 2018")]    timeout=60
+    Wait Until Element Is Enabled    //*[contains(@id,'kunta_1_20180101_search_result_link')]    timeout=60
     Click Element    //*[contains(text(), "Kunnat 2018")]
     Sleep    2
     Wait until page contains element    ${REF_DATA_FILTER_DDL}    timeout=30
