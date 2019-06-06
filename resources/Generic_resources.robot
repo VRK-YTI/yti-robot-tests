@@ -361,7 +361,7 @@ Remove code lists
     \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     \    Wait Until Element Is enabled    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=60
+    \    Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=60
     \    Click element    //*[contains(text(), "${code_list_item}")]
     \    Wait until page contains    ${code_list_item}    timeout=60
     \    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
@@ -384,7 +384,7 @@ Remove code lists and leave browser open
     \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait until page contains element    //*[contains(text(), "${code_list_item}")]    timeout=30
+    \    Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=60
     \    Click element    //*[contains(text(), "${code_list_item}")]
     \    Wait until page contains    ${code_list_item}
     \    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20

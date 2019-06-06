@@ -181,9 +181,9 @@ Create Testiautomaatiosanasto and import vocabulary
     Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait until page contains element    ${PREFIX_INPUT}    timeout=30
     Input text    ${PREFIX_INPUT}    ${PREFIX_1}
-    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=60
     Click element    ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=90
     Click element    ${IMPORT_VOCABULARY_BTN}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_from_controlled_vocabularies}
     Wait Until Element Is Enabled    ${UPLOAD_FILE}    timeout=30
