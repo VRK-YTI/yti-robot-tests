@@ -20,13 +20,13 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Setup]    Test Case Setup
     Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
     Click element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a
-    Wait until page contains    Tietoa Tietomalleista
-    Wait until page contains    Tietomallit-työkalu on tarkoitettu
-    Wait until page contains    Tietomallit-työkalu
-    Wait until page contains    Hyödyt käyttäjille
-    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi?
-    Wait until page contains    Katso myös
-    Wait until page contains    Ota yhteyttä
+    Wait until page contains    Tietoa Tietomalleista    timeout=20
+    Wait until page contains    Tietomallit-työkalu on tarkoitettu    timeout=20
+    Wait until page contains    Tietomallit-työkalu    timeout=20
+    Wait until page contains    Hyödyt käyttäjille    timeout=20
+    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi?    timeout=20
+    Wait until page contains    Katso myös    timeout=20
+    Wait until page contains    Ota yhteyttä    timeout=20
     [Teardown]    Go back to Data Vocabularies frontpage and close browsers
 
 101. Open EUPL-1.2 license page
@@ -36,7 +36,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[3]/a    timeout=20
     Click element    //application/ng-container/app-footer/div/div[2]/div[3]/a
     Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
+    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
     Sleep    2
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Close All Browsers
@@ -97,10 +97,10 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    regression    test    100
     [Setup]    Test Case Setup
     Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot
-    Wait until page contains    Nimi
-    Wait until page contains    Sähköposti
-    Wait until page contains    Organisaatiot ja roolit
+    Wait until page contains    Käyttäjätiedot    timeout=20
+    Wait until page contains    Nimi    timeout=20
+    Wait until page contains    Sähköposti    timeout=20
+    Wait until page contains    Organisaatiot ja roolit    timeout=20
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
@@ -108,27 +108,27 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    Wait until page contains    Sanastot
-    Wait until page contains    Hae sanastoja
-    Wait until page contains    Rajaa tietoalueella
+    Wait until page contains    Sanastot    timeout=20
+    Wait until page contains    Hae sanastoja    timeout=20
+    Wait until page contains    Rajaa tietoalueella    timeout=20
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
     Select navigation menu link    Suomi.fi-koodistot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
-    Wait until page contains    Koodistot
-    Wait until page contains    Etusivu
+    Wait until page contains    Koodistot    timeout=20
+    Wait until page contains    Etusivu    timeout=20
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
     Change user interface language    ${LANGUAGE_EN}
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click element    ${NAVIGATION_MENU_DDL}
-    Wait until page contains    User details
-    Wait until page contains    yhteentoimiva.suomi.fi
-    Wait until page contains    Suomi.fi Terminologies
-    Wait until page contains    Suomi.fi Reference Data
-    Wait until page contains    User right management
+    Wait until page contains    User details    timeout=20
+    Wait until page contains    yhteentoimiva.suomi.fi    timeout=20
+    Wait until page contains    Suomi.fi Terminologies    timeout=20
+    Wait until page contains    Suomi.fi Reference Data    timeout=20
+    Wait until page contains    User right management    timeout=20
     Close All Browsers
 
 107. Guide through creating new Core Vocabulary
