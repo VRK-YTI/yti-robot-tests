@@ -1028,7 +1028,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
     Wait Until Element Is Visible    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}
-    Wait until page contains    hakutulos    timeout=30
+    Wait until page contains    Hakutulokset    timeout=30
     Wait until page contains element    //*[contains(text(), "Koodisto600")]    timeout=30
     Page should not contain element    //*[contains(text(), "Koodisto700")]
     Sleep    1
@@ -1037,7 +1037,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
     Wait Until Element Is Visible    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}
-    Wait until page contains    hakutulos    timeout=30
+    Wait until page contains    Hakutulokset    timeout=30
     Wait until page contains element    //*[contains(text(), "Koodisto700")]    timeout=30
     Page should not contain element    //*[contains(text(), "Koodisto600")]
     Sleep    1
