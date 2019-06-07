@@ -226,7 +226,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Verify that navigation menu links are opened correctly
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
-    Select navigation menu link    Käyttäjätiedot    timeout=40
+    Select navigation menu link    Käyttäjätiedot
     Wait until page contains    Käyttäjätiedot    timeout=40
     Wait until page contains    Nimi    timeout=40
     Wait until page contains    Sähköposti    timeout=40
