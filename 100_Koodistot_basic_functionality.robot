@@ -226,13 +226,13 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Verify that navigation menu links are opened correctly
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
-    Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot
-    Wait until page contains    Nimi
-    Wait until page contains    Sähköposti
-    Wait until page contains    Organisaatiot ja roolit
+    Select navigation menu link    Käyttäjätiedot    timeout=40
+    Wait until page contains    Käyttäjätiedot    timeout=40
+    Wait until page contains    Nimi    timeout=40
+    Wait until page contains    Sähköposti    timeout=40
+    Wait until page contains    Organisaatiot ja roolit    timeout=40
     Select navigation menu link    Rekisterit
-    Wait until page contains    Rekisterit
+    Wait until page contains    Rekisterit    timeout=40
     Wait until page contains element    ${REGISTRY_DDL}    timeout=40
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi

@@ -56,16 +56,17 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${SEARCH_MEMBER_INPUT}    timeout=20
     Input Text    ${SEARCH_MEMBER_INPUT}    koulutus
     Click element    //*[contains(text(), "Koulutus, kulttuuri ja urheilu")]
-    Wait until page contains element    ${SAVE_MEMBER}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_MEMBER}    timeout=20
     Click element    ${SAVE_MEMBER}
-    Wait until page contains    Koodisto
-    Wait until page contains    Testikoodisto2 pitkillä arvoilla
-    Wait until page contains    Laajennus
-    Wait until page contains    Testilaajennus11
-    Wait until page contains    Koodi
-    Wait until page contains    testcode25 - Testikoodi 25
-    Wait until page contains    Laajennus
-    Wait until page contains    Koulutus, kulttuuri ja urheilu
+    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
+    Wait until page contains    Koodisto    timeout=20
+    Wait until page contains    Testikoodisto2 pitkillä arvoilla    timeout=20
+    Wait until page contains    Laajennus    timeout=20
+    Wait until page contains    Testilaajennus11    timeout=20
+    Wait until page contains    Koodi    timeout=20
+    Wait until page contains    testcode25 - Testikoodi 25    timeout=20
+    Wait until page contains    Laajennus    timeout=20
+    Wait until page contains    Koulutus, kulttuuri ja urheilu    timeout=20
     Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    3
