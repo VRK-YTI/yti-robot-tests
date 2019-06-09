@@ -696,7 +696,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
     Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${ADD_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${ADD_BTN}    timeout=20
     Click element    ${ADD_BTN}
     Sleep    1
     Wait until page contains    Liittyvä linkki
@@ -1144,14 +1144,13 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click button    ${CREATE_NEW_VERSION_BTN}
     Sleep    1
-    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_VALUE_INPUT}    timeout=60
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
-    Sleep    2
-    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log to Console    New version of code list created
     Wait until page contains    10 koodia    timeout=20
     Log to Console    All codes are copied
@@ -1177,35 +1176,34 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log to Console    New version of code list created
-    Sleep    1
     Wait until page contains    10 koodia    timeout=20
-    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
     Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Click element    //*[contains(text(), "Testikoodi 01")]
     Wait until page contains element    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_NAME_INPUT}    timeout=20
     Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
-    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
-    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_SHORT_NAME_INPUT}    timeout=20
     Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
     Wait until page contains element    ${SAVE_CODE_MOD_BTN}
     Click element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains    Tämä on uusi nimi koodille
-    Wait until page contains    Tämä on uusi kuvaus koodille
-    Wait until page contains    Tämä on uusi lyhyt nimi
+    Wait until page contains    Tämä on uusi nimi koodille    timeout=20
+    Wait until page contains    Tämä on uusi kuvaus koodille    timeout=20
+    Wait until page contains    Tämä on uusi lyhyt nimi    timeout=20
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_10}")]
     Wait until element is visible    ${VERSION_TAB}    timeout=20
     Log to console    Version history tab exists after code was updated
     Return to Koodistot frontpage
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click element    ${STATUS_DROPDOWN_BTN}
     Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
@@ -1214,7 +1212,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    2
     Click element    //*[contains(text(), "${CODE_LIST_9}")]
     Sleep    2
-    Wait until element is visible    ${VERSION_TAB}    timeout=20
+    Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 531. Update code attributes in versioned code list's second newest version
@@ -1233,7 +1231,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Sleep    1
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log to Console    New version of code list created
@@ -1251,9 +1249,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
     Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
     Click element    //*[contains(text(), "Testikoodi 01")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}
+    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}
     Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_NAME_INPUT}    timeout=20
     Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
     Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
@@ -1298,9 +1296,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log to Console    New version of code list created
     Sleep    1
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
@@ -1309,7 +1307,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    NewCode001    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    newCode001    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Wait until element is visible    ${VERSION_TAB}    timeout=20
@@ -1444,16 +1442,16 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
     Wait until page contains    Ei    timeout=20
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=20
     Click element    ${MODIFY_CODE_LIST}
     Wait until page contains element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    timeout=20
     Click element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
+    Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
     Wait until page contains    Kyllä    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click button    ${CODE_LIST_DDL}
     Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click button    ${CREATE_NEW_VERSION_BTN}
@@ -1462,21 +1460,21 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
-    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log to Console    New version of code list created
     Wait until page contains    10 koodia    timeout=20
     Log to Console    All codes are copied
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Wait Until Element Is Enabled    ${CODELIST_CODES_TAB}    timeout=20
     Click element    ${CODELIST_CODES_TAB}
     Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
     Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
-    Wait until page contains element    ${CODE_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_DDL}    timeout=20
     Click element    ${CODE_DDL}
     Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
     Click element    ${REMOVE_CODE_BTN}
@@ -1485,15 +1483,17 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    ${Error_cumulative_codelist}    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
     Sleep    3
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until element is visible    //*[contains(text(), "NewCode001 - newCode001")]    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
+    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
+    Click element    ${CODELIST_CODES_TAB}
     Wait until page contains    17 koodia    timeout=20
     Wait until page contains    koodi500 - Koodi500    timeout=20
     Wait until page contains    koodi503 - Koodi503    timeout=20
@@ -1519,19 +1519,19 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    Uuden koodin kuvaus    timeout=20
     Wait until page contains    01.01.2019 - 01.01.2020    timeout=20
     Sleep    3
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodiston uusi kuvaus    timeout=20
     Update code list    ${Code_list_with_30_Codes_updated_csv}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
     Sleep    2
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
+    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=20
     Sleep    1
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    Koodiston uusi kuvaus numero 2    timeout=20
     Wait until page contains    Koodiston uusi määritelmä numero 2    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
     Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
@@ -1546,7 +1546,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_codevalue}    timeout=20
     Cancel code list import
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
     Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
@@ -1585,9 +1585,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element    ${FILE_FORMAT_Excel}
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
-    Wait until page contains element    ${VERSION_TAB}    timeout=20
+    Wait Until Element Is Enabled    ${VERSION_TAB}    timeout=20
     Click element    ${VERSION_TAB}
-    Log to Console    Codelist info tab clicked
+    Log to Console    Codelist version tab clicked
     Wait until page contains    koodisto6000    timeout=20
     Wait until page contains    Koodisto600    timeout=20
     Sleep    1
@@ -1662,12 +1662,12 @@ Check values from Valid Code list
     Page should contain    Elinkeinot
 
 Check updated code listing
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi501 - Koodi501    timeout=20
-    Wait until page contains    koodi502 - Koodi502    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
-    Wait until page contains    koodi505 - Koodi505    timeout=20
+    Wait Until Element Is Enabled    koodi500 - Koodi500    timeout=20
+    Wait Until Element Is Enabled    koodi501 - Koodi501    timeout=20
+    Wait Until Element Is Enabled    koodi502 - Koodi502    timeout=20
+    Wait Until Element Is Enabled    koodi503 - Koodi503    timeout=20
+    Wait Until Element Is Enabled    koodi504 - Koodi504    timeout=20
+    Wait Until Element Is Enabled    koodi505 - Koodi505    timeout=20
 
 Create new code to code list with concept
     [Arguments]    ${concept}    ${vocabulary}
