@@ -110,6 +110,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    koodi504 - Koodi504    timeout=20
     Import codes in Excel format
     Upload codes    ${Update_Codes}
+    Wait Until Element Is Enabled    ${CODELIST_CODES_TAB}    timeout=60
+    Click element    ${CODELIST_CODES_TAB}
     Wait until page contains    6 koodia    timeout=20
     Check updated code listing
     Return to Koodistot frontpage
@@ -1662,12 +1664,12 @@ Check values from Valid Code list
     Page should contain    Elinkeinot
 
 Check updated code listing
-    Wait Until Element Is Enabled    koodi500 - Koodi500    timeout=20
-    Wait Until Element Is Enabled    koodi501 - Koodi501    timeout=20
-    Wait Until Element Is Enabled    koodi502 - Koodi502    timeout=20
-    Wait Until Element Is Enabled    koodi503 - Koodi503    timeout=20
-    Wait Until Element Is Enabled    koodi504 - Koodi504    timeout=20
-    Wait Until Element Is Enabled    koodi505 - Koodi505    timeout=20
+    Wait Until Element Is Visible    //*[contains(text(), "koodi500 - Koodi500")]    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "koodi501 - Koodi501")]    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "koodi502 - Koodi502")]    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "koodi503 - Koodi503")]    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "koodi504 - Koodi504")]    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "koodi505 - Koodi505")]    timeout=60
 
 Create new code to code list with concept
     [Arguments]    ${concept}    ${vocabulary}
