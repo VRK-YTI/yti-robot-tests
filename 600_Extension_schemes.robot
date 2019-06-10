@@ -119,7 +119,7 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Capture Page Screenshot
     Wait until page contains    - Member 1 · Testcode 57 <=    timeout=20
-    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    2
     Capture Page Screenshot
@@ -140,18 +140,18 @@ Resource          resources/Extension_resources.robot
     Sleep    2
     Capture Page Screenshot
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testcode 57    ${EMPTY}
-    Wait until page contains    Koodisto
-    Wait until page contains    Koodisto600
-    Wait until page contains    Laajennus
-    Wait until page contains    Extension 1
-    Wait until page contains    Jäsenen nimi
-    Wait until page contains    Member 1
+    Wait until page contains    Koodisto    timeout=20
+    Wait until page contains    Koodisto600    timeout=20
+    Wait until page contains    Laajennus    timeout=20
+    Wait until page contains    Extension 1    timeout=20
+    Wait until page contains    Jäsenen nimi    timeout=20
+    Wait until page contains    Member 1    timeout=20
     Wait until page contains    Aritmeettinen operaattori    timeout=20
     Wait until page contains    -    timeout=20
     Wait until page contains    Vertailuoperaattori    timeout=20
     Wait until page contains    <=    timeout=20
-    Wait until page contains    Koodi
-    Wait until page contains    testcode57 - Testcode 57
+    Wait until page contains    Koodi    timeout=20
+    Wait until page contains    testcode57 - Testcode 57    timeout=20
     Delete member
     Wait until page contains    Extension 1    timeout=30
     Wait until page contains    Tällä laajennuksella ei ole yhtään jäsentä.    timeout=30
@@ -168,38 +168,37 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
     Sleep    2
-    Wait until element is enabled    //*[contains(@id,'555_view_extension')]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members}    ${FILE_FORMAT_EXCEL}
     Sleep    2
     Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 · Koodisto600 · Testirekisteri <=")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]
-    Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
-    Sleep    2
-    Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${ADD_MEMBER_BTN}    timeout=20
     Click element    ${ADD_MEMBER_BTN}
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 29")]
-    Wait until page contains element    ${MEMBER_NAME_INPUT}    timeout=30
+    Wait Until Element Is Enabled    ${MEMBER_NAME_INPUT}    timeout=30
     Input Text    ${MEMBER_NAME_INPUT}    ${MEMBER_NAME_1}
     Wait until page contains element    ${ADD_CODE_TO_MEMBER_BTN}    timeout=30
     Click button    ${ADD_CODE_TO_MEMBER_BTN}
     Wait until page contains element    ${SEARCH_CODE_TO_MEMBER_INPUT}    timeout=30
     Input Text    ${SEARCH_CODE_TO_MEMBER_INPUT}    Testcode 57
-    Wait until page contains element    //*[contains(text(), "Testcode 57")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "Testcode 57")]    timeout=30
     Click element    //*[contains(text(), "Testcode 57")]
     Sleep    3
-    Wait until page contains element    ${REMOVE_MEMBER_LINK}    timeout=20
+    Wait Until Element Is Enabled    ${REMOVE_MEMBER_LINK}    timeout=20
     Click element    ${REMOVE_MEMBER_LINK}
     Sleep    1
-    Wait until page contains element    ${SAVE_MEMBER}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_MEMBER}    timeout=20
     Click element    ${SAVE_MEMBER}
-    Sleep    4
+    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=20
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennus    timeout=20
@@ -229,13 +228,13 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Wait until page contains    testcode29 - Testcode 29    timeout=20
     Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
-    Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Calculation_hierarchy_members_csv}    ${FILE_FORMAT_CSV}
     Wait until page contains element    //*[contains(text(), "- Jäsen2 · Testcode 29 · Koodisto600 · Testirekisteri <=")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]    timeout=20
     Click element    //*[contains(text(), "- Jäsen1 · Testcode 28 · Koodisto600 · Testirekisteri <=")]
     Wait until page contains    Koodisto600    timeout=20
     Wait until page contains    Laajennus    timeout=20
@@ -248,11 +247,11 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    <=    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
     Sleep    2
-    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
-    Sleep    5
-    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
+    Wait Until Element Is Enabled    ${EXPORT_MEMBERS_TYPE_CSV}    timeout=20
     Click element    ${EXPORT_MEMBERS_TYPE_CSV}
     Sleep    5
     Log to Console    CSV exported
@@ -267,9 +266,8 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_without_codeschemes_value}
     Sleep    2
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
-    Sleep    3
+    Wait Until Element Is Enabled    ${UPLOAD_FILE_BTN}    timeout=20
+    Click Element    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_missing_codeschemes}    timeout=20
     Cancel code import
     Sleep    2
@@ -283,8 +281,8 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensions_invalid_code_in_members_sheet}
     Sleep    2
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Wait Until Element Is Enabled    ${UPLOAD_FILE_BTN}    timeout=20
+    Click Element    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_invalid_code}    timeout=20
     Cancel code import
     Sleep    2
@@ -298,8 +296,8 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
     Sleep    2
-    Wait until page contains element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click button    Tuo
+    Wait Until Element Is Enabled    ${UPLOAD_FILE_BTN}    timeout=20
+    Click Element    ${UPLOAD_FILE_BTN}
     Wait until page contains    ${Error_max_hierarchy_level}    timeout=20
     Cancel code import
     Sleep    2
@@ -313,7 +311,7 @@ Resource          resources/Extension_resources.robot
     Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
     Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
-    Wait until page contains element    //*[contains(@id,'555_view_extension')]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
     Wait until page contains    14 jäsentä    timeout=20
@@ -370,8 +368,9 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=30
     Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_19}
     Sleep    2
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Wait until page contains    25 koodia    timeout=120
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
     Log to Console    New version of code list created
@@ -388,13 +387,13 @@ Resource          resources/Extension_resources.robot
     Page should not contain    ruotsi
     Wait until page contains    testcode06 - Testikoodi 06    timeout=20
     Wait until page contains    31.12.2016 - 30.12.2018    timeout=20
-    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=30
+    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=30
     Click element    ${EXTENSIONS_TAB}
     Wait until page contains element    //*[contains(text(), "MÄÄRITYSHIERARKIAT")]    timeout=20
     Wait until page contains element    //*[contains(text(), "LASKENTAHIERARKIAT")]    timeout=20
     Wait until page contains element    //*[contains(@id,'111_view_extension')]    timeout=20
     Click element    //*[contains(@id,'111_view_extension')]
-    Wait until page contains element    ${EXTENSION_INFO_TAB}    timeout=30
+    Wait Until Element Is Enabled    ${EXTENSION_INFO_TAB}    timeout=30
     Click element    ${EXTENSION_INFO_TAB}
     Wait until page contains    O1234567890123456789012345678901234567111    timeout=20
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
@@ -402,10 +401,10 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Määrityshierarkia    timeout=20
     Wait until page contains    dcat - DCAT-AP-luokitus    timeout=20
     Wait until page contains    31.12.2016 - 30.12.2018    timeout=20
-    Wait until page contains element    ${MEMBERS_TAB}    timeout=30
+    Wait Until Element Is Enabled    ${MEMBERS_TAB}    timeout=30
     Click element    ${MEMBERS_TAB}
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "Jäsen1 · Testikoodi 01")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "Jäsen1 · Testikoodi 01")]    timeout=20
     Click element    //*[contains(text(), "Jäsen1 · Testikoodi 01")]
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testilaajennus11    timeout=20
@@ -415,7 +414,7 @@ Resource          resources/Extension_resources.robot
     Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]    timeout=20
     Click element    //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testilaajennus11    timeout=20
@@ -424,15 +423,15 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    URI    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=30
+    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=30
     Click element    ${EXTENSIONS_TAB}
-    Wait until page contains element    ${CALC_HIERARCHY_TAB}    timeout=30
+    Wait Until Element Is Enabled    ${CALC_HIERARCHY_TAB}    timeout=30
     Click element    ${CALC_HIERARCHY_TAB}
-    Wait until page contains element    //*[contains(@id,'222_view_extension')]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(@id,'222_view_extension')]    timeout=20
     Click element    //*[contains(@id,'222_view_extension')]
     Wait until page contains    9 jäsentä    timeout=20
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
-    Wait until page contains element    //*[contains(text(), "- Jäsen1 · Testikoodi 08 · Testikoodisto3 pitkillä arvoilla · Testirekisteri <=")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "- Jäsen1 · Testikoodi 08 · Testikoodisto3 pitkillä arvoilla · Testirekisteri <=")]    timeout=20
     Click element    //*[contains(text(), "- Jäsen1 · Testikoodi 08 · Testikoodisto3 pitkillä arvoilla · Testirekisteri <=")]
     Wait until page contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait until page contains    Testilaajennus22    timeout=20
@@ -455,11 +454,11 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Voimassa oleva    timeout=20
     Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
     Click element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    Wait until page contains element    ${EXPORT_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${EXPORT_DDL}    timeout=20
     Click element    ${EXPORT_DDL}
     Click element    ${EXPORT_TYPE_CSV}
     Sleep    5
@@ -495,7 +494,7 @@ Resource          resources/Extension_resources.robot
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
