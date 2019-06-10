@@ -268,9 +268,9 @@ Remove code lists with extensions
     \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait until page contains element    //*[contains(text(), "${code_list_item}")]    timeout=30
+    \    Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=30
     \    Click element    //*[contains(text(), "${code_list_item}")]
-    \    Wait until page contains    ${code_list_item}
+    \    Wait until page contains    ${code_list_item}    timeout=60
     \    ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
     \    run keyword if    ${extension_exists}    Delete extension before code list    ${code_list_item}
     \    ...    ELSE    Continue code list deletion    ${code_list_item}
@@ -279,15 +279,15 @@ Remove code lists with extensions
 
 Continue code list deletion
     [Arguments]    ${code_list_item}
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click element    ${CODE_LIST_DDL}
     Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
     Click element    ${DELETE_CODE_LIST_BTN}
     Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
     Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.    timeout=60
     Log to Console    ${code_list_item} removed
     Sleep    3
 
@@ -296,11 +296,11 @@ Delete extension before code list
     : FOR    ${CheckStatus}    IN RANGE    10
     \    ${Status}    Get Text    //*[contains(text(), "LAAJENNUKSET")]
     \    Page Should Contain    ${status}
-    \    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    \    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
     \    Click element    ${EXTENSIONS_TAB}
-    \    Wait until page contains element    //*[contains(@id,'_view_extension')]    timeout=20
+    \    Wait Until Element Is Enabled    //*[contains(@id,'_view_extension')]    timeout=20
     \    Click Element    //*[contains(@id,'_view_extension')]
-    \    Wait until page contains element    ${EXTENSION_DDL}    timeout=30
+    \    Wait Until Element Is Enabled    ${EXTENSION_DDL}    timeout=30
     \    Click element    ${EXTENSION_DDL}
     \    Wait until page contains element    ${EXTENSION_DELETE_BTN}    timeout=30
     \    Click element    ${EXTENSION_DELETE_BTN}
