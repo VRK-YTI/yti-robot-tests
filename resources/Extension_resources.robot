@@ -268,6 +268,7 @@ Remove code lists with extensions
     \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+    \    Sleep    1
     \    Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=30
     \    Click element    //*[contains(text(), "${code_list_item}")]
     \    Wait until page contains    ${code_list_item}    timeout=60
@@ -298,6 +299,7 @@ Delete extension before code list
     \    Page Should Contain    ${status}
     \    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
     \    Click element    ${EXTENSIONS_TAB}
+    \    Sleep    1
     \    Wait Until Element Is Enabled    //*[contains(@id,'_view_extension')]    timeout=20
     \    Click Element    //*[contains(@id,'_view_extension')]
     \    Wait Until Element Is Enabled    ${EXTENSION_DDL}    timeout=30
