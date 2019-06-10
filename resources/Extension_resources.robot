@@ -40,6 +40,7 @@ ${Code_list_DPM_Metric_Credit_no_member_id}    ${DATAFOLDER}${/}DPM_Metric_Credi
 ${Code_list_with_update_members}    ${DATAFOLDER}${/}Code_list_with_update_members.xlsx
 ${Update_members_invalid_relation}    ${DATAFOLDER}${/}Update_members_invalid_relation.xlsx
 ${code_list_extensions_100_members}    ${DATAFOLDER}${/}Code_list_with_extensions_and_100_members.xlsx
+${Code_list_with_multiple_extensions}    ${DATAFOLDER}${/}filter_Code_list_with_multiple_extensions.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv

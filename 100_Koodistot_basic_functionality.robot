@@ -80,7 +80,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 104. Search for code list with codeValue
     [Documentation]    Search for code list with codeValue with frontpage search function. YTI-651
-    [Tags]    regression    test    100
+    [Tags]    regression    test    100    search
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Testikoodisto_T200}    ${CODE_LIST_7}
@@ -196,7 +196,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 111. Filter Codes by codeValue and prefLabel
     [Documentation]    Import codelist and filter Codes by codeValue and prefLabel
-    [Tags]    regression    test    100
+    [Tags]    regression    test    100    search
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_filter}    ${CODE_LIST_13}

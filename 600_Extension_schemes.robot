@@ -23,10 +23,9 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode25    timeout=20
     Wait until page contains    Testikoodi 25    timeout=20
     Wait until page contains    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/code/testcode25    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
-    Sleep    2
-    Wait until page contains element    ${EXTENSIONS_TAB}    timeout=20
+    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
     Click element    ${EXTENSIONS_TAB}
     Wait until element is visible    //*[contains(@id,'222_view_extension')]    timeout=30
     Wait until element is visible    //*[contains(@id,'111_view_extension')]    timeout=30
@@ -34,29 +33,27 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    9 jäsentä    timeout=20
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Wait until page contains element    //*[contains(text(), " Jäsen1 · Testikoodi 01")]    timeout=20
-    Sleep    2
+    Wait Until Element Is Enabled    //*[contains(text(), " Jäsen1 · Testikoodi 01")]    timeout=20
     Click element    //*[contains(text(), " Jäsen1 · Testikoodi 01")]
-    Sleep    2
     Wait until page contains    Testikoodisto2 pitkillä arvoilla    timeout=20
     Wait until page contains    Laajennus    timeout=20
     Wait until page contains    Testilaajennus11    timeout=20
     Wait until page contains    Koodi    timeout=20
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
     Sleep    2
-    Wait until page contains element    ${MODIFY_MEMBER_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=20
     Click element    ${MODIFY_MEMBER_BTN}
-    Wait until page contains element    ${ADD_DEFAULTCODE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${ADD_DEFAULTCODE_BTN}    timeout=20
     Click element    ${ADD_DEFAULTCODE_BTN}
     Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
     Input Text    ${SEARCH_DEFAULTCODE_INPUT}    25
     Click element    //*[contains(text(), "Testikoodi 25")]
     Wait until page contains element    ${ADD_MEMBER_BTN}    timeout=20
     Click element    ${ADD_MEMBER_BTN}
-    Wait until page contains element    ${SEARCH_MEMBER_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${SEARCH_MEMBER_INPUT}    timeout=20
     Input Text    ${SEARCH_MEMBER_INPUT}    koulutus
     Click element    //*[contains(text(), "Koulutus, kulttuuri ja urheilu")]
-    Wait Until Element Is Enabled    ${SAVE_MEMBER}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_MEMBER}    timeout=60
     Click element    ${SAVE_MEMBER}
     Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
     Wait until page contains    Koodisto    timeout=20
@@ -67,10 +64,11 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode25 - Testikoodi 25    timeout=20
     Wait until page contains    Laajennus    timeout=20
     Wait until page contains    Koulutus, kulttuuri ja urheilu    timeout=20
-    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Sleep    2
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    3
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click element    ${2_BREADCRUMB_LINK}
     Sleep    3
     Wait until page contains element    ${EXPORT_DDL}    timeout=20
@@ -90,12 +88,12 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    30 koodia    timeout=20
     Upload extension    ${Extension_definition_hierarchy}    ${FILE_FORMAT_EXCEL}
     Sleep    2
-    Wait until element is enabled    //*[contains(@id,'555_view_extension')]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(@id,'555_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'555_view_extension')]
     Wait until page contains element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
     Upload members    ${Definition_hierarchy_members}    ${FILE_FORMAT_EXCEL}
-    Wait until element is visible    //*[contains(text(), "Testcode 28")]
+    Wait Until Element Is Enabled    //*[contains(text(), "Testcode 28")]
     Wait until element is visible    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 28")]
     Wait until page contains    Koodisto600    timeout=20
@@ -103,7 +101,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    suomi    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
-    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    2
     Return to Koodistot frontpage
@@ -1014,7 +1012,7 @@ Resource          resources/Extension_resources.robot
 627. Extend front page search to extensions and codes
     [Documentation]    Import two code lists with extensions. Check that front page search with extensions and codes without prefLabel
     ...    is successfull.
-    [Tags]    koodistot    regression    600    test
+    [Tags]    koodistot    regression    600    test    search
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${filter_1_Code_list_three_extensions}    ${CODE_LIST_16}
     Wait until page contains    26 koodia    timeout=20
@@ -1243,3 +1241,76 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_25}
+
+635. Front page deep search with multiple extensions and codes
+    [Documentation]    Import code list with multiple codes and extensions. Check that front page deep search function is successful.
+    [Tags]    koodistot    regression    600    test    search
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_with_multiple_extensions}    ${CODE_LIST_16}
+    Wait until page contains    36 koodia    timeout=20
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    rtt
+    Wait Until Element Is Visible    ${SEARCH_CODE_CHECKBOX}    timeout=30
+    Click Element    ${SEARCH_CODE_CHECKBOX}
+    Wait Until Page Contains    Hakutulokset    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Koodisto600")]    timeout=30
+    Wait Until Page Contains    Koodit    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "Katso kaikki 11 osumaa")]    timeout=30
+    Click Element    //*[contains(text(), "Katso kaikki 11 osumaa")]
+    Wait until page contains    11 koodia    timeout=20
+    Wait Until Page Contains    RTT555 - aaaa    timeout=30
+    Wait Until Page Contains    RTT556 - bbbb (en)    timeout=30
+    Wait Until Page Contains    RTT557    timeout=30
+    Wait Until Page Contains    RTT558    timeout=30
+    Wait Until Page Contains    RTT559    timeout=30
+    Wait Until Page Contains    RTT560    timeout=30
+    Wait Until Page Contains    RTT561    timeout=30
+    Wait Until Page Contains    RTT562    timeout=30
+    Wait Until Page Contains    RTT563    timeout=30
+    Wait Until Page Contains    RTT564    timeout=30
+    Wait Until Page Contains    RTT565    timeout=30
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    rty
+    Wait Until Element Is Visible    ${SEARCH_EXTENSION_CHECKBOX}    timeout=30
+    Click Element    ${SEARCH_EXTENSION_CHECKBOX}
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
+    Click Element    ${PROPERTYTYPE_FILTER_DDL}
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}    timeout=30
+    Click Element    ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}
+    Sleep    1
+    Page Should Not Contain Element    //*[contains(text(), "Koodisto600")]
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
+    Click Element    ${PROPERTYTYPE_FILTER_DDL}
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
+    Click Element    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}
+    Sleep    1
+    Page Should Not Contain Element    //*[contains(text(), "Koodisto600")]
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
+    Click Element    ${PROPERTYTYPE_FILTER_DDL}
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
+    Click Element    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}
+    Wait until page contains    Hakutulokset    timeout=30
+    Wait until page contains    Laajennukset    timeout=30
+    Wait until page contains element    //*[contains(text(), "Koodisto600")]    timeout=30
+    Sleep    1
+    Capture Page Screenshot
+    Wait Until Element Is Enabled    //*[contains(text(), "Katso kaikki 8 osumaa")]    timeout=30
+    Click Element    //*[contains(text(), "Katso kaikki 8 osumaa")]
+    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
+    Click element    ${EXTENSIONS_TAB}
+    Wait Until Element Is Enabled    ${CROSS_REFERENCE_LIST_TAB}    timeout=20
+    Click Element    ${CROSS_REFERENCE_LIST_TAB}
+    Sleep    1
+    Wait Until Page Contains    rty789 - dddd (en)    timeout=30
+    Wait Until Page Contains    rty790    timeout=30
+    Wait Until Page Contains    rty791    timeout=30
+    Wait Until Page Contains    rty792    timeout=30
+    Wait Until Page Contains    rty793    timeout=30
+    Wait Until Page Contains    rty794    timeout=30
+    Wait Until Page Contains    rty795 - ffff    timeout=30
+    Wait Until Page Contains    rty796    timeout=30
+    Capture Page Screenshot
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}

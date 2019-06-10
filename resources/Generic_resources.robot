@@ -44,6 +44,7 @@ ${SEARCH_EXTENSION_CHECKBOX}    id=search_extension_details_checkbox
 ${PROPERTYTYPE_FILTER_DDL}    id=selected_propertytype_filter_dropdown
 ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    id=Extension_crossReferenceList_propertytype_filter_dropdown
 ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    id=Extension_calculationHierarchy_propertytype_filter_dropdown
+${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}    id=Extension_definitionHierarchy_propertytype_filter_dropdown
 #Registry
 ${CREATE_REGISTRY_BTN}    id=create_registry_button
 ${REGISTRY_VALUE_INPUT}    id=registry_value_input
