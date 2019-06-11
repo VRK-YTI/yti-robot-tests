@@ -9,7 +9,7 @@ ${SELENIUM_SPEED}    0.5
 #Buttons and links
 ${PROVIDER_DDL}    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
 ${CONTINUE_LOGIN_BTN}    id=ContentPlaceHolder1_Button1
-${ID_ELEMENT_HOOK_XPATH}    //div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/content/form/div[1]/div/div[1]/div/div[1]/input
+${ID_ELEMENT_HOOK_XPATH}    //*[@id="identifierId"]
 ${ID_ELEMENT_HOOK}    id=identifierId
 ${PASSWORD_ELEMENT_HOOK}    //*[contains(@name,'password')]
 ${ID_NEXT_ELEMENT_HOOK}    id=identifierNext
