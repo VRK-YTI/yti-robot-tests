@@ -1,5 +1,8 @@
 .DS_Store
 
+# Ignore login detail resource
+resources/Login_details.robot
+
 # Test generated content
 *.png
 output.xml
