@@ -68,7 +68,6 @@ Continue Login
     Input text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
     Wait Until Element Is Enabled    ${PASSWORD_NEXT_ELEMENT_HOOK}    timeout=20
     Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
-    Wait Until Page Contains    ${ENVIRONMENT_IDENTIFIER} - ${TOOL}    timeout=60
 
 Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
