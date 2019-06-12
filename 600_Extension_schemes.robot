@@ -1197,7 +1197,7 @@ Resource          resources/Extension_resources.robot
 633. Update members with invalid relation value
     [Documentation]    Update members with invalid relation value
     ...    and check error message
-    [Tags]    regression    test    300
+    [Tags]    regression    test    600
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_extensions_broader_members}    ${CODE_LIST_14}
