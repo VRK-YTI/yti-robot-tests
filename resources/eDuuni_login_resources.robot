@@ -29,8 +29,8 @@ ${TOOL}           Koodistot
 *** Keywords ***
 Open Tool
     [Arguments]    ${environment_url}
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment    ${environment_url}
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment    ${environment_url}
     ...    ELSE    Open Browser    ${environment_url}    browser=${BROWSER}
     Set Selenium Speed    ${SELENIUM_SPEED}
     Sleep    2
@@ -75,10 +75,11 @@ Continue Login
     Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
 
 Open Chrome to Environment
+    [Arguments]    ${environment_url}
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    --headless
     Call Method    ${chrome_options}    add_argument    --single-process
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    ${ENV}
+    Go To    ${environment_url}
