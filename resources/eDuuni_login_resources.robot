@@ -28,10 +28,10 @@ ${TOOL}           Koodistot
 
 *** Keywords ***
 Open Tool
-    [Arguments]    ${ENV}
+    [Arguments]    ${environment_url}
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
     ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
-    ...    ELSE    Open Browser    ${ENV}    browser=${BROWSER}
+    ...    ELSE    Open Browser    ${environment_url}    browser=${BROWSER}
     Set Selenium Speed    ${SELENIUM_SPEED}
     Sleep    2
     ${has_eDuuni_login}=    Run Keyword And Return Status    Page Should Contain    Sign In
