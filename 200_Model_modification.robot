@@ -759,7 +759,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_LD}    timeout=30
     Click Element    ${EXPORT_JSON_LD}
-    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
     Wait until page contains    "@id" : "autom:Testiluokka",    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
@@ -771,7 +771,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_Turtle}    timeout=30
     Click Element    ${EXPORT_Turtle}
-    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
     Wait until page contains    <http://uri.suomi.fi/datamodel/ns/autom>    timeout=30
     Wait until page contains    "Testiluokka"@fi    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
@@ -783,7 +783,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_RDF}    timeout=30
     Click Element    ${EXPORT_RDF}
-    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
     Wait until page contains    xmlns:autom="http://uri.suomi.fi/datamodel/ns/autom#"    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
@@ -794,7 +794,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_XML}    timeout=30
     Click Element    ${EXPORT_XML}
-    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
     Wait until page contains    sawsdl:modelReference="http://uri.suomi.fi/datamodel/ns/autom#Testiluokka">    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
@@ -805,7 +805,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_Schema}    timeout=30
     Click Element    ${EXPORT_JSON_Schema}
-    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
     Wait until page contains    "id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka.jschema",    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
     Page should not contain    Whitelabel Error Page
@@ -816,7 +816,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_CLASS_DDL}
     Wait until element is visible    ${EXPORT_JSON_LD_Context}    timeout=30
     Click Element    ${EXPORT_JSON_LD_Context}
-    Select Window    url=${ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}api/rest/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
     Wait until page contains    "@context":{    timeout=30
     Wait until page contains    "Testiluokka":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"    timeout=30
     Page should not contain    {"errorMessage":"Not found"}
@@ -853,7 +853,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Click Element    ${EXPORT_MODEL_DDL}
     Wait until element is visible    ${EXPORT_MODEL_JSON_Schema}    timeout=30
     Click Element    ${EXPORT_MODEL_JSON_Schema}
-    Select Window    url=${ENVIRONMENT_URL}api/rest/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}api/rest/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
     Page should not contain    "@id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"
     Page should not contain    Whitelabel Error Page
     Page should not contain    {"errorMessage":"Not found"}

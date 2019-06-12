@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
+${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
 ${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
@@ -180,7 +180,7 @@ Open Tietomallit
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
     ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
-    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
+    ...    ELSE    Open Browser    ${DATA_VOCABULARIES_ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -189,7 +189,7 @@ Open Chrome to Environment
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    ${ENVIRONMENT_URL}
+    Go To    ${DATA_VOCABULARIES_ENVIRONMENT_URL}
 
 Go back to Data Vocabularies frontpage and close browsers
     Wait until element is visible    ${MAIN_PAGE_LINK}    timeout=30
