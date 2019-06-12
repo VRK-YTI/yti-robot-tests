@@ -1,6 +1,6 @@
 *** Variables ***
 ${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://kommentit-dev.suomi.fi/
+${COMMENTS_ENVIRONMENT_URL}    https://kommentit-dev.suomi.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${SUPER_USER_ID}    id=testisuperuser@localhost
@@ -121,7 +121,7 @@ Open Comments
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
     ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
-    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
+    ...    ELSE    Open Browser    ${COMMENTS_ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -129,7 +129,7 @@ Open Chrome to Environment
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    ${ENVIRONMENT_URL}
+    Go To    ${COMMENTS_ENVIRONMENT_URL}
 
 Return To Comments Frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=60
