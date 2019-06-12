@@ -22,7 +22,7 @@ ${ID_NEXT_ELEMENT_HOOK}    id=identifierNext
 ${PASSWORD_NEXT_ELEMENT_HOOK}    id=passwordNext
 ${GOOGLE_LOGIN_SELECTION}    https://googlelogin.eduuni.fi
 ${NAVIGATION_MENU_DDL}    id=app_menu_dropdown
-${NAVIGATION_LOGIN_LINK}    id=navigation_login_link
+${NAVIGATION_LOGIN_LINK}    id=log_in_link
 ${LOGIN_MODAL_BTN}    id=login_modal_button
 ${ENVIRONMENT_IDENTIFIER}    DEV
 
