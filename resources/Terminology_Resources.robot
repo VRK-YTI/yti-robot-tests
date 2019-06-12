@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
+${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
 ${ENVIRONMENT_IDENTIFIER}    DEV
 ${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
 ${LANGUAGE_EN}    id=en_language_selection_link
@@ -235,7 +235,7 @@ Test Case Teardown
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
     ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
-    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
+    ...    ELSE    Open Browser    ${TERMINOLOGIES_ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -244,7 +244,7 @@ Open Chrome to Environment
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    ${ENVIRONMENT_URL}
+    Go To    ${TERMINOLOGIES_ENVIRONMENT_URL}
 
 Select user
     Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
