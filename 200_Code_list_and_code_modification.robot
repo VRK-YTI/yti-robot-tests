@@ -300,7 +300,7 @@ Resource          resources/Extension_resources.robot
     Open Koodistot
     Set Selenium Speed    ${SELENIUM_SPEED}
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    GO To    ${ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=600
+    GO To    ${REFERENCE_DATA_ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=600
     Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}

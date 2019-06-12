@@ -2,7 +2,7 @@
 ${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
-${ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
+${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${ADMIN_USER_NAME}    Testi Admin
@@ -333,7 +333,7 @@ Open Koodistot
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
     ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
-    ...    ELSE    Open Browser    ${ENVIRONMENT_URL}    browser=${BROWSER}
+    ...    ELSE    Open Browser    ${REFERENCE_DATA_ENVIRONMENT_URL}    browser=${BROWSER}
 
 Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -348,7 +348,7 @@ Open Chrome to Environment
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    ${ENVIRONMENT_URL}
+    Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}
 
 Return to Koodistot frontpage
     Wait Until Element Is Enabled    ${FRONTPAGE_LINK}    timeout=60

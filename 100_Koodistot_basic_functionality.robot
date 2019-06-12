@@ -239,7 +239,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    url=${TERMINOLOGY_ENVIRONMENT_URL}
+    Select Window    url=${TERMINOLOGIES_ENVIRONMENT_URL}
     Wait until page contains    Sanastot    timeout=40
     Wait until page contains    Hae sanastoja    timeout=40
     Wait until page contains    Rajaa tietoalueella    timeout=40

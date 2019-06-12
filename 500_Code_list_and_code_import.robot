@@ -907,7 +907,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_LIST_9}")]
     Sleep    3
-    Select Window    url=${ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=Koodisto7000
+    Select Window    url=${REFERENCE_DATA_ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=Koodisto7000
     Wait until page contains    koodisto7000    timeout=20
     Sleep    2
     Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
@@ -1632,7 +1632,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Open Koodistot
     Set Selenium Speed    0.5
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    Go To    ${ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
+    Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
     Wait until page contains    ${Json_export_dcat}    timeout=20
     Switch Browser    1
     Return to Koodistot frontpage

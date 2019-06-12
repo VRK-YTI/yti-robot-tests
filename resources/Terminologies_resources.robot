@@ -1,6 +1,6 @@
 *** Variables ***
 ${BROWSER}        chrome
-${TERMINOLOGY_ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
+${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
 ${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
@@ -99,7 +99,7 @@ Terminology Test Case Teardown
 Terminology Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Terminology Open Chrome to Environment
     ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Terminology Open Chrome to Environment
-    ...    ELSE    Open Browser    ${TERMINOLOGY_ENVIRONMENT_URL}    browser=${BROWSER}
+    ...    ELSE    Open Browser    ${TERMINOLOGIES_ENVIRONMENT_URL}    browser=${BROWSER}
 
 Terminology Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -108,7 +108,7 @@ Terminology Open Chrome to Environment
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    ${TERMINOLOGY_ENVIRONMENT_URL}
+    Go To    ${TERMINOLOGIES_ENVIRONMENT_URL}
 
 Terminology Select user
     Wait until page contains element    ${TERMINOLOGY_USER_DROPDOWN}    timeout=60
