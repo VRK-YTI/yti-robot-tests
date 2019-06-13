@@ -64,7 +64,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode25 - Testikoodi 25    timeout=20
     Wait until page contains    Laajennus    timeout=20
     Wait until page contains    Koulutus, kulttuuri ja urheilu    timeout=20
-    Sleep    2
+    Sleep    4
     Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    3
@@ -1016,39 +1016,41 @@ Resource          resources/Extension_resources.robot
     [Tags]    koodistot    regression    600    test    search
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${filter_1_Code_list_three_extensions}    ${CODE_LIST_16}
-    Wait until page contains    26 koodia    timeout=20
+    Wait Until Page Contains    26 koodia    timeout=20
     Return to Koodistot frontpage
     Upload codelist in excel format    ${filter_2_Code_list_one_extension}    ${CODE_LIST_17}
-    Wait until page contains    25 koodia    timeout=20
+    Wait Until Page Contains    25 koodia    timeout=20
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    rtt
     Wait Until Element Is Visible    ${SEARCH_CODE_CHECKBOX}    timeout=30
     Click Element    ${SEARCH_CODE_CHECKBOX}
-    Wait until page contains    Hakutulokset    timeout=30
-    Wait until page contains element    //*[contains(text(), "Koodisto600")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "RTT")]    timeout=30
+    Wait Until Page Contains    Hakutulokset    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Koodisto600")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "RTT")]    timeout=30
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    rty789
-    Wait Until Element Is Visible    ${SEARCH_EXTENSION_CHECKBOX}    timeout=30
+    Wait Until Element Is Enabled    ${SEARCH_EXTENSION_CHECKBOX}    timeout=30
     Click Element    ${SEARCH_EXTENSION_CHECKBOX}
-    Wait Until Element Is Visible    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
-    Wait Until Element Is Visible    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}
-    Wait until page contains    Hakutulokset    timeout=30
-    Wait until page contains element    //*[contains(text(), "Koodisto600")]    timeout=30
-    Page should not contain element    //*[contains(text(), "Koodisto700")]
+    Wait Until Page Contains    Hakutulokset    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Koodisto600")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "Koodisto700")]
     Sleep    1
     Capture Page Screenshot
-    Wait Until Element Is Visible    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
-    Wait Until Element Is Visible    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
-    Click Element    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}
-    Wait until page contains    Hakutulokset    timeout=30
-    Wait until page contains element    //*[contains(text(), "Koodisto700")]    timeout=30
-    Page should not contain element    //*[contains(text(), "Koodisto600")]
     Sleep    1
+    Wait Until Element Is Enabled    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
+    Click Element    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}
+    Wait Until Page Contains    Hakutulokset    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Koodisto700")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "Koodisto600")]
     Capture Page Screenshot
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_17}
 
