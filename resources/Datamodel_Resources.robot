@@ -83,6 +83,7 @@ ${NAMESPACE_LABEL}    id=label
 ${NAMESPACE_PREFIX}    id=prefix
 ${NAMESPACE_CREATE}    //div[1]/div/div/form/div[3]/button[1]
 ${NAMESPACE_VALUE}    id=namespace
+${CANCEL_NAMESPACE_CREATION}    //div[1]/div/div/form/div[3]/button[2]
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
@@ -156,6 +157,8 @@ ${EXPORT_XML}     id=class_export_show_application_xml
 ${EXPORT_JSON_Schema}    id=class_export_show_application_schema_json
 ${EXPORT_MODEL_JSON_Schema}    id=model_export_show_application_schema_json
 ${EXPORT_JSON_LD_Context}    id=class_export_show_application_ld_json_context
+#Error messages
+${reserved_namespace_prefix}    Tunniste on jo käytössä tai on varattu
 
 *** Keywords ***
 Test Case Setup
