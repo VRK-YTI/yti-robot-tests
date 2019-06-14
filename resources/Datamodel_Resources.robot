@@ -78,12 +78,12 @@ ${PNG_DOWNLOAD}    id=PNG_download_dropdown
 ${SVG_DOWNLOAD}    id=SVG_download_dropdown
 ${EXPORT_MODEL_DDL}    id=model_export_dropdown
 #namespace
-${CREATE_NEW_NAMESPACE}    //div[1]/div/div/div/div[2]/div[2]/div/button
+${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
 ${NAMESPACE_PREFIX}    id=prefix
-${NAMESPACE_CREATE}    //div[1]/div/div/form/div[3]/button[1]
+${NAMESPACE_CREATE}    id=add_new_namespace_confirm_button
 ${NAMESPACE_VALUE}    id=namespace
-${CANCEL_NAMESPACE_CREATION}    //div[1]/div/div/form/div[3]/button[2]
+${CANCEL_NAMESPACE_CREATION}    id=add_edit_namespace_cancel_button
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
