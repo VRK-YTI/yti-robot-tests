@@ -333,6 +333,6 @@ Create DPM extension
     Click Element    ${extension_status}
     Wait Until Element Is Enabled    ${SAVE_EXTENSION}    timeout=30
     Click Element    ${SAVE_EXTENSION}
+    Sleep    2
     Wait Until Element Is Enabled    ${MODIFY_EXTENSION_BTN}    timeout=60
     Log to Console    DPM extension created
-    Sleep    1
