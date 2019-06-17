@@ -698,22 +698,22 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
 
 218. Create new namespace
     [Documentation]    Create new profile and create new namespace. Check that namespace prefix can not be
-    ...    "example" or same as the model prefix. Add two classes.
+    ...    "example" or same as the model prefix. Check that namespace can be added only once. Add two classes.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
-    Wait Until Page Contains Element    ${IMPORT_NAMESPACE}    timeout=30
+    Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
-    Wait Until Page Contains Element    ${CREATE_NEW_NAMESPACE}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
     Click Element    ${CREATE_NEW_NAMESPACE}
-    Wait Until Page Contains Element    ${NAMESPACE_LABEL}    timeout=30
+    Wait Until Element Is Enabled    ${NAMESPACE_LABEL}    timeout=30
     Input Text    ${NAMESPACE_LABEL}    autom1
-    Wait Until Page Contains Element    ${NAMESPACE_VALUE}    timeout=30
+    Wait Until Element Is Enabled    ${NAMESPACE_VALUE}    timeout=30
     Input Text    ${NAMESPACE_VALUE}    http://uri.suomi.fi/datamodel/ns/autom1/
-    Wait Until Page Contains Element    ${NAMESPACE_PREFIX}    timeout=30
+    Wait Until Element Is Enabled    ${NAMESPACE_PREFIX}    timeout=30
     Input Text    ${NAMESPACE_PREFIX}    autom
     Wait Until Page Contains    ${reserved_namespace_prefix}    timeout=30
     Sleep    1
@@ -721,15 +721,28 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     Wait Until Page Contains    ${reserved_namespace_prefix}    timeout=30
     Sleep    1
     Input Text    ${NAMESPACE_PREFIX}    autom1
-    Wait Until Page Contains Element    ${NAMESPACE_CREATE}    timeout=30
+    Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
     Click Element    ${NAMESPACE_CREATE}
+    Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
+    Click Element    ${IMPORT_NAMESPACE}
+    Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
+    Click Element    ${CREATE_NEW_NAMESPACE}
+    Wait Until Element Is Enabled    ${NAMESPACE_LABEL}    timeout=30
+    Input Text    ${NAMESPACE_LABEL}    autom2
+    Wait Until Element Is Enabled    ${NAMESPACE_VALUE}    timeout=30
+    Input Text    ${NAMESPACE_VALUE}    http://uri.suomi.fi/datamodel/ns/autom1/
+    Wait Until Page Contains    ${namespace_in_use}    timeout=30
+    Wait Until Element Is Enabled    ${CANCEL_NAMESPACE_CREATION}    timeout=30
+    Click Element    ${CANCEL_NAMESPACE_CREATION}
+    Wait Until Element Is Enabled    ${CANCEL_SEARCH_NAMESPACE}    timeout=30
+    Click Element    ${CANCEL_SEARCH_NAMESPACE}
     Save model
     Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/autom1/    timeout=30
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
+    Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Create new class without referencing concept    uusiluokka10
     Save class
-    Wait Until Page Contains Element    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
     Add class    Rooli    ${NAMESPACE_1}
     Sleep    2
     Confirm all properties for class and save

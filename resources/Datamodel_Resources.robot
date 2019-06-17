@@ -84,6 +84,7 @@ ${NAMESPACE_PREFIX}    id=prefix
 ${NAMESPACE_CREATE}    id=add_new_namespace_confirm_button
 ${NAMESPACE_VALUE}    id=namespace
 ${CANCEL_NAMESPACE_CREATION}    id=add_edit_namespace_cancel_button
+${CANCEL_SEARCH_NAMESPACE}    //div[1]/div/div/div/div[3]/button
 #Class
 ${ADD_NEW_CLASS}    id=add_new_class_button
 ${SEARCH_CLASS_INPUT}    id=text_filter_search_input
@@ -159,6 +160,7 @@ ${EXPORT_MODEL_JSON_Schema}    id=model_export_show_application_schema_json
 ${EXPORT_JSON_LD_Context}    id=class_export_show_application_ld_json_context
 #Error messages
 ${reserved_namespace_prefix}    Tunniste on jo käytössä tai on varattu
+${namespace_in_use}    Tunniste on jo käytössä
 
 *** Keywords ***
 Test Case Setup
@@ -195,20 +197,20 @@ Open Chrome to Environment
     Go To    ${DATA_VOCABULARIES_ENVIRONMENT_URL}
 
 Go back to Data Vocabularies frontpage and close browsers
-    Wait until element is visible    ${MAIN_PAGE_LINK}    timeout=30
-    Click element    ${MAIN_PAGE_LINK}
+    Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=30
+    Click Element    ${MAIN_PAGE_LINK}
     Sleep    2
     Close All Browsers
 
 Go back to Data Vocabularies frontpage
     Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=60
     Sleep    3
-    Click element    ${MAIN_PAGE_LINK}
+    Click Element    ${MAIN_PAGE_LINK}
     Sleep    2
 
 Test Case Setup Create Testiautomaatio profile
     Test Case Setup
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
     run keyword if    ${model_exists}    Delete existing profile and create new
@@ -220,7 +222,7 @@ Test Case Teardown Delete Testiautomaatio profile
 
 Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Test Case Setup
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
     run keyword if    ${model_exists}    Delete existing core vocabulary and create new
@@ -231,7 +233,7 @@ Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
     Delete Automaatiokirjasto Core Vocabulary
 
 Create Testiautomaatio profile
-    Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
     Wait until page contains element    ${ADD_PROFILE_BTN}    timeout=30
     Click Element    ${ADD_PROFILE_BTN}
