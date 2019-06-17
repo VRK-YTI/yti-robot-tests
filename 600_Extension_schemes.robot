@@ -1062,30 +1062,30 @@ Resource          resources/Extension_resources.robot
     Upload codelist in excel format    ${Code_list_with_calculation_hierarchy_members}    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
     Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
-    Click element    ${EXTENSIONS_TAB}
+    Click Element    ${EXTENSIONS_TAB}
     Wait Until Element Is Enabled    ${CALC_HIERARCHY_TAB}    timeout=20
-    Click element    ${CALC_HIERARCHY_TAB}
+    Click Element    ${CALC_HIERARCHY_TAB}
     Wait Until Element Is Enabled    //*[contains(@id,'222_view_extension')]    timeout=30
     Click Element    //*[contains(@id,'222_view_extension')]
     Wait until page contains    9 jäsentä    timeout=20
     Wait Until Element Is Enabled    //*[contains(text(), "+ Jäsen1")]    timeout=20
-    Click element    //*[contains(text(), "+ Jäsen1")]
+    Click Element    //*[contains(text(), "+ Jäsen1")]
     Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=20
-    Click element    ${MODIFY_MEMBER_BTN}
+    Click Element    ${MODIFY_MEMBER_BTN}
     Wait until page contains element    ${COMPARISON_OPERATOR_INPUT}    timeout=20
-    Click element    ${COMPARISON_OPERATOR_INPUT}
+    Click Element    ${COMPARISON_OPERATOR_INPUT}
     Repeat Keyword    2 times    Press Key    ${COMPARISON_OPERATOR_INPUT}    \\08
     Sleep    1
     Wait until page contains element    ${UNARY_OPERATOR_INPUT}    timeout=20
-    Click element    ${UNARY_OPERATOR_INPUT}
+    Click Element    ${UNARY_OPERATOR_INPUT}
     Repeat Keyword    2 times    Press Key    ${UNARY_OPERATOR_INPUT}    \\08
     Sleep    1
-    Wait until page contains element    ${SAVE_MEMBER}    timeout=30
-    Click button    ${SAVE_MEMBER}
+    Wait Until Element Is Enabled    ${SAVE_MEMBER}    timeout=30
+    Click Element    ${SAVE_MEMBER}
     Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
     Sleep    3
-    Page should not contain    <=
-    Page should not contain    +
+    Wait Until Page Does Not Contain    <=    timeout=60
+    Wait Until Page Does Not Contain    +    timeout=60
     Capture Page Screenshot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_14}
