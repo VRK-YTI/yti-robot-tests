@@ -1,4 +1,5 @@
 *** Variables ***
+${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
 ${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
 ${REFERENCE_DATA_USER_DROPDOWN}    id=impersonate_user_link
@@ -277,12 +278,12 @@ ${Code_list_Code_without_prefLabel}    ${DATAFOLDER}${/}Code_list_Code_without_p
 *** Keywords ***
 Reference Data Test Case Setup Admin
     Open Koodistot
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Reference Data Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
 
 Reference Data Test Case Setup Superuser
     Open Koodistot
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Reference Data Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
 
 Reference Data Select user

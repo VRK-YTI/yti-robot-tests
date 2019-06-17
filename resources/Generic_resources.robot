@@ -1,4 +1,5 @@
 *** Variables ***
+${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
 ${COMMENTS_ENVIRONMENT_URL}    https://kommentit-dev.suomi.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
@@ -96,20 +97,20 @@ ${CLOSE_INLINE_COMMENT_0_BTN}    id=close_commentthread_0_comments_button
 *** Keywords ***
 Test Case Setup Admin
     Open Comments
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
 
 Test Case Setup Superuser
     Open Comments
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
 
 Select user
     [Arguments]    ${user_id}    ${user_name}
-    Wait until page contains element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click element    ${IMPERSONATE_USER_DROPDOWN}
-    Wait until page contains element    ${user_id}    timeout=30
-    Click element    ${user_id}
+    Wait Until element Is Enabled    ${user_id}    timeout=30
+    Click Element    ${user_id}
     Wait Until Page Contains    ${user_name}    timeout=60
     Sleep    1
 
