@@ -288,17 +288,17 @@ Reference Data Test Case Setup Superuser
 
 Reference Data Select user
     [Arguments]    ${user_id}    ${user_name}
-    Wait until page contains element    ${REFERENCE_DATA_USER_DROPDOWN}    timeout=30
+    Wait Until Element Is Enabled    ${REFERENCE_DATA_USER_DROPDOWN}    timeout=60
     Click element    ${REFERENCE_DATA_USER_DROPDOWN}
-    Wait until page contains element    ${user_id}    timeout=30
-    Click element    ${user_id}
+    Wait Until Element Is Enabled    ${user_id}    timeout=60
+    Click Element    ${user_id}
     Wait Until Page Contains    ${user_name}    timeout=60
     Sleep    1
 
 Open Koodistot
     Reference Data Open Browser with Settings
-    Wait until page contains    Koodistot    timeout=60
-    Wait until page contains    KIRJAUDU SISÄÄN    timeout=60
+    Wait Until Page Contains    Koodistot    timeout=60
+    Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=60
 
 Reference Data Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Reference Data Open Chrome to Environment

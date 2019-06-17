@@ -107,7 +107,7 @@ Test Case Setup Superuser
 
 Select user
     [Arguments]    ${user_id}    ${user_name}
-    Wait Until Element Is Enabled    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Wait Until Element Is Enabled    ${IMPERSONATE_USER_DROPDOWN}    timeout=60
     Click element    ${IMPERSONATE_USER_DROPDOWN}
     Wait Until element Is Enabled    ${user_id}    timeout=30
     Click Element    ${user_id}
