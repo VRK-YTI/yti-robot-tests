@@ -33,32 +33,32 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     [Documentation]    Modify existing profile
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select and edit Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatio
     Log to Console    Testiautomaatio profile selected
-    Wait until page contains element    ${MODEL_LABEL_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_LABEL_INPUT}    timeout=30
     Input Text    ${MODEL_LABEL_INPUT}    Uusi nimi
-    Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Uusi kuvaus
-    Wait until page contains element    ${REMOVE_Asuminen}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_Asuminen}    timeout=30
     Click Element    ${REMOVE_Asuminen}
     Log to Console    Classification removed
     Sleep    1
     Add classification    Kulttuuri
     Log to Console    New classification added
-    Wait until page contains element    ${REMOVE_Testiorganisaatio}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
     Log to Console    Contributor removed
     Sleep    1
     Add contributor    Väestörekisterikeskus
-    Wait until page contains element    ${ADD_LINK}    timeout=30
+    Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
-    Wait until page contains element    ${LINK_URL_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${LINK_URL_INPUT}    timeout=30
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${LINK_NAME_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${LINK_NAME_INPUT}    timeout=30
     Input Text    ${LINK_NAME_INPUT}    www.suomi.fi/etusivu/
-    Wait until page contains element    ${LINK_DESCRIPTION_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${LINK_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${LINK_DESCRIPTION_INPUT}    Tämä on suomi.fi linkki
-    Wait until page contains element    ${CREATE_NEW_LINK}    timeout=30
+    Wait Until Page Contains Element    ${CREATE_NEW_LINK}    timeout=30
     Click Element    ${CREATE_NEW_LINK}
     Log to Console    New link added
     Save model
@@ -75,17 +75,15 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     [Documentation]    Add new class to profile
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select and edit Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatio
     Log to Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Add class    Rooli    ${NAMESPACE_1}
-    Sleep    2
     Confirm all properties for class and save
     Log to Console    Class "Rooli" added
-    Sleep    3
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
@@ -102,44 +100,44 @@ ${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Log to Console    Automaatiokirjasto Core Vocabulary created
-    Select and edit Automaatiokirjasto Core Vocabulary
+    Select And Edit Core Vocabulary    Automaatiokirjasto
     Log to Console    Automaatiokirjasto Core Vocabulary selcted
-    Wait until page contains element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    Uusi nimi
-    Wait until page contains element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Uusi kuvaus
-    Wait until page contains element    ${REMOVE_Asuminen}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_Asuminen}    timeout=30
     Click Element    ${REMOVE_Asuminen}
     Log to Console    Classification removed
     Sleep    1
     Add classification    Kulttuuri
     Log to Console    New classification added
-    Wait until page contains element    ${REMOVE_Testiorganisaatio}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
     Log to Console    Contributor removed
     Sleep    1
     Add contributor    Väestörekisterikeskus
-    Wait until page contains element    ${ADD_LINK}    timeout=30
+    Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
-    Wait until page contains element    ${LINK_URL_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${LINK_URL_INPUT}    timeout=30
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${LINK_NAME_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${LINK_NAME_INPUT}    timeout=30
     Input Text    ${LINK_NAME_INPUT}    www.suomi.fi/etusivu/
-    Wait until page contains element    ${LINK_DESCRIPTION_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${LINK_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${LINK_DESCRIPTION_INPUT}    Tämä on suomi.fi linkki
-    Wait until page contains element    ${CREATE_NEW_LINK}    timeout=30
+    Wait Until Page Contains Element    ${CREATE_NEW_LINK}    timeout=30
     Click Element    ${CREATE_NEW_LINK}
     Log to Console    New link added
     Sleep    3
-    Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
     Log to Console    Modifications saved
     Sleep    2
-    Page should contain    Uusi nimi
-    Page should contain    Uusi kuvaus
-    Page should contain    Kulttuuri
-    Page should contain    Väestörekisterikeskus
-    Page should contain    www.suomi.fi/etusivu/
+    Wait Until Page Contains    Uusi nimi    timeout=30
+    Wait Until Page Contains    Uusi kuvaus    timeout=30
+    Wait Until Page Contains    Kulttuuri    timeout=30
+    Wait Until Page Contains    Väestörekisterikeskus    timeout=30
+    Wait Until Page Contains    www.suomi.fi/etusivu/    timeout=30
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    Uusi nimi
 

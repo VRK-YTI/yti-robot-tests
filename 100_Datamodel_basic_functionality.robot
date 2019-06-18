@@ -18,25 +18,25 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
-    Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
-    Click element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a
-    Wait until page contains    Tietoa Tietomalleista    timeout=20
-    Wait until page contains    Tietomallit-työkalu on tarkoitettu    timeout=20
-    Wait until page contains    Tietomallit-työkalu    timeout=20
-    Wait until page contains    Hyödyt käyttäjille    timeout=20
-    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi?    timeout=20
-    Wait until page contains    Katso myös    timeout=20
-    Wait until page contains    Ota yhteyttä    timeout=20
+    Wait Until Page Contains Element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
+    Click Element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a
+    Wait Until Page Contains    Tietoa Tietomalleista    timeout=20
+    Wait Until Page Contains    Tietomallit-työkalu on tarkoitettu    timeout=20
+    Wait Until Page Contains    Tietomallit-työkalu    timeout=20
+    Wait Until Page Contains    Hyödyt käyttäjille    timeout=20
+    Wait Until Page Contains    Miten voin liittyä työkalun käyttäjäksi?    timeout=20
+    Wait Until Page Contains    Katso myös    timeout=20
+    Wait Until Page Contains    Ota yhteyttä    timeout=20
     [Teardown]    Go back to Data Vocabularies frontpage and close browsers
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
-    Wait until page contains element    //application/ng-container/app-footer/div/div[2]/div[3]/a    timeout=20
-    Click element    //application/ng-container/app-footer/div/div[2]/div[3]/a
+    Wait Until Page Contains Element    //application/ng-container/app-footer/div/div[2]/div[3]/a    timeout=20
+    Click Element    //application/ng-container/app-footer/div/div[2]/div[3]/a
     Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
+    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
     Sleep    2
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Close All Browsers
@@ -45,7 +45,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Verify that Description of file page is opened correctly.
     [Tags]    local    tietomallit
     [Setup]    Test Case Setup
-    Wait until page contains element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]    timeout=20
+    Wait Until Page Contains Element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]    timeout=20
     Click element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
@@ -57,9 +57,9 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
     Change user interface language    ${LANGUAGE_EN}
-    Wait until page contains    Data Vocabularies    timeout=20
-    Wait until page contains    All organizations    timeout=20
-    Wait until page contains    All model types    timeout=20
+    Wait Until Page Contains    Data Vocabularies    timeout=20
+    Wait Until Page Contains    All organizations    timeout=20
+    Wait Until Page Contains    All model types    timeout=20
     [Teardown]    Change user interface language    ${LANGUAGE_FI}
 
 104. Search for DRAFT model
@@ -67,11 +67,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Go back to Data Vocabularies frontpage
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${ADD_CLASS_BTN}    timeout=30
+    Wait Until Page Contains Element    ${ADD_CLASS_BTN}    timeout=30
     Sleep    1
     Go back to Data Vocabularies frontpage
     [Teardown]    Test Case Teardown Delete Testiautomaatio profile
@@ -84,11 +84,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Click Element    ${FRONTPAGE_ADVANCED_SEARCH}
     Wait Until Element Is Visible    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    Entinen nimi
-    Wait until page contains element    //*[contains(text(), "Entinen nimi")]    timeout=30
-    Click element    //*[contains(text(), "Entinen nimi")]
+    Wait Until Page Contains Element    //*[contains(text(), "Entinen nimi")]    timeout=30
+    Click Element    //*[contains(text(), "Entinen nimi")]
     Sleep    1
-    Wait until page contains    Julkishallinnon tietokomponentit    timeout=30
-    Wait until page contains    Entinen nimi    timeout=30
+    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
+    Wait Until Page Contains    Entinen nimi    timeout=30
     Sleep    2
     [Teardown]    Go back to Data Vocabularies frontpage and close browsers
 
@@ -97,10 +97,10 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    regression    test    100
     [Setup]    Test Case Setup
     Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot    timeout=20
-    Wait until page contains    Nimi    timeout=20
-    Wait until page contains    Sähköposti    timeout=20
-    Wait until page contains    Organisaatiot ja roolit    timeout=20
+    Wait Until Page Contains    Käyttäjätiedot    timeout=20
+    Wait Until Page Contains    Nimi    timeout=20
+    Wait Until Page Contains    Sähköposti    timeout=20
+    Wait Until Page Contains    Organisaatiot ja roolit    timeout=20
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
@@ -108,27 +108,27 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    Wait until page contains    Sanastot    timeout=20
-    Wait until page contains    Hae sanastoja    timeout=20
-    Wait until page contains    Rajaa tietoalueella    timeout=20
+    Wait Until Page Contains    Sanastot    timeout=20
+    Wait Until Page Contains    Hae sanastoja    timeout=20
+    Wait Until Page Contains    Rajaa tietoalueella    timeout=20
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
     Select navigation menu link    Suomi.fi-koodistot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
-    Wait until page contains    Koodistot    timeout=20
-    Wait until page contains    Etusivu    timeout=20
+    Wait Until Page Contains    Koodistot    timeout=20
+    Wait Until Page Contains    Etusivu    timeout=20
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
     Change user interface language    ${LANGUAGE_EN}
     Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click element    ${NAVIGATION_MENU_DDL}
-    Wait until page contains    User details    timeout=20
-    Wait until page contains    yhteentoimiva.suomi.fi    timeout=20
-    Wait until page contains    Suomi.fi Terminologies    timeout=20
-    Wait until page contains    Suomi.fi Reference Data    timeout=20
-    Wait until page contains    User right management    timeout=20
+    Wait Until Page Contains    User details    timeout=20
+    Wait Until Page Contains    yhteentoimiva.suomi.fi    timeout=20
+    Wait Until Page Contains    Suomi.fi Terminologies    timeout=20
+    Wait Until Page Contains    Suomi.fi Reference Data    timeout=20
+    Wait Until Page Contains    User right management    timeout=20
     Close All Browsers
 
 107. Guide through creating new Core Vocabulary
@@ -136,13 +136,13 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Go back to Data Vocabularies frontpage
-    Wait until page contains element    ${GUIDE_BTN}    timeout=20
-    Click element    ${GUIDE_BTN}
-    Sleep    1
-    Wait until page contains element    ${GUIDE_CORE_VOCABULARY}    timeout=20
-    Click element    ${GUIDE_CORE_VOCABULARY}
+    Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
+    Click Element    ${GUIDE_BTN}
+    #Sleep    1
+    Wait Until Page Contains Element    ${GUIDE_CORE_VOCABULARY}    timeout=20
+    Click Element    ${GUIDE_CORE_VOCABULARY}
     Click through guide    ${Core_vocabulary_text}
-    Sleep    1
+    #Sleep    1
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
