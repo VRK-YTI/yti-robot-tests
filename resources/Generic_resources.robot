@@ -3,6 +3,7 @@ ${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
 ${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
+${COMMENTS_ENVIRONMENT_URL}    https://kommentit-dev.suomi.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${ADMIN_USER_NAME}    Testi Admin

@@ -227,28 +227,34 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot    timeout=40
-    Wait until page contains    Nimi    timeout=40
-    Wait until page contains    Sähköposti    timeout=40
-    Wait until page contains    Organisaatiot ja roolit    timeout=40
+    Wait Until Page Contains    Käyttäjätiedot    timeout=40
+    Wait Until Page Contains    Nimi    timeout=40
+    Wait Until Page Contains    Sähköposti    timeout=40
+    Wait Until Page Contains    Organisaatiot ja roolit    timeout=40
     Select navigation menu link    Rekisterit
-    Wait until page contains    Rekisterit    timeout=40
-    Wait until page contains element    ${REGISTRY_DDL}    timeout=40
+    Wait Until Page Contains    Rekisterit    timeout=40
+    Wait Until Page Contains Element    ${REGISTRY_DDL}    timeout=40
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link    Suomi.fi-sanastot
     Select Window    url=${TERMINOLOGIES_ENVIRONMENT_URL}
-    Wait until page contains    Sanastot    timeout=40
-    Wait until page contains    Hae sanastoja    timeout=40
-    Wait until page contains    Rajaa tietoalueella    timeout=40
+    Wait Until Page Contains    Sanastot    timeout=40
+    Wait Until Page Contains    Hae sanastoja    timeout=40
+    Wait Until Page Contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link    Suomi.fi-tietomallit
     Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}
-    Wait until page contains    Tietomallit    timeout=40
-    Wait until page contains    Etusivu    timeout=40
+    Wait Until Page Contains    Tietomallit    timeout=40
+    Wait Until Page Contains    Etusivu    timeout=40
+    Close Window
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select navigation menu link    Suomi.fi-kommentit
+    Select Window    url=${COMMENTS_ENVIRONMENT_URL}
+    Wait Until Page Contains    Kommentit    timeout=40
+    Wait Until Page Contains    Etusivu    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Close All Browsers
