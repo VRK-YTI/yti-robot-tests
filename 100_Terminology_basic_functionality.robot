@@ -79,40 +79,47 @@ Resource          resources/Terminology_Resources.robot
     [Tags]    regression    test
     [Setup]    Test Case Setup
     Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot    timeout=60
-    Wait until page contains    Nimi    timeout=60
-    Wait until page contains    Testi Admin    timeout=60
-    Wait until page contains    Sähköposti    timeout=60
-    Wait until page contains    Organisaatiot ja roolit    timeout=60
-    Wait until page contains    Lähetä käyttöoikeuspyyntö    timeout=60
+    Wait Until Page Contains    Käyttäjätiedot    timeout=60
+    Wait Until Page Contains    Nimi    timeout=60
+    Wait Until Page Contains    Testi Admin    timeout=60
+    Wait Until Page Contains    Sähköposti    timeout=60
+    Wait Until Page Contains    Organisaatiot ja roolit    timeout=60
+    Wait Until Page Contains    Lähetä käyttöoikeuspyyntö    timeout=60
     Select navigation menu link    yhteentoimiva.suomi.fi
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
-    Wait until page contains    Yhteentoimivuusalusta ja -menetelmä    timeout=60
+    Wait Until Page Contains    Yhteentoimivuusalusta ja -menetelmä    timeout=60
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Select navigation menu link    Suomi.fi-koodistot
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
-    Wait until page contains    Koodistot    timeout=40
-    Wait until page contains    Hae koodistoa    timeout=40
-    Wait until page contains    Rajaa tietoalueella    timeout=40
+    Wait Until Page Contains    Koodistot    timeout=40
+    Wait Until Page Contains    Hae koodistoa    timeout=40
+    Wait Until Page Contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Select navigation menu link    Suomi.fi-tietomallit
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
-    Wait until page contains    Tietomallit    timeout=40
-    Wait until page contains    Hae tietomallia    timeout=40
-    Wait until page contains    Rajaa tietoalueella    timeout=40
+    Wait Until Page Contains    Tietomallit    timeout=40
+    Wait Until Page Contains    Hae tietomallia    timeout=40
+    Wait Until Page Contains    Rajaa tietoalueella    timeout=40
+    Close Window
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Select navigation menu link    Suomi.fi-kommentit
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
+    Wait Until Page Contains    Kommentit    timeout=40
+    Wait Until Page Contains    Etusivu    timeout=40
+    Wait Until Page Contains    Rajaa hakutuloksia    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Close All Browsers
 
 *** Keywords ***
 Restore Finnish language
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_FI}
-    Wait until page contains    Kaikki organisaatiot    timeout=20
-    Wait until page contains    Rajaa tietoalueella    timeout=20
+    Wait until page contains    Kaikki organisaatiot    timeout=30
+    Wait until page contains    Rajaa tietoaluella    timeout=30
     Close All Browsers
 
 Select navigation menu link
