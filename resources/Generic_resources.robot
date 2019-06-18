@@ -603,7 +603,8 @@ Remove code
     Click element    ${REMOVE_CODE_BTN}
     Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
     Click element    ${REMOVE_CODE_CONF_BTN}
-    Sleep    2
+    Sleep    1
+    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=60
     Page should not contain element    ${code}
     Log to Console    ${code} removed
 
