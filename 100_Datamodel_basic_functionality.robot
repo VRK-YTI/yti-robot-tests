@@ -103,11 +103,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains    Organisaatiot ja roolit    timeout=20
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
-    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
-    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait Until Page Contains    Sanastot    timeout=20
     Wait Until Page Contains    Hae sanastoja    timeout=20
     Wait Until Page Contains    Rajaa tietoalueella    timeout=20
@@ -115,20 +115,29 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
     Select navigation menu link    Suomi.fi-koodistot
-    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait Until Page Contains    Koodistot    timeout=20
     Wait Until Page Contains    Etusivu    timeout=20
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Sleep    1
+    Select navigation menu link    Suomi.fi-kommentit
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
+    Wait Until Page Contains    Kommentit    timeout=20
+    Wait Until Page Contains    Etusivu    timeout=20
+    Wait Until Page Contains    Rajaa hakutuloksia    timeout=20
+    Close Window
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+    Sleep    1
     Change user interface language    ${LANGUAGE_EN}
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
+    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click Element    ${NAVIGATION_MENU_DDL}
     Wait Until Page Contains    User details    timeout=20
     Wait Until Page Contains    yhteentoimiva.suomi.fi    timeout=20
     Wait Until Page Contains    Suomi.fi Terminologies    timeout=20
     Wait Until Page Contains    Suomi.fi Reference Data    timeout=20
     Wait Until Page Contains    User right management    timeout=20
+    Wait Until Page Contains    Suomi.fi Comments    timeout=20
     Close All Browsers
 
 107. Guide through creating new Core Vocabulary
