@@ -49,25 +49,25 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Page should contain    Tuodaan 1 käsitettä
-    Page should contain    tutkimus
-    Page should contain    research
-    Page should contain    tutkielma
-    Page should contain    systemaattista ja luovaa toimintaa
-    Page should contain    huomio
-    Page should contain    esim
-    Page should contain    Voimassa oleva
+    Wait Until Page Contains    Tuodaan 1 käsitettä    timeout=60
+    Wait Until Page Contains    tutkimus    timeout=60
+    Wait Until Page Contains    research    timeout=60
+    Wait Until Page Contains    tutkielma    timeout=60
+    Wait Until Page Contains    systemaattista ja luovaa toimintaa    timeout=60
+    Wait Until Page Contains    huomio    timeout=60
+    Wait Until Page Contains    esim    timeout=60
+    Wait Until Page Contains    Voimassa oleva    timeout=60
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
     Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
     Click element    //*[contains(text(), "${TERM_2}")]
     Sleep    2
-    Page should contain    research
-    Page should contain    tutkielma
-    Page should contain    systemaattista ja luovaa toimintaa
-    Page should contain    huomio
-    Page should contain    esim
-    Page should contain    Voimassa oleva
+    Wait Until Page Contains    research    timeout=60
+    Wait Until Page Contains    tutkielma    timeout=60
+    Wait Until Page Contains    systemaattista ja luovaa toimintaa    timeout=60
+    Wait Until Page Contains    huomio    timeout=60
+    Wait Until Page Contains    esim    timeout=60
+    Wait Until Page Contains    Voimassa oleva    timeout=60
     Log to Console    Import successful when related columns have empty values in CSV
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
