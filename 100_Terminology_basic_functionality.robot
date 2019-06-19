@@ -119,7 +119,7 @@ Restore Finnish language
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Click element    ${LANGUAGE_FI}
     Wait until page contains    Kaikki organisaatiot    timeout=30
-    Wait until page contains    Rajaa tietoaluella    timeout=30
+    Wait until page contains    Rajaa tietoalueella    timeout=30
     Close All Browsers
 
 Select navigation menu link
