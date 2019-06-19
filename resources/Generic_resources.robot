@@ -80,6 +80,7 @@ ${FILE_UPLOAD_BTN}    id=fileupload_input
 ${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
 ${DELETE_CODE_LIST_BTN}    id=delete_codelist_button
 ${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
+${CANCEL_CONF_CONF_MODAL_BTN}    id=cancel_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
 ${CODELIST_INFO_TAB}    id=codelist_info_tab

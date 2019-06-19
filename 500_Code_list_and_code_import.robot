@@ -794,66 +794,69 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Sleep    2
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
+    Wait until page contains    10 koodia    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
     Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
+    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
     Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_version2}    ${CODE_LIST_10}
-    Sleep    2
-    Wait until page contains    10 koodia    timeout=20
+    Wait Until Page Contains    10 koodia    timeout=60
     Modify code list
-    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
-    Click element    ${CODE_LIST_STATUS_DDL}
+    Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
+    Click Element    ${CODE_LIST_STATUS_DDL}
     Sleep    2
-    Click button    ${VALID_STATUS}
+    Wait Until Page Contains Element    ${VALID_STATUS}    timeout=20
+    Click Element    ${VALID_STATUS}
     Save code list
-    Wait until page contains element    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click element    ${CONFIRMATION_YES_BTN}
-    Sleep    5
-    Wait until page contains    Voimassa oleva    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Wait Until Page Contains Element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Contains Element    ${CANCEL_CONF_CONF_MODAL_BTN}    timeout=20
+    Click Element    ${CANCEL_CONF_CONF_MODAL_BTN}
+    Sleep    1
+    Wait Until Page Contains    Voimassa oleva    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
+    Sleep    1
+    Click Element    ${CODE_LIST_DDL}
+    Sleep    1
+    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
+    Click Element    ${FILE_FORMAT_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
+    Click Element    ${FILE_FORMAT_Excel}
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_version3}    ${CODE_LIST_11}
-    Wait until page contains element    ${VERSION_TAB}    timeout=20
-    Click element    ${VERSION_TAB}
-    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
+    Click Element    ${VERSION_TAB}
+    Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
     Page should not contain    03.03.2018 - 31.03.2018
-    Wait until page contains    koodisto7000    timeout=20
-    Wait until page contains    koodisto7001    timeout=20
-    Wait until page contains    koodisto7002    timeout=20
-    Wait until page contains    Luonnos    timeout=20
-    Wait until page contains    Voimassa oleva    timeout=20
-    Wait until page contains    Korvattu    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
+    Wait Until Page Contains    koodisto7001    timeout=20
+    Wait Until Page Contains    koodisto7002    timeout=20
+    Wait Until Page Contains    Luonnos    timeout=20
+    Wait Until Page Contains    Voimassa oleva    timeout=20
+    Wait Until Page Contains    Korvattu    timeout=20
     Sleep    1
     Return to Koodistot frontpage
     Remove code lists and leave browser open    ${CODE_LIST_9}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_10}")]
-    Wait until page contains    ${CODE_LIST_10}
-    Wait until page contains element    ${VERSION_TAB}    timeout=20
+    Wait Until Page Contains    ${CODE_LIST_10}
+    Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
     Click element    ${VERSION_TAB}
-    Sleep    8
-    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    Page should not contain    03.03.2018 - 31.03.2018
-    Page should not contain    koodisto7000
-    Wait until page contains    koodisto7001    timeout=20
-    Wait until page contains    koodisto7002    timeout=20
-    Wait until page contains    Luonnos    timeout=20
-    Wait until page contains    Voimassa oleva    timeout=20
+    Sleep    1
+    Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
+    Page Should Not Contain    03.03.2018 - 31.03.2018
+    Page Should Not Contain    koodisto7000
+    Wait Until Page Contains    koodisto7001    timeout=20
+    Wait Until Page Contains    koodisto7002    timeout=20
+    Wait Until Page Contains    Luonnos    timeout=20
+    Wait Until Page Contains    Voimassa oleva    timeout=20
     Page should not contain    Korvattu
     Sleep    1
     Return to Koodistot frontpage
