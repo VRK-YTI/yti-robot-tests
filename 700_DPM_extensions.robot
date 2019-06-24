@@ -17,15 +17,6 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    DPM Metric (en)    timeout=20
-    Wait Until Element Is Visible    ${MODIFY_EXTENSION_BTN}    timeout=30
-    Click Element    ${MODIFY_EXTENSION_BTN}
-    Wait Until Element Is Enabled    ${EXTENSION_NAME_INPUT}
-    Input text    ${EXTENSION_NAME_INPUT}    DPM Metric laajennus
-    Wait Until Element Is Enabled    ${SAVE_EXTENSION}    timeout=30
-    Click Element    ${SAVE_EXTENSION}
-    Sleep    1
-    Wait Until Element Is Enabled    ${MODIFY_EXTENSION_BTN}    timeout=60
-    Wait Until Page Contains    DPM Metric laajennus    timeout=20
     Return to Koodistot frontpage
     Import code list in Excel format
     Upload codelist    ${Modify_dpm_metric}    ${CODE_LIST_16}
@@ -127,19 +118,10 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    DPM Explicit Domain (en)    timeout=20
-    Sleep    1
-    Wait Until Element Is Enabled    ${MODIFY_EXTENSION_BTN}    timeout=30
-    Click Element    ${MODIFY_EXTENSION_BTN}
-    Wait Until Element Is Enabled    ${EXTENSION_NAME_INPUT}
-    Input Text    ${EXTENSION_NAME_INPUT}    DPM Explicit Domain laajennus
-    Sleep    1
-    Wait Until Element Is Enabled    ${SAVE_EXTENSION}    timeout=30
-    Click Element    ${SAVE_EXTENSION}
-    Wait Until Page Contains    DPM Explicit Domain laajennus    timeout=20
     Sleep    2
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Element Is Enabled    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=60
     Click Element    //*[contains(text(), "testcode57 - Testcode 57")]
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=20
     Click Element    ${MODIFY_CODE_BTN}
@@ -149,7 +131,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
-    Wait Until Page Contains    DPM Explicit Domain laajennus    timeout=20
+    Wait Until Page Contains    DPM Explicit Domain (en)    timeout=20
     Wait Until Page Contains    Member XBRL code prefix (en)    timeout=20
     Wait Until Page Contains    yyy    timeout=20
     Return to Koodistot frontpage
