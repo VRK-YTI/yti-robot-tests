@@ -80,7 +80,6 @@ ${FILE_UPLOAD_BTN}    id=fileupload_input
 ${CANCEL_IMPORT_CODE_LIST_BTN}    id=cancel_upload_button
 ${DELETE_CODE_LIST_BTN}    id=delete_codelist_button
 ${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
-${CANCEL_CONF_MODAL_BTN}    id=cancel_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
 ${CODELIST_INFO_TAB}    id=codelist_info_tab
@@ -409,17 +408,18 @@ Create code list
     Sleep    1
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
     run keyword if    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
+    Sleep    1
     Wait Until Element Is Enabled    ${ADD_CODE_LIST_BTN}    timeout=60
-    Click element    ${ADD_CODE_LIST_BTN}
+    Click Element    ${ADD_CODE_LIST_BTN}
     Wait Until Element Is Enabled    ${CREATE CODE_LIST_BTN}    timeout=60
-    Click element    ${CREATE CODE_LIST_BTN}
+    Click Element    ${CREATE CODE_LIST_BTN}
     ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
     run keyword if    ${vocabularies_error}    Close error modal
     Wait Until Element Is Enabled    ${CANCEL_CREATION_BTN}    timeout=20
-    Click element    ${CANCEL_CREATION_BTN}
-    Sleep    2
+    Click Element    ${CANCEL_CREATION_BTN}
+    Sleep    4
     Wait Until Element Is Enabled    ${SELECT_REGISTRY_BTN}    timeout=60
-    Click element    ${SELECT_REGISTRY_BTN}
+    Click Element    ${SELECT_REGISTRY_BTN}
     Wait Until Element Is Enabled    //*[contains(text(), "${registry}")]    timeout=60
     Click Element    //*[contains(text(), "${registry}")]
     Run Keyword if    '${cumulative}' == 'Cumulative'    Select Cumulative Code List Checkbox    ${cumulative}

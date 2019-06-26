@@ -1252,13 +1252,14 @@ Resource          resources/Extension_resources.robot
     [Tags]    koodistot    regression    600    test    search
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_multiple_extensions}    ${CODE_LIST_16}
-    Wait until page contains    36 koodia    timeout=20
+    Wait Until Page Contains    36 koodia    timeout=20
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    rtt
     Wait Until Element Is Visible    ${SEARCH_CODE_CHECKBOX}    timeout=30
     Click Element    ${SEARCH_CODE_CHECKBOX}
-    Wait Until Page Contains    Hakutulokset    timeout=30
+    Sleep    1
+    Wait Until Page Contains    Hakutulokset    timeout=60
     Wait Until Page Contains Element    //*[contains(text(), "Koodisto600")]    timeout=30
     Wait Until Page Contains    Koodit    timeout=30
     Wait Until Element Is Enabled    //*[contains(text(), "Katso kaikki 11 osumaa")]    timeout=30
@@ -1296,16 +1297,15 @@ Resource          resources/Extension_resources.robot
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
     Wait Until Element Is Enabled    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}
-    Wait until page contains    Hakutulokset    timeout=30
-    Wait until page contains    Laajennukset    timeout=30
-    Wait until page contains element    //*[contains(text(), "Koodisto600")]    timeout=30
+    Sleep    1
+    Wait Until Page Contains    Hakutulokset    timeout=30
+    Wait Until Page Contains    Laajennukset    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Koodisto600")]    timeout=30
     Sleep    1
     Capture Page Screenshot
     Wait Until Element Is Enabled    //*[contains(text(), "Katso kaikki 8 osumaa")]    timeout=30
     Click Element    //*[contains(text(), "Katso kaikki 8 osumaa")]
-    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
-    Click element    ${EXTENSIONS_TAB}
-    Wait Until Element Is Enabled    ${CROSS_REFERENCE_LIST_TAB}    timeout=20
+    Wait Until Element Is Enabled    ${CROSS_REFERENCE_LIST_TAB}    timeout=60
     Click Element    ${CROSS_REFERENCE_LIST_TAB}
     Sleep    1
     Wait Until Page Contains    rty789 - dddd (en)    timeout=30

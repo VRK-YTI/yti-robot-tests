@@ -814,8 +814,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Save code list
     Wait Until Page Contains Element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click Element    ${CONFIRMATION_YES_BTN}
-    Wait Until Page Contains Element    ${CANCEL_CONF_MODAL_BTN}    timeout=20
-    Click Element    ${CANCEL_CONF_MODAL_BTN}
     Sleep    1
     Wait Until Page Contains    Voimassa oleva    timeout=60
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
@@ -1401,8 +1399,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Save code list
     Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
     Click element    ${CONFIRMATION_YES_BTN}
-    Wait Until Page Contains Element    ${CANCEL_CONF_MODAL_BTN}    timeout=20
-    Click Element    ${CANCEL_CONF_MODAL_BTN}
     Wait until page contains    Voimassa oleva    timeout=60
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
     Click button    ${CODE_LIST_DDL}

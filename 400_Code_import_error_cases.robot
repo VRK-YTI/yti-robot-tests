@@ -59,7 +59,7 @@ ${Error_with_invalid_HL_value}    HIERARCHYLEVEL-sarakkeen arvo ei ole sallittu.
 ${Error_with_codevalue_column_missing}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
 ${Error_with_invalid_startdate}    Virheellinen alkupäivä rivillä 5.
 ${Error_with_invalid_ID}    Aineistossa oleva ID-sarakkeen arvo ei ole sallittu.
-${Error_with_update_code_valid_draft}    Aineiston tilan muutos ei ole sallittu.
+${Error_with_update_code_valid_draft}    Väärä kohdetila.
 ${Error_with_duplicate_codes}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
 ${Error_invalid_codeValue}    Tunnus on virheellinen rivillä 9. Sallitut merkit ovat ovat: a-zA-Z0-9_-.+*#&
 ${Error_missing_order}    Koodin order-sarakkeen kentät ovat puutteelliset.
