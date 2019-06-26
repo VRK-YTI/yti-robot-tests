@@ -1285,13 +1285,13 @@ Resource          resources/Extension_resources.robot
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
     Wait Until Element Is Enabled    ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}
-    Sleep    1
+    Sleep    3
     Page Should Not Contain Element    //*[contains(text(), "Koodisto600")]
     Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
     Wait Until Element Is Enabled    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}
-    Sleep    1
+    Sleep    3
     Page Should Not Contain Element    //*[contains(text(), "Koodisto600")]
     Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
@@ -1305,6 +1305,9 @@ Resource          resources/Extension_resources.robot
     Capture Page Screenshot
     Wait Until Element Is Enabled    //*[contains(text(), "Katso kaikki 8 osumaa")]    timeout=30
     Click Element    //*[contains(text(), "Katso kaikki 8 osumaa")]
+    Sleep    1
+    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=60
+    Click Element    ${EXTENSIONS_TAB}
     Wait Until Element Is Enabled    ${CROSS_REFERENCE_LIST_TAB}    timeout=60
     Click Element    ${CROSS_REFERENCE_LIST_TAB}
     Sleep    1
