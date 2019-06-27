@@ -218,7 +218,7 @@ Resource          resources/Extension_resources.robot
 
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
-    [Tags]    regression    test    200    status change
+    [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
