@@ -211,6 +211,22 @@ ${CODE_SCHEME_DDL_BTN}    id=code_scheme_dropdown_button
 ${SUB_CODE_LIST_BTN}    id=add_codelist_button
 ${SEARCH_SUB_CODE_LIST_INPUT}    id=search_linked_code-scheme_input
 ${ADD_BROADER_CODE}    id=add_code_button
+#Code status change mass function
+${CHANGE_CODE_STATUSES_BTN}    id=mass_migrate_codelist_codes_statuses_button
+${ORIGINAL_STATUS_DDL}    id=selected_migrate_code_statuses_from_status_input_dropdown
+${TARGET_STATUS_DDL}    id=selected_migrate_code_statuses_to_status_input_dropdown
+${INCOMPLETE_STATUS_ORGIGINAL}    id=INCOMPLETE_migrate_code_statuses_from_status_input_dropdown
+${INCOMPLETE_STATUS_TARGET}    id=INCOMPLETE_migrate_code_statuses_to_status_input_dropdown
+${DRAFT_STATUS_ORIGINAL}    id=DRAFT_migrate_code_statuses_from_status_input_dropdown
+${DRAFT_STATUS_TARGET}    id=DRAFT_migrate_code_statuses_to_status_input_dropdown
+${VALID_STATUS_ORIGINAL}    id=VALID_migrate_code_statuses_from_status_input_dropdown
+${VALID_STATUS_TARGET}    id=VALID_migrate_code_statuses_to_status_input_dropdown
+${RETIRED_STATUS_ORIGINAL}    id=RETIRED_migrate_code_statuses_from_status_input_dropdown
+${RETIRES_STATUS_TARGET}    id=RETIRED_migrate_code_statuses_to_status_input_dropdown
+${INVALID_STATUS_ORIGINAL}    id=INVALID_migrate_code_statuses_from_status_input_dropdown
+${INVALID_STATUS_TARGET}    id=INVALID_migrate_code_statuses_to_status_input_dropdown
+${SAVE_CODE_STATUS_CHANGE_BTN}    id=migrate_code_statuses_button
+${CANCEL_CODE_STATUS_CHANGE_BTN}    id=cancel_migrate_code_statuses_button
 #Code lists and Codes
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
@@ -300,6 +316,8 @@ ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
 ${Code_list_codes_with_languages}    ${DATAFOLDER}${/}Code_list_codes_with_languages.xlsx
 ${Code_list_codes_with_languages_empty}    ${DATAFOLDER}${/}Code_list_codes_with_languages_empty.xlsx
 ${Update_codes_with_languages}    ${DATAFOLDER}${/}Update_codes_with_languages.xlsx
+${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
+${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.

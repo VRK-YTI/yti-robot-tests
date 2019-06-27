@@ -107,7 +107,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
 
 303. Import code list with missing STATUS value
     [Documentation]    Import Code list with missing STATUS value and check error message
-    [Tags]    regression    test    300
+    [Tags]    regression    test    300    status change
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_no_status_value}
@@ -119,7 +119,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
 
 304. Import code list with invalid STATUS value
     [Documentation]    Import Code list with invalid STATUS value and check error message
-    [Tags]    regression    test    300
+    [Tags]    regression    test    300    status change
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_status_value}

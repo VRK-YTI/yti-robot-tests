@@ -89,7 +89,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
 
 401. Import Codes with missing STATUS value
     [Documentation]    Import Codes (Excel, CSV) with missing STATUS value and check error message
-    [Tags]    regression    test    400
+    [Tags]    regression    test    400    status change
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
@@ -106,7 +106,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
 
 402. Import Codes with invalid STATUS value
     [Documentation]    Import Codes (Excel, CSV) with invalid STATUS value and check error message
-    [Tags]    regression    test    400
+    [Tags]    regression    test    400    status change
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
