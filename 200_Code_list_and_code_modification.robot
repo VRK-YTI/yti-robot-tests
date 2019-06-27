@@ -471,6 +471,66 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Luonnos    timeout=60
     [Teardown]    Remove code lists    ${CODE_LIST_17}
 
+214. Change code statuses with mass function as superuser
+    [Documentation]    Change code statuses with mass function as superuser from Valid to Draft.
+    ...    Check that status change is successful. YTI-41.
+    [Tags]    regression    test    200    status change
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Wait Until Page Contains    30 koodia    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CHANGE_CODE_STATUSES_BTN}    timeout=20
+    Click Element    ${CHANGE_CODE_STATUSES_BTN}
+    Wait Until Element Is Enabled    ${ORIGINAL_STATUS_DDL}    timeout=20
+    Click Element    ${ORIGINAL_STATUS_DDL}
+    Wait Until Element Is Visible    ${VALID_STATUS_ORIGINAL}    timeout=20
+    Click Element    ${VALID_STATUS_ORIGINAL}
+    Wait Until Element Is Enabled    ${TARGET_STATUS_DDL}    timeout=20
+    Click Element    ${TARGET_STATUS_DDL}
+    Wait Until Element Is Visible    ${DRAFT_STATUS_TARGET}    timeout=20
+    Click Element    ${DRAFT_STATUS_TARGET}
+    Wait Until Element Is Enabled    ${SAVE_CODE_STATUS_CHANGE_BTN}    timeout=20
+    Click Element    ${SAVE_CODE_STATUS_CHANGE_BTN}
+    Wait Until Page Contains    Tila vaihdettu 30 koodiin.    timeout=20
+    Wait Until Element Is Enabled    ${CLOSE_ALERT_MODAL_LINK}    timeout=30
+    Click Element    ${CLOSE_ALERT_MODAL_LINK}
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Element Is Visible    //*[contains(text(), "testcode29 - Testcode 29")]    timeout=60
+    Click Element    //*[contains(text(), "testcode29 - Testcode 29")]
+    Wait Until Page Contains    Koodin arvo    timeout=60
+    Wait Until Page Contains    Koodin nimi    timeout=60
+    Wait Until Page Contains    Luonnos    timeout=60
+    [Teardown]    Remove code lists    ${CODE_LIST_17}
+
+215. Change code statuses with mass function and with invalid original status
+    [Documentation]    Change code statuses with mass function and with invalid original status. Check Error message. YTI-41.
+    [Tags]    regression    test    200    status change
+    [Setup]    Test Case Setup Superuser
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Wait Until Page Contains    30 koodia    timeout=60
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CHANGE_CODE_STATUSES_BTN}    timeout=20
+    Click Element    ${CHANGE_CODE_STATUSES_BTN}
+    Wait Until Element Is Enabled    ${ORIGINAL_STATUS_DDL}    timeout=20
+    Click Element    ${ORIGINAL_STATUS_DDL}
+    Wait Until Element Is Visible    ${DRAFT_STATUS_ORIGINAL}    timeout=20
+    Click Element    ${DRAFT_STATUS_ORIGINAL}
+    Wait Until Element Is Enabled    ${TARGET_STATUS_DDL}    timeout=20
+    Click Element    ${TARGET_STATUS_DDL}
+    Wait Until Element Is Visible    ${INCOMPLETE_STATUS_TARGET}    timeout=20
+    Click Element    ${INCOMPLETE_STATUS_TARGET}
+    Wait Until Element Is Enabled    ${SAVE_CODE_STATUS_CHANGE_BTN}    timeout=20
+    Click Element    ${SAVE_CODE_STATUS_CHANGE_BTN}
+    Wait Until Page Contains    ${Error_no_code_status_changes}    timeout=20
+    Wait Until Element Is Enabled    ${CLOSE_ALERT_MODAL_LINK}    timeout=30
+    Click Element    ${CLOSE_ALERT_MODAL_LINK}
+    [Teardown]    Remove code lists    ${CODE_LIST_17}
+
 *** Keywords ***
 Go back to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20

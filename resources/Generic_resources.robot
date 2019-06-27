@@ -322,6 +322,7 @@ ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_val
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 ${Error_remove_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/extension/koodiliitoslaajennus/member/
+${Error_no_code_status_changes}    Tilaa ei vaihdettu yhteenkään koodiin. Ei löytynyt koodeja vaihdettavassa tilassa.
 #JSON Export
 ${Json_export_dcat}    ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR","JUST","REGI","SOCI","TECH","TRAN"]
 
