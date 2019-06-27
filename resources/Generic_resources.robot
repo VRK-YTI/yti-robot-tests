@@ -219,14 +219,19 @@ ${INCOMPLETE_STATUS_ORGIGINAL}    id=INCOMPLETE_migrate_code_statuses_from_statu
 ${INCOMPLETE_STATUS_TARGET}    id=INCOMPLETE_migrate_code_statuses_to_status_input_dropdown
 ${DRAFT_STATUS_ORIGINAL}    id=DRAFT_migrate_code_statuses_from_status_input_dropdown
 ${DRAFT_STATUS_TARGET}    id=DRAFT_migrate_code_statuses_to_status_input_dropdown
+${SUGGESTED_STATUS_ORIGINAL}    id=SUGGESTED_migrate_code_statuses_from_status_input_dropdown
+${SUGGESTED_STATUS_TARGET}    id=SUGGESTED_migrate_code_statuses_to_status_input_dropdown
 ${VALID_STATUS_ORIGINAL}    id=VALID_migrate_code_statuses_from_status_input_dropdown
 ${VALID_STATUS_TARGET}    id=VALID_migrate_code_statuses_to_status_input_dropdown
+${SUPERSEDED_STATUS_ORIGINAL}    id=SUPERSEDED_migrate_code_statuses_from_status_input_dropdown
+${SUPERSEDED_STATUS_TARGET}    id=SUPERSEDED_migrate_code_statuses_to_status_input_dropdown
 ${RETIRED_STATUS_ORIGINAL}    id=RETIRED_migrate_code_statuses_from_status_input_dropdown
-${RETIRES_STATUS_TARGET}    id=RETIRED_migrate_code_statuses_to_status_input_dropdown
+${RETIRED_STATUS_TARGET}    id=RETIRED_migrate_code_statuses_to_status_input_dropdown
 ${INVALID_STATUS_ORIGINAL}    id=INVALID_migrate_code_statuses_from_status_input_dropdown
 ${INVALID_STATUS_TARGET}    id=INVALID_migrate_code_statuses_to_status_input_dropdown
 ${SAVE_CODE_STATUS_CHANGE_BTN}    id=migrate_code_statuses_button
 ${CANCEL_CODE_STATUS_CHANGE_BTN}    id=cancel_migrate_code_statuses_button
+${ENFORCE_STATUS_TRANSITION_CHECKBOX}    id=enforce_status_transition_rules_checkbox
 #Code lists and Codes
 ${CODE_LIST_1}    Kunnat 2018
 ${CODE_LIST_1_EN}    Municipalities 2018
