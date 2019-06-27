@@ -223,13 +223,13 @@ Resource          resources/Extension_resources.robot
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
     Modify code list
-    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
-    Click element    ${CODE_LIST_STATUS_DDL}
-    Page should not contain    Luonnos
-    Page should not contain    Odottaa hyväksyntää
+    Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
+    Click Element    ${CODE_LIST_STATUS_DDL}
+    Page Should Not Contain    Luonnos
+    Page Should Not Contain    Odottaa hyväksyntää
     Click button    Korvattu
     Save code list
-    Wait until page contains element    //*[contains(text(), "Korvattu")]    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "Korvattu")]    timeout=20
     Go back to Koodistot frontpage
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     [Teardown]    Remove code lists    ${CODE_LIST_6}
@@ -324,46 +324,83 @@ Resource          resources/Extension_resources.robot
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_codes_with_languages_empty}    ${CODE_LIST_16}
-    Wait until page contains    30 koodia    timeout=60
+    Wait Until Page Contains    30 koodia    timeout=60
     Update code list    ${Code_list_codes_with_languages}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
     Wait until page contains    30 koodia    timeout=60
     Wait until element is visible    //*[contains(text(), "testcode28 - Testcode 28_fi")]    timeout=60
     Click Element    //*[contains(text(), "testcode28 - Testcode 28_fi")]
-    Wait until page contains    Koodisto600    timeout=60
-    Wait until page contains    Testcode 28_fi    timeout=60
-    Wait until page contains    Kuvaus_fi    timeout=60
-    Wait until page contains    Määritelmä_fi    timeout=60
+    Wait Until Page Contains    Koodisto600    timeout=60
+    Wait Until Page Contains    Testcode 28_fi    timeout=60
+    Wait Until Page Contains    Kuvaus_fi    timeout=60
+    Wait Until Page Contains    Määritelmä_fi    timeout=60
     Change content language    ${CONTENT_LANGUAGE_EN}
-    Wait until page contains    Koodisto600_en    timeout=60
-    Wait until page contains    Testcode 28_en    timeout=60
-    Wait until page contains    Kuvaus_en    timeout=60
-    Wait until page contains    Määritelmä_en    timeout=60
+    Wait Until Page Contains    Koodisto600_en    timeout=60
+    Wait Until Page Contains    Testcode 28_en    timeout=60
+    Wait Until Page Contains    Kuvaus_en    timeout=60
+    Wait Until Page Contains    Määritelmä_en    timeout=60
     Change content language    ${CONTENT_LANGUAGE_SW_UG}
-    Wait until page contains    Koodisto600_sw    timeout=60
-    Wait until page contains    Testcode 28_sw    timeout=60
-    Wait until page contains    Kuvaus_sw    timeout=60
-    Wait until page contains    Määritelmä_sw    timeout=60
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=60
-    Click element    ${2_BREADCRUMB_LINK}
-    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
-    Wait until element is visible    ${CODELIST_INFO_TAB}    timeout=60
-    Click element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Koodisto600_sw    timeout=60
+    Wait Until Page Contains    Testcode 28_sw    timeout=60
+    Wait Until Page Contains    Kuvaus_sw    timeout=60
+    Wait Until Page Contains    Määritelmä_sw    timeout=60
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=60
+    Click Element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Wait Until Element Is Visible    ${CODELIST_INFO_TAB}    timeout=60
+    Click Element    ${CODELIST_INFO_TAB}
     Change content language    ${CONTENT_LANGUAGE_SV}
-    Wait until page contains    Koodisto600_sv    timeout=60
-    Wait until page contains    Kuvaus_sv    timeout=60
-    Wait until page contains    Määritelmä_sv    timeout=60
-    Wait until page contains    muutostieto_sv    timeout=60
+    Wait Until Page Contains    Koodisto600_sv    timeout=60
+    Wait Until Page Contains    Kuvaus_sv    timeout=60
+    Wait Until Page Contains    Määritelmä_sv    timeout=60
+    Wait Until Page Contains    muutostieto_sv    timeout=60
     Import codes in Excel format
     Upload codes    ${Update_codes_with_languages}
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Wait until page contains    30 koodia    timeout=60
-    Wait until element is visible    //*[contains(text(), "testcode28 - Testcode 28_sv")]    timeout=60
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Page Contains    30 koodia    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "testcode28 - Testcode 28_sv")]    timeout=60
     Click Element    //*[contains(text(), "testcode28 - Testcode 28_sv")]
     Change content language    ${CONTENT_LANGUAGE_AR_SO}
-    Wait until page contains    Testcode 28_ar    timeout=60
-    Wait until page contains    Kuvaus_ar    timeout=60
-    Wait until page contains    Määritelmä_ar    timeout=60
+    Wait Until Page Contains    Testcode 28_ar    timeout=60
+    Wait Until Page Contains    Kuvaus_ar    timeout=60
+    Wait Until Page Contains    Määritelmä_ar    timeout=60
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+211. Change code statuses with code list status change
+    [Documentation]    Change code statuses with code list status change. YTI-41.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
+    Click Element    ${MODIFY_CODE_LIST}
+    Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
+    Click Element    ${CODE_LIST_STATUS_DDL}
+    Wait Until Page Contains Element    ${VALID_STATUS}    timeout=20
+    Click Element    ${VALID_STATUS}
+    Wait Until Element Is Enabled    ${CHANGE_CODE_STATUSES_CHECKBOX}    timeout=20
+    Select Checkbox    ${CHANGE_CODE_STATUSES_CHECKBOX}
+    Wait Until Element Is Enabled    ${SAVE_CODE_LIST_MOD_BTN}    timeout=30
+    Click Element    ${SAVE_CODE_LIST_MOD_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=30
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait until page contains    Vaihda samalla koodien tilat?    timeout=20
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=30
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Contains    Koodien tilojen vaihtamisen tulos    timeout=20
+    Wait Until Page Contains    Tila vaihdettu 30 koodiin    timeout=20
+    Wait Until Element Is Enabled    ${CLOSE_ALERT_MODAL_LINK}    timeout=30
+    Click Element    ${CLOSE_ALERT_MODAL_LINK}
+    Wait Until Page Contains    Voimassa oleva    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Element Is Visible    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=60
+    Click Element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait Until Page Contains    Koodin arvo    timeout=60
+    Wait Until Page Contains    Koodin nimi    timeout=60
+    Wait Until Page Contains    Voimassa oleva    timeout=60
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
 *** Keywords ***

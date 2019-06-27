@@ -113,6 +113,7 @@ ${CONCEPT_SUGGESTION_NAME_INPUT}    id=concept_suggestion_name_input
 ${CREATE_CUMULATIVE_CODE_LIST}    id=create_new_codescheme_as_cumulative
 ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    id=mark_codelist_cumulative_checkbox
 ${UPDATE_CODE_LIST_FROM_FILE_BTN}    id=update_codelist_from_file_button
+${CHANGE_CODE_STATUSES_CHECKBOX}    id=change_code_statuses_too_checkbox
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
