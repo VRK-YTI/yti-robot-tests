@@ -368,7 +368,7 @@ Resource          resources/Extension_resources.robot
 
 211. Change code statuses with code list status change
     [Documentation]    Change code statuses with code list status change. YTI-41.
-    [Tags]    regression    test    200    status change
+    [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -406,7 +406,7 @@ Resource          resources/Extension_resources.robot
 
 212. Change code statuses with mass function
     [Documentation]    Change code statuses with mass function. YTI-41.
-    [Tags]    regression    test    200    status change
+    [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
@@ -440,7 +440,7 @@ Resource          resources/Extension_resources.robot
 213. Change code statuses with mass function as superuser
     [Documentation]    Change code statuses with mass function as superuser from Valid to Draft.
     ...    Check that status change is successful. YTI-41.
-    [Tags]    regression    test    200    status change
+    [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
@@ -474,7 +474,7 @@ Resource          resources/Extension_resources.robot
 214. Change code statuses with mass function as superuser
     [Documentation]    Change code statuses with mass function as superuser from Valid to Draft.
     ...    Check that status change is successful. YTI-41.
-    [Tags]    regression    test    200    status change
+    [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
@@ -507,7 +507,7 @@ Resource          resources/Extension_resources.robot
 
 215. Change code statuses with mass function and with invalid original status
     [Documentation]    Change code statuses with mass function and with invalid original status. Check Error message. YTI-41.
-    [Tags]    regression    test    200    status change
+    [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
@@ -533,7 +533,7 @@ Resource          resources/Extension_resources.robot
 
 216. Enforce status transition rules with code status change mass function
     [Documentation]    Enforce status transition rules with code status change mass function for superuser. YTI-41.
-    [Tags]    regression    test    200    status change
+    [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
