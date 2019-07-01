@@ -10,29 +10,29 @@ Resource          resources/Generic_resources.robot
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    ${INFORMATION_LINK}    timeout=30
-    Click element    ${INFORMATION_LINK}
-    Wait until page contains    Tietoa Kommentointikierroksesta
-    Wait until page contains    Katso myös
-    Wait until page contains    Ota yhteyttä
+    Wait Until Page Contains Element    ${INFORMATION_LINK}    timeout=30
+    Click Element    ${INFORMATION_LINK}
+    Wait Until Page Contains    Tietoa Kommentointikierroksesta
+    Wait Until Page Contains    Katso myös
+    Wait Until Page Contains    Ota yhteyttä
     [Teardown]    Return to Comments frontpage
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    ${LICENSE_LINK}    timeout=20
-    Click element    ${LICENSE_LINK}
+    Wait Until Page Contains Element    ${LICENSE_LINK}    timeout=20
+    Click Element    ${LICENSE_LINK}
     Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
+    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly
     [Tags]    local
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    ${DESCRIPTION_OF_FILE_LINK}    timeout=20
-    Click element    ${DESCRIPTION_OF_FILE_LINK}
+    Wait Until Page Contains Element    ${DESCRIPTION_OF_FILE_LINK}    timeout=20
+    Click Element    ${DESCRIPTION_OF_FILE_LINK}
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    1
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
@@ -46,16 +46,16 @@ Resource          resources/Generic_resources.robot
     Click element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_EN}    timeout=20
     Click element    ${LANGUAGE_EN}
-    Wait until page contains    Comments - ${ENVIRONMENT_IDENTIFIER}    timeout=30
-    Wait until page contains    Add new comment round    timeout=30
-    Wait until page contains    All tools    timeout=30
-    Wait until page contains    All organizations    timeout=30
-    Wait until page contains    All statuses    timeout=30
+    Wait Until Page Contains    Comments - ${ENVIRONMENT_IDENTIFIER}    timeout=30
+    Wait Until Page Contains    Add new comment round    timeout=30
+    Wait Until Page Contains    All tools    timeout=30
+    Wait Until Page Contains    All organizations    timeout=30
+    Wait Until Page Contains    All statuses    timeout=30
     Reload Page
-    Wait until page contains    Add new comment round    timeout=30
-    Wait until page contains    All tools    timeout=30
-    Wait until page contains    All organizations    timeout=30
-    Wait until page contains    All statuses    timeout=30
+    Wait Until Page Contains    Add new comment round    timeout=30
+    Wait Until Page Contains    All tools    timeout=30
+    Wait Until Page Contains    All organizations    timeout=30
+    Wait Until Page Contains    All statuses    timeout=30
     Sleep    1
     [Teardown]    Restore Finnish language
 
@@ -64,33 +64,33 @@ Resource          resources/Generic_resources.robot
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Select navigation menu link    Käyttäjätiedot
-    Wait until page contains    Käyttäjätiedot    timeout=20
-    Wait until page contains    Nimi    timeout=20
-    Wait until page contains    Sähköposti    timeout=20
-    Wait until page contains    Organisaatiot ja toolkit    timeout=20
+    Wait Until Page Contains    Käyttäjätiedot    timeout=20
+    Wait Until Page Contains    Nimi    timeout=20
+    Wait Until Page Contains    Sähköposti    timeout=20
+    Wait Until Page Contains    Organisaatiot ja toolkit    timeout=20
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Select navigation menu link    Suomi.fi-koodistot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
-    Wait until page contains    Koodistot    timeout=40
-    Wait until page contains    Hae koodistoa    timeout=40
-    Wait until page contains    Rajaa tietoalueella    timeout=40
+    Wait Until Page Contains    Koodistot    timeout=40
+    Wait Until Page Contains    Hae koodistoa    timeout=40
+    Wait Until Page Contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Select navigation menu link    Suomi.fi-sanastot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    Wait until page contains    Sanastot    timeout=40
-    Wait until page contains    Hae sanastoja    timeout=40
-    Wait until page contains    Rajaa tietoalueella    timeout=40
+    Wait Until Page Contains    Sanastot    timeout=40
+    Wait Until Page Contains    Hae sanastoja    timeout=40
+    Wait Until Page Contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Sleep    1
     Select navigation menu link    Suomi.fi-tietomallit
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
-    Wait until page contains    Tietomallit    timeout=40
-    Wait until page contains    Etusivu    timeout=40
+    Wait Until Page Contains    Tietomallit    timeout=40
+    Wait Until Page Contains    Etusivu    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Sleep    1
@@ -98,21 +98,21 @@ Resource          resources/Generic_resources.robot
 
 *** Keywords ***
 Restore Finnish language
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_FI}    timeout=20
     Click element    ${LANGUAGE_FI}
-    Wait until page contains    Kommentit - ${ENVIRONMENT_IDENTIFIER}    timeout=30
-    Wait until page contains    Luo uusi kommentointikierros    timeout=30
-    Wait until page contains    Kaikki työkalut    timeout=20
-    Wait until page contains    Kaikki organisaatiot    timeout=20
-    Wait until page contains    Kaikki tilat    timeout=20
+    Wait Until Page Contains    Kommentit - ${ENVIRONMENT_IDENTIFIER}    timeout=30
+    Wait Until Page Contains    Luo uusi kommentointikierros    timeout=30
+    Wait Until Page Contains    Kaikki työkalut    timeout=20
+    Wait Until Page Contains    Kaikki organisaatiot    timeout=20
+    Wait Until Page Contains    Kaikki tilat    timeout=20
     Close All Browsers
 
 Select navigation menu link
     [Arguments]    ${navigation_menu_link}
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
-    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click Element    ${NAVIGATION_MENU_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]
     Sleep    2
