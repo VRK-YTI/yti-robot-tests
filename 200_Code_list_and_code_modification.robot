@@ -601,7 +601,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Koodin arvo    timeout=60
     Wait Until Page Contains    Voimassa oleva    timeout=60
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=30
     Import codes in CSV format
@@ -610,6 +610,50 @@ Resource          resources/Extension_resources.robot
     Click Element    //*[contains(text(), "testcode28 - Testcode 28")]
     Wait Until Page Contains    Koodin arvo    timeout=60
     Wait Until Page Contains    Voimassa oleva    timeout=60
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+218. Import links to codes with Import codes function
+    [Documentation]    Import links to codes with Import codes function (Excel,CSV).
+    ...    Check that links are working when extra space is defined in HREF columns in code Excel.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Admin
+    Upload codelist in Excel format    ${Code_list_with_30_codes_and_instructions_link}    ${CODE_LIST_16}
+    Wait Until Page Contains    30 koodia    timeout=60
+    Import codes in Excel format
+    Upload codes    ${Code_links_with_space}
+    Wait Until Page Contains Element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click Element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait Until Page Contains    Käyttöohje    timeout=60
+    Wait Until Page Contains    https://www.suomi.fi/viestit    timeout=60
+    Wait Until Page Contains    Liittyvä linkki    timeout=60
+    Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=60
+    Wait Until Page Contains    https://yle.fi/    timeout=60
+    Wait Until Page Contains    Lisenssi    timeout=60
+    Wait Until Page Contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=60
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Sleep    1
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=30
+    Import codes in CSV format
+    Upload codes    ${Code_links_with_space_csv}
+    Wait Until Page Contains Element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click Element    //*[contains(text(), "testcode56 - Testcode 56")]
+    Page Should Not Contain    Käyttöohje
+    Page Should Not Contain    Liittyvä linkki
+    Page Should Not Contain    Lisenssi
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Sleep    1
+    Wait Until Page Contains Element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click Element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait Until Page Contains    Käyttöohje    timeout=60
+    Wait Until Page Contains    https://www.suomi.fi/viestit    timeout=60
+    Wait Until Page Contains    Liittyvä linkki    timeout=60
+    Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=60
+    Wait Until Page Contains    https://yle.fi/    timeout=60
+    Wait Until Page Contains    Lisenssi    timeout=60
+    Wait Until Page Contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=60
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
