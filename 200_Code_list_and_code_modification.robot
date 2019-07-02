@@ -587,6 +587,32 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Voimassa oleva    timeout=60
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
+217. Import code list and codes with upper case/lower case status values
+    [Documentation]    Import code list and codes (Excel,CSV) with extra space and upper case/lower case letters in status values.
+    ...    Check that import is successful.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Admin
+    Upload codelist in Excel format    ${Code_list_with_30_Codes_status_with_space}    ${CODE_LIST_16}
+    Wait Until Page Contains    30 koodia    timeout=60
+    Import codes in Excel format
+    Upload codes    ${Codes_status_with_space}
+    Wait Until Page Contains Element    //*[contains(text(), "testcode56 - Testcode 56")]    timeout=20
+    Click Element    //*[contains(text(), "testcode56 - Testcode 56")]
+    Wait Until Page Contains    Koodin arvo    timeout=60
+    Wait Until Page Contains    Voimassa oleva    timeout=60
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click element    ${2_BREADCRUMB_LINK}
+    Sleep    1
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=30
+    Import codes in CSV format
+    Upload codes    ${Codes_status_with_space_csv}
+    Wait Until Page Contains Element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click Element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait Until Page Contains    Koodin arvo    timeout=60
+    Wait Until Page Contains    Voimassa oleva    timeout=60
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
+
 *** Keywords ***
 Go back to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20

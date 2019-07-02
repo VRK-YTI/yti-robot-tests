@@ -323,6 +323,10 @@ ${Code_list_codes_with_languages_empty}    ${DATAFOLDER}${/}Code_list_codes_with
 ${Update_codes_with_languages}    ${DATAFOLDER}${/}Update_codes_with_languages.xlsx
 ${Code_list_with_30_Codes}    ${DATAFOLDER}${/}Code_list_with_30_Codes.xlsx
 ${Code_list_with_30_Codes_valid}    ${DATAFOLDER}${/}Code_list_with_30_Codes_valid.xlsx
+${Code_list_with_30_Codes_status_with_space}    ${DATAFOLDER}${/}Code_list_with_30_Codes_status_with_space.xlsx
+${Codes_status_with_space}    ${DATAFOLDER}${/}Codes_status_with_space.xlsx
+#CSV paths
+${Codes_status_with_space_csv}    ${DATAFOLDER}${/}Codes_status_with_space_csv.csv
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
