@@ -374,3 +374,15 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Credit    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+711. Import DPM extension with invalid PROPERTYTYPE
+    [Documentation]    Import DPM extension with invalid PROPERTYTYPE and check error message. YTI-682.
+    [Tags]    regression    test    700
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_codes_DPM_all_invalid_propertytype}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click Button    ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains    ${Error_invalid_propertytype}    timeout=20
+    Cancel code list import
+    Return to Koodistot frontpage
