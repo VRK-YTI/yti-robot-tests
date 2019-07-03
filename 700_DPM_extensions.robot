@@ -367,6 +367,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_duplicate_members_for_same_code}    timeout=20
     Cancel code import
+    Sleep    3
     Update code list    ${Code_list_DPM_Metric_Credit}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
     Wait Until Element Is Enabled    //*[contains(text(), "testcode29 - Testcode 29")]    timeout=60
     Click Element    //*[contains(text(), "testcode29 - Testcode 29")]
