@@ -566,23 +566,22 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ...    those are taken into use.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_languagecode}    ${CODE_LIST_9}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Koodisto7000    timeout=20
-    Wait until page contains    koodisto7000    timeout=20
-    Wait until page contains    Testirekisteri    timeout=20
-    Wait until page contains    Asuminen    timeout=20
-    Wait until page contains    Työ ja työttömyys    timeout=20
-    Wait until page contains    Elinkeinot    timeout=20
-    Wait until page contains    Kielikoodi    timeout=20
-    Wait until page contains    asu    timeout=20
-    Wait until page contains    bemba    timeout=20
-    Wait until page contains    englanti    timeout=20
-    Wait until page contains    ruotsi    timeout=20
-    Wait until page contains    suomi    timeout=20
-    Wait until page contains    swahili (Tansania)    timeout=20
+    Upload codelist in Excel format    ${Code_list_with_languagecode}    ${CODE_LIST_9}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=60
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Koodisto7000    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
+    Wait Until Page Contains    Testirekisteri    timeout=20
+    Wait Until Page Contains    Asuminen    timeout=20
+    Wait Until Page Contains    Työ ja työttömyys    timeout=20
+    Wait Until Page Contains    Elinkeinot    timeout=20
+    Wait Until Page Contains    Kielikoodi    timeout=20
+    Wait Until Page Contains    asu    timeout=20
+    Wait Until Page Contains    bemba    timeout=20
+    Wait Until Page Contains    englanti    timeout=20
+    Wait Until Page Contains    ruotsi    timeout=20
+    Wait Until Page Contains    suomi    timeout=20
+    Wait Until Page Contains    swahili (Tansania)    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
 
@@ -632,26 +631,26 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Create code to code list list and suggest concept to Terminologies
     [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Terminologies
-    Import code list in Excel format
-    Upload codelist    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Sleep    1
     Log to Console    Code list without codes imported
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
-    Click element    ${CREATE_CODE_BTN}
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_CODE_BTN}    timeout=20
+    Click Element    ${CREATE_CODE_BTN}
     Suggest concept to Terminologies    automob    Testiautomaatiosanasto (Luonnos)    automobiili    Tämä on kulkuneuvo
     Log to Console    Concept suggested to Terminologies
-    Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${CODE_CODEVALUE_INPUT}    timeout=20
     Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
-    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
-    Click element    ${SAVE_NEW_CODE_BTN}
+    Sleep    1
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_BTN}
     Log to Console    New code name saved
     Sleep    5
-    Wait until page contains    Koodisto6000    timeout=20
-    Wait until page contains    automobiili    timeout=20
-    Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
-    Wait until page contains    Tämä on kulkuneuvo    timeout=20
+    Wait Until Page Contains    Koodisto6000    timeout=20
+    Wait Until Page Contains    automobiili    timeout=20
+    Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
+    Wait Until Page Contains    Tämä on kulkuneuvo    timeout=20
     Log to Console    Code values checked
     Return to Koodistot frontpage
     Close All Browsers

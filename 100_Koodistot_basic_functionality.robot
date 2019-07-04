@@ -137,16 +137,17 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 107. Export Excel and CSV for Palveluluokitus Code list
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
+    Sleep    1
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
     Click element    //*[contains(text(), "${CODE_LIST_3}")]
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Click element    id=exportDropdown
-    Click element    ${EXPORT_TYPE_EXCEL}
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
+    Wait Until Page Contains Element    id=exportDropdown    timeout=20
+    Click Element    id=exportDropdown
+    Click Element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Click element    id=exportDropdown
-    Click element    ${EXPORT_TYPE_CSV}
+    Wait Until Page Contains Element    id=exportDropdown    timeout=20
+    Click Element    id=exportDropdown
+    Click Element    ${EXPORT_TYPE_CSV}
     Sleep    5
     [Teardown]    Return to Koodistot frontpage
 

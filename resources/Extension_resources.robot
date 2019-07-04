@@ -122,9 +122,9 @@ Create extension
     Sleep    1
     Capture Page Screenshot
     Sleep    2
-    Wait until page contains element    ${SAVE_EXTENSION}    timeout=30
+    Wait Until Element Is Enabled    ${SAVE_EXTENSION}    timeout=30
     Click button    ${SAVE_EXTENSION}
-    Wait until element is visible    ${MEMBERS_TAB}    timeout=60
+    Wait Until Element Is Visible    ${MEMBERS_TAB}    timeout=60
     Log to Console    ${extension_name} created
     Sleep    2
 
