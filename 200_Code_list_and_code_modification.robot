@@ -11,8 +11,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Modify name, description and short name values for DRAFT code.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
@@ -35,8 +34,7 @@ Resource          resources/Extension_resources.robot
     ...    same link url again and remove the link.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
@@ -87,8 +85,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Add Creative Commons license to draft code and remove the license.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
@@ -123,8 +120,7 @@ Resource          resources/Extension_resources.robot
     ...    and remove the link. YTI-444, YTI-614.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Wait until page contains element    //*[contains(text(), "${CODE_1000}")]    timeout=20
     Click element    //*[contains(text(), "${CODE_1000}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
@@ -159,8 +155,7 @@ Resource          resources/Extension_resources.robot
     ...    YTI-438
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
@@ -187,8 +182,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Set end date before start date for code list and check error message.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click element    //*[contains(text(), "${TEST_CODE_1}")]
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
@@ -220,8 +214,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
     Modify code list
     Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click Element    ${CODE_LIST_STATUS_DDL}
@@ -238,8 +231,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Change values for VALID Code list and restore original values. YTI-523
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
     Modify code list
     Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input text    ${CODE_LIST_NAME_INPUT}    Testinimi
@@ -262,8 +254,7 @@ Resource          resources/Extension_resources.robot
     ...    remove classification.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Modify code list
     Page should contain element    ${CLASSIFICATION_2}
     Wait until page contains element    ${ADD_CLASSIFICATION_BTN}    timeout=20
@@ -287,8 +278,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
     [Tags]    koodistot
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
     Click element    //*[contains(text(), "Testcode 29")]
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
@@ -322,8 +312,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Import code list and update code list and code values vith different languages. YTI-674
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_codes_with_languages_empty}    ${CODE_LIST_16}
+    Upload codelist in Excel format    ${Code_list_codes_with_languages_empty}    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
     Update code list    ${Code_list_codes_with_languages}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
     Wait until page contains    30 koodia    timeout=60
@@ -370,8 +359,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Change code statuses with code list status change. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
     Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
     Click Element    ${CODELIST_INFO_TAB}
@@ -408,8 +396,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Change code statuses with mass function. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click Element    ${CODE_LIST_DDL}
@@ -442,8 +429,7 @@ Resource          resources/Extension_resources.robot
     ...    Check that status change is successful. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click Element    ${CODE_LIST_DDL}
@@ -476,8 +462,7 @@ Resource          resources/Extension_resources.robot
     ...    Check that status change is successful. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click Element    ${CODE_LIST_DDL}
@@ -509,8 +494,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Change code statuses with mass function and with invalid original status. Check Error message. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click Element    ${CODE_LIST_DDL}
@@ -535,8 +519,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Enforce status transition rules with code status change mass function for superuser. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Superuser
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click Element    ${CODE_LIST_DDL}
