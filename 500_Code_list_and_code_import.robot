@@ -72,8 +72,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    testikoodi02    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    Testikoodi 02    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Check values from Valid Code list
@@ -129,8 +129,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    NewCode001    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    newCode001    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Remove code    NewCode001 - newCode001
     Click element    ${CODELIST_INFO_TAB}
@@ -174,8 +174,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    testikoodi02    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    Testikoodi 02    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_11}
@@ -394,8 +394,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element    ${SAVE_CODE_MOD_BTN}
     Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=60
     Sleep    3
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
@@ -450,8 +450,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Log to Console    Code links copied
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
     Click element    ${CODELIST_INFO_TAB}
     Wait until page contains    englanti    timeout=20
@@ -968,8 +968,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    Normilinkki_fi    timeout=20
     Wait until page contains    Julkaisu    timeout=20
     Wait until page contains    Testijulkaisu_fi    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click element    //*[contains(text(), "testcode57 - Testcode 57")]
     Wait until page contains    Lisenssi    timeout=20
@@ -1059,8 +1059,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element    //*[contains(text(), "testcode28 - Testcode 28")]
     Wait until page contains    Liittyvä koodisto    timeout=20
     Wait until page contains    200 - Linkkikoodisto    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Import codes in CSV format
     Upload codes    ${Codes_update_sub_code_list_csv}
@@ -1088,8 +1088,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    newCode001    timeout=20
     Wait until page contains    Koodisto7000 - koodisto7000    timeout=20
-    Wait until element is visible    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Remove code    NewCode001 - newCode001
     Click element    ${CODELIST_INFO_TAB}
@@ -1312,8 +1312,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    NewCode001    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    newCode001    timeout=20
-    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Wait until element is visible    ${VERSION_TAB}    timeout=20
     Log to console    Version history tab exists on current ie. latest version after code was created
@@ -1488,13 +1488,15 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    ${Error_cumulative_codelist}    timeout=20
     Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click element    ${CLOSE_ERROR_MESSAGE_BTN}
-    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
+    Sleep    3
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
     Sleep    3
-    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
-    Wait until element is visible    //*[contains(text(), "NewCode001 - newCode001")]    timeout=20
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Sleep    1
+    Click Element    ${2_BREADCRUMB_LINK}
+    Wait Until Element Is Visible    //*[contains(text(), "NewCode001 - newCode001")]    timeout=60
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
     Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20

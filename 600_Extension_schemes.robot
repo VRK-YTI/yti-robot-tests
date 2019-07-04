@@ -101,6 +101,7 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Testilaajennus55    timeout=20
     Wait until page contains    suomi    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
+    Sleep    2
     Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    2
@@ -119,6 +120,7 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Capture Page Screenshot
     Wait until page contains    - Member 1 · Testcode 57 <=    timeout=20
+    Sleep    2
     Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Sleep    2
@@ -344,7 +346,8 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000    ${EMPTY}
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
-    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Sleep    2
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 · testiautomaatiokoodisto1 · Testirekisteri <=")]    timeout=20
     Return to Koodistot frontpage
@@ -411,8 +414,9 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    testcode01 - Testikoodi 01    timeout=20
     Wait until page contains    01.01.2018 - 01.01.2020    timeout=20
     Wait until page contains    URI    timeout=20
-    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
-    Click element    ${3_BREADCRUMB_LINK}
+    Sleep    2
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${3_BREADCRUMB_LINK}
     Wait until page contains element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
     Wait Until Element Is Enabled    //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]    timeout=20
     Click element    //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]
@@ -583,6 +587,7 @@ Resource          resources/Extension_resources.robot
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000    ${EMPTY}
     Capture Page Screenshot
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
+    Sleep    2
     Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Capture Page Screenshot
@@ -668,8 +673,9 @@ Resource          resources/Extension_resources.robot
     Sleep    1
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - testiautomaatiokoodisto1    Koodi1000    ${EMPTY}
     Wait until page contains    Koodi1000 - Koodi1000    timeout=20
-    Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
-    Click element    ${3_BREADCRUMB_LINK}
+    Sleep    2
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${3_BREADCRUMB_LINK}
     Sleep    3
     Capture Page Screenshot
     Wait until page contains element    //*[contains(text(), "- Member 1 · Koodi1000 · testiautomaatiokoodisto1 · Testirekisteri <=")]    timeout=20
@@ -708,6 +714,7 @@ Resource          resources/Extension_resources.robot
     Create member for calculation hierarchy    Jäsen10    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testikoodi 01    Jäsen9
     Wait until page contains    - Jäsen10 · Testikoodi 01 <=    timeout=20
     Wait until page contains    - Jäsen9 · Testikoodi 16 · Testikoodisto2 pitkillä arvoilla · Testirekisteri <=    timeout=20
+    Sleep    2
     Wait until element is visible    ${3_BREADCRUMB_LINK}    timeout=30
     Click element    ${3_BREADCRUMB_LINK}
     Wait until page contains    Testilaajennus22    timeout=20
@@ -1286,13 +1293,13 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}
     Sleep    3
-    Page Should Not Contain Element    //*[contains(text(), "Koodisto600")]
+    Wait Until Element Is Not Visible    //*[contains(text(), "Koodisto600")]    timeout=60
     Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
     Wait Until Element Is Enabled    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
     Click Element    ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}
     Sleep    3
-    Page Should Not Contain Element    //*[contains(text(), "Koodisto600")]
+    Wait Until Element Is Not Visible    //*[contains(text(), "Koodisto600")]    timeout=60
     Wait Until Element Is Enabled    ${PROPERTYTYPE_FILTER_DDL}    timeout=30
     Click Element    ${PROPERTYTYPE_FILTER_DDL}
     Wait Until Element Is Enabled    ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
