@@ -46,7 +46,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    local    tietomallit
     [Setup]    Test Case Setup
     Wait Until Page Contains Element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]    timeout=20
-    Click element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
+    Click Element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
@@ -160,11 +160,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Go back to Data Vocabularies frontpage
-    Wait until page contains element    ${GUIDE_BTN}    timeout=20
-    Click element    ${GUIDE_BTN}
+    Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
+    Click Element    ${GUIDE_BTN}
     Sleep    1
-    Wait until page contains element    ${GUIDE_APPLICATION_PROFILE}    timeout=20
-    Click element    ${GUIDE_APPLICATION_PROFILE}
+    Wait Until Page Contains Element    ${GUIDE_APPLICATION_PROFILE}    timeout=20
+    Click Element    ${GUIDE_APPLICATION_PROFILE}
     Click through guide    ${Application_profile_text}
     Sleep    1
     Go back to Data Vocabularies frontpage
@@ -175,11 +175,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
-    Wait until page contains element    ${GUIDE_BTN}    timeout=20
-    Click element    ${GUIDE_BTN}
+    Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
+    Click Element    ${GUIDE_BTN}
     Sleep    1
-    Wait until page contains element    ${GUIDE_NAMESPACE}    timeout=20
-    Click element    ${GUIDE_NAMESPACE}
+    Wait Until Page Contains Element    ${GUIDE_NAMESPACE}    timeout=20
+    Click Element    ${GUIDE_NAMESPACE}
     Click through guide    ${Namespace_text}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
@@ -189,11 +189,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
-    Wait until page contains element    ${GUIDE_BTN}    timeout=20
-    Click element    ${GUIDE_BTN}
+    Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
+    Click Element    ${GUIDE_BTN}
     Sleep    1
-    Wait until page contains element    ${GUIDE_CREATE_CLASS}    timeout=20
-    Click element    ${GUIDE_CREATE_CLASS}
+    Wait Until Page Contains Element    ${GUIDE_CREATE_CLASS}    timeout=20
+    Click Element    ${GUIDE_CREATE_CLASS}
     Click through guide    ${Create_class_text}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
@@ -203,11 +203,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
-    Wait until page contains element    ${GUIDE_BTN}    timeout=20
-    Click element    ${GUIDE_BTN}
+    Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
+    Click Element    ${GUIDE_BTN}
     Sleep    1
-    Wait until page contains element    ${GUIDE_SPECIALIZE_CLASS}    timeout=20
-    Click element    ${GUIDE_SPECIALIZE_CLASS}
+    Wait Until Page Contains Element    ${GUIDE_SPECIALIZE_CLASS}    timeout=20
+    Click Element    ${GUIDE_SPECIALIZE_CLASS}
     Click through guide    ${Specialize_class_text}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
@@ -217,11 +217,11 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
-    Wait until page contains element    ${GUIDE_BTN}    timeout=20
-    Click element    ${GUIDE_BTN}
+    Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
+    Click Element    ${GUIDE_BTN}
     Sleep    1
-    Wait until page contains element    ${GUIDE_ADD_ATTRIBUTE}    timeout=20
-    Click element    ${GUIDE_ADD_ATTRIBUTE}
+    Wait Until Page Contains Element    ${GUIDE_ADD_ATTRIBUTE}    timeout=20
+    Click Element    ${GUIDE_ADD_ATTRIBUTE}
     Click through guide    ${Add_attribute_text}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
@@ -231,40 +231,40 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select model    ${MODEL_1}
-    Wait until page contains element    ${GUIDE_BTN}    timeout=20
-    Click element    ${GUIDE_BTN}
+    Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
+    Click Element    ${GUIDE_BTN}
     Sleep    1
-    Wait until page contains element    ${GUIDE_ADD_ASSOCIATION}    timeout=20
-    Click element    ${GUIDE_ADD_ASSOCIATION}
+    Wait Until Page Contains Element    ${GUIDE_ADD_ASSOCIATION}    timeout=20
+    Click Element    ${GUIDE_ADD_ASSOCIATION}
     Click through guide    ${Add_association_text}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 *** Keywords ***
 Restore Finnish language
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait until page contains element    ${LANGUAGE_FI}    timeout=20
-    Click element    ${LANGUAGE_FI}
-    Wait until page contains    Kaikki organisaatiot    timeout=20
-    Wait until page contains    Kaikki tyypit    timeout=20
-    Wait until page contains    Luokitus    timeout=20
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Page Contains Element    ${LANGUAGE_FI}    timeout=20
+    Click Element    ${LANGUAGE_FI}
+    Wait Until Page Contains    Kaikki organisaatiot    timeout=20
+    Wait Until Page Contains    Kaikki tyypit    timeout=20
+    Wait Until Page Contains    Luokitus    timeout=20
     Close All Browsers
 
 Select navigation menu link
     [Arguments]    ${navigation_menu_link}=Käyttäjätiedot
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
-    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click Element    ${NAVIGATION_MENU_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]
     Sleep    2
 
 Change user interface language
     [Arguments]    ${language}
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    2
-    Click element    ${language}
+    Click Element    ${language}
     Sleep    2
 
 Click through guide
@@ -272,11 +272,11 @@ Click through guide
     : FOR    ${ClickNext}    IN RANGE    300
     \    ${Next}    Get Text    ${GUIDE_NEXT_BTN}
     \    Page Should Contain    ${Next}
-    \    Wait until page contains element    ${GUIDE_NEXT_BTN}    timeout=20
-    \    Click element    ${GUIDE_NEXT_BTN}
+    \    Wait Until Page Contains Element    ${GUIDE_NEXT_BTN}    timeout=20
+    \    Click Element    ${GUIDE_NEXT_BTN}
     \    ${exit}=    Run Keyword And Return Status    Page Should Contain element    //*[contains(text(), "${final_text}")]
     \    Exit For Loop If    ${exit}
-    Wait until page contains element    ${GUIDE_CLOSE_BTN}    timeout=20
-    Click element    ${GUIDE_CLOSE_BTN}
-    Log to Console    Guide through succesfully!
+    Wait Until Page Contains Element    ${GUIDE_CLOSE_BTN}    timeout=20
+    Click Element    ${GUIDE_CLOSE_BTN}
+    Log To Console    Guide through succesfully!
     Sleep    3
