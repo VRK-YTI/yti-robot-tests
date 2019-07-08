@@ -108,7 +108,7 @@ Test Case Setup Superuser
 Select user
     [Arguments]    ${user_id}    ${user_name}
     Wait Until Element Is Enabled    ${IMPERSONATE_USER_DROPDOWN}    timeout=60
-    Click element    ${IMPERSONATE_USER_DROPDOWN}
+    Click Element    ${IMPERSONATE_USER_DROPDOWN}
     Wait Until element Is Enabled    ${user_id}    timeout=30
     Click Element    ${user_id}
     Wait Until Page Contains    ${user_name}    timeout=60
@@ -116,8 +116,8 @@ Select user
 
 Open Comments
     Open Browser with Settings
-    Wait until page contains    Kommentit    timeout=60
-    Wait until page contains    KIRJAUDU SISÄÄN    timeout=60
+    Wait Until Page Contains    Kommentit    timeout=60
+    Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=60
 
 Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
@@ -133,8 +133,8 @@ Open Chrome to Environment
     Go To    ${COMMENTS_ENVIRONMENT_URL}
 
 Return To Comments Frontpage
-    Wait until page contains element    ${FRONTPAGE_LINK}    timeout=60
-    Click element    ${FRONTPAGE_LINK}
+    Wait Until Page Contains Element    ${FRONTPAGE_LINK}    timeout=60
+    Click Element    ${FRONTPAGE_LINK}
     Sleep    1
 
 Create Comment Round
@@ -168,22 +168,22 @@ Create Comment Round
 Uncheck Only Selected Resources Checkbox
     [Arguments]    ${only_selected_resources}
     Wait Until Page Contains Element    ${ONLY_SELCTED_RESOURCES_CHECKBOX}    timeout=30
-    Click element    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
+    Click Element    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
     Checkbox Should Not Be Selected    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
 
 Delete Comment Round
     [Arguments]    ${comment_round_name}
     Test Case Setup Superuser
-    Wait until page contains element    //*[contains(text(), "${comment_round_name}")]    timeout=60
+    Wait Until Page Contains Element    //*[contains(text(), "${comment_round_name}")]    timeout=60
     Click Element    //*[contains(text(), "${comment_round_name}")]
-    Wait until page contains element    //*[contains(text(), "${comment_round_name}")]    timeout=60
-    Wait until page contains element    ${COMMENTROUND_DDL}    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${comment_round_name}")]    timeout=60
+    Wait Until Page Contains Element    ${COMMENTROUND_DDL}    timeout=20
     Click Element    ${COMMENTROUND_DDL}
-    Wait until page contains element    ${DELETE_COMMENTROUND_BTN}    timeout=20
+    Wait Until Page Contains Element    ${DELETE_COMMENTROUND_BTN}    timeout=20
     Click Element    ${DELETE_COMMENTROUND_BTN}
-    Wait until page contains element    ${CONFIRM_BTN}    timeout=20
+    Wait Until Page Contains Element    ${CONFIRM_BTN}    timeout=20
     Click Element    ${CONFIRM_BTN}
-    Wait until page contains element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
+    Wait Until Page Contains Element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
     Wait until page does not contain element    //*[contains(text(), "${comment_round_name}")]    timeout=10
     Log To Console    ${comment_round_name} Deleted
 
@@ -191,55 +191,55 @@ Add Resource For Comment Round
     [Arguments]    ${resource}    ${comment_box}    ${comment}    ${status_ddl}    ${status}
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
     Click Element    ${EDIT_COMMENTROUND}
-    Wait until page contains element    ${ADD_NEW_RESOURCE_BTN}    timeout=30
-    Click element    ${ADD_NEW_RESOURCE_BTN}
+    Wait Until Page Contains Element    ${ADD_NEW_RESOURCE_BTN}    timeout=30
+    Click Element    ${ADD_NEW_RESOURCE_BTN}
     Wait Until Page Contains Element    //*[contains(text(), "${resource}")]    timeout=30
-    Click element    //*[contains(text(), "${resource}")]
-    Wait until page contains element    ${comment_box}    timeout=30
+    Click Element    //*[contains(text(), "${resource}")]
+    Wait Until Page Contains Element    ${comment_box}    timeout=30
     Input Text    ${comment_box}    ${comment}
     ${status_length}=    Get Length    ${status_ddl}
     Run Keyword If    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
-    Wait until page contains element    ${SAVE_COMMENTROUND}    timeout=30
+    Wait Until Page Contains Element    ${SAVE_COMMENTROUND}    timeout=30
     Click Element    ${SAVE_COMMENTROUND}
-    Wait until element is visible    ${EDIT_COMMENTROUND}    timeout=30
+    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
     Log To Console    ${resource} added for comment round
 
 Add Resource Status
     [Arguments]    ${status_ddl}    ${status}
-    Wait until page contains element    ${status_ddl}    timeout=30
-    Click element    ${status_ddl}
-    Wait until page contains element    ${status}    timeout=30
+    Wait Until Page Contains Element    ${status_ddl}    timeout=30
+    Click Element    ${status_ddl}
+    Wait Until Page Contains Element    ${status}    timeout=30
     Click Element    ${status}
 
 Start Comment Round
-    Wait until page contains element    ${COMMENTROUND_DDL}    timeout=20
+    Wait Until Page Contains Element    ${COMMENTROUND_DDL}    timeout=20
     Click Element    ${COMMENTROUND_DDL}
-    Wait until page contains element    ${START_COMMENT_ROUND_BTN}    timeout=20
+    Wait Until Page Contains Element    ${START_COMMENT_ROUND_BTN}    timeout=20
     Click Element    ${START_COMMENT_ROUND_BTN}
-    Wait until page contains element    ${CONFIRM_BTN}    timeout=20
+    Wait Until Page Contains Element    ${CONFIRM_BTN}    timeout=20
     Click Element    ${CONFIRM_BTN}
-    Wait until page contains    Käynnissä    timeout=20
+    Wait Until Page Contains    Käynnissä    timeout=20
 
 Close Comment Round
-    Wait until page contains element    ${COMMENTROUND_DDL}    timeout=20
+    Wait Until Page Contains Element    ${COMMENTROUND_DDL}    timeout=20
     Click Element    ${COMMENTROUND_DDL}
-    Wait until page contains element    ${CLOSE_COMMENT_ROUND_BTN}    timeout=20
+    Wait Until Page Contains Element    ${CLOSE_COMMENT_ROUND_BTN}    timeout=20
     Click Element    ${CLOSE_COMMENT_ROUND_BTN}
-    Wait until page contains element    ${CONFIRM_BTN}    timeout=20
+    Wait Until Page Contains Element    ${CONFIRM_BTN}    timeout=20
     Click Element    ${CONFIRM_BTN}
-    Wait until page contains    Suljettu    timeout=20
+    Wait Until Page Contains    Suljettu    timeout=20
 
 Comment On Resource
     [Arguments]    ${comment_box}    ${comment}    ${status_ddl}    ${status}
     Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
     Click Element    ${START_COMMENTING_BTN}
-    Wait until page contains element    ${comment_box}    timeout=30
+    Wait Until Page Contains Element    ${comment_box}    timeout=30
     Input Text    ${comment_box}    ${comment}
     ${status_length}=    Get Length    ${status_ddl}
     Run Keyword If    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
-    Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
+    Wait Until Page Contains Element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
     Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
-    Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
+    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
     Log To Console    Comment added
 
 Start Commenting
@@ -250,26 +250,26 @@ Start Commenting
 
 Comment On Resource 0
     [Arguments]    ${comment}    ${status}
-    Wait until page contains element    ${COMMENT_TEXT_INPUT_0}    timeout=30
+    Wait Until Page Contains Element    ${COMMENT_TEXT_INPUT_0}    timeout=30
     Input Text    ${COMMENT_TEXT_INPUT_0}    ${comment}
-    Wait until page contains element    ${STATUS_DDL_0}    timeout=30
-    Click element    ${STATUS_DDL_0}
-    Wait until page contains element    ${status}    timeout=30
+    Wait Until Page Contains Element    ${STATUS_DDL_0}    timeout=30
+    Click Element    ${STATUS_DDL_0}
+    Wait Until Page Contains Element    ${status}    timeout=30
     Click Element    ${status}
 
 Comment On Resource 1
     [Arguments]    ${comment}    ${status}
-    Wait until page contains element    ${COMMENT_TEXT_INPUT_1}    timeout=30
+    Wait Until Page Contains Element    ${COMMENT_TEXT_INPUT_1}    timeout=30
     Input Text    ${COMMENT_TEXT_INPUT_1}    ${comment}
-    Wait until page contains element    ${STATUS_DDL_1}    timeout=30
-    Click element    ${STATUS_DDL_1}
-    Wait until page contains element    ${status}    timeout=30
+    Wait Until Page Contains Element    ${STATUS_DDL_1}    timeout=30
+    Click Element    ${STATUS_DDL_1}
+    Wait Until Page Contains Element    ${status}    timeout=30
     Click Element    ${status}
 
 Send Comments
-    Wait until page contains element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
+    Wait Until Page Contains Element    ${SEND_COMMENTS_BTN_BOTTOM}    timeout=30
     Click Element    ${SEND_COMMENTS_BTN_BOTTOM}
-    Wait until element is visible    ${START_COMMENTING_BTN}    timeout=30
+    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
 
 Send Inline Comment For Comment Thread
     [Arguments]    ${id}    ${comment}

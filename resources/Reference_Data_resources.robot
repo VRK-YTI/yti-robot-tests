@@ -337,7 +337,7 @@ Remove code lists
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
     \    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=90
-    \    Log to Console    ${code_list_item} removed
+    \    Log To Console    ${code_list_item} removed
     \    Sleep    1
 
 Create code list
@@ -357,26 +357,26 @@ Create code list
     Sleep    5
     Wait Until Page Contains Element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click Element    ${SELECT_REGISTRY_BTN}
-    Click button    ${registry}
+    Click Button    ${registry}
     Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
     Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
-    Click button    ${ADD_ORGANIZATION_BTN}
+    Click Button    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
     Click Element    //*[contains(text(), "${organization}")]
     Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}
-    Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
-    Click button    ${ADD_CLASSIFICATION_BTN}
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
+    Click Button    ${ADD_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
+    Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
     Click Element    //*[contains(text(), "${classification}")]
     Sleep    2
     ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
     Run Keyword If    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list
     Sleep    5
-    Log to Console    ${codelist_name} created
+    Log To Console    ${codelist_name} created
 
 Cancel code list creation
     Wait Until Page Contains Element    ${CANCEL_CODE_CREATE_BTN}    timeout=30
@@ -394,13 +394,13 @@ Close error modal
 
 Upload codelist
     [Arguments]    ${codelist}    ${codelist_name}
-    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
+    Choose File    ${FILE_UPLOAD_BTN}    ${codelist}
     Sleep    2
     Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=120
     Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]    timeout=30
-    Log to Console    Code list ${codelist_name} imported
+    Log To Console    Code list ${codelist_name} imported
 
 Import code list in Excel format
     Wait Until Page Contains Element    ${ADD_CODE_LIST_BTN}    timeout=20
@@ -409,7 +409,7 @@ Import code list in Excel format
     Click Element    ${IMPORT_CODE_LIST_BTN}
     Wait Until Page Contains Element    ${SELECT_REGISTRY_BTN}    timeout=20
     Click Element    ${SELECT_REGISTRY_BTN}
-    #Wait until page contains element    ${REGISTRY_1}    timeout=20
+    #Wait Until Page Contains Element    ${REGISTRY_1}    timeout=20
     Click Button    ${REGISTRY_1}
     Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
     Click Element    ${FILE_FORMAT_BTN}
@@ -419,22 +419,22 @@ Import code list in Excel format
 
 Upload codes
     [Arguments]    ${codes}
-    Choose file    ${FILE_UPLOAD_BTN}    ${codes}
+    Choose File    ${FILE_UPLOAD_BTN}    ${codes}
     Sleep    1
     Wait Until Page Contains Element    ${IMPORT_BTN}    timeout=20
     Click Button    Tuo
     Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=120
-    Log to Console    Codes imported
+    Log To Console    Codes imported
     Sleep    2
 
 Cancel code import
-    Click button    ${CLOSE_ERROR_MESSAGE_BTN}
+    Click Button    ${CLOSE_ERROR_MESSAGE_BTN}
     Wait Until Page Contains Element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${CANCEL_IMPORT_CODE_LIST_BTN}
 
 Import codes in Excel format
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
+    Click Element    ${CODE_LIST_DDL}
     Wait Until Page Contains Element    ${IMPORT_CODES_BTN}    timeout=20
     Click Element    ${IMPORT_CODES_BTN}
     Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
@@ -464,9 +464,9 @@ Create new code to code list
     Click Element    ${CANCEL_CREATION_BTN}
     Sleep    5
     Wait Until Page Contains Element    ${CODE_CODEVALUE_INPUT}    timeout=20
-    Input text    ${CODE_CODEVALUE_INPUT}    ${code_value}
+    Input Text    ${CODE_CODEVALUE_INPUT}    ${code_value}
     Wait Until Page Contains Element    ${CODE_NAME_INPUT}    timeout=20
-    Input text    ${CODE_NAME_INPUT}    ${code_name}
+    Input Text    ${CODE_NAME_INPUT}    ${code_name}
     Wait Until Page Contains Element    ${CODE_STATUS_DDL}    timeout=20
     Click Element    ${CODE_STATUS_DDL}
     Wait Until Page Contains Element    ${code_status}    timeout=20
@@ -475,14 +475,14 @@ Create new code to code list
     Run Keyword If    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
     Wait Until Page Contains Element    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click Element    ${SAVE_NEW_CODE_BTN}
-    Log to Console    ${code_name} created
+    Log To Console    ${code_name} created
     Sleep    5
 
 Add sub code list
     [Arguments]    ${sub_code_list}
     Wait Until Page Contains Element    ${SUB_CODE_LIST_BTN}    timeout=20
     Click Element    ${SUB_CODE_LIST_BTN}
-    Input text    ${SEARCH_LINKED_CODE_INPUT}    ${sub_code_list}
+    Input Text    ${SEARCH_LINKED_CODE_INPUT}    ${sub_code_list}
     Click Element    //*[contains(text(), "${sub_code_list}")]
     Sleep    2
 
@@ -498,7 +498,7 @@ Remove code
     Click Element    ${REMOVE_CODE_CONF_BTN}
     Sleep    2
     Wait Until Page Contains Element    ${code}
-    Log to Console    ${code} removed
+    Log To Console    ${code} removed
 
 Delete registry with code lists
     [Arguments]    ${registry}    ${code_list}
@@ -540,7 +540,7 @@ Delete empty registry
     Wait Until Page Contains Element    ${REGISTRY_FILTER_DDL}    timeout=20
     Click Element    ${REGISTRY_FILTER_DDL}
     Wait Until Page Contains Element    //*[contains(text(), "Automaatiorekisteri")]
-    Log to Console    ${registry} deleted
+    Log To Console    ${registry} deleted
     Sleep    2
 
 Create registry
@@ -563,22 +563,22 @@ Continue registry creation
     Wait Until Page Contains Element    ${REGISTRY_NAME_INPUT}    timeout=20
     Input Text    ${REGISTRY_NAME_INPUT}    ${registry_name}
     Wait Until Page Contains Element    ${REGISTRY_DESCRIPTION_INPUT}    timeout=20
-    Input text    ${REGISTRY_DESCRIPTION_INPUT}    ${registry_description}
+    Input Text    ${REGISTRY_DESCRIPTION_INPUT}    ${registry_description}
     Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
-    Click button    ${ADD_ORGANIZATION_BTN}
+    Click Button    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
     Click Element    //*[contains(text(), "${organization}")]
     Wait Until Page Contains Element    ${SAVE_REGISTRY}    timeout=30
     Click Element    ${SAVE_REGISTRY}
-    Log to Console    ${registry_name} created
+    Log To Console    ${registry_name} created
     Sleep    5
 
 Cancel registry creation
     Sleep    1
     Wait Until Page Contains Element    ${CANCEL_CODE_MOD_BTN}    timeout=20
     Click Element    ${CANCEL_CODE_MOD_BTN}
-    Log to Console    Cancel registry creation
+    Log To Console    Cancel registry creation
     Sleep    5
     Return to Koodistot frontpage
 
@@ -589,16 +589,16 @@ Create new version of code list
     Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click Element    ${CREATE_NEW_VERSION_BTN}
     Sleep    2
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
     Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
     Click Button    ${ADD_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
+    Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
     Click Element    //*[contains(text(), "${classification}")]
     Sleep    2
     Save code list
-    Log to Console    New version ${codelist_name} created
+    Log To Console    New version ${codelist_name} created
     Sleep    5
 
 Modify code list
@@ -631,12 +631,12 @@ Upload codelist in Excel format
     Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
     Click Element    ${FILE_FORMAT_Excel}
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
+    Choose File    ${FILE_UPLOAD_BTN}    ${codelist}
     Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=120
     Wait Until Page Contains    ${codelist_name}    timeout=60
-    Log to Console    Code list ${codelist_name} imported
+    Log To Console    Code list ${codelist_name} imported
 
 Upload codelist in CSV format
     [Arguments]    ${codelist}    ${codelist_name}
@@ -656,13 +656,13 @@ Upload codelist in CSV format
     Wait Until Page Contains Element    ${FILE_FORMAT_CSV}    timeout=20
     Click Element    ${FILE_FORMAT_CSV}
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${codelist}
+    Choose File    ${FILE_UPLOAD_BTN}    ${codelist}
     Sleep    2
     Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Sleep    6
     Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]    timeout=60
-    Log to Console    Code list ${codelist_name} imported
+    Log To Console    Code list ${codelist_name} imported
 
 Reference Data Setup
     Reference Data Test Case Setup Superuser

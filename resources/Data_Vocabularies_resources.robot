@@ -120,17 +120,17 @@ Test Case Setup
     Data Vocabularies Select user
 
 Data Vocabularies Select user
-    Wait until page contains element    ${DATA_VOCABULARIES_USER_DROPDOWN}    timeout=30
-    Click element    ${DATA_VOCABULARIES_USER_DROPDOWN}
-    Wait until page contains element    ${DATA_VOCABULARIES_USER_1}    timeout=60
-    Click element    ${DATA_VOCABULARIES_USER_1}
+    Wait Until Page Contains Element    ${DATA_VOCABULARIES_USER_DROPDOWN}    timeout=30
+    Click Element    ${DATA_VOCABULARIES_USER_DROPDOWN}
+    Wait Until Page Contains Element    ${DATA_VOCABULARIES_USER_1}    timeout=60
+    Click Element    ${DATA_VOCABULARIES_USER_1}
     Wait Until Page Contains    Testi Admin    timeout=20
     Sleep    2
 
 Open Tietomallit
     Data Vocabularies Open Browser with Settings
-    Wait until page contains    Tietomallit    timeout=20
-    Wait until page contains    KIRJAUDU SISÄÄN    timeout=20
+    Wait Until Page Contains    Tietomallit    timeout=20
+    Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=20
 
 Data Vocabularies Open Browser with Settings
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Data Vocabularies Open Chrome to Environment
@@ -147,20 +147,20 @@ Data Vocabularies Open Chrome to Environment
     Go To    ${DATA_VOCABULARIES_ENVIRONMENT_URL}
 
 Go back to Data Vocabularies frontpage and close browsers
-    Wait until element is visible    ${MAIN_PAGE_LINK}    timeout=30
-    Click element    ${MAIN_PAGE_LINK}
+    Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=30
+    Click Element    ${MAIN_PAGE_LINK}
     Sleep    2
     Close All Browsers
 
 Go back to Data Vocabularies frontpage
     Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=60
     Sleep    3
-    Click element    ${MAIN_PAGE_LINK}
+    Click Element    ${MAIN_PAGE_LINK}
     Sleep    2
 
 Test Case Setup Create Profile
     Test Case Setup
-    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
     Run Keyword If    ${model_exists}    Delete existing profile and create new
@@ -172,7 +172,7 @@ Test Case Teardown Delete Testiautomaatio profile
 
 Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Test Case Setup
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
     Run Keyword If    ${model_exists}    Delete existing core vocabulary and create new
@@ -183,249 +183,249 @@ Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
     Delete Automaatiokirjasto Core Vocabulary
 
 Create Data Vocabulary Profile
-    Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
-    Wait until page contains element    ${ADD_PROFILE_BTN}    timeout=30
+    Wait Until Page Contains Element    ${ADD_PROFILE_BTN}    timeout=30
     Click Element    ${ADD_PROFILE_BTN}
-    Wait until page contains element    ${MODEL_LABEL_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_LABEL_INPUT}    timeout=30
     Input Text    ${MODEL_LABEL_INPUT}    ${MODEL_1}
-    Wait until page contains element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${MODEL_PREFIX_INTPUT}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_PREFIX_INTPUT}    timeout=30
     Input Text    ${MODEL_PREFIX_INTPUT}    autom
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
+    Wait Until Page Contains Element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=30
     Click Element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
+    Wait Until Page Contains Element    ${ADD_CONTRIBUTOR}    timeout=30
     Click Element    ${ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_NEW_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${SAVE_NEW_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_NEW_MODEL_BTN}
-    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=90
-    Log to Console    Testiautomaatio profile created
+    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=90
+    Log To Console    Testiautomaatio profile created
     Sleep    2
 
 Delete Data Vocabularies Profile
     Test Case Setup
-    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
-    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
-    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log to Console    Testiautomaatio profile deleted
+    Log To Console    Testiautomaatio profile deleted
     Sleep    2
     Close All Browsers
 
 Delete existing profile and create new
-    Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
-    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
-    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log to Console    Testiautomaatio profile deleted
+    Log To Console    Testiautomaatio profile deleted
     Create Data Vocabulary Profile
 
 Create Automaatiokirjasto Core Vocabulary
-    Wait until page contains element    ${ADD_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
-    Wait until page contains element    ${ADD_LIBRARY_BTN}    timeout=30
+    Wait Until Page Contains Element    ${ADD_LIBRARY_BTN}    timeout=30
     Click Element    ${ADD_LIBRARY_BTN}
-    Wait until page contains element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    ${CORE_VOCABULARY_1}
-    Wait until page contains element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait until page contains element    ${CORE_VOCABULARY_PREFIX_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${CORE_VOCABULARY_PREFIX_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_PREFIX_INPUT}    lib
-    Wait until page contains element    ${VOCABULARY_ADD_CLASSIFICATION}    timeout=30
+    Wait Until Page Contains Element    ${VOCABULARY_ADD_CLASSIFICATION}    timeout=30
     Click Element    ${VOCABULARY_ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=30
     Click Element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${VOCABULARY_ADD_CONTRIBUTOR}    timeout=30
+    Wait Until Page Contains Element    ${VOCABULARY_ADD_CONTRIBUTOR}    timeout=30
     Click Element    ${VOCABULARY_ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_CORE_VOCABULARY_BTN}    timeout=30
+    Wait Until Page Contains Element    ${SAVE_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_CORE_VOCABULARY_BTN}
-    Log to Console    Automaatiokirjasto Core Vocabulary created
+    Log To Console    Automaatiokirjasto Core Vocabulary created
     Sleep    2
 
 Delete Automaatiokirjasto Core Vocabulary
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
-    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log to Console    Automaatiokirjasto Core Vocabulary deleted
+    Log To Console    Automaatiokirjasto Core Vocabulary deleted
     Sleep    2
     Close All Browsers
 
 Delete existing core vocabulary and create new
-    Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
-    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log to Console    Automaatiokirjasto Core Vocabulary deleted
+    Log To Console    Automaatiokirjasto Core Vocabulary deleted
     Create Automaatiokirjasto Core Vocabulary
 
 Select model
     [Arguments]    ${model}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${model}
-    Wait until page contains element    //*[contains(text(), "${model}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${model}")]    timeout=30
     Sleep    1
-    Click element    //*[contains(text(), "${model}")]
-    Wait until page contains    ${model}    timeout=30
-    Log to Console    ${model} selected
+    Click Element    //*[contains(text(), "${model}")]
+    Wait Until Page Contains    ${model}    timeout=30
+    Log To Console    ${model} selected
     Sleep    1
 
 Select and edit Testiautomaatio profile
-    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait until page contains element    //*[contains(text(), "Testiautomaatio")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
-    Wait until page contains element    ${MODIFY_MODEL}    timeout=30
+    Wait Until Page Contains Element    ${MODIFY_MODEL}    timeout=30
     Click Element    ${MODIFY_MODEL}
 
 Select and edit Automaatiokirjasto Core Vocabulary
-    Wait until page contains element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
-    Wait until page contains element    ${MODIFY_CORE_VOCABULARY_BTN}    timeout=30
+    Wait Until Page Contains Element    ${MODIFY_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${MODIFY_CORE_VOCABULARY_BTN}
 
 Add classification
     [Arguments]    ${classification}
-    Wait until page contains element    ${ADD_CLASSIFICATION}    timeout=30
+    Wait Until Page Contains Element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
-    Wait until page contains element    //*[contains(text(), "${classification}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${classification}")]    timeout=30
     Click Element    //*[contains(text(), "${classification}")]
     Sleep    2
-    Log to Console    New classification ${classification} added
+    Log To Console    New classification ${classification} added
 
 Add contributor
     [Arguments]    ${contributor}
-    Wait until page contains element    ${ADD_CONTRIBUTOR}    timeout=30
+    Wait Until Page Contains Element    ${ADD_CONTRIBUTOR}    timeout=30
     Click Element    ${ADD_CONTRIBUTOR}
-    Wait until page contains element    //*[contains(text(), "${contributor}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${contributor}")]    timeout=30
     Click Element    //*[contains(text(), "${contributor}")]
     Sleep    2
-    Log to Console    New contributor ${contributor} added
+    Log To Console    New contributor ${contributor} added
 
 Add vocabulary
     [Arguments]    ${vocabulary}
-    Wait until page contains element    ${ADD_VOCABULARY}    timeout=30
+    Wait Until Page Contains Element    ${ADD_VOCABULARY}    timeout=30
     Click Element    ${ADD_VOCABULARY}
-    Wait until page contains element    ${SEARCH_VOCABULARY_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${SEARCH_VOCABULARY_INPUT}    timeout=30
     Input Text    ${SEARCH_VOCABULARY_INPUT}    ${vocabulary}
     Click Element    //*[contains(text(), "${vocabulary}")]
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "${vocabulary}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${vocabulary}")]    timeout=30
     Click Element    //*[contains(text(), "${vocabulary}")]
     Sleep    2
 
 Import namespace
     [Arguments]    ${namespace}
-    Wait until page contains element    ${IMPORT_NAMESPACE}    timeout=30
+    Wait Until Page Contains Element    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
-    Wait until page contains element    ${SEARCH_NAMESPACE_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${SEARCH_NAMESPACE_INPUT}    timeout=30
     Input Text    ${SEARCH_NAMESPACE_INPUT}    ${namespace}
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "${namespace}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${namespace}")]    timeout=30
     Click Element    //*[contains(text(), "${namespace}")]
     Sleep    2
-    Log to Console    New namespace ${namespace} added
+    Log To Console    New namespace ${namespace} added
 
 Save model
-    Wait until page contains element    //*[contains(text(), "Tallenna")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Tallenna")]    timeout=30
     Click Element    //*[contains(text(), "Tallenna")]
-    Wait until element is visible    ${MODIFY_MODEL}    timeout=60
+    Wait Until Element Is Visible    ${MODIFY_MODEL}    timeout=60
     Sleep    2
 
 Add class
     [Arguments]    ${class}    ${model}
-    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
-    Wait until element is visible    ${CLASS_MODEL_DDL}    timeout=60
+    Wait Until Element Is Visible    ${CLASS_MODEL_DDL}    timeout=60
     Click Element    ${CLASS_MODEL_DDL}
-    Wait until element is visible    //*[contains(text(), "${model}")]    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=60
     Click Element    //*[contains(text(), "${model}")]
-    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
-    Wait until element is visible    //*[contains(text(), "${class}")]    timeout=60
+    Wait Until Element Is Visible    //*[contains(text(), "${class}")]    timeout=60
     Click Element    //*[contains(text(), "${class}")]
     Sleep    2
-    Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
+    Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
     Click Element    ${SPECIALIZE_CLASS}
     Sleep    2
 
 Add several classes
     [Arguments]    @{class_items}
     : FOR    ${class_item}    IN    @{class_items}
-    \    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    \    Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
     \    Click Element    ${ADD_NEW_CLASS}
-    \    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    \    Wait Until Page Contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     \    Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
     \    Click Element    //*[contains(text(), "${class_item}")]
     \    Sleep    2
-    \    Wait until page contains element    ${SPECIALIZE_CLASS}    timeout=30
+    \    Wait Until Page Contains element    ${SPECIALIZE_CLASS}    timeout=30
     \    Click Element    ${SPECIALIZE_CLASS}
     \    Sleep    1
     \    Confirm all properties for class and save
     \    Sleep    2
 
 Save class
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Wait Until Page Contains element    ${SAVE_CLASS}    timeout=30
     Click Element    ${SAVE_CLASS}
-    Wait until element is visible    ${MODIFY_CLASS}    timeout=60
+    Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
 
 Confirm all properties for class and save
-    Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
+    Wait Until Page Contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Sleep    2
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Wait Until Page Contains element    ${SAVE_CLASS}    timeout=30
     Click Element    ${SAVE_CLASS}
-    Wait until element is visible    ${MODIFY_CLASS}    timeout=60
+    Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
 
 Deselect properties for class and save
@@ -433,128 +433,128 @@ Deselect properties for class and save
     : FOR    ${class_property}    IN    @{class_properties}
     \    Unselect Checkbox    ${class_property}
     \    Checkbox Should Not Be Selected    ${class_property}
-    Wait until page contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
+    Wait Until Page Contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
-    Wait until page contains element    ${SAVE_CLASS}    timeout=30
+    Wait Until Page Contains element    ${SAVE_CLASS}    timeout=30
     Click Element    ${SAVE_CLASS}
-    Wait until element is visible    ${MODIFY_CLASS}    timeout=60
+    Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
 
 Add attribute
     [Arguments]    ${attribute}
-    Wait until page contains element    ${MODIFY_CLASS}    timeout=30
+    Wait Until Page Contains element    ${MODIFY_CLASS}    timeout=30
     Click Element    ${MODIFY_CLASS}
-    Wait until page contains element    ${ADD_PROPERTY_DDL}    timeout=30
+    Wait Until Page Contains element    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
-    Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
+    Wait Until Page Contains element    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
     Sleep    4
-    Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
+    Wait Until Page Contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     Sleep    2
     Click Element    //*[contains(text(), "Attribuutti")]
-    Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
+    Wait Until Page Contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
     Click Element    //*[contains(text(), "${attribute}")]
-    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Wait Until Page Contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Add association
     [Arguments]    ${association}
-    Wait until page contains element    ${MODIFY_CLASS}    timeout=30
+    Wait Until Page Contains element    ${MODIFY_CLASS}    timeout=30
     Click Element    ${MODIFY_CLASS}
-    Wait until page contains element    ${ADD_PROPERTY_DDL}    timeout=30
+    Wait Until Page Contains element    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
-    Wait until page contains element    ${ADD_PROPERTY_BTN}    timeout=30
+    Wait Until Page Contains element    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
     Sleep    4
-    Wait until page contains element    ${ALL_TYPES_DDL}    timeout=30
+    Wait Until Page Contains element    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     Sleep    2
     Click Element    //*[contains(text(), "Assosiaatio")]
-    Wait until page contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
+    Wait Until Page Contains element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${association}
     Click Element    //*[contains(text(), "${association}")]
-    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Wait Until Page Contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Change concept for class
     [Arguments]    ${concept}
-    Wait until page contains element    ${CHANGE_CONCEPT}    timeout=30
+    Wait Until Page Contains element    ${CHANGE_CONCEPT}    timeout=30
     Click Element    ${CHANGE_CONCEPT}
-    Wait until page contains element    ${SEARCH_CONCEPT_DB_INPUT}    timeout=30
+    Wait Until Page Contains element    ${SEARCH_CONCEPT_DB_INPUT}    timeout=30
     Input Text    ${SEARCH_CONCEPT_DB_INPUT}    ${concept}
-    Wait until page contains element    //*[contains(text(), "${concept}")]    timeout=30
+    Wait Until Page Contains element    //*[contains(text(), "${concept}")]    timeout=30
     Click Element    //*[contains(text(), "${concept}")]
     Sleep    2
-    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Wait Until Page Contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Create new class without referencing concept
     [Arguments]    ${new_class_link}    ${class_2}
-    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    Wait Until Page Contains element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
-    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Wait Until Page Contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class_2}
     Sleep    2
-    Wait until page contains element    ${new_class_link}    timeout=30
+    Wait Until Page Contains element    ${new_class_link}    timeout=30
     Click Element    ${new_class_link}
     Sleep    8
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
     sleep    2
-    Wait until page contains element    ${USE_SELECTION_BTN}    timeout=30
+    Wait Until Page Contains element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Create new shape by referencing external uri
     [Arguments]    ${external_uri}    ${class}
-    Wait until page contains element    ${ADD_NEW_CLASS}    timeout=30
+    Wait Until Page Contains element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
-    Wait until page contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Wait Until Page Contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
     Sleep    2
     Click Element    ${CREATE_NEW_SHAPE_BY_REF_URI}
     Sleep    2
     Input Text    ${EXTERNAL_URI_INPUT}    ${external_uri}
     Sleep    3
-    Wait until element is visible    ${USE_SELECTION_BTN}    timeout=30
+    Wait Until Element Is Visible    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
 Delete profile
     [Arguments]    ${profile}
     Test Case Setup
-    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=30
+    Wait Until Page Contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${profile}
-    Wait until page contains element    //*[contains(text(), "${profile}")]    timeout=30
+    Wait Until Page Contains element    //*[contains(text(), "${profile}")]    timeout=30
     Click Element    //*[contains(text(), "${profile}")]
-    Wait until page contains element    ${MODEL_DETAILS_TAB}    timeout=30
+    Wait Until Page Contains element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
-    Wait until page contains element    ${REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Page Contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
-    Wait until page contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
+    Wait Until Page Contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log to Console    "${profile}" profile deleted
+    Log To Console    "${profile}" profile deleted
     Sleep    2
     Close All Browsers
 
 Create New Class For Profile
     [Arguments]    ${new_class_link}    ${class_2}
     Select and edit Testiautomaatio profile
-    Log to Console    Testiautomaatio profile selected
+    Log To Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
-    Wait until page contains element    ${MODEL_DATA_TAB}    timeout=30
+    Wait Until Page Contains element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Create new class without referencing concept    ${new_class_link}    ${class_2}
     Save class
-    Wait until page contains    Automobiili    timeout=30
-    Log to Console    Class "Automobiili" added without referencing concept
+    Wait Until Page Contains    Automobiili    timeout=30
+    Log To Console    Class "Automobiili" added without referencing concept
     Go back to Data Vocabularies frontpage

@@ -42,10 +42,10 @@ Resource          resources/Generic_resources.robot
     ...    Check that language settings do not change in page reload.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_EN}    timeout=20
-    Click element    ${LANGUAGE_EN}
+    Click Element    ${LANGUAGE_EN}
     Wait Until Page Contains    Comments - ${ENVIRONMENT_IDENTIFIER}    timeout=30
     Wait Until Page Contains    Add new comment round    timeout=30
     Wait Until Page Contains    All tools    timeout=30
@@ -101,7 +101,7 @@ Restore Finnish language
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
     Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Element Is Visible    ${LANGUAGE_FI}    timeout=20
-    Click element    ${LANGUAGE_FI}
+    Click Element    ${LANGUAGE_FI}
     Wait Until Page Contains    Kommentit - ${ENVIRONMENT_IDENTIFIER}    timeout=30
     Wait Until Page Contains    Luo uusi kommentointikierros    timeout=30
     Wait Until Page Contains    Kaikki työkalut    timeout=20
