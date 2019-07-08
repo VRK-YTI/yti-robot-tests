@@ -34,36 +34,36 @@ Test Case Setup
 
 eDuuni Login
     Set Selenium Speed    0.5
-    Wait until page contains element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    timeout=30
-    Click element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
+    Wait Until Page Contains Element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    timeout=30
+    Click Element    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
     Select From List By Value    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList    ${GOOGLE_LOGIN_SELECTION}
-    Wait Until Page Contains element    id=ContentPlaceHolder1_Button1    timeout=30
-    Click element    id=ContentPlaceHolder1_Button1
+    Wait Until Page Contains Element    id=ContentPlaceHolder1_Button1    timeout=30
+    Click Element    id=ContentPlaceHolder1_Button1
     Sleep    5
     ${has_id_element}=    Run Keyword And Return Status    Page Should Contain Element    id=identifierId    limit=1
-    run keyword if    ${has_id_element}    Login With Id Field Id
+    Run Keyword If    ${has_id_element}    Login With Id Field Id
     ...    ELSE    Login With Id Field Xpath
 
 Login With Id Field Id
-    Wait Until Page Contains element    ${ID_ELEMENT_HOOK}
-    Input text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
+    Wait Until Page Contains Element    ${ID_ELEMENT_HOOK}
+    Input Text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
     Continue Login
 
 Login With Id Field Xpath
-    Wait Until Page Contains element    ${ID_ELEMENT_HOOK_XPATH}
-    Input text    ${ID_ELEMENT_HOOK_XPATH}    ${TEST_EMAIL}
+    Wait Until Page Contains Element    ${ID_ELEMENT_HOOK_XPATH}
+    Input Text    ${ID_ELEMENT_HOOK_XPATH}    ${TEST_EMAIL}
     Continue Login
 
 Continue Login
     Sleep    5
-    Wait Until Page Contains element    ${ID_NEXT_ELEMENT_HOOK}    timeout=20
-    Click element    ${ID_NEXT_ELEMENT_HOOK}
+    Wait Until Page Contains Element    ${ID_NEXT_ELEMENT_HOOK}    timeout=20
+    Click Element    ${ID_NEXT_ELEMENT_HOOK}
     Sleep    5
-    Wait Until Page Contains element    ${PASSWORD_ELEMENT_HOOK}    timeout=20
-    Input text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
+    Wait Until Page Contains Element    ${PASSWORD_ELEMENT_HOOK}    timeout=20
+    Input Text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
     Sleep    5
-    Wait Until Page Contains element    ${PASSWORD_NEXT_ELEMENT_HOOK}
-    Click element    ${PASSWORD_NEXT_ELEMENT_HOOK}
+    Wait Until Page Contains Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
+    Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
     Sleep    5
     Wait Until Page Contains    Yhteentoimivuusalustan oikeuksienhallinta    timeout=20
     Sleep    5
@@ -72,15 +72,15 @@ Open RHP
     Open Browser with Settings
     Set Selenium Speed    0.5
     ${has_eDuuni_login}=    Run Keyword And Return Status    Page Should Contain    Sign In
-    run keyword if    ${has_eDuuni_login}    eDuuni Login
+    Run Keyword If    ${has_eDuuni_login}    eDuuni Login
     ...    ELSE    Login
-    #Wait until page contains    Sign In    timeout=20
+    #Wait Until Page Contains    Sign In    timeout=20
 
 Login
-    Wait until page contains element    ${NAVIGATION_LOGIN_LINK}    timeout=30
-    Click element    ${NAVIGATION_LOGIN_LINK}
-    Wait until page contains element    ${LOGIN_MODAL_BTN}    timeout=30
-    Click element    ${LOGIN_MODAL_BTN}
+    Wait Until Page Contains Element    ${NAVIGATION_LOGIN_LINK}    timeout=30
+    Click Element    ${NAVIGATION_LOGIN_LINK}
+    Wait Until Page Contains Element    ${LOGIN_MODAL_BTN}    timeout=30
+    Click Element    ${LOGIN_MODAL_BTN}
     eDuuni Login
 
 Open Browser with Settings
@@ -98,7 +98,7 @@ Open Chrome to Environment
     Go To    ${GROUPMANAGEMENT_ENVIRONMENT_URL}
 
 Go back to RHP frontpage
-    Wait until page contains element    //*[contains(text(), "Etusivu")]    timeout=20
-    Click element    //*[contains(text(), "Etusivu")]
+    Wait Until Page Contains Element    //*[contains(text(), "Etusivu")]    timeout=20
+    Click Element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Close All Browsers
