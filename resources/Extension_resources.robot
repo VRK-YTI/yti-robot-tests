@@ -42,6 +42,7 @@ ${Update_members_invalid_relation}    ${DATAFOLDER}${/}Update_members_invalid_re
 ${code_list_extensions_100_members}    ${DATAFOLDER}${/}Code_list_with_extensions_and_100_members.xlsx
 ${Code_list_with_multiple_extensions}    ${DATAFOLDER}${/}filter_Code_list_with_multiple_extensions.xlsx
 ${Code_list_codes_DPM_all_invalid_propertytype}    ${DATAFOLDER}${/}Code_list_codes_DPM_all_invalid_propertytype.xlsx
+${Code_list_codes_DPM_all_no_values}    ${DATAFOLDER}${/}Code_list_codes_DPM_all_no_values.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv

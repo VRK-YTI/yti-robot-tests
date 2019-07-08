@@ -387,3 +387,63 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    ${Error_invalid_propertytype}    timeout=20
     Cancel code list import
     Return to Koodistot frontpage
+
+712. Import all DPM extensions and remove extension values with update
+    [Documentation]    Import all DPM extensions and remove extension values with Update code list function.
+    ...    Check that extension values are removed from code information.
+    [Tags]    koodistot    regression    700    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
+    Wait Until Page Contains    30 koodia    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click Element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait Until Page Contains    dpmDimension    timeout=20
+    Wait Until Page Contains    Domain reference (en)    timeout=20
+    Wait Until Page Contains    yyy    timeout=20
+    Wait Until Page Contains    dpmTypedDomain    timeout=20
+    Wait Until Page Contains    Data type (en)    timeout=20
+    Wait Until Page Contains    Boolean    timeout=20
+    Wait Until Page Contains    dpmMetric    timeout=20
+    Wait Until Page Contains    Balance type (en)    timeout=20
+    Wait Until Page Contains    Debit    timeout=20
+    Wait Until Page Contains    Data type (en)    timeout=20
+    Wait Until Page Contains    Isin    timeout=20
+    Wait Until Page Contains    Domain reference (en)    timeout=20
+    Wait Until Page Contains    ccc    timeout=20
+    Wait Until Page Contains    Flow type (en)    timeout=20
+    Wait Until Page Contains    Duration    timeout=20
+    Wait Until Page Contains    Hierarchy reference (en)    timeout=20
+    Wait Until Page Contains    eee    timeout=20
+    Wait Until Page Contains    dpmExplicitDomain    timeout=20
+    Wait Until Page Contains    Member XBRL code prefix (en)    timeout=20
+    Wait Until Page Contains    xxx    timeout=20
+    Sleep    2
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Update code list    ${Code_list_codes_DPM_all_no_values}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
+    Wait Until Element Is Enabled    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click Element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    dpmDimension    timeout=20
+    Wait Until Page Contains    Domain reference (en)    timeout=20
+    Wait Until Page Does Not Contain    yyy    timeout=20
+    Wait Until Page Contains    dpmTypedDomain    timeout=20
+    Wait Until Page Contains    Data type (en)    timeout=20
+    Wait Until Page Does Not Contain    Boolean    timeout=20
+    Wait Until Page Contains    dpmMetric    timeout=20
+    Wait Until Page Contains    Balance type (en)    timeout=20
+    Wait Until Page Does Not Contain    Debit    timeout=20
+    Wait Until Page Contains    Data type (en)    timeout=20
+    Wait Until Page Does Not Contain    Isin    timeout=20
+    Wait Until Page Contains    Domain reference (en)    timeout=20
+    Wait Until Page Does Not Contain    ccc    timeout=20
+    Wait Until Page Contains    Flow type (en)    timeout=20
+    Wait Until Page Does Not Contain    Duration    timeout=20
+    Wait Until Page Contains    Hierarchy reference (en)    timeout=20
+    Wait Until Page Does Not Contain    eee    timeout=20
+    Wait Until Page Contains    dpmExplicitDomain    timeout=20
+    Wait Until Page Contains    Member XBRL code prefix (en)    timeout=20
+    Wait Until Page Does Not Contain    xxx    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_16}
