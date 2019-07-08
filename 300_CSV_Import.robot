@@ -42,12 +42,12 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${empty_related_concepts}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
     Wait Until Page Contains    Tuodaan 1 käsitettä    timeout=60
     Wait Until Page Contains    tutkimus    timeout=60
@@ -58,9 +58,9 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    esim    timeout=60
     Wait Until Page Contains    Voimassa oleva    timeout=60
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
-    Click element    ${IMPORT_YES_BTN}
-    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
-    Click element    //*[contains(text(), "${TERM_2}")]
+    Click Element    ${IMPORT_YES_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${TERM_2}")]    timeout=60
+    Click Element    //*[contains(text(), "${TERM_2}")]
     Sleep    2
     Wait Until Page Contains    research    timeout=60
     Wait Until Page Contains    tutkielma    timeout=60
@@ -82,32 +82,32 @@ Resource          resources/Terminology_Resources.robot
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
     Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
     Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_empty_status}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Page should contain    Tuodaan 1 käsitettä
-    Page should contain    tutkimus
-    Page should contain    research
-    Page should contain    tutkielma
-    Page should contain    systemaattista ja luovaa toimintaa
-    Page should contain    huomio
-    Page should contain    esim
-    Page should contain    Luonnos
+    Wait Until Page Contains    Tuodaan 1 käsitettä    timeout=30
+    Wait Until Page Contains    tutkimus    timeout=30
+    Wait Until Page Contains    research    timeout=30
+    Wait Until Page Contains    tutkielma    timeout=30
+    Wait Until Page Contains    systemaattista ja luovaa toimintaa    timeout=30
+    Wait Until Page Contains    huomio    timeout=30
+    Wait Until Page Contains    esim    timeout=30
+    Wait Until Page Contains    Luonnos    timeout=30
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
-    Click element    ${IMPORT_YES_BTN}
-    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
-    Click element    //*[contains(text(), "${TERM_2}")]
+    Click Element    ${IMPORT_YES_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${TERM_2}")]    timeout=60
+    Click Element    //*[contains(text(), "${TERM_2}")]
     Sleep    2
-    Page should contain    tutkimus
-    Page should contain    research
-    Page should contain    tutkielma
-    Page should contain    systemaattista ja luovaa toimintaa
-    Page should contain    huomio
-    Page should contain    esim
-    Page should contain    Luonnos
+    Wait Until Page Contains    tutkimus    timeout=30
+    Wait Until Page Contains    research    timeout=30
+    Wait Until Page Contains    tutkielma    timeout=30
+    Wait Until Page Contains    systemaattista ja luovaa toimintaa    timeout=30
+    Wait Until Page Contains    huomio    timeout=30
+    Wait Until Page Contains    esim    timeout=30
+    Wait Until Page Contains    Luonnos    timeout=30
     Log to Console    Concept import with empty STATUS values in CSV is successful
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
