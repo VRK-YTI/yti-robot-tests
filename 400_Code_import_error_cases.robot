@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code import error cases
-Suite Teardown    Close all Browsers
-Test Teardown     Close all Browsers
+Suite Teardown    Close All Browsers
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Generic_resources.robot
 
@@ -78,11 +78,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_codevalue_missing}
-    Wait until page contains    ${Error_no_codeValue}    timeout=20
+    Wait Until Page Contains    ${Error_no_codeValue}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_codevalue_missing_csv}
-    Wait until page contains    ${Error_no_codeValue}    timeout=20
+    Wait Until Page Contains    ${Error_no_codeValue}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -95,11 +95,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_status_missing}
-    Wait until page contains    ${Error_no_status_value}    timeout=20
+    Wait Until Page Contains    ${Error_no_status_value}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_status_missing_csv}
-    Wait until page contains    ${Error_no_status_value}    timeout=20
+    Wait Until Page Contains    ${Error_no_status_value}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -112,11 +112,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_with_invalid_status}
-    Wait until page contains    ${Error_with_invalid_status}    timeout=20
+    Wait Until Page Contains    ${Error_with_invalid_status}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_with_invalid_status_csv}
-    Wait until page contains    ${Error_with_invalid_status}    timeout=20
+    Wait Until Page Contains    ${Error_with_invalid_status}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -129,11 +129,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_with_invalid_broader}
-    Wait until page contains    ${Error_with_invalid_broader}    timeout=20
+    Wait Until Page Contains    ${Error_with_invalid_broader}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_with_invalid_broader_csv}
-    Wait until page contains    ${Error_with_invalid_broader}    timeout=20
+    Wait Until Page Contains    ${Error_with_invalid_broader}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -192,11 +192,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_without_codevalue_column}
-    Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=20
+    Wait Until Page Contains    ${Error_with_codevalue_column_missing}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_without_codevalue_column_csv}
-    Wait until page contains    ${Error_with_codevalue_column_missing}    timeout=20
+    Wait Until Page Contains    ${Error_with_codevalue_column_missing}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -277,11 +277,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_invalid_codevalue}
-    Wait until page contains    ${Error_invalid_codeValue}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_codeValue}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_invalid_codevalue_csv}
-    Wait until page contains    ${Error_invalid_codeValue}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_codeValue}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -294,11 +294,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_with_missing_order_value}
-    Wait until page contains    ${Error_missing_order}    timeout=20
+    Wait Until Page Contains    ${Error_missing_order}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_with_missing_order_value_csv}
-    Wait until page contains    ${Error_missing_order}    timeout=20
+    Wait Until Page Contains    ${Error_missing_order}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -311,11 +311,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Same_order_values}
-    Wait until page contains    ${Error_same_order_values}    timeout=20
+    Wait Until Page Contains    ${Error_same_order_values}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Same_order_values_csv}
-    Wait until page contains    ${Error_same_order_values}    timeout=20
+    Wait Until Page Contains    ${Error_same_order_values}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -328,7 +328,7 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_with_order_values}
-    Wait until page contains    ${Error_existing_order_values}    timeout=20
+    Wait Until Page Contains    ${Error_existing_order_values}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -341,11 +341,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${Codes_with_invalid_order_values}
-    Wait until page contains    ${Error_invalid_order_value}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_order_value}    timeout=20
     Cancel code import
     Import codes in CSV format
     Upload codes    ${Codes_with_invalid_order_values_csv}
-    Wait until page contains    ${Error_invalid_order_value}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_order_value}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -358,11 +358,11 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
     Upload codes    ${empty}
-    Wait until page contains    ${Error_empty_Excel}    timeout=20
+    Wait Until Page Contains    ${Error_empty_Excel}    timeout=20
     Cancel code import
     Import codes in Excel format
     Upload codes    ${No_content_excel}
-    Wait until page contains    ${Error_no_content}    timeout=20
+    Wait Until Page Contains    ${Error_no_content}    timeout=20
     Cancel code import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}

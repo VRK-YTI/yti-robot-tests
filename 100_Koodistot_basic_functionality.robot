@@ -16,24 +16,24 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Verify that Information about the service page is opened correctly. YTI-460
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    id=information_link    timeout=20
-    Click element    id=information_link
-    Wait until page contains    Tietoa Koodistoista    timeout=30
-    Wait until page contains    Hyödyt käyttäjille    timeout=30
-    Wait until page contains    Miten Koodistot-työkalu toimii?    timeout=30
-    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi    timeout=30
-    Wait until page contains    Katso myös    timeout=30
-    Wait until page contains    Ota yhteyttä    timeout=30
+    Wait Until Page Contains Element    id=information_link    timeout=20
+    Click Element    id=information_link
+    Wait Until Page Contains    Tietoa Koodistoista    timeout=30
+    Wait Until Page Contains    Hyödyt käyttäjille    timeout=30
+    Wait Until Page Contains    Miten Koodistot-työkalu toimii?    timeout=30
+    Wait Until Page Contains    Miten voin liittyä työkalun käyttäjäksi    timeout=30
+    Wait Until Page Contains    Katso myös    timeout=30
+    Wait Until Page Contains    Ota yhteyttä    timeout=30
     [Teardown]    Return to Koodistot frontpage
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly. YTI-457
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    id=license_link    timeout=20
-    Click element    id=license_link
+    Wait Until Page Contains Element    id=license_link    timeout=20
+    Click Element    id=license_link
     Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=30
+    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=30
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Close All Browsers
 
@@ -41,8 +41,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
     [Tags]    local
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    id=description_of_file_link    timeout=20
-    Click element    id=description_of_file_link
+    Wait Until Page Contains Element    id=description_of_file_link    timeout=20
+    Click Element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
@@ -57,24 +57,24 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Return to Koodistot frontpage
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_6}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_6}")]
-    Wait until page contains    ${CODE_LIST_6}    timeout=20
-    Wait until page contains element    id=content_language_dropdown_button    timeout=20
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Wait until page contains element    //*[contains(text(), "${CODE_1}")]    timeout=20
-    Click element    //*[contains(text(), "${CODE_1}")]
-    Wait until page contains    ${CODE_1}    timeout=20
-    Wait until page contains    Koodisto    timeout=20
-    Wait until page contains    testiautomaatiokoodisto 2    timeout=20
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    koodi01    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    Koodi01    timeout=20
-    Wait until page contains    Tila    timeout=20
-    Wait until page contains    Voimassa oleva    timeout=20
-    Wait until page contains    Viimeisin muokkaus    timeout=20
-    Wait until page contains    Voimassa oleva    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_6}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_6}")]
+    Wait Until Page Contains    ${CODE_LIST_6}    timeout=20
+    Wait Until Page Contains Element    id=content_language_dropdown_button    timeout=20
+    Wait Until Page Contains Element    id=exportDropdown    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_1}")]    timeout=20
+    Click Element    //*[contains(text(), "${CODE_1}")]
+    Wait Until Page Contains    ${CODE_1}    timeout=20
+    Wait Until Page Contains    Koodisto    timeout=20
+    Wait Until Page Contains    testiautomaatiokoodisto 2    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    koodi01    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    Koodi01    timeout=20
+    Wait Until Page Contains    Tila    timeout=20
+    Wait Until Page Contains    Voimassa oleva    timeout=20
+    Wait Until Page Contains    Viimeisin muokkaus    timeout=20
+    Wait Until Page Contains    Voimassa oleva    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_6}
 
@@ -85,24 +85,24 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Import code list in Excel format
     Upload codelist    ${Testikoodisto_T200}    ${CODE_LIST_7}
     Return to Koodistot frontpage
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Page Contains Element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click Element    ${STATUS_DROPDOWN_BTN}
+    Click Element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_7}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_7}")]
-    Wait until page contains element    id=content_language_dropdown_button    timeout=20
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Wait until page contains    ${CODE_LIST_7}    timeout=20
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
-    Wait until page contains    Tunnus    timeout=20
-    Wait until page contains    T200    timeout=20
-    Wait until page contains    Rekisteri    timeout=20
-    Wait until page contains    Testirekisteri    timeout=20
-    Wait until page contains    Tietoalue    timeout=20
-    Wait until page contains    Eläkkeet    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_7}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_7}")]
+    Wait Until Page Contains Element    id=content_language_dropdown_button    timeout=20
+    Wait Until Page Contains Element    id=exportDropdown    timeout=20
+    Wait Until Page Contains    ${CODE_LIST_7}    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click Element    //*[contains(text(), "TIEDOT")]
+    Wait Until Page Contains    Tunnus    timeout=20
+    Wait Until Page Contains    T200    timeout=20
+    Wait Until Page Contains    Rekisteri    timeout=20
+    Wait Until Page Contains    Testirekisteri    timeout=20
+    Wait Until Page Contains    Tietoalue    timeout=20
+    Wait Until Page Contains    Eläkkeet    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_7}
 
@@ -111,26 +111,26 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Change UI Language    ${LANGUAGE_EN}
-    Wait until page contains    ${CODE_LIST_1_EN}    timeout=30
-    Wait until page contains    Add code list    timeout=30
-    Wait until page contains    All registries    timeout=30
-    Wait until page contains    All organizations    timeout=30
-    Wait until page contains    Classification    timeout=30
+    Wait Until Page Contains    ${CODE_LIST_1_EN}    timeout=30
+    Wait Until Page Contains    Add code list    timeout=30
+    Wait Until Page Contains    All registries    timeout=30
+    Wait Until Page Contains    All organizations    timeout=30
+    Wait Until Page Contains    Classification    timeout=30
     [Teardown]    Restore Finnish language
 
 106. Export Excel and CSV for Kunnat 2018 Code list
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_1}")]
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Click element    id=exportDropdown
-    Click element    ${EXPORT_TYPE_EXCEL}
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_1}")]
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_1}")]    timeout=30
+    Wait Until Page Contains Element    id=exportDropdown    timeout=20
+    Click Element    id=exportDropdown
+    Click Element    ${EXPORT_TYPE_EXCEL}
     Sleep    5
-    Wait until page contains element    id=exportDropdown    timeout=20
-    Click element    id=exportDropdown
-    Click element    ${EXPORT_TYPE_CSV}
+    Wait Until Page Contains Element    id=exportDropdown    timeout=20
+    Click Element    id=exportDropdown
+    Click Element    ${EXPORT_TYPE_CSV}
     Sleep    5
     [Teardown]    Return to Koodistot frontpage
 
@@ -139,7 +139,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup Admin
     Sleep    1
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_3}")]
+    Click Element    //*[contains(text(), "${CODE_LIST_3}")]
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_3}")]    timeout=30
     Wait Until Page Contains Element    id=exportDropdown    timeout=20
     Click Element    id=exportDropdown
@@ -157,12 +157,12 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup Admin
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_5}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_5}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_5}")]
-    Wait until page contains    ${CODE_LIST_5}    timeout=30
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Click element    //*[contains(text(), "TIEDOT")]
-    Wait until page contains    Muutostieto
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_5}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_5}")]
+    Wait Until Page Contains    ${CODE_LIST_5}    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "TIEDOT")]    timeout=20
+    Click Element    //*[contains(text(), "TIEDOT")]
+    Wait Until Page Contains    Muutostieto
     [Teardown]    Return to Koodistot frontpage
 
 110. Search for code list and extend search to codes
@@ -174,24 +174,24 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_CODE_CHECKBOX}    timeout=30
-    Click element    ${SEARCH_CODE_CHECKBOX}
+    Click Element    ${SEARCH_CODE_CHECKBOX}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_2}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_2}")]
-    Wait until page contains    ${CODE_LIST_2}
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_3}")]
-    Click element    //*[contains(text(), "${TEST_CODE_3}")]
-    Wait until page contains    ${TEST_CODE_3}
-    Wait until page contains    Koodisto    timeout=20
-    Wait until page contains    testiautomaatiokoodisto1    timeout=20
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    Koodi1006    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    Koodi1006    timeout=20
-    Wait until page contains    Tila    timeout=20
-    Wait until page contains    Luonnos    timeout=20
-    Wait until page contains    Viimeisin muokkaus    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_2}")]
+    Wait Until Page Contains    ${CODE_LIST_2}
+    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_3}")]
+    Click Element    //*[contains(text(), "${TEST_CODE_3}")]
+    Wait Until Page Contains    ${TEST_CODE_3}
+    Wait Until Page Contains    Koodisto    timeout=20
+    Wait Until Page Contains    testiautomaatiokoodisto1    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    Koodi1006    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    Koodi1006    timeout=20
+    Wait Until Page Contains    Tila    timeout=20
+    Wait Until Page Contains    Luonnos    timeout=20
+    Wait Until Page Contains    Viimeisin muokkaus    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_2}
 
@@ -204,22 +204,22 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_13}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_13}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_13}")]
-    Wait until page contains    ${CODE_LIST_13}
-    Wait until page contains element    ${SEARCH_CODE_BOX_INPUT}
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_13}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_13}")]
+    Wait Until Page Contains    ${CODE_LIST_13}
+    Wait Until Page Contains Element    ${SEARCH_CODE_BOX_INPUT}
     Input Text    ${SEARCH_CODE_BOX_INPUT}    t52
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_4}")]
-    Wait until page contains element    ${SEARCH_CODE_BOX_INPUT}
+    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_4}")]
+    Wait Until Page Contains Element    ${SEARCH_CODE_BOX_INPUT}
     Input Text    ${SEARCH_CODE_BOX_INPUT}    testi06
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_5}")]
-    Click element    //*[contains(text(), "${TEST_CODE_5}")]
-    Wait until page contains    Koodisto    timeout=20
-    Wait until page contains    Sisällön filteröinti    timeout=20
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    T56    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    Testi06    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_5}")]
+    Click Element    //*[contains(text(), "${TEST_CODE_5}")]
+    Wait Until Page Contains    Koodisto    timeout=20
+    Wait Until Page Contains    Sisällön filteröinti    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    T56    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    Testi06    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_13}
 
@@ -267,30 +267,30 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
-    Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
     Change content language    ${CONTENT_LANGUAGE_EN}
-    Wait until page contains element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
-    Click element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
-    Wait until page contains    Koodisto    timeout=20
-    Wait until page contains    Test dataset classification    timeout=20
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    AGRI    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    Agriculture, fisheries, forestry and food    timeout=20
-    Wait until page contains    Voimassa oleva    timeout=20
-    Wait until page contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=20
-    Wait until page contains    URI    timeout=20
-    Wait until page contains    Viimeisin muokkaus    timeout=20
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
-    Click element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Tunnus    timeout=20
-    Wait until page contains    dcat01    timeout=20
-    Wait until page contains    Koodiston nimi    timeout=20
-    Wait until page contains    Test dataset classification    timeout=20
-    Wait until page contains    Rekisteri    timeout=20
-    Wait until page contains    Test registry    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
+    Click Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
+    Wait Until Page Contains    Koodisto    timeout=20
+    Wait Until Page Contains    Test dataset classification    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    AGRI    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    Agriculture, fisheries, forestry and food    timeout=20
+    Wait Until Page Contains    Voimassa oleva    timeout=20
+    Wait Until Page Contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=20
+    Wait Until Page Contains    URI    timeout=20
+    Wait Until Page Contains    Viimeisin muokkaus    timeout=20
+    Wait Until Page Contains Element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click Element    ${2_BREADCRUMB_LINK}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Tunnus    timeout=20
+    Wait Until Page Contains    dcat01    timeout=20
+    Wait Until Page Contains    Koodiston nimi    timeout=20
+    Wait Until Page Contains    Test dataset classification    timeout=20
+    Wait Until Page Contains    Rekisteri    timeout=20
+    Wait Until Page Contains    Test registry    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_20}
 
@@ -300,76 +300,76 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
-    Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
     Change UI Language    ${LANGUAGE_EN}
-    Wait until page contains    Test dataset classification    timeout=30
-    Wait until page contains element    //*[contains(text(), "CODES")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "INFORMATION")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "Test registry")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "General information and administrative services")]    timeout=30
-    Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
+    Wait Until Page Contains    Test dataset classification    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "CODES")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "INFORMATION")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Test registry")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "General information and administrative services")]    timeout=30
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
     Reload Page
-    Wait until page contains    Test dataset classification    timeout=30
-    Wait until page contains element    //*[contains(text(), "CODES")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "INFORMATION")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "Test registry")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "General information and administrative services")]    timeout=30
-    Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
+    Wait Until Page Contains    Test dataset classification    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "CODES")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "INFORMATION")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Test registry")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "General information and administrative services")]    timeout=30
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
     Change UI Language    ${LANGUAGE_FI}
-    Wait until page contains    Testi dcat    timeout=30
-    Wait until page contains element    //*[contains(text(), "KOODIT")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "TIEDOT")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "Testirekisteri")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "Yleiset tieto- ja hallintopalvelut")]    timeout=30
-    Wait until page contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
+    Wait Until Page Contains    Testi dcat    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "KOODIT")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "TIEDOT")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Testirekisteri")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Yleiset tieto- ja hallintopalvelut")]    timeout=30
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
     Change content language    ${CONTENT_LANGUAGE_EN}
-    Wait until page contains element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
-    Click element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
-    Wait until page contains    Koodisto    timeout=30
-    Wait until page contains    Test dataset classification    timeout=30
-    Wait until page contains    Koodin arvo    timeout=30
-    Wait until page contains    AGRI    timeout=30
-    Wait until page contains    Koodin nimi    timeout=30
-    Wait until page contains    Agriculture, fisheries, forestry and food    timeout=30
-    Wait until page contains    Voimassa oleva    timeout=30
-    Wait until page contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=30
-    Wait until page contains    URI    timeout=30
-    Wait until page contains    Viimeisin muokkaus    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
+    Click Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
+    Wait Until Page Contains    Koodisto    timeout=30
+    Wait Until Page Contains    Test dataset classification    timeout=30
+    Wait Until Page Contains    Koodin arvo    timeout=30
+    Wait Until Page Contains    AGRI    timeout=30
+    Wait Until Page Contains    Koodin nimi    timeout=30
+    Wait Until Page Contains    Agriculture, fisheries, forestry and food    timeout=30
+    Wait Until Page Contains    Voimassa oleva    timeout=30
+    Wait Until Page Contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=30
+    Wait Until Page Contains    URI    timeout=30
+    Wait Until Page Contains    Viimeisin muokkaus    timeout=30
     Reload Page
-    Wait until page contains    Koodisto    timeout=30
-    Wait until page contains    Test dataset classification    timeout=30
-    Wait until page contains    Koodin arvo    timeout=30
-    Wait until page contains    AGRI    timeout=30
-    Wait until page contains    Koodin nimi    timeout=30
-    Wait until page contains    Agriculture, fisheries, forestry and food    timeout=30
-    Wait until page contains    Voimassa oleva    timeout=30
-    Wait until page contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=30
-    Wait until page contains    URI    timeout=30
-    Wait until page contains    Viimeisin muokkaus    timeout=30
-    Wait until page contains element    ${2_BREADCRUMB_LINK}    timeout=20
-    Click element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Tunnus    timeout=30
-    Wait until page contains    dcat01    timeout=30
-    Wait until page contains    Koodiston nimi    timeout=30
-    Wait until page contains    Test dataset classification    timeout=30
-    Wait until page contains    Rekisteri    timeout=30
-    Wait until page contains    Test registry    timeout=30
-    Wait until page contains    Tietoalue    timeout=30
-    Wait until page contains    Yleiset tieto- ja hallintopalvelut    timeout=30
+    Wait Until Page Contains    Koodisto    timeout=30
+    Wait Until Page Contains    Test dataset classification    timeout=30
+    Wait Until Page Contains    Koodin arvo    timeout=30
+    Wait Until Page Contains    AGRI    timeout=30
+    Wait Until Page Contains    Koodin nimi    timeout=30
+    Wait Until Page Contains    Agriculture, fisheries, forestry and food    timeout=30
+    Wait Until Page Contains    Voimassa oleva    timeout=30
+    Wait Until Page Contains    This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.    timeout=30
+    Wait Until Page Contains    URI    timeout=30
+    Wait Until Page Contains    Viimeisin muokkaus    timeout=30
+    Wait Until Page Contains Element    ${2_BREADCRUMB_LINK}    timeout=20
+    Click Element    ${2_BREADCRUMB_LINK}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Tunnus    timeout=30
+    Wait Until Page Contains    dcat01    timeout=30
+    Wait Until Page Contains    Koodiston nimi    timeout=30
+    Wait Until Page Contains    Test dataset classification    timeout=30
+    Wait Until Page Contains    Rekisteri    timeout=30
+    Wait Until Page Contains    Test registry    timeout=30
+    Wait Until Page Contains    Tietoalue    timeout=30
+    Wait Until Page Contains    Yleiset tieto- ja hallintopalvelut    timeout=30
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_20}
 
 *** Keywords ***
 Restore Finnish language
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Sleep    1
-    Click element    ${LANGUAGE_FI}
-    Wait until page contains    ${CODE_LIST_1}
-    Wait until page contains    Kaikki tilat    timeout=30
-    Wait until page contains    Kaikki rekisterit    timeout=30
-    Wait until page contains    Kaikki organisaatiot    timeout=30
-    Wait until page contains    Luokitus    timeout=30
+    Click Element    ${LANGUAGE_FI}
+    Wait Until Page Contains    ${CODE_LIST_1}
+    Wait Until Page Contains    Kaikki tilat    timeout=30
+    Wait Until Page Contains    Kaikki rekisterit    timeout=30
+    Wait Until Page Contains    Kaikki organisaatiot    timeout=30
+    Wait Until Page Contains    Luokitus    timeout=30
     Close All Browsers

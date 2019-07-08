@@ -37,7 +37,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
-    Click element    ${EXTENSIONS_TAB}
+    Click Element    ${EXTENSIONS_TAB}
     Wait Until Element Is Enabled    ${EXPORT_DDL}    timeout=20
     Click Element    ${EXPORT_DDL}
     Click Element    ${EXPORT_TYPE_EXCEL}
@@ -58,7 +58,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    30 koodia    timeout=20
     Return to Koodistot frontpage
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${2_dpms_should_fail}
+    Choose File    ${FILE_UPLOAD_BTN}    ${2_dpms_should_fail}
     Wait Until Element Is Enabled    ${UPLOAD_FILE_BTN}    timeout=20
     Click Element    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_2_dpms}    timeout=20
@@ -93,7 +93,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${DPM_HIERARCHY_REFERENCE_INPUT}    timeout=20
     Input Text    ${DPM_HIERARCHY_REFERENCE_INPUT}    eee
     Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
+    Click Element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
     Wait Until Page Contains    dpmMetric    timeout=20
     Wait Until Page Contains    Balance type (en)    timeout=20
@@ -129,7 +129,7 @@ Resource          resources/Extension_resources.robot
     Input Text    ${DPM_EXPLICIT_DOMAIN_INPUT}    yyy
     Sleep    1
     Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
+    Click Element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
     Wait Until Page Contains    dpmExplicitDomain    timeout=20
     Wait Until Page Contains    Member XBRL code prefix (en)    timeout=20
@@ -179,7 +179,7 @@ Resource          resources/Extension_resources.robot
     Input Text    ${DPM_DIMENSION_DOMAIN_REFERENCE_INPUT}    aaa
     Sleep    1
     Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
+    Click Element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
     Wait Until Page Contains    dpmDimension    timeout=20
     Wait Until Page Contains    Domain reference (en)    timeout=20
@@ -257,7 +257,7 @@ Resource          resources/Extension_resources.robot
     [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${DPM_extension_relations_to_other_members}
+    Choose File    ${FILE_UPLOAD_BTN}    ${DPM_extension_relations_to_other_members}
     Wait Until Element Is Enabled    ${UPLOAD_FILE_BTN}    timeout=20
     Click Element    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_relations_to_other_members}    timeout=20
@@ -362,7 +362,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${FILE_FORMAT_Excel}    timeout=20
     Click Element    ${FILE_FORMAT_Excel}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_DPM_Metric_Credit_no_member_id}
+    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_DPM_Metric_Credit_no_member_id}
     Wait Until Element Is Enabled    ${UPLOAD_FILE_BTN}    timeout=20
     Click Element    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_duplicate_members_for_same_code}    timeout=20
@@ -381,7 +381,7 @@ Resource          resources/Extension_resources.robot
     [Tags]    regression    test    700
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_codes_DPM_all_invalid_propertytype}
+    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_codes_DPM_all_invalid_propertytype}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_propertytype}    timeout=20

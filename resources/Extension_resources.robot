@@ -74,68 +74,68 @@ Upload extension
     Wait Until Page Contains Element    ${file_format}    timeout=20
     Click Element    ${file_format}
     Sleep    2
-    Choose file    ${EXTENSION_FILE_UPLOAD}    ${extension}
+    Choose File    ${EXTENSION_FILE_UPLOAD}    ${extension}
     Wait Until Page Contains Element    ${EXTENSION_UPLOAD_BTN}    timeout=20
     Click Button    ${EXTENSION_UPLOAD_BTN}
     Wait Until Page Contains Element    ${EXTENSIONS_TAB}    timeout=20
     Click Element    ${EXTENSIONS_TAB}
-    Log to Console    Extension imported
+    Log To Console    Extension imported
     Sleep    1
 
 Upload members
     [Arguments]    ${member}    ${file_format}
     Wait until page contains element    ${EXTENSION_DDL}    timeout=30
-    Click element    ${EXTENSION_DDL}
+    Click Element    ${EXTENSION_DDL}
     Wait until page contains element    ${IMPORT_MEMBERS_BTN}    timeout=30
-    Click element    ${IMPORT_MEMBERS_BTN}
+    Click Element    ${IMPORT_MEMBERS_BTN}
     Wait until page contains element    ${FILE_FORMAT_UPLOAD}    timeout=20
-    Click element    ${FILE_FORMAT_UPLOAD}
+    Click Element    ${FILE_FORMAT_UPLOAD}
     Wait until page contains element    ${file_format}    timeout=20
-    Click element    ${file_format}
+    Click Element    ${file_format}
     Wait until page contains element    ${EXTENSION_FILE_UPLOAD}    timeout=20
-    Choose file    ${EXTENSION_FILE_UPLOAD}    ${member}
+    Choose File    ${EXTENSION_FILE_UPLOAD}    ${member}
     Sleep    2
     Wait until page contains element    ${MEMBER_UPLOAD_BTN}    timeout=20
-    Click button    ${MEMBER_UPLOAD_BTN}
-    Log to Console    Member imported
+    Click Button    ${MEMBER_UPLOAD_BTN}
+    Log To Console    Member imported
     Sleep    1
 
 Create extension
     [Arguments]    ${property_type}    ${extension_codevalue}    ${extension_name}    ${extension_status}    ${code_list_name}    ${member_auto_create}
     Wait until page contains element    ${CODE_LIST_DDL}    timeout=30
-    Click element    ${CODE_LIST_DDL}
+    Click Element    ${CODE_LIST_DDL}
     Wait until page contains element    ${property_type}    timeout=30
-    Click element    ${property_type}
+    Click Element    ${property_type}
     Sleep    2
     Wait until page contains element    ${EXTENSION_VALUE_INPUT}    timeout=30
     Input Text    ${EXTENSION_VALUE_INPUT}    ${extension_codevalue}
     Wait until page contains element    ${EXTENSION_NAME_INPUT}    timeout=30
     Input Text    ${EXTENSION_NAME_INPUT}    ${extension_name}
     Wait until page contains element    ${EXTENSION_STATUS_DDL}    timeout=20
-    Click element    ${EXTENSION_STATUS_DDL}
+    Click Element    ${EXTENSION_STATUS_DDL}
     Wait until page contains element    ${extension_status}    timeout=20
-    Click element    ${extension_status}
+    Click Element    ${extension_status}
     ${code_list_name_length}=    Get Length    ${code_list_name}
-    run keyword if    ${code_list_name_length} > 0    Add code list to extension    ${code_list_name}
+    Run Keyword If    ${code_list_name_length} > 0    Add code list to extension    ${code_list_name}
     Sleep    1
-    Run Keyword If    '${member_auto_create}' == 'True'    Click element    ${AUTO_CREATE_MEMBERS_CHECKBOX}
+    Run Keyword If    '${member_auto_create}' == 'True'    Click Element    ${AUTO_CREATE_MEMBERS_CHECKBOX}
     Sleep    1
     Capture Page Screenshot
     Sleep    2
     Wait Until Element Is Enabled    ${SAVE_EXTENSION}    timeout=30
-    Click button    ${SAVE_EXTENSION}
+    Click Button    ${SAVE_EXTENSION}
     Wait Until Element Is Visible    ${MEMBERS_TAB}    timeout=60
-    Log to Console    ${extension_name} created
+    Log To Console    ${extension_name} created
     Sleep    2
 
 Delete extension
     Wait Until Page Contains Element    ${EXTENSION_DDL}    timeout=30
-    Click element    ${EXTENSION_DDL}
+    Click Element    ${EXTENSION_DDL}
     Wait Until Page Contains Element    ${EXTENSION_DELETE_BTN}    timeout=30
-    Click element    ${EXTENSION_DELETE_BTN}
+    Click Element    ${EXTENSION_DELETE_BTN}
     Wait Until Page Contains Element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
     Click element    ${CONFIRM_DELETE_EXTENSION_BTN}
-    Log to Console    Extension deleted
+    Log To Console    Extension deleted
     Sleep    2
 
 Add code list to extension
@@ -159,36 +159,36 @@ Create member for definition hierarchy
     Wait Until Page Contains Element    ${MEMBER_NAME_INPUT}    timeout=30
     Input Text    ${MEMBER_NAME_INPUT}    ${member_name}
     ${code_list_name_length}=    Get Length    ${code_list_name}
-    run keyword if    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
+    Run Keyword If    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
     Wait Until Page Contains Element    ${SAVE_MEMBER}    timeout=30
     Click Button    ${SAVE_MEMBER}
     Wait Until Element Is Visible    ${MODIFY_MEMBER_BTN}    timeout=60
-    Log to Console    ${member_name} created
+    Log To Console    ${member_name} created
     Sleep    2
 
 Create member for calculation hierarchy
     [Arguments]    ${member_name}    ${comparison_operator}    ${unary_operator}    ${code_list_name}    ${code}    ${broader_member}
     Wait Until Page Contains Element    ${EXTENSION_DDL}    timeout=30
-    Click button    ${EXTENSION_DDL}
+    Click Button    ${EXTENSION_DDL}
     Wait Until Page Contains Element    ${CREATE_MEMBER_BTN}    timeout=30
-    Click button    ${CREATE_MEMBER_BTN}
+    Click Button    ${CREATE_MEMBER_BTN}
     Wait Until Page Contains Element    ${MEMBER_NAME_INPUT}    timeout=30
     Input Text    ${MEMBER_NAME_INPUT}    ${member_name}
     ${comparison_operator_length}=    Get Length    ${comparison_operator}
-    run keyword if    ${comparison_operator_length} > 0    Add comparison operator    ${comparison_operator}
+    Run Keyword If    ${comparison_operator_length} > 0    Add comparison operator    ${comparison_operator}
     ${unary_operator_length}=    Get Length    ${unary_operator}
-    run keyword if    ${unary_operator_length} > 0    Add unary operator    ${unary_operator}
+    Run Keyword If    ${unary_operator_length} > 0    Add unary operator    ${unary_operator}
     ${code_list_name_length}=    Get Length    ${code_list_name}
-    run keyword if    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
+    Run Keyword If    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
     ${broader_member_length}=    Get Length    ${broader_member}
-    run keyword if    ${broader_member_length} > 0    Add broader member    ${broader_member}
+    Run Keyword If    ${broader_member_length} > 0    Add broader member    ${broader_member}
     Wait Until Page Contains Element    ${SAVE_MEMBER}    timeout=30
-    Click button    ${SAVE_MEMBER}
+    Click Button    ${SAVE_MEMBER}
     Sleep    1
     Wait Until Element Is Visible    ${MODIFY_MEMBER_BTN}    timeout=60
-    Log to Console    ${member_name} created
+    Log To Console    ${member_name} created
     Sleep    2
 
 Add comparison operator
@@ -214,7 +214,7 @@ Add broader member
 Add code to member from code list
     [Arguments]    ${code_list_name}    ${code}
     Wait Until Page Contains Element    ${ADD_CODE_TO_MEMBER_BTN}    timeout=30
-    Click button    ${ADD_CODE_TO_MEMBER_BTN}
+    Click Button    ${ADD_CODE_TO_MEMBER_BTN}
     Wait Until Page Contains Element    ${CODE_SCHEME_DDL_BTN}    timeout=30
     Click Element    ${CODE_SCHEME_DDL_BTN}
     Click Element    //*[contains(text(), "${code_list_name}")]
@@ -227,7 +227,7 @@ Add code to member from code list
 Add code to member
     [Arguments]    ${code}
     Wait Until Page Contains Element    ${ADD_CODE_TO_MEMBER_BTN}    timeout=30
-    Click button    ${ADD_CODE_TO_MEMBER_BTN}
+    Click Button    ${ADD_CODE_TO_MEMBER_BTN}
     Wait Until Page Contains Element    ${SEARCH_CODE_TO_MEMBER_INPUT}    timeout=30
     Input Text    ${SEARCH_CODE_TO_MEMBER_INPUT}    ${code}
     Wait Until Page Contains Element    //*[contains(text(), "${code}")]    timeout=30
@@ -241,7 +241,7 @@ Delete member
     Click Element    ${MEMBER_DELETE_BTN}
     Wait Until Page Contains Element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
     Click Element    ${CONFIRM_DELETE_EXTENSION_BTN}
-    Log to Console    Member deleted
+    Log To Console    Member deleted
     Sleep    2
 
 Remove codelist
@@ -275,7 +275,7 @@ Remove code lists with extensions
     \    Click Element    //*[contains(text(), "${code_list_item}")]
     \    Wait Until Page Contains    ${code_list_item}    timeout=60
     \    ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
-    \    run keyword if    ${extension_exists}    Delete extension before code list    ${code_list_item}
+    \    Run Keyword If    ${extension_exists}    Delete extension before code list    ${code_list_item}
     \    ...    ELSE    Continue code list deletion    ${code_list_item}
     \    Sleep    2
     Close All Browsers
@@ -291,7 +291,7 @@ Continue code list deletion
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
     Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
     Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=60
-    Log to Console    ${code_list_item} removed
+    Log To Console    ${code_list_item} removed
     Sleep    3
 
 Delete extension before code list
@@ -310,7 +310,7 @@ Delete extension before code list
     \    Click element    ${EXTENSION_DELETE_BTN}
     \    Wait Until Page Contains Element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
     \    Click Element    ${CONFIRM_DELETE_EXTENSION_BTN}
-    \    Log to Console    Extension deleted
+    \    Log To Console    Extension deleted
     \    Sleep    3
     \    ${exit}=    Run Keyword And Return Status    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
     \    Exit For Loop If    ${exit}
@@ -328,7 +328,7 @@ Create DPM extension
     Wait Until Element Is Enabled    ${START_DATE_INPUT}    timeout=20
     Input Text    ${START_DATE_INPUT}    2018-11-01
     Wait Until Element Is Enabled    ${END_DATE_INPUT}    timeout=20
-    Input text    ${END_DATE_INPUT}    2020-11-01
+    Input Text    ${END_DATE_INPUT}    2020-11-01
     Wait Until Element Is Enabled    ${CODE_STATUS_DDL}    timeout=20
     Click Element    ${CODE_STATUS_DDL}
     Wait Until Page Contains Element    ${extension_status}    timeout=20
@@ -337,4 +337,4 @@ Create DPM extension
     Click Element    ${SAVE_EXTENSION}
     Sleep    2
     Wait Until Element Is Enabled    ${MODIFY_EXTENSION_BTN}    timeout=60
-    Log to Console    DPM extension created
+    Log To Console    DPM extension created

@@ -35,15 +35,15 @@ Open Tool
     Set Selenium Speed    ${SELENIUM_SPEED}
     Sleep    2
     ${has_eDuuni_login}=    Run Keyword And Return Status    Page Should Contain    Sign In
-    run keyword if    ${has_eDuuni_login}    eDuuni Login
+    Run Keyword If    ${has_eDuuni_login}    eDuuni Login
     ...    ELSE    Login
 
 Login
     ${login_link}=    Get WebElement    //*[contains(@id,'in_link')]
     Wait Until Element Is Enabled    ${login_link}    timeout=30
-    Click element    ${login_link}
+    Click Element    ${login_link}
     Wait Until Element Is Enabled    ${LOGIN_MODAL_BTN}    timeout=30
-    Click element    ${LOGIN_MODAL_BTN}
+    Click Element    ${LOGIN_MODAL_BTN}
     eDuuni Login
 
 eDuuni Login
@@ -53,24 +53,24 @@ eDuuni Login
     Wait Until Element Is Enabled    ${CONTINUE_LOGIN_BTN}    timeout=30
     Click Element    ${CONTINUE_LOGIN_BTN}
     ${has_id_element}=    Run Keyword And Return Status    Page Should Contain Element    ${ID_ELEMENT_HOOK}    limit=1
-    run keyword if    ${has_id_element}    Login With Id Field Id
+    Run Keyword If    ${has_id_element}    Login With Id Field Id
     ...    ELSE    Login With Id Field Xpath
 
 Login With Id Field Id
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK}    timeout=20
-    Input text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
+    Input Text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
     Continue Login
 
 Login With Id Field Xpath
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_XPATH}
-    Input text    ${ID_ELEMENT_HOOK_XPATH}    ${TEST_EMAIL}
+    Input Text    ${ID_ELEMENT_HOOK_XPATH}    ${TEST_EMAIL}
     Continue Login
 
 Continue Login
     Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK}    timeout=20
-    Click element    ${ID_NEXT_ELEMENT_HOOK}
+    Click Element    ${ID_NEXT_ELEMENT_HOOK}
     Wait Until Element Is Enabled    ${PASSWORD_ELEMENT_HOOK}    timeout=20
-    Input text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
+    Input Text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
     Wait Until Element Is Enabled    ${PASSWORD_NEXT_ELEMENT_HOOK}    timeout=20
     Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
 

@@ -50,8 +50,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
@@ -61,21 +61,21 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
-    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
-    Click button    ${EXPAND_ALL_BTN}
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
-    Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    testikoodi02    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    Testikoodi 02    timeout=20
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait Until Page Contains Element    ${EXPAND_ALL_BTN}    timeout=20
+    Click Button    ${EXPAND_ALL_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
+    Click Element    //*[contains(text(), "${TEST_CODE_2}")]
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    testikoodi02    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    Testikoodi 02    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
     Check values from Valid Code list
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
@@ -87,12 +87,12 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Wait until page contains    6 koodia    timeout=20
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Page Contains    6 koodia    timeout=20
+    Wait Until Page Contains    koodi500 - Koodi500    timeout=20
+    Wait Until Page Contains    koodi503 - Koodi503    timeout=20
+    Wait Until Page Contains    koodi504 - Koodi504    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
@@ -104,15 +104,15 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Wait until page contains    6 koodia    timeout=20
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Wait Until Page Contains    6 koodia    timeout=20
+    Wait Until Page Contains    koodi500 - Koodi500    timeout=20
+    Wait Until Page Contains    koodi503 - Koodi503    timeout=20
+    Wait Until Page Contains    koodi504 - Koodi504    timeout=20
     Import codes in Excel format
     Upload codes    ${Update_Codes}
     Wait Until Element Is Enabled    ${CODELIST_CODES_TAB}    timeout=60
-    Click element    ${CODELIST_CODES_TAB}
-    Wait until page contains    6 koodia    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Page Contains    6 koodia    timeout=20
     Check updated code listing
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
@@ -123,18 +123,18 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
-    Wait until page contains    NewCode001 - newCode001    timeout=30
-    Wait until page contains    koodisto6000    timeout=20
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    NewCode001    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    newCode001    timeout=20
+    Wait Until Page Contains    NewCode001 - newCode001    timeout=30
+    Wait Until Page Contains    koodisto6000    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    NewCode001    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    newCode001    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Remove code    NewCode001 - newCode001
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    koodisto6000    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
@@ -144,7 +144,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
-    Wait until page contains    8 koodia    timeout=20
+    Wait Until Page Contains    8 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_9}    Asuminen
     Sleep    1
@@ -158,46 +158,46 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Multiple_codelists_and_codes}    ${CODE_LIST_10}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}")]
-    Wait until page contains    ${CODE_LIST_10}    timeout=20
-    Log to Console    koodisto7001 found
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
-    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
-    Click button    ${EXPAND_ALL_BTN}
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
-    Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    testikoodi02    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    Testikoodi 02    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait Until Page Contains    ${CODE_LIST_10}    timeout=20
+    Log To Console    koodisto7001 found
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait Until Page Contains Element    ${EXPAND_ALL_BTN}    timeout=20
+    Click Button    ${EXPAND_ALL_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
+    Click Element    //*[contains(text(), "${TEST_CODE_2}")]
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    testikoodi02    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    Testikoodi 02    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_11}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_11}")]
-    Wait until page contains    ${CODE_LIST_11}    timeout=20
-    Log to Console    koodisto7002 found
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains    testikoodi11 - Testikoodi 11    timeout=20
-    Wait until page contains    testikoodi14 - Testikoodi 14    timeout=20
-    Wait until page contains    testikoodi16 - Testikoodi 16    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_11}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_11}")]
+    Wait Until Page Contains    ${CODE_LIST_11}    timeout=20
+    Log To Console    koodisto7002 found
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains    testikoodi11 - Testikoodi 11    timeout=20
+    Wait Until Page Contains    testikoodi14 - Testikoodi 14    timeout=20
+    Wait Until Page Contains    testikoodi16 - Testikoodi 16    timeout=20
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_12}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_12}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_12}")]
-    Wait until page contains    ${CODE_LIST_12}    timeout=20
-    Log to Console    koodisto7003 found
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains    testikoodi21 - Testikoodi 21    timeout=20
-    Wait until page contains    testikoodi24 - Testikoodi 24    timeout=20
-    Wait until page contains    testikoodi26 - Testikoodi 26    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_12}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_12}")]
+    Wait Until Page Contains    ${CODE_LIST_12}    timeout=20
+    Log To Console    koodisto7003 found
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains    testikoodi21 - Testikoodi 21    timeout=20
+    Wait Until Page Contains    testikoodi24 - Testikoodi 24    timeout=20
+    Wait Until Page Contains    testikoodi26 - Testikoodi 26    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_11}    ${CODE_LIST_12}
 
@@ -207,16 +207,16 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Codelist_with_defaultcode}    ${CODE_LIST_15}
-    Wait until page contains    6 koodia    timeout=20
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    T1333    timeout=20
-    Wait until page contains    Vakiokoodikoodisto    timeout=20
-    Wait until page contains    Vakiokoodi    timeout=20
-    Wait until page contains    koodi502 - Koodi502    timeout=20
+    Wait Until Page Contains    6 koodia    timeout=20
+    Wait Until Page Contains    koodi500 - Koodi500    timeout=20
+    Wait Until Page Contains    koodi503 - Koodi503    timeout=20
+    Wait Until Page Contains    koodi504 - Koodi504    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    T1333    timeout=20
+    Wait Until Page Contains    Vakiokoodikoodisto    timeout=20
+    Wait Until Page Contains    Vakiokoodi    timeout=20
+    Wait Until Page Contains    koodi502 - Koodi502    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_15}
 
@@ -228,35 +228,35 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Wait until page contains    6 koodia    timeout=20
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
-    Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
-    Click element    ${ADD_DEFAULTCODE_BTN}
-    Wait until page contains element    ${SEARCH_DEFAULTCODE_INPUT}
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Page Contains    6 koodia    timeout=20
+    Wait Until Page Contains    koodi500 - Koodi500    timeout=20
+    Wait Until Page Contains    koodi503 - Koodi503    timeout=20
+    Wait Until Page Contains    koodi504 - Koodi504    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
+    Click Element    ${MODIFY_CODE_LIST}
+    Wait Until Page Contains Element    ${ADD_DEFAULTCODE_BTN}
+    Click Element    ${ADD_DEFAULTCODE_BTN}
+    Wait Until Page Contains Element    ${SEARCH_DEFAULTCODE_INPUT}
     Input Text    ${SEARCH_DEFAULTCODE_INPUT}    505
-    Wait until page contains element    //*[contains(text(), "Koodi505")]
-    Click element    //*[contains(text(), "Koodi505")]
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=60
-    Wait until page contains    Vakiokoodi    timeout=20
-    Wait until page contains    koodi505 - Koodi505    timeout=20
-    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
+    Wait Until Page Contains Element    //*[contains(text(), "Koodi505")]
+    Click Element    //*[contains(text(), "Koodi505")]
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=60
+    Wait Until Page Contains    Vakiokoodi    timeout=20
+    Wait Until Page Contains    koodi505 - Koodi505    timeout=20
+    Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=20
+    Click Element    ${MODIFY_CODE_LIST}
     Sleep    2
-    Wait until page contains element    ${REMOVE_DEFAULTCODE}    timeout=20
-    Click element    ${REMOVE_DEFAULTCODE}
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until element is visible    ${MODIFY_CODE_LIST}    timeout=20
+    Wait Until Page Contains Element    ${REMOVE_DEFAULTCODE}    timeout=20
+    Click Element    ${REMOVE_DEFAULTCODE}
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=20
     Sleep    1
     Page should not contain    Vakiokoodi
     Page should not contain    koodi505 - Koodi505
@@ -270,10 +270,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in CSV format
     Upload codes    ${Draft_Codes_with_broader_csv}
-    Wait until page contains    6 koodia    timeout=20
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Wait Until Page Contains    6 koodia    timeout=20
+    Wait Until Page Contains    koodi500 - Koodi500    timeout=20
+    Wait Until Page Contains    koodi503 - Koodi503    timeout=20
+    Wait Until Page Contains    koodi504 - Koodi504    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
 
@@ -283,60 +283,60 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ...    and concept URI is correct. YTI-787.
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Terminologies
-    Log to Console    Vocabulary added
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=60
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=60
-    Click element    ${CREATE CODE_LIST_BTN}
-    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=60
-    Click element    ${VOCABULARY_SELECTION_DDL}
-    Wait until page contains element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
-    Click element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
-    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Log To Console    Vocabulary added
+    Wait Until Page Contains Element    ${ADD_CODE_LIST_BTN}    timeout=60
+    Click Element    ${ADD_CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${CREATE CODE_LIST_BTN}    timeout=60
+    Click Element    ${CREATE CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${VOCABULARY_SELECTION_DDL}    timeout=60
+    Click Element    ${VOCABULARY_SELECTION_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
+    Click Element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
+    Wait Until Page Contains Element    ${SEARCH_CONCEPT_INPUT}    timeout=20
     Input Text    ${SEARCH_CONCEPT_INPUT}    tutkija
-    Wait until page contains element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]    timeout=60
-    Click element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]
-    Log to Console    Concept added
-    Wait until element is visible    ${SELECT_REGISTRY_BTN}    timeout=30
-    Click element    ${SELECT_REGISTRY_BTN}
+    Wait Until Page Contains Element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]    timeout=60
+    Click Element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]
+    Log To Console    Concept added
+    Wait Until Element Is Visible    ${SELECT_REGISTRY_BTN}    timeout=30
+    Click Element    ${SELECT_REGISTRY_BTN}
     Wait Until Element Is Enabled    //*[contains(text(), "${REGISTRY_1}")]    timeout=30
     Click Element    //*[contains(text(), "${REGISTRY_1}")]
-    Log to Console    Registry added
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
-    Click button    ${ADD_CLASSIFICATION_BTN}
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
-    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=60
-    Click element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
-    Click button    ${ADD_ORGANIZATION_BTN}
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
-    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=60
-    Click element    //*[contains(text(), "Testiorganisaatio")]
+    Log To Console    Registry added
+    Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
+    Click Button    ${ADD_CLASSIFICATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input Text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=60
+    Click Element    //*[contains(text(), "Asuminen")]
+    Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click Button    ${ADD_ORGANIZATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
+    Wait Until Page Contains Element    //*[contains(text(), "Testiorganisaatio")]    timeout=60
+    Click Element    //*[contains(text(), "Testiorganisaatio")]
     Sleep    2
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Wait until element is visible    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    Code list saved
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Koodisto6000    timeout=20
-    Wait until page contains    tutkija    timeout=20
-    Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
-    Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
+    Click Element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
+    Log To Console    Code list saved
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Koodisto6000    timeout=20
+    Wait Until Page Contains    tutkija    timeout=20
+    Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
+    Wait Until Page Contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     ${uri_environment}=    Convert To Lowercase    ${ENVIRONMENT_IDENTIFIER}
     ${concept_uri}=    Catenate    SEPARATOR=    ${concept_uri_prefix}    ${uri_environment}
-    Click element    //*[contains(text(), "${concept_uri}")]
+    Click Element    //*[contains(text(), "${concept_uri}")]
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    Wait until page contains    Suositettava termi    timeout=60
-    Wait until page contains    tutkija    timeout=60
-    Wait until page contains    Person who does the research    timeout=60
-    Wait until page contains    http://uri.suomi.fi/terminology/111/concept-1    timeout=60
+    Wait Until Page Contains    Suositettava termi    timeout=60
+    Wait Until Page Contains    tutkija    timeout=60
+    Wait Until Page Contains    Person who does the research    timeout=60
+    Wait Until Page Contains    http://uri.suomi.fi/terminology/111/concept-1    timeout=60
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
-    Log to Console    Code list values and concept URI checked
+    Log To Console    Code list values and concept URI checked
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown concept for code list from Terminologies
 
@@ -346,12 +346,12 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Terminologies
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
     Check values from Draft Code list
     Create new code to code list with concept    Tutkija    Testiautomaatiosanasto
-    Wait until page contains    NewCode001 - tutkija    timeout=20
-    Wait until page contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
+    Wait Until Page Contains    NewCode001 - tutkija    timeout=20
+    Wait Until Page Contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Test Case Teardown Code with concept
 
@@ -361,113 +361,113 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
-    Wait until page contains element    ${EXPAND_ALL_BTN}    timeout=20
-    Log to Console    Codes visible and expand button shown
-    Click button    ${EXPAND_ALL_BTN}
-    Log to Console    Expand all button clicked
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
-    Click element    //*[contains(text(), "${TEST_CODE_2}")]
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    testikoodi02    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    Testikoodi 02    timeout=20
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    ${MODIFY_CODE_BTN}
-    Log to Console    Modify code button clicked
-    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
-    Click element    ${ADD_LINK_DDL}
-    Wait until page contains element    ${LINK_BTN}    timeout=20
-    Click element    ${LINK_BTN}
-    Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
-    Click element    ${LINK_URL_INPUT}
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait Until Page Contains Element    ${EXPAND_ALL_BTN}    timeout=20
+    Log To Console    Codes visible and expand button shown
+    Click Button    ${EXPAND_ALL_BTN}
+    Log To Console    Expand all button clicked
+    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_2}")]    timeout=20
+    Click Element    //*[contains(text(), "${TEST_CODE_2}")]
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    testikoodi02    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    Testikoodi 02    timeout=20
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=20
+    Click Element    ${MODIFY_CODE_BTN}
+    Log To Console    Modify code button clicked
+    Wait Until Page Contains Element    ${ADD_LINK_DDL}    timeout=30
+    Click Element    ${ADD_LINK_DDL}
+    Wait Until Page Contains Element    ${LINK_BTN}    timeout=20
+    Click Element    ${LINK_BTN}
+    Wait Until Page Contains Element    ${LINK_URL_INPUT}    timeout=20
+    Click Element    ${LINK_URL_INPUT}
     Sleep    1
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait Until Element Is Enabled    ${ADD_BTN}    timeout=60
-    Click element    ${ADD_BTN}
-    Wait until page contains    Liittyvä linkki    timeout=20
-    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
-    Wait until element is visible    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=60
+    Click Element    ${ADD_BTN}
+    Wait Until Page Contains    Liittyvä linkki    timeout=20
+    Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
+    Wait Until Element Is Visible    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Click Element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
     Sleep    3
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
-    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
-    Click element    ${ADD_LINK_DDL}
-    Wait until page contains element    ${LICENSE_BTN}    timeout=20
-    Click element    ${LICENSE_BTN}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
+    Click Element    ${MODIFY_CODE_LIST}
+    Wait Until Page Contains Element    ${ADD_LINK_DDL}    timeout=30
+    Click Element    ${ADD_LINK_DDL}
+    Wait Until Page Contains Element    ${LICENSE_BTN}    timeout=20
+    Click Element    ${LICENSE_BTN}
     Sleep    1
-    Wait until page contains element    ${CCBY4.0}    timeout=20
+    Wait Until Page Contains Element    ${CCBY4.0}    timeout=20
     Click Element    ${CCBY4.0}
-    Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
+    Wait Until Page Contains Element    ${SELECT_LINK_BTN}    timeout=20
     Click Element    ${SELECT_LINK_BTN}
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
-    Click element    ${SAVE_CODE_LIST_MOD_BTN}
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait Until Page Contains Element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
+    Click Element    ${SAVE_CODE_LIST_MOD_BTN}
     Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=60
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Log to Console    CC by 4.0 added
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Log To Console    CC by 4.0 added
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
     Sleep    1
     Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=60
-    Click element    ${SAVE_NEW_CODE_LIST}
-    Log to Console    New version of code list created
+    Click Element    ${SAVE_NEW_CODE_LIST}
+    Log To Console    New version of code list created
     Wait Until Element Is Visible    ${EXPAND_ALL_BTN}    timeout=60
-    Click element    ${EXPAND_ALL_BTN}
-    Log to Console    Expand all pressed
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-    Wait until page contains    testikoodi02 - Testikoodi 02    timeout=20
-    Wait until page contains    testikoodi03 - Testikoodi 03    timeout=20
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait until page contains    testikoodi05 - Testikoodi 05    timeout=20
-    Wait until page contains    testikoodi06 - Testikoodi 06    timeout=20
-    Wait until page contains    testikoodi07 - Testikoodi 07    timeout=20
-    Wait until page contains    testikoodi08 - Testikoodi 08    timeout=20
-    Wait until page contains    testikoodi09 - Testikoodi 09    timeout=20
-    Wait until page contains    testikoodi10 - Testikoodi 10    timeout=20
-    Log to Console    All codes are copied
-    Click element    //*[contains(text(), "testikoodi02 - Testikoodi 02")]
+    Click Element    ${EXPAND_ALL_BTN}
+    Log To Console    Expand all pressed
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait Until Page Contains    testikoodi02 - Testikoodi 02    timeout=20
+    Wait Until Page Contains    testikoodi03 - Testikoodi 03    timeout=20
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait Until Page Contains    testikoodi05 - Testikoodi 05    timeout=20
+    Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
+    Wait Until Page Contains    testikoodi07 - Testikoodi 07    timeout=20
+    Wait Until Page Contains    testikoodi08 - Testikoodi 08    timeout=20
+    Wait Until Page Contains    testikoodi09 - Testikoodi 09    timeout=20
+    Wait Until Page Contains    testikoodi10 - Testikoodi 10    timeout=20
+    Log To Console    All codes are copied
+    Click Element    //*[contains(text(), "testikoodi02 - Testikoodi 02")]
     Sleep    1
-    Log to Console    Testikoodi 02 clicked
-    Wait until page contains    Liittyvä linkki    timeout=20
-    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
-    Log to Console    Code links copied
+    Log To Console    Testikoodi 02 clicked
+    Wait Until Page Contains    Liittyvä linkki    timeout=20
+    Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
+    Log To Console    Code links copied
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    englanti    timeout=20
-    Wait until page contains    suomi    timeout=20
-    Wait until page contains    ruotsi    timeout=20
-    Wait until page contains    kuvausFI    timeout=20
-    Wait until page contains    määritelmäFI    timeout=20
-    Wait until page contains    muutostietoFI    timeout=20
-    Wait until page contains    101    timeout=20
-    Wait until page contains    lähdeFI    timeout=20
-    Wait until page contains    lakiperusteFI    timeout=20
-    Wait until page contains    sitovuustasoFI    timeout=20
-    Wait until page contains    Linkit    timeout=20
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Log to Console    All code list values and links copied
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    englanti    timeout=20
+    Wait Until Page Contains    suomi    timeout=20
+    Wait Until Page Contains    ruotsi    timeout=20
+    Wait Until Page Contains    kuvausFI    timeout=20
+    Wait Until Page Contains    määritelmäFI    timeout=20
+    Wait Until Page Contains    muutostietoFI    timeout=20
+    Wait Until Page Contains    101    timeout=20
+    Wait Until Page Contains    lähdeFI    timeout=20
+    Wait Until Page Contains    lakiperusteFI    timeout=20
+    Wait Until Page Contains    sitovuustasoFI    timeout=20
+    Wait Until Page Contains    Linkit    timeout=20
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Log To Console    All code list values and links copied
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
@@ -477,7 +477,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
-    Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
+    Wait Until Page Contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
@@ -488,7 +488,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
-    Wait until page contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
+    Wait Until Page Contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
     Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
     [Teardown]    Delete empty registry    Rekisteri123 - Automaatiorekisteri
@@ -503,61 +503,61 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    2
     Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
     Sleep    2
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
-    Click element    ${ATTACH_VARIANT_BTN}
-    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click Element    ${ATTACH_VARIANT_BTN}
+    Wait Until Page Contains Element    ${SEARCH_VARIANT_INPUT}    timeout=20
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto6000
-    Wait until page contains element    //*[contains(text(), "koodisto6000")]    timeout=20
-    Click element    //*[contains(text(), "koodisto6000")]
-    Log to Console    koodisto6000 attached to koodisto7000
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
-    Click element    ${CODELIST_VARIANTS_TAB}
-    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
-    Wait until page contains    Voimassaolo    timeout=20
-    Wait until page contains    Nimi    timeout=20
-    Wait until page contains    Tila    timeout=20
-    Wait until page contains    31.12.2016 - 31.12.2018    timeout=20
-    Wait until page contains    koodisto6000    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "koodisto6000")]    timeout=20
+    Click Element    //*[contains(text(), "koodisto6000")]
+    Log To Console    koodisto6000 attached to koodisto7000
+    Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click Element    ${CODELIST_VARIANTS_TAB}
+    Wait Until Page Contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait Until Page Contains    Voimassaolo    timeout=20
+    Wait Until Page Contains    Nimi    timeout=20
+    Wait Until Page Contains    Tila    timeout=20
+    Wait Until Page Contains    31.12.2016 - 31.12.2018    timeout=20
+    Wait Until Page Contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_8}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_8}")]
-    Wait until page contains    ${CODE_LIST_8}    timeout=30
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
-    Click element    ${ATTACH_VARIANT_BTN}
-    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_8}")]
+    Wait Until Page Contains    ${CODE_LIST_8}    timeout=30
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click Element    ${ATTACH_VARIANT_BTN}
+    Wait Until Page Contains Element    ${SEARCH_VARIANT_INPUT}    timeout=20
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
-    Wait until page contains element    //*[contains(text(), "koodisto7000")]    timeout=20
-    Click element    //*[contains(text(), "koodisto7000")]
-    Log to Console    koodisto7000 attached to koodisto6000
+    Wait Until Page Contains Element    //*[contains(text(), "koodisto7000")]    timeout=20
+    Click Element    //*[contains(text(), "koodisto7000")]
+    Log To Console    koodisto7000 attached to koodisto6000
     Wait Until Element Is Enabled    ${CODELIST_VARIANTS_TAB}    timeout=30
-    Click element    ${CODELIST_VARIANTS_TAB}
-    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
-    Wait until page contains    Voimassaolo    timeout=20
-    Wait until page contains    Nimi    timeout=20
-    Wait until page contains    Tila    timeout=20
-    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    Wait until page contains    koodisto7000    timeout=20
-    Wait until page contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
-    Wait until page contains element    //*[contains(@id,'detach_variant_')]    timeout=20
+    Click Element    ${CODELIST_VARIANTS_TAB}
+    Wait Until Page Contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait Until Page Contains    Voimassaolo    timeout=20
+    Wait Until Page Contains    Nimi    timeout=20
+    Wait Until Page Contains    Tila    timeout=20
+    Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
+    Wait Until Page Contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
+    Wait Until Page Contains Element    //*[contains(@id,'detach_variant_')]    timeout=20
     Click Element    //*[contains(@id,'detach_variant_')]
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
     Wait Until Page Does Not Contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=60
-    Log to Console    Variant removed
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=20
-    Click element    //*[contains(text(), "${CODE_LIST_8}")]
-    Wait until page contains    koodisto6000    timeout=20
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
-    Click element    ${CODELIST_VARIANTS_TAB}
+    Log To Console    Variant removed
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_8}")]    timeout=20
+    Click Element    //*[contains(text(), "${CODE_LIST_8}")]
+    Wait Until Page Contains    koodisto6000    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click Element    ${CODELIST_VARIANTS_TAB}
     Page should not contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
-    Wait until page contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
-    Wait until page contains    koodisto7000    timeout=20
+    Wait Until Page Contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
 
@@ -590,38 +590,38 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ...    YTI-848.
     [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Terminologies
-    Wait until page contains element    ${ADD_CODE_LIST_BTN}    timeout=20
-    Click element    ${ADD_CODE_LIST_BTN}
-    Wait until page contains element    ${CREATE CODE_LIST_BTN}    timeout=20
-    Click element    ${CREATE CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Click Element    ${ADD_CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Click Element    ${CREATE CODE_LIST_BTN}
     Sleep    2
     Suggest concept to Terminologies    automob    Testiautomaatiosanasto (Luonnos)    automobiili    Tämä on kulkuneuvo
     Sleep    2
-    Wait until page contains element    ${SELECT_REGISTRY_BTN}    timeout=20
-    Click element    ${SELECT_REGISTRY_BTN}
+    Wait Until Page Contains Element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Click Element    ${SELECT_REGISTRY_BTN}
     Wait Until Element Is Enabled    //*[contains(text(), "${REGISTRY_1}")]    timeout=30
     Click Element    //*[contains(text(), "${REGISTRY_1}")]
-    Wait until page contains element    ${CODE_LIST_VALUE_INPUT}
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
-    Click button    ${ADD_CLASSIFICATION_BTN}
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
-    Wait until page contains element    //*[contains(text(), "Asuminen")]    timeout=20
-    Click element    //*[contains(text(), "Asuminen")]
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=20
-    Click button    ${ADD_ORGANIZATION_BTN}
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
-    Wait until page contains element    //*[contains(text(), "Testiorganisaatio")]    timeout=20
-    Click element    //*[contains(text(), "Testiorganisaatio")]
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
+    Click Button    ${ADD_CLASSIFICATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input Text    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=20
+    Click Element    //*[contains(text(), "Asuminen")]
+    Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click Button    ${ADD_ORGANIZATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
+    Wait Until Page Contains Element    //*[contains(text(), "Testiorganisaatio")]    timeout=20
+    Click Element    //*[contains(text(), "Testiorganisaatio")]
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Koodisto6000    timeout=20
-    Wait until page contains    automobiili    timeout=20
-    Wait until page contains    Käsitteen URI Sanastot-työkalussa    timeout=20
-    Wait until page contains    Tämä on kulkuneuvo    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Koodisto6000    timeout=20
+    Wait Until Page Contains    automobiili    timeout=20
+    Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
+    Wait Until Page Contains    Tämä on kulkuneuvo    timeout=20
     Return to Koodistot frontpage
     Close All Browsers
     Check concept suggestion in Terminologies
@@ -633,25 +633,25 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Terminologies
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Sleep    1
-    Log to Console    Code list without codes imported
+    Log To Console    Code list without codes imported
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Element    ${CODE_LIST_DDL}
     Wait Until Page Contains Element    ${CREATE_CODE_BTN}    timeout=20
     Click Element    ${CREATE_CODE_BTN}
     Suggest concept to Terminologies    automob    Testiautomaatiosanasto (Luonnos)    automobiili    Tämä on kulkuneuvo
-    Log to Console    Concept suggested to Terminologies
+    Log To Console    Concept suggested to Terminologies
     Wait Until Page Contains Element    ${CODE_CODEVALUE_INPUT}    timeout=20
-    Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
+    Input Text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Sleep    1
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click Element    ${SAVE_NEW_CODE_BTN}
-    Log to Console    New code name saved
+    Log To Console    New code name saved
     Sleep    5
     Wait Until Page Contains    Koodisto6000    timeout=20
     Wait Until Page Contains    automobiili    timeout=20
     Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait Until Page Contains    Tämä on kulkuneuvo    timeout=20
-    Log to Console    Code values checked
+    Log To Console    Code values checked
     Return to Koodistot frontpage
     Close All Browsers
     Check concept suggestion in Terminologies
@@ -668,13 +668,13 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
     Wait Until Page Contains Element    ${EXPAND_ALL_BTN}    timeout=20
-    Log to Console    Codes visible and expand button shown
+    Log To Console    Codes visible and expand button shown
     Click Button    ${EXPAND_ALL_BTN}
     Sleep    3
-    Log to Console    Expand all button clicked
+    Log To Console    Expand all button clicked
     Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
     Click Element    ${CODELIST_INFO_TAB}
-    Log to Console    Back button press successful from Code page
+    Log To Console    Back button press successful from Code page
     Sleep    2
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
     Click Element    ${MODIFY_CODE_LIST}
@@ -710,31 +710,31 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
-    Log to Console    links are saved
+    Log To Console    links are saved
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
     Sleep    2
     Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click Button    ${CREATE_NEW_VERSION_BTN}
     Sleep    7
-    Log to Console    Create new version button pressed
+    Log To Console    Create new version button pressed
     Wait Until Page Contains Element    ${CREATE_CODELIST_VERSION_AS_EMPTY}    timeout=20
     Click Element    ${CREATE_CODELIST_VERSION_AS_EMPTY}
     Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}    timeout=20
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Sleep    1
     Wait Until Page Contains Element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click Element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
     Wait Until Page Contains Element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click Element    ${CONFIRMATION_YES_BTN}
-    Log to Console    Code list saved
-    Log to Console    New code list version created as empty
+    Log To Console    Code list saved
+    Log To Console    New code list version created as empty
     Page Should Not Contain    10 koodia    timeout=20
     Page Should Not Contain    testikoodi01 - Testikoodi 01    timeout=20
-    Log to Console    Codes were not copied
+    Log To Console    Codes were not copied
     Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
     Click Element    ${CODELIST_INFO_TAB}
     Sleep    1
@@ -753,7 +753,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
-    Log to Console    Links are copied
+    Log To Console    Links are copied
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
@@ -766,24 +766,24 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
     Sleep    2
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
+    Click Element    ${FILE_FORMAT_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
+    Click Element    ${FILE_FORMAT_Excel}
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
-    Wait until page contains element    ${VERSION_TAB}    timeout=20
-    Click element    ${VERSION_TAB}
-    Log to Console    Codelist info tab clicked
-    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    Wait until page contains    Koodisto600    timeout=20
-    Wait until page contains    koodisto7000    timeout=20
-    Wait until page contains    Luonnos    timeout=20
-    Wait until page contains    Voimassa oleva    timeout=20
+    Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
+    Click Element    ${VERSION_TAB}
+    Log To Console    Codelist info tab clicked
+    Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait Until Page Contains    Koodisto600    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
+    Wait Until Page Contains    Luonnos    timeout=20
+    Wait Until Page Contains    Voimassa oleva    timeout=20
     Sleep    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_9}
@@ -795,14 +795,14 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=60
+    Wait Until Page Contains    10 koodia    timeout=60
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
     Click Element    ${CODE_LIST_DDL}
     Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
     Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
+    Click Element    ${FILE_FORMAT_BTN}
     Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
+    Click Element    ${FILE_FORMAT_Excel}
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_version2}    ${CODE_LIST_10}
     Wait Until Page Contains    10 koodia    timeout=60
@@ -844,10 +844,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Click Element    //*[contains(text(), "${CODE_LIST_10}")]
     Wait Until Page Contains    ${CODE_LIST_10}
     Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
-    Click element    ${VERSION_TAB}
+    Click Element    ${VERSION_TAB}
     Sleep    1
     Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
     Page Should Not Contain    03.03.2018 - 31.03.2018
@@ -874,49 +874,49 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Import code list in Excel format
     Upload code list    ${Variant_no_end_date}    ${CODE_LIST_8}
     Sleep    2
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
-    Click element    ${ATTACH_VARIANT_BTN}
-    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click Element    ${ATTACH_VARIANT_BTN}
+    Wait Until Page Contains Element    ${SEARCH_VARIANT_INPUT}    timeout=20
     Sleep    2
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
     Sleep    2
-    Click element    //*[contains(text(), "koodisto7000")]
+    Click Element    //*[contains(text(), "koodisto7000")]
     Sleep    2
-    Log to Console    koodisto7000 attached to koodisto6000 as a variant
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
-    Click element    ${CODELIST_VARIANTS_TAB}
-    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
-    Wait until page contains    Voimassaolo    timeout=20
-    Wait until page contains    Nimi    timeout=20
-    Wait until page contains    Tila    timeout=20
-    Wait until page contains    02.03.2018 - 30.03.2018    timeout=20
-    Wait until page contains    koodisto7000    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    01.11.2018 -    timeout=20
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
+    Log To Console    koodisto7000 attached to koodisto6000 as a variant
+    Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click Element    ${CODELIST_VARIANTS_TAB}
+    Wait Until Page Contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait Until Page Contains    Voimassaolo    timeout=20
+    Wait Until Page Contains    Nimi    timeout=20
+    Wait Until Page Contains    Tila    timeout=20
+    Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    01.11.2018 -    timeout=20
+    Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
+    Click Element    ${MODIFY_CODE_LIST}
     Sleep    2
-    Wait until page contains element    ${END_DATE_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${END_DATE_INPUT}    timeout=20
     Input Text    ${END_DATE_INPUT}    2018-11-30
     Save code list
     Sleep    2
-    Wait until page contains    01.11.2018 - 30.11.2018    timeout=20
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
-    Click element    ${CODELIST_VARIANTS_TAB}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=20
-    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Wait Until Page Contains    01.11.2018 - 30.11.2018    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click Element    ${CODELIST_VARIANTS_TAB}
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=20
+    Click Element    //*[contains(text(), "${CODE_LIST_9}")]
     Sleep    3
     Select Window    url=${REFERENCE_DATA_ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=Koodisto7000
-    Wait until page contains    koodisto7000    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
     Sleep    2
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
-    Click element    ${CODELIST_VARIANTS_TAB}
-    Wait until page contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
-    Wait until page contains    koodisto6000    timeout=20
-    Wait until page contains    01.11.2018 - 30.11.2018    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click Element    ${CODELIST_VARIANTS_TAB}
+    Wait Until Page Contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
+    Wait Until Page Contains    koodisto6000    timeout=20
+    Wait Until Page Contains    01.11.2018 - 30.11.2018    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
 
@@ -928,53 +928,53 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Import code list in Excel format
     Upload codelist    ${Code_list_with_links}    ${CODE_LIST_21}
     Sleep    2
-    Wait until page contains    30 koodia    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Käyttöedellytys    timeout=20
-    Wait until page contains    Testikäyttöedellytys    timeout=20
-    Wait until page contains    Käyttökohde    timeout=20
-    Wait until page contains    Testikäyttökohde    timeout=20
-    Wait until page contains    Käyttöohje    timeout=20
-    Wait until page contains    Testikäyttöohje    timeout=20
-    Wait until page contains    Liittyvä standardi    timeout=20
-    Wait until page contains    Testi liittyvä standardi    timeout=20
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=20
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains    Liittyvä linkki    timeout=20
-    Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
-    Wait until page contains    Julkaisu    timeout=20
-    Wait until page contains    Testijulkaisu_fi    timeout=20
-    Wait until page contains element    ${EXPORT_DDL}    timeout=20
-    Click element    ${EXPORT_DDL}
-    Click element    ${EXPORT_TYPE_EXCEL}
+    Wait Until Page Contains    30 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Käyttöedellytys    timeout=20
+    Wait Until Page Contains    Testikäyttöedellytys    timeout=20
+    Wait Until Page Contains    Käyttökohde    timeout=20
+    Wait Until Page Contains    Testikäyttökohde    timeout=20
+    Wait Until Page Contains    Käyttöohje    timeout=20
+    Wait Until Page Contains    Testikäyttöohje    timeout=20
+    Wait Until Page Contains    Liittyvä standardi    timeout=20
+    Wait Until Page Contains    Testi liittyvä standardi    timeout=20
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=20
+    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Wait Until Page Contains    Liittyvä linkki    timeout=20
+    Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
+    Wait Until Page Contains    Julkaisu    timeout=20
+    Wait Until Page Contains    Testijulkaisu_fi    timeout=20
+    Wait Until Page Contains Element    ${EXPORT_DDL}    timeout=20
+    Click Element    ${EXPORT_DDL}
+    Click Element    ${EXPORT_TYPE_EXCEL}
     Sleep    2
-    Wait until page contains element    ${EXPORT_DDL}    timeout=20
-    Click element    ${EXPORT_DDL}
-    Click element    ${EXPORT_TYPE_CSV}
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
+    Wait Until Page Contains Element    ${EXPORT_DDL}    timeout=20
+    Click Element    ${EXPORT_DDL}
+    Click Element    ${EXPORT_TYPE_CSV}
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
     Sleep    1
-    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
-    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Uusi lisenssi    timeout=20
-    Wait until page contains    Lähde    timeout=20
-    Wait until page contains    Uusi lähde    timeout=20
-    Wait until page contains    Liittyvä linkki    timeout=20
-    Wait until page contains    käyttöohje.fi    timeout=20
-    Wait until page contains    Normilinkki_fi    timeout=20
-    Wait until page contains    Julkaisu    timeout=20
-    Wait until page contains    Testijulkaisu_fi    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click Element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Uusi lisenssi    timeout=20
+    Wait Until Page Contains    Lähde    timeout=20
+    Wait Until Page Contains    Uusi lähde    timeout=20
+    Wait Until Page Contains    Liittyvä linkki    timeout=20
+    Wait Until Page Contains    käyttöohje.fi    timeout=20
+    Wait Until Page Contains    Normilinkki_fi    timeout=20
+    Wait Until Page Contains    Julkaisu    timeout=20
+    Wait Until Page Contains    Testijulkaisu_fi    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
-    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Uusi lisenssi    timeout=20
-    Wait until page contains    Lähde    timeout=20
-    Wait until page contains    Uusi lähde    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click Element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Uusi lisenssi    timeout=20
+    Wait Until Page Contains    Lähde    timeout=20
+    Wait Until Page Contains    Uusi lähde    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_21}
 
@@ -989,57 +989,57 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    2
     Import code list in Excel format
     Upload code list    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
-    Wait until page contains element    //*[contains(text(), "testcode29 - Testcode 29")]    timeout=20
-    Click element    //*[contains(text(), "testcode29 - Testcode 29")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${SUB_CODE_LIST_BTN}    timeout=20
-    Click element    ${SUB_CODE_LIST_BTN}
-    Wait until page contains element    ${SEARCH_SUB_CODE_LIST_INPUT}    timeout=20
-    Input text    ${SEARCH_SUB_CODE_LIST_INPUT}    Linkkikoodisto
-    Wait until page contains element    //*[contains(text(), "Linkkikoodisto")]    timeout=20
-    Click element    //*[contains(text(), "Linkkikoodisto")]
-    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
-    Click element    ${SAVE_NEW_CODE_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "testcode29 - Testcode 29")]    timeout=20
+    Click Element    //*[contains(text(), "testcode29 - Testcode 29")]
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=20
+    Click Element    ${MODIFY_CODE_BTN}
+    Wait Until Page Contains Element    ${SUB_CODE_LIST_BTN}    timeout=20
+    Click Element    ${SUB_CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${SEARCH_SUB_CODE_LIST_INPUT}    timeout=20
+    Input Text    ${SEARCH_SUB_CODE_LIST_INPUT}    Linkkikoodisto
+    Wait Until Page Contains Element    //*[contains(text(), "Linkkikoodisto")]    timeout=20
+    Click Element    //*[contains(text(), "Linkkikoodisto")]
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_BTN}
     Sleep    3
-    Wait until page contains    Liittyvä koodisto    timeout=20
-    Wait until page contains    200 - Linkkikoodisto    timeout=20
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    id=remove_200_code_scheme_link    timeout=20
-    Click element    id=remove_200_code_scheme_link
-    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
-    Click element    ${SAVE_NEW_CODE_BTN}
+    Wait Until Page Contains    Liittyvä koodisto    timeout=20
+    Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=20
+    Click Element    ${MODIFY_CODE_BTN}
+    Wait Until Page Contains Element    id=remove_200_code_scheme_link    timeout=20
+    Click Element    id=remove_200_code_scheme_link
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_BTN}
     Sleep    3
     Page should not contain    200 - Linkkikoodisto    timeout=20
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${SUB_CODE_LIST_BTN}    timeout=20
-    Click element    ${SUB_CODE_LIST_BTN}
-    Wait until page contains element    ${SEARCH_SUB_CODE_LIST_INPUT}    timeout=20
-    Input text    ${SEARCH_SUB_CODE_LIST_INPUT}    Linkkikoodisto
-    Wait until page contains element    //*[contains(text(), "Linkkikoodisto")]    timeout=20
-    Click element    //*[contains(text(), "Linkkikoodisto")]
-    Wait until page contains element    ${SAVE_NEW_CODE_BTN}    timeout=20
-    Click element    ${SAVE_NEW_CODE_BTN}
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=20
+    Click Element    ${MODIFY_CODE_BTN}
+    Wait Until Page Contains Element    ${SUB_CODE_LIST_BTN}    timeout=20
+    Click Element    ${SUB_CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${SEARCH_SUB_CODE_LIST_INPUT}    timeout=20
+    Input Text    ${SEARCH_SUB_CODE_LIST_INPUT}    Linkkikoodisto
+    Wait Until Page Contains Element    //*[contains(text(), "Linkkikoodisto")]    timeout=20
+    Click Element    //*[contains(text(), "Linkkikoodisto")]
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_BTN}
     Sleep    3
-    Wait until page contains    Liittyvä koodisto    timeout=20
-    Wait until page contains    200 - Linkkikoodisto    timeout=20
+    Wait Until Page Contains    Liittyvä koodisto    timeout=20
+    Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
     Return to Koodistot frontpage
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_21}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_21}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_21}")]
-    Wait until page contains    ${CODE_LIST_21}
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
-    Wait until page contains    ${Error_linked_codelist}    timeout=20
-    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
-    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_21}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_21}")]
+    Wait Until Page Contains    ${CODE_LIST_21}
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click Element    ${DELETE_CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Page Contains    ${Error_linked_codelist}    timeout=20
+    Wait Until Page Contains Element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click Element    ${CLOSE_ERROR_MESSAGE_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_21}
 
@@ -1054,20 +1054,20 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    2
     Import code list in Excel format
     Upload code list    ${Code_list_with_sub_code_list_in_code}    ${CODE_LIST_16}
-    Wait until page contains element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
-    Click element    //*[contains(text(), "testcode28 - Testcode 28")]
-    Wait until page contains    Liittyvä koodisto    timeout=20
-    Wait until page contains    200 - Linkkikoodisto    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
+    Click Element    //*[contains(text(), "testcode28 - Testcode 28")]
+    Wait Until Page Contains    Liittyvä koodisto    timeout=20
+    Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Import codes in CSV format
     Upload codes    ${Codes_update_sub_code_list_csv}
     Sleep    2
-    Wait until element is visible    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
-    Click element    //*[contains(text(), "testcode57 - Testcode 57")]
-    Wait until page contains    Liittyvä koodisto    timeout=20
-    Wait until page contains    200 - Linkkikoodisto    timeout=20
+    Wait Until Element Is Visible    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
+    Click Element    //*[contains(text(), "testcode57 - Testcode 57")]
+    Wait Until Page Contains    Liittyvä koodisto    timeout=20
+    Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}    ${CODE_LIST_21}
 
@@ -1076,23 +1076,23 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
+    Wait Until Page Contains    10 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${CODE_LIST_9}
-    Wait until page contains    NewCode001 - newCode001    timeout=20
-    Wait until page contains    koodisto6000    timeout=20
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    NewCode001    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    newCode001    timeout=20
-    Wait until page contains    Koodisto7000 - koodisto7000    timeout=20
+    Wait Until Page Contains    NewCode001 - newCode001    timeout=20
+    Wait Until Page Contains    koodisto6000    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    NewCode001    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    newCode001    timeout=20
+    Wait Until Page Contains    Koodisto7000 - koodisto7000    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Remove code    NewCode001 - newCode001
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    koodisto6000    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
 
@@ -1102,34 +1102,34 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
-    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Sleep    1
-    Wait until page contains element    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    New version of code list created
+    Log To Console    New version of code list created
     Wait Until Element Is Enabled    ${EXPAND_ALL_BTN}    timeout=20
-    Click element    ${EXPAND_ALL_BTN}
+    Click Element    ${EXPAND_ALL_BTN}
     Sleep    1
-    Log to Console    Expand all pressed
-    Wait until page contains    10 koodia    timeout=20
-    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
-    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Log To Console    Expand all pressed
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Element Is Visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Click Element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Remove code    testikoodi01 - Testikoodi 01
-    Wait until page contains    koodisto7001    timeout=20
-    Wait until page contains    testikoodi02 - Testikoodi 02    timeout=20
+    Wait Until Page Contains    koodisto7001    timeout=20
+    Wait Until Page Contains    testikoodi02 - Testikoodi 02    timeout=20
     Page should not contain    testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Element Is Enabled    ${VERSION_TAB}    timeout=20
-    Log to console    Version history tab exists after code was removed
+    Log To Console    Version history tab exists after code was removed
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
@@ -1139,29 +1139,29 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
     Sleep    1
     Wait Until Element Is Enabled    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    New version of code list created
-    Wait until page contains    10 koodia    timeout=20
-    Log to Console    All codes are copied
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Log to Console    Default code is copied
+    Log To Console    New version of code list created
+    Wait Until Page Contains    10 koodia    timeout=20
+    Log To Console    All codes are copied
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
+    Log To Console    Default code is copied
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
@@ -1171,50 +1171,50 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
-    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    New version of code list created
-    Wait until page contains    10 koodia    timeout=20
+    Log To Console    New version of code list created
+    Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Element Is Enabled    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
-    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-    Click element    //*[contains(text(), "Testikoodi 01")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}
-    Click element    ${MODIFY_CODE_BTN}
+    Click Element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
+    Click Element    //*[contains(text(), "Testikoodi 01")]
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}
+    Click Element    ${MODIFY_CODE_BTN}
     Wait Until Element Is Enabled    ${CODE_NAME_INPUT}    timeout=20
-    Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
+    Input Text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
     Wait Until Element Is Enabled    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
     Wait Until Element Is Enabled    ${CODE_SHORT_NAME_INPUT}    timeout=20
     Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains    Tämä on uusi nimi koodille    timeout=20
-    Wait until page contains    Tämä on uusi kuvaus koodille    timeout=20
-    Wait until page contains    Tämä on uusi lyhyt nimi    timeout=20
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}")]
-    Wait until element is visible    ${VERSION_TAB}    timeout=20
-    Log to console    Version history tab exists after code was updated
+    Wait Until Page Contains Element    ${SAVE_CODE_MOD_BTN}
+    Click Element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Page Contains    Tämä on uusi nimi koodille    timeout=20
+    Wait Until Page Contains    Tämä on uusi kuvaus koodille    timeout=20
+    Wait Until Page Contains    Tämä on uusi lyhyt nimi    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
+    Log To Console    Version history tab exists after code was updated
     Return to Koodistot frontpage
     Wait Until Element Is Enabled    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Click Element    ${STATUS_DROPDOWN_BTN}
+    Click Element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
     Sleep    2
-    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Click Element    //*[contains(text(), "${CODE_LIST_9}")]
     Sleep    2
     Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
@@ -1225,64 +1225,64 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
-    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Sleep    1
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    New version of code list created
+    Log To Console    New version of code list created
     Sleep    1
     Return to Koodistot frontpage
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Page Contains Element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click Element    ${STATUS_DROPDOWN_BTN}
+    Click Element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
     Wait Until Element Is Enabled    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_9}")]
-    Wait until page contains    10 koodia    timeout=30
-    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
-    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
-    Click element    //*[contains(text(), "Testikoodi 01")]
+    Click Element    //*[contains(text(), "${CODE_LIST_9}")]
+    Wait Until Page Contains    10 koodia    timeout=30
+    Wait Until Element Is Visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Click Element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
+    Click Element    //*[contains(text(), "Testikoodi 01")]
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}
-    Click element    ${MODIFY_CODE_BTN}
+    Click Element    ${MODIFY_CODE_BTN}
     Wait Until Element Is Enabled    ${CODE_NAME_INPUT}    timeout=20
-    Input text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
-    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
+    Input Text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
+    Wait Until Page Contains Element    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
-    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${CODE_SHORT_NAME_INPUT}    timeout=20
     Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
     Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=30
-    Click element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains    Tämä on uusi nimi koodille    timeout=30
-    Wait until page contains    Tämä on uusi kuvaus koodille    timeout=30
-    Wait until page contains    Tämä on uusi lyhyt nimi    timeout=30
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_9}")]
-    Wait until element is visible    ${VERSION_TAB}    timeout=20
-    Log to console    Version history tab exists after code was updated
+    Click Element    ${SAVE_CODE_MOD_BTN}
+    Wait Until Page Contains    Tämä on uusi nimi koodille    timeout=30
+    Wait Until Page Contains    Tämä on uusi kuvaus koodille    timeout=30
+    Wait Until Page Contains    Tämä on uusi lyhyt nimi    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_9}")]
+    Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
+    Log To Console    Version history tab exists after code was updated
     Return to Koodistot frontpage
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Page Contains Element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click Element    ${STATUS_DROPDOWN_BTN}
+    Click Element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}")]
+    Click Element    //*[contains(text(), "${CODE_LIST_10}")]
     Sleep    2
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
-    Click element    //*[contains(text(), "${CODE_LIST_10}")]
-    Wait until element is visible    ${VERSION_TAB}    timeout=20
-    Log to console    Version history tab exists in the new version too after code was updated
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_10}")]    timeout=30
+    Click Element    //*[contains(text(), "${CODE_LIST_10}")]
+    Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
+    Log To Console    Version history tab exists in the new version too after code was updated
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 532. Create a new code in versioned code list's newest version
@@ -1291,43 +1291,43 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
-    Wait until element is visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    New version of code list created
+    Log To Console    New version of code list created
     Sleep    1
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
-    Wait until page contains    NewCode001 - newCode001    timeout=20
-    Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    NewCode001    timeout=20
-    Wait until page contains    Koodin nimi    timeout=20
-    Wait until page contains    newCode001    timeout=20
+    Wait Until Page Contains    NewCode001 - newCode001    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    NewCode001    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    newCode001    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    2
-    Wait until element is visible    ${VERSION_TAB}    timeout=20
-    Log to console    Version history tab exists on current ie. latest version after code was created
+    Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
+    Log To Console    Version history tab exists on current ie. latest version after code was created
     Return to Koodistot frontpage
-    Wait until page contains element    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click element    ${STATUS_DROPDOWN_BTN}
-    Click element    //*[contains(text(), "${ALL_STATUSES_FI}")]
+    Wait Until Page Contains Element    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click Element    ${STATUS_DROPDOWN_BTN}
+    Click Element    //*[contains(text(), "${ALL_STATUSES_FI}")]
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}
-    Wait until page contains element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
     Sleep    2
-    Click element    //*[contains(text(), "${CODE_LIST_9}")]
+    Click Element    //*[contains(text(), "${CODE_LIST_9}")]
     Sleep    2
-    Wait until element is visible    ${VERSION_TAB}    timeout=20
-    Log to console    Version history tab exists on also the 2nd latest version after code was created
+    Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
+    Log To Console    Version history tab exists on also the 2nd latest version after code was created
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 533. Create new version of code list with default code and change the default code
@@ -1337,42 +1337,42 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
     Sleep    1
     Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    New version of code list created
-    Wait until page contains    10 koodia    timeout=20
+    Log To Console    New version of code list created
+    Wait Until Page Contains    10 koodia    timeout=20
     Log to Console    All codes are copied
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    testikoodi04 - Testikoodi 04    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Log to Console    Default code is copied
-    Wait until page contains element    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
-    Wait until page contains element    ${ADD_DEFAULTCODE_BTN}
-    Click element    ${ADD_DEFAULTCODE_BTN}
+    Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
+    Click Element    ${MODIFY_CODE_LIST}
+    Wait Until Page Contains Element    ${ADD_DEFAULTCODE_BTN}
+    Click Element    ${ADD_DEFAULTCODE_BTN}
     Sleep    1
-    Wait until element is visible    //*[contains(text(), "Testikoodi 01")]    timeout=20
-    Click element    //*[contains(text(), "Testikoodi 01")]
+    Wait Until Element Is Visible    //*[contains(text(), "Testikoodi 01")]    timeout=20
+    Click Element    //*[contains(text(), "Testikoodi 01")]
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
-    Wait until page contains    Vakiokoodi    timeout=20
-    Wait until page contains    testikoodi01 - Testikoodi 01    timeout=20
+    Wait Until Page Contains    Vakiokoodi    timeout=20
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait Until element Is Enabled    ${VERSION_TAB}    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
@@ -1383,55 +1383,55 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    Cumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Wait until page contains    6 koodia    timeout=20
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Wait Until Page Contains    6 koodia    timeout=20
+    Wait Until Page Contains    koodi500 - Koodi500    timeout=20
+    Wait Until Page Contains    koodi503 - Koodi503    timeout=20
+    Wait Until Page Contains    koodi504 - Koodi504    timeout=20
     Modify code list
-    Wait until page contains element    ${CODE_LIST_STATUS_DDL}    timeout=20
-    Click element    ${CODE_LIST_STATUS_DDL}
-    Wait until page contains element    ${VALID_STATUS}    timeout=20
-    Click button    ${VALID_STATUS}
+    Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
+    Click Element    ${CODE_LIST_STATUS_DDL}
+    Wait Until Page Contains Element    ${VALID_STATUS}    timeout=20
+    Click Button    ${VALID_STATUS}
     Save code list
     Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click element    ${CONFIRMATION_YES_BTN}
-    Wait until page contains    Voimassa oleva    timeout=60
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Contains    Voimassa oleva    timeout=60
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
     Sleep    1
     Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
     Wait Until Element Is Enabled    ${CODE_LIST_NAME_INPUT}    timeout=60
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log to Console    New version of code list created
-    Wait until page contains    6 koodia    timeout=20
+    Wait Until Page Contains    6 koodia    timeout=20
     Log to Console    All codes are copied
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Wait until element is visible    //*[contains(text(), "koodi500 - Koodi500")]    timeout=20
-    Click element    //*[contains(text(), "koodi500 - Koodi500")]
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Element Is Visible    //*[contains(text(), "koodi500 - Koodi500")]    timeout=20
+    Click Element    //*[contains(text(), "koodi500 - Koodi500")]
     Wait Until Element Is Enabled    ${CODE_DDL}    timeout=20
-    Click element    ${CODE_DDL}
-    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_BTN}
-    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_CONF_BTN}
-    Wait until page contains    ${Error_cumulative_codelist}    timeout=20
-    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
-    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Click Element    ${CODE_DDL}
+    Wait Until Page Contains Element    ${REMOVE_CODE_BTN}    timeout=20
+    Click Element    ${REMOVE_CODE_BTN}
+    Wait Until Page Contains Element    ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Click Element    ${REMOVE_CODE_CONF_BTN}
+    Wait Until Page Contains    ${Error_cumulative_codelist}    timeout=20
+    Wait Until Page Contains Element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click Element    ${CLOSE_ERROR_MESSAGE_BTN}
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_8}
 
@@ -1441,52 +1441,52 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    Wait until page contains    Ei    timeout=20
+    Wait Until Page Contains    10 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
+    Wait Until Page Contains    Ei    timeout=20
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=20
-    Click element    ${MODIFY_CODE_LIST}
-    Wait until page contains element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    timeout=20
-    Click element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}
+    Click Element    ${MODIFY_CODE_LIST}
+    Wait Until Page Contains Element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    timeout=20
+    Click Element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
-    Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    Wait until page contains    Kyllä    timeout=20
+    Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
+    Wait Until Page Contains    Kyllä    timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
-    Click button    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click button    ${CREATE_NEW_VERSION_BTN}
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
     Sleep    1
     Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
-    Input text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
-    Input text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element    ${SAVE_NEW_CODE_LIST}
+    Click Element    ${SAVE_NEW_CODE_LIST}
     Sleep    2
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log to Console    New version of code list created
-    Wait until page contains    10 koodia    timeout=20
+    Wait Until Page Contains    10 koodia    timeout=20
     Log to Console    All codes are copied
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Kumulatiivinen koodisto    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Wait Until Element Is Enabled    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Wait until element is visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
-    Click element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Element Is Visible    //*[contains(text(), "testikoodi01 - Testikoodi 01")]    timeout=20
+    Click Element    //*[contains(text(), "testikoodi01 - Testikoodi 01")]
     Wait Until Element Is Enabled    ${CODE_DDL}    timeout=20
-    Click element    ${CODE_DDL}
-    Wait until page contains element    ${REMOVE_CODE_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_BTN}
-    Wait until page contains element    ${REMOVE_CODE_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_CONF_BTN}
-    Wait until page contains    ${Error_cumulative_codelist}    timeout=20
-    Wait until page contains element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
-    Click element    ${CLOSE_ERROR_MESSAGE_BTN}
+    Click Element    ${CODE_DDL}
+    Wait Until Page Contains Element    ${REMOVE_CODE_BTN}    timeout=20
+    Click Element    ${REMOVE_CODE_BTN}
+    Wait Until Page Contains Element    ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Click Element    ${REMOVE_CODE_CONF_BTN}
+    Wait Until Page Contains    ${Error_cumulative_codelist}    timeout=20
+    Wait Until Page Contains Element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click Element    ${CLOSE_ERROR_MESSAGE_BTN}
     Sleep    3
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
@@ -1498,12 +1498,12 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Visible    //*[contains(text(), "NewCode001 - newCode001")]    timeout=60
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Wait until page contains element    ${CODELIST_CODES_TAB}    timeout=20
-    Click element    ${CODELIST_CODES_TAB}
-    Wait until page contains    17 koodia    timeout=20
-    Wait until page contains    koodi500 - Koodi500    timeout=20
-    Wait until page contains    koodi503 - Koodi503    timeout=20
-    Wait until page contains    koodi504 - Koodi504    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Page Contains    17 koodia    timeout=20
+    Wait Until Page Contains    koodi500 - Koodi500    timeout=20
+    Wait Until Page Contains    koodi503 - Koodi503    timeout=20
+    Wait Until Page Contains    koodi504 - Koodi504    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
@@ -1515,57 +1515,57 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Sleep    2
-    Wait until page contains    30 koodia    timeout=20
+    Wait Until Page Contains    30 koodia    timeout=20
     Update code list    ${Code_list_with_30_Codes_updated}    ${CODE_LIST_24}    ${FILE_FORMAT_Excel}
     Sleep    1
-    Wait until page contains    31 koodia    timeout=20
-    Wait until element is visible    //*[contains(text(), "testcode58 - Testcode 58")]    timeout=20
+    Wait Until Page Contains    31 koodia    timeout=20
+    Wait Until Element Is Visible    //*[contains(text(), "testcode58 - Testcode 58")]    timeout=20
     Click Element    //*[contains(text(), "testcode58 - Testcode 58")]
-    Wait until page contains    Voimassa oleva    timeout=20
-    Wait until page contains    Uuden koodin kuvaus    timeout=20
-    Wait until page contains    01.01.2019 - 01.01.2020    timeout=20
+    Wait Until Page Contains    Voimassa oleva    timeout=20
+    Wait Until Page Contains    Uuden koodin kuvaus    timeout=20
+    Wait Until Page Contains    01.01.2019 - 01.01.2020    timeout=20
     Sleep    3
     Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
-    Click element    ${2_BREADCRUMB_LINK}
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Koodiston uusi kuvaus    timeout=20
+    Click Element    ${2_BREADCRUMB_LINK}
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Koodiston uusi kuvaus    timeout=20
     Update code list    ${Code_list_with_30_Codes_updated_csv}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
     Sleep    2
     Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=20
     Sleep    1
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Koodiston uusi kuvaus numero 2    timeout=20
-    Wait until page contains    Koodiston uusi määritelmä numero 2    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Koodiston uusi kuvaus numero 2    timeout=20
+    Wait Until Page Contains    Koodiston uusi määritelmä numero 2    timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
-    Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue}
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    Click Element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
+    Click Element    ${FILE_FORMAT_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
+    Click Element    ${FILE_FORMAT_Excel}
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue}
     Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Element    ${UPLOAD_FILE_BTN}
-    Wait until page contains    ${Error_invalid_codevalue}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_codevalue}    timeout=20
     Cancel code list import
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
-    Click element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_CSV}    timeout=20
-    Click element    ${FILE_FORMAT_CSV}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose file    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue_csv}
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}    timeout=20
+    Click Element    ${UPDATE_CODE_LIST_FROM_FILE_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
+    Click Element    ${FILE_FORMAT_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_CSV}    timeout=20
+    Click Element    ${FILE_FORMAT_CSV}
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
+    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue_csv}
     Sleep    2
-    Wait until page contains element    ${UPLOAD_FILE_BTN}    timeout=20
+    Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Element    ${UPLOAD_FILE_BTN}
-    Wait until page contains    ${Error_invalid_codevalue}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_codevalue}    timeout=20
     Cancel code list import
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_24}
@@ -1577,53 +1577,53 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
-    Wait until page contains    10 koodia    timeout=20
+    Wait Until Page Contains    10 koodia    timeout=20
     Return to Koodistot frontpage
     Upload codelist in Excel format    ${Variant_code_list}    ${CODE_LIST_8}
     Sleep    2
-    Wait until page contains    25 koodia    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Click element    ${CREATE_CODELIST_VERSION_FROM_FILE}
-    Wait until page contains element    ${FILE_FORMAT_BTN}    timeout=20
-    Click element    ${FILE_FORMAT_BTN}
-    Wait until page contains element    ${FILE_FORMAT_Excel}    timeout=20
-    Click element    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
+    Wait Until Page Contains    25 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
+    Click Element    ${FILE_FORMAT_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
+    Click Element    ${FILE_FORMAT_Excel}
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait Until Element Is Enabled    ${VERSION_TAB}    timeout=20
-    Click element    ${VERSION_TAB}
+    Click Element    ${VERSION_TAB}
     Log to Console    Codelist version tab clicked
-    Wait until page contains    koodisto6000    timeout=20
-    Wait until page contains    Koodisto600    timeout=20
+    Wait Until Page Contains    koodisto6000    timeout=20
+    Wait Until Page Contains    Koodisto600    timeout=20
     Sleep    1
     Modify code list
     Wait Until Page Contains Element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    timeout=30
-    Click element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}
+    Click Element    ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}
     Save code list
-    Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    Wait until page contains    Kyllä    timeout=20
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${ATTACH_VARIANT_BTN}    timeout=20
-    Click element    ${ATTACH_VARIANT_BTN}
-    Wait until page contains element    ${SEARCH_VARIANT_INPUT}    timeout=20
+    Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
+    Wait Until Page Contains    Kyllä    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${ATTACH_VARIANT_BTN}    timeout=20
+    Click Element    ${ATTACH_VARIANT_BTN}
+    Wait Until Page Contains Element    ${SEARCH_VARIANT_INPUT}    timeout=20
     Sleep    2
     Input Text    ${SEARCH_VARIANT_INPUT}    koodisto7000
     Wait Until Page Contains Element    //*[contains(text(), "koodisto7000")]
-    Click element    //*[contains(text(), "koodisto7000")]
+    Click Element    //*[contains(text(), "koodisto7000")]
     Log to Console    koodisto7000 attached to Koodisto600 as a variant
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
-    Click element    ${CODELIST_VARIANTS_TAB}
-    Wait until page contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
-    Wait until page contains    koodisto7000    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Click Element    ${CODELIST_VARIANTS_TAB}
+    Wait Until Page Contains    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Wait Until Page Contains    koodisto7000    timeout=20
     Update code list    ${Code_list_with_30_Codes_updated}    ${CODE_LIST_24}    ${FILE_FORMAT_Excel}
-    Wait until page contains element    ${CODELIST_VARIANTS_TAB}    timeout=20
-    Wait until page contains element    ${VERSION_TAB}    timeout=20
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
-    Wait until page contains    Kumulatiivinen koodisto    timeout=20
-    Wait until page contains    Kyllä    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
+    Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
+    Wait Until Page Contains    Kyllä    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_24}    ${CODE_LIST_8}    ${CODE_LIST_9}
 
@@ -1637,7 +1637,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Set Selenium Speed    0.5
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
-    Wait until page contains    ${Json_export_dcat}    timeout=20
+    Wait Until Page Contains    ${Json_export_dcat}    timeout=20
     Switch Browser    1
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_20}
@@ -1677,45 +1677,45 @@ Check updated code listing
 
 Create new code to code list with concept
     [Arguments]    ${concept}    ${vocabulary}
-    Wait until page contains element    ${CODE_LIST_DDL}    timeout=20
-    Click element    ${CODE_LIST_DDL}
-    Wait until page contains element    ${CREATE_CODE_BTN}    timeout=20
-    Click element    ${CREATE_CODE_BTN}
-    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
-    Click element    ${VOCABULARY_SELECTION_DDL}
-    Wait until page contains element    //*[contains(@id, '${vocabulary}')]
-    Click element    //*[contains(@id, '${vocabulary}')]
-    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_CODE_BTN}    timeout=20
+    Click Element    ${CREATE_CODE_BTN}
+    Wait Until Page Contains Element    ${VOCABULARY_SELECTION_DDL}    timeout=20
+    Click Element    ${VOCABULARY_SELECTION_DDL}
+    Wait Until Page Contains Element    //*[contains(@id, '${vocabulary}')]
+    Click Element    //*[contains(@id, '${vocabulary}')]
+    Wait Until Page Contains Element    ${SEARCH_CONCEPT_INPUT}    timeout=20
     Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept}
-    Wait until page contains element    //*[@id="${vocabulary}_${concept}_concept_link"]    timeout=60
-    Click element    //*[@id="${vocabulary}_${concept}_concept_link"]
-    Wait until page contains element    ${CODE_CODEVALUE_INPUT}    timeout=20
-    Input text    ${CODE_CODEVALUE_INPUT}    NewCode001
+    Wait Until Page Contains Element    //*[@id="${vocabulary}_${concept}_concept_link"]    timeout=60
+    Click Element    //*[@id="${vocabulary}_${concept}_concept_link"]
+    Wait Until Page Contains Element    ${CODE_CODEVALUE_INPUT}    timeout=20
+    Input Text    ${CODE_CODEVALUE_INPUT}    NewCode001
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_BTN}    timeout=60
-    Click element    ${SAVE_NEW_CODE_BTN}
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=60
+    Click Element    ${SAVE_NEW_CODE_BTN}
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
     Log to Console    New code "${concept}" created
 
 Suggest concept to Terminologies
     [Arguments]    ${concept}    ${terminologies}    ${concept_name}    ${definition}
-    Wait until page contains element    ${SEARCH_CONCEPT_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${SEARCH_CONCEPT_INPUT}    timeout=20
     Input Text    ${SEARCH_CONCEPT_INPUT}    ${concept}
-    Wait until page contains element    ${VOCABULARY_SELECTION_DDL}    timeout=20
-    Click element    ${VOCABULARY_SELECTION_DDL}
+    Wait Until Page Contains Element    ${VOCABULARY_SELECTION_DDL}    timeout=20
+    Click Element    ${VOCABULARY_SELECTION_DDL}
     Wait Until Element Is Enabled    //*[contains(text(), "${terminologies}")]    timeout=20
     Click Element    //*[contains(text(), "${terminologies}")]
     Wait Until element Is Enabled    ${OPEN_TERMINOLOGY_MODAL_BTN}    timeout=20
     Click Element    ${OPEN_TERMINOLOGY_MODAL_BTN}
     Wait Until Element Is Enabled    ${CONCEPT_SUGGESTION_NAME_INPUT}    timeout=60
     Input Text    ${CONCEPT_SUGGESTION_NAME_INPUT}    ${concept_name}
-    Wait until page contains element    ${CONCEPT_DEFINITION_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${CONCEPT_DEFINITION_INPUT}    timeout=20
     Input Text    ${CONCEPT_DEFINITION_INPUT}    ${definition}
     Sleep    1
     Wait Until Element Is Enabled    ${SAVE_CONCEPT_SUGGESTION_BTN}    timeout=20
-    Click element    ${SAVE_CONCEPT_SUGGESTION_BTN}
-    Wait until page contains    Haluatko ehdottaa käsitettä ${concept_name} sanastoon    timeout=20
+    Click Element    ${SAVE_CONCEPT_SUGGESTION_BTN}
+    Wait Until Page Contains    Haluatko ehdottaa käsitettä ${concept_name} sanastoon    timeout=20
     Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click element    ${CONFIRMATION_YES_BTN}
+    Click Element    ${CONFIRMATION_YES_BTN}
     Sleep    1
     Log to Console    Concept ${concept_name} suggested succesfully to Terminologies
     Sleep    2
@@ -1723,21 +1723,21 @@ Suggest concept to Terminologies
 Remove Code list with concept from Terminologies
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains element    //*[contains(text(), "tutkija")]    timeout=30
-    Click element    //*[contains(text(), "tutkija")]
-    Wait until page contains element    ${CODELIST_INFO_TAB}    timeout=20
-    Click element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains Element    //*[contains(text(), "tutkija")]    timeout=30
+    Click Element    //*[contains(text(), "tutkija")]
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
     Page should contain    Tunnus
     Page should contain    Koodisto6000
     Page should contain    Koodiston nimi
     Page should contain    tutkija
-    Wait until page contains element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    Click element    ${DELETE_CODE_LIST_BTN}
-    Wait until page contains element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    Click element    ${REMOVE_CODE_LIST_CONF_BTN}
+    Wait Until Page Contains Element    ${DELETE_CODE_LIST_BTN}    timeout=20
+    Click Element    ${DELETE_CODE_LIST_BTN}
+    Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+    Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
     Wait Until Element Is Visible    id=search_box_input    timeout=30
     Input Text    id=search_box_input    ${CODE_LIST_8}
-    Wait until page contains    Haulla ei löytynyt yhtään koodistoa.
+    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.
     Close All Browsers
 
 Test Case Setup Terminologies
