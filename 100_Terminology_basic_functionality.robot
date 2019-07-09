@@ -10,52 +10,52 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup
-    Wait until page contains element    id=information_link    timeout=20
-    Click element    id=information_link
-    Wait until page contains    Tietoa Sanastoista
-    Wait until page contains    Sanastot-työkalu on tarkoitettu
-    Wait until page contains    Sanastot-työkalulla
-    Wait until page contains    Hyödyt käyttäjille
-    Wait until page contains    Miten voin liittyä työkalun käyttäjäksi?
-    Wait until page contains    Katso myös
-    Wait until page contains    Ota yhteyttä
-    Log to Console    Information about the service page opened
+    Wait Until Page Contains Element    id=information_link    timeout=20
+    Click Element    id=information_link
+    Wait Until Page Contains    Tietoa Sanastoista
+    Wait Until Page Contains    Sanastot-työkalu on tarkoitettu
+    Wait Until Page Contains    Sanastot-työkalulla
+    Wait Until Page Contains    Hyödyt käyttäjille
+    Wait Until Page Contains    Miten voin liittyä työkalun käyttäjäksi?
+    Wait Until Page Contains    Katso myös
+    Wait Until Page Contains    Ota yhteyttä
+    Log To Console    Information about the service page opened
     Go back to Sanastot frontpage
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup
-    Wait until page contains element    id=license_link    timeout=20
-    Click element    id=license_link
+    Wait Until Page Contains Element    id=license_link    timeout=20
+    Click Element    id=license_link
     Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait until page contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
+    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
     Sleep    2
-    Log to Console    EUPL-1.2 license page opened
+    Log To Console    EUPL-1.2 license page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
     [Tags]    local    sanastot
     [Setup]    Test Case Setup
-    Wait until page contains element    id=description_of_file_link    timeout=20
-    Click element    id=description_of_file_link
+    Wait Until Page Contains Element    id=description_of_file_link    timeout=20
+    Click Element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
-    Log to Console    Description of file page opened
+    Log To Console    Description of file page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Click element    ${LANGUAGE_EN}
-    Wait until page contains    All organizations    timeout=20
-    Wait until page contains    Search terminologies    timeout=20
-    Wait until page contains    Filter with information domain
-    Log to Console    User interface language changed
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
+    Click Element    ${LANGUAGE_EN}
+    Wait Until Page Contains    All organizations    timeout=20
+    Wait Until Page Contains    Search terminologies    timeout=20
+    Wait Until Page Contains    Filter with information domain
+    Log To Console    User interface language changed
     [Teardown]    Restore Finnish language
 
 104. Search for DRAFT vocabulary
@@ -65,12 +65,12 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait until page contains    ${VOCABULARY_2}    timeout=30
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
-    Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
-    Log to Console    Terminology found
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
+    Click Element    //*[contains(text(), "${VOCABULARY_2}")]
+    Wait Until Page Contains    ${VOCABULARY_2}    timeout=30
+    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
+    Wait Until Page Contains Element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
+    Log To Console    Terminology found
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -115,16 +115,16 @@ Resource          resources/Terminology_Resources.robot
 
 *** Keywords ***
 Restore Finnish language
-    Wait until page contains element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
-    Click element    ${LANGUAGE_DROPDOWN_BTN}
-    Click element    ${LANGUAGE_FI}
-    Wait until page contains    Kaikki organisaatiot    timeout=30
-    Wait until page contains    Rajaa tietoalueella    timeout=30
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
+    Click Element    ${LANGUAGE_FI}
+    Wait Until Page Contains    Kaikki organisaatiot    timeout=30
+    Wait Until Page Contains    Rajaa tietoalueella    timeout=30
     Close All Browsers
 
 Select navigation menu link
     [Arguments]    ${navigation_menu_link}
-    Wait until page contains element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click element    ${NAVIGATION_MENU_DDL}
-    Wait until page contains element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click Element    ${NAVIGATION_MENU_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]

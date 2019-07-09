@@ -14,23 +14,23 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${invalid_related_concepts}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${invalid_related_concepts}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Page should contain    Tuodaan 4 käsitettä
-    Page should contain    4: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
-    Page should contain    4: Viittauksella “related” ei löydy käsitettä arvolle “joku”
-    Page should contain    4: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
-    Page should contain    5: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
-    Page should contain    5: Viittauksella “related” ei löydy käsitettä arvolle “joku”
-    Page should contain    5: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
-    Log to Console    Error message displayed when related, broader and isPartOf concepts are not found from CSV
-    Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
-    Click element    ${IMPORT_CANCEL_BTN}
+    Page Should Contain    Tuodaan 4 käsitettä
+    Page Should Contain    4: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
+    Page Should Contain    4: Viittauksella “related” ei löydy käsitettä arvolle “joku”
+    Page Should Contain    4: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
+    Page Should Contain    5: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
+    Page Should Contain    5: Viittauksella “related” ei löydy käsitettä arvolle “joku”
+    Page Should Contain    5: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
+    Log To Console    Error message displayed when related, broader and isPartOf concepts are not found from CSV
+    Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click Element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -45,7 +45,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${empty_related_concepts}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${empty_related_concepts}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
@@ -68,7 +68,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    huomio    timeout=60
     Wait Until Page Contains    esim    timeout=60
     Wait Until Page Contains    Voimassa oleva    timeout=60
-    Log to Console    Import successful when related columns have empty values in CSV
+    Log To Console    Import successful when related columns have empty values in CSV
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -81,10 +81,10 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_empty_status}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${concepts_with_empty_status}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
@@ -108,7 +108,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    huomio    timeout=30
     Wait Until Page Contains    esim    timeout=30
     Wait Until Page Contains    Luonnos    timeout=30
-    Log to Console    Concept import with empty STATUS values in CSV is successful
+    Log To Console    Concept import with empty STATUS values in CSV is successful
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -121,36 +121,36 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_missing_status}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${concepts_with_missing_status}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Page should contain    Tuodaan 1 käsitettä
-    Page should contain    tutkimus
-    Page should contain    research
-    Page should contain    tutkielma
-    Page should contain    study
-    Page should contain    systemaattista ja luovaa toimintaa
-    Page should contain    huomio
-    Page should contain    esimerkki
-    Page should contain    Luonnos
+    Page Should Contain    Tuodaan 1 käsitettä
+    Page Should Contain    tutkimus
+    Page Should Contain    research
+    Page Should Contain    tutkielma
+    Page Should Contain    study
+    Page Should Contain    systemaattista ja luovaa toimintaa
+    Page Should Contain    huomio
+    Page Should Contain    esimerkki
+    Page Should Contain    Luonnos
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
-    Click element    ${IMPORT_YES_BTN}
-    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
-    Click element    //*[contains(text(), "${TERM_2}")]
+    Click Element    ${IMPORT_YES_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${TERM_2}")]    timeout=30
+    Click Element    //*[contains(text(), "${TERM_2}")]
     Sleep    2
-    Page should contain    tutkimus
-    Page should contain    research
-    Page should contain    tutkielma
-    Page should contain    study
-    Page should contain    systemaattista ja luovaa toimintaa
-    Page should contain    huomio
-    Page should contain    esimerkki
-    Page should contain    Luonnos
-    Log to Console    When STATUS column is missing import is successful and concept STATUS is Draft after CSV import
+    Page Should Contain    tutkimus
+    Page Should Contain    research
+    Page Should Contain    tutkielma
+    Page Should Contain    study
+    Page Should Contain    systemaattista ja luovaa toimintaa
+    Page Should Contain    huomio
+    Page Should Contain    esimerkki
+    Page Should Contain    Luonnos
+    Log To Console    When STATUS column is missing import is successful and concept STATUS is Draft after CSV import
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -162,17 +162,17 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_column}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_column}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Page should contain    Ominaisuus “definition” täytyy olla määritelty kielen kanssa
-    Log to Console    Import is not successful and error message is dispalyed when column name is invalid
-    Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
-    Click element    ${IMPORT_CANCEL_BTN}
+    Page Should Contain    Ominaisuus “definition” täytyy olla määritelty kielen kanssa
+    Log To Console    Import is not successful and error message is dispalyed when column name is invalid
+    Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click Element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -184,17 +184,17 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_status_value}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${concepts_with_invalid_status_value}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Page should contain    3: Virheellinen tila “xxxxx”
-    log to Console    Import is not successful and error message is dispalyed when status value is invalid
-    Wait until page contains element    ${IMPORT_CANCEL_BTN}    timeout=30
-    Click element    ${IMPORT_CANCEL_BTN}
+    Page Should Contain    3: Virheellinen tila “xxxxx”
+    Log To Console    Import is not successful and error message is dispalyed when status value is invalid
+    Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click Element    ${IMPORT_CANCEL_BTN}
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -206,31 +206,31 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${concepts_with_duplicate_definition_columns}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${concepts_with_duplicate_definition_columns}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Sleep    3
-    Page should contain    systemaattista ja luovaa toimintaa2
-    Page should contain    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta2
-    Page should contain    henkilö, joka hutkii ammatikseen2
-    Page should contain    henkilö, joka hotkii kaiken2
+    Page Should Contain    systemaattista ja luovaa toimintaa2
+    Page Should Contain    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta2
+    Page Should Contain    henkilö, joka hutkii ammatikseen2
+    Page Should Contain    henkilö, joka hotkii kaiken2
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
-    Click element    ${IMPORT_YES_BTN}
+    Click Element    ${IMPORT_YES_BTN}
     Sleep    3
-    Wait until page contains element    //*[contains(text(), "${TERM_2}")]    timeout=30
-    Click element    //*[contains(text(), "${TERM_2}")]
+    Wait Until Page Contains Element    //*[contains(text(), "${TERM_2}")]    timeout=30
+    Click Element    //*[contains(text(), "${TERM_2}")]
     Sleep    2
-    Page should contain    tutkimus
-    Page should contain    research
-    Page should contain    tutkielma
-    Page should contain    systemaattista ja luovaa toimintaa2
-    Page should contain    huomio
-    Page should contain    esim
-    Page should contain    Voimassa oleva
-    log to Console    Import is successful and values of the second column are taken into use when duplicate definition columns are defined in CSV
+    Page Should Contain    tutkimus
+    Page Should Contain    research
+    Page Should Contain    tutkielma
+    Page Should Contain    systemaattista ja luovaa toimintaa2
+    Page Should Contain    huomio
+    Page Should Contain    esim
+    Page Should Contain    Voimassa oleva
+    Log To Console    Import is successful and values of the second column are taken into use when duplicate definition columns are defined in CSV
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -238,6 +238,6 @@ Resource          resources/Terminology_Resources.robot
 Select Testiautomaatiosanasto2 vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30

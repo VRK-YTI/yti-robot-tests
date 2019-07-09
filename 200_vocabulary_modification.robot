@@ -18,28 +18,28 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select and edit Draft vocabulary
-    Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
-    Input text    ${VOCABULARY_TITLE_TEXTAREA}    Uusi sanasto
-    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
-    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Uusi kuvaus
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=60
-    Wait until page contains    Uusi sanasto    timeout=20
-    Wait until page contains    Uusi kuvaus    timeout=20
-    Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=30
-    Click element    ${EDIT_VOCABULARY_BTN}
-    Wait until page contains element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
-    Input text    ${VOCABULARY_TITLE_TEXTAREA}    Testiautomaatiosanasto
-    Wait until page contains element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
-    Input text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until element is visible    ${EDIT_VOCABULARY_BTN}    timeout=60
+    Wait Until Page Contains Element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
+    Input Text    ${VOCABULARY_TITLE_TEXTAREA}    Uusi sanasto
+    Wait Until Page Contains Element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
+    Input Text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Uusi kuvaus
+    Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${EDIT_VOCABULARY_BTN}    timeout=60
+    Wait Until Page Contains    Uusi sanasto    timeout=20
+    Wait Until Page Contains    Uusi kuvaus    timeout=20
+    Wait Until Page Contains Element    ${EDIT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${EDIT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
+    Input Text    ${VOCABULARY_TITLE_TEXTAREA}    Testiautomaatiosanasto
+    Wait Until Page Contains Element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
+    Input Text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
+    Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${EDIT_VOCABULARY_BTN}    timeout=60
     Sleep    1
-    Wait until page contains    Testiautomaatiosanasto    timeout=30
-    Wait until page contains    Tämä on kuvaus    timeout=30
-    Log to console    Title and description of Terminological Vocabulary modified
+    Wait Until Page Contains    Testiautomaatiosanasto    timeout=30
+    Wait Until Page Contains    Tämä on kuvaus    timeout=30
+    Log To Console    Title and description of Terminological Vocabulary modified
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -49,35 +49,35 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select and edit Draft vocabulary
-    Wait until page contains element    ${ADD_ORGANIZATION_BTN}    timeout=30
-    Click element    ${ADD_ORGANIZATION_BTN}
-    Wait until page contains element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
-    Input text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait until page contains element    //*[contains(text(), "${ORGANIZATION_1}")]    timeout=30
-    Click element    //*[contains(text(), "${ORGANIZATION_1}")]
-    Log to Console    Organization added
-    Wait until page contains element    ${ADD_CLASSIFICATION_BTN}    timeout=30
-    Click element    ${ADD_CLASSIFICATION_BTN}
-    Wait until page contains element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
-    Input text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Wait until page contains element    //*[contains(text(), "${CLASSIFICATION_1}")]    timeout=30
-    Click element    //*[contains(text(), "${CLASSIFICATION_1}")]
-    Log to Console    Classification added
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until element is visible    ${EDIT_VOCABULARY_BTN}    timeout=60
+    Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=30
+    Click Element    ${ADD_ORGANIZATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
+    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Log To Console    Organization added
+    Wait Until Page Contains Element    ${ADD_CLASSIFICATION_BTN}    timeout=30
+    Click Element    ${ADD_CLASSIFICATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
+    Wait Until Page Contains Element    //*[contains(text(), "${CLASSIFICATION_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Log To Console    Classification added
+    Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${EDIT_VOCABULARY_BTN}    timeout=60
     Sleep    1
     Go back to Sanastot frontpage
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains    ${ORGANIZATION_1}    timeout=30
-    Wait until page contains    ${CLASSIFICATION_1}    timeout=30
-    Wait until page contains    Testiorganisaatio    timeout=30
-    Wait until page contains    Eläkkeet    timeout=30
-    Wait until page contains    Terminologinen sanasto    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
+    Wait Until Page Contains    ${ORGANIZATION_1}    timeout=30
+    Wait Until Page Contains    ${CLASSIFICATION_1}    timeout=30
+    Wait Until Page Contains    Testiorganisaatio    timeout=30
+    Wait Until Page Contains    Eläkkeet    timeout=30
+    Wait Until Page Contains    Terminologinen sanasto    timeout=30
+    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
     Restore organization and classification for DRAFT vocabulary
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -87,28 +87,28 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select Draft vocabulary
-    Wait until page contains element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
-    Click element    ${ADD_NEW_CONCEPT_BTN}
-    Wait until page contains element    ${TERM_LITERAL_VALUE_INPUT}    timeout=30
-    Input text    ${TERM_LITERAL_VALUE_INPUT}    ${TERM_1}
-    Wait until page contains element    ${ADD_NEW_CONCEPT}    timeout=30
-    Click element    ${ADD_NEW_CONCEPT}
-    Wait until page contains element    ${SOURCE_INPUT}    timeout=30
-    Input text    ${SOURCE_INPUT}    Lähde
-    Wait until page contains element    ${SCOPE_INPUT}    timeout=30
-    Input text    ${SCOPE_INPUT}    Käyttöala
-    Wait until page contains element    ${DRAFT_COMMENT_INPUT}    timeout=30
-    Input text    ${DRAFT_COMMENT_INPUT}    Luonnosvaiheen kommentti
-    Wait until page contains element    ${HISTORY_NOTE_INPUT}    timeout=30
-    Input text    ${HISTORY_NOTE_INPUT}    Käytön historiatieto
-    Wait until page contains element    ${CHANGENOTE_INPUT}    timeout=30
-    Input text    ${CHANGENOTE_INPUT}    Muutoshistoriatieto
-    Wait until page contains element    ${TERM_STATUS_DDL}    timeout=30
-    Click element    ${TERM_STATUS_DDL}
+    Wait Until Page Contains Element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
+    Click Element    ${ADD_NEW_CONCEPT_BTN}
+    Wait Until Page Contains Element    ${TERM_LITERAL_VALUE_INPUT}    timeout=30
+    Input Text    ${TERM_LITERAL_VALUE_INPUT}    ${TERM_1}
+    Wait Until Page Contains Element    ${ADD_NEW_CONCEPT}    timeout=30
+    Click Element    ${ADD_NEW_CONCEPT}
+    Wait Until Page Contains Element    ${SOURCE_INPUT}    timeout=30
+    Input Text    ${SOURCE_INPUT}    Lähde
+    Wait Until Page Contains Element    ${SCOPE_INPUT}    timeout=30
+    Input Text    ${SCOPE_INPUT}    Käyttöala
+    Wait Until Page Contains Element    ${DRAFT_COMMENT_INPUT}    timeout=30
+    Input Text    ${DRAFT_COMMENT_INPUT}    Luonnosvaiheen kommentti
+    Wait Until Page Contains Element    ${HISTORY_NOTE_INPUT}    timeout=30
+    Input Text    ${HISTORY_NOTE_INPUT}    Käytön historiatieto
+    Wait Until Page Contains Element    ${CHANGENOTE_INPUT}    timeout=30
+    Input Text    ${CHANGENOTE_INPUT}    Muutoshistoriatieto
+    Wait Until Page Contains Element    ${TERM_STATUS_DDL}    timeout=30
+    Click Element    ${TERM_STATUS_DDL}
     Click button    Voimassa oleva
     Save concept
-    Wait until page contains    Automaatio    timeout=30
-    Log to Console    New concept "Automaatio" added
+    Wait Until Page Contains    Automaatio    timeout=30
+    Log To Console    New concept "Automaatio" added
     Delete concept    Automaatio
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
@@ -122,22 +122,22 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_1}
     Edit concept    tutkija
-    Wait until page contains element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]    timeout=30
-    Click element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]
-    Wait until page contains element    ${SAVE_CONCEPT_BTN}    timeout=30
-    Click element    ${SAVE_CONCEPT_BTN}
-    Wait until page contains    Seuraava viite poistuu kokonaan tallennuksen yhteydessä    timeout=30
-    Wait until page contains    Viitteen tyyppi    timeout=30
-    Wait until page contains    Kohteen sijainti    timeout=30
-    Wait until page contains    Kohde    timeout=30
-    Wait until page contains    Liittyvä käsite    timeout=30
-    Wait until page contains    hutkija    timeout=30
-    Wait until page contains element    ${REMOVE_LINK_CONFIRMATION_BTN}    timeout=30
-    Click element    ${REMOVE_LINK_CONFIRMATION_BTN}
-    Wait until element is visible    ${EDIT_CONCEPT_BTN}    timeout=60
+    Wait Until Page Contains Element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]    timeout=30
+    Click Element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]
+    Wait Until Page Contains Element    ${SAVE_CONCEPT_BTN}    timeout=30
+    Click Element    ${SAVE_CONCEPT_BTN}
+    Wait Until Page Contains    Seuraava viite poistuu kokonaan tallennuksen yhteydessä    timeout=30
+    Wait Until Page Contains    Viitteen tyyppi    timeout=30
+    Wait Until Page Contains    Kohteen sijainti    timeout=30
+    Wait Until Page Contains    Kohde    timeout=30
+    Wait Until Page Contains    Liittyvä käsite    timeout=30
+    Wait Until Page Contains    hutkija    timeout=30
+    Wait Until Page Contains Element    ${REMOVE_LINK_CONFIRMATION_BTN}    timeout=30
+    Click Element    ${REMOVE_LINK_CONFIRMATION_BTN}
+    Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}    timeout=60
     Sleep    2
     Page should not contain    Liittyvä käsite
-    Log to Console    Related concept removed
+    Log To Console    Related concept removed
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -153,21 +153,21 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Add broader concepts for collection    hotkija    hutkija
     Add members for collection    tutkija    tutkimus
     Save collection
-    Wait until page contains element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
+    Wait Until Page Contains Element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
     Wait Until Element Is Visible    ${REMOVE_COLLECTION_BTN}    timeout=30
-    Click element    ${REMOVE_COLLECTION_BTN}
+    Click Element    ${REMOVE_COLLECTION_BTN}
     Wait Until Element Is Visible    ${CONFIRM_REMOVE_BTN}    timeout=30
-    Click element    ${CONFIRM_REMOVE_BTN}
+    Click Element    ${CONFIRM_REMOVE_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}
     Wait Until Page Does Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]    timeout=5
     Page should not contain    Testikäsitevalikoima
-    Wait until page contains element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
-    Click element    ${CONCEPTS_ALPHABETICAL_TAB}
-    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
+    Wait Until Page Contains Element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
+    Click Element    ${CONCEPTS_ALPHABETICAL_TAB}
+    Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
-    Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
-    Click element    ${CONCEPTS_HIERARCHIAL_TAB}
-    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
+    Wait Until Page Contains Element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
+    Click Element    ${CONCEPTS_HIERARCHIAL_TAB}
+    Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
@@ -186,30 +186,30 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Add broader concepts for collection    tutkija    tutkimus
     Add members for collection    hotkija    hutkija
     Save collection
-    Wait until page contains element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
-    Wait until page contains element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
-    Click element    ${CONCEPTS_ALPHABETICAL_TAB}
-    Wait until page contains element    //*[contains(@id,'concept-2_concept_list_listitem')]    timeout=30
-    Click element    //*[contains(@id,'concept-2_concept_list_listitem')]
-    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
+    Wait Until Page Contains Element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
+    Wait Until Page Contains Element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
+    Click Element    ${CONCEPTS_ALPHABETICAL_TAB}
+    Wait Until Page Contains Element    //*[contains(@id,'concept-2_concept_list_listitem')]    timeout=30
+    Click Element    //*[contains(@id,'concept-2_concept_list_listitem')]
+    Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Sleep    1
     Page should not contain    Testikäsitevalikoima
     Edit concept    tutkija
-    Wait until page contains element    ${ADD_BROADER_CONCEPT_BTN}    timeout=30
-    Click element    ${ADD_BROADER_CONCEPT_BTN}
-    Wait until page contains element    //*[contains(@id,'concept-0_search_result_concept')]    timeout=30
-    Click element    //*[contains(@id,'concept-0_search_result_concept')]
+    Wait Until Page Contains Element    ${ADD_BROADER_CONCEPT_BTN}    timeout=30
+    Click Element    ${ADD_BROADER_CONCEPT_BTN}
+    Wait Until Page Contains Element    //*[contains(@id,'concept-0_search_result_concept')]    timeout=30
+    Click Element    //*[contains(@id,'concept-0_search_result_concept')]
     Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
-    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     Save concept
     Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}
-    Wait until page contains element    //*[contains(@id,'concept-0_concept_broader_concept_reference_concept_link')]    timeout=30
+    Wait Until Page Contains Element    //*[contains(@id,'concept-0_concept_broader_concept_reference_concept_link')]    timeout=30
     Reload page
-    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
+    Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
-    Wait until page contains element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
-    Click element    ${CONCEPTS_HIERARCHIAL_TAB}
-    Page should not contain element    //*[contains(@id,'0_collection_list_listitem')]
+    Wait Until Page Contains Element    ${CONCEPTS_HIERARCHIAL_TAB}    timeout=30
+    Click Element    ${CONCEPTS_HIERARCHIAL_TAB}
+    Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
@@ -224,29 +224,29 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
-    Wait until page contains element    ${ADD_PREFERRED_TERM_BTN}    timeout=30
-    Click element    ${ADD_PREFERRED_TERM_BTN}
-    Wait until page contains element    ${ADD_PREFERRED_TERM_SV}    timeout=30
-    Click element    ${ADD_PREFERRED_TERM_SV}
-    Wait until page contains element    ${PREFERRED_TERM_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${ADD_PREFERRED_TERM_BTN}    timeout=30
+    Click Element    ${ADD_PREFERRED_TERM_BTN}
+    Wait Until Page Contains Element    ${ADD_PREFERRED_TERM_SV}    timeout=30
+    Click Element    ${ADD_PREFERRED_TERM_SV}
+    Wait Until Page Contains Element    ${PREFERRED_TERM_INPUT}    timeout=30
     Input Text    ${PREFERRED_TERM_INPUT}    Forskaren
-    Wait until page contains element    ${ADD_SYNONYM_BTN}    timeout=30
-    Click element    ${ADD_SYNONYM_BTN}
-    Wait until page contains element    ${ADD_SYNONYM_EN}    timeout=30
-    Click element    ${ADD_SYNONYM_EN}
-    Wait until page contains element    ${SYNONYM_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${ADD_SYNONYM_BTN}    timeout=30
+    Click Element    ${ADD_SYNONYM_BTN}
+    Wait Until Page Contains Element    ${ADD_SYNONYM_EN}    timeout=30
+    Click Element    ${ADD_SYNONYM_EN}
+    Wait Until Page Contains Element    ${SYNONYM_INPUT}    timeout=30
     Input Text    ${SYNONYM_INPUT}    Oppinut henkilö
-    Wait until page contains element    ${NOT_SYNONYM_BTN}    timeout=30
-    Click element    ${NOT_SYNONYM_BTN}
-    Wait until page contains element    ${NOT_SYNONYM_EN}    timeout=30
-    Click element    ${NOT_SYNONYM_EN}
-    Wait until page contains element    ${NOT_SYNONYM_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${NOT_SYNONYM_BTN}    timeout=30
+    Click Element    ${NOT_SYNONYM_BTN}
+    Wait Until Page Contains Element    ${NOT_SYNONYM_EN}    timeout=30
+    Click Element    ${NOT_SYNONYM_EN}
+    Wait Until Page Contains Element    ${NOT_SYNONYM_INPUT}    timeout=30
     Input Text    ${NOT_SYNONYM_INPUT}    Tarkastelija
     Save concept
     Sleep    5
-    Wait until page contains    Forskaren    timeout=30
-    Wait until page contains    Oppinut henkilö    timeout=30
-    Wait until page contains    Tarkastelija    timeout=30
+    Wait Until Page Contains    Forskaren    timeout=30
+    Wait Until Page Contains    Oppinut henkilö    timeout=30
+    Wait Until Page Contains    Tarkastelija    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -260,59 +260,59 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
-    Wait until page contains element    ${ADD_HIDDEN_TERM_BTN}    timeout=30
-    Click element    ${ADD_HIDDEN_TERM_BTN}
-    Wait until page contains element    ${ADD_HIDDEN_TERM_FI}    timeout=30
-    Click element    ${ADD_HIDDEN TERM_FI}
-    Wait until page contains element    ${HIDDEN TERM_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${ADD_HIDDEN_TERM_BTN}    timeout=30
+    Click Element    ${ADD_HIDDEN_TERM_BTN}
+    Wait Until Page Contains Element    ${ADD_HIDDEN_TERM_FI}    timeout=30
+    Click Element    ${ADD_HIDDEN TERM_FI}
+    Wait Until Page Contains Element    ${HIDDEN TERM_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_INPUT}    Tieteilijä
-    Wait until page contains element    ${ADD_HIDDEN_TERM_SOURCE_BTN}    timeout=30
-    Click element    ${ADD_HIDDEN_TERM_SOURCE_BTN}
+    Wait Until Page Contains Element    ${ADD_HIDDEN_TERM_SOURCE_BTN}    timeout=30
+    Click Element    ${ADD_HIDDEN_TERM_SOURCE_BTN}
     Input Text    ${HIDDEN_TERM_SOURCE_INPUT}    Ohjaustermin lähde
-    Wait until page contains element    ${HIDDEN_TERM_SCOPE_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_SCOPE_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_SCOPE_INPUT}    Ohjaustermin ala
-    Wait until page contains element    ${HIDDEN_TERM_STYLE_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_STYLE_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_STYLE_INPUT}    Älykkö
-    Wait until page contains element    ${HIDDEN_TERM_FAMILY_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_FAMILY_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_FAMILY_INPUT}    Feminiini
-    Wait until page contains element    ${HIDDEN_TERM_CONJUGATION_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_CONJUGATION_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_CONJUGATION_INPUT}    Yksikkö
-    Wait until page contains element    ${HIDDEN_TERM_EQUIVALENCY_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_EQUIVALENCY_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_EQUIVALENCY_INPUT}    >
-    Wait until page contains element    ${HIDDEN_TERM_WORD_CLASS_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_WORD_CLASS_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_WORD_CLASS_INPUT}    Eri sanaluokka
-    Wait until page contains element    ${HIDDEN_TERM_HOMOGRPAH_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_HOMOGRPAH_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_HOMOGRPAH_INPUT}    9
-    Wait until page contains element    ${HIDDEN_TERM_NOTE_BTN}    timeout=30
-    Click element    ${HIDDEN_TERM_NOTE_BTN}
+    Wait Until Page Contains Element    ${HIDDEN_TERM_NOTE_BTN}    timeout=30
+    Click Element    ${HIDDEN_TERM_NOTE_BTN}
     Input Text    ${HIDDEN_TERM_NOTE_INPUT}    Huomio
-    Wait until page contains element    ${HIDDEN_TERM_COMMENT_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_COMMENT_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_COMMENT_INPUT}    Kommentti
-    Wait until page contains element    ${HIDDEN_TERM_HISTORY_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_HISTORY_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_HISTORY_INPUT}    Termin historia
-    Wait until page contains element    ${HIDDEN_TERM_CHANGENOTE_INPUT}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM_CHANGENOTE_INPUT}    timeout=30
     Input Text    ${HIDDEN_TERM_CHANGENOTE_INPUT}    Termin muutoshistoriatieto
-    Wait until page contains element    ${HIDDEN_TERM_STATUS_DDL}    timeout=30
-    Click element    ${HIDDEN_TERM_STATUS_DDL}
-    Click element    ${HIDDEN_TERM_STATUS_VALID}
+    Wait Until Page Contains Element    ${HIDDEN_TERM_STATUS_DDL}    timeout=30
+    Click Element    ${HIDDEN_TERM_STATUS_DDL}
+    Click Element    ${HIDDEN_TERM_STATUS_VALID}
     Save concept
     Sleep    5
-    Wait until page contains element    ${HIDDEN_TERM}    timeout=30
+    Wait Until Page Contains Element    ${HIDDEN_TERM}    timeout=30
     Click Element    ${HIDDEN_TERM}
-    Wait until page contains    Voimassa oleva    timeout=30
-    Wait until page contains    Tieteilijä    timeout=30
-    Wait until page contains    Ohjaustermin lähde    timeout=30
-    Wait until page contains    Ohjaustermin ala    timeout=30
-    Wait until page contains    Älykkö    timeout=30
-    Wait until page contains    Feminiini    timeout=30
-    Wait until page contains    Yksikkö    timeout=30
-    Wait until page contains    >    timeout=30
-    Wait until page contains    Eri sanaluokka    timeout=30
-    Wait until page contains    9    timeout=30
-    Wait until page contains    Huomio    timeout=30
-    Wait until page contains    Kommentti    timeout=30
-    Wait until page contains    Termin historia    timeout=30
-    Wait until page contains    Termin muutoshistoriatieto    timeout=30
+    Wait Until Page Contains    Voimassa oleva    timeout=30
+    Wait Until Page Contains    Tieteilijä    timeout=30
+    Wait Until Page Contains    Ohjaustermin lähde    timeout=30
+    Wait Until Page Contains    Ohjaustermin ala    timeout=30
+    Wait Until Page Contains    Älykkö    timeout=30
+    Wait Until Page Contains    Feminiini    timeout=30
+    Wait Until Page Contains    Yksikkö    timeout=30
+    Wait Until Page Contains    >    timeout=30
+    Wait Until Page Contains    Eri sanaluokka    timeout=30
+    Wait Until Page Contains    9    timeout=30
+    Wait Until Page Contains    Huomio    timeout=30
+    Wait Until Page Contains    Kommentti    timeout=30
+    Wait Until Page Contains    Termin historia    timeout=30
+    Wait Until Page Contains    Termin muutoshistoriatieto    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -326,43 +326,43 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
-    Wait until page contains element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    timeout=30
-    Click element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}
-    Wait until page contains element    ${CONCEPT_EDITORIAL_NOTE_INPUT}    timeout=30
-    Click element    ${CONCEPT_EDITORIAL_NOTE_INPUT}
-    Input text    ${CONCEPT_EDITORIAL_NOTE_INPUT}    Editorial note
-    Wait until page contains element    ${CONCEPT_EXAMPLE_ADD_BTN}    timeout=30
-    Click element    ${CONCEPT_EXAMPLE_ADD_BTN}
-    Click element    ${CONCEPT_EXAMPLE_EN}
-    Wait until page contains element    ${CONCEPT_EXAMPLE_EN_TEXTAREA}    timeout=30
-    Click element    ${CONCEPT_EXAMPLE_EN_TEXTAREA}
-    input text    ${CONCEPT_EXAMPLE_EN_TEXTAREA}    Example
-    Wait until page contains element    ${CONCEPT_SCOPE_INPUT}    timeout=30
-    input text    ${CONCEPT_SCOPE_INPUT}    Concept scope
-    Wait until page contains element    ${CONCEPT_SCOPE_CLASS_INPUT}    timeout=30
-    input text    ${CONCEPT_SCOPE_CLASS_INPUT}    Concept scope class
-    Wait until page contains element    ${CONCEPT_WORD_CLASS_INPUT}    timeout=30
-    input text    ${CONCEPT_WORD_CLASS_INPUT}    Concept word class
-    Wait until page contains element    ${CONCEPT_CHNAGE NOTE_INPUT}    timeout=30
-    input text    ${CONCEPT_CHNAGE NOTE_INPUT}    Concept change note
-    Wait until page contains element    ${CONCEPT_HISTORY_NOTE_INPUT}    timeout=30
-    input text    ${CONCEPT_HISTORY_NOTE_INPUT}    Concept change note
-    Wait until page contains element    ${CONCEPT_CONCEPT_NOTATION_INPUT}    timeout=30
-    input text    ${CONCEPT_CONCEPT_NOTATION_INPUT}    Concept notation
-    Wait until page contains element    ${CONCEPT_STATUS_DDL}    timeout=30
-    Click element    ${CONCEPT_STATUS_DDL}
-    Click element    ${CONCEPT_STATUS_VALID}
+    Wait Until Page Contains Element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    timeout=30
+    Click Element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}
+    Wait Until Page Contains Element    ${CONCEPT_EDITORIAL_NOTE_INPUT}    timeout=30
+    Click Element    ${CONCEPT_EDITORIAL_NOTE_INPUT}
+    Input Text    ${CONCEPT_EDITORIAL_NOTE_INPUT}    Editorial note
+    Wait Until Page Contains Element    ${CONCEPT_EXAMPLE_ADD_BTN}    timeout=30
+    Click Element    ${CONCEPT_EXAMPLE_ADD_BTN}
+    Click Element    ${CONCEPT_EXAMPLE_EN}
+    Wait Until Page Contains Element    ${CONCEPT_EXAMPLE_EN_TEXTAREA}    timeout=30
+    Click Element    ${CONCEPT_EXAMPLE_EN_TEXTAREA}
+    Input Text    ${CONCEPT_EXAMPLE_EN_TEXTAREA}    Example
+    Wait Until Page Contains Element    ${CONCEPT_SCOPE_INPUT}    timeout=30
+    Input Text    ${CONCEPT_SCOPE_INPUT}    Concept scope
+    Wait Until Page Contains Element    ${CONCEPT_SCOPE_CLASS_INPUT}    timeout=30
+    Input Text    ${CONCEPT_SCOPE_CLASS_INPUT}    Concept scope class
+    Wait Until Page Contains Element    ${CONCEPT_WORD_CLASS_INPUT}    timeout=30
+    Input Text    ${CONCEPT_WORD_CLASS_INPUT}    Concept word class
+    Wait Until Page Contains Element    ${CONCEPT_CHNAGE NOTE_INPUT}    timeout=30
+    Input Text    ${CONCEPT_CHNAGE NOTE_INPUT}    Concept change note
+    Wait Until Page Contains Element    ${CONCEPT_HISTORY_NOTE_INPUT}    timeout=30
+    Input Text    ${CONCEPT_HISTORY_NOTE_INPUT}    Concept change note
+    Wait Until Page Contains Element    ${CONCEPT_CONCEPT_NOTATION_INPUT}    timeout=30
+    Input Text    ${CONCEPT_CONCEPT_NOTATION_INPUT}    Concept notation
+    Wait Until Page Contains Element    ${CONCEPT_STATUS_DDL}    timeout=30
+    Click Element    ${CONCEPT_STATUS_DDL}
+    Click Element    ${CONCEPT_STATUS_VALID}
     Save concept
     Sleep    5
-    Wait until page contains    Editorial note    timeout=30
-    Wait until page contains    Example    timeout=30
-    Wait until page contains    Concept scope    timeout=30
-    Wait until page contains    Concept scope class    timeout=30
-    Wait until page contains    Concept word class    timeout=30
-    Wait until page contains    Concept change note    timeout=30
-    Wait until page contains    Concept notation    timeout=30
-    Wait until page contains    Voimassa oleva    timeout=30
-    Log to Console    Concept values modified
+    Wait Until Page Contains    Editorial note    timeout=30
+    Wait Until Page Contains    Example    timeout=30
+    Wait Until Page Contains    Concept scope    timeout=30
+    Wait Until Page Contains    Concept scope class    timeout=30
+    Wait Until Page Contains    Concept word class    timeout=30
+    Wait Until Page Contains    Concept change note    timeout=30
+    Wait Until Page Contains    Concept notation    timeout=30
+    Wait Until Page Contains    Voimassa oleva    timeout=30
+    Log To Console    Concept values modified
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -375,26 +375,26 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Maximize Browser Window
     Go back to Sanastot frontpage
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${test_concepts_for_status_filter}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${test_concepts_for_status_filter}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
-    Click element    ${IMPORT_YES_BTN}
+    Click Element    ${IMPORT_YES_BTN}
     Sleep    3
-    Log to Console    Concept import ok
-    Wait until page contains element    ${CONCEPT_FILTER_BTN}    timeout=30
-    Click element    ${CONCEPT_FILTER_BTN}
-    Wait until page contains element    ${CONCEPT_FILTER_DDL}    timeout=30
-    Click element    ${CONCEPT_FILTER_DDL}
-    Click element    ${CONCEPT_INCOMPLETE_STATUS}
+    Log To Console    Concept import ok
+    Wait Until Page Contains Element    ${CONCEPT_FILTER_BTN}    timeout=30
+    Click Element    ${CONCEPT_FILTER_BTN}
+    Wait Until Page Contains Element    ${CONCEPT_FILTER_DDL}    timeout=30
+    Click Element    ${CONCEPT_FILTER_DDL}
+    Click Element    ${CONCEPT_INCOMPLETE_STATUS}
     Wait Until Page Contains    Venus    timeout=20
     Wait Until Page Does Not Contain    Jupiter    timeout=60
-    Wait until page contains element    ${CONCEPT_FILTER_DDL}    timeout=30
-    Click element    ${CONCEPT_FILTER_DDL}
-    Click element    ${CONCEPT_DRAFT_STATUS}
+    Wait Until Page Contains Element    ${CONCEPT_FILTER_DDL}    timeout=30
+    Click Element    ${CONCEPT_FILTER_DDL}
+    Click Element    ${CONCEPT_DRAFT_STATUS}
     Wait Until Page Contains    Merkurius    timeout=20
     Wait Until Page Does Not Contain    Jupiter    timeout=20
     Wait Until Page Does Not Contain    Kuu    timeout=20
@@ -409,30 +409,30 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${concept_reference}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
-    Click element    ${IMPORT_YES_BTN}
+    Click Element    ${IMPORT_YES_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
-    Log to Console    Concept import ok
+    Log To Console    Concept import ok
     Edit concept    Merkurius
-    Wait until page contains element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
-    Click element    ${CONCEPT_DEFINITION_FI_0_INPUT}
-    Wait until page contains element    ${ADD_LINK}    timeout=30
-    Click element    ${ADD_LINK}
-    Wait until page contains element    ${SELECT_LINK_URL_INPUT}    timeout=30
-    Input text    ${SELECT_LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait until page contains element    ${SELECT_LINK_CONFRIM_BTN}    timeout=30
-    Click element    ${SELECT_LINK_CONFRIM_BTN}
+    Wait Until Page Contains Element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
+    Click Element    ${CONCEPT_DEFINITION_FI_0_INPUT}
+    Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
+    Click Element    ${ADD_LINK}
+    Wait Until Page Contains Element    ${SELECT_LINK_URL_INPUT}    timeout=30
+    Input Text    ${SELECT_LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
+    Wait Until Page Contains Element    ${SELECT_LINK_CONFRIM_BTN}    timeout=30
+    Click Element    ${SELECT_LINK_CONFRIM_BTN}
     Save concept
-    Wait until page contains    Planeetta    timeout=30
+    Wait Until Page Contains    Planeetta    timeout=30
     Sleep    2
-    Wait until page contains element    ${EXT_LINK}    timeout=30
-    Click element    ${EXT_LINK}
+    Wait Until Page Contains Element    ${EXT_LINK}    timeout=30
+    Click Element    ${EXT_LINK}
     Sleep    5
     Select Window    title=Etusivu - Suomi.fi
     Close Window
@@ -448,39 +448,39 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${concept_reference}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${concept_reference}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
-    Click element    ${IMPORT_YES_BTN}
-    Wait until element is enabled    ${IMPORT_VOCABULARY_BTN}    timeout=120
+    Click Element    ${IMPORT_YES_BTN}
+    Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=120
     Sleep    1
-    Log to Console    Concept import ok
+    Log To Console    Concept import ok
     Sleep    1
     Edit concept    Merkurius
     Sleep    2
-    Wait until page contains element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
-    Click element    ${CONCEPT_DEFINITION_FI_0_INPUT}
-    Wait until page contains element    ${ADD_CONCEPT_REFERENCE}    timeout=30
-    Click element    ${ADD_CONCEPT_REFERENCE}
-    Wait until page contains element    //*[contains(@id,'_search_result_concept')]
-    Click element    //*[contains(@id,'_search_result_concept')]
+    Wait Until Page Contains Element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
+    Click Element    ${CONCEPT_DEFINITION_FI_0_INPUT}
+    Wait Until Page Contains Element    ${ADD_CONCEPT_REFERENCE}    timeout=30
+    Click Element    ${ADD_CONCEPT_REFERENCE}
+    Wait Until Page Contains Element    //*[contains(@id,'_search_result_concept')]
+    Click Element    //*[contains(@id,'_search_result_concept')]
     Sleep    1
-    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
-    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    Wait until page contains element    ${SELECT_CONCEPT_REFERENCE_DDL}    timeout=30
-    Click element    ${SELECT_CONCEPT_REFERENCE_DDL}
-    Wait until page contains element    ${BROADER_CONCEPT_BTN}    timeout=30
-    Click element    ${BROADER_CONCEPT_BTN}
-    Wait until page contains element    ${SELECT_CONCEPT_CONFIRM_BTN}    timeout=30
-    Click element    ${SELECT_CONCEPT_CONFIRM_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    Wait Until Page Contains Element    ${SELECT_CONCEPT_REFERENCE_DDL}    timeout=30
+    Click Element    ${SELECT_CONCEPT_REFERENCE_DDL}
+    Wait Until Page Contains Element    ${BROADER_CONCEPT_BTN}    timeout=30
+    Click Element    ${BROADER_CONCEPT_BTN}
+    Wait Until Page Contains Element    ${SELECT_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click Element    ${SELECT_CONCEPT_CONFIRM_BTN}
     Save concept
     Sleep    5
-    Wait until page contains    Planeetta    timeout=30
-    Wait until page contains element    ${CONCEPT_REF}    timeout=30
+    Wait Until Page Contains    Planeetta    timeout=30
+    Wait Until Page Contains Element    ${CONCEPT_REF}    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -494,12 +494,12 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
-    Wait until page contains element    ${ADD_CONCEPT_DEFINITION_BTN}    timeout=30
-    Click element    ${ADD_CONCEPT_DEFINITION_BTN}
-    Wait until page contains element    ${CONCEPT_DEFINITION_FI}    timeout=30
-    Click element    ${CONCEPT_DEFINITION_FI}
-    Wait until page contains element    ${CONCEPT_DEFINITION_FI_1_INPUT}    timeout=30
-    Click element    ${CONCEPT_DEFINITION_FI_1_INPUT}
+    Wait Until Page Contains Element    ${ADD_CONCEPT_DEFINITION_BTN}    timeout=30
+    Click Element    ${ADD_CONCEPT_DEFINITION_BTN}
+    Wait Until Page Contains Element    ${CONCEPT_DEFINITION_FI}    timeout=30
+    Click Element    ${CONCEPT_DEFINITION_FI}
+    Wait Until Page Contains Element    ${CONCEPT_DEFINITION_FI_1_INPUT}    timeout=30
+    Click Element    ${CONCEPT_DEFINITION_FI_1_INPUT}
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    h
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    u
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    t
@@ -507,17 +507,17 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    i
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    j
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    a
-    Wait until page contains element    ${ADD_CONCEPT_REFERENCE_1}    timeout=30
-    Click element    ${ADD_CONCEPT_REFERENCE_1}
-    Wait until page contains element    //*[contains(@id,'_search_result_concept')]
-    Click element    //*[contains(@id,'_search_result_concept')]
+    Wait Until Page Contains Element    ${ADD_CONCEPT_REFERENCE_1}    timeout=30
+    Click Element    ${ADD_CONCEPT_REFERENCE_1}
+    Wait Until Page Contains Element    //*[contains(@id,'_search_result_concept')]
+    Click Element    //*[contains(@id,'_search_result_concept')]
     Sleep    1
-    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
-    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     Save concept
     Sleep    5
-    Wait until page contains    hutkija    timeout=30
-    Wait until page contains element    ${CONCEPT_REF_2}    timeout=30
+    Wait Until Page Contains    hutkija    timeout=30
+    Wait Until Page Contains Element    ${CONCEPT_REF_2}    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -531,12 +531,12 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Select dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
-    Wait until page contains element    ${ADD_CONCEPT_NOTE_BTN}    timeout=30
-    Click element    ${ADD_CONCEPT_NOTE_BTN}
-    Wait until page contains element    ${CONCEPT_NOTE_FI}    timeout=30
-    Click element    ${CONCEPT_NOTE_FI}
-    Wait until page contains element    ${CONCEPT_NOTE_FI_1_INPUT}    timeout=30
-    Click element    ${CONCEPT_NOTE_FI_1_INPUT}
+    Wait Until Page Contains Element    ${ADD_CONCEPT_NOTE_BTN}    timeout=30
+    Click Element    ${ADD_CONCEPT_NOTE_BTN}
+    Wait Until Page Contains Element    ${CONCEPT_NOTE_FI}    timeout=30
+    Click Element    ${CONCEPT_NOTE_FI}
+    Wait Until Page Contains Element    ${CONCEPT_NOTE_FI_1_INPUT}    timeout=30
+    Click Element    ${CONCEPT_NOTE_FI_1_INPUT}
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    h
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    u
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    t
@@ -544,17 +544,17 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    i
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    j
     Press key    ${CONCEPT_NOTE_FI_1_INPUT}    a
-    Wait until page contains element    ${ADD_CONCEPT_NOTE_REFERENCE_1}    timeout=30
-    Click element    ${ADD_CONCEPT_NOTE_REFERENCE_1}
-    Wait until page contains element    //*[contains(@id,'_search_result_concept')]
-    Click element    //*[contains(@id,'_search_result_concept')]
+    Wait Until Page Contains Element    ${ADD_CONCEPT_NOTE_REFERENCE_1}    timeout=30
+    Click Element    ${ADD_CONCEPT_NOTE_REFERENCE_1}
+    Wait Until Page Contains Element    //*[contains(@id,'_search_result_concept')]
+    Click Element    //*[contains(@id,'_search_result_concept')]
     Sleep    1
-    Wait until page contains element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
-    Click element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     Save concept
     Sleep    5
-    Wait until page contains    hutkija    timeout=30
-    Wait until page contains element    ${CONCEPT_REF_3}    timeout=30
+    Wait Until Page Contains    hutkija    timeout=30
+    Wait Until Page Contains Element    ${CONCEPT_REF_3}    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -566,18 +566,18 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
     Import concepts    ${XML_FORMAT_BTN}    ${tax}
-    Wait until page contains element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
-    Click element    //*[contains(@id,'c40_concept_list_listitem')]
-    Wait until page contains element    //h3[contains(text(), "verotuspäätös")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "Verovelvolliselle")]    timeout=30
-    Click element    //*[contains(text(), "Verovelvolliselle")]
-    Wait until page contains element    //h3[contains(text(), "verovelvollinen")]    timeout=30
-    Wait until page contains element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
-    Click element    //*[contains(@id,'c40_concept_list_listitem')]
-    Wait until page contains element    //h3[contains(text(), "verotuspäätös")]    timeout=30
-    Wait until page contains element    //*[contains(text(), "veronpalautuksesta")]    timeout=30
-    Click element    //*[contains(text(), "veronpalautuksesta")]
-    Wait until page contains element    //h3[contains(text(), "veronpalautus")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
+    Click Element    //*[contains(@id,'c40_concept_list_listitem')]
+    Wait Until Page Contains Element    //h3[contains(text(), "verotuspäätös")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "Verovelvolliselle")]    timeout=30
+    Click Element    //*[contains(text(), "Verovelvolliselle")]
+    Wait Until Page Contains Element    //h3[contains(text(), "verovelvollinen")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
+    Click Element    //*[contains(@id,'c40_concept_list_listitem')]
+    Wait Until Page Contains Element    //h3[contains(text(), "verotuspäätös")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "veronpalautuksesta")]    timeout=30
+    Click Element    //*[contains(text(), "veronpalautuksesta")]
+    Wait Until Page Contains Element    //h3[contains(text(), "veronpalautus")]    timeout=30
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
@@ -586,30 +586,30 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    sanastot
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
     Select Terminological Vocabulary
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
-    Click element    ${TERMINOLOGY_TAB}
-    Wait until page contains element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click element    ${IMPORT_VOCABULARY_BTN}
-    Wait until page contains element    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
-    Click element    ${FILE_FORMAT_DROPDOWN_BTN}
-    Click element    ${XML_FORMAT_BTN}
-    Choose file    ${FILE_UPLOAD_INPUT}    ${Concepts_with_dropped_items}
+    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
+    Click Element    ${TERMINOLOGY_TAB}
+    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
+    Click Element    ${FILE_FORMAT_DROPDOWN_BTN}
+    Click Element    ${XML_FORMAT_BTN}
+    Choose File    ${FILE_UPLOAD_INPUT}    ${Concepts_with_dropped_items}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click element    ${FILE_UPLOAD_BTN}
-    Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=120
-    Wait until page contains    67 kohdetta luotu. Virheitä: 0. Varoituksia: 21.    timeout=30
-    Wait until element is visible    //*[contains(text(), "Näytä viestit")]    timeout=30
-    Click element    //*[contains(text(), "Näytä viestit")]
-    Wait until page contains    Dropping 'ulottuvuus' type record    timeout=20
-    Wait until page contains    c2
-    Wait until page contains    c68    timeout=20
-    Wait until page contains    [DIAG:c70 LINK-target #c46 <kasvupalvelu palvelun sisällön mukaan> not added into the collection]    timeout=20
-    Wait until element is visible    //*[contains(text(), "Piilota viestit")]    timeout=30
-    Click element    //*[contains(text(), "Piilota viestit")]
-    Wait until element is enabled    ${IMPORT_YES_BTN}    timeout=120
-    Click element    ${IMPORT_YES_BTN}
+    Click Element    ${FILE_UPLOAD_BTN}
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=120
+    Wait Until Page Contains    67 kohdetta luotu. Virheitä: 0. Varoituksia: 21.    timeout=30
+    Wait Until Element Is Visible    //*[contains(text(), "Näytä viestit")]    timeout=30
+    Click Element    //*[contains(text(), "Näytä viestit")]
+    Wait Until Page Contains    Dropping 'ulottuvuus' type record    timeout=20
+    Wait Until Page Contains    c2
+    Wait Until Page Contains    c68    timeout=20
+    Wait Until Page Contains    [DIAG:c70 LINK-target #c46 <kasvupalvelu palvelun sisällön mukaan> not added into the collection]    timeout=20
+    Wait Until Element Is Visible    //*[contains(text(), "Piilota viestit")]    timeout=30
+    Click Element    //*[contains(text(), "Piilota viestit")]
+    Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=120
+    Click Element    ${IMPORT_YES_BTN}
     Sleep    5
-    Log to Console    Concept import ok
+    Log To Console    Concept import ok
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
@@ -617,41 +617,41 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 Select and edit Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
-    Click element    ${TERMINOLOGY_TAB}
-    Wait until page contains    Testiautomaatiosanasto    timeout=20
-    Wait until page contains    Eläkkeet    timeout=20
-    Wait until page contains    Testiorganisaatio    timeout=20
-    Wait until page contains    Luonnos    timeout=20
-    Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=30
-    Click element    ${EDIT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
+    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
+    Click Element    ${TERMINOLOGY_TAB}
+    Wait Until Page Contains    Testiautomaatiosanasto    timeout=20
+    Wait Until Page Contains    Eläkkeet    timeout=20
+    Wait Until Page Contains    Testiorganisaatio    timeout=20
+    Wait Until Page Contains    Luonnos    timeout=20
+    Wait Until Page Contains Element    ${EDIT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${EDIT_VOCABULARY_BTN}
 
 Select Draft vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait until page contains    ${VOCABULARY_1}    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
 
 Restore organization and classification for DRAFT vocabulary
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
-    Click element    ${TERMINOLOGY_TAB}
-    Wait until page contains element    ${EDIT_VOCABULARY_BTN}    timeout=30
-    Click element    ${EDIT_VOCABULARY_BTN}
-    Wait until page contains element    ${REMOVE_ORGANIZATION_1}    timeout=30
-    Click element    ${REMOVE_ORGANIZATION_1}
-    Wait until page contains element    ${REMOVE_CLASSIFICATION_1}    timeout=30
-    Click element    ${REMOVE_CLASSIFICATION_1}
-    Wait until page contains element    ${SAVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${SAVE_VOCABULARY_BTN}
-    Wait until element is visible    ${EDIT_VOCABULARY_BTN}    timeout=60
+    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
+    Click Element    ${TERMINOLOGY_TAB}
+    Wait Until Page Contains Element    ${EDIT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${EDIT_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${REMOVE_ORGANIZATION_1}    timeout=30
+    Click Element    ${REMOVE_ORGANIZATION_1}
+    Wait Until Page Contains Element    ${REMOVE_CLASSIFICATION_1}    timeout=30
+    Click Element    ${REMOVE_CLASSIFICATION_1}
+    Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${EDIT_VOCABULARY_BTN}    timeout=60
     Sleep    1
     Page should not contain    ${ORGANIZATION_1}
     Page should not contain    ${CLASSIFICATION_1}
-    Log to Console    Vocabulary changes restored
+    Log To Console    Vocabulary changes restored
     Go back to Sanastot frontpage
     Sleep    1
     Close All Browsers
@@ -659,39 +659,39 @@ Restore organization and classification for DRAFT vocabulary
 Delete Terminological Vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait until page contains    ${VOCABULARY_2}    timeout=30
-    Wait until page contains element    ${TERMINOLOGY_TAB}    timeout=30
-    Click element    ${TERMINOLOGY_TAB}
-    Wait until page contains    Testiautomaatiosanasto2    timeout=20
-    Wait until page contains element    ${REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${REMOVE_VOCABULARY_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
+    Click Element    //*[contains(text(), "${VOCABULARY_2}")]
+    Wait Until Page Contains    ${VOCABULARY_2}    timeout=30
+    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
+    Click Element    ${TERMINOLOGY_TAB}
+    Wait Until Page Contains    Testiautomaatiosanasto2    timeout=20
+    Wait Until Page Contains Element    ${REMOVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${REMOVE_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
     Sleep    2
-    Page should not contain element    //*[contains(text(), "${VOCABULARY_2}")]
+    Page Should Not Contain Element    //*[contains(text(), "${VOCABULARY_2}")]
     Sleep    1
-    Log to Console    Terminological Vocabulary deleted
+    Log To Console    Terminological Vocabulary deleted
     Sleep    1
     Close All Browsers
 
 Delete concept from Testiautomaatiosanasto vocabulary
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait until page contains    ${VOCABULARY_1}    timeout=30
-    Wait until page contains element    //*[contains(text(), "${TERM_1}")]    timeout=30
-    Click element    //*[contains(text(), "${TERM_1}")]
-    Wait until page contains element    ${REMOVE_CONCEPT_BTN}    timeout=30
-    Click element    ${REMOVE_CONCEPT_BTN}
-    Wait until page contains element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
-    Click element    ${CONFIRM_REMOVE_CONCEPT_BTN}
-    Wait until element is visible    ${EDIT_CONCEPT_BTN}    timeout=60
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
+    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${TERM_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${TERM_1}")]
+    Wait Until Page Contains Element    ${REMOVE_CONCEPT_BTN}    timeout=30
+    Click Element    ${REMOVE_CONCEPT_BTN}
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_CONCEPT_BTN}
+    Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}    timeout=60
     Sleep    5
-    Log to Console    Concept removed from Terminological Vocabulary
+    Log To Console    Concept removed from Terminological Vocabulary
     Go back to Sanastot frontpage
     Sleep    1
