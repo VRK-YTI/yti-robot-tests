@@ -214,6 +214,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Click Element    ${RESOURCES_TAB}
     Wait Until Element Is Visible    ${VIEW_COMMENT_BUBLE_0}    timeout=30
     Click Element    ${VIEW_COMMENT_BUBLE_0}
+    Wait Until Page Contains Element    //app-hierarchical-comment    timeout=20
     ${elements} =    Get WebElements    //app-hierarchical-comment
     ${element} =    Get From List    ${elements}    0
     ${element_1} =    Get From List    ${elements}    1

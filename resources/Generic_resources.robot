@@ -273,12 +273,12 @@ Send Comments
 
 Send Inline Comment For Comment Thread
     [Arguments]    ${id}    ${comment}
-    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
+    Wait Until Element Is Enabled    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}
-    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    timeout=30
+    Wait Until Element Is Enabled    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}
     Input Text    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    ${comment}
-    Wait Until Element Is Visible    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}    timeout=30
+    Wait Until Element Is Enabled    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}
 
 Test Case Setup Reference Data
