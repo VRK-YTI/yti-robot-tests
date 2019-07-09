@@ -279,21 +279,21 @@ ${Code_list_Code_without_prefLabel}    ${DATAFOLDER}${/}Code_list_Code_without_p
 Reference Data Test Case Setup Admin
     Open Koodistot
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Reference Data Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Reference Data Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
 
 Reference Data Test Case Setup Superuser
     Open Koodistot
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Reference Data Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Reference Data Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
 
-Reference Data Select user
+Reference Data Select User
     [Arguments]    ${user_id}    ${user_name}
     Wait Until Element Is Enabled    ${REFERENCE_DATA_USER_DROPDOWN}    timeout=60
     Click Element    ${REFERENCE_DATA_USER_DROPDOWN}
-    Wait Until Element Is Enabled    ${user_id}    timeout=60
+    Wait Until Element Is Visible    ${user_id}    timeout=60
     Click Element    ${user_id}
-    Wait Until Page Contains    ${user_name}    timeout=60
-    Sleep    1
+    Sleep    0.5
+    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
 
 Open Koodistot
     Reference Data Open Browser with Settings
@@ -313,19 +313,23 @@ Reference Data Open Chrome to Environment
     Set Window Size    1920    1080
     Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}
 
-Return to Koodistot frontpage
+Return To Koodistot Frontpage
     Wait Until Page Contains Element    ${FRONTPAGE_LINK}    timeout=20
     Click Element    ${FRONTPAGE_LINK}
     Sleep    2
 
-Remove code lists
+Remove Code Lists
     [Arguments]    @{code_list_items}
     : FOR    ${code_list_item}    IN    @{code_list_items}
-    \    Return to Koodistot frontpage
-    \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    \    Return To Koodistot Frontpage
+    \    Reference Data Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=90
+    \    Sleep    1
+    \    Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=20
+    \    ${code_list_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${code_list_item}")]
+    \    Run Keyword Unless    ${code_list_exists}    Run Keywords    Log To Console    Remove Code List ${code_list_item} did not find the code list to delete
+    \    ...    AND    Return From Keyword
     \    Click Element    //*[contains(text(), "${code_list_item}")]
     \    Wait Until Page Contains    ${code_list_item}    timeout=90
     \    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
@@ -340,42 +344,46 @@ Remove code lists
     \    Log To Console    ${code_list_item} removed
     \    Sleep    1
 
-Create code list
-    [Arguments]    ${registry}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
+Create Code List
+    [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
+    Sleep    1
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    Run Keyword If    ${code_list_exists}    Remove code lists    ${codelist_name}
-    Wait Until Page Contains Element    ${ADD_CODE_LIST_BTN}    timeout=20
+    Run Keyword If    ${code_list_exists}    Remove Code Lists    ${codelist_name}
+    Wait Until Element Is Enabled    ${ADD_CODE_LIST_BTN}    timeout=20
     Click Element    ${ADD_CODE_LIST_BTN}
-    WWait Until Page Contains Element    ${CREATE CODE_LIST_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${CREATE CODE_LIST_BTN}    timeout=20
     Click Element    ${CREATE CODE_LIST_BTN}
     ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
     Run Keyword If    ${vocabularies_error}    Close error modal
-    Wait Until Page Contains Element    ${CANCEL_CREATION_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${CANCEL_CREATION_BTN}    timeout=20
     Click Element    ${CANCEL_CREATION_BTN}
-    Sleep    5
-    Wait Until Page Contains Element    ${SELECT_REGISTRY_BTN}    timeout=20
+    Sleep    4
+    Wait Until Element Is Enabled    ${SELECT_REGISTRY_BTN}    timeout=20
     Click Element    ${SELECT_REGISTRY_BTN}
-    Click Button    ${registry}
+    Wait Until Element Is Enabled    //*[contains(text(), "${registry}")]    timeout=60
+    Click Element    //*[contains(text(), "${registry}")]
+    Run Keyword If    '${cumulative}' == 'Cumulative'    Select Cumulative Code List Checkbox    ${cumulative}
     Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}
     Input Text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
     Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
     Click Button    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
     Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Wait Until Page Contains Element    //*[contains(text(), "${organization}")]    timeout=20
     Click Element    //*[contains(text(), "${organization}")]
-    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input Text    ${CODE_LIST_NAME_INPUT}    ${codelist_name}
     Click Button    ${ADD_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
     Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
+    Wait Until Page Contains Element    //*[contains(text(), "${classification}")]    timeout=20
     Click Element    //*[contains(text(), "${classification}")]
-    Sleep    2
+    Sleep    1
     ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
     Run Keyword If    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list
-    Sleep    5
     Log To Console    ${codelist_name} created
 
 Cancel code list creation
@@ -502,8 +510,8 @@ Remove code
 
 Delete registry with code lists
     [Arguments]    ${registry}    ${code_list}
-    Return to Koodistot frontpage
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Return To Koodistot Frontpage
+    Reference Data Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click Element    ${NAVIGATION_MENU_DDL}
     Click Element    ${NAVIGATION_MENU_REGISTRIES}
@@ -518,13 +526,13 @@ Delete registry with code lists
     Wait Until Page Contains    ${Error_registry_with_codelists}    timeout=20
     Wait Until Page Contains Element    ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
     Click Element    ${CLOSE_ERROR_MESSAGE_BTN}
-    Remove code lists    ${code_list}
+    Remove Code Lists    ${code_list}
     Delete empty registry    ${registry}
 
 Delete empty registry
     [Arguments]    ${registry}
-    Return to Koodistot frontpage
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Return To Koodistot Frontpage
+    Reference Data Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
     Click Element    ${NAVIGATION_MENU_DDL}
     Click Element    ${NAVIGATION_MENU_REGISTRIES}
@@ -580,7 +588,7 @@ Cancel registry creation
     Click Element    ${CANCEL_CODE_MOD_BTN}
     Log To Console    Cancel registry creation
     Sleep    5
-    Return to Koodistot frontpage
+    Return To Koodistot Frontpage
 
 Create new version of code list
     [Arguments]    ${codelist_value}    ${codelist_name}    ${classification}
@@ -613,12 +621,13 @@ Cancel code list import
     Wait Until Page Contains Element    ${CANCEL_IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${CANCEL_IMPORT_CODE_LIST_BTN}
 
-Upload codelist in Excel format
+Upload Code List In Excel Format
     [Arguments]    ${codelist}    ${codelist_name}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
+    Sleep    1
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    Run Keyword If    ${code_list_exists}    Remove code lists    ${codelist_name}
+    Run Keyword If    ${code_list_exists}    Remove Code Lists    ${codelist_name}
     Wait Until Page Contains Element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click Element    ${ADD_CODE_LIST_BTN}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
@@ -643,7 +652,7 @@ Upload codelist in CSV format
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name}
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    Run Keyword If    ${code_list_exists}    Remove code lists    ${codelist_name}
+    Run Keyword If    ${code_list_exists}    Remove Code Lists    ${codelist_name}
     Wait Until Page Contains Element    ${ADD_CODE_LIST_BTN}    timeout=20
     Click Element    ${ADD_CODE_LIST_BTN}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
@@ -665,18 +674,19 @@ Upload codelist in CSV format
     Log To Console    Code list ${codelist_name} imported
 
 Reference Data Setup
+    [Arguments]    ${codelist}    ${codelist_name}
     Reference Data Test Case Setup Superuser
-    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Wait until page contains    30 koodia    timeout=20
-    Return to Koodistot frontpage
+    Upload Code List In Excel Format    ${codelist}    ${codelist_name}
+    Return To Koodistot Frontpage
 
 Reference Data Setup And Code Without prefLabel
     Reference Data Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_Code_without_prefLabel}    ${CODE_LIST_8}
     Wait until page contains    30 koodia    timeout=20
-    Return to Koodistot frontpage
+    Return To Koodistot Frontpage
 
 Reference Data Teardown
+    [Arguments]    ${codelist_name}
     Reference Data Test Case Setup Superuser
-    Remove code lists    ${CODE_LIST_8}
+    Remove Code Lists    ${codelist_name}
     Close All Browsers

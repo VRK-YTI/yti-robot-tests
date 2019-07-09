@@ -98,14 +98,14 @@ ${CLOSE_INLINE_COMMENT_0_BTN}    id=close_commentthread_0_comments_button
 Test Case Setup Admin
     Open Comments
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
 
 Test Case Setup Superuser
     Open Comments
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
 
-Select user
+Select User
     [Arguments]    ${user_id}    ${user_name}
     Wait Until Element Is Enabled    ${IMPERSONATE_USER_DROPDOWN}    timeout=60
     Click Element    ${IMPERSONATE_USER_DROPDOWN}
@@ -250,7 +250,7 @@ Start Commenting
 
 Comment On Resource 0
     [Arguments]    ${comment}    ${status}
-    Wait Until Page Contains Element    ${COMMENT_TEXT_INPUT_0}    timeout=30
+    Wait Until Element Is Enabled    ${COMMENT_TEXT_INPUT_0}    timeout=30
     Input Text    ${COMMENT_TEXT_INPUT_0}    ${comment}
     Wait Until Page Contains Element    ${STATUS_DDL_0}    timeout=30
     Click Element    ${STATUS_DDL_0}
@@ -259,7 +259,7 @@ Comment On Resource 0
 
 Comment On Resource 1
     [Arguments]    ${comment}    ${status}
-    Wait Until Page Contains Element    ${COMMENT_TEXT_INPUT_1}    timeout=30
+    Wait Until Element Is Enabled    ${COMMENT_TEXT_INPUT_1}    timeout=30
     Input Text    ${COMMENT_TEXT_INPUT_1}    ${comment}
     Wait Until Page Contains Element    ${STATUS_DDL_1}    timeout=30
     Click Element    ${STATUS_DDL_1}
@@ -282,7 +282,8 @@ Send Inline Comment For Comment Thread
     Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}
 
 Test Case Setup Reference Data
-    Reference Data Setup
+    [Arguments]    ${codelist}    ${codelist_name}
+    Reference Data Setup    ${codelist}    ${codelist_name}
     Test Case Setup Superuser
 
 Test Case Setup Reference Data And Code Without prefLabel
@@ -290,9 +291,9 @@ Test Case Setup Reference Data And Code Without prefLabel
     Test Case Setup Superuser
 
 Test Case Teardown Reference Data
-    [Arguments]    ${comment_round_name}
+    [Arguments]    ${codelist_name}    ${comment_round_name}
     Reference Data Test Case Setup Superuser
-    Reference Data Teardown
+    Reference Data Teardown    ${codelist_name}
     Delete Comment Round    ${comment_round_name}
 
 Test Case Setup Terminology

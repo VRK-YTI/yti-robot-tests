@@ -14,10 +14,10 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Delete code list and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
 201. Create new comment round for terminology
     [Documentation]    Create new terminology with concepts in Terminologies tool and create new comment round for the terminology.
@@ -41,11 +41,11 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add new codes for comment round and delete code list and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
 204. Add resources from Terminologies for comment round
     [Documentation]    Create new terminology with concepts in Terminologies tool and create new comment round
@@ -72,37 +72,37 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Add new code for commenting, start comment round and add new code for commenting after comment
     ...    round has started. Close comment round and delete code list and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    True
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
     Add Resource For Comment Round    Testcode 57    ${COMMENT_TEXT_INPUT_1}    kommentti22    ${EMPTY}    ${EMPTY}
     Close Comment Round
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
 207. Send comment for Reference Data resource
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add new code for commenting, select another user and send comment.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
+    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
-    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
 208. Remove Reference Data resources from comment round
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add new codes for commenting, remove selected codes from comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
+    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
@@ -131,33 +131,33 @@ Resource          resources/Data_Vocabularies_resources.robot
     Page Should Not Contain    Testcode 30
     Page Should Not Contain    Testcode 35
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
 209. Add Reference Data resource without prefLabel to comment round
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add new code without prefLabel for commenting, delete code list and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data And Code Without prefLabel
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    [Setup]    Test Case Setup Reference Data    ${Code_list_Code_without_prefLabel}    ${CODE_LIST_8}
+    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
     Add Resource For Comment Round    http://uri.suomi.fi/codelist/test/6000/code/testcode40    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Wait Until Page Contains    kommentti1    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]    timeout=60
     Click Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]
-    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait Until Page Contains    koodisto6000    timeout=20
     Wait Until Page Contains    testcode40    timeout=20
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
 210. Check comment round results
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add resources for commenting, send comments from three users and check comment round results.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data
-    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
+    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
@@ -167,19 +167,19 @@ Resource          resources/Data_Vocabularies_resources.robot
     Comment On Resource 1    Kommentti 2    ${VALID_1}
     Send Comments
     Log To Console    First commenter's comments added
-    Select user    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
+    Select User    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Comment On Resource 1    Kommentti 4    ${VALID_1}
     Send Comments
     Log To Console    Second commenter's comments added
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Start Commenting
     Comment On Resource 0    Kommentti 5    ${INVALID_0}
     Comment On Resource 1    Kommentti 6    ${VALID_1}
     Send Comments
     Log To Console    Third commenter's comments added
-    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Close Comment Round
     Sleep    1
     Wait Until Page Contains    Korvattu:    timeout=20
@@ -189,14 +189,14 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Page Contains    Voimassa oleva:    timeout=20
     Wait Until Page Contains    (100.00 %)    timeout=20
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
 211. Send inline comment for resource
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add resources for commenting, send comments from two users and inline comments from one user.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data
-    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
+    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
@@ -204,12 +204,12 @@ Resource          resources/Data_Vocabularies_resources.robot
     Comment On Resource 0    Kommentti 1    ${SUPERSEDED_0}
     Send Comments
     Log To Console    First commenter's comments added
-    Select user    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
+    Select User    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Send Comments
     Log To Console    Second commenter's comments added
-    Select user    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Wait Until Element Is Visible    ${RESOURCES_TAB}    timeout=30
     Click Element    ${RESOURCES_TAB}
     Wait Until Element Is Visible    ${VIEW_COMMENT_BUBLE_0}    timeout=30
@@ -231,4 +231,4 @@ Resource          resources/Data_Vocabularies_resources.robot
     Page Should Not Contain    Inline kommentti 1    timeout=20
     Page Should Not Contain    Inline kommentti 2    timeout=20
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
