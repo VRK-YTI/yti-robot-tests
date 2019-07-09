@@ -417,7 +417,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click element    ${FILE_UPLOAD_BTN}
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click element    ${IMPORT_YES_BTN}
-    Sleep    3
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
     Log to Console    Concept import ok
     Edit concept    Merkurius
     Wait until page contains element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30

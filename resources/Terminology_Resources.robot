@@ -367,7 +367,7 @@ Delete existing terminological vocabulary and create new
     Sleep    3
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
     Sleep    2
     Page should not contain element    //*[contains(text(), "${terminology}")]
     Log to Console    ${terminology} deleted
@@ -510,9 +510,9 @@ Delete Terminological Vocabulary
 
 Edit concept
     [Arguments]    ${concept}
-    Wait until page contains element    //*[contains(text(), "${concept}")]
+    Wait until page contains element    //*[contains(text(), "${concept}")]    timeout=30
     Click element    //*[contains(text(), "${concept}")]
-    Wait until page contains element    //h3[contains(text(), "${concept}")]
+    Wait until page contains element    //h3[contains(text(), "${concept}")]    timeout=10
     Wait until page contains element    ${EDIT_CONCEPT_BTN}    timeout=30
     Click element    ${EDIT_CONCEPT_BTN}
     Sleep    1
