@@ -353,10 +353,10 @@ Select user
     [Arguments]    ${user_id}    ${user_name}
     Wait Until Page Contains Element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click Element    ${IMPERSONATE_USER_DROPDOWN}
-    Wait Until Page Contains Element    ${user_id}    timeout=30
+    Wait Until Element Is Visible    ${user_id}    timeout=30
     Click Element    ${user_id}
-    Wait Until Page Contains    ${user_name}    timeout=60
-    Sleep    1
+    Sleep    0.5
+    Wait Until Page Contains Element   xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
 
 Open Koodistot
     Open Browser with Settings
