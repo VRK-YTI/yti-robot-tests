@@ -1,6 +1,6 @@
 *** Variables ***
 ${BROWSER}        chrome
-${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot-dev.suomi.fi/
+${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.dev.yti.cloud.vrk.fi/
 ${USER_1_TERMINOLOGIES}    id=testiadmin@localhost_fakeable_user_link
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link

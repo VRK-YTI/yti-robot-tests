@@ -5,7 +5,7 @@ Library           SeleniumLibrary
 *** Variables ***
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
-${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
+${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
 ${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
@@ -17,7 +17,7 @@ ${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable
 ${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
 ${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 ${NAMESPACE_1}    Julkishallinnon tietokomponentit
-${ENVIRONMENT_IDENTIFIER}    DEV
+${ENVIRONMENT_IDENTIFIER}    AWSDEV
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
