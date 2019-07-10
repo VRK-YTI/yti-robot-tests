@@ -1,9 +1,9 @@
 *** Variables ***
-${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
+${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
-${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
-${COMMENTS_ENVIRONMENT_URL}    https://kommentit-dev.suomi.fi/
+${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.dev.yti.cloud.vrk.fi/
+${COMMENTS_ENVIRONMENT_URL}    https://kommentit.dev.yti.cloud.vrk.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${ADMIN_USER_NAME}    Testi Admin
@@ -30,7 +30,7 @@ ${CONTENT_LANGUAGE_AR_SO}    id=ar-SO_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_SW_UG}    id=sw-UG_content_lang_dropdown_button
 ${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
 ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
-${ENVIRONMENT_IDENTIFIER}    DEV
+${ENVIRONMENT_IDENTIFIER}    AWSDEV
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
