@@ -356,7 +356,7 @@ Select user
     Wait Until Element Is Visible    ${user_id}    timeout=30
     Click Element    ${user_id}
     Sleep    0.5
-    Wait Until Page Contains Element   xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
+    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
 
 Open Koodistot
     Open Browser with Settings
@@ -475,6 +475,19 @@ Create code list
     Run Keyword If    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list after creation    ${codelist_name}
 
+Create Code List Version From File
+    [Arguments]    ${file_format}    ${codelist}    ${codelist_name}
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_CODELIST_VERSION_FROM_FILE}    timeout=20
+    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
+    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
+    Click Element    ${FILE_FORMAT_BTN}
+    Wait Until Page Contains Element    ${file_format}    timeout=20
+    Click Element    ${file_format}
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
+    Upload codelist    ${codelist}    ${codelist_name}
+
 Select Cumulative Code List Checkbox
     [Arguments]    ${cumulative}
     Wait Until Page Contains Element    ${CREATE_CUMULATIVE_CODE_LIST}    timeout=30
@@ -496,6 +509,13 @@ Cancel code list creation
 Save code list
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click Element    ${SAVE_NEW_CODE_LIST}
+
+Save Code List With Confirmation
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=30
+    Click Element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Page Contains Element    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=30
 
 Close error modal
     Wait Until Element Is Enabled    ${CLOSE_ERROR_MODAL_BTN}    timeout=20

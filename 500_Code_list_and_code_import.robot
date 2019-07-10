@@ -767,16 +767,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
     Sleep    2
     Wait Until Page Contains    10 koodia    timeout=20
-    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
-    Click Element    ${CODE_LIST_DDL}
-    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
-    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
-    Click Element    ${FILE_FORMAT_BTN}
-    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
-    Click Element    ${FILE_FORMAT_Excel}
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
-    Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
+    Create Code List Version From File    ${FILE_FORMAT_Excel}    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Wait Until Element Is Enabled    ${VERSION_TAB}    timeout=20
     Click Element    ${VERSION_TAB}
     Log To Console    Codelist info tab clicked
     Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
@@ -796,15 +788,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Import code list in Excel format
     Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
     Wait Until Page Contains    10 koodia    timeout=60
-    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
-    Click Element    ${CODE_LIST_DDL}
-    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
-    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
-    Click Element    ${FILE_FORMAT_BTN}
-    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
-    Click Element    ${FILE_FORMAT_Excel}
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Upload codelist    ${Code_list_version2}    ${CODE_LIST_10}
+    Create Code List Version From File    ${FILE_FORMAT_Excel}    ${Code_list_version2}    ${CODE_LIST_10}
     Wait Until Page Contains    10 koodia    timeout=60
     Modify code list
     Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
@@ -812,26 +796,13 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    2
     Wait Until Page Contains Element    ${VALID_STATUS}    timeout=20
     Click Element    ${VALID_STATUS}
-    Save code list
-    Wait Until Page Contains Element    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click Element    ${CONFIRMATION_YES_BTN}
-    Sleep    1
+    Save Code List With Confirmation
     Wait Until Page Contains    Voimassa oleva    timeout=60
-    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Sleep    1
-    Click Element    ${CODE_LIST_DDL}
-    Sleep    1
-    Click Element    ${CREATE_CODELIST_VERSION_FROM_FILE}
-    Wait Until Page Contains Element    ${FILE_FORMAT_BTN}    timeout=20
-    Click Element    ${FILE_FORMAT_BTN}
-    Wait Until Page Contains Element    ${FILE_FORMAT_Excel}    timeout=20
-    Click Element    ${FILE_FORMAT_Excel}
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Upload codelist    ${Code_list_version3}    ${CODE_LIST_11}
-    Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
+    Create Code List Version From File    ${FILE_FORMAT_Excel}    ${Code_list_version3}    ${CODE_LIST_11}
+    Wait Until Element Is Enabled    ${VERSION_TAB}    timeout=20
     Click Element    ${VERSION_TAB}
     Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
-    Page should not contain    03.03.2018 - 31.03.2018
+    Page Should Not Contain    03.03.2018 - 31.03.2018
     Wait Until Page Contains    koodisto7000    timeout=20
     Wait Until Page Contains    koodisto7001    timeout=20
     Wait Until Page Contains    koodisto7002    timeout=20
