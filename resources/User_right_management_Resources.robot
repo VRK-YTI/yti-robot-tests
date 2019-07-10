@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
-${GROUPMANAGEMENT_ENVIRONMENT_URL}    https://rhp-dev.suomi.fi/
+${GROUPMANAGEMENT_ENVIRONMENT_URL}    https://rhp.dev.yti.cloud.vrk.fi/
 #${USER_1}        //a[@class='dropdown-item ng-binding ng-scope'][contains(text(),'Testi Admin')]
 ${LANGUAGE_EN}    id=en_available_language
 ${LANGUAGE_FI}    id=fi_available_language
@@ -24,7 +24,7 @@ ${GOOGLE_LOGIN_SELECTION}    https://googlelogin.eduuni.fi
 ${NAVIGATION_MENU_DDL}    id=app_menu_dropdown
 ${NAVIGATION_LOGIN_LINK}    id=log_in_link
 ${LOGIN_MODAL_BTN}    id=login_modal_button
-${ENVIRONMENT_IDENTIFIER}    DEV
+${ENVIRONMENT_IDENTIFIER}    AWSDEV
 
 *** Keywords ***
 Test Case Setup
