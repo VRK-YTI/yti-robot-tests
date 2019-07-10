@@ -14,7 +14,7 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Import Concepts With Error    ${CSV_FORMAT_BTN}    ${invalid_related_concepts}
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${invalid_related_concepts}
     Wait Until Page Contains    Tuodaan 4 käsitettä    timeout=60
     Page Should Contain    4: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
     Page Should Contain    4: Viittauksella “related” ei löydy käsitettä arvolle “joku”
@@ -35,12 +35,7 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click Element    ${IMPORT_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose File    ${FILE_UPLOAD_INPUT}    ${empty_related_concepts}
-    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click Element    ${FILE_UPLOAD_BTN}
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${empty_related_concepts}
     Sleep    3
     Wait Until Page Contains    Tuodaan 1 käsitettä    timeout=60
     Wait Until Page Contains    tutkimus    timeout=60
