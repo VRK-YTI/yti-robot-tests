@@ -619,6 +619,23 @@ Import concepts
     Sleep    5
     Log To Console    Concept import ok
 
+Import Concepts With Error
+    [Arguments]    ${file_format}    ${file}
+    Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${IMPORT_VOCABULARY_BTN}
+    Wait Until Element Is Enabled    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
+    Click Element    ${FILE_FORMAT_DROPDOWN_BTN}
+    Wait Until Element Is Enabled    ${file_format}    timeout=30
+    Click Element    ${file_format}
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_INPUT}    timeout=30
+    Choose File    ${FILE_UPLOAD_INPUT}    ${invalid_related_concepts}
+    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
+    Click Element    ${FILE_UPLOAD_BTN}
+
+Cancel Concept Import
+    Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
+    Click Element    ${IMPORT_CANCEL_BTN}
+
 Select concept
     [Arguments]    ${concept}
     Wait Until Page Contains Element    ${CONCEPT_LIST_SEARCH_INPUT}    timeout=30

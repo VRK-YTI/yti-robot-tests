@@ -14,14 +14,8 @@ Resource          resources/Terminology_Resources.robot
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select dictionary    ${VOCABULARY_2}
-    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
-    Click Element    ${IMPORT_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose File    ${FILE_UPLOAD_INPUT}    ${invalid_related_concepts}
-    Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
-    Click Element    ${FILE_UPLOAD_BTN}
-    Sleep    3
-    Page Should Contain    Tuodaan 4 käsitettä
+    Import Concepts With Error    ${CSV_FORMAT_BTN}    ${invalid_related_concepts}
+    Wait Until Page Contains    Tuodaan 4 käsitettä    timeout=60
     Page Should Contain    4: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
     Page Should Contain    4: Viittauksella “related” ei löydy käsitettä arvolle “joku”
     Page Should Contain    4: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
@@ -29,8 +23,7 @@ Resource          resources/Terminology_Resources.robot
     Page Should Contain    5: Viittauksella “related” ei löydy käsitettä arvolle “joku”
     Page Should Contain    5: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
     Log To Console    Error message displayed when related, broader and isPartOf concepts are not found from CSV
-    Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
-    Click Element    ${IMPORT_CANCEL_BTN}
+    Cancel Concept Import
     Go back to Sanastot frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
