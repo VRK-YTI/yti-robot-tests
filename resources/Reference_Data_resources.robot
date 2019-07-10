@@ -1,7 +1,7 @@
 *** Variables ***
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
-${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot-dev.suomi.fi/
+${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.dev.yti.cloud.vrk.fi/
 ${REFERENCE_DATA_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${ADMIN_USER_NAME}    Testi Admin

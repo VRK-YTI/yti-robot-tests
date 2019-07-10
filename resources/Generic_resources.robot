@@ -1,7 +1,7 @@
 *** Variables ***
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
-${COMMENTS_ENVIRONMENT_URL}    https://kommentit-dev.suomi.fi/
+${COMMENTS_ENVIRONMENT_URL}    https://kommentit.dev.yti.cloud.vrk.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${SUPER_USER_ID}    id=testisuperuser@localhost
@@ -20,7 +20,7 @@ ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
 ${REFERENCE_DATA_TOOL}    id=codelist_integration_container_type_filter_dropdown
 ${TERMINOLOGIES_TOOL}    id=terminology_integration_container_type_filter_dropdown
 ${DATA_VOCABULARIES_TOOL}    id=datamodel_integration_container_type_filter_dropdown
-${ENVIRONMENT_IDENTIFIER}    DEV
+${ENVIRONMENT_IDENTIFIER}    AWSDEV
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown

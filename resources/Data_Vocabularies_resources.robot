@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
-${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit-dev.suomi.fi/
+${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
 ${DATA_VOCABULARIES_USER_1}    id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
