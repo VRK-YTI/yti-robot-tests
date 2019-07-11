@@ -409,7 +409,7 @@ Delete Terminological Vocabulary
     Log To Console    Terminological Vocabulary deleted
     Close All Browsers
 
-Edit concept
+Edit Concept
     [Arguments]    ${concept}
     Wait Until Page Contains Element    //*[contains(text(), "${concept}")]    timeout=30
     Click Element    //*[contains(text(), "${concept}")]

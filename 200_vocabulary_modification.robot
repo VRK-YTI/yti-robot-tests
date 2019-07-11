@@ -121,7 +121,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
-    Edit concept    tutkija
+    Edit Concept    tutkija
     Wait Until Page Contains Element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]    timeout=30
     Click Element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]
     Wait Until Page Contains Element    ${SAVE_CONCEPT_BTN}    timeout=30
@@ -194,7 +194,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Sleep    1
     Page should not contain    Testikäsitevalikoima
-    Edit concept    tutkija
+    Edit Concept    tutkija
     Wait Until Page Contains Element    ${ADD_BROADER_CONCEPT_BTN}    timeout=30
     Click Element    ${ADD_BROADER_CONCEPT_BTN}
     Wait Until Page Contains Element    //*[contains(@id,'concept-0_search_result_concept')]    timeout=30
@@ -223,7 +223,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
-    Edit concept    tutkija
+    Edit Concept    tutkija
     Wait Until Page Contains Element    ${ADD_PREFERRED_TERM_BTN}    timeout=30
     Click Element    ${ADD_PREFERRED_TERM_BTN}
     Wait Until Page Contains Element    ${ADD_PREFERRED_TERM_SV}    timeout=30
@@ -259,7 +259,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
-    Edit concept    tutkija
+    Edit Concept    tutkija
     Wait Until Page Contains Element    ${ADD_HIDDEN_TERM_BTN}    timeout=30
     Click Element    ${ADD_HIDDEN_TERM_BTN}
     Wait Until Page Contains Element    ${ADD_HIDDEN_TERM_FI}    timeout=30
@@ -325,7 +325,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
-    Edit concept    tutkija
+    Edit Concept    tutkija
     Wait Until Page Contains Element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    timeout=30
     Click Element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}
     Wait Until Page Contains Element    ${CONCEPT_EDITORIAL_NOTE_INPUT}    timeout=30
@@ -419,7 +419,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${IMPORT_YES_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
     Log To Console    Concept import ok
-    Edit concept    Merkurius
+    Edit Concept    Merkurius
     Wait Until Page Contains Element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
     Click Element    ${CONCEPT_DEFINITION_FI_0_INPUT}
     Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
@@ -460,7 +460,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    1
     Log To Console    Concept import ok
     Sleep    1
-    Edit concept    Merkurius
+    Edit Concept    Merkurius
     Sleep    2
     Wait Until Page Contains Element    ${CONCEPT_DEFINITION_FI_0_INPUT}    timeout=30
     Click Element    ${CONCEPT_DEFINITION_FI_0_INPUT}
@@ -493,7 +493,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
-    Edit concept    tutkija
+    Edit Concept    tutkija
     Wait Until Page Contains Element    ${ADD_CONCEPT_DEFINITION_BTN}    timeout=30
     Click Element    ${ADD_CONCEPT_DEFINITION_BTN}
     Wait Until Page Contains Element    ${CONCEPT_DEFINITION_FI}    timeout=30
@@ -530,7 +530,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
-    Edit concept    tutkija
+    Edit Concept    tutkija
     Wait Until Page Contains Element    ${ADD_CONCEPT_NOTE_BTN}    timeout=30
     Click Element    ${ADD_CONCEPT_NOTE_BTN}
     Wait Until Page Contains Element    ${CONCEPT_NOTE_FI}    timeout=30
