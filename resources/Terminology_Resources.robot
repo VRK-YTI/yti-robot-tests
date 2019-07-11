@@ -194,7 +194,7 @@ Terminology Suite Teardown
 Test Case Setup
     Open Sanastot
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Select user
+    Select User
 
 Test Case Setup Create Testiautomaatiosanasto
     Test Case Setup
@@ -246,7 +246,7 @@ Open Chrome to Environment
     Set Window Size    1920    1080
     Go To    ${TERMINOLOGIES_ENVIRONMENT_URL}
 
-Select user
+Select User
     Wait Until Page Contains Element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click Element    ${IMPERSONATE_USER_DROPDOWN}
     Wait Until Element Is Visible    ${USER_1}
