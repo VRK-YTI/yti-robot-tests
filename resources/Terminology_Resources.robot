@@ -249,7 +249,7 @@ Open Chrome to Environment
 Select User
     Wait Until Page Contains Element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
     Click Element    ${IMPERSONATE_USER_DROPDOWN}
-    Wait Until Element Is Visible    ${USER_1}
+    Wait Until Element Is Visible    ${USER_1}    timeout=30
     Click Element    ${USER_1}
     Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), 'Testi Admin')]    timeout=20
 
