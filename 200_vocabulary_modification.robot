@@ -40,7 +40,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains    Testiautomaatiosanasto    timeout=30
     Wait Until Page Contains    Tämä on kuvaus    timeout=30
     Log To Console    Title and description of Terminological Vocabulary modified
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 201. Add new organization and classification for DRAFT vocabulary
@@ -67,7 +67,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${SAVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${EDIT_VOCABULARY_BTN}    timeout=60
     Sleep    1
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
@@ -110,7 +110,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains    Automaatio    timeout=30
     Log To Console    New concept "Automaatio" added
     Delete concept    Automaatio
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 204. Remove related concept and check confirmation
@@ -119,7 +119,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Edit concept    tutkija
     Wait Until Page Contains Element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]    timeout=30
@@ -138,7 +138,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    2
     Page should not contain    Liittyvä käsite
     Log To Console    Related concept removed
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 205. Add collection for vocabulary
@@ -146,7 +146,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
@@ -169,7 +169,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${CONCEPTS_HIERARCHIAL_TAB}
     Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 206. Modify concept which is defined in collection
@@ -179,7 +179,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
@@ -211,7 +211,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${CONCEPTS_HIERARCHIAL_TAB}
     Page Should Not Contain Element    //*[contains(@id,'0_collection_list_listitem')]
     Page should not contain    Testikäsitevalikoima
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 207. Add preferred term and synonym for concept
@@ -220,7 +220,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
@@ -247,7 +247,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains    Forskaren    timeout=30
     Wait Until Page Contains    Oppinut henkilö    timeout=30
     Wait Until Page Contains    Tarkastelija    timeout=30
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 208. Add hidden term for concept
@@ -256,7 +256,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
@@ -313,7 +313,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains    Kommentti    timeout=30
     Wait Until Page Contains    Termin historia    timeout=30
     Wait Until Page Contains    Termin muutoshistoriatieto    timeout=30
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 209. Modify concept
@@ -322,7 +322,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
@@ -363,7 +363,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains    Concept notation    timeout=30
     Wait Until Page Contains    Voimassa oleva    timeout=30
     Log To Console    Concept values modified
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 210. Import Concepts to the Terminological Vocabulary and filter concepts with status value
@@ -373,7 +373,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_2}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
@@ -399,7 +399,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Does Not Contain    Jupiter    timeout=20
     Wait Until Page Does Not Contain    Kuu    timeout=20
     Wait Until Page Does Not Contain    Mars    timeout=20
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 211. Add external link for concept
@@ -438,7 +438,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Sleep    1
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 212. Add concept reference
@@ -481,7 +481,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    5
     Wait Until Page Contains    Planeetta    timeout=30
     Wait Until Page Contains Element    ${CONCEPT_REF}    timeout=30
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 213. Add definition for concept
@@ -490,7 +490,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
@@ -518,7 +518,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    5
     Wait Until Page Contains    hutkija    timeout=30
     Wait Until Page Contains Element    ${CONCEPT_REF_2}    timeout=30
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 214. Add note for concept
@@ -527,7 +527,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
@@ -555,7 +555,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    5
     Wait Until Page Contains    hutkija    timeout=30
     Wait Until Page Contains Element    ${CONCEPT_REF_3}    timeout=30
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
 215. Import Concepts in xml format and check concept description links
@@ -578,7 +578,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains Element    //*[contains(text(), "veronpalautuksesta")]    timeout=30
     Click Element    //*[contains(text(), "veronpalautuksesta")]
     Wait Until Page Contains Element    //h3[contains(text(), "veronpalautus")]    timeout=30
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 216. Import Concepts in xml format and check import warnings
@@ -610,7 +610,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${IMPORT_YES_BTN}
     Sleep    5
     Log To Console    Concept import ok
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
 *** Keywords ***
@@ -652,7 +652,7 @@ Restore organization and classification for DRAFT vocabulary
     Page should not contain    ${ORGANIZATION_1}
     Page should not contain    ${CLASSIFICATION_1}
     Log To Console    Vocabulary changes restored
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Sleep    1
     Close All Browsers
 
@@ -693,5 +693,5 @@ Delete concept from Testiautomaatiosanasto vocabulary
     Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}    timeout=60
     Sleep    5
     Log To Console    Concept removed from Terminological Vocabulary
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     Sleep    1

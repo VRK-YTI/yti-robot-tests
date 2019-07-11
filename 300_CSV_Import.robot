@@ -24,7 +24,7 @@ Resource          resources/Terminology_Resources.robot
     Page Should Contain    5: Viittauksella “isPartOf” ei löydy käsitettä arvolle “joku”
     Log To Console    Error message displayed when related, broader and isPartOf concepts are not found from CSV
     Cancel Concept Import
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 301. Import Concepts to the Terminological Vocabulary, related columns with empty values in CSV
@@ -55,7 +55,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    esim    timeout=60
     Wait Until Page Contains    Voimassa oleva    timeout=60
     Log To Console    Import successful when related columns have empty values in CSV
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 302. Import Concepts to the Terminological Vocabulary with empty STATUS values
@@ -88,7 +88,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    esim    timeout=30
     Wait Until Page Contains    Luonnos    timeout=30
     Log To Console    Concept import with empty STATUS values in CSV is successful
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 303. Import Concepts to the Terminological Vocabulary with missing STATUS column
@@ -123,7 +123,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    esimerkki    timeout=30
     Wait Until Page Contains    Luonnos    timeout=30
     Log To Console    When STATUS column is missing import is successful and concept STATUS is Draft after CSV import
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 304. Import Concepts to the Terminological Vocabulary with invalid column name in CSV
@@ -139,7 +139,7 @@ Resource          resources/Terminology_Resources.robot
     Log To Console    Import is not successful and error message is dispalyed when column name is invalid
     Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click Element    ${IMPORT_CANCEL_BTN}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 305. Import Concepts to the Terminological Vocabulary with invalid status value in CSV
@@ -155,7 +155,7 @@ Resource          resources/Terminology_Resources.robot
     Log To Console    Import is not successful and error message is dispalyed when status value is invalid
     Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click Element    ${IMPORT_CANCEL_BTN}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 306. Import Concepts to the Terminological Vocabulary with duplicate definition columns in CSV
@@ -183,7 +183,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    esim    timeout=30
     Wait Until Page Contains    Voimassa oleva    timeout=30
     Log To Console    Import is successful and values of the second column are taken into use when duplicate definition columns are defined in CSV
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 *** Keywords ***

@@ -205,7 +205,7 @@ Test Case Setup Create Testiautomaatiosanasto
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
     Run Keyword If    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
     ...    ELSE    Create Testiautomaatiosanasto and import vocabulary
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
 
 Create Terminological Vocabulary with concepts
     [Arguments]    ${terminology}
@@ -216,7 +216,7 @@ Create Terminological Vocabulary with concepts
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
     Run Keyword If    ${vocabulary_exists}    Delete existing terminological vocabulary and create new    ${terminology}
     ...    ELSE    Create Terminological Dictionary and import vocabulary    ${terminology}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
 
 Create Terminological Vocabulary without concepts
     [Arguments]    ${terminology}
@@ -227,7 +227,7 @@ Create Terminological Vocabulary without concepts
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
     Run Keyword If    ${vocabulary_exists}    Delete existing terminological vocabulary and create new without concepts    ${terminology}
     ...    ELSE    Create Terminological Dictionary without concepts    ${terminology}
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
 
 Test Case Teardown
     Close All Browsers
@@ -258,7 +258,7 @@ Open Sanastot
     Wait Until Page Contains    Sanastot    timeout=20
     Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=20
 
-Go back to Sanastot frontpage
+Go Back To Sanastot Frontpage
     Wait Until Page Contains Element    //*[contains(text(), "Etusivu")]    timeout=20
     Click Element    //*[contains(text(), "Etusivu")]
 

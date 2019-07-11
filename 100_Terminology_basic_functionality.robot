@@ -20,7 +20,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    Katso myös
     Wait Until Page Contains    Ota yhteyttä
     Log To Console    Information about the service page opened
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
 
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
@@ -71,7 +71,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
     Wait Until Page Contains Element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
     Log To Console    Terminology found
-    Go back to Sanastot frontpage
+    Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 105. Check navigation menu links
