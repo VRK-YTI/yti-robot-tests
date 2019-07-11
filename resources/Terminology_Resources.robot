@@ -450,7 +450,7 @@ Select Dictionary
     Wait Until Page Contains Element    xpath://h2[@id='vocabulary_main_label' and .='${dictionary}']
     Log To Console    ${dictionary} selected
 
-Save concept
+Save Concept
     Wait Until Page Contains Element    ${SAVE_CONCEPT_BTN}    timeout=30
     Click Element    ${SAVE_CONCEPT_BTN}
     Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}    timeout=60

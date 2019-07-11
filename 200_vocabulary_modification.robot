@@ -106,7 +106,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains Element    ${TERM_STATUS_DDL}    timeout=30
     Click Element    ${TERM_STATUS_DDL}
     Click button    Voimassa oleva
-    Save concept
+    Save Concept
     Wait Until Page Contains    Automaatio    timeout=30
     Log To Console    New concept "Automaatio" added
     Delete concept    Automaatio
@@ -201,7 +201,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    //*[contains(@id,'concept-0_search_result_concept')]
     Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
     Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    Save concept
+    Save Concept
     Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}
     Wait Until Page Contains Element    //*[contains(@id,'concept-0_concept_broader_concept_reference_concept_link')]    timeout=30
     Reload page
@@ -242,7 +242,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${NOT_SYNONYM_EN}
     Wait Until Page Contains Element    ${NOT_SYNONYM_INPUT}    timeout=30
     Input Text    ${NOT_SYNONYM_INPUT}    Tarkastelija
-    Save concept
+    Save Concept
     Sleep    5
     Wait Until Page Contains    Forskaren    timeout=30
     Wait Until Page Contains    Oppinut henkilö    timeout=30
@@ -295,7 +295,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains Element    ${HIDDEN_TERM_STATUS_DDL}    timeout=30
     Click Element    ${HIDDEN_TERM_STATUS_DDL}
     Click Element    ${HIDDEN_TERM_STATUS_VALID}
-    Save concept
+    Save Concept
     Sleep    5
     Wait Until Page Contains Element    ${HIDDEN_TERM}    timeout=30
     Click Element    ${HIDDEN_TERM}
@@ -352,7 +352,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains Element    ${CONCEPT_STATUS_DDL}    timeout=30
     Click Element    ${CONCEPT_STATUS_DDL}
     Click Element    ${CONCEPT_STATUS_VALID}
-    Save concept
+    Save Concept
     Sleep    5
     Wait Until Page Contains    Editorial note    timeout=30
     Wait Until Page Contains    Example    timeout=30
@@ -428,7 +428,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Input Text    ${SELECT_LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait Until Page Contains Element    ${SELECT_LINK_CONFRIM_BTN}    timeout=30
     Click Element    ${SELECT_LINK_CONFRIM_BTN}
-    Save concept
+    Save Concept
     Wait Until Page Contains    Planeetta    timeout=30
     Sleep    2
     Wait Until Page Contains Element    ${EXT_LINK}    timeout=30
@@ -477,7 +477,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${BROADER_CONCEPT_BTN}
     Wait Until Page Contains Element    ${SELECT_CONCEPT_CONFIRM_BTN}    timeout=30
     Click Element    ${SELECT_CONCEPT_CONFIRM_BTN}
-    Save concept
+    Save Concept
     Sleep    5
     Wait Until Page Contains    Planeetta    timeout=30
     Wait Until Page Contains Element    ${CONCEPT_REF}    timeout=30
@@ -514,7 +514,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    1
     Wait Until Page Contains Element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
     Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    Save concept
+    Save Concept
     Sleep    5
     Wait Until Page Contains    hutkija    timeout=30
     Wait Until Page Contains Element    ${CONCEPT_REF_2}    timeout=30
@@ -551,7 +551,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Sleep    1
     Wait Until Page Contains Element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
     Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
-    Save concept
+    Save Concept
     Sleep    5
     Wait Until Page Contains    hutkija    timeout=30
     Wait Until Page Contains Element    ${CONCEPT_REF_3}    timeout=30
