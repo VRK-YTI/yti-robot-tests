@@ -456,7 +456,7 @@ Save Concept
     Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}    timeout=60
     Sleep    1
 
-Add collection for vocabulary
+Add Collection For Vocabulary
     [Arguments]    ${collection}    ${definition}
     Wait Until Page Contains Element    ${CONCEPTS_COLLECTION_TAB}    timeout=30
     Click Element    ${CONCEPTS_COLLECTION_TAB}

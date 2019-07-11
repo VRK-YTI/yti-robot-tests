@@ -148,7 +148,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
-    Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
+    Add Collection For Vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
     Add broader concepts for collection    hotkija    hutkija
     Add members for collection    tutkija    tutkimus
@@ -181,7 +181,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
-    Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
+    Add Collection For Vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
     Add broader concepts for collection    tutkija    tutkimus
     Add members for collection    hotkija    hutkija
