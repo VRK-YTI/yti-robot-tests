@@ -120,7 +120,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Edit concept    tutkija
     Wait Until Page Contains Element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]    timeout=30
     Click Element    //*[contains(@id,'_related_concept_reference_remove_reference_link')]
@@ -147,7 +147,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
     Add broader concepts for collection    hotkija    hutkija
@@ -180,7 +180,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Add collection for vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
     Edit collection
     Add broader concepts for collection    tutkija    tutkimus
@@ -221,7 +221,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait Until Page Contains Element    ${ADD_PREFERRED_TERM_BTN}    timeout=30
@@ -257,7 +257,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait Until Page Contains Element    ${ADD_HIDDEN_TERM_BTN}    timeout=30
@@ -323,7 +323,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait Until Page Contains Element    ${ADD_CONCEPT_EDITORIAL_NOTE_BTN}    timeout=30
@@ -374,7 +374,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_2}
+    Select Dictionary    ${VOCABULARY_2}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
@@ -408,7 +408,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
-    Select dictionary    ${VOCABULARY_2}
+    Select Dictionary    ${VOCABULARY_2}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
@@ -447,7 +447,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
-    Select dictionary    ${VOCABULARY_2}
+    Select Dictionary    ${VOCABULARY_2}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
@@ -491,7 +491,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait Until Page Contains Element    ${ADD_CONCEPT_DEFINITION_BTN}    timeout=30
@@ -528,7 +528,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go back to Sanastot frontpage
-    Select dictionary    ${VOCABULARY_1}
+    Select Dictionary    ${VOCABULARY_1}
     Sleep    1
     Edit concept    tutkija
     Wait Until Page Contains Element    ${ADD_CONCEPT_NOTE_BTN}    timeout=30
@@ -564,7 +564,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Setup]    Test Case Setup
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
-    Select dictionary    ${VOCABULARY_2}
+    Select Dictionary    ${VOCABULARY_2}
     Import concepts    ${XML_FORMAT_BTN}    ${tax}
     Wait Until Page Contains Element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
     Click Element    //*[contains(@id,'c40_concept_list_listitem')]

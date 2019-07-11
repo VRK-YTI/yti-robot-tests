@@ -538,7 +538,7 @@ Delete Terminological Dictionary
     Log To Console    ${dictionary} Terminological Dictionary deleted
     Close All Browsers
 
-Select dictionary
+Select Dictionary
     [Arguments]    ${dictionary}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
