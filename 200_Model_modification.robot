@@ -23,10 +23,10 @@ ${class_item_1}    Rooli
 ${class_item_2}    Maksu
 ${class_item_3}    Ajanjakso
 ${predicate_change_error}    Predikaatin tyyppiä ei voida muuttaa koska seuraavat resurssit käyttävät sitä
-${class_json_ld_frame}    blob:https://tietomallit-dev.suomi.fi/46f77ed0-82b6-4d57-b771-fc9a92bf1f17
-${class_json_ld_frame_test}    blob:https://tietomallit-test.suomi.fi/a93dc0f7-ee66-48ea-8723-85c89ea28e9c
-${class_framed_json_ld}    blob:https://tietomallit-dev.suomi.fi/61658254-be26-4815-a168-a9f4325d8d15
-${class_framed_json_ld_test}    blob:https://tietomallit-test.suomi.fi/cad2b19c-faee-4aca-942c-2775ef13e268
+${class_json_ld_frame}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/46f77ed0-82b6-4d57-b771-fc9a92bf1f17
+${class_json_ld_frame_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/a93dc0f7-ee66-48ea-8723-85c89ea28e9c
+${class_framed_json_ld}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/61658254-be26-4815-a168-a9f4325d8d15
+${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/cad2b19c-faee-4aca-942c-2775ef13e268
 
 *** Test Cases ***
 200. Modify profile
