@@ -48,7 +48,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
-    Select and edit Draft vocabulary
+    Select And Edit Dictionary    ${VOCABULARY_1}
     Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Click Element    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
@@ -86,7 +86,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
-    Select Draft vocabulary
+    Select Dictionary    ${VOCABULARY_1}
     Wait Until Page Contains Element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
     Click Element    ${ADD_NEW_CONCEPT_BTN}
     Wait Until Page Contains Element    ${TERM_LITERAL_VALUE_INPUT}    timeout=30
@@ -585,7 +585,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Documentation]    Import Concepts in xml format and check import warnings
     [Tags]    sanastot
     [Setup]    Test Case Setup Create Terminological Vocabulary without concepts
-    Select Terminological Vocabulary
+    Select Dictionary    ${VOCABULARY_2}
     Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
     Click Element    ${TERMINOLOGY_TAB}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
@@ -614,28 +614,6 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
 
 *** Keywords ***
-Select and edit Draft vocabulary
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
-    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
-    Click Element    ${TERMINOLOGY_TAB}
-    Wait Until Page Contains    Testiautomaatiosanasto    timeout=20
-    Wait Until Page Contains    Eläkkeet    timeout=20
-    Wait Until Page Contains    Testiorganisaatio    timeout=20
-    Wait Until Page Contains    Luonnos    timeout=20
-    Wait Until Page Contains Element    ${EDIT_VOCABULARY_BTN}    timeout=30
-    Click Element    ${EDIT_VOCABULARY_BTN}
-
-Select Draft vocabulary
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
-
 Restore organization and classification for DRAFT vocabulary
     Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
     Click Element    ${TERMINOLOGY_TAB}
@@ -655,43 +633,3 @@ Restore organization and classification for DRAFT vocabulary
     Go Back To Sanastot Frontpage
     Sleep    1
     Close All Browsers
-
-Delete Terminological Vocabulary
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
-    Click Element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait Until Page Contains    ${VOCABULARY_2}    timeout=30
-    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
-    Click Element    ${TERMINOLOGY_TAB}
-    Wait Until Page Contains    Testiautomaatiosanasto2    timeout=20
-    Wait Until Page Contains Element    ${REMOVE_VOCABULARY_BTN}    timeout=30
-    Click Element    ${REMOVE_VOCABULARY_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
-    Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Sleep    2
-    Page Should Not Contain Element    //*[contains(text(), "${VOCABULARY_2}")]
-    Sleep    1
-    Log To Console    Terminological Vocabulary deleted
-    Sleep    1
-    Close All Browsers
-
-Delete concept from Testiautomaatiosanasto vocabulary
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click Element    //*[contains(text(), "${VOCABULARY_1}")]
-    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
-    Wait Until Page Contains Element    //*[contains(text(), "${TERM_1}")]    timeout=30
-    Click Element    //*[contains(text(), "${TERM_1}")]
-    Wait Until Page Contains Element    ${REMOVE_CONCEPT_BTN}    timeout=30
-    Click Element    ${REMOVE_CONCEPT_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_REMOVE_CONCEPT_BTN}    timeout=30
-    Click Element    ${CONFIRM_REMOVE_CONCEPT_BTN}
-    Wait Until Element Is Visible    ${EDIT_CONCEPT_BTN}    timeout=60
-    Sleep    5
-    Log To Console    Concept removed from Terminological Vocabulary
-    Go Back To Sanastot Frontpage
-    Sleep    1

@@ -380,35 +380,6 @@ Create Terminological Dictionary without concepts
     Sleep    1
     Log To Console    ${terminology} without concepts created
 
-Select Terminological Vocabulary
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
-    Click Element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait Until Page Contains Element    xpath://h2[@id='vocabulary_main_label' and .='${VOCABULARY_2}']
-    Log To Console    Terminological Vocabulary selected
-
-Delete Terminological Vocabulary
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_2}")]    timeout=30
-    Click Element    //*[contains(text(), "${VOCABULARY_2}")]
-    Wait Until Page Contains    ${VOCABULARY_2}    timeout=30
-    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
-    Click Element    ${TERMINOLOGY_TAB}
-    Wait Until Page Contains    Testiautomaatiosanasto2    timeout=20
-    Wait Until Element Is Visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
-    Click Element    ${REMOVE_VOCABULARY_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
-    Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
-    Sleep    2
-    Page Should Not Contain Element    //*[contains(text(), "${VOCABULARY_2}")]
-    Sleep    1
-    Log To Console    Terminological Vocabulary deleted
-    Close All Browsers
-
 Edit Concept
     [Arguments]    ${concept}
     Wait Until Page Contains Element    //*[contains(text(), "${concept}")]    timeout=30
