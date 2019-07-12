@@ -450,6 +450,21 @@ Select Dictionary
     Wait Until Page Contains Element    xpath://h2[@id='vocabulary_main_label' and .='${dictionary}']
     Log To Console    ${dictionary} selected
 
+Select And Edit Dictionary
+    [Arguments]    ${dictionary}
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${dictionary}
+    Sleep    1
+    Wait Until Page Contains Element    //*[contains(text(), "${dictionary}")]    timeout=30
+    Click Element    //*[contains(text(), "${dictionary}")]
+    Wait Until Page Contains Element    xpath://h2[@id='vocabulary_main_label' and .='${dictionary}']
+    Wait Until Element Is Enabled    ${TERMINOLOGY_TAB}    timeout=30
+    Click Element    ${TERMINOLOGY_TAB}
+    Wait Until Element Is Enabled    ${EDIT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${EDIT_VOCABULARY_BTN}
+    Log To Console    ${dictionary} selected for editing
+
 Save Concept
     Wait Until Page Contains Element    ${SAVE_CONCEPT_BTN}    timeout=30
     Click Element    ${SAVE_CONCEPT_BTN}

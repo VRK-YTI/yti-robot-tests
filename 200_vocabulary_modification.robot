@@ -17,7 +17,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
-    Select and edit Draft vocabulary
+    Select And Edit Dictionary    ${VOCABULARY_1}
     Wait Until Page Contains Element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
     Input Text    ${VOCABULARY_TITLE_TEXTAREA}    Uusi sanasto
     Wait Until Page Contains Element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
