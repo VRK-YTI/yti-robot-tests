@@ -109,7 +109,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Save Concept
     Wait Until Page Contains    Automaatio    timeout=30
     Log To Console    New concept "Automaatio" added
-    Delete concept    Automaatio
+    Delete Concept    Automaatio
     Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}
 
@@ -149,10 +149,10 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Add Collection For Vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
-    Edit collection
-    Add broader concepts for collection    hotkija    hutkija
-    Add members for collection    tutkija    tutkimus
-    Save collection
+    Edit Collection
+    Add Broader Concepts For Collection    hotkija    hutkija
+    Add Members For Collection    tutkija    tutkimus
+    Save Collection
     Wait Until Page Contains Element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
     Wait Until Element Is Visible    ${REMOVE_COLLECTION_BTN}    timeout=30
     Click Element    ${REMOVE_COLLECTION_BTN}
@@ -182,10 +182,10 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Add Collection For Vocabulary    Testikäsitevalikoima    Valikoiman määritelmä
-    Edit collection
-    Add broader concepts for collection    tutkija    tutkimus
-    Add members for collection    hotkija    hutkija
-    Save collection
+    Edit Collection
+    Add Broader Concepts For Collection    tutkija    tutkimus
+    Add Members For Collection    hotkija    hutkija
+    Save Collection
     Wait Until Page Contains Element    //*[contains(@id,'0_collection_list_listitem')]    timeout=30
     Wait Until Page Contains Element    ${CONCEPTS_ALPHABETICAL_TAB}    timeout=30
     Click Element    ${CONCEPTS_ALPHABETICAL_TAB}
@@ -565,7 +565,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
-    Import concepts    ${XML_FORMAT_BTN}    ${tax}
+    Import Concepts    ${XML_FORMAT_BTN}    ${tax}
     Wait Until Page Contains Element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
     Click Element    //*[contains(@id,'c40_concept_list_listitem')]
     Wait Until Page Contains Element    //h3[contains(text(), "verotuspäätös")]    timeout=30

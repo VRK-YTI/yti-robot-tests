@@ -473,17 +473,17 @@ Add Collection For Vocabulary
     Click Element    ${SAVE_COLLECTION_BTN}
     Wait Until Element Is Enabled    ${EDIT_COLLECTION_BTN}    timeout=60
 
-Save collection
+Save Collection
     Wait Until Element Is Visible    ${SAVE_COLLECTION_BTN}    timeout=30
     Wait Until Element Is Enabled    ${SAVE_COLLECTION_BTN}    timeout=30
     Click Element    ${SAVE_COLLECTION_BTN}
     Wait Until Element Is Visible    ${EDIT_COLLECTION_BTN}    timeout=30
 
-Edit collection
+Edit Collection
     Wait Until Page Contains Element    ${EDIT_COLLECTION_BTN}    timeout=30
     Click Element    ${EDIT_COLLECTION_BTN}
 
-Add broader concepts for collection
+Add Broader Concepts For Collection
     [Arguments]    @{concept_items}
     : FOR    ${concept_item}    IN    @{concept_items}
     \    Wait Until Page Contains Element    ${COLLECTION_BROADER_CONCEPT_BTN}    timeout=30
@@ -494,7 +494,7 @@ Add broader concepts for collection
     \    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
     \    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
 
-Add members for collection
+Add Members For Collection
     [Arguments]    @{concept_items}
     : FOR    ${concept_item}    IN    @{concept_items}
     \    Wait Until Page Contains Element    ${COLLECTION_MEMBER_CONCEPT_BTN}    timeout=30
@@ -505,7 +505,7 @@ Add members for collection
     \    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
     \    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
 
-Import concepts
+Import Concepts
     [Arguments]    ${file_format}    ${file}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
@@ -537,7 +537,7 @@ Cancel Concept Import
     Wait Until Page Contains Element    ${IMPORT_CANCEL_BTN}    timeout=30
     Click Element    ${IMPORT_CANCEL_BTN}
 
-Select concept
+Select Concept
     [Arguments]    ${concept}
     Wait Until Page Contains Element    ${CONCEPT_LIST_SEARCH_INPUT}    timeout=30
     Input Text    ${CONCEPT_LIST_SEARCH_INPUT}    ${concept}
@@ -546,7 +546,7 @@ Select concept
     Log To Console    Concept ${concept} selected
     Sleep    1
 
-Delete concept
+Delete Concept
     [Arguments]    ${concept}
     Wait Until Page Contains Element    //*[contains(text(), "${concept}")]    timeout=30
     Click Element    //*[contains(text(), "${concept}")]
