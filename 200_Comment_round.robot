@@ -92,6 +92,8 @@ Resource          resources/Data_Vocabularies_resources.robot
     Start Comment Round
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
+    Wait Until Element Is Enabled    ${COMMENTS_TAB}    timeout=30
+    Click Element    ${COMMENTS_TAB}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
@@ -140,10 +142,10 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Reference Data    ${Code_list_Code_without_prefLabel}    ${CODE_LIST_8}
     Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
-    Add Resource For Comment Round    http://uri.suomi.fi/codelist/test/6000/code/testcode40    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
+    Add Resource For Comment Round    testcode40    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Wait Until Page Contains    kommentti1    timeout=20
-    Wait Until Page Contains Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]    timeout=60
-    Click Element    //*[contains(text(), "http://uri.suomi.fi/codelist/test/6000/code/testcode40")]
+    Wait Until Page Contains Element    //*[contains(text(), "testcode40")]    timeout=60
+    Click Element    //*[contains(text(), "testcode40")]
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait Until Page Contains    koodisto6000    timeout=20
     Wait Until Page Contains    testcode40    timeout=20
@@ -181,7 +183,8 @@ Resource          resources/Data_Vocabularies_resources.robot
     Log To Console    Third commenter's comments added
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Close Comment Round
-    Sleep    1
+    Wait Until Element Is Enabled    ${RESOURCES_TAB}    timeout=60
+    Click Element    ${RESOURCES_TAB}
     Wait Until Page Contains    Korvattu:    timeout=20
     Wait Until Page Contains    (33.33 %)    timeout=20
     Wait Until Page Contains    Virheellinen:    timeout=20
