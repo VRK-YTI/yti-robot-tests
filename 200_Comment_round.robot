@@ -15,7 +15,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
@@ -24,7 +24,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Delete terminology and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Terminology
-    Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros
 
@@ -33,7 +33,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Delete profile and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Data Vocabularies
-    Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros
 
@@ -42,7 +42,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Add new codes for comment round and delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
@@ -52,7 +52,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    for the terminology. Add new concepts for comment round and delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Terminology
-    Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Saturnus    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${RETIRED_0}
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros
@@ -62,7 +62,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    Add new class for comment round and delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Data Vocabularies With New Class
-    Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Automobiili    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros
@@ -73,7 +73,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     ...    round has started. Close comment round and delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    True
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    True    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
     Add Resource For Comment Round    Testcode 57    ${COMMENT_TEXT_INPUT_1}    kommentti22    ${EMPTY}    ${EMPTY}
@@ -87,7 +87,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
@@ -105,7 +105,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
     Add Resource For Comment Round    Testcode 35    ${COMMENT_TEXT_INPUT_2}    kommentti3    ${STATUS_DDL_2}    ${VALID_2}
@@ -141,7 +141,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_Code_without_prefLabel}    ${CODE_LIST_8}
     Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    testcode40    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Wait Until Page Contains    kommentti1    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "testcode40")]    timeout=60
@@ -160,7 +160,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
     Start Comment Round
@@ -200,7 +200,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
-    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
     Start Commenting
@@ -234,5 +234,21 @@ Resource          resources/Data_Vocabularies_resources.robot
     Click Element    ${CLOSE_INLINE_COMMENT_0_BTN}
     Page Should Not Contain    Inline kommentti 1    timeout=20
     Page Should Not Contain    Inline kommentti 2    timeout=20
+    Return To Comments Frontpage
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+
+212. Create new suggestion for comment round
+    [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
+    ...    Create new suggestion, start comment round and create another new suggestion for commenting after comment
+    ...    round has started. Close comment round and delete code list and comment round.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
+    Maximize Browser Window
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    True    True
+    Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
+    Create New Suggestion    Ehdotus1    Kuvaus1
+    Start Comment Round
+    Create New Suggestion    Ehdotus2    Kuvaus2
+    Close Comment Round
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros

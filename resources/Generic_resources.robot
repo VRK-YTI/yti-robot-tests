@@ -53,7 +53,7 @@ ${COMMENTROUND_DESCRIPTION_INPUT}    id=commentround_description_input
 ${COMMENTROUND_START_DATE_INPUT}    id=start_date_input
 ${COMMENTROUND_END_DATE_INPUT}    id=end_date_input
 ${ONLY_SELCTED_RESOURCES_CHECKBOX}    id=commentround_fixedthreads_textarea
-${ALLOW_NEW_COMMENT_CHECKBOX}    id=commentround_openthreads_input
+${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}    id=commentround_openthreads_input
 ${COMMENTROUND_ADD_ORGANIZATION_BTN}    id=add_organization_button
 ${COMMENTROUND_ORGANIZATION_INPUT}    id=search_linked_organization_input
 ${SAVE_COMMENTROUND}    id=editable_save_button
@@ -80,6 +80,11 @@ ${STATUS_DDL_1}    id=selected_proposed_status_1
 ${STATUS_DDL_2}    id=selected_proposed_status_2
 ${CONFIRMATION_BTN}    id=confirm_confirmation_modal_button
 ${SELECT_RESOURCE_BTN}    id=select_modal_button
+${CREATE_SUGGESTION_BTN}    id=create_suggestion_button
+${NEW_SUGGESTION_LABEL_INPUT_0}    id=commenthread_0_label_text_input
+${NEW_SUGGESTION_DESCRIPTION_INPUT_0}    id=commenthread_0_description_text_input
+${NEW_SUGGESTION_LABEL_INPUT_1}    id=commenthread_1_label_text_input
+${NEW_SUGGESTION_DESCRIPTION_INPUT_1}    id=commenthread_1_description_text_input
 #Commenting
 ${START_COMMENTING_BTN}    id=start_commenting_button
 ${SEND_COMMENTS_BTN_BOTTOM}    id=send_comments_button_bottom
@@ -139,7 +144,7 @@ Return To Comments Frontpage
     Sleep    1
 
 Create Comment Round
-    [Arguments]    ${tool}    ${source}    ${round_name}    ${description}    ${only_selected_resources}
+    [Arguments]    ${tool}    ${source}    ${round_name}    ${description}    ${only_selected_resources}    ${allow_new_comment_threads}
     Wait Until Page Contains Element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
     Click Element    ${CREATE_COMMENT_ROUND_BTN}
     Wait Until Page Contains Element    ${SELECT_TOOL_DDL}    timeout=20
@@ -154,7 +159,8 @@ Create Comment Round
     Input Text    ${COMMENTROUND_NAME_INPUT}    ${round_name}
     Wait Until Page Contains Element    ${COMMENTROUND_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${COMMENTROUND_DESCRIPTION_INPUT}    ${description}
-    Run Keyword if    '${only_selected_resources}' == 'True'    Uncheck Only Selected Resources Checkbox    ${only_selected_resources}
+    Run Keyword if    '${only_selected_resources}' == 'True'    Uncheck Only Selected Resources Checkbox
+    Run Keyword if    '${allow_new_comment_threads}' == 'True'    Allow New Comment Threads
     Wait Until Page Contains Element    ${COMMENTROUND_ADD_ORGANIZATION}    timeout=20
     Click Element    ${COMMENTROUND_ADD_ORGANIZATION}
     Wait Until Page Contains Element    ${COMMENTROUND_ORGANIZATION_INPUT}    timeout=20
@@ -167,10 +173,14 @@ Create Comment Round
     Log To Console    Comment round created
 
 Uncheck Only Selected Resources Checkbox
-    [Arguments]    ${only_selected_resources}
     Wait Until Page Contains Element    ${ONLY_SELCTED_RESOURCES_CHECKBOX}    timeout=30
     Click Element    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
     Checkbox Should Not Be Selected    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
+
+Allow New Comment Threads
+    Wait Until Page Contains Element    ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}    timeout=30
+    Click Element    ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}
+    Checkbox Should Be Selected    ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}
 
 Delete Comment Round
     [Arguments]    ${comment_round_name}
@@ -209,6 +219,26 @@ Add Resource For Comment Round
     Click Element    ${SAVE_COMMENTROUND}
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
     Log To Console    ${resource} added for comment round
+
+Create New Suggestion
+    [Arguments]    ${suggestion_label}    ${suggestion_description}
+    Reload Page
+    Wait Until Element Is Enabled    ${RESOURCES_TAB}    timeout=60
+    Click Element    ${RESOURCES_TAB}
+    Wait Until Element Is Enabled    ${EDIT_COMMENTROUND}    timeout=30
+    Click Element    ${EDIT_COMMENTROUND}
+    Wait Until Element Is Enabled    ${ADD_NEW_RESOURCE_BTN}    timeout=30
+    Click Element    ${ADD_NEW_RESOURCE_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUGGESTION_BTN}    timeout=30
+    Click Element    ${CREATE_SUGGESTION_BTN}
+    Wait Until Element Is Enabled    //*[contains(@id,'_label_text_input')]    timeout=30
+    Input Text    //*[contains(@id, '_label_text_input')]    ${suggestion_label}
+    Wait Until Element Is Enabled    //*[contains(@id, '_description_text_input')]    timeout=30
+    Input Text    //*[contains(@id, '_description_text_input')]    ${suggestion_description}
+    Wait Until Element Is Enabled    ${SAVE_COMMENTROUND}    timeout=30
+    Click Element    ${SAVE_COMMENTROUND}
+    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
+    Log To Console    New suggestion ${suggestion_label} added for comment round
 
 Add Resource Status
     [Arguments]    ${status_ddl}    ${status}
