@@ -29,7 +29,7 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains Element    id=license_link    timeout=20
     Click Element    id=license_link
     Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
+    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
     Sleep    2
     Log To Console    EUPL-1.2 license page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
@@ -112,6 +112,18 @@ Resource          resources/Terminology_Resources.robot
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Close All Browsers
+
+106. Open CC BY 4.0 license page
+    [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
+    [Tags]    regression    sanastot    test
+    [Setup]    Test Case Setup
+    Wait Until Page Contains Element    ${LICENSE_ICON_TEXT_LINK}    timeout=20
+    Click Element    ${LICENSE_ICON_TEXT_LINK}
+    Select Window    title=Creative Commons — Attribution 4.0 International — CC BY 4.0
+    Wait Until Page Contains    Attribution 4.0 International    timeout=20
+    Sleep    2
+    Log To Console    CC BY 4.0 license page opened
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
 
 *** Keywords ***
 Restore Finnish language
