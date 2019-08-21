@@ -18,8 +18,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
-    Click Element    //application/ng-container/app-footer/div/div[2]/div[2]/ul/li[1]/a
+    Wait Until Page Contains Element    ${INFORMATION_LINK}    timeout=20
+    Click Element    ${INFORMATION_LINK}
     Wait Until Page Contains    Tietoa Tietomalleista    timeout=20
     Wait Until Page Contains    Tietomallit-työkalu on tarkoitettu    timeout=20
     Wait Until Page Contains    Tietomallit-työkalu    timeout=20
@@ -33,8 +33,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    //application/ng-container/app-footer/div/div[2]/div[3]/a    timeout=20
-    Click Element    //application/ng-container/app-footer/div/div[2]/div[3]/a
+    Wait Until Page Contains Element    ${EUPL_LICENSE_LINK}    timeout=20
+    Click Element    ${EUPL_LICENSE_LINK}
     Select Window    title=EUPL - v1.2 [FI / suomi]
     Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
     Sleep    2
@@ -45,8 +45,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Verify that Description of file page is opened correctly.
     [Tags]    local    tietomallit
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]    timeout=20
-    Click Element    //a[@target='_blank'][contains(text(),'Tietosuojaseloste')]
+    Wait Until Page Contains Element    ${DESCRIPTION_OF_FILE_LINK}    timeout=20
+    Click Element    ${DESCRIPTION_OF_FILE_LINK}
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
     Sleep    2
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
@@ -239,6 +239,18 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Click through guide    ${Add_association_text}
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
+
+114. Open CC BY 4.0 license page
+    [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
+    [Tags]    regression    tietomallit
+    [Setup]    Test Case Setup
+    Wait Until Page Contains Element    ${LICENSE_ICON_TEXT_LINK}    timeout=20
+    Click Element    ${LICENSE_ICON_TEXT_LINK}
+    Select Window    title=Creative Commons — Attribution 4.0 International — CC BY 4.0
+    Wait Until Page Contains    Attribution 4.0 International    timeout=20
+    Sleep    2
+    Log To Console    CC BY 4.0 license page opened
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
 
 *** Keywords ***
 Restore Finnish language

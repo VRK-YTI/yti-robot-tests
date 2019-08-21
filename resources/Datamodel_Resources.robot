@@ -38,6 +38,10 @@ ${GUIDE_NEXT_BTN}    id=help_popover_next_button
 ${GUIDE_CLOSE_BTN}    id=help_popover_close_button
 ${FRONTPAGE_LINK}    id=Etusivu_breadcrumb_link
 ${MAIN_PAGE_LINK}    id=main_page_link
+${LICENSE_ICON_TEXT_LINK}    id=licence_icon_text_link
+${EUPL_LICENSE_LINK}    id=license_link
+${INFORMATION_LINK}    id=information_link
+${DESCRIPTION_OF_FILE_LINK}    id=description_of_file_link
 #Buttons and links
 ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
