@@ -211,18 +211,20 @@ Resource          resources/Extension_resources.robot
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 206. Change the status of VALID Code list
-    [Documentation]    Change the status of VALID Code list and restore original status. YTI-445
+    [Documentation]    Change the status of VALID Code list. YTI-445
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
     Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
     Modify code list
     Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click Element    ${CODE_LIST_STATUS_DDL}
+    Page Should Not Contain    Keskeneräinen
     Page Should Not Contain    Luonnos
-    Page Should Not Contain    Odottaa hyväksyntää
-    Click Button    Korvattu
+    Page Should Not Contain    korvattu
+    Click Button    Virheellinen
     Save code list
-    Wait Until Page Contains Element    //*[contains(text(), "Korvattu")]    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
+    Wait Until Page Contains    Virheellinen    timeout=20
     Go back to Koodistot frontpage
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     [Teardown]    Remove code lists    ${CODE_LIST_6}
