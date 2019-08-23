@@ -919,6 +919,43 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
+222. Change ID for class and predicate
+    [Documentation]    Create new profile, class, attribute and association.
+    ...    Check that changing ID for class, attribute and association is successful. YTI-821.
+    [Tags]    regression    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log To Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Testiluokka
+    Save class
+    Wait Until Page Contains    Testiluokka    timeout=30
+    Log To Console    Class "Testiluokka" added without referencing concept
+    Select And Edit Class    Testiluokka
+    Wait Until Element Is Enabled    ${CLASS_ID}    timeout=60
+    Input Text    ${CLASS_ID}    Testiluokka_123
+    Sleep    1
+    Save class
+    Wait Until Page Contains Element    //*[contains(text(), "autom:Testiluokka_123")]    timeout=60
+    Create new attribute    testiattribuutti
+    Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
+    Wait Until Element Is Enabled    ${PREDICATE_ID}    timeout=60
+    Input Text    ${PREDICATE_ID}    testiattribuutti_123
+    Save Predicate
+    Wait Until Page Contains Element    //*[contains(text(), "autom:testiattribuutti_123")]    timeout=60
+    Create new association    testiassosiaatio
+    Select And Edit Predicate    ${ASSOCIATION_TAB}    testiassosiaatio
+    Wait Until Element Is Enabled    ${PREDICATE_ID}    timeout=60
+    Input Text    ${PREDICATE_ID}    testiassosiaatio_123
+    Save Predicate
+    Wait Until Page Contains Element    //*[contains(text(), "autom:testiassosiaatio_123")]
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
 *** Keywords ***
 Test Case Setup Terminologies
     Terminology Setup

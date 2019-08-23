@@ -121,6 +121,7 @@ ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 ${CONCEPT_DEFINITION_INPUT}    id=conceptDefinition
 ${EXPORT_CLASS_DDL}    id=class_export_dropdown
 ${DEACTIVATED_CHECKBOX}    id=deactivated
+${CLASS_ID}       id=classId
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -136,6 +137,7 @@ ${PREDICATE_EDIT_CANCEL_BTN}    id=predicate_edit_buttons_cancel
 ${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
 ${CREATE_AND_USE_ATTRIBUTE}    //div[1]/div/div/form/div[3]/button[1]
 ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
+${PREDICATE_ID}    id=predicateId
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
@@ -488,7 +490,7 @@ Add several classes
     \    Sleep    2
 
 Save class
-    Wait Until Page Contains Element    ${SAVE_CLASS}    timeout=60
+    Wait Until Element Is Enabled    ${SAVE_CLASS}    timeout=60
     Click Element    ${SAVE_CLASS}
     Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
@@ -675,3 +677,29 @@ Delete profile
     Log To Console    "${profile}" profile deleted
     Sleep    2
     Close All Browsers
+
+Select And Edit Predicate
+    [Arguments]    ${predicate_tab}    ${predicate}
+    Wait Until Element Is Enabled    ${predicate_tab}    timeout=60
+    Click Element    ${predicate_tab}
+    Wait Until Element Is Enabled    //*[contains(@id,'${predicate}_tabset_link')]    timeout=30
+    Click Element    //*[contains(@id,'${predicate}_tabset_link')]
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_BTN}
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+
+Save Predicate
+    Sleep    1
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=60
+
+Select And Edit Class
+    [Arguments]    ${class}
+    Wait Until Element Is Enabled    ${CLASS_TAB}    timeout=60
+    Click Element    ${CLASS_TAB}
+    Wait Until Element Is Enabled    //*[contains(@id,'${class}_tabset_link')]    timeout=30
+    Click Element    //*[contains(@id,'${class}_tabset_link')]
+    Wait Until Element Is Enabled    ${MODIFY_CLASS}    timeout=60
+    Click Element    ${MODIFY_CLASS}
+    Wait Until Element Is Enabled    ${SAVE_CLASS}    timeout=30
