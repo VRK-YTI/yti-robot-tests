@@ -200,7 +200,6 @@ Delete Comment Round
 
 Add Resource For Comment Round
     [Arguments]    ${resource}    ${comment_box}    ${comment}    ${status_ddl}    ${status}
-    Reload Page
     Wait Until Element Is Enabled    ${RESOURCES_TAB}    timeout=60
     Click Element    ${RESOURCES_TAB}
     Wait Until Element Is Enabled    ${EDIT_COMMENTROUND}    timeout=30
@@ -222,7 +221,6 @@ Add Resource For Comment Round
 
 Create New Suggestion
     [Arguments]    ${suggestion_label}    ${suggestion_description}
-    Reload Page
     Wait Until Element Is Enabled    ${RESOURCES_TAB}    timeout=60
     Click Element    ${RESOURCES_TAB}
     Wait Until Element Is Enabled    ${EDIT_COMMENTROUND}    timeout=30
@@ -248,7 +246,6 @@ Add Resource Status
     Click Element    ${status}
 
 Start Comment Round
-    Reload Page
     Wait Until Element Is Enabled    ${COMMENTROUND_DDL}    timeout=20
     Click Element    ${COMMENTROUND_DDL}
     Wait Until Page Contains Element    ${START_COMMENT_ROUND_BTN}    timeout=20
