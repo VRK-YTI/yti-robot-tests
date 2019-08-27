@@ -244,7 +244,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
     [Tags]    regression    tietomallit
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    ${LICENSE_ICON_TEXT_LINK}    timeout=20
+    Wait Until Element Is Enabled    ${LICENSE_ICON_TEXT_LINK}    timeout=30
     Click Element    ${LICENSE_ICON_TEXT_LINK}
     Select Window    title=Creative Commons — Attribution 4.0 International — CC BY 4.0
     Wait Until Page Contains    Attribution 4.0 International    timeout=20
