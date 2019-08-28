@@ -922,7 +922,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 222. Change ID for class and predicate
     [Documentation]    Create new profile, class, attribute and association.
     ...    Check that changing ID for class, attribute and association is successful. YTI-821.
-    [Tags]    regression    tietomallit    200
+    [Tags]    regression    tietomallit    200    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
     Select and edit Testiautomaatio profile
