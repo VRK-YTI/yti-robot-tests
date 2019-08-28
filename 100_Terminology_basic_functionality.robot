@@ -115,7 +115,7 @@ Resource          resources/Terminology_Resources.robot
 
 106. Open CC BY 4.0 license page
     [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
-    [Tags]    regression    sanastot
+    [Tags]    regression    sanastot    test
     [Setup]    Test Case Setup
     Wait Until Page Contains Element    ${LICENSE_ICON_TEXT_LINK}    timeout=20
     Click Element    ${LICENSE_ICON_TEXT_LINK}
