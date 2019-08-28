@@ -242,7 +242,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 
 114. Open CC BY 4.0 license page
     [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
-    [Tags]    regression    tietomallit
+    [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup
     Wait Until Element Is Enabled    ${LICENSE_ICON_TEXT_LINK}    timeout=30
     Click Element    ${LICENSE_ICON_TEXT_LINK}
