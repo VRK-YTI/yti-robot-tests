@@ -86,32 +86,35 @@ Resource          resources/Extension_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click Element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=20
     Click Element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    ${ADD_LINK_DDL}    timeout=30
     Click Element    ${ADD_LINK_DDL}
-    Wait until page contains element    ${LICENSE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${LICENSE_BTN}    timeout=20
     Click Element    ${LICENSE_BTN}
-    Wait until page contains element    ${CCBY4.0}    timeout=20
+    Wait Until Element Is Enabled    ${CCBY4.0}    timeout=20
     Click Element    ${CCBY4.0}
-    Wait until page contains element    ${SELECT_LINK_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${SELECT_LINK_BTN}    timeout=20
     Click Element    ${SELECT_LINK_BTN}
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Sleep    1
+    Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click Element    ${SAVE_CODE_MOD_BTN}
     Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=90
     Modify code
-    Wait until page contains    Lisenssi    timeout=20
-    Wait until page contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${DELETE_LINK_ICON}    timeout=20
+    Wait Until Page Contains    Lisenssi    timeout=20
+    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
+    Sleep    1
+    Wait Until Element Is Enabled    ${DELETE_LINK_ICON}    timeout=20
     Click Element    ${DELETE_LINK_ICON}
-    Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${REMOVE_LINK_CONF_BTN}    timeout=20
     Click Element    ${REMOVE_LINK_CONF_BTN}
     Wait Until Page Does Not Contain    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click Element    ${SAVE_CODE_MOD_BTN}
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
