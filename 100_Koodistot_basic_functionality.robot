@@ -177,12 +177,13 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click Element    ${SEARCH_CODE_CHECKBOX}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${CODE_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
     Click Element    //*[contains(text(), "${CODE_LIST_2}")]
-    Wait Until Page Contains    ${CODE_LIST_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_3}")]
+    Wait Until Page Contains    ${CODE_LIST_2}    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${TEST_CODE_3}")]    timeout=30
     Click Element    //*[contains(text(), "${TEST_CODE_3}")]
-    Wait Until Page Contains    ${TEST_CODE_3}
+    Wait Until Page Contains    ${TEST_CODE_3}    timeout=30
     Wait Until Page Contains    Koodisto    timeout=20
     Wait Until Page Contains    testiautomaatiokoodisto1    timeout=20
     Wait Until Page Contains    Koodin arvo    timeout=20
