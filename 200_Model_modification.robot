@@ -956,6 +956,55 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
+223. Add property pairs
+    [Documentation]    Create new profile and class. Add three new attributes for class and
+    ...    add property pairs for attribute. Delete one attribute and check that removed attribute
+    ...    can not be added as property pair.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log To Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Save model
+    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    Vertailuluokka1
+    Add Property For Class    testi arvo
+    Sleep    1
+    Add Property For Class    max arvo
+    Sleep    1
+    Add Property For Class    min arvo
+    Sleep    1
+    Add Property Pair    ${PROPERTY_EQUALS_BTN}    autom#maxarvo
+    Add Property Pair    ${PROPERTY_LESS_THAN_BTN}    autom#maxarvo
+    Add Property Pair    ${PROPERTY_LESS_THAN_OR_EQUALS_BTN}    autom#maxarvo
+    Wait Until Page Contains Element    id=class_property_TestiArvo_accordion_button    timeout=60
+    Click Element    id=class_property_TestiArvo_accordion_button
+    Wait Until Element Is Enabled    //*[contains(text(), "Poista attribuutti")]
+    Click Element    //*[contains(text(), "Poista attribuutti")]
+    Wait Until Page Contains Element    id=class_property_MinArvo_accordion_button    timeout=60
+    Click Element    id=class_property_MinArvo_accordion_button
+    Wait Until Element Is Enabled    ${PROPERTY_DISJOINT_BTN}    timeout=30
+    Click Element    ${PROPERTY_DISJOINT_BTN}
+    Page Should Not Contain Element    //*[contains(@id,'autom#testiarvo_search_result_link')]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(@id,'autom#maxarvo_search_result_link')]    timeout=30
+    Click Element    //*[contains(@id,'autom#maxarvo_search_result_link')]
+    Wait Until Element Is Enabled    //*[contains(text(), "Käytä attribuuttia")]
+    Click Element    //*[contains(text(), "Käytä attribuuttia")]
+    Sleep    1
+    Save class
+    Wait Until Element Is Enabled    //*[contains(text(), "Min arvo")]    timeout=30
+    Click Element    //*[contains(text(), "Min arvo")]
+    Wait Until Page Contains    Pienempi kuin    timeout=30
+    Wait Until Page Contains    Eri kuin    timeout=30
+    Wait Until Page Contains    Yhtä kuin    timeout=30
+    Wait Until Page Contains    Pienempi tai yhtä suuri kuin    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "autom:maxarvo")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(@id,'Vertailuluokka1_tabset_link')]    timeout=60
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
 *** Keywords ***
 Test Case Setup Terminologies
     Terminology Setup

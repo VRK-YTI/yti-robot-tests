@@ -138,6 +138,14 @@ ${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
 ${CREATE_AND_USE_ATTRIBUTE}    //div[1]/div/div/form/div[3]/button[1]
 ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 ${PREDICATE_ID}    id=predicateId
+${PROPERRTY_DISJOINT_INPUT}    id=disjoint
+${PROPERTY_EQUALS_INPUT}    id=equals
+${PROPERTY_LESS_THAN_INPUT}    id=lessThan
+${PROPERTY_LESS_THAN_OR_EQUALS_INPUT}    id=lessThanOrEquals
+${PROPERTY_LESS_THAN_BTN}    id=lessThan_choose_attribute_multiple_uri_select_button
+${PROPERTY_LESS_THAN_OR_EQUALS_BTN}    id=lessThanOrEquals_choose_attribute_multiple_uri_select_button
+${PROPERTY_DISJOINT_BTN}    id=disjoint_choose_attribute_multiple_uri_select_button
+${PROPERTY_EQUALS_BTN}    id=equals_choose_attribute_multiple_uri_select_button
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
@@ -703,3 +711,30 @@ Select And Edit Class
     Wait Until Element Is Enabled    ${MODIFY_CLASS}    timeout=60
     Click Element    ${MODIFY_CLASS}
     Wait Until Element Is Enabled    ${SAVE_CLASS}    timeout=30
+
+Add Property For Class
+    [Arguments]    ${property}
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_DDL}    timeout=30
+    Click Element    ${ADD_PROPERTY_DDL}
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_BTN}    timeout=30
+    Click Element    ${ADD_PROPERTY_BTN}
+    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${property}
+    Wait Until Element Is Visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
+    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}
+    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
+    Wait Until Page Contains Element    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
+    Click Element    ${CREATE_AND_USE_ATTRIBUTE}
+
+Add Property Pair
+    [Arguments]    ${button}    ${property}
+    Wait Until Element Is Enabled    ${button}    timeout=30
+    Click Element    ${button}
+    Wait Until Element Is Enabled    //*[contains(@id,'${property}_search_result_link')]    timeout=30
+    Click Element    //*[contains(@id,'${property}_search_result_link')]
+    Wait Until Element Is Enabled    //*[contains(text(), "Käytä attribuuttia")]
+    Click Element    //*[contains(text(), "Käytä attribuuttia")]
+    Sleep    1
