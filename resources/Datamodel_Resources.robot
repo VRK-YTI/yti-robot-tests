@@ -625,13 +625,14 @@ Create new class without referencing concept
     Click Element    ${ADD_NEW_CLASS}
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
-    Sleep    2
+    Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_LINK}    timeout=60
     Click Element    ${CREATE_NEW_CLASS_LINK}
-    Sleep    8
+    Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    timeout=60
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
-    sleep    2
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
+    Log To Console    New class without referencing concept created
     Sleep    2
 
 Create new class and suggest concept to terminologies
@@ -728,6 +729,8 @@ Add Property For Class
     Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
     Wait Until Page Contains Element    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
     Click Element    ${CREATE_AND_USE_ATTRIBUTE}
+    Log To Console    Property for class added
+    Sleep    1
 
 Add Property Pair
     [Arguments]    ${button}    ${property}
@@ -737,4 +740,5 @@ Add Property Pair
     Click Element    //*[contains(@id,'${property}_search_result_link')]
     Wait Until Element Is Enabled    //*[contains(text(), "Käytä attribuuttia")]
     Click Element    //*[contains(text(), "Käytä attribuuttia")]
+    Log To Console    Property pair added
     Sleep    1

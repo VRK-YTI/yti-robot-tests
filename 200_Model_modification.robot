@@ -971,11 +971,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${MODEL_DATA_TAB}
     Create new class without referencing concept    Vertailuluokka1
     Add Property For Class    testi arvo
-    Sleep    1
     Add Property For Class    max arvo
-    Sleep    1
     Add Property For Class    min arvo
-    Sleep    1
     Add Property Pair    ${PROPERTY_EQUALS_BTN}    autom#maxarvo
     Add Property Pair    ${PROPERTY_LESS_THAN_BTN}    autom#maxarvo
     Add Property Pair    ${PROPERTY_LESS_THAN_OR_EQUALS_BTN}    autom#maxarvo
