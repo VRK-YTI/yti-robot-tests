@@ -165,6 +165,10 @@ ${SELECT_LINK_URL_INPUT}    id=select_link_target_url_input
 ${SELECT_CONCEPT_REFERENCE_DDL}    id=selected_select_concept_reference_dropdown
 ${BROADER_CONCEPT_BTN}    id=HierarkkinenYlakasite_select_concept_reference_dropdown
 ${SELECT_CONCEPT_CONFIRM_BTN}    id=select_concept_confirm_button
+${CSV_DELIMITER_BTN}    id=csv_delimiter_dropdown_button
+${COMMA_DELIMITER_BTN}    id=comma_delimiter_dropdown_button
+${SEMICOLON_DELIMITER_BTN}    id=semicolon_delimiter_dropdown_button
+${CONCEPTS_LIST}    id=concept_list_selectable_concepts_list
 #CSV paths
 ${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
@@ -184,6 +188,7 @@ ${concept_reference}    ${DATAFOLDER}${/}Concept_reference_csv.csv
 #xml paths
 ${tax}            ${DATAFOLDER}${/}Verotussanasto_xml.xml
 ${Concepts_with_dropped_items}    ${DATAFOLDER}${/}Concepts_with_dropped_items_xml.xml
+${Concepts_with_semicolon_delimiter}    ${DATAFOLDER}${/}test_concepts_semicolon_delimiter_csv.csv
 
 *** Keywords ***
 Test Case Setup
@@ -493,19 +498,30 @@ Add Members For Collection
     \    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
 
 Import Concepts
-    [Arguments]    ${file_format}    ${file}
-    Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
+    [Arguments]    ${file_format}    ${file}    ${delimiter}
+    Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
-    Wait Until Page Contains Element    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
     Click Element    ${FILE_FORMAT_DROPDOWN_BTN}
+    Wait Until Element Is Enabled    ${file_format}    timeout=30
     Click Element    ${file_format}
+    ${delimiter_length}=    Get Length    ${delimiter}
+    Run Keyword If    ${delimiter_length} > 0    Select Delimiter    ${delimiter}
     Choose File    ${FILE_UPLOAD_INPUT}    ${file}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click Element    ${FILE_UPLOAD_BTN}
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=120
     Click Element    ${IMPORT_YES_BTN}
-    Sleep    5
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
+    Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=10
     Log To Console    Concept import ok
+
+Select Delimiter
+    [Arguments]    ${delimiter}
+    Wait Until Element Is Enabled    ${CSV_DELIMITER_BTN}    timeout=30
+    Click Element    ${CSV_DELIMITER_BTN}
+    Wait Until Element Is Enabled    ${delimiter}    timeout=30
+    Click Element    ${delimiter}
 
 Concept Import Without Confirmation
     [Arguments]    ${file_format}    ${file}

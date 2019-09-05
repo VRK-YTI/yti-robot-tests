@@ -565,7 +565,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
-    Import Concepts    ${XML_FORMAT_BTN}    ${tax}
+    Import Concepts    ${XML_FORMAT_BTN}    ${tax}    ${EMPTY}
     Wait Until Page Contains Element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
     Click Element    //*[contains(@id,'c40_concept_list_listitem')]
     Wait Until Page Contains Element    //h3[contains(text(), "verotuspäätös")]    timeout=30
@@ -575,6 +575,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains Element    //*[contains(@id,'c40_concept_list_listitem')]    timeout=30
     Click Element    //*[contains(@id,'c40_concept_list_listitem')]
     Wait Until Page Contains Element    //h3[contains(text(), "verotuspäätös")]    timeout=30
+    Sleep    1
     Wait Until Page Contains Element    //*[contains(text(), "veronpalautuksesta")]    timeout=30
     Click Element    //*[contains(text(), "veronpalautuksesta")]
     Wait Until Page Contains Element    //h3[contains(text(), "veronpalautus")]    timeout=30
@@ -612,6 +613,18 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Log To Console    Concept import ok
     Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminological Dictionary    ${VOCABULARY_2}
+
+217. Import Concepts in CSV format with semicolon delimiters
+    [Documentation]    Import Concepts in CSV format with semicolon delimiters. YTI-845.
+    [Tags]    regression    sanastot    200
+    [Setup]    Test Case Setup
+    Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
+    Maximize Browser Window
+    Select Dictionary    ${VOCABULARY_2}
+    Import Concepts    ${CSV_FORMAT_BTN}    ${Concepts_with_semicolon_delimiter}    ${SEMICOLON_DELIMITER_BTN}
+    Wait Until Page Contains Element    ${CONCEPTS_LIST}    timeout=30
+    Go Back To Sanastot Frontpage
+    [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
 *** Keywords ***
 Restore organization and classification for DRAFT vocabulary
