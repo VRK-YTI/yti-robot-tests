@@ -67,7 +67,7 @@ Resource          resources/Generic_resources.robot
     Wait Until Page Contains    Käyttäjätiedot    timeout=20
     Wait Until Page Contains    Nimi    timeout=20
     Wait Until Page Contains    Sähköposti    timeout=20
-    Wait Until Page Contains    Organisaatiot ja toolkit    timeout=20
+    Wait Until Page Contains    Organisaatiot ja roolit    timeout=20
     Select navigation menu link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
