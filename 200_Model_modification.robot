@@ -61,7 +61,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${CREATE_NEW_LINK}    timeout=30
     Click Element    ${CREATE_NEW_LINK}
     Log To Console    New link added
-    Save model
+    Save Model
     Log To Console    Modifications saved
     Wait Until Page Contains    Uusi nimi    timeout=30
     Wait Until Page Contains    Uusi kuvaus    timeout=30
@@ -77,8 +77,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select And Edit Profile    Testiautomaatio
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Add class    Rooli    ${NAMESPACE_1}
@@ -147,8 +147,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Add class    Rooli    ${NAMESPACE_1}
@@ -156,11 +156,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Confirm all properties for class and save
     Log To Console    Class "Rooli" added
     Add attribute    Entinen nimi
-    Save class
+    Save Class
     Log To Console    Attribute "Entinen nimi" added to class "Rooli"
     Sleep    2
     Add association    Jäsen
-    Save class
+    Save Class
     Log To Console    Association "Jäsen" added to class "Rooli"
     Sleep    2
     Wait Until Page Contains    Entinen nimi    timeout=30
@@ -174,8 +174,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Add class    Rooli    ${NAMESPACE_1}
@@ -198,7 +198,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
     Click Element    ${SPECIALIZE_CLASS}
     Sleep    2
-    Save class
+    Save Class
     Page Should Contain    Rekisteröinti
     Page Should Contain    autom:Rooli
     Log To Console    Association "Rekisteröinti" added between "Rooli" and "Maksu"
@@ -212,12 +212,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    automobiili
-    Save class
+    Create New Class Without Referencing Concept    automobiili
+    Save Class
     Wait Until Page Contains    Automobiili    timeout=30
     Log To Console    Class "Automobiili" added without referencing concept
     Go back to Data Vocabularies frontpage
@@ -229,8 +229,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Create new shape by referencing external uri    ${external_uri}    ${class}
@@ -247,8 +247,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Add class    Postiosoite    ${NAMESPACE_1}
@@ -269,19 +269,19 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
+    Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    ${vocabulary}
-    Save model
+    Save Model
     Log To Console    Namespace "Julkishallinnon tietokomponentit" added
     Log To Console    Vocabulary "Verotussanasto" added
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    liksa
+    Create New Class Without Referencing Concept    liksa
     Page Should Contain    Liksa
     Log To Console    Class "Liksa" added without referencing concept
     Sleep    1
     Change concept for class    ansiotulo
-    Save class
+    Save Class
     Wait Until Page Contains    Käsitteen määritelmä    timeout=30
     Wait Until Page Contains    muu tulo kuin pääomatulo    timeout=30
     Log To Console    Concept definition "ansiotulo" added for "liksa"
@@ -295,8 +295,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Add several classes    ${class_item_1}    ${class_item_2}    ${class_item_3}
@@ -372,12 +372,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka
-    Save class
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Log To Console    Class "Testiluokka" added without referencing concept
     Create new attribute    Testiattribuutti
@@ -424,7 +424,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    //*[@id="classState"]/div/div/iow-selection-transclude/span
     Wait Until Page Contains Element    ${CLASS_STATE_INCOMPLETE}    timeout=30
     Click Element    ${CLASS_STATE_INCOMPLETE}
-    Save class
+    Save Class
     Wait Until Page Contains Element    ${REMOVE_CLASS_BTN}    timeout=60
     Click Element    ${REMOVE_CLASS_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -452,12 +452,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka
-    Save class
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Log To Console    Class "Testiluokka" added without referencing concept
     Create new attribute    Testiattribuutti
@@ -498,12 +498,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka
-    Save class
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Log To Console    Class "Testiluokka" added without referencing concept
     Create new attribute    Testiattribuutti
@@ -512,7 +512,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
     Add attribute    Testiattribuutti
-    Save class
+    Save Class
     Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
     Click Element    ${ATTRIBUTE_TAB}
     Wait Until Page Contains Element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
@@ -536,15 +536,15 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka
-    Save class
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
-    Create new class without referencing concept    Testiluokka2
+    Create New Class Without Referencing Concept    Testiluokka2
     Wait Until Element Is Visible    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
     Wait Until Element Is Visible    ${ADD_PROPERTY_BTN}    timeout=30
@@ -560,7 +560,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
     Click Element    ${CREATE_AND_USE_ATTRIBUTE}
     Sleep    2
-    Save class
+    Save Class
     Wait Until Page Contains    Testiluokka2    timeout=30
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka2_tabset_link')]    timeout=60
@@ -574,13 +574,13 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
+    Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    Testiautomaatiosanasto
-    Save model
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Create new class and suggest concept to terminologies    Testiluokka    Testiluokan määritelmä
-    Save class
+    Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Wait Until Page Contains    Käsitteen määritelmä    timeout=30
     Wait Until Page Contains    Testiluokan määritelmä    timeout=30
@@ -609,12 +609,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
+    Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    Testiautomaatiosanasto
-    Save model
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka1
+    Create New Class Without Referencing Concept    Testiluokka1
     Wait Until Element Is Visible    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
     Wait Until Element Is Visible    ${ADD_PROPERTY_BTN}    timeout=30
@@ -633,7 +633,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
-    Save class
+    Save Class
     Wait Until Page Contains Element    //*[contains(text(), "Testiattribuutti")]    timeout=30
     Click Element    //*[contains(text(), "Testiattribuutti")]
     Sleep    1
@@ -671,7 +671,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Testiassosiaation määritelmä    timeout=30
     Wait Until Page Contains    Sanasto    timeout=30
     Wait Until Page Contains    Testiautomaatiosanasto    timeout=30
-    Save class
+    Save Class
     Sleep    1
     Go back to Data Vocabularies frontpage
     Close All Browsers
@@ -702,7 +702,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
+    Import Namespace    Julkishallinnon tietokomponentit
     Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
     Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
@@ -713,10 +713,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Input Text    ${NAMESPACE_VALUE}    http://uri.suomi.fi/datamodel/ns/autom1/
     Wait Until Element Is Enabled    ${NAMESPACE_PREFIX}    timeout=30
     Input Text    ${NAMESPACE_PREFIX}    autom
-    Wait Until Page Contains    ${reserved_namespace_prefix}    timeout=30
+    Wait Until Page Contains    ${error_reserved_namespace_prefix}    timeout=30
     Sleep    1
     Input Text    ${NAMESPACE_PREFIX}    example
-    Wait Until Page Contains    ${reserved_namespace_prefix}    timeout=30
+    Wait Until Page Contains    ${error_reserved_namespace_prefix}    timeout=30
     Sleep    1
     Input Text    ${NAMESPACE_PREFIX}    autom1
     Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
@@ -734,12 +734,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${CANCEL_NAMESPACE_CREATION}
     Wait Until Element Is Enabled    ${CANCEL_SEARCH_NAMESPACE}    timeout=30
     Click Element    ${CANCEL_SEARCH_NAMESPACE}
-    Save model
+    Save Model
     Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/autom1/    timeout=30
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    uusiluokka10
-    Save class
+    Create New Class Without Referencing Concept    uusiluokka10
+    Save Class
     Wait Until Element Is Enabled    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
     Add class    Rooli    ${NAMESPACE_1}
     Sleep    2
@@ -757,12 +757,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka
-    Save class
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Log To Console    Class "Testiluokka" added without referencing concept
     Sleep    1
@@ -846,14 +846,14 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka
+    Create New Class Without Referencing Concept    Testiluokka
     Wait Until Page Contains Element    ${DEACTIVATED_CHECKBOX}    timeout=30
     Click Element    ${DEACTIVATED_CHECKBOX}
-    Save class
+    Save Class
     Sleep    10
     Wait Until Page Contains    Testiluokka    timeout=30
     Wait Until Page Contains    Deaktivoitu    timeout=30
@@ -881,7 +881,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
+    Import Namespace    Julkishallinnon tietokomponentit
     Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
     Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
@@ -903,13 +903,13 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Input Text    ${NAMESPACE_LABEL}    namesapce_iow
     Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
     Click Element    ${NAMESPACE_CREATE}
-    Save model
+    Save Model
     Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/iow#    timeout=30
     Wait Until Page Contains    namesapce_iow    timeout=30
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    uusiluokka10
-    Save class
+    Create New Class Without Referencing Concept    uusiluokka10
+    Save Class
     Wait Until Page Contains Element    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
     Add class    Rooli    ${NAMESPACE_1}
     Sleep    2
@@ -927,19 +927,19 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Testiluokka
-    Save class
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Log To Console    Class "Testiluokka" added without referencing concept
     Select And Edit Class    Testiluokka
     Wait Until Element Is Enabled    ${CLASS_ID}    timeout=60
     Input Text    ${CLASS_ID}    Testiluokka_123
     Sleep    1
-    Save class
+    Save Class
     Wait Until Page Contains Element    //*[contains(text(), "autom:Testiluokka_123")]    timeout=60
     Create new attribute    testiattribuutti
     Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
@@ -965,11 +965,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    Vertailuluokka1
+    Create New Class Without Referencing Concept    Vertailuluokka1
     Add Property For Class    testi arvo
     Add Property For Class    max arvo
     Add Property For Class    min arvo
@@ -990,7 +990,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Element Is Enabled    //*[contains(text(), "Käytä attribuuttia")]
     Click Element    //*[contains(text(), "Käytä attribuuttia")]
     Sleep    1
-    Save class
+    Save Class
     Wait Until Element Is Enabled    //*[contains(text(), "Min arvo")]    timeout=30
     Click Element    //*[contains(text(), "Min arvo")]
     Wait Until Page Contains    Pienempi kuin    timeout=30
@@ -1004,41 +1004,28 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 224. Add equivalent class from URN namespace
     [Documentation]    Create new profile and create urn namespace. Add equivalent class from URN namespace for
-    ...    class and check that equivalent class is displayed correctly.
-    [Tags]    tietomallit    200
+    ...    class and check that equivalent class is displayed correctly. YTI-732.
+    [Tags]    regression    test    tietomallit    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
-    Import namespace    Julkishallinnon tietokomponentit
-    Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
-    Click Element    ${IMPORT_NAMESPACE}
-    Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
-    Click Element    ${CREATE_NEW_NAMESPACE}
-    Wait Until Element Is Enabled    ${NAMESPACE_LABEL}    timeout=30
-    Input Text    ${NAMESPACE_LABEL}    testi urn
-    Wait Until Element Is Enabled    ${NAMESPACE_VALUE}    timeout=30
-    Input Text    ${NAMESPACE_VALUE}    urn:testurn:testi
-    Wait Until Element Is Enabled    ${NAMESPACE_PREFIX}    timeout=30
-    Input Text    ${NAMESPACE_PREFIX}    urn1
-    Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
-    Click Element    ${NAMESPACE_CREATE}
-    Save model
+    Import Namespace    Julkishallinnon tietokomponentit
+    Create New Namespace    testi urn    urn:testurn:testi    urn1
+    Save Model
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    uusiluokka10
-    Save class
+    Create New Class Without Referencing Concept    uusiluokka10
+    Save Class
     Wait Until Element Is Enabled    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
     Select And Edit Class    Uusiluokka10
-    Wait Until Page Contains Element    ${EQUIVALENT_CLASS_INPUT}    timeout=30
-    Click Element    ${EQUIVALENT_CLASS_INPUT}
-    Mouse Down    ${EQUIVALENT_CLASS_INPUT}
-    #Click Element    ${EQUIVALENT_CLASS_INPUT}
-    #Press Key    ${EQUIVALENT_CLASS_INPUT}    \\13
-    Clear Element Text    ${EQUIVALENT_CLASS_INPUT}
-    Input Text    ${EQUIVALENT_CLASS_INPUT}    urn1:esimerkki
-    Save class
-    Wait Until Page Contains    Vastaava luokka    timeout=30
+    Wait Until Element Is Enabled    //input[contains(@id,"equivalentClass")]    timeout=30
+    Input Text    //input[contains(@id,"equivalentClass")]    urn1:esimerkki
+    Save Class
+    Wait Until Page Contains    Vastaavat luokat    timeout=30
+    Wait Until Page Contains    urn1:esimerkki    timeout=30
+    Reload Page
+    Wait Until Page Contains    Vastaavat luokat    timeout=30
     Wait Until Page Contains    urn1:esimerkki    timeout=30
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}

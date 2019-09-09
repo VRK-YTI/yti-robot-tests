@@ -175,7 +175,7 @@ ${EXPORT_JSON_Schema}    id=class_export_show_application_schema_json
 ${EXPORT_MODEL_JSON_Schema}    id=model_export_show_application_schema_json
 ${EXPORT_JSON_LD_Context}    id=class_export_show_application_ld_json_context
 #Error messages
-${reserved_namespace_prefix}    Tunniste on jo käytössä tai on varattu
+${error_reserved_namespace_prefix}    Tunniste on jo käytössä tai on varattu
 ${namespace_in_use}    Tunniste on jo käytössä
 
 *** Keywords ***
@@ -448,7 +448,7 @@ Add vocabulary
     Sleep    1
     Log To Console    New vocabulary ${vocabulary} added
 
-Import namespace
+Import Namespace
     [Arguments]    ${namespace}
     Wait Until Page Contains Element    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
@@ -459,7 +459,7 @@ Import namespace
     Sleep    1
     Log To Console    New namespace ${namespace} added
 
-Save model
+Save Model
     Sleep    1
     Wait Until Element Is Enabled    ${SAVE_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_MODEL_BTN}
@@ -499,7 +499,7 @@ Add several classes
     \    Confirm all properties for class and save
     \    Sleep    2
 
-Save class
+Save Class
     Wait Until Element Is Enabled    ${SAVE_CLASS}    timeout=60
     Click Element    ${SAVE_CLASS}
     Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
@@ -621,7 +621,7 @@ Change concept for class
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
-Create new class without referencing concept
+Create New Class Without Referencing Concept
     [Arguments]    ${class}
     Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
@@ -744,3 +744,18 @@ Add Property Pair
     Click Element    //*[contains(text(), "Käytä attribuuttia")]
     Log To Console    Property pair added
     Sleep    1
+
+Create New Namespace
+    [Arguments]    ${label}    ${namespace}    ${prefix}
+    Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
+    Click Element    ${IMPORT_NAMESPACE}
+    Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
+    Click Element    ${CREATE_NEW_NAMESPACE}
+    Wait Until Element Is Enabled    ${NAMESPACE_LABEL}    timeout=30
+    Input Text    ${NAMESPACE_LABEL}    ${label}
+    Wait Until Element Is Enabled    ${NAMESPACE_VALUE}    timeout=30
+    Input Text    ${NAMESPACE_VALUE}    ${namespace}
+    Wait Until Element Is Enabled    ${NAMESPACE_PREFIX}    timeout=30
+    Input Text    ${NAMESPACE_PREFIX}    ${prefix}
+    Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
+    Click Element    ${NAMESPACE_CREATE}
