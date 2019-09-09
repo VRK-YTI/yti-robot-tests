@@ -1002,6 +1002,47 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
+224. Add equivalent class from URN namespace
+    [Documentation]    Create new profile and create urn namespace. Add equivalent class from URN namespace for
+    ...    class and check that equivalent class is displayed correctly.
+    [Tags]    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Maximize Browser Window
+    Select and edit Testiautomaatio profile
+    Log To Console    Testiautomaatio profile selected
+    Import namespace    Julkishallinnon tietokomponentit
+    Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
+    Click Element    ${IMPORT_NAMESPACE}
+    Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
+    Click Element    ${CREATE_NEW_NAMESPACE}
+    Wait Until Element Is Enabled    ${NAMESPACE_LABEL}    timeout=30
+    Input Text    ${NAMESPACE_LABEL}    testi urn
+    Wait Until Element Is Enabled    ${NAMESPACE_VALUE}    timeout=30
+    Input Text    ${NAMESPACE_VALUE}    urn:testurn:testi
+    Wait Until Element Is Enabled    ${NAMESPACE_PREFIX}    timeout=30
+    Input Text    ${NAMESPACE_PREFIX}    urn1
+    Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
+    Click Element    ${NAMESPACE_CREATE}
+    Save model
+    Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}
+    Create new class without referencing concept    uusiluokka10
+    Save class
+    Wait Until Element Is Enabled    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
+    Select And Edit Class    Uusiluokka10
+    Wait Until Page Contains Element    ${EQUIVALENT_CLASS_INPUT}    timeout=30
+    Click Element    ${EQUIVALENT_CLASS_INPUT}
+    Mouse Down    ${EQUIVALENT_CLASS_INPUT}
+    #Click Element    ${EQUIVALENT_CLASS_INPUT}
+    #Press Key    ${EQUIVALENT_CLASS_INPUT}    \\13
+    Clear Element Text    ${EQUIVALENT_CLASS_INPUT}
+    Input Text    ${EQUIVALENT_CLASS_INPUT}    urn1:esimerkki
+    Save class
+    Wait Until Page Contains    Vastaava luokka    timeout=30
+    Wait Until Page Contains    urn1:esimerkki    timeout=30
+    Go back to Data Vocabularies frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
 *** Keywords ***
 Test Case Setup Terminologies
     Terminology Setup

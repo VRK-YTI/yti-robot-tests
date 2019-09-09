@@ -122,6 +122,7 @@ ${CONCEPT_DEFINITION_INPUT}    id=conceptDefinition
 ${EXPORT_CLASS_DDL}    id=class_export_dropdown
 ${DEACTIVATED_CHECKBOX}    id=deactivated
 ${CLASS_ID}       id=classId
+${EQUIVALENT_CLASS_INPUT}    id=equivalentClass
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -459,8 +460,9 @@ Import namespace
     Log To Console    New namespace ${namespace} added
 
 Save model
-    Wait Until Page Contains Element    //*[contains(text(), "Tallenna")]    timeout=30
-    Click Element    //*[contains(text(), "Tallenna")]
+    Sleep    1
+    Wait Until Element Is Enabled    ${SAVE_MODEL_BTN}    timeout=30
+    Click Element    ${SAVE_MODEL_BTN}
     Wait Until Element Is Visible    ${MODIFY_MODEL}    timeout=60
     Sleep    2
 
