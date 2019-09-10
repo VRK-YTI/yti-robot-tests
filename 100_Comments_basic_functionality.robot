@@ -18,13 +18,15 @@ Resource          resources/Generic_resources.robot
     [Teardown]    Return to Comments frontpage
 
 101. Open EUPL-1.2 license page
-    [Documentation]    Verify that EUPL-1.2 license page is opened correctly
+    [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Wait Until Page Contains Element    ${LICENSE_LINK}    timeout=20
     Click Element    ${LICENSE_LINK}
-    Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
+    Wait Until Page Contains    European Union Public Licence    timeout=30
+    Wait Until Page Contains    What is the EUPL?    timeout=30
+    Log To Console    EUPL licence page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
 
 102. Open Description of file page
