@@ -56,6 +56,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${SAVE_MEMBER}    timeout=60
     Click Element    ${SAVE_MEMBER}
     Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
+    Sleep    1
     Wait Until Page Contains    Koodisto    timeout=20
     Wait Until Page Contains    Testikoodisto2 pitkillä arvoilla    timeout=20
     Wait Until Page Contains    Laajennus    timeout=20

@@ -26,14 +26,15 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Ota yhteyttä    timeout=30
     [Teardown]    Return to Koodistot frontpage
 
-101. Open EUPL-1.2 license page
-    [Documentation]    Verify that EUPL-1.2 license page is opened correctly. YTI-457
-    [Tags]    regression    test    100
+101. Open EUPL-1.2 licence page
+    [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-457, YTI-877.
+    [Tags]    regression    test    100    koodistot
     [Setup]    Test Case Setup Admin
-    Wait Until Page Contains Element    id=license_link    timeout=20
-    Click Element    id=license_link
-    Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=30
+    Wait Until Page Contains Element    ${EUPL_LICENCE_PAGE}    timeout=20
+    Click Element    ${EUPL_LICENCE_PAGE}
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
+    Wait Until Page Contains    European Union Public Licence    timeout=30
+    Wait Until Page Contains    What is the EUPL?    timeout=30
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Close All Browsers
 
