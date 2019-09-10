@@ -51,7 +51,7 @@ ${MODEL_DETAILS_TAB}    id=modelDetailsTab
 ${MODEL_DATA_TAB}    id=dataTab
 ${MODEL_LABEL_INPUT}    id=modelLabel
 ${MODEL_DESCRIPTION_INPUT}    id=modelComment
-${MODEL_PREFIX_INTPUT}    id=modelPrefix
+${MODEL_PREFIX_INPUT}    id=modelPrefix
 ${ADD_CLASSIFICATION}    id=add_classification_button
 ${ADD_CONTRIBUTOR}    id=add_contributor_button
 ${ADD_VOCABULARY}    id=add_vocabulary_button
@@ -255,8 +255,8 @@ Create Testiautomaatio profile
     Input Text    ${MODEL_LABEL_INPUT}    ${MODEL_1}
     Wait Until Page Contains Element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Wait Until Page Contains Element    ${MODEL_PREFIX_INTPUT}    timeout=30
-    Input Text    ${MODEL_PREFIX_INTPUT}    autom
+    Wait Until Page Contains Element    ${MODEL_PREFIX_INPUT}    timeout=30
+    Input Text    ${MODEL_PREFIX_INPUT}    autom
     Wait Until Page Contains Element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
     Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=30
@@ -419,14 +419,14 @@ Select and edit Automaatiokirjasto Core Vocabulary
     Wait Until Page Contains Element    ${MODIFY_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${MODIFY_CORE_VOCABULARY_BTN}
 
-Add classification
-    [Arguments]    ${classification}
+Add Information Domain
+    [Arguments]    ${information_domain}
     Wait Until Page Contains Element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
-    Wait Until Page Contains Element    //*[contains(text(), "${classification}")]    timeout=30
-    Click Element    //*[contains(text(), "${classification}")]
+    Wait Until Page Contains Element    //*[contains(text(), "${information_domain}")]    timeout=30
+    Click Element    //*[contains(text(), "${information_domain}")]
     Sleep    2
-    Log To Console    New classification ${classification} added
+    Log To Console    New information domain ${information_domain} added
 
 Add contributor
     [Arguments]    ${contributor}
@@ -466,7 +466,7 @@ Save Model
     Wait Until Element Is Visible    ${MODIFY_MODEL}    timeout=60
     Sleep    2
 
-Add class
+Add Class
     [Arguments]    ${class}    ${model}
     Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
@@ -496,7 +496,7 @@ Add several classes
     \    Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
     \    Click Element    ${SPECIALIZE_CLASS}
     \    Sleep    1
-    \    Confirm all properties for class and save
+    \    Confirm All Properties For Class And Save
     \    Sleep    2
 
 Save Class
@@ -505,7 +505,7 @@ Save Class
     Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
 
-Confirm all properties for class and save
+Confirm All Properties For Class And Save
     Wait Until Element Is Enabled    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Sleep    2
@@ -526,23 +526,25 @@ Deselect properties for class and save
     Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
     Sleep    2
 
-Add attribute
+Add Attribute
     [Arguments]    ${attribute}
-    Wait Until Page Contains Element    ${MODIFY_CLASS}    timeout=30
+    Wait Until Element Is Enabled    ${MODIFY_CLASS}    timeout=30
     Click Element    ${MODIFY_CLASS}
-    Wait Until Page Contains Element    ${ADD_PROPERTY_DDL}    timeout=30
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
-    Wait Until Page Contains Element    ${ADD_PROPERTY_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
-    Sleep    8
-    Wait Until Page Contains Element    ${ALL_TYPES_DDL}    timeout=30
+    Sleep    2
+    Wait Until Element Is Enabled    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     Sleep    2
+    Wait Until Element Is Enabled    //*[contains(text(), "Attribuutti")]    timeout=30
     Click Element    //*[contains(text(), "Attribuutti")]
-    Wait Until Page Contains Element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
+    Wait Until Element Is Enabled    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
+    Wait Until Element Is Enabled    //*[contains(text(), "${attribute}")]    timeout=30
     Click Element    //*[contains(text(), "${attribute}")]
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 
@@ -588,23 +590,25 @@ Create new association
     Log To Console    New association "${association}" added
     Sleep    1
 
-Add association
+Add Association
     [Arguments]    ${association}
-    Wait Until Page Contains Element    ${MODIFY_CLASS}    timeout=30
+    Wait Until Element Is Enabled    ${MODIFY_CLASS}    timeout=30
     Click Element    ${MODIFY_CLASS}
-    Wait Until Page Contains Element    ${ADD_PROPERTY_DDL}    timeout=30
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
-    Wait Until Page Contains Element    ${ADD_PROPERTY_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
-    Sleep    8
-    Wait Until Page Contains Element    ${ALL_TYPES_DDL}    timeout=30
+    Sleep    2
+    Wait Until Element Is Enabled    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
     Sleep    2
+    Wait Until Element Is Enabled    //*[contains(text(), "Assosiaatio")]    timeout=30
     Click Element    //*[contains(text(), "Assosiaatio")]
     Wait Until Page Contains Element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${association}
+    Wait Until Element Is Enabled    //*[contains(text(), "${association}")]    timeout=30
     Click Element    //*[contains(text(), "${association}")]
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${USE_SELECTION_BTN}    timeout=30
     Click Element    ${USE_SELECTION_BTN}
     Sleep    2
 

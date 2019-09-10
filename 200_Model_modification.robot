@@ -43,7 +43,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${REMOVE_Asuminen}
     Log To Console    Classification removed
     Sleep    1
-    Add classification    Kulttuuri
+    Add Information Domain    Kulttuuri
     Log To Console    New classification added
     Wait Until Page Contains Element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
@@ -81,8 +81,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Add class    Rooli    ${NAMESPACE_1}
-    Confirm all properties for class and save
+    Add Class    Rooli    ${NAMESPACE_1}
+    Confirm All Properties For Class And Save
     Log To Console    Class "Rooli" added
     Go back to Data Vocabularies frontpage
     [Teardown]    Delete profile    ${MODEL_1}
@@ -110,7 +110,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${REMOVE_Asuminen}
     Log To Console    Classification removed
     Sleep    1
-    Add classification    Kulttuuri
+    Add Information Domain    Kulttuuri
     Log To Console    New classification added
     Wait Until Page Contains Element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
@@ -145,24 +145,23 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Add new attribute and association for class
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select and edit Testiautomaatio profile
+    Maximize Browser Window
+    Select And Edit Profile    Testiautomaatio
     Log To Console    Testiautomaatio profile selected
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Add class    Rooli    ${NAMESPACE_1}
+    Add Class    Rooli    ${NAMESPACE_1}
     Sleep    2
-    Confirm all properties for class and save
+    Confirm All Properties For Class And Save
     Log To Console    Class "Rooli" added
-    Add attribute    Entinen nimi
+    Add Attribute    Entinen nimi
     Save Class
     Log To Console    Attribute "Entinen nimi" added to class "Rooli"
-    Sleep    2
-    Add association    Jäsen
+    Add Association    Jäsen
     Save Class
     Log To Console    Association "Jäsen" added to class "Rooli"
-    Sleep    2
     Wait Until Page Contains    Entinen nimi    timeout=30
     Wait Until Page Contains    Jäsen    timeout=30
     Go back to Data Vocabularies frontpage
@@ -178,16 +177,16 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Add class    Rooli    ${NAMESPACE_1}
+    Add Class    Rooli    ${NAMESPACE_1}
     Sleep    2
-    Confirm all properties for class and save
+    Confirm All Properties For Class And Save
     Log To Console    Class "Rooli" added
-    Add class    Maksu    ${NAMESPACE_1}
+    Add Class    Maksu    ${NAMESPACE_1}
     Sleep    2
-    Confirm all properties for class and save
+    Confirm All Properties For Class And Save
     Log To Console    Class "Maksu" added
     Sleep    1
-    Add association    Rekisteröinti
+    Add Association    Rekisteröinti
     Log To Console    Association "Rekisteröinti" added
     Wait Until Page Contains Element    ${VALUE_CLASS_BTN}    timeout=30
     Click Element    ${VALUE_CLASS_BTN}
@@ -234,7 +233,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
     Create new shape by referencing external uri    ${external_uri}    ${class}
-    Confirm all properties for class and save
+    Confirm All Properties For Class And Save
     Wait Until Page Contains    Maksu    timeout=30
     Log To Console    Shape "Maksu" added by referencing external uri
     Go back to Data Vocabularies frontpage
@@ -251,7 +250,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Add class    Postiosoite    ${NAMESPACE_1}
+    Add Class    Postiosoite    ${NAMESPACE_1}
     Sleep    2
     Deselect properties for class and save    ${class_property_po_box}    ${class_property_post_code}    ${class_property_post_name}
     Wait Until Page Does Not Contain Element    //*[contains(text(), "Postilokero-osoite")]    timeout=30
@@ -511,7 +510,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${CLASS_TAB}
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
-    Add attribute    Testiattribuutti
+    Add Attribute    Testiattribuutti
     Save Class
     Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
     Click Element    ${ATTRIBUTE_TAB}
@@ -741,9 +740,9 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Create New Class Without Referencing Concept    uusiluokka10
     Save Class
     Wait Until Element Is Enabled    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
-    Add class    Rooli    ${NAMESPACE_1}
+    Add Class    Rooli    ${NAMESPACE_1}
     Sleep    2
-    Confirm all properties for class and save
+    Confirm All Properties For Class And Save
     Wait Until Page Contains Element    //*[contains(@id,'Rooli_tabset_link')]    timeout=30
     Log To Console    Class "Rooli" added
     Go back to Data Vocabularies frontpage
@@ -911,9 +910,9 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Create New Class Without Referencing Concept    uusiluokka10
     Save Class
     Wait Until Page Contains Element    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
-    Add class    Rooli    ${NAMESPACE_1}
+    Add Class    Rooli    ${NAMESPACE_1}
     Sleep    2
-    Confirm all properties for class and save
+    Confirm All Properties For Class And Save
     Wait Until Page Contains Element    //*[contains(@id,'Rooli_tabset_link')]    timeout=30
     Log To Console    Class "Rooli" added
     Go back to Data Vocabularies frontpage
