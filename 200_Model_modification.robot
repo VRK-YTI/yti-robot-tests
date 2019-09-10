@@ -68,7 +68,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Kulttuuri    timeout=30
     Wait Until Page Contains    Väestörekisterikeskus    timeout=30
     Wait Until Page Contains    www.suomi.fi/etusivu/    timeout=30
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    Uusi nimi
 
 201. Add new class to profile
@@ -84,7 +84,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Add Class    Rooli    ${NAMESPACE_1}
     Confirm All Properties For Class And Save
     Log To Console    Class "Rooli" added
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 202. Add new Core Vocabulary
@@ -92,7 +92,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Log To Console    Automaatiokirjasto Core Vocabulary created
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete Automaatiokirjasto Core Vocabulary
 
 203. Modify Core Vocabulary
@@ -123,7 +123,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Kulttuuri    timeout=30
     Wait Until Page Contains    Väestörekisterikeskus    timeout=30
     Wait Until Page Contains    www.suomi.fi/etusivu/    timeout=30
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    Uusi nimi
 
 204. Add new attribute and association
@@ -149,7 +149,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Log To Console    Association "Jäsen" added to class "Rooli"
     Wait Until Page Contains    Entinen nimi    timeout=30
     Wait Until Page Contains    Jäsen    timeout=30
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 205. Add association between two classes
@@ -187,7 +187,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Page Should Contain    autom:Rooli
     Log To Console    Association "Rekisteröinti" added between "Rooli" and "Maksu"
     Sleep    3
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 206. Create new class without referencing concept
@@ -204,7 +204,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Class
     Wait Until Page Contains    Automobiili    timeout=30
     Log To Console    Class "Automobiili" added without referencing concept
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 207. Create new shape by referencing external uri
@@ -221,7 +221,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Confirm All Properties For Class And Save
     Wait Until Page Contains    Maksu    timeout=30
     Log To Console    Shape "Maksu" added by referencing external uri
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 208. Add new class to profile and remove properties
@@ -243,7 +243,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Does Not Contain Element    //*[contains(text(), "Postitoimipaikka")]    timeout=30
     Log To Console    PO box, post code and post name properties removed from class
     Log To Console    Class "Postiosoite" added
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 209. Create new class and add referencing concept and vocabulary
@@ -269,7 +269,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Käsitteen määritelmä    timeout=30
     Wait Until Page Contains    muu tulo kuin pääomatulo    timeout=30
     Log To Console    Concept definition "ansiotulo" added for "liksa"
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 210. Add several classes to profile, check history and remove one class
@@ -304,7 +304,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Wait Until Page Does Not Contain Element    //*[contains(@id, 'Ajanjakso_tabset_link')]    timeout=30
     Log To Console    Class "Ajanjakso" removed
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 211. Add reference data for profile
@@ -344,7 +344,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Element Is Visible    ${MODIFY_MODEL}    timeout=30
     Wait Until Page Contains    Kunnat 2018    timeout=30
     Log To Console    Reference data "Kunnat 2018" added for profile
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 212. Remove INCOMPLETE status profile, class, attribute and association
@@ -425,7 +425,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${SAVE_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_MODEL_BTN}
     Wait Until Page Contains    Keskeneräinen    timeout=30
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 213. Convert attribute to association
@@ -470,7 +470,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
     Click Element    ${ATTRIBUTE_TAB}
     Page Should Not Contain element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 214. Convert attribute to association when it is used by a resource
@@ -509,7 +509,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${CLOSE_BTN}
     Wait Until Page Contains Element    ${PREDICATE_EDIT_CANCEL_BTN}    timeout=30
     Click Element    ${PREDICATE_EDIT_CANCEL_BTN}
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 215. Add new attribute for unsaved class
@@ -548,7 +548,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Testiluokka2    timeout=30
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka2_tabset_link')]    timeout=60
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 216. Create new class and suggest concept to Terminologies tool
@@ -570,7 +570,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Testiluokan määritelmä    timeout=30
     Wait Until Page Contains    Sanasto    timeout=30
     Wait Until Page Contains    Testiautomaatiosanasto    timeout=30
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     Close All Browsers
     Terminology Test Case Setup
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
@@ -657,7 +657,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Testiautomaatiosanasto    timeout=30
     Save Class
     Sleep    1
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     Close All Browsers
     Terminology Test Case Setup
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
@@ -730,7 +730,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Confirm All Properties For Class And Save
     Wait Until Page Contains Element    //*[contains(@id,'Rooli_tabset_link')]    timeout=30
     Log To Console    Class "Rooli" added
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 219. Export class in different formats
@@ -819,7 +819,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Close Window
     Sleep    1
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 220. Deactivate class and export class in JSON Schema format
@@ -854,7 +854,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Page Should Not Contain    {"errorMessage":"Not found"}
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 221. Create namespace with certain prefix
@@ -900,7 +900,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Confirm All Properties For Class And Save
     Wait Until Page Contains Element    //*[contains(@id,'Rooli_tabset_link')]    timeout=30
     Log To Console    Class "Rooli" added
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 222. Change ID for class and predicate
@@ -937,7 +937,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Input Text    ${PREDICATE_ID}    testiassosiaatio_123
     Save Predicate
     Wait Until Page Contains Element    //*[contains(text(), "autom:testiassosiaatio_123")]
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 223. Add property pairs
@@ -983,7 +983,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Pienempi tai yhtä suuri kuin    timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "autom:maxarvo")]    timeout=30
     Wait Until Page Contains Element    //*[contains(@id,'Vertailuluokka1_tabset_link')]    timeout=60
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 224. Add equivalent class from URN namespace
@@ -1011,7 +1011,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Reload Page
     Wait Until Page Contains    Vastaavat luokat    timeout=30
     Wait Until Page Contains    urn1:esimerkki    timeout=30
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 *** Keywords ***

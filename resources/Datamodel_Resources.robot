@@ -218,7 +218,7 @@ Go back to Data Vocabularies frontpage and close browsers
     Sleep    2
     Close All Browsers
 
-Go back to Data Vocabularies frontpage
+Go Back To Data Vocabularies Frontpage
     Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=60
     Click Element    ${MAIN_PAGE_LINK}
     Sleep    2
@@ -230,7 +230,7 @@ Test Case Setup Create Testiautomaatio profile
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
     run keyword if    ${model_exists}    Delete existing profile and create new
     ...    ELSE    Create Testiautomaatio profile
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
 
 Test Case Teardown Delete Testiautomaatio profile
     Delete Testiautomaatio profile
@@ -242,7 +242,7 @@ Test Case Setup Create Automaatiokirjasto Core Vocabulary
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
     run keyword if    ${model_exists}    Delete existing core vocabulary and create new
     ...    ELSE    Create Automaatiokirjasto Core Vocabulary
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
 
 Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
     Delete Automaatiokirjasto Core Vocabulary

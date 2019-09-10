@@ -66,14 +66,14 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Search for DRAFT model with frontpage search function.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
     Wait Until Page Contains Element    ${ADD_CLASS_BTN}    timeout=30
     Sleep    1
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Test Case Teardown Delete Testiautomaatio profile
 
 105. Frontpage advanced search
@@ -144,7 +144,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Guide through creating new Core Vocabulary
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
     Click Element    ${GUIDE_BTN}
     #Sleep    1
@@ -152,14 +152,14 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Click Element    ${GUIDE_CORE_VOCABULARY}
     Click through guide    ${Core_vocabulary_text}
     #Sleep    1
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 108. Guide through creating new Application Profile
     [Documentation]    Guide through creating new Application Profile
     [Tags]    tietomallit
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     Wait Until Page Contains Element    ${GUIDE_BTN}    timeout=20
     Click Element    ${GUIDE_BTN}
     Sleep    1
@@ -167,7 +167,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Click Element    ${GUIDE_APPLICATION_PROFILE}
     Click through guide    ${Application_profile_text}
     Sleep    1
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 109. Guide through requiring a namespace
@@ -181,7 +181,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains Element    ${GUIDE_NAMESPACE}    timeout=20
     Click Element    ${GUIDE_NAMESPACE}
     Click through guide    ${Namespace_text}
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 110. Guide through creating a class
@@ -195,7 +195,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains Element    ${GUIDE_CREATE_CLASS}    timeout=20
     Click Element    ${GUIDE_CREATE_CLASS}
     Click through guide    ${Create_class_text}
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 111. Guide through specializing a class
@@ -209,7 +209,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains Element    ${GUIDE_SPECIALIZE_CLASS}    timeout=20
     Click Element    ${GUIDE_SPECIALIZE_CLASS}
     Click through guide    ${Specialize_class_text}
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 112. Guide through adding an attribute
@@ -223,7 +223,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains Element    ${GUIDE_ADD_ATTRIBUTE}    timeout=20
     Click Element    ${GUIDE_ADD_ATTRIBUTE}
     Click through guide    ${Add_attribute_text}
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 113. Guide through adding an association
@@ -237,7 +237,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains Element    ${GUIDE_ADD_ASSOCIATION}    timeout=20
     Click Element    ${GUIDE_ADD_ASSOCIATION}
     Click through guide    ${Add_association_text}
-    Go back to Data Vocabularies frontpage
+    Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
 114. Open CC BY 4.0 license page
