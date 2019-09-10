@@ -30,14 +30,14 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Teardown]    Go back to Data Vocabularies frontpage and close browsers
 
 101. Open EUPL-1.2 license page
-    [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
+    [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup
     Wait Until Page Contains Element    ${EUPL_LICENSE_LINK}    timeout=20
     Click Element    ${EUPL_LICENSE_LINK}
-    Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
-    Sleep    2
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
+    Wait Until Page Contains    European Union Public Licence    timeout=30
+    Wait Until Page Contains    What is the EUPL?    timeout=30
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Close All Browsers
 
