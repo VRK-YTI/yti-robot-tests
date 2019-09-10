@@ -82,6 +82,7 @@ ${DOWNLOAD_DDL}    id=download_dropdown
 ${PNG_DOWNLOAD}    id=PNG_download_dropdown
 ${SVG_DOWNLOAD}    id=SVG_download_dropdown
 ${EXPORT_MODEL_DDL}    id=model_export_dropdown
+${OPEN_LINK_MODAL}    class=modal-body
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
@@ -428,7 +429,7 @@ Add Information Domain
     Sleep    2
     Log To Console    New information domain ${information_domain} added
 
-Add contributor
+Add Contributor
     [Arguments]    ${contributor}
     Wait Until Page Contains Element    ${ADD_CONTRIBUTOR}    timeout=30
     Click Element    ${ADD_CONTRIBUTOR}
@@ -763,3 +764,18 @@ Create New Namespace
     Input Text    ${NAMESPACE_PREFIX}    ${prefix}
     Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
     Click Element    ${NAMESPACE_CREATE}
+
+Add Link
+    [Arguments]    ${url}    ${name}    ${description}
+    Wait Until Element Is Enabled    ${ADD_LINK}    timeout=30
+    Click Element    ${ADD_LINK}
+    Wait Until Element Is Enabled    ${LINK_URL_INPUT}    timeout=30
+    Input Text    ${LINK_URL_INPUT}    ${url}
+    Wait Until Element Is Enabled    ${LINK_NAME_INPUT}    timeout=30
+    Input Text    ${LINK_NAME_INPUT}    ${name}
+    Wait Until Element Is Enabled    ${LINK_DESCRIPTION_INPUT}    timeout=30
+    Input Text    ${LINK_DESCRIPTION_INPUT}    ${description}
+    Wait Until Element Is Enabled    ${CREATE_NEW_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_LINK}
+    Wait Until Page Does Not Contain Element    ${OPEN_LINK_MODAL}    timeout=120
+    Log To Console    New link added

@@ -49,7 +49,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${REMOVE_Testiorganisaatio}
     Log To Console    Contributor removed
     Sleep    1
-    Add contributor    Väestörekisterikeskus
+    Add Contributor    Väestörekisterikeskus
     Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
     Wait Until Page Contains Element    ${LINK_URL_INPUT}    timeout=30
@@ -108,31 +108,16 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Uusi kuvaus
     Wait Until Page Contains Element    ${REMOVE_Asuminen}    timeout=30
     Click Element    ${REMOVE_Asuminen}
-    Log To Console    Classification removed
+    Log To Console    Information domain removed
     Sleep    1
     Add Information Domain    Kulttuuri
-    Log To Console    New classification added
     Wait Until Page Contains Element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
     Log To Console    Contributor removed
     Sleep    1
-    Add contributor    Väestörekisterikeskus
-    Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
-    Click Element    ${ADD_LINK}
-    Wait Until Page Contains Element    ${LINK_URL_INPUT}    timeout=30
-    Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
-    Wait Until Page Contains Element    ${LINK_NAME_INPUT}    timeout=30
-    Input Text    ${LINK_NAME_INPUT}    www.suomi.fi/etusivu/
-    Wait Until Page Contains Element    ${LINK_DESCRIPTION_INPUT}    timeout=30
-    Input Text    ${LINK_DESCRIPTION_INPUT}    Tämä on suomi.fi linkki
-    Wait Until Page Contains Element    ${CREATE_NEW_LINK}    timeout=30
-    Click Element    ${CREATE_NEW_LINK}
-    Log To Console    New link added
-    Sleep    3
-    Wait Until Page Contains Element    //*[contains(text(), "Tallenna")]    timeout=30
-    Click Element    //*[contains(text(), "Tallenna")]
-    Log To Console    Modifications saved
-    Sleep    2
+    Add Contributor    Väestörekisterikeskus
+    Add Link    https://www.suomi.fi/etusivu/    www.suomi.fi/etusivu/    Tämä on suomi.fi linkki
+    Save Model
     Wait Until Page Contains    Uusi nimi    timeout=30
     Wait Until Page Contains    Uusi kuvaus    timeout=30
     Wait Until Page Contains    Kulttuuri    timeout=30
