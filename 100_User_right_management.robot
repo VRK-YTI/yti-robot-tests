@@ -18,14 +18,15 @@ Resource          resources/Login_details.robot
     [Teardown]    Go back to RHP frontpage
 
 101. Open EUPL-1.2 license page
-    [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
+    [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    rhp    test
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    //app-root/app-footer/div/div[2]/div[3]/a    timeout=20
-    Click Element    //app-root/app-footer/div/div[2]/div[3]/a
-    Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2
-    Sleep    2
+    Wait Until Page Contains Element    ${EUPL_LICENCE_LINK}    timeout=20
+    Click Element    ${EUPL_LICENCE_LINK}
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
+    Wait Until Page Contains    European Union Public Licence    timeout=30
+    Wait Until Page Contains    What is the EUPL?    timeout=30
+    Log To Console    EUPL licence page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Sleep    1
     Close All Browsers

@@ -25,6 +25,7 @@ ${NAVIGATION_MENU_DDL}    id=app_menu_dropdown
 ${NAVIGATION_LOGIN_LINK}    id=log_in_link
 ${LOGIN_MODAL_BTN}    id=login_modal_button
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
+${EUPL_LICENCE_LINK}    id=license_link
 
 *** Keywords ***
 Test Case Setup
