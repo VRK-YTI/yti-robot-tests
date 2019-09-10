@@ -8,30 +8,30 @@ Resource          resources/Terminology_Resources.robot
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    100
     [Setup]    Test Case Setup
     Wait Until Page Contains Element    id=information_link    timeout=20
     Click Element    id=information_link
-    Wait Until Page Contains    Tietoa Sanastoista
-    Wait Until Page Contains    Sanastot-työkalu on tarkoitettu
-    Wait Until Page Contains    Sanastot-työkalulla
-    Wait Until Page Contains    Hyödyt käyttäjille
-    Wait Until Page Contains    Miten voin liittyä työkalun käyttäjäksi?
-    Wait Until Page Contains    Katso myös
-    Wait Until Page Contains    Ota yhteyttä
-    Log To Console    Information about the service page opened
+    Wait Until Page Contains    Tietoa Sanastoista    timeout=20
+    Wait Until Page Contains    Sanastot-työkalu on tarkoitettu    timeout=20
+    Wait Until Page Contains    Sanastot-työkalulla    timeout=20
+    Wait Until Page Contains    Hyödyt käyttäjille    timeout=20
+    Wait Until Page Contains    Miten voin liittyä työkalun käyttäjäksi?    timeout=20
+    Wait Until Page Contains    Katso myös    timeout=20
+    Wait Until Page Contains    Ota yhteyttä    timeout=20
+    Log To Console    Information about the service page opened    timeout=20
     Go Back To Sanastot Frontpage
 
 101. Open EUPL-1.2 license page
-    [Documentation]    Verify that EUPL-1.2 license page is opened correctly.
-    [Tags]    regression    sanastot    test
+    [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
+    [Tags]    regression    sanastot    test    100
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    id=license_link    timeout=20
-    Click Element    id=license_link
-    Select Window    title=EUPL - v1.2 [FI / suomi]
-    Wait Until Page Contains    EUROOPAN UNIONIN YLEINEN LISENSSI v. 1.2    timeout=20
-    Sleep    2
-    Log To Console    EUPL-1.2 license page opened
+    Wait Until Page Contains Element    ${EUPL_LICENCE_LINK}    timeout=20
+    Click Element    ${EUPL_LICENCE_LINK}
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
+    Wait Until Page Contains    European Union Public Licence    timeout=30
+    Wait Until Page Contains    What is the EUPL?    timeout=30
+    Log To Console    European Union Public Licence page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
 
 102. Open Description of file page
@@ -47,7 +47,7 @@ Resource          resources/Terminology_Resources.robot
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    100
     [Setup]    Test Case Setup
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
     Click Element    ${LANGUAGE_DROPDOWN_BTN}
@@ -60,7 +60,7 @@ Resource          resources/Terminology_Resources.robot
 
 104. Search for DRAFT vocabulary
     [Documentation]    Search for DRAFT vocabulary with frontpage search function.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    100
     [Setup]    Test Case Setup
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -76,7 +76,7 @@ Resource          resources/Terminology_Resources.robot
 
 105. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
-    [Tags]    regression    test
+    [Tags]    regression    test    sanastot    100
     [Setup]    Test Case Setup
     Select navigation menu link    Käyttäjätiedot
     Wait Until Page Contains    Käyttäjätiedot    timeout=60
@@ -115,7 +115,7 @@ Resource          resources/Terminology_Resources.robot
 
 106. Open CC BY 4.0 license page
     [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
-    [Tags]    regression    sanastot    test
+    [Tags]    regression    sanastot    test    100
     [Setup]    Test Case Setup
     Wait Until Page Contains Element    ${LICENSE_ICON_TEXT_LINK}    timeout=20
     Click Element    ${LICENSE_ICON_TEXT_LINK}
