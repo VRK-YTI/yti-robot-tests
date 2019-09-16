@@ -25,6 +25,7 @@ ${Same_sub_code_list}    ${DATAFOLDER}${/}same_sub_code_list.xlsx
 ${Unknown_sub_code_list}    ${DATAFOLDER}${/}unknown_sub_code_list.xlsx
 ${empty}          ${DATAFOLDER}${/}empty.xlsx
 ${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
+${Code_list_with_invalid_link_urls}    ${DATAFOLDER}${/}Code_list_with_invalid_link_URLs.xlsx
 #CSV paths
 ${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
 ${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
@@ -49,6 +50,7 @@ ${Error_unknown_sub_code_list}    Liittyvää koodistoa ei löydy tunnisteella: 
 ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto.
 ${Error_codevalue_missing}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
 ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö on määritelty oikein ja yritä uudelleen.
+${Error_invalid_link_urls}    Tuotava aineisto sisältää virheellisiä arvoja linkkien HREF-sarakkeissa.
 
 *** Test Cases ***
 300. Import code list with missing codeValue
@@ -307,5 +309,17 @@ ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö 
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_content}    timeout=20
+    Cancel code list import
+    Return to Koodistot frontpage
+
+317. Import code list with invalid link URLs
+    [Documentation]    Import code list with invalid link URLs and check error message
+    [Tags]    regression    test    300
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_with_invalid_link_urls}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click Button    ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains    ${Error_invalid_link_urls}    timeout=20
     Cancel code list import
     Return to Koodistot frontpage

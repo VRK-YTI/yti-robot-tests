@@ -917,6 +917,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
     Wait Until Page Contains    Julkaisu    timeout=20
     Wait Until Page Contains    Testijulkaisu_fi    timeout=20
+    Wait Until Page Contains    Lähde    timeout=20
+    Wait Until Page Contains    Testilähde    timeout=20
     Wait Until Page Contains Element    ${EXPORT_DDL}    timeout=20
     Click Element    ${EXPORT_DDL}
     Click Element    ${EXPORT_TYPE_EXCEL}
@@ -934,8 +936,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Lähde    timeout=20
     Wait Until Page Contains    Uusi lähde    timeout=20
     Wait Until Page Contains    Liittyvä linkki    timeout=20
-    Wait Until Page Contains    käyttöohje.fi    timeout=20
     Wait Until Page Contains    Normilinkki_fi    timeout=20
+    Wait Until Page Contains    Käyttöohje    timeout=20
+    Wait Until Page Contains    https://käyttöohje.fi    timeout=20
     Wait Until Page Contains    Julkaisu    timeout=20
     Wait Until Page Contains    Testijulkaisu_fi    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
