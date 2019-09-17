@@ -206,7 +206,9 @@ Add Resource For Comment Round
     Click Element    ${EDIT_COMMENTROUND}
     Wait Until Element Is Enabled    ${ADD_NEW_RESOURCE_BTN}    timeout=30
     Click Element    ${ADD_NEW_RESOURCE_BTN}
-    Wait Until Page Contains Element    //*[contains(text(), "${resource}")]    timeout=30
+    Wait Until Element Is Enabled    ${SEARCH_LINKED_SOURCE_INPUT}    timeout=30
+    Input Text    ${SEARCH_LINKED_SOURCE_INPUT}    ${resource}
+    Wait Until Element Is Enabled    //*[contains(text(), "${resource}")]    timeout=30
     Click Element    //*[contains(text(), "${resource}")]
     Wait Until Element Is Enabled    ${SELECT_RESOURCE_BTN}    timeout=60
     Click Element    ${SELECT_RESOURCE_BTN}
