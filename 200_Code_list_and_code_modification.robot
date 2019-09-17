@@ -564,6 +564,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${SAVE_CODE_STATUS_CHANGE_BTN}    timeout=20
     Click Element    ${SAVE_CODE_STATUS_CHANGE_BTN}
     Wait Until Page Contains    Tila vaihdettu 30 koodiin.    timeout=20
+    Sleep    1
     Wait Until Element Is Enabled    ${CLOSE_ALERT_MODAL_LINK}    timeout=30
     Click Element    ${CLOSE_ALERT_MODAL_LINK}
     Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
