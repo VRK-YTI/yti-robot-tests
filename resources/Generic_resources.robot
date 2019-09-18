@@ -115,6 +115,7 @@ ${CREATE_CUMULATIVE_CODE_LIST}    id=create_new_codescheme_as_cumulative
 ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    id=mark_codelist_cumulative_checkbox
 ${UPDATE_CODE_LIST_FROM_FILE_BTN}    id=update_codelist_from_file_button
 ${CHANGE_CODE_STATUSES_CHECKBOX}    id=change_code_statuses_too_checkbox
+${CODE_LIST_FEEDBACK_INPUT}    id=codelist_feedback_channel_textarea
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -318,6 +319,7 @@ ${testiautomaatiokoodisto1_with_codes}    ${DATAFOLDER}${/}testiautomaatiokoodis
 ${Testikoodisto_T200}    ${DATAFOLDER}${/}Testikoodisto_T200.xlsx
 ${Code_filter}    ${DATAFOLDER}${/}Code_filter.xlsx
 ${Code_list_Codes_new_version}    ${DATAFOLDER}${/}Code_list_and_codes_for_new_version_creation.xlsx
+${Code_list_with_feedback_column}    ${DATAFOLDER}${/}Code_list_with_feedback_column.xlsx
 ${Code_list_test_dcat}    ${DATAFOLDER}${/}Code_list_testi_dcat.xlsx
 ${Code_list_codes_with_languages}    ${DATAFOLDER}${/}Code_list_codes_with_languages.xlsx
 ${Code_list_codes_with_languages_empty}    ${DATAFOLDER}${/}Code_list_codes_with_languages_empty.xlsx

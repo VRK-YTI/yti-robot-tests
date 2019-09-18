@@ -233,7 +233,7 @@ Resource          resources/Extension_resources.robot
     [Teardown]    Remove code lists    ${CODE_LIST_6}
 
 207. Modify Valid Code list
-    [Documentation]    Change values for VALID Code list and restore original values. YTI-523
+    [Documentation]    Change values for VALID Code list. YTI-523, YTI-873.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
@@ -246,12 +246,15 @@ Resource          resources/Extension_resources.robot
     Input Text    ${CODE_LIST_DEF_INPUT}    Uusi määritelmä
     Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input Text    ${CODE_LIST_CHANGENOTE_INPUT}    Uusi muutostieto
+    Wait until page contains element    ${CODE_LIST_FEEDBACK_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_FEEDBACK_INPUT}    Ylläpitäjän yhteystiedot
     Save code list
     Wait until page contains    Testinimi    timeout=20
     Wait until page contains    Uusi kuvaus    timeout=20
     Wait until page contains    Uusi määritelmä    timeout=20
     Wait until page contains    Uusi muutostieto    timeout=20
     Wait until page contains    Oikeusturva    timeout=20
+    Wait until page contains    Ylläpitäjän yhteystiedot    timeout=20
     [Teardown]    Remove code lists    Testinimi
 
 208. Modify classification for DRAFT Code list

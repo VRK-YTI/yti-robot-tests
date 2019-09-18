@@ -659,10 +659,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
 520. Create new version of code list as empty
     [Documentation]    Import VALID code list with codes and create new version of code list
-    ...    without codes. YTI-1163.
+    ...    without codes. Check that other code list information is copied to new version. YTI-1163, YTI-873.
     [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Superuser
-    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Upload codelist in Excel format    ${Code_list_with_feedback_column}    ${CODE_LIST_9}
     Sleep    2
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
@@ -699,13 +699,13 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Enabled    ${ADD_BTN}    timeout=20
     Click Element    ${ADD_BTN}
     Sleep    1
-    Wait Until Page Contains    Liittyvä linkki
+    Wait Until Page Contains    Liittyvä linkki    timeout=20
     Page Should Contain    https://www.suomi.fi/etusivu/
     Sleep    1
-    Wait Until Page Contains Element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click Element    ${SAVE_CODE_LIST_MOD_BTN}
     Sleep    1
-    Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=60
+    Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=30
     Wait Until Page Contains    Lisenssi    timeout=20
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait Until Page Contains    Liittyvä linkki    timeout=20
@@ -753,6 +753,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
+    Wait Until Page Contains    Lähetä palautetta    timeout=20
+    Wait Until Page Contains    Yläpitäjän yhteystiedot_fi    timeout=20
     Log To Console    Links are copied
     Sleep    1
     Return to Koodistot frontpage
