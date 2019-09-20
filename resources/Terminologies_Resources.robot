@@ -113,7 +113,7 @@ Terminology Select user
     Click Element    ${TERMINOLOGY_USER_DROPDOWN}
     Wait Until Page Contains Element    ${USER_1_TERMINOLOGIES}    timeout=30
     Click Element    ${USER_1_TERMINOLOGIES}
-    Wait Until Page Contains    Testi Admin    timeout=20
+    Wait Until Page Contains    Test Admin    timeout=20
     Sleep    1
 
 Open Sanastot
@@ -233,7 +233,7 @@ Check concept suggestion in Terminologies
     Click Element    //*[contains(text(), "automobiili")]
     Wait Until Page Contains    Ehdotus    timeout=20
     Wait Until Page Contains    Tämä on kulkuneuvo    timeout=20
-    Wait Until Page Contains    Testi Superuser    timeout=20
+    Wait Until Page Contains    Test Superuser    timeout=20
     Log To Console    Concept found
     Log To Console    Concept suggestion ok in Terminologies
     Sleep    1

@@ -190,7 +190,7 @@ Select user
     Click Element    ${IMPERSONATE_USER_DROPDOWN}
     Wait Until Page Contains Element    ${USER_1}    timeout=30
     Click Element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=20
+    Wait Until Page Contains    Test Admin    timeout=20
     Sleep    2
 
 Open Tietomallit
