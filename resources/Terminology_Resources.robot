@@ -6,7 +6,7 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.dev.yti.cloud.vrk.fi/
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
-${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
+${USER_1}         //a[@class='dropdown-item'][contains(text(),'Test Admin')]
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
