@@ -241,7 +241,7 @@ Select User
     Click Element    ${IMPERSONATE_USER_DROPDOWN}
     Wait Until Element Is Visible    ${USER_1}    timeout=30
     Click Element    ${USER_1}
-    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), 'Testi Admin')]    timeout=20
+    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), 'Test Admin')]    timeout=20
 
 Open Sanastot
     Open Browser with Settings
