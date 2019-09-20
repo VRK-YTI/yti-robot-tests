@@ -5,9 +5,9 @@ ${COMMENTS_ENVIRONMENT_URL}    https://kommentit.dev.yti.cloud.vrk.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${SUPER_USER_ID}    id=testisuperuser@localhost
-${ADMIN_USER_NAME}    Testi Admin
+${ADMIN_USER_NAME}    Test Admin
 ${SUPER_USER_ID}    id=testisuperuser@localhost
-${SUPER_USER_NAME}    Testi Superuser
+${SUPER_USER_NAME}    Test Superuser
 ${TESTGROUP_USER_ID}    id=dummy2@localhost
 ${TESTGROUP_USER_NAME}    Test TestGroup
 ${LANGUAGE_EN}    id=en
