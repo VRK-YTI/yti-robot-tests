@@ -753,8 +753,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
-    Wait Until Page Contains    Lähetä palautetta    timeout=20
-    Wait Until Page Contains    Yläpitäjän yhteystiedot_fi    timeout=20
+    Wait Until Page Contains    Yhteydenotto    timeout=20
+    Wait Until Page Contains    Aineiston palauteosoite_fi    timeout=20
     Log To Console    Links are copied
     Sleep    1
     Return to Koodistot frontpage
