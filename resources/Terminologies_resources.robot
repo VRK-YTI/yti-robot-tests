@@ -1,7 +1,7 @@
 *** Variables ***
 ${BROWSER}        chrome
 ${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.dev.yti.cloud.vrk.fi/
-${USER_1}         //a[@class='dropdown-item'][contains(text(),'Testi Admin')]
+${USER_1}         //a[@class='dropdown-item'][contains(text(),'Test Admin')]
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
@@ -115,7 +115,7 @@ Terminology Select user
     Click element    ${TERMINOLOGY_USER_DROPDOWN}
     Wait until page contains element    ${USER_1}    timeout=60
     Click element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=60
+    Wait Until Page Contains    Test Admin    timeout=60
     Sleep    1
 
 Open Sanastot
@@ -240,7 +240,7 @@ Check concept suggestion in Terminologies
     Click element    //*[contains(text(), "automobiili")]
     Wait until page contains    Ehdotus    timeout=20
     Wait until page contains    Tämä on kulkuneuvo    timeout=20
-    Wait until page contains    Testi Superuser    timeout=20
+    Wait until page contains    Test Superuser    timeout=20
     Log To Console    Concept found
     Log To Console    Concept suggestion ok in Terminologies
     Sleep    1
