@@ -216,14 +216,14 @@ Resource          resources/Extension_resources.robot
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list. YTI-445
     [Tags]    regression    test    200    status_change
-    [Setup]    Test Case Setup Admin
+    [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
     Modify code list
     Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
     Click Element    ${CODE_LIST_STATUS_DDL}
-    Page Should Not Contain    Keskeneräinen
-    Page Should Not Contain    Luonnos
-    Page Should Not Contain    korvattu
+    Page Should Contain    Keskeneräinen
+    Page Should Contain    Luonnos
+    Page Should Contain    Korvattu
     Click Button    Virheellinen
     Save code list
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
