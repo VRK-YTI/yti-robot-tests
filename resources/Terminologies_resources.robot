@@ -102,7 +102,7 @@ Terminology Select user
     Click Element    ${TERMINOLOGY_USER_DROPDOWN}
     Wait Until Page Contains Element    ${USER_1}    timeout=60
     Click Element    ${USER_1}
-    Wait Until Page Contains    Testi Admin    timeout=60
+    Wait Until Page Contains    Test Admin    timeout=60
     Sleep    1
 
 Open Sanastot

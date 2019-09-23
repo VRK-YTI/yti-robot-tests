@@ -4,9 +4,9 @@ ${BROWSER}        chrome
 ${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.dev.yti.cloud.vrk.fi/
 ${REFERENCE_DATA_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
-${ADMIN_USER_NAME}    Testi Admin
+${ADMIN_USER_NAME}    Test Admin
 ${SUPER_USER_ID}    id=testisuperuser@localhost
-${SUPER_USER_NAME}    Testi Superuser
+${SUPER_USER_NAME}    Test Superuser
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
