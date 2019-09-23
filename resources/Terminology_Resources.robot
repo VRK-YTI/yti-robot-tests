@@ -11,8 +11,7 @@ ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
-${ORGANIZATION_1}    CSC - Tieteen tietotekniikan keskus
-${ORGANIZATION_2}    Testiorganisaatio
+${ORGANIZATION_1}    Testiorganisaatio
 ${CLASSIFICATION_1}    Ympäristö
 ${CLASSIFICATION_2}    Eläkkeet
 ${PREFIX_1}       898
@@ -331,9 +330,9 @@ Create Terminological Dictionary and import vocabulary
     Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Click Element    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
-    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_2}")]
-    Click Element    //*[contains(text(), "${ORGANIZATION_2}")]
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
+    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Click Element    //*[contains(text(), "${ORGANIZATION_1}")]
     Wait Until Page Contains Element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click Element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30

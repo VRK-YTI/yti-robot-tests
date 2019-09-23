@@ -81,7 +81,7 @@ Resource          resources/Terminology_Resources.robot
     Select navigation menu link    Käyttäjätiedot
     Wait Until Page Contains    Käyttäjätiedot    timeout=60
     Wait Until Page Contains    Nimi    timeout=60
-    Wait Until Page Contains    Testi Admin    timeout=60
+    Wait Until Page Contains    Test Admin    timeout=60
     Wait Until Page Contains    Sähköposti    timeout=60
     Wait Until Page Contains    Organisaatiot ja roolit    timeout=60
     Wait Until Page Contains    Lähetä käyttöoikeuspyyntö    timeout=60
