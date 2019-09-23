@@ -10,7 +10,7 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Import Concepts to the Terminological Vocabulary. Check that error message is displayed in
     ...    import confirmation when related, broader and isPartOf concepts are not found from CSV.
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -31,7 +31,7 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Import Concepts to the Terminological Dictionary. Check that import is successful when
     ...    related, broader and isPartOf columns are empty for certain concepts in CSV.
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -63,7 +63,7 @@ Resource          resources/Terminology_Resources.robot
     ...    Check that import is successful and concept STATUS is Draft after CSV import. Check that Draft STATUS
     ...    is shown in import confirmation as well.
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -96,7 +96,7 @@ Resource          resources/Terminology_Resources.robot
     ...    Check that import is successful and concept STATUS is Draft after CSV import. Check that Draft STATUS
     ...    is shown in import confirmation as well.
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -130,7 +130,7 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Import Concepts to the Terminological Vocabulary with invalid column name in CSV.
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -146,7 +146,7 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Import Concepts to the Terminological Vocabulary with invalid status value in CSV.
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -162,7 +162,7 @@ Resource          resources/Terminology_Resources.robot
     [Documentation]    Import Concepts to the Terminological Vocabulary with duplicate definition columns in CSV.
     ...    Check that the values of the second column are taken into use
     [Tags]    regression    sanastot    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}

@@ -6,12 +6,16 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.dev.yti.cloud.vrk.fi/
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
-${USER_1}         //a[@class='dropdown-item'][contains(text(),'Test Admin')]
+${TEST_ADMIN_ID}    //a[@class='dropdown-item'][contains(text(),'Test Admin')]
+${TEST_SUPERUSER_ID}    //a[@class='dropdown-item'][contains(text(),'Test Superuser')]
+${TEST_ADMIN_NAME}    Test Admin
+${TEST_SUPERUSER_NAME}    Test Superuser
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${ORGANIZATION_1}    Testiorganisaatio
+${ORGANIZATION_2}    Yhteentoimivuusalustan ylläpito
 ${CLASSIFICATION_1}    Ympäristö
 ${CLASSIFICATION_2}    Eläkkeet
 ${PREFIX_1}       898
@@ -19,7 +23,7 @@ ${PREFIX_2}       222
 ${PREFIX_3}       333
 ${TERM_1}         Automaatio
 ${TERM_2}         tutkimus
-${REMOVE_ORGANIZATION_1}    //*[contains(@id,'_CSC-TieteenTietotekniikanKeskus_remove_organization_reference_link')]
+${REMOVE_ORGANIZATION_2}    id=vocabulary_contributor_YhteentoimivuusalustanYllapito_remove_organization_reference_link
 ${REMOVE_CLASSIFICATION_1}    //*[@id="vocabulary_inGroup_http://urn.fi/URN:NBN:fi:au:ptvl/v1184_remove_domain_reference_link"]
 ${SELENIUM_SPEED}    0.5
 #Generic locators
@@ -192,9 +196,19 @@ ${Concepts_with_semicolon_delimiter}    ${DATAFOLDER}${/}test_concepts_semicolon
 
 *** Keywords ***
 Test Case Setup
+    [Arguments]    ${user_id}    ${user_name}
     Open Sanastot
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Select User
+    Select User    ${user_id}    ${user_name}
+
+Select User
+    [Arguments]    ${user_id}    ${user_name}
+    Wait Until Page Contains Element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
+    Click Element    ${IMPERSONATE_USER_DROPDOWN}
+    Wait Until Element Is Visible    ${user_id}    timeout=30
+    Click Element    ${user_id}
+    Sleep    0.5
+    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
 
 Create Terminological Vocabulary with concepts
     [Arguments]    ${terminology}
@@ -235,13 +249,6 @@ Open Chrome to Environment
     Set Window Size    1920    1080
     Go To    ${TERMINOLOGIES_ENVIRONMENT_URL}
 
-Select User
-    Wait Until Page Contains Element    ${IMPERSONATE_USER_DROPDOWN}    timeout=30
-    Click Element    ${IMPERSONATE_USER_DROPDOWN}
-    Wait Until Element Is Visible    ${USER_1}    timeout=30
-    Click Element    ${USER_1}
-    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), 'Test Admin')]    timeout=20
-
 Open Sanastot
     Open Browser with Settings
     Wait Until Page Contains    Sanastot    timeout=20
@@ -253,7 +260,7 @@ Go Back To Sanastot Frontpage
 
 Delete Terminology
     [Arguments]    ${terminology}
-    Test Case Setup
+    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}

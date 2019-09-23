@@ -9,7 +9,7 @@ Resource          resources/Terminology_Resources.robot
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    sanastot    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    id=information_link    timeout=20
     Click Element    id=information_link
     Wait Until Page Contains    Tietoa Sanastoista    timeout=20
@@ -25,7 +25,7 @@ Resource          resources/Terminology_Resources.robot
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    sanastot    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${EUPL_LICENCE_LINK}    timeout=20
     Click Element    ${EUPL_LICENCE_LINK}
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
@@ -37,7 +37,7 @@ Resource          resources/Terminology_Resources.robot
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
     [Tags]    local    sanastot
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    id=description_of_file_link    timeout=20
     Click Element    id=description_of_file_link
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
@@ -48,7 +48,7 @@ Resource          resources/Terminology_Resources.robot
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    sanastot    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
     Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Click Element    ${LANGUAGE_EN}
@@ -61,7 +61,7 @@ Resource          resources/Terminology_Resources.robot
 104. Search for DRAFT vocabulary
     [Documentation]    Search for DRAFT vocabulary with frontpage search function.
     [Tags]    regression    sanastot    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_2}
@@ -77,7 +77,7 @@ Resource          resources/Terminology_Resources.robot
 105. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
     [Tags]    regression    test    sanastot    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Select navigation menu link    Käyttäjätiedot
     Wait Until Page Contains    Käyttäjätiedot    timeout=60
     Wait Until Page Contains    Nimi    timeout=60
@@ -116,7 +116,7 @@ Resource          resources/Terminology_Resources.robot
 106. Open CC BY 4.0 license page
     [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
     [Tags]    regression    sanastot    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${LICENSE_ICON_TEXT_LINK}    timeout=20
     Click Element    ${LICENSE_ICON_TEXT_LINK}
     Select Window    title=Creative Commons — Attribution 4.0 International — CC BY 4.0

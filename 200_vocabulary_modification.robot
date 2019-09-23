@@ -15,7 +15,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 200. Modify DRAFT vocabulary
     [Documentation]    Modify DRAFT vocabulary
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select And Edit Dictionary    ${VOCABULARY_1}
     Wait Until Page Contains Element    ${VOCABULARY_TITLE_TEXTAREA}    timeout=30
@@ -46,15 +46,15 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 201. Add new organization and classification for DRAFT vocabulary
     [Documentation]    Add new organization and classification for DRAFT vocabulary
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select And Edit Dictionary    ${VOCABULARY_1}
     Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=30
     Click Element    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
-    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_1}")]    timeout=30
-    Click Element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
+    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_2}")]    timeout=30
+    Click Element    //*[contains(text(), "${ORGANIZATION_2}")]
     Log To Console    Organization added
     Wait Until Page Contains Element    ${ADD_CLASSIFICATION_BTN}    timeout=30
     Click Element    ${ADD_CLASSIFICATION_BTN}
@@ -74,7 +74,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
     Wait Until Page Contains    ${ORGANIZATION_1}    timeout=30
     Wait Until Page Contains    ${CLASSIFICATION_1}    timeout=30
-    Wait Until Page Contains    Testiorganisaatio    timeout=30
+    Wait Until Page Contains    Yhteentoimivuusalustan ylläpito    timeout=30
     Wait Until Page Contains    Eläkkeet    timeout=30
     Wait Until Page Contains    Terminologinen sanasto    timeout=30
     Click Element    //*[contains(text(), "${VOCABULARY_1}")]
@@ -84,7 +84,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 203. Add new concept to the existing vocabulary
     [Documentation]    Add new concept to the existing vocabulary and remove concept
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Select Dictionary    ${VOCABULARY_1}
     Wait Until Page Contains Element    ${ADD_NEW_CONCEPT_BTN}    timeout=30
@@ -117,7 +117,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Documentation]    Add new Terminological Dictionary, import vocabulary, delete related concept
     ...    and check remove confirmation, YTI-768.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
@@ -144,7 +144,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 205. Add collection for vocabulary
     [Documentation]    Add new collection to vocabulary and delete collection.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
@@ -177,7 +177,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     ...    defined in collection broader. Check that collection is not listed
     ...    in alphabetic or hierarchial listing. YTI-1181.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
@@ -218,7 +218,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Documentation]    Create new vocabulary, import concepts and modify concept
     ...    by adding preferred term, synonym and non-recommended synonym.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
@@ -253,7 +253,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 208. Add hidden term for concept
     [Documentation]    Create new vocabulary, import concepts and add hidden term for concept
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go Back To Sanastot Frontpage
@@ -319,7 +319,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 209. Modify concept
     [Documentation]    Create new vocabulary, import concepts and modify concept values.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go Back To Sanastot Frontpage
@@ -370,7 +370,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     [Documentation]    Import Concepts to the Terminological Vocabulary and filter
     ...    concepts with status value.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Go Back To Sanastot Frontpage
@@ -405,7 +405,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 211. Add external link for concept
     [Documentation]    Create new vocabulary, import concepts and add external link for concept.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -444,7 +444,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 212. Add concept reference
     [Documentation]    Create new vocabulary, import concepts and add concept reference.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -487,7 +487,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 213. Add definition for concept
     [Documentation]    Create new vocabulary and import concepts. Add another definition in Finnish and concept reference for concept.
     [Tags]    sanastot    regression    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go Back To Sanastot Frontpage
@@ -524,7 +524,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 214. Add note for concept
     [Documentation]    Create new vocabulary and import concepts. Add another note in Finnish and concept reference for concept.
     [Tags]    regression    sanastot    200    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go Back To Sanastot Frontpage
@@ -561,7 +561,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 215. Import Concepts in xml format and check concept description links
     [Documentation]    Import Concepts in xml format and check concept description links. YTI-400.
     [Tags]    regression    sanastot    test    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -617,7 +617,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 217. Import Concepts in CSV format with semicolon delimiters
     [Documentation]    Import Concepts in CSV format with semicolon delimiters. YTI-845.
     [Tags]    regression    sanastot    200
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
@@ -632,15 +632,15 @@ Restore organization and classification for DRAFT vocabulary
     Click Element    ${TERMINOLOGY_TAB}
     Wait Until Page Contains Element    ${EDIT_VOCABULARY_BTN}    timeout=30
     Click Element    ${EDIT_VOCABULARY_BTN}
-    Wait Until Page Contains Element    ${REMOVE_ORGANIZATION_1}    timeout=30
-    Click Element    ${REMOVE_ORGANIZATION_1}
+    Wait Until Page Contains Element    ${REMOVE_ORGANIZATION_2}    timeout=30
+    Click Element    ${REMOVE_ORGANIZATION_2}
     Wait Until Page Contains Element    ${REMOVE_CLASSIFICATION_1}    timeout=30
     Click Element    ${REMOVE_CLASSIFICATION_1}
     Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${EDIT_VOCABULARY_BTN}    timeout=60
     Sleep    1
-    Page should not contain    ${ORGANIZATION_1}
+    Page should not contain    ${ORGANIZATION_2}
     Page should not contain    ${CLASSIFICATION_1}
     Log To Console    Vocabulary changes restored
     Go Back To Sanastot Frontpage
