@@ -177,7 +177,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${VALUE_CLASS_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    Rooli
-    Click Element    //*[contains(text(), "Rooli")]
+    Wait Until Element Is Enabled    //*[contains(@id, 'Rooli_search_result_link')]    timeout=30
+    Click Element    //*[contains(@id, 'Rooli_search_result_link')]
     Sleep    2
     Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
     Click Element    ${SPECIALIZE_CLASS}
