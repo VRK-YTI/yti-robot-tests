@@ -8,7 +8,7 @@ ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${ADMIN_USER_NAME}    Test Admin
 ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${SUPER_USER_NAME}    Test Superuser
-${TESTGROUP_USER_ID}    id=dummy2@localhost
+${TESTGROUP_USER_ID}    id=testtestgroup@localhost
 ${TESTGROUP_USER_NAME}    Test TestGroup
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
