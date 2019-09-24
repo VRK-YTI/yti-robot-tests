@@ -69,8 +69,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Go Back To Data Vocabularies Frontpage
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
-    Click Element    //*[contains(text(), "Testiautomaatio")]
+    Wait Until Page Contains Element    //*[contains(text(), "${MODEL_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${MODEL_1}")]
     Wait Until Page Contains Element    ${ADD_CLASS_BTN}    timeout=30
     Sleep    1
     Go Back To Data Vocabularies Frontpage

@@ -33,7 +33,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Modify existing profile
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatio
+    Select And Edit Profile    Testiautomaatiomalli
     Log To Console    Testiautomaatio profile selected
     Wait Until Page Contains Element    ${MODEL_LABEL_INPUT}    timeout=30
     Input Text    ${MODEL_LABEL_INPUT}    Uusi nimi
@@ -49,7 +49,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${REMOVE_Testiorganisaatio}
     Log To Console    Contributor removed
     Sleep    1
-    Add Contributor    Väestörekisterikeskus
+    Add Contributor    Automaatiotestaus
     Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
     Wait Until Page Contains Element    ${LINK_URL_INPUT}    timeout=30
@@ -66,7 +66,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Uusi nimi    timeout=30
     Wait Until Page Contains    Uusi kuvaus    timeout=30
     Wait Until Page Contains    Kulttuuri    timeout=30
-    Wait Until Page Contains    Väestörekisterikeskus    timeout=30
+    Wait Until Page Contains    Automaatiotestaus    timeout=30
     Wait Until Page Contains    www.suomi.fi/etusivu/    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    Uusi nimi
@@ -75,7 +75,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Add new class to profile
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatio
+    Select And Edit Profile    Testiautomaatiomalli
     Log To Console    Testiautomaatio profile selected
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -115,13 +115,13 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${REMOVE_Testiorganisaatio}
     Log To Console    Contributor removed
     Sleep    1
-    Add Contributor    Väestörekisterikeskus
+    Add Contributor    Automaatiotestaus
     Add Link    https://www.suomi.fi/etusivu/    www.suomi.fi/etusivu/    Tämä on suomi.fi linkki
     Save Model
     Wait Until Page Contains    Uusi nimi    timeout=30
     Wait Until Page Contains    Uusi kuvaus    timeout=30
     Wait Until Page Contains    Kulttuuri    timeout=30
-    Wait Until Page Contains    Väestörekisterikeskus    timeout=30
+    Wait Until Page Contains    Automaatiotestaus    timeout=30
     Wait Until Page Contains    www.suomi.fi/etusivu/    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    Uusi nimi
@@ -131,7 +131,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
-    Select And Edit Profile    Testiautomaatio
+    Select And Edit Profile    Testiautomaatiomalli
     Log To Console    Testiautomaatio profile selected
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model

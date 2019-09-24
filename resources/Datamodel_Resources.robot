@@ -9,7 +9,7 @@ ${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi
 ${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
-${MODEL_1}        Testiautomaatio
+${MODEL_1}        Testiautomaatiomalli
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 ${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
 ${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
@@ -227,7 +227,7 @@ Test Case Setup Create Testiautomaatio profile
     Test Case Setup
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
+    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${MODEL_1}")]    limit=1
     run keyword if    ${model_exists}    Delete existing profile and create new
     ...    ELSE    Create Testiautomaatio profile
     Go Back To Data Vocabularies Frontpage
@@ -269,14 +269,14 @@ Create Testiautomaatio profile
     Wait Until Page Contains Element    ${SAVE_NEW_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_NEW_MODEL_BTN}
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
-    Log To Console    Testiautomaatio profile created
+    Log To Console    ${MODEL_1} profile created
     Sleep    2
 
 Delete Testiautomaatio profile
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
-    Click Element    //*[contains(text(), "Testiautomaatio")]
+    Wait Until Page Contains Element    //*[contains(text(), "${MODEL_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${MODEL_1}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
@@ -287,13 +287,13 @@ Delete Testiautomaatio profile
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log To Console    Testiautomaatio profile deleted
+    Log To Console    ${MODEL_1} profile deleted
     Sleep    2
     Close All Browsers
 
 Delete existing profile and create new
-    Wait Until Element Is Enabled    //*[contains(text(), "Testiautomaatio")]    timeout=30
-    Click Element    //*[contains(text(), "Testiautomaatio")]
+    Wait Until Element Is Enabled    //*[contains(text(), "${MODEL_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${MODEL_1}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
@@ -304,7 +304,7 @@ Delete existing profile and create new
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains    tietomallia    timeout=30
-    Log To Console    Testiautomaatio profile deleted
+    Log To Console    ${MODEL_1} profile deleted
     Create Testiautomaatio profile
 
 Create Automaatiokirjasto Core Vocabulary
@@ -382,7 +382,7 @@ Select And Edit Profile
     [Arguments]    ${model}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${model}")]    timeout=30
+    Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=30
     Click Element    //*[contains(text(), "${model}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
     Click Element    ${MODEL_DETAILS_TAB}
@@ -392,8 +392,8 @@ Select And Edit Profile
 Select and edit Testiautomaatio profile
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
-    Click Element    //*[contains(text(), "Testiautomaatio")]
+    Wait Until Page Contains Element    //*[contains(text(), "${MODEL_1}")]    timeout=30
+    Click Element    //*[contains(text(), "${MODEL_1}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
     Click Element    ${MODEL_DETAILS_TAB}
     Wait Until Page Contains Element    ${MODIFY_MODEL}    timeout=30
