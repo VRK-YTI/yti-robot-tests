@@ -24,7 +24,6 @@ ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${TEXT_FILTER_SEARCH_INPUT}    id=text_filter_search_input
-${FRONTPAGE_ADVANCED_SEARCH}    id=advanced_search_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
 ${GUIDE_BTN}      id=start_help_link
 ${GUIDE_CORE_VOCABULARY}    id=OhjeUudenTietokomponenttikirjastonLuomiseen_help_link

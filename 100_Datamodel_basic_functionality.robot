@@ -76,22 +76,6 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Test Case Teardown Delete Testiautomaatio profile
 
-105. Frontpage advanced search
-    [Documentation]    Search attribute with frontpage advanced search function.
-    [Tags]    regression    tietomallit    test    100
-    [Setup]    Test Case Setup
-    Wait Until Element Is Visible    ${FRONTPAGE_ADVANCED_SEARCH}    timeout=30
-    Click Element    ${FRONTPAGE_ADVANCED_SEARCH}
-    Wait Until Element Is Visible    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
-    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    Entinen nimi
-    Wait Until Page Contains Element    //*[contains(text(), "Entinen nimi")]    timeout=30
-    Click Element    //*[contains(text(), "Entinen nimi")]
-    Sleep    1
-    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
-    Wait Until Page Contains    Entinen nimi    timeout=30
-    Sleep    2
-    [Teardown]    Go back to Data Vocabularies frontpage and close browsers
-
 106. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
     [Tags]    regression    test    100
