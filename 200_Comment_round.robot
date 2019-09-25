@@ -186,11 +186,11 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Element Is Enabled    ${RESOURCES_TAB}    timeout=60
     Click Element    ${RESOURCES_TAB}
     Wait Until Page Contains    Korvattu:    timeout=20
-    Wait Until Page Contains    (33.33 %)    timeout=20
+    Wait Until Page Contains    (33.3 %)    timeout=20
     Wait Until Page Contains    Virheellinen:    timeout=20
-    Wait Until Page Contains    (66.67 %)    timeout=20
+    Wait Until Page Contains    (66.7 %)    timeout=20
     Wait Until Page Contains    Voimassa oleva:    timeout=20
-    Wait Until Page Contains    (100.00 %)    timeout=20
+    Wait Until Page Contains    (100.0 %)    timeout=20
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
 
