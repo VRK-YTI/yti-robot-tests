@@ -1,14 +1,26 @@
 *** Variables ***
+#Env
 ${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
-${SELENIUM_SPEED}    0.5
-${BROWSER}        chrome
 ${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.dev.yti.cloud.vrk.fi/
 ${COMMENTS_ENVIRONMENT_URL}    https://kommentit.dev.yti.cloud.vrk.fi/
-${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
+${BROWSER}        chrome
+#Users
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${ADMIN_USER_NAME}    Test Admin
 ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${SUPER_USER_NAME}    Test Superuser
+${CODELIST_USER_ID}    testcodelist@localhost
+${CODELIST_USER_NAME}    Test Codelist
+${DATAMODEL_USER_ID}    testdatamodel@localhost
+${DATAMODEL_USER_NAME}    Test Datamodel
+${TERMINOLOGY_USER_ID}    testterminology@localhost
+${TERMINOLOGY_USER_NAME}    Test Terminology
+${MEMBER_USER_ID}    testmember@localhost
+${MEMBER_USER_NAME}    Test Member
+${NO_GROUP_USER_ID}    dummy@localhost
+${NO_GROUP_USER_NAME}    Test Nogroup
+#Generic
+${SELENIUM_SPEED}    0.5
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
@@ -33,6 +45,7 @@ ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
 ${EUPL_LICENCE_PAGE}    id=license_link
 #Frontpage buttons
+${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
@@ -261,6 +274,7 @@ ${CODE_LIST_22}    Koodisto800
 ${CODE_LIST_23}    Koodisto300
 ${CODE_LIST_24}    Koodisto606
 ${CODE_LIST_25}    Koodisto100
+${CODE_LIST_26}    xyztesti
 ${CODE_1}         koodi01 - Koodi01
 ${CODE_2}         koodi1006
 ${CODE_1000}      Koodi1000 - Koodi1000
@@ -330,6 +344,7 @@ ${Code_list_with_30_Codes_status_with_space}    ${DATAFOLDER}${/}Code_list_with_
 ${Codes_status_with_space}    ${DATAFOLDER}${/}Codes_status_with_space.xlsx
 ${Code_list_with_30_codes_and_instructions_link}    ${DATAFOLDER}${/}Code_list_with_30_codes_and_instructions_link.xlsx
 ${Code_links_with_space}    ${DATAFOLDER}${/}Code_links_with_space.xlsx
+${Code_list_with_30_codes_incomplete}    ${DATAFOLDER}${/}Code_list_with_30_codes_incomplete.xlsx
 #CSV paths
 ${Codes_status_with_space_csv}    ${DATAFOLDER}${/}Codes_status_with_space_csv.csv
 ${Code_links_with_space_csv}    ${DATAFOLDER}${/}Code_links_with_space_csv.csv

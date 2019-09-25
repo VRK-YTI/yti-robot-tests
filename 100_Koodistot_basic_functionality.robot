@@ -363,6 +363,50 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_20}
 
+115. Check the visibility of the INCOMPLETE status code list
+    [Documentation]    Check that code list with INCOMPLETE status is visible
+    ...    in frontpage search for certain users only. YTI-903.
+    [Tags]    regression    100
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Upload codelist    ${Code_list_with_30_codes_incomplete}    ${CODE_LIST_26}
+    Return to Koodistot frontpage
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_26}
+    Wait Until Page Contains    1 hakutulos    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_26}
+    Wait Until Page Contains    1 hakutulos    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
+    Select user    ${CODELIST_USER_ID}    ${CODELIST_USER_NAME}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_26}
+    Wait Until Page Contains    1 hakutulos    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
+    Select user    ${DATAMODEL_USER_ID}    ${DATAMODEL_USER_NAME}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_26}
+    Wait Until Page Contains    1 hakutulos    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
+    Select user    ${NO_GROUP_USER_ID}    ${NO_GROUP_USER_NAME}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_26}
+    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=30
+    Select user    ${MEMBER_USER_ID}    ${MEMBER_USER_NAME}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_26}
+    Wait Until Page Contains    1 hakutulos    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
+    Select user    ${TERMINOLOGY_USER_ID}    ${TERMINOLOGY_USER_NAME}
+    Wait Until Element Is Visible    id=search_box_input    timeout=30
+    Input Text    id=search_box_input    ${CODE_LIST_26}
+    Wait Until Page Contains    1 hakutulos    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_26}
+
 *** Keywords ***
 Restore Finnish language
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
