@@ -100,13 +100,13 @@ ${MODIFY_CLASS}    id=class_edit_buttons_edit
 ${ADD_PROPERTY_DDL}    id=class_options_button_add_property_dropdown_title
 ${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaAttribuuttiTaiAssosiaatio_dropdown_option
 ${SEARCH_ATTRIBUTE_INPUT}    id=text_filter_search_input
-${USE_SELECTION_BTN}    //div[1]/div/div/form/div[3]/button[1]
+${USE_SELECTION_BTN}    id=confirm_class_button
 ${ALL_TYPES_DDL}    id=type
 ${ASSOCIATION_TYPE}    //*[@id="type"]/option[3]
 ${ATTRIBUTE_TYPE}    //*[@id="type"]/option[2]
 ${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_button')]
 ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    id=create_new_LuoUusiLuokkaIlmanKasiteviitetta_link
-${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_new_LuoUusiTarkennettuLuokkaViittaamallaUlkoiseenTunnisteeseen_link
+${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_shape_button
 ${EXTERNAL_URI_INPUT}    id=externalUri
 ${CHANGE_CONCEPT}    id=class_subject_change_concept_button
 ${SEARCH_CONCEPT_DB_INPUT}    id=text_filter_search_input
@@ -114,7 +114,7 @@ ${SHOW_CLASS_HISTORY_BTN}    id=class_edit_buttons_history
 ${CLOSE_HISTORY_BTN}    //div[1]/div/div/div[3]/button
 ${REMOVE_CLASS_BTN}    id=class_edit_buttons_remove
 ${CLASS_MODEL_DDL}    id=model
-${CREATE_NEW_CLASS_LINK}    //*[contains(@id,'create_new_LuoUusiLuokka')]
+${CREATE_NEW_CLASS_LINK}    id=create_class_button
 ${CLASS_TAB}      id=class_tab_heading_link
 ${CLASS_STATE_INCOMPLETE}    id=classState_INCOMPLETE
 ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
