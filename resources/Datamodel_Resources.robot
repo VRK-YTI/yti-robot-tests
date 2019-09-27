@@ -123,12 +123,14 @@ ${EXPORT_CLASS_DDL}    id=class_export_dropdown
 ${DEACTIVATED_CHECKBOX}    id=deactivated
 ${CLASS_ID}       id=classId
 ${EQUIVALENT_CLASS_INPUT}    id=equivalentClass
+${CREATE_NEW_CLASS_BTN}    id=searchConceptModalConfirmButton
+${USE_CONCEPT_BTN}    id=searchConceptModalConfirmButton
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
-${CREATE_NEW_ATTRIBUTE_LINK}    //*[contains(@id,'create_new_LisaaUusiAttribuutti')]
+${CREATE_NEW_ATTRIBUTE_LINK}    id=create_predicate_button
 ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    id=create_new_LuoUusiAttribuuttiIlmanKasiteviitetta_link
-${CREATE_NEW_ATTRIBUTE_BTN}    //div[1]/div/div/form/div[3]/button[1]
+${CREATE_NEW_ATTRIBUTE_BTN}    id=searchConceptModalConfirmButton
 ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
 ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
 ${PREDICATE_STATE_DDL}    id=predicateState
@@ -149,10 +151,10 @@ ${PROPERTY_DISJOINT_BTN}    id=disjoint_choose_attribute_multiple_uri_select_but
 ${PROPERTY_EQUALS_BTN}    id=equals_choose_attribute_multiple_uri_select_button
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
-${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
+${CREATE_NEW_ASSOCIATION_LINK}    id=create_predicate_button
 ${ADD_NEW_ASSOCIATION_BTN}    id=add_new_association_button
 ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}    id=create_new_LuoUusiAssosiaatioIlmanKasiteviitetta_link
-${CREATE_NEW_ASSOCIATION_BTN}    //div[1]/div/div/form/div[3]/button[1]
+${CREATE_NEW_ASSOCIATION_BTN}    id=searchConceptModalConfirmButton
 ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
 ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
 ${CONVERT_TO_ATTRIBUTE}    id=predicate_change_type
@@ -490,8 +492,8 @@ Add several classes
     \    Click Element    ${ADD_NEW_CLASS}
     \    Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     \    Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
-    \    Wait Until Page Contains Element    //*[contains(@id,'${class_item}_search_result_link')]    timeout=60
-    \    Click Element    //*[contains(@id,'${class_item}_search_result_link')]
+    \    Wait Until Page Contains Element    //*[contains(@id,'${class_item}_search_class_link')]    timeout=60
+    \    Click Element    //*[contains(@id,'${class_item}_search_class_link')]
     \    Sleep    2
     \    Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
     \    Click Element    ${SPECIALIZE_CLASS}
@@ -621,8 +623,8 @@ Change concept for class
     Wait Until Page Contains Element    //*[contains(text(), "${concept}")]    timeout=30
     Click Element    //*[contains(text(), "${concept}")]
     Sleep    2
-    Wait Until Element Is Visible    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Element Is Visible    ${USE_CONCEPT_BTN}    timeout=30
+    Click Element    ${USE_CONCEPT_BTN}
     Sleep    2
 
 Create New Class Without Referencing Concept
@@ -636,8 +638,8 @@ Create New Class Without Referencing Concept
     Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    timeout=60
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
     Sleep    1
-    Wait Until Element Is Enabled    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_CLASS_BTN}
     Log To Console    New class without referencing concept created
     Sleep    2
 
