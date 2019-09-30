@@ -612,11 +612,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}
     Wait Until Page Contains Element    ${CONCEPT_DEFINITION_INPUT}    timeout=30
     Input Text    ${CONCEPT_DEFINITION_INPUT}    Testiattribuutin määritelmä
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
-    Sleep    4
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
+    Sleep    1
+    Wait Until Element Is Enabled    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
+    Click Element    ${CREATE_AND_USE_ATTRIBUTE}
     Sleep    2
     Save Class
     Wait Until Page Contains Element    //*[contains(text(), "Testiattribuutti")]    timeout=30
@@ -643,11 +643,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${SUGGEST_ASSOCIATION_TO_TERMINOLOGIES}
     Wait Until Page Contains Element    ${CONCEPT_DEFINITION_INPUT}    timeout=30
     Input Text    ${CONCEPT_DEFINITION_INPUT}    Testiassosiaation määritelmä
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
-    Sleep    4
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Page Contains Element    ${CREATE_NEW_ASSOCIATION_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_ASSOCIATION_BTN}
+    Sleep    1
+    Wait Until Element Is Enabled    ${CREATE_AND_USE_ASSOCIATION}    timeout=30
+    Click Element    ${CREATE_AND_USE_ASSOCIATION}
     Sleep    2
     Wait Until Page Contains Element    //*[contains(text(), "autom:testiassosiaatio")]    timeout=30
     Click Element    //*[contains(text(), "autom:testiassosiaatio")]

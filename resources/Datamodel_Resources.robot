@@ -128,7 +128,7 @@ ${USE_CONCEPT_BTN}    id=searchConceptModalConfirmButton
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
-${CREATE_NEW_ATTRIBUTE_LINK}    id=create_predicate_button
+${CREATE_NEW_ATTRIBUTE_LINK}    //*[contains(@id,'create_new_LisaaUusiAttribuutti')]
 ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    id=create_new_LuoUusiAttribuuttiIlmanKasiteviitetta_link
 ${CREATE_NEW_ATTRIBUTE_BTN}    id=searchConceptModalConfirmButton
 ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
@@ -138,7 +138,7 @@ ${PREDICATE_REMOVE_BTN}    id=predicate_edit_buttons_remove
 ${CONVERT_TO_ASSOCIATION}    id=predicate_change_type
 ${PREDICATE_EDIT_CANCEL_BTN}    id=predicate_edit_buttons_cancel
 ${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
-${CREATE_AND_USE_ATTRIBUTE}    //div[1]/div/div/form/div[3]/button[1]
+${CREATE_AND_USE_ATTRIBUTE}    id=confirm_predicate_button
 ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 ${PREDICATE_ID}    id=predicateId
 ${PROPERRTY_DISJOINT_INPUT}    id=disjoint
@@ -149,9 +149,10 @@ ${PROPERTY_LESS_THAN_BTN}    id=lessThan_choose_attribute_multiple_uri_select_bu
 ${PROPERTY_LESS_THAN_OR_EQUALS_BTN}    id=lessThanOrEquals_choose_attribute_multiple_uri_select_button
 ${PROPERTY_DISJOINT_BTN}    id=disjoint_choose_attribute_multiple_uri_select_button
 ${PROPERTY_EQUALS_BTN}    id=equals_choose_attribute_multiple_uri_select_button
+${CONFIRM_PREDICATE_BTN}    id=confirm_predicate_button
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
-${CREATE_NEW_ASSOCIATION_LINK}    id=create_predicate_button
+${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
 ${ADD_NEW_ASSOCIATION_BTN}    id=add_new_association_button
 ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}    id=create_new_LuoUusiAssosiaatioIlmanKasiteviitetta_link
 ${CREATE_NEW_ASSOCIATION_BTN}    id=searchConceptModalConfirmButton
@@ -159,6 +160,7 @@ ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
 ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
 ${CONVERT_TO_ATTRIBUTE}    id=predicate_change_type
 ${SUGGEST_ASSOCIATION_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
+${CREATE_AND_USE_ASSOCIATION}    id=confirm_predicate_button
 #Core Vocabulary
 ${CORE_VOCABULARY_LABEL_INPUT}    id=modelLabel
 ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
@@ -383,7 +385,7 @@ Select And Edit Profile
     [Arguments]    ${model}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=30
+    Wait Until Page Contains Element    //*[contains(text(), "${model}")]    timeout=30
     Click Element    //*[contains(text(), "${model}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
     Click Element    ${MODEL_DETAILS_TAB}
@@ -546,8 +548,8 @@ Add Attribute
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
     Wait Until Element Is Enabled    //*[contains(text(), "${attribute}")]    timeout=30
     Click Element    //*[contains(text(), "${attribute}")]
-    Wait Until Element Is Enabled    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRM_PREDICATE_BTN}    timeout=30
+    Click Element    ${CONFIRM_PREDICATE_BTN}
     Sleep    2
 
 Create new attribute
@@ -610,8 +612,8 @@ Add Association
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${association}
     Wait Until Element Is Enabled    //*[contains(text(), "${association}")]    timeout=30
     Click Element    //*[contains(text(), "${association}")]
-    Wait Until Element Is Enabled    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRM_PREDICATE_BTN}    timeout=30
+    Click Element    ${CONFIRM_PREDICATE_BTN}
     Sleep    2
 
 Change concept for class
