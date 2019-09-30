@@ -656,8 +656,8 @@ Create new class and suggest concept to terminologies
     Click Element    ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}
     Wait Until Page Contains Element    ${CONCEPT_DEFINITION_INPUT}    timeout=30
     Input Text    ${CONCEPT_DEFINITION_INPUT}    ${concept_definition}
-    Wait Until Page Contains Element    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Page Contains Element    ${CREATE_NEW_CLASS_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_CLASS_BTN}
     Sleep    2
 
 Create new shape by referencing external uri
