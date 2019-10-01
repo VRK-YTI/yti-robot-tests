@@ -1618,6 +1618,37 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_20}
 
+539. Create new code with special characters
+    [Documentation]    Check that code creation with special characters is successful
+    ...    Check that URI link for code is working. YTI-672.
+    [Tags]    200
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Create new code to code list    +    plus    ${DRAFT_STATUS}    ${EMPTY}
+    Sleep    3
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Create new code to code list    &    ja    ${DRAFT_STATUS}    ${EMPTY}
+    Sleep    3
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Create new code to code list    *    tähti    ${DRAFT_STATUS}    ${EMPTY}
+    Sleep    3
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Wait Until Page Contains    4 koodia    timeout=20
+    Open Koodistot
+    Set Selenium Speed    ${SELENIUM_SPEED}
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    GO To    http://uri.suomi.fi/codelist/test/T100/code/%2B?env=${ENVIRONMENT_IDENTIFIER}
+    Wait until page contains    Koodisto    timeout=20
+    Wait until page contains    T100    timeout=20
+    Wait until page contains    Koodin arvo    timeout=20
+    Wait until page contains    tähti    timeout=20
+    Wait until page contains    Koodin nimi    timeout=20
+    Wait until page contains    tähti    timeout=20
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus
