@@ -29,6 +29,7 @@ ${Code_list_with_sub_code_list_in_code}    ${DATAFOLDER}${/}Code_list_with_sub_c
 ${Code_list_with_default_code_new_version}    ${DATAFOLDER}${/}Code_list_codes_default_code_for_new_version_valid.xlsx
 ${Code_list_with_30_Codes_updated}    ${DATAFOLDER}${/}Code_list_with_30_Codes_updated.xlsx
 ${Code_list_with_30_Codes_invalid_codevalue}    ${DATAFOLDER}${/}Code_list_with_30_Codes_invalid_codevalue.xlsx
+${Codelist_special_characters_for_codes}    ${DATAFOLDER}${/}Codelist_special_characters_for_codes.xlsx
 #CSV paths
 ${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
 ${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
@@ -36,6 +37,7 @@ ${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv
 ${Codes_update_sub_code_list_csv}    ${DATAFOLDER}${/}Codes_update_sub_code_list_csv.csv
 ${Code_list_with_30_Codes_updated_csv}    ${DATAFOLDER}${/}Code_list_with_30_Codes_updated_csv.csv
 ${Code_list_with_30_Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Code_list_with_30_Codes_invalid_codevalue_csv.csv
+${Codes_with_special_characters_csv}    ${DATAFOLDER}${/}Codes_with_special_characters_csv.csv
 #Error messages
 ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_linked_codelist}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/code/testcode29
@@ -1621,7 +1623,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 539. Create new code with special characters
     [Documentation]    Check that code creation with special characters is successful
     ...    Check that URI link for code is working. YTI-672.
-    [Tags]    200
+    [Tags]    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Create new code to code list    +    plus    ${DRAFT_STATUS}    ${EMPTY}
@@ -1647,6 +1649,25 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    tähti    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    tähti    timeout=20
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
+
+540. Import codes with special characters
+    [Documentation]    Check that importing code list and codes with special characters is successful. YTI-672.
+    [Tags]    regression    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Codelist_special_characters_for_codes}    ${CODE_LIST_4}
+    Wait Until Page Contains    5 koodia    timeout=20
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
+
+541. Import codes with special characters in CSV format
+    [Documentation]    Check that importing codes with special characters in CSV format is successful. YTI-672.
+    [Tags]    regression    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Wait Until Page Contains    1 koodi    timeout=20
+    Import codes in CSV format
+    Upload codes    ${Codes_with_special_characters_csv}
+    Wait Until Page Contains    5 koodia    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 *** Keywords ***
