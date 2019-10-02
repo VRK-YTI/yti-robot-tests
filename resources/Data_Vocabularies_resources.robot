@@ -16,7 +16,8 @@ ${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable
 ${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
 ${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 ${NAMESPACE_1}    Julkishallinnon tietokomponentit
-${new_class_link}    //*[contains(@id,'create_new_LuoUusiLuokka')]
+${CREATE_NEW_CLASS_LINK}    id=create_class_button
+${CREATE_NEW_CLASS_BTN}    id=searchConceptModalConfirmButton
 ${class_2}        automobiili
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
@@ -112,7 +113,7 @@ Data Vocabularies Teardown
 
 Data Vocabularies Setup With New Class
     Test Case Setup Create Profile
-    Create New Class For Profile    ${new_class_link}    ${class_2}
+    Create New Class For Profile    ${class_2}
 
 Test Case Setup
     Open Tietomallit
@@ -494,19 +495,20 @@ Change concept for class
     Sleep    2
 
 Create new class without referencing concept
-    [Arguments]    ${new_class_link}    ${class_2}
+    [Arguments]    ${class_2}
     Wait Until Page Contains element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
     Wait Until Page Contains element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class_2}
     Sleep    2
-    Wait Until Page Contains element    ${new_class_link}    timeout=30
-    Click Element    ${new_class_link}
-    Sleep    8
+    Wait Until Page Contains element    ${CREATE_NEW_CLASS_LINK}    timeout=30
+    Click Element    ${CREATE_NEW_CLASS_LINK}
+    Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    timeout=60
     Click Element    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}
     sleep    2
-    Wait Until Page Contains element    ${USE_SELECTION_BTN}    timeout=30
-    Click Element    ${USE_SELECTION_BTN}
+    Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_BTN}    timeout=30
+    Click Element    ${CREATE_NEW_CLASS_BTN}
+    Log To Console    New class without referencing concept created
     Sleep    2
 
 Create new shape by referencing external uri
@@ -546,14 +548,14 @@ Delete profile
     Close All Browsers
 
 Create New Class For Profile
-    [Arguments]    ${new_class_link}    ${class_2}
+    [Arguments]    ${class_2}
     Select and edit Testiautomaatio profile
     Log To Console    Testiautomaatio profile selected
     Import namespace    Julkishallinnon tietokomponentit
     Save model
     Wait Until Page Contains element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new class without referencing concept    ${new_class_link}    ${class_2}
+    Create new class without referencing concept    ${class_2}
     Save class
     Wait Until Page Contains    Automobiili    timeout=30
     Log To Console    Class "Automobiili" added without referencing concept
