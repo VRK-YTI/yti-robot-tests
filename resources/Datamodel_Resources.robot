@@ -150,6 +150,7 @@ ${PROPERTY_LESS_THAN_OR_EQUALS_BTN}    id=lessThanOrEquals_choose_attribute_mult
 ${PROPERTY_DISJOINT_BTN}    id=disjoint_choose_attribute_multiple_uri_select_button
 ${PROPERTY_EQUALS_BTN}    id=equals_choose_attribute_multiple_uri_select_button
 ${CONFIRM_PREDICATE_BTN}    id=confirm_predicate_button
+${CREATE_PREDICATE_BTN}    id=create_predicate_button
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
@@ -560,8 +561,8 @@ Create new attribute
     Click Element    ${ADD_NEW_ATTRIBUTE_BTN}
     Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${attribute}
-    Wait Until Element Is Visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
-    Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
+    Wait Until Element Is Visible    ${CREATE_PREDICATE_BTN}    timeout=30
+    Click Element    ${CREATE_PREDICATE_BTN}
     Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}
     Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
@@ -581,8 +582,8 @@ Create new association
     Click Element    ${ADD_NEW_ASSOCIATION_BTN}
     Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
-    Wait Until Element Is Visible    ${CREATE_NEW_ASSOCIATION_LINK}    timeout=30
-    Click Element    ${CREATE_NEW_ASSOCIATION_LINK}
+    Wait Until Element Is Visible    ${CREATE_PREDICATE_BTN}    timeout=30
+    Click Element    ${CREATE_PREDICATE_BTN}
     Wait Until Page Contains Element    ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}
     Wait Until Page Contains Element    ${CREATE_NEW_ASSOCIATION_BTN}    timeout=30
