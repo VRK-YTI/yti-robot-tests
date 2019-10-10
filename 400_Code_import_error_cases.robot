@@ -27,7 +27,6 @@ ${Same_order_values}    ${DATAFOLDER}${/}Codes_with_same_order_values.xlsx
 ${Codes_with_order_values}    ${DATAFOLDER}${/}Codes_with_order_values.xlsx
 ${Codes_with_existing_order_values}    ${DATAFOLDER}${/}Codes_with_existing_order_values.xlsx
 ${Codes_with_invalid_order_values}    ${DATAFOLDER}${/}Codes_with_invalid_order_values.xlsx
-${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto.
 ${empty}          ${DATAFOLDER}${/}empty.xlsx
 ${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
 #CSV paths
@@ -68,6 +67,7 @@ ${Error_existing_order_values}    Koodin order-arvo on jo käytössä tässä ko
 ${Error_invalid_order_value}    ORDER-sarakkeen arvo ei ole sallittu rivillä 2.
 ${Error_no_codevalue}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
 ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö on määritelty oikein ja yritä uudelleen.
+${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto.
 
 *** Test Cases ***
 400. Import Codes with missing CODEVALUE

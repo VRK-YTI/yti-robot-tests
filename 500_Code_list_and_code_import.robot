@@ -1623,7 +1623,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 539. Create new code with special characters
     [Documentation]    Check that code creation with special characters is successful
     ...    Check that URI link for code is working. YTI-672.
-    [Tags]    500
+    [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Create new code to code list    +    plus    ${DRAFT_STATUS}    ${EMPTY}
@@ -1638,17 +1638,26 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    3
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Page Contains    4 koodia    timeout=20
+    Create new code to code list    .    piste    ${DRAFT_STATUS}    ${EMPTY}
+    Sleep    3
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Wait Until Page Contains    5 koodia    timeout=20
     Open Koodistot
     Set Selenium Speed    ${SELENIUM_SPEED}
     Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    GO To    http://uri.suomi.fi/codelist/test/T100/code/%2B?env=${ENVIRONMENT_IDENTIFIER}
+    GO To    http://uri.suomi.fi/codelist/test/T100/code/*?env=${ENVIRONMENT_IDENTIFIER}
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    T100    timeout=20
     Wait until page contains    Koodin arvo    timeout=20
-    Wait until page contains    tähti    timeout=20
+    Wait until page contains    *    timeout=20
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    tähti    timeout=20
+    Sleep    3
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Remove code    . - piste
+    Wait Until Page Contains    4 koodia    timeout=30
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 540. Import codes with special characters
@@ -1656,7 +1665,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Codelist_special_characters_for_codes}    ${CODE_LIST_4}
-    Wait Until Page Contains    5 koodia    timeout=20
+    Wait Until Page Contains    6 koodia    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 541. Import codes with special characters in CSV format
@@ -1667,7 +1676,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    1 koodi    timeout=20
     Import codes in CSV format
     Upload codes    ${Codes_with_special_characters_csv}
-    Wait Until Page Contains    5 koodia    timeout=20
+    Wait Until Page Contains    11 koodia    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 *** Keywords ***
