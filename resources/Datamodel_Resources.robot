@@ -125,6 +125,9 @@ ${CLASS_ID}       id=classId
 ${EQUIVALENT_CLASS_INPUT}    id=equivalentClass
 ${CREATE_NEW_CLASS_BTN}    id=searchConceptModalConfirmButton
 ${USE_CONCEPT_BTN}    id=searchConceptModalConfirmButton
+${ACTIONS_BTN}    //*[contains(@id,'_actions_button')]
+${CREATE_SUPER_CLAS_BTN}    //*[contains(@id,'create_super_class')]
+${CREATE_SUB_CLAS_BTN}    //*[contains(@id,'create_sub_class')]
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -385,13 +388,14 @@ Select model
 Select And Edit Profile
     [Arguments]    ${model}
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${model}
     Wait Until Page Contains Element    //*[contains(text(), "${model}")]    timeout=30
     Click Element    //*[contains(text(), "${model}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
     Click Element    ${MODEL_DETAILS_TAB}
     Wait Until Page Contains Element    ${MODIFY_MODEL}    timeout=30
     Click Element    ${MODIFY_MODEL}
+    Log To Console    ${model} profile selected for editing
 
 Select and edit Testiautomaatio profile
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
@@ -503,6 +507,23 @@ Add several classes
     \    Sleep    1
     \    Confirm All Properties For Class And Save
     \    Sleep    2
+
+Add Sub Class
+    [Arguments]    ${model}    ${class}    ${class_link}
+    Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
+    Click Element    ${ADD_NEW_CLASS}
+    Wait Until Element Is Visible    ${CLASS_MODEL_DDL}    timeout=60
+    Click Element    ${CLASS_MODEL_DDL}
+    Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=60
+    Click Element    //*[contains(text(), "${model}")]
+    Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Wait Until Element Is Enabled    //*[contains(@id,'${class_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${class_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUB_CLAS_BTN}    timeout=30
+    Click Element    ${CREATE_SUB_CLAS_BTN}
 
 Save Class
     Wait Until Element Is Enabled    ${SAVE_CLASS}    timeout=60
@@ -653,7 +674,7 @@ Create new class and suggest concept to terminologies
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
     Sleep    2
-    Wait Until Page Contains Element    ${CREATE_NEW_CLASS_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_LINK}    timeout=30
     Click Element    ${CREATE_NEW_CLASS_LINK}
     Wait Until Page Contains Element    ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}    timeout=30
     Click Element    ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}
@@ -783,3 +804,7 @@ Add Link
     Click Element    ${CREATE_NEW_LINK}
     Wait Until Page Does Not Contain Element    ${OPEN_LINK_MODAL}    timeout=120
     Log To Console    New link added
+
+Select Datamodel Definition Tab
+    Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
+    Click Element    ${MODEL_DATA_TAB}

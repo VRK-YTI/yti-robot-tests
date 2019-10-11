@@ -1015,6 +1015,22 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
+225. Add sub class
+    [Documentation]    Check that adding sub class is successful. YTI-166.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Datamodel Definition Tab
+    Add Sub Class    Kaikki tietomallit    Alue    jhs#Alue
+    Save Class
+    Log To Console    Sub class "Alue" added
+    Wait Until Page Contains    Yläluokka    timeout=30
+    Wait Until Page Contains    jhs:Alue    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
 *** Keywords ***
 Test Case Setup Terminologies
     Terminology Setup
