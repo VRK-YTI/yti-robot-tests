@@ -1672,12 +1672,11 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Check that importing codes with special characters in CSV format is successful. YTI-672.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
-    Wait Until Page Contains    1 koodi    timeout=20
+    Upload codelist in Excel format    ${Testikoodisto_T200}    ${CODE_LIST_7}
     Import codes in CSV format
     Upload codes    ${Codes_with_special_characters_csv}
     Wait Until Page Contains    11 koodia    timeout=20
-    [Teardown]    Remove code lists    ${CODE_LIST_4}
+    [Teardown]    Remove code lists    ${CODE_LIST_7}
 
 *** Keywords ***
 Check values from Draft Code list
