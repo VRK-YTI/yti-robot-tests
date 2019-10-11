@@ -1016,7 +1016,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Teardown]    Delete profile    ${MODEL_1}
 
 225. Add sub class
-    [Documentation]    Check that adding sub class is successful. YTI-166.
+    [Documentation]    Check that adding sub class is successful.
+    ...    Check that super class information is shown in sub class information. YTI-166.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select And Edit Profile    Testiautomaatiomalli
@@ -1028,6 +1029,23 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Log To Console    Sub class "Alue" added
     Wait Until Page Contains    Yläluokka    timeout=30
     Wait Until Page Contains    jhs:Alue    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+226. Add sub class without namespace
+    [Documentation]    Check that adding sub class is successful when namespace is not added for model.
+    ...    Check that super class information is shown in sub class information. YTI-166.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Datamodel Definition Tab
+    Add Sub Class    Kaikki tietomallit    Osoite    rak#Osoite
+    Save Class
+    Log To Console    Sub class "Osoite" added
+    Wait Until Page Contains    Yläluokka    timeout=30
+    Wait Until Page Contains    rak:Osoite    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
