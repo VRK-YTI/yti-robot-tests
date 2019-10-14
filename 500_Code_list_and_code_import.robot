@@ -1678,6 +1678,20 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    11 koodia    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_7}
 
+542. Import codes with existing order number
+    [Documentation]    Check that importing codes is successful when imported file for codes
+    ...    contains existing order number. YTI-1002.
+    [Tags]    regression    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Import codes in CSV format
+    Upload codes    ${Codes_with_special_characters_csv}
+    Wait Until Page Contains    12 koodia    timeout=20
+    Import codes in Excel format
+    Upload codes    ${Codes_with_order}
+    Wait Until Page Contains    22 koodia    timeout=20
+    [Teardown]    Remove code lists    ${CODE_LIST_4}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus
