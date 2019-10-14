@@ -56,12 +56,22 @@ eDuuni Login
     Run Keyword If    ${has_id_element}    Login With Id Field Id
     ...    ELSE    Login With Id Field Xpath
 
+Log Elements
+    ${elements}=    Get WebElements    //input
+    Log To Console    Input elements
+    FOR    ${element}    IN    @{elements}
+        Log To Console    ID: ${element.get_attribute('id')}
+        Log To Console    Type: ${element.get_attribute('type')}
+    END
+
 Login With Id Field Id
+    Log Elements
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK}    timeout=20
     Input Text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
     Continue Login
 
 Login With Id Field Xpath
+    Log Elements
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_XPATH}
     Input Text    ${ID_ELEMENT_HOOK_XPATH}    ${TEST_EMAIL}
     Continue Login
@@ -76,10 +86,12 @@ Continue Login
 
 Open Chrome to Environment
     [Arguments]    ${environment_url}
+    ${proxy}=    Evaluate    sys.modules['selenium.webdriver'].Proxy()    sys, selenium.webdriver
+    ${proxy.http_proxy}=    Set Variable    localhost:8080
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    --headless
     Call Method    ${chrome_options}    add_argument    --single-process
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    proxy=${proxy}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
     Go To    ${environment_url}
