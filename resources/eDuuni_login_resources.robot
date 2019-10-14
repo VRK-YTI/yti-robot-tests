@@ -13,7 +13,10 @@ ${SELENIUM_SPEED}    0.5
 #Buttons and links
 ${PROVIDER_DDL}    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
 ${CONTINUE_LOGIN_BTN}    id=ContentPlaceHolder1_Button1
-${ID_ELEMENT_HOOK_XPATH}    //*[@id="identifierId"]
+${ID_ELEMENT_HOOK_2}    id=Email
+${ID_NEXT_ELEMENT_HOOK_2}    id=next
+${PASSWORD_ELEMENT_HOOK_2}    id=Password
+${PASSWORD_NEXT_ELEMENT_HOOK_2}    id=next
 ${ID_ELEMENT_HOOK}    id=identifierId
 ${PASSWORD_ELEMENT_HOOK}    //*[contains(@name,'password')]
 ${ID_NEXT_ELEMENT_HOOK}    id=identifierNext
@@ -53,36 +56,37 @@ eDuuni Login
     Wait Until Element Is Enabled    ${CONTINUE_LOGIN_BTN}    timeout=30
     Click Element    ${CONTINUE_LOGIN_BTN}
     ${has_id_element}=    Run Keyword And Return Status    Page Should Contain Element    ${ID_ELEMENT_HOOK}    limit=1
-    Run Keyword If    ${has_id_element}    Login With Id Field Id
-    ...    ELSE    Login With Id Field Xpath
+    Run Keyword If    ${has_id_element}    Login With Id Field Option 1
+    ...    ELSE    Login With Id Field Option 2
 
 Log Elements
     ${elements}=    Get WebElements    //input
     Log To Console    Input elements
-    FOR    ${element}    IN    @{elements}
-        Log To Console    ID: ${element.get_attribute('id')}
-        Log To Console    Type: ${element.get_attribute('type')}
-    END
+    : FOR    ${element}    IN    @{elements}
+    \    Log To Console    ID: ${element.get_attribute('id')}
+    \    Log To Console    Type: ${element.get_attribute('type')}
 
-Login With Id Field Id
+Login With Id Field Option 1
     Log Elements
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK}    timeout=20
     Input Text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
-    Continue Login
-
-Login With Id Field Xpath
-    Log Elements
-    Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_XPATH}
-    Input Text    ${ID_ELEMENT_HOOK_XPATH}    ${TEST_EMAIL}
-    Continue Login
-
-Continue Login
     Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK}    timeout=20
     Click Element    ${ID_NEXT_ELEMENT_HOOK}
     Wait Until Element Is Enabled    ${PASSWORD_ELEMENT_HOOK}    timeout=20
     Input Text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
     Wait Until Element Is Enabled    ${PASSWORD_NEXT_ELEMENT_HOOK}    timeout=20
     Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
+
+Login With Id Field Option 2
+    Log Elements
+    Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_2}
+    Input Text    ${ID_ELEMENT_HOOK_2}    ${TEST_EMAIL}
+    Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK_2}    timeout=20
+    Click Element    ${ID_NEXT_ELEMENT_HOOK_2}
+    Wait Until Element Is Enabled    ${PASSWORD_ELEMENT_HOOK_2}    timeout=20
+    Input Text    ${PASSWORD_ELEMENT_HOOK_2}    ${TEST_PASSWORD}
+    Wait Until Element Is Enabled    ${PASSWORD_NEXT_ELEMENT_HOOK_2}    timeout=20
+    Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK_2}
 
 Open Chrome to Environment
     [Arguments]    ${environment_url}
