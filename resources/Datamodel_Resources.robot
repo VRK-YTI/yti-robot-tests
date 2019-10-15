@@ -127,7 +127,9 @@ ${CREATE_NEW_CLASS_BTN}    id=searchConceptModalConfirmButton
 ${USE_CONCEPT_BTN}    id=searchConceptModalConfirmButton
 ${ACTIONS_BTN}    //*[contains(@id,'_actions_button')]
 ${CREATE_SUPER_CLAS_BTN}    //*[contains(@id,'create_super_class')]
-${CREATE_SUB_CLAS_BTN}    //*[contains(@id,'create_sub_class')]
+${CREATE_SUB_CLASS_BTN}    //*[contains(@id,'create_sub_class')]
+${CREATE_SUPER_CLASS_BTN}    //*[contains(@id,'create_super_class')]
+${COPY_CLASS_BTN}    //*[contains(@id,'copy_class')]
 #Attributes
 ${ATTRIBUTE_TAB}    id=attribute_tab_heading_link
 ${ADD_NEW_ATTRIBUTE_BTN}    id=add_new_attribute_button
@@ -522,8 +524,42 @@ Add Sub Class
     Click Element    //*[contains(@id,'${class_link}_search_class_link')]
     Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
     Click Element    ${ACTIONS_BTN}
-    Wait Until Element Is Enabled    ${CREATE_SUB_CLAS_BTN}    timeout=30
-    Click Element    ${CREATE_SUB_CLAS_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUB_CLASS_BTN}    timeout=30
+    Click Element    ${CREATE_SUB_CLASS_BTN}
+
+Add Super Class
+    [Arguments]    ${model}    ${class}    ${class_link}
+    Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
+    Click Element    ${ADD_NEW_CLASS}
+    Wait Until Element Is Visible    ${CLASS_MODEL_DDL}    timeout=60
+    Click Element    ${CLASS_MODEL_DDL}
+    Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=60
+    Click Element    //*[contains(text(), "${model}")]
+    Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Wait Until Element Is Enabled    //*[contains(@id,'${class_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${class_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUPER_CLASS_BTN}    timeout=30
+    Click Element    ${CREATE_SUPER_CLASS_BTN}
+
+Copy Class
+    [Arguments]    ${model}    ${class}    ${class_link}
+    Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
+    Click Element    ${ADD_NEW_CLASS}
+    Wait Until Element Is Visible    ${CLASS_MODEL_DDL}    timeout=60
+    Click Element    ${CLASS_MODEL_DDL}
+    Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=60
+    Click Element    //*[contains(text(), "${model}")]
+    Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Wait Until Element Is Enabled    //*[contains(@id,'${class_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${class_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${COPY_CLASS_BTN}    timeout=30
+    Click Element    ${COPY_CLASS_BTN}
 
 Save Class
     Wait Until Element Is Enabled    ${SAVE_CLASS}    timeout=60

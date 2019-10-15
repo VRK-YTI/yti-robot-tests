@@ -1049,6 +1049,36 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
+227. Add super class
+    [Documentation]    Check that adding super class is successful.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Datamodel Definition Tab
+    Add Super Class    Kaikki tietomallit    Alue    jhs#Alue
+    Save Class
+    Log To Console    Super class "Alue" added
+    Wait Until Page Contains    autom:Alue    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+228. Copy class
+    [Documentation]    Check that copying class is successful.
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Datamodel Definition Tab
+    Copy Class    Kaikki tietomallit    Alue    jhs#Alue
+    Save Class
+    Log To Console    Class "Alue" copied
+    Wait Until Page Contains    autom:Alue    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
 *** Keywords ***
 Test Case Setup Terminologies
     Terminology Setup
