@@ -6,16 +6,21 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.dev.yti.cloud.vrk.fi/
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
-${TEST_ADMIN_ID}    //a[@class='dropdown-item'][contains(text(),'Test Admin')]
-${TEST_SUPERUSER_ID}    //a[@class='dropdown-item'][contains(text(),'Test Superuser')]
+${TEST_ADMIN_ID}    id=testiadmin@localhost_fakeable_user_link
 ${TEST_ADMIN_NAME}    Test Admin
+${TEST_SUPERUSER_ID}    id=testisuperuser@localhost_fakeable_user_link
 ${TEST_SUPERUSER_NAME}    Test Superuser
+${TEST_TERMINOLOGY_ID}    id=testterminology@localhost_fakeable_user_link
+${TEST_TERMINOLOGY_NAME}    Test Terminology
+${TEST_NOGROUP_ID}    id=dummy@localhost_fakeable_user_link
+${TEST_NOGROUP_NAME}    Test Nogroup
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
-${ORGANIZATION_1}    Testiorganisaatio
-${ORGANIZATION_2}    Yhteentoimivuusalustan ylläpito
+${VOCABULARY_3}    Abc123
+${VOCABULARY_4}    Abc456
+${VOCABULARY_5}    Abc789
 ${CLASSIFICATION_1}    Ympäristö
 ${CLASSIFICATION_2}    Eläkkeet
 ${PREFIX_1}       898
@@ -26,6 +31,11 @@ ${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_2}    id=vocabulary_contributor_YhteentoimivuusalustanYllapito_remove_organization_reference_link
 ${REMOVE_CLASSIFICATION_1}    //*[@id="vocabulary_inGroup_http://urn.fi/URN:NBN:fi:au:ptvl/v1184_remove_domain_reference_link"]
 ${SELENIUM_SPEED}    0.5
+#Organizations
+${ORGANIZATION_1}    Testiorganisaatio
+${ORGANIZATION_2}    Yhteentoimivuusalustan ylläpito
+${TESTIORGANISAATIO}    id=Testiorganisaatio_organization_select
+${AUTOMAATIOTESTAUS}    id=Automaatiotestaus_organization_select
 #Generic locators
 ${OPEN_MODAL}     class=modal-open
 #Frontpage Buttons and links
@@ -37,6 +47,11 @@ ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
 ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 ${LICENSE_ICON_TEXT_LINK}    id=licence_icon_text_link
 ${EUPL_LICENCE_LINK}    id=license_link
+${FRONTPAGE_ORGANIZATION_FILTER}    id=organization_filter_dropdown
+${FRONTPAGE_STATUS_FILTER}    id=selected_status_filter_dropdown
+${SEARCH_INPUT}    id=vocabularies_search_input
+${ALL_ORGANIZATIONS}    id=all_selected_organization_filter_dropdown
+${INCOMPLETE_STATUS}    id=INCOMPLETE_status_filter_dropdown
 #Vocabulary buttons
 ${SHOW_VOCABULARY_DETAILS_BTN}    id=vocabulary_show_details_button
 ${EDIT_VOCABULARY_BTN}    id=vocabulary_editable_start_editing_button
@@ -65,6 +80,9 @@ ${CSV_FORMAT_BTN}    id=csv_format_dropdown_button
 ${XML_FORMAT_BTN}    id=ntrf_xml_format_dropdown_button
 ${TERMINOLOGY_TAB}    id=terminologyTab
 ${CONCEPTS_TAB}    id=conceptsTab
+${VOCABULARY_STATUS_DDL}    id=selected_vocabulary_status_input_dropdown
+${VOCABULARY_STATUS_INCOMPLETE}    id=INCOMPLETE_vocabulary_status_input_dropdown
+${VOCABULARY_STATUS_DRAFT}    id=DRAFT_vocabulary_status_input_dropdown
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -188,6 +206,7 @@ ${test_concepts_to_thesaurus}    ${DATAFOLDER}${/}test_concept_import_to_thesaur
 ${test_concepts_to_thesaurus_invalid_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_invalid_column_name_csv.csv
 ${test_concepts_to_thesaurus_incorrect_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_incorrect_column_name_csv.csv
 ${test_concepts_for_status_filter}    ${DATAFOLDER}${/}test_concepts_filter_csv.csv
+${test_concepts_for_status_filter_2}    ${DATAFOLDER}${/}test_concepts_filter_2_csv.csv
 ${concept_reference}    ${DATAFOLDER}${/}Concept_reference_csv.csv
 #xml paths
 ${tax}            ${DATAFOLDER}${/}Verotussanasto_xml.xml
@@ -284,6 +303,34 @@ Delete Terminology
     Sleep    2
     Page Should Not Contain Element    //*[contains(text(), "${terminology}")]
     Log To Console    ${terminology} deleted
+    Close All Browsers
+
+Delete Terminologies
+    [Arguments]    @{terminology_items}
+    : FOR    ${terminology_item}    IN    @{terminology_items}
+    \    Go Back To Sanastot Frontpage
+    \    Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
+    \    Wait Until Element Is enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    \    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    \    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
+    \    Wait Until Page Contains Element    //*[contains(text(), "${terminology_item}")]    timeout=60
+    \    ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology_item}")]
+    \    Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${terminology_item} did not find the terminology to delete
+    \    ...    AND    Return From Keyword
+    \    Click Element    //*[contains(text(), "${terminology_item}")]
+    \    Wait Until Page Contains    ${terminology_item}    timeout=60
+    \    Wait Until Element Is Visible    ${TERMINOLOGY_TAB}    timeout=30
+    \    Click Element    ${TERMINOLOGY_TAB}
+    \    Wait Until Element Is Visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
+    \    Click Element    ${REMOVE_VOCABULARY_BTN}
+    \    Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    \    Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    \    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    \    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
+    \    Sleep    2
+    \    Page Should Not Contain Element    //*[contains(text(), "${terminology_item}")]
+    \    Log To Console    ${terminology_item} removed
+    \    Sleep    1
     Close All Browsers
 
 Delete existing terminological vocabulary and create new
@@ -567,3 +614,96 @@ Delete Concept
     Wait Until Element Is Enabled    ${EDIT_CONCEPT_BTN}    timeout=60
     Log To Console    ${concept} removed
     Sleep    1
+
+Select Tab
+    [Arguments]    ${tab}
+    Wait Until Element Is Enabled    ${tab}    timeout=30
+    Click Element    ${tab}
+
+Modify Terminology
+    Wait Until Element Is Enabled    ${EDIT_VOCABULARY_BTN}    timeout=30
+    Click Element    ${EDIT_VOCABULARY_BTN}
+
+Change Terminology Status
+    [Arguments]    ${status}
+    Wait Until Element Is Enabled    ${VOCABULARY_STATUS_DDL}    timeout=30
+    Click Element    ${VOCABULARY_STATUS_DDL}
+    Wait Until Element Is Enabled    ${status}    timeout=30
+    Click Element    ${status}
+
+Save Terminology
+    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_VOCABULARY_BTN}
+
+Create New Terminology With Parameters
+    [Arguments]    ${terminology}    ${status}    ${organization}    ${information_domain}    ${prefix}
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    Sleep    2
+    ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
+    Run Keyword If    ${terminology_exists}    Remove Terminology And Leave Browser Open    ${terminology}
+    Sleep    1
+    Wait Until Page Contains Element    ${ADD_VOCABULARY_BTN}    timeout=30
+    Click Element    ${ADD_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${TITLE_INPUT_FI}    timeout=30
+    Input Text    ${TITLE_INPUT_FI}    ${terminology}
+    Wait Until Element Is Enabled    ${VOCABULARY_STATUS_DDL}    timeout=30
+    Click Element    ${VOCABULARY_STATUS_DDL}
+    Wait Until Element Is Enabled    ${status}    timeout=30
+    Click Element    ${status}
+    Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=30
+    Click Element    ${ADD_ORGANIZATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Wait Until Page Contains Element    //*[contains(text(), "${organization}")]
+    Click Element    //*[contains(text(), "${organization}")]
+    Wait Until Page Contains Element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
+    Click Element    ${ADD_NEW_CLASSIFICATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${information_domain}
+    Wait Until Page Contains Element    //*[contains(text(), "${information_domain}")]
+    Click Element    //*[contains(text(), "${information_domain}")]
+    Wait Until Page Contains Element    ${PREFIX_INPUT}    timeout=30
+    Input Text    ${PREFIX_INPUT}    ${prefix}
+    Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${SAVE_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
+    Sleep    1
+    Log To Console    ${terminology} without concepts created
+
+Remove Terminology And Leave Browser Open
+    [Arguments]    ${terminology}
+    Wait Until Page Contains Element    //*[contains(text(), "${terminology}")]    timeout=20
+    Click Element    //*[contains(text(), "${terminology}")]
+    Wait Until Page Contains    ${terminology}    timeout=30
+    Wait Until Element Is Visible    ${TERMINOLOGY_TAB}    timeout=30
+    Click Element    ${TERMINOLOGY_TAB}
+    Wait Until Element Is Visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
+    Click Element    ${REMOVE_VOCABULARY_BTN}
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    Sleep    2
+    Page Should Not Contain Element    //*[contains(text(), "${terminology}")]
+    Log To Console    ${terminology} deleted
+
+Set Frontpage Filters
+    [Arguments]    ${search_term}    ${organization}    ${status}
+    ${search_input_length}=    Get Length    ${search_term}
+    Run Keyword If    ${search_input_length} > 0    Set Frontpage Search Term    ${search_term}
+    Wait Until Element Is Enabled    ${FRONTPAGE_ORGANIZATION_FILTER}    timeout=30
+    Click Element    ${FRONTPAGE_ORGANIZATION_FILTER}
+    Wait Until Element Is Enabled    ${organization}    timeout=30
+    Click Element    ${organization}
+    Wait Until Element Is Enabled    ${FRONTPAGE_STATUS_FILTER}    timeout=30
+    Click Element    ${FRONTPAGE_STATUS_FILTER}
+    Wait Until Element Is Enabled    ${status}    timeout=30
+    Click Element    ${status}
+
+Set Frontpage Search Term
+    [Arguments]    ${search_term}
+    Wait Until Element Is Enabled    ${SEARCH_INPUT}    timeout=30
+    Input Text    ${SEARCH_INPUT}    ${search_term}

@@ -626,6 +626,43 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_2}
 
+218. Visibility of incomplete terminologies
+    [Documentation]    Check that incomplete terminologies and concepts are shown
+    ...    for organization's own users only in Terminologies frontpage. YTI-907.
+    [Tags]    regression    sanastot    test    200
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create New Terminology With Parameters    ${VOCABULARY_3}    ${VOCABULARY_STATUS_INCOMPLETE}    Testiorganisaatio    Asuminen    865
+    Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter}    ${EMPTY}
+    Go Back To Sanastot Frontpage
+    Create New Terminology With Parameters    ${VOCABULARY_4}    ${VOCABULARY_STATUS_INCOMPLETE}    Automaatiotestaus    Eläkkeet    771
+    Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter_2}    ${EMPTY}
+    Go Back To Sanastot Frontpage
+    Select User    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
+    Create New Terminology With Parameters    ${VOCABULARY_5}    ${VOCABULARY_STATUS_INCOMPLETE}    Yhteentoimivuusalustan ylläpito    Eläkkeet    267
+    Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter_2}    ${EMPTY}
+    Go Back To Sanastot Frontpage
+    Set Frontpage Filters    Abc    ${ALL_ORGANIZATIONS}    ${INCOMPLETE_STATUS}
+    Wait Until Element Is Visible    //*[contains(text(), "Abc123")]    timeout=30
+    Wait Until Element Is Visible    //*[contains(text(), "Abc456")]    timeout=30
+    Wait Until Element Is Visible    //*[contains(text(), "Abc789")]    timeout=30
+    Sleep    1
+    Select User    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Wait Until Element Is Visible    //*[contains(text(), "Abc123")]    timeout=30
+    Wait Until Element Is Visible    //*[contains(text(), "Abc456")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "Abc789")]    timeout=30
+    Sleep    1
+    Select User    ${TEST_TERMINOLOGY_ID}    ${TEST_TERMINOLOGY_NAME}
+    Wait Until Element Is Visible    //*[contains(text(), "Abc123")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "Abc456")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "Abc789")]    timeout=30
+    Sleep    1
+    Select User    ${TEST_NOGROUP_ID}    ${TEST_NOGROUP_NAME}
+    Page Should Not Contain Element    //*[contains(text(), "Abc123")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "Abc456")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "Abc789")]    timeout=30
+    Sleep    1
+    [Teardown]    Delete Terminologies    ${VOCABULARY_3}    ${VOCABULARY_4}    ${VOCABULARY_5}
+
 *** Keywords ***
 Restore organization and classification for DRAFT vocabulary
     Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30

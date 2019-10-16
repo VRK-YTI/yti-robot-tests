@@ -1,0 +1,9 @@
+﻿prefLabel_fi,broader_fi,related_fi,isPartOf_fi,definition_fi,note_fi,synonym_fi,example_fi,prefLabel_en,synonym_en,prefLabel_sv,status
+Merkurius,,,,Merkuriuksen määritelmä,,,,Mercury,,,DRAFT
+Venus,Merkurius,,,Venuksen määritelmä,,,,Venus,,,INCOMPLETE
+Maa,Venus,,,Maan määritelmä,,,,Earth,,,SUGGESTED
+Mars,Maa,Maa,,Marsin määritelmä,,,,Mars,,,INCOMPLETE
+Jupiter,Mars,,,Jupiterin määritelmä,,,,Jupiter,,,VALID
+Saturnus,Jupiter,,,Saturnuksen määritelmä,,,,Saturn,,,SUPERSEDED
+Uranus,Saturnus,,,Uranuksen määritelmä,,,,Uranus,,,RETIRED
+Neptunus,Uranus,,Saturnus,Neptunuksen määritelmä,,,,Neptune,,,INVALID
