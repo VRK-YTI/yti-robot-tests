@@ -18,8 +18,7 @@ Resource          resources/Extension_resources.robot
     Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    DPM Metric (en)    timeout=20
     Return to Koodistot frontpage
-    Import code list in Excel format
-    Upload codelist    ${Modify_dpm_metric}    ${CODE_LIST_16}
+    Upload codelist in excel format    ${Modify_dpm_metric}    ${CODE_LIST_16}
     Wait Until Element Is Enabled    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Click Element    //*[contains(text(), "testcode57 - Testcode 57")]
     Wait Until Page Contains    dpmMetric    timeout=20
