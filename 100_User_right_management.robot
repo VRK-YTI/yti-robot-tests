@@ -49,7 +49,7 @@ Resource          resources/Login_details.robot
     [Setup]    Test Case Setup
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
     Click Element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait Until Page Contains Element    ${LANGUAGE_EN}
+    Wait Until Page Contains Element    ${LANGUAGE_EN}    timeout=20
     Click Element    ${LANGUAGE_EN}
     Wait Until Page Contains    ORGANIZATIONS    timeout=20
     Wait Until Page Contains    USERS    timeout=20
@@ -102,7 +102,7 @@ Resource          resources/Login_details.robot
 Restore Finnish language
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
     Click Element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait Until Page Contains Element    ${LANGUAGE_FI}
+    Wait Until Page Contains Element    ${LANGUAGE_FI}    timeout=20
     Click Element    ${LANGUAGE_FI}
     Wait Until Page Contains    ORGANISAATIOT    timeout=20
     Wait Until Page Contains    KÄYTTÄJÄT    timeout=20

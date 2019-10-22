@@ -79,7 +79,7 @@ Login With Id Field Option 1
     Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
 
 Login With Id Field Option 2
-    Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_2}
+    Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_2}    timeout=20
     Input Text    ${ID_ELEMENT_HOOK_2}    ${TEST_EMAIL}
     Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK_2}    timeout=20
     Click Element    ${ID_NEXT_ELEMENT_HOOK_2}
