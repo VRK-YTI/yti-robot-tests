@@ -47,7 +47,7 @@ Resource          resources/Login_details.robot
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    rhp    test
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
     Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Page Contains Element    ${LANGUAGE_EN}
     Click Element    ${LANGUAGE_EN}
@@ -100,7 +100,7 @@ Resource          resources/Login_details.robot
 
 *** Keywords ***
 Restore Finnish language
-    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20
     Click Element    ${LANGUAGE_DROPDOWN_BTN}
     Wait Until Page Contains Element    ${LANGUAGE_FI}
     Click Element    ${LANGUAGE_FI}
