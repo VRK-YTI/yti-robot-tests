@@ -522,6 +522,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${SAVE_CODE_STATUS_CHANGE_BTN}    timeout=20
     Click Element    ${SAVE_CODE_STATUS_CHANGE_BTN}
     Wait Until Page Contains    ${Error_no_code_status_changes}    timeout=20
+    Sleep    1
     Wait Until Element Is Enabled    ${CLOSE_ALERT_MODAL_LINK}    timeout=30
     Click Element    ${CLOSE_ALERT_MODAL_LINK}
     [Teardown]    Remove code lists    ${CODE_LIST_17}
