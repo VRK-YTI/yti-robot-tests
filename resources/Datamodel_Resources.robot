@@ -126,7 +126,6 @@ ${EQUIVALENT_CLASS_INPUT}    id=equivalentClass
 ${CREATE_NEW_CLASS_BTN}    id=searchConceptModalConfirmButton
 ${USE_CONCEPT_BTN}    id=searchConceptModalConfirmButton
 ${ACTIONS_BTN}    //*[contains(@id,'_actions_button')]
-${CREATE_SUPER_CLAS_BTN}    //*[contains(@id,'create_super_class')]
 ${CREATE_SUB_CLASS_BTN}    //*[contains(@id,'create_sub_class')]
 ${CREATE_SUPER_CLASS_BTN}    //*[contains(@id,'create_super_class')]
 ${COPY_CLASS_BTN}    //*[contains(@id,'copy_class')]
@@ -156,6 +155,9 @@ ${PROPERTY_DISJOINT_BTN}    id=disjoint_choose_attribute_multiple_uri_select_but
 ${PROPERTY_EQUALS_BTN}    id=equals_choose_attribute_multiple_uri_select_button
 ${CONFIRM_PREDICATE_BTN}    id=confirm_predicate_button
 ${CREATE_PREDICATE_BTN}    id=create_predicate_button
+${CREATE_SUB_PREDICATE_BTN}    //*[contains(@id,'create_sub_predicate')]
+${CREATE_SUPER_PREDICATE_BTN}    //*[contains(@id,'create_super_predicate')]
+${COPY_PREDICATE_BTN}    //*[contains(@id,'copy_predicate')]
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
@@ -631,6 +633,19 @@ Create new attribute
     Log To Console    New attribute "${attribute}" added
     Sleep    1
 
+Add Sub Attribute
+    [Arguments]    ${model}    ${attribute}    ${attribute_link}
+    Wait Until Page Contains Element    ${ADD_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ATTRIBUTE_BTN}
+    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${attribute}
+    Wait Until Element Is Enabled    //*[contains(@id,'${attribute_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${attribute_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUB_PREDICATE_BTN}    timeout=30
+    Click Element    ${CREATE_SUB_PREDICATE_BTN}
+
 Create new association
     [Arguments]    ${association}
     Wait Until Page Contains Element    ${ASSOCIATION_TAB}    timeout=30
@@ -844,3 +859,13 @@ Add Link
 Select Datamodel Definition Tab
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
+
+Select Model Tab
+    [Arguments]    ${tab}
+    Wait Until Element Is Enabled    ${tab}    timeout=30
+    Click Element    ${tab}
+
+Select Tab
+    [Arguments]    ${tab}
+    Wait Until Element Is Enabled    ${tab}    timeout=30
+    Click Element    ${tab}

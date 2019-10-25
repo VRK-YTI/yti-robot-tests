@@ -1023,7 +1023,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select And Edit Profile    Testiautomaatiomalli
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Select Datamodel Definition Tab
+    Select Model Tab    ${MODEL_DATA_TAB}
     Add Sub Class    Kaikki tietomallit    Alue    jhs#Alue
     Save Class
     Log To Console    Sub class "Alue" added
@@ -1040,7 +1040,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select And Edit Profile    Testiautomaatiomalli
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Select Datamodel Definition Tab
+    Select Model Tab    ${MODEL_DATA_TAB}
     Add Sub Class    Kaikki tietomallit    Osoite    rak#Osoite
     Save Class
     Log To Console    Sub class "Osoite" added
@@ -1056,7 +1056,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select And Edit Profile    Testiautomaatiomalli
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Select Datamodel Definition Tab
+    Select Model Tab    ${MODEL_DATA_TAB}
     Add Super Class    Kaikki tietomallit    Alue    jhs#Alue
     Save Class
     Log To Console    Super class "Alue" added
@@ -1071,11 +1071,30 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select And Edit Profile    Testiautomaatiomalli
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Select Datamodel Definition Tab
+    Select Model Tab    ${MODEL_DATA_TAB}
     Copy Class    Kaikki tietomallit    Alue    jhs#Alue
     Save Class
     Log To Console    Class "Alue" copied
     Wait Until Page Contains    autom:Alue    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+229. Add sub attribute
+    [Documentation]    Check that adding sub attribute is successful.
+    ...    Check that super attribute information is shown in sub attribute information.
+    [Tags]    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ATTRIBUTE_TAB}
+    Add Sub Attribute    Kaikki tietomallit    Aihe    jhs#aihe
+    Save Predicate
+    Log To Console    Sub attribute "Aihe" added
+    Wait Until Page Contains    Yläattribuutti    timeout=30
+    Wait Until Page Contains    jhs:aihe    timeout=30
+    #Sleep    10
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
