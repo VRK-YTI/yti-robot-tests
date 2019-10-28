@@ -64,7 +64,7 @@ ${ADD_ORGANIZATION_BTN}    id=vocabulary_contributor_add_organization_button
 ${SEARCH_ORGANIZATION_INPUT}    id=search_organization_link
 ${ADD_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_domain_button
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_domain_link
-${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_label
+${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_button
 ${VOCABULARY_TYPE_DDL}    id=selected_vocabulary_type_dropdown
 ${TITLE_INPUT_FI}    id=vocabulary_prefLabel_fi_0_input
 ${PREFIX_INPUT}    id=vocabulary_prefix_input
@@ -83,6 +83,7 @@ ${CONCEPTS_TAB}    id=conceptsTab
 ${VOCABULARY_STATUS_DDL}    id=selected_vocabulary_status_input_dropdown
 ${VOCABULARY_STATUS_INCOMPLETE}    id=INCOMPLETE_vocabulary_status_input_dropdown
 ${VOCABULARY_STATUS_DRAFT}    id=DRAFT_vocabulary_status_input_dropdown
+${VOCABULARY_DDL}    id=vocabularyDropdown
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -402,6 +403,8 @@ Create Terminological Dictionary and import vocabulary
     Input Text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Click Element    ${VOCABULARY_DDL}
     Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
@@ -411,7 +414,6 @@ Create Terminological Dictionary and import vocabulary
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click Element    ${IMPORT_YES_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
-    Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=1
     Log To Console    ${terminology} created
 
 Create Terminological Dictionary without concepts
@@ -436,7 +438,7 @@ Create Terminological Dictionary without concepts
     Input Text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
+    Wait Until Element Is Enbled    ${VOCABULARY_DDL}    timeout=60
     Sleep    1
     Log To Console    ${terminology} without concepts created
 
@@ -553,6 +555,8 @@ Add Members For Collection
 
 Import Concepts
     [Arguments]    ${file_format}    ${file}    ${delimiter}
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Click Element    ${VOCABULARY_DDL}
     Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Enabled    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
@@ -567,7 +571,6 @@ Import Concepts
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=120
     Click Element    ${IMPORT_YES_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
-    Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=10
     Log To Console    Concept import ok
 
 Select Delimiter
@@ -579,6 +582,8 @@ Select Delimiter
 
 Concept Import Without Confirmation
     [Arguments]    ${file_format}    ${file}
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Click Element    ${VOCABULARY_DDL}
     Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Enabled    ${FILE_FORMAT_DROPDOWN_BTN}    timeout=30
@@ -668,7 +673,7 @@ Create New Terminology With Parameters
     Input Text    ${PREFIX_INPUT}    ${prefix}
     Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
+    Wait Until Element Is Visible    ${VOCABULARY_DDL}    timeout=60
     Sleep    1
     Log To Console    ${terminology} without concepts created
 

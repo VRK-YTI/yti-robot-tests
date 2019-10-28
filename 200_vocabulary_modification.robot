@@ -375,6 +375,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Maximize Browser Window
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_2}
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Click Element    ${VOCABULARY_DDL}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
@@ -409,6 +411,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Click Element    ${VOCABULARY_DDL}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
@@ -448,6 +452,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Click Element    ${VOCABULARY_DDL}
     Wait Until Page Contains Element    ${IMPORT_VOCABULARY_BTN}    timeout=30
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
@@ -456,7 +462,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${FILE_UPLOAD_BTN}
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click Element    ${IMPORT_YES_BTN}
-    Wait Until Element Is Enabled    ${IMPORT_VOCABULARY_BTN}    timeout=120
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
     Sleep    1
     Log To Console    Concept import ok
     Sleep    1
