@@ -438,7 +438,7 @@ Create Terminological Dictionary without concepts
     Input Text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Enbled    ${VOCABULARY_DDL}    timeout=60
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=60
     Sleep    1
     Log To Console    ${terminology} without concepts created
 
