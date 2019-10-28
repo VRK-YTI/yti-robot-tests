@@ -1081,7 +1081,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 229. Add sub attribute
     [Documentation]    Check that adding sub attribute is successful.
-    ...    Check that super attribute information is shown in sub attribute information. YTI-1045.
+    ...    Check that super attribute information is shown in sub attribute information. YTI-1047.
     [Tags]    regression    test    tietomallit    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select And Edit Profile    Testiautomaatiomalli
