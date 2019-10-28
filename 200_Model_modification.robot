@@ -826,7 +826,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 220. Deactivate class and export class in JSON Schema format
     [Documentation]    Create new profile and class.
     ...    Deactivate class and check that deactivated class is not used in JSON Schema generation.
-    [Tags]    regression    tietomallit    200
+    [Tags]    regression    tietomallit    200    test
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
     Select and edit Testiautomaatio profile
