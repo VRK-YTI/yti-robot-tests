@@ -705,6 +705,7 @@ Set Frontpage Filters
     Click Element    ${organization}
     Wait Until Element Is Enabled    ${FRONTPAGE_STATUS_FILTER}    timeout=30
     Click Element    ${FRONTPAGE_STATUS_FILTER}
+    Sleep    1
     Wait Until Element Is Enabled    ${status}    timeout=30
     Click Element    ${status}
 

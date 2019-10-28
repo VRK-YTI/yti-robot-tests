@@ -385,7 +385,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Click Element    ${FILE_UPLOAD_BTN}
     Wait Until Element Is Enabled    ${IMPORT_YES_BTN}    timeout=30
     Click Element    ${IMPORT_YES_BTN}
-    Sleep    3
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
     Log To Console    Concept import ok
     Wait Until Page Contains Element    ${CONCEPT_FILTER_BTN}    timeout=30
     Click Element    ${CONCEPT_FILTER_BTN}
@@ -648,24 +648,24 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter_2}    ${EMPTY}
     Go Back To Sanastot Frontpage
     Set Frontpage Filters    Abc    ${ALL_ORGANIZATIONS}    ${INCOMPLETE_STATUS}
-    Wait Until Element Is Visible    //*[contains(text(), "Abc123")]    timeout=30
-    Wait Until Element Is Visible    //*[contains(text(), "Abc456")]    timeout=30
-    Wait Until Element Is Visible    //*[contains(text(), "Abc789")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "123")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "456")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "789")]    timeout=30
     Sleep    1
     Select User    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
-    Wait Until Element Is Visible    //*[contains(text(), "Abc123")]    timeout=30
-    Wait Until Element Is Visible    //*[contains(text(), "Abc456")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "Abc789")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "123")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "456")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "789")]    timeout=30
     Sleep    1
     Select User    ${TEST_TERMINOLOGY_ID}    ${TEST_TERMINOLOGY_NAME}
-    Wait Until Element Is Visible    //*[contains(text(), "Abc123")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "Abc456")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "Abc789")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "123")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "456")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "789")]    timeout=30
     Sleep    1
     Select User    ${TEST_NOGROUP_ID}    ${TEST_NOGROUP_NAME}
-    Page Should Not Contain Element    //*[contains(text(), "Abc123")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "Abc456")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "Abc789")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "123")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "456")]    timeout=30
+    Page Should Not Contain Element    //*[contains(text(), "789")]    timeout=30
     Sleep    1
     [Teardown]    Delete Terminologies    ${VOCABULARY_3}    ${VOCABULARY_4}    ${VOCABULARY_5}
 
