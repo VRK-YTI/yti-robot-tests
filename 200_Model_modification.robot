@@ -737,7 +737,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 219. Export class in different formats
     [Documentation]    Create new profile and class.
     ...    Check that export for class is succesfull in all formats.
-    [Tags]    regression    tietomallit    200
+    [Tags]    regression    test    tietomallit    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Maximize Browser Window
     Select and edit Testiautomaatio profile
@@ -1081,8 +1081,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 229. Add sub attribute
     [Documentation]    Check that adding sub attribute is successful.
-    ...    Check that super attribute information is shown in sub attribute information.
-    [Tags]    tietomallit    200
+    ...    Check that super attribute information is shown in sub attribute information. YTI-1045.
+    [Tags]    regression    test    tietomallit    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select And Edit Profile    Testiautomaatiomalli
     Import Namespace    Julkishallinnon tietokomponentit
@@ -1094,7 +1094,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Log To Console    Sub attribute "Aihe" added
     Wait Until Page Contains    Yläattribuutti    timeout=30
     Wait Until Page Contains    jhs:aihe    timeout=30
-    #Sleep    10
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
