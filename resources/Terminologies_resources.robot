@@ -18,6 +18,7 @@ ${TERM_1}         Automaatio
 ${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
 ${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
+${OPEN_MODAL}     class=modal-open
 #Frontpage Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
@@ -35,7 +36,7 @@ ${ADD_VOCABULARY_ORGANIZATION_BTN}    id=vocabulary_contributor_add_organization
 ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    id=search_organization_link
 ${ADD_CLASSIFICATION_BTN}    id=vocabulary_inGroup_add_domain_button
 ${TERMINOLOGY_CLASSIFICATION_INPUT}    id=search_domain_link
-${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_label
+${IMPORT_VOCABULARY_BTN}    id=vocabulary_import_button
 ${VOCABULARY_TYPE_DDL}    id=selected_vocabulary_type_dropdown
 ${TITLE_INPUT_FI}    id=vocabulary_prefLabel_fi_0_input
 ${PREFIX_INPUT}    id=vocabulary_prefix_input
@@ -49,6 +50,7 @@ ${UPLOAD_FILE}    id=upload_file_button
 ${IMPORT_YES_BTN}    id=import_yes_button
 ${TERMINOLOGY_TAB}    id=terminologyTab
 ${CONCEPTS_TAB}    id=conceptsTab
+${VOCABULARY_DDL}    id=vocabularyDropdown
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -170,6 +172,8 @@ Create Testiautomaatiosanasto and import vocabulary
     Input Text    ${PREFIX_INPUT}    ${PREFIX_1}
     Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Click Element    ${VOCABULARY_DDL}
     Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click Element    ${IMPORT_VOCABULARY_BTN}
     Choose File    ${FILE_UPLOAD_INPUT}    ${test_concepts}
@@ -177,6 +181,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Click Element    ${UPLOAD_FILE}
     Wait Until Page Contains Element    ${IMPORT_YES_BTN}    timeout=30
     Click Element    ${IMPORT_YES_BTN}
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
     Wait Until Element Is Visible    ${ADD_NEW_CONCEPT_BTN}    timeout=90
     Log To Console    Terminology created and concepts imported
 
