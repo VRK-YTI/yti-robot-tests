@@ -129,7 +129,7 @@ Go back to Sanastot frontpage
 
 Test Case Setup Create Testiautomaatiosanasto
     Terminology Test Case Setup
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
     run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
@@ -148,7 +148,7 @@ Delete existing terminological vocabulary and create new
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Sleep    3
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
     Sleep    2
     Page Should Not Contain Element    //*[contains(text(), "${VOCABULARY_1}")]
@@ -212,7 +212,7 @@ Delete Testiautomaatiosanasto
     Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
     Sleep    3
     Log To Console    Vocabulary remove done
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
     Sleep    1
     Page should not contain element    //*[contains(text(), "${VOCABULARY_1}")]
@@ -222,7 +222,7 @@ Delete Testiautomaatiosanasto
 Check concept suggestion in Terminologies
     Terminology Test Case Setup
     Log To Console    Terminology Test Case Setup done
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=30
+    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
     Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click Element    //*[contains(text(), "${VOCABULARY_1}")]
