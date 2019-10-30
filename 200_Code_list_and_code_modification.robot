@@ -12,21 +12,21 @@ Resource          resources/Extension_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
-    Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click Element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=20
     Click Element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${CODE_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_NAME_INPUT}    timeout=20
     Input Text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
-    Wait until page contains element    ${CODE_DESC_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
-    Wait until page contains element    ${CODE_SHORT_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_SHORT_NAME_INPUT}    timeout=20
     Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click Element    ${SAVE_CODE_MOD_BTN}
-    Wait until page contains    Tämä on uusi nimi koodille    timeout=20
-    Wait until page contains    Tämä on uusi kuvaus koodille    timeout=20
-    Wait until page contains    Tämä on uusi lyhyt nimi    timeout=20
+    Wait Until Page Contains    Tämä on uusi nimi koodille    timeout=20
+    Wait Until Page Contains    Tämä on uusi kuvaus koodille    timeout=20
+    Wait Until Page Contains    Tämä on uusi lyhyt nimi    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 201. Add link to the DRAFT Code
@@ -124,31 +124,31 @@ Resource          resources/Extension_resources.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
-    Wait until page contains element    //*[contains(text(), "${CODE_1000}")]    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "${CODE_1000}")]    timeout=20
     Click Element    //*[contains(text(), "${CODE_1000}")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=20
     Click Element    ${MODIFY_CODE_BTN}
-    Wait until page contains element    ${ADD_LINK_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${ADD_LINK_DDL}    timeout=20
     Click Element    ${ADD_LINK_DDL}
-    Wait until page contains element    ${LINK_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${LINK_BTN}    timeout=20
     Click Element    ${LINK_BTN}
-    Wait until page contains element    ${LINK_URL_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${LINK_URL_INPUT}    timeout=20
     Click Element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
     Wait Until Element Is Enabled    ${ADD_BTN}    timeout=20
     Click Element    ${ADD_BTN}
-    Wait until page contains    Liittyvä linkki    timeout=20
+    Wait Until Page Contains    Liittyvä linkki    timeout=20
     Save code modification
     Modify code
-    Wait until page contains element    ${MODIFY_LINK_ICON}    timeout=20
+    Wait Until Element Is Enabled    ${MODIFY_LINK_ICON}    timeout=20
     Click Element    ${MODIFY_LINK_ICON}
-    Wait until page contains element    ${LINK_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${LINK_NAME_INPUT}    timeout=20
     Click Element    ${LINK_NAME_INPUT}
     Input Text    ${LINK_NAME_INPUT}    www.suomi.fi
-    Wait until page contains element    ${SAVE_LINK_MODIFY_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_LINK_MODIFY_BTN}    timeout=20
     Click Element    ${SAVE_LINK_MODIFY_BTN}
-    Wait until page contains    Liittyvä linkki
-    Page should contain    www.suomi.fi
+    Wait Until Page Contains    Liittyvä linkki    timeout=20
+    Wait Until Page Contains    www.suomi.fi    timeout=20
     Save code modification
     Reload Page
     [Teardown]    Remove code lists    ${CODE_LIST_2}
@@ -238,23 +238,23 @@ Resource          resources/Extension_resources.robot
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
     Modify code list
-    Wait until page contains element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input Text    ${CODE_LIST_NAME_INPUT}    Testinimi
-    Wait until page contains element    ${CODE_LIST_DESC_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DESC_INPUT}    timeout=20
     Input Text    ${CODE_LIST_DESC_INPUT}    Uusi kuvaus
-    Wait until page contains element    ${CODE_LIST_DEF_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DEF_INPUT}    timeout=20
     Input Text    ${CODE_LIST_DEF_INPUT}    Uusi määritelmä
-    Wait until page contains element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
     Input Text    ${CODE_LIST_CHANGENOTE_INPUT}    Uusi muutostieto
-    Wait until page contains element    ${CODE_LIST_FEEDBACK_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_FEEDBACK_INPUT}    timeout=20
     Input Text    ${CODE_LIST_FEEDBACK_INPUT}    Ylläpitäjän yhteystiedot
     Save code list
-    Wait until page contains    Testinimi    timeout=20
-    Wait until page contains    Uusi kuvaus    timeout=20
-    Wait until page contains    Uusi määritelmä    timeout=20
-    Wait until page contains    Uusi muutostieto    timeout=20
-    Wait until page contains    Oikeusturva    timeout=20
-    Wait until page contains    Ylläpitäjän yhteystiedot    timeout=20
+    Wait Until Page Contains    Testinimi    timeout=20
+    Wait Until Page Contains    Uusi kuvaus    timeout=20
+    Wait Until Page Contains    Uusi määritelmä    timeout=20
+    Wait Until Page Contains    Uusi muutostieto    timeout=20
+    Wait Until Page Contains    Oikeusturva    timeout=20
+    Wait Until Page Contains    Ylläpitäjän yhteystiedot    timeout=20
     [Teardown]    Remove code lists    Testinimi
 
 208. Modify classification for DRAFT Code list

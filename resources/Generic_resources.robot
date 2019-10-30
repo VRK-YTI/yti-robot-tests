@@ -75,11 +75,11 @@ ${ADD_CLASSIFICATION_BTN}    id=add_infodomain_button
 ${CODE_LIST_START_DATE_BTN}    id=start_date_input_toggle_calendar_button
 ${CODE_LIST_END_DATE_BTN}    id=end_date_input_toggle_calendar_button
 ${CODE_LIST_STATUS_DDL}    id=selected_status_input_dropdown
-${CODE_LIST_NAME_INPUT}    id=codelist_name_input
+${CODE_LIST_NAME_INPUT}    id=codelist_name_input_fi
 ${CODE_LIST_VALUE_INPUT}    id=codelist_value_input
-${CODE_LIST_DESC_INPUT}    id=codelist_description_textarea
-${CODE_LIST_DEF_INPUT}    id=codelist_definition_textarea
-${CODE_LIST_CHANGENOTE_INPUT}    id=codelist_changenote_textarea
+${CODE_LIST_DESC_INPUT}    id=codelist_description_textarea_fi
+${CODE_LIST_DEF_INPUT}    id=codelist_definition_textarea_fi
+${CODE_LIST_CHANGENOTE_INPUT}    id=codelist_changenote_textarea_fi
 ${MODIFY_CODE_LIST}    id=editable_edit_button
 ${SEARCH_CLASSIFICATION_INPUT}    id=search_linked_code_input
 ${NEW_CLASSIFICATION}    //app-root/div/app-code-scheme/div/ngb-tabset/div/div/app-code-scheme-information/form/div[2]/div/app-classifications-input/dl/dd/div/div[2]/a/i
@@ -128,7 +128,7 @@ ${CREATE_CUMULATIVE_CODE_LIST}    id=create_new_codescheme_as_cumulative
 ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    id=mark_codelist_cumulative_checkbox
 ${UPDATE_CODE_LIST_FROM_FILE_BTN}    id=update_codelist_from_file_button
 ${CHANGE_CODE_STATUSES_CHECKBOX}    id=change_code_statuses_too_checkbox
-${CODE_LIST_FEEDBACK_INPUT}    id=codelist_feedback_channel_textarea
+${CODE_LIST_FEEDBACK_INPUT}    id=codelist_feedback_channel_textarea_fi
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -143,11 +143,11 @@ ${FILE_FORMAT_UPLOAD}    id=file_format_dropdown_button
 ${EXTENSION_UPLOAD_BTN}    id=upload_file_button
 ${MEMBER_UPLOAD_BTN}    id=upload_file_button
 ${MEMBERVALUE_1_INPUT}    id=member_membervalue1_input
-${MEMBER_NAME_INPUT}    id=member_name_input
+${MEMBER_NAME_INPUT}    id=member_name_input_fi
 ${SAVE_EXTENSION}    id=editable_save_button
 ${SAVE_MEMBER}    id=editable_save_button
 ${EXTENSION_VALUE_INPUT}    id=extension_codevalue_input
-${EXTENSION_NAME_INPUT}    id=extension_name_input
+${EXTENSION_NAME_INPUT}    id=extension_name_input_fi
 ${ADD_CODE_TO_MEMBER_BTN}    id=add_code_button
 ${SEARCH_CODE_TO_MEMBER_INPUT}    id=search_linked_code_input
 ${EXTENSION_DELETE_BTN}    id=delete_extension_button
@@ -200,9 +200,9 @@ ${CODE_BACK_BTN}    id=code_back_button
 ${IMPORT_CREATE_BACK_BTN}    id=import_create_back_button
 ${CANCEL_CODE_MOD_BTN}    id=editable_cancel_button
 ${MODIFY_CODE_BTN}    id=editable_edit_button
-${CODE_NAME_INPUT}    id=code_name_input
+${CODE_NAME_INPUT}    id=code_name_input_fi
 ${CODE_CODEVALUE_INPUT}    id=code_value_input
-${CODE_DESC_INPUT}    id=code_description_textarea
+${CODE_DESC_INPUT}    id=code_description_textarea_fi
 ${CODE_SHORT_NAME_INPUT}    id=code_shortname_input
 ${SAVE_CODE_MOD_BTN}    id=editable_save_button
 ${ADD_LINK_DDL}    id=add_link_propertytype_dropdown
@@ -870,9 +870,9 @@ Save code modification
 
 Select navigation menu link
     [Arguments]    ${navigation_menu_link}
-    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Wait Until Element Is Enabled    ${NAVIGATION_MENU_DDL}    timeout=20
     Click Element    ${NAVIGATION_MENU_DDL}
-    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]
 
 Modify code
