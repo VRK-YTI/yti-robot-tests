@@ -392,7 +392,8 @@ Resource          resources/Extension_resources.robot
     Click Element    ${EXTENSIONS_TAB}
     Wait Until Page Contains Element    //*[contains(text(), "MÄÄRITYSHIERARKIAT")]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "LASKENTAHIERARKIAT")]    timeout=20
-    Wait Until Page Contains Element    //*[contains(@id,'111_view_extension')]    timeout=20
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(@id,'111_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'111_view_extension')]
     Wait Until Element Is Enabled    ${EXTENSION_INFO_TAB}    timeout=30
     Click Element    ${EXTENSION_INFO_TAB}
@@ -429,6 +430,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${EXTENSIONS_TAB}
     Wait Until Element Is Enabled    ${CALC_HIERARCHY_TAB}    timeout=30
     Click Element    ${CALC_HIERARCHY_TAB}
+    Sleep    1
     Wait Until Element Is Enabled    //*[contains(@id,'222_view_extension')]    timeout=20
     Click Element    //*[contains(@id,'222_view_extension')]
     Wait Until Page Contains    9 jäsentä    timeout=20
