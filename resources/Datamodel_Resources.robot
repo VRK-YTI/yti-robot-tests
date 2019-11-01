@@ -646,6 +646,32 @@ Add Sub Attribute
     Wait Until Element Is Enabled    ${CREATE_SUB_PREDICATE_BTN}    timeout=30
     Click Element    ${CREATE_SUB_PREDICATE_BTN}
 
+Add Super Attribute
+    [Arguments]    ${model}    ${attribute}    ${attribute_link}
+    Wait Until Page Contains Element    ${ADD_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ATTRIBUTE_BTN}
+    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${attribute}
+    Wait Until Element Is Enabled    //*[contains(@id,'${attribute_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${attribute_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUPER_PREDICATE_BTN}    timeout=30
+    Click Element    ${CREATE_SUPER_PREDICATE_BTN}
+
+Copy Attribute
+    [Arguments]    ${model}    ${attribute}    ${attribute_link}
+    Wait Until Page Contains Element    ${ADD_NEW_ATTRIBUTE_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ATTRIBUTE_BTN}
+    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${attribute}
+    Wait Until Element Is Enabled    //*[contains(@id,'${attribute_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${attribute_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${COPY_PREDICATE_BTN}    timeout=30
+    Click Element    ${COPY_PREDICATE_BTN}
+
 Create new association
     [Arguments]    ${association}
     Wait Until Page Contains Element    ${ASSOCIATION_TAB}    timeout=30

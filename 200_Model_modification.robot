@@ -1097,6 +1097,40 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
+230. Add super attribute
+    [Documentation]    Check that adding super attribute is successful.
+    [Tags]    regression    test    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ATTRIBUTE_TAB}
+    Add Super Attribute    Kaikki tietomallit    Aihe    jhs#aihe
+    Save Predicate
+    Log To Console    Super attribute "aihe" added
+    Wait Until Page Contains    Yläattribuutti    timeout=30
+    Wait Until Page Contains    autom:aihe    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+231. Copy attribute
+    [Documentation]    Check that adding super attribute is successful.
+    [Tags]    regression    test    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ATTRIBUTE_TAB}
+    Copy Attribute    Kaikki tietomallit    Aihe    jhs#aihe
+    Save Predicate
+    Log To Console    Super attribute "aihe" added
+    Wait Until Page Contains    Yläattribuutti    timeout=30
+    Wait Until Page Contains    autom:aihe    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
 *** Keywords ***
 Test Case Setup Terminologies
     Terminology Setup
