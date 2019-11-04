@@ -1186,11 +1186,12 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 235. Convert sub attribute to association
     [Documentation]    Create sub attribute and convert it to association. YTI-1090.
-    [Tags]    tietomallit
+    [Tags]    regression    test    tietomallit    200
     [Setup]    Test Case Setup Create Testiautomaatio profile
     Select And Edit Profile    Testiautomaatiomalli
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
     Select Tab    ${ATTRIBUTE_TAB}
     Add Sub Attribute    Kaikki tietomallit    Aihe    jhs#aihe
     Save Predicate
@@ -1198,10 +1199,13 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Yläattribuutti    timeout=30
     Wait Until Page Contains    jhs:aihe    timeout=30
     Select And Edit Predicate    ${ATTRIBUTE_TAB}    aihe
+    Sleep    1
     Convert To Association
+    Save Predicate
     Select Tab    ${ASSOCIATION_TAB}
     Wait Until Page Contains Element    //*[contains(@id,'aihe_tabset_link')]    timeout=30
     Select Tab    ${ATTRIBUTE_TAB}
+    Sleep    1
     Page Should Not Contain Element    //*[contains(@id,'aihe_tabset_link')]    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
