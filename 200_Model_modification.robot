@@ -470,7 +470,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=30
     Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
     Click Element    ${ATTRIBUTE_TAB}
-    Page Should Not Contain element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
+    Page Should Not Contain Element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
@@ -1181,6 +1181,28 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Log To Console    Super association "Jäsen" added
     Wait Until Page Contains    Assosiaation tunniste    timeout=30
     Wait Until Page Contains    autom:jasen    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+235. Convert sub attribute to association
+    [Documentation]    Create sub attribute and convert it to association. YTI-1090.
+    [Tags]    tietomallit
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Tab    ${ATTRIBUTE_TAB}
+    Add Sub Attribute    Kaikki tietomallit    Aihe    jhs#aihe
+    Save Predicate
+    Log To Console    Sub attribute "Aihe" added
+    Wait Until Page Contains    Yläattribuutti    timeout=30
+    Wait Until Page Contains    jhs:aihe    timeout=30
+    Select And Edit Predicate    ${ATTRIBUTE_TAB}    aihe
+    Convert To Association
+    Select Tab    ${ASSOCIATION_TAB}
+    Wait Until Page Contains Element    //*[contains(@id,'aihe_tabset_link')]    timeout=30
+    Select Tab    ${ATTRIBUTE_TAB}
+    Page Should Not Contain Element    //*[contains(@id,'aihe_tabset_link')]    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 

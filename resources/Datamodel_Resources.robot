@@ -934,3 +934,17 @@ Select Tab
     [Arguments]    ${tab}
     Wait Until Element Is Enabled    ${tab}    timeout=30
     Click Element    ${tab}
+
+Convert To Attribute
+    Wait Until Element Is Enabled    ${CONVERT_TO_ATTRIBUTE}    timeout=30
+    Click Element    ${CONVERT_TO_ATTRIBUTE}
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=30
+
+Convert To Association
+    Wait Until Element Is Enabled    ${CONVERT_TO_ASSOCIATION}    timeout=30
+    Click Element    ${CONVERT_TO_ASSOCIATION}
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=30
