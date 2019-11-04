@@ -715,6 +715,45 @@ Add Association
     Click Element    ${CONFIRM_PREDICATE_BTN}
     Sleep    2
 
+Add Sub Association
+    [Arguments]    ${model}    ${association}    ${association_link}
+    Wait Until Page Contains Element    ${ADD_NEW_ASSOCIATION_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ASSOCIATION_BTN}
+    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
+    Wait Until Element Is Enabled    //*[contains(@id,'${association_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${association_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUB_PREDICATE_BTN}    timeout=30
+    Click Element    ${CREATE_SUB_PREDICATE_BTN}
+
+Copy Association
+    [Arguments]    ${model}    ${association}    ${association_link}
+    Wait Until Page Contains Element    ${ADD_NEW_ASSOCIATION_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ASSOCIATION_BTN}
+    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
+    Wait Until Element Is Enabled    //*[contains(@id,'${association_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${association_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${COPY_PREDICATE_BTN}    timeout=30
+    Click Element    ${COPY_PREDICATE_BTN}
+
+Add Super Association
+    [Arguments]    ${model}    ${association}    ${association_link}
+    Wait Until Page Contains Element    ${ADD_NEW_ASSOCIATION_BTN}    timeout=30
+    Click Element    ${ADD_NEW_ASSOCIATION_BTN}
+    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
+    Wait Until Element Is Enabled    //*[contains(@id,'${association_link}_search_class_link')]    timeout=60
+    Click Element    //*[contains(@id,'${association_link}_search_class_link')]
+    Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
+    Click Element    ${ACTIONS_BTN}
+    Wait Until Element Is Enabled    ${CREATE_SUPER_PREDICATE_BTN}    timeout=30
+    Click Element    ${CREATE_SUPER_PREDICATE_BTN}
+
 Change concept for class
     [Arguments]    ${concept}
     Wait Until Page Contains Element    ${CHANGE_CONCEPT}    timeout=30

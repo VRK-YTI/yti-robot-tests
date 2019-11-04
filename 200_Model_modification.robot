@@ -1125,9 +1125,62 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select Tab    ${ATTRIBUTE_TAB}
     Copy Attribute    Kaikki tietomallit    Aihe    jhs#aihe
     Save Predicate
-    Log To Console    Super attribute "aihe" added
+    Log To Console    Attribute "aihe" copied
     Wait Until Page Contains    Yläattribuutti    timeout=30
     Wait Until Page Contains    autom:aihe    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+232. Add sub association
+    [Documentation]    Check that adding sub association is successful.
+    ...    Check that super association information is shown in sub association information.
+    [Tags]    regression    test    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ASSOCIATION_TAB}
+    Add Sub Association    Kaikki tietomallit    Jäsen    jhs#jasen
+    Save Predicate
+    Log To Console    Sub association "Jäsen" added
+    Wait Until Page Contains    Yläassosiaatio    timeout=30
+    Wait Until Page Contains    autom:jasen    timeout=30
+    Wait Until Page Contains    jhs:jasen    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+233. Copy association
+    [Documentation]    Check that copying association is successful.
+    [Tags]    regression    test    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ASSOCIATION_TAB}
+    Copy Association    Kaikki tietomallit    Jäsen    jhs#jasen
+    Save Predicate
+    Log To Console    Association "Jäsen" copied
+    Wait Until Page Contains    Assosiaation tunniste    timeout=30
+    Wait Until Page Contains    autom:jasen    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+234. Add super association
+    [Documentation]    Check that adding super association is successful.
+    [Tags]    regression    test    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ASSOCIATION_TAB}
+    Add Super Association    Kaikki tietomallit    Jäsen    jhs#jasen
+    Save Predicate
+    Log To Console    Super association "Jäsen" added
+    Wait Until Page Contains    Assosiaation tunniste    timeout=30
+    Wait Until Page Contains    autom:jasen    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
