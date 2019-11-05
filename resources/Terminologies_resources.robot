@@ -185,7 +185,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Input Text    ${PREFIX_INPUT}    ${PREFIX_1}
     Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=60
     Click element    ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=90
     Click Element    ${VOCABULARY_DDL}
     Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=90
     Click element    ${IMPORT_VOCABULARY_BTN}
