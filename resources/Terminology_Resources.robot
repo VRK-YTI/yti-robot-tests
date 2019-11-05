@@ -403,7 +403,7 @@ Create Terminological Dictionary and import vocabulary
     Input Text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=90
     Click Element    ${VOCABULARY_DDL}
     Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click Element    ${IMPORT_VOCABULARY_BTN}
@@ -438,7 +438,7 @@ Create Terminological Dictionary without concepts
     Input Text    ${PREFIX_INPUT}    ${PREFIX_2}
     Wait Until Element Is Enabled    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=60
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=90
     Sleep    1
     Log To Console    ${terminology} without concepts created
 
