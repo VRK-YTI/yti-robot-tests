@@ -348,7 +348,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Import new code list with DPM Metric extension.
     ...    Check that correct error message is displayed when trying to import members without sequence IDs,
     ...    Check that updating DPM Metric values is successful with correct sequence ID values in Excel sheet. YTI-612.
-    [Tags]    koodistot    regression    600    test
+    [Tags]    koodistot    regression    700    test
     [Setup]    Test Case Setup Superuser
     Upload codelist in excel format    ${Code_list_with_DPM_Metric_extension}    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
