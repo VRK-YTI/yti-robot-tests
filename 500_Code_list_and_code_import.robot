@@ -1213,7 +1213,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
     Sleep    1
-    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log To Console    New version of code list created
@@ -1691,6 +1692,53 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codes    ${Codes_with_order}
     Wait Until Page Contains    22 koodia    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
+
+543. Create new version of code list with languages
+    [Documentation]    Import code list and create new version. Check that all elements with different
+    ...    languages are shown in version creation and copied to the new version.
+    [Tags]    regression    koodistot    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Codes_list_with_languages}    ${CODE_LIST_9}
+    Wait Until Page Contains    30 koodia    timeout=20
+    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
+    Click Element    ${CODELIST_INFO_TAB}
+    Change content language    ${ALL_LANGUAGE_BTN}
+    Wait Until Page Contains    koodisto7000_af_NA    timeout=60
+    Wait Until Page Contains    koodisto7000_TT    timeout=60
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Button    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Button    ${CREATE_NEW_VERSION_BTN}
+    Sleep    1
+    Wait Until Element Is Enabled    ${CODE_LIST_VALUE_INPUT}    timeout=60
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_AB}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_AF_NA}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_BEM}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_EN}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_NDS}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_SV}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_TT}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DESCRIPTION_INPUT_BEM}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DESCRIPTION_INPUT_SV}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_DEFINITION_INPUT_BEM}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_CHANGENOTE_INPUT}    timeout=20
+    Wait Until Page Contains Element    ${CODE_LIST_FEEDBACK_INPUT_NDS}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_LIST}
+    Wait Until Page Contains    30 koodia    timeout=20
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
+    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=60
+    Click Element    ${CODELIST_INFO_TAB}
+    Change content language    ${ALL_LANGUAGE_BTN}
+    Wait Until Page Contains    koodisto7000_af_NA    timeout=60
+    Wait Until Page Contains    koodisto7000_TT    timeout=60
+    Log To Console    New version of code list created
+    Log To Console    All codes are copied
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 *** Keywords ***
 Check values from Draft Code list
