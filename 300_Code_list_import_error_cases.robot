@@ -26,6 +26,7 @@ ${Unknown_sub_code_list}    ${DATAFOLDER}${/}unknown_sub_code_list.xlsx
 ${empty}          ${DATAFOLDER}${/}empty.xlsx
 ${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
 ${Code_list_with_invalid_link_urls}    ${DATAFOLDER}${/}Code_list_with_invalid_link_URLs.xlsx
+${Code_list_invalid_delimiter_in_language_code}    ${DATAFOLDER}${/}Code_list_invalid_delimiter_in_language_code.xlsx
 #CSV paths
 ${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
 ${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
@@ -51,6 +52,7 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
 ${Error_codevalue_missing}    Aineistosta puuttuu sarake otsikolla CODEVALUE.
 ${Error_no_content}    Excel-tiedosto on tyhjä. Varmista, että tietosisältö on määritelty oikein ja yritä uudelleen.
 ${Error_invalid_link_urls}    Tuotava aineisto sisältää virheellisiä arvoja linkkien HREF-sarakkeissa.
+${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv:fi, joka ei ole sallittu.
 
 *** Test Cases ***
 300. Import code list with missing codeValue
@@ -321,5 +323,18 @@ ${Error_invalid_link_urls}    Tuotava aineisto sisältää virheellisiä arvoja 
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_link_urls}    timeout=20
+    Cancel code list import
+    Return to Koodistot frontpage
+
+318. Import code list with invalid delimiter in LANGUAGECODE column
+    [Documentation]    Import code list with invalid delimiter in LANGUAGECODE column
+    ...    and check error message. YTI-1097.
+    [Tags]    regression    test    300
+    [Setup]    Test Case Setup Admin
+    Import code list in Excel format
+    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_delimiter_in_language_code}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Click Button    ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains    ${Error_invalid_language_code_delimiter}    timeout=20
     Cancel code list import
     Return to Koodistot frontpage
