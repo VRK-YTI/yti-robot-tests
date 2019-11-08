@@ -983,6 +983,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${CODE_LIST_DDL}
     Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=30
     Click Element    ${CREATE_NEW_VERSION_BTN}
+    Sleep    1
     Wait Until Element Is Visible    ${CODE_LIST_VALUE_INPUT}    timeout=60
     Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}
     Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=30

@@ -1696,7 +1696,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 543. Create new version of code list with languages
     [Documentation]    Import code list and create new version. Check that all elements with different
     ...    languages are shown in version creation and copied to the new version.
-    [Tags]    regression    koodistot    500
+    [Tags]    regression    test    koodistot    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Codes_list_with_languages}    ${CODE_LIST_9}
     Wait Until Page Contains    30 koodia    timeout=20
