@@ -3,6 +3,7 @@ Documentation     Test Suite for basic functionality of Data Vocabularies applic
 Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
+Library           Collections
 Resource          resources/Datamodel_Resources.robot
 Resource          resources/Terminologies_Resources.robot
 
@@ -1207,6 +1208,60 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select Tab    ${ATTRIBUTE_TAB}
     Sleep    1
     Page Should Not Contain Element    //*[contains(@id,'aihe_tabset_link')]    timeout=30
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_1}
+
+236. Check sub attribute history information
+    [Documentation]    Create model and sub attribute and delete both. Check that history information
+    ...    is visible after deleting and creating same model and sub attribute again. YTI-107.
+    [Tags]    regression    test    tietomallit    200
+    [Setup]    Test Case Setup Create Testiautomaatio profile
+    Select And Edit Profile    Testiautomaatiomalli
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ATTRIBUTE_TAB}
+    Add Sub Attribute    Kaikki tietomallit    Henkilötunnus    jhs#henkilotunnus
+    Save Predicate
+    Log To Console    Sub attribute "Henkiötunnus" added
+    Wait Until Page Contains    Yläattribuutti    timeout=30
+    Wait Until Page Contains    jhs:henkilotunnus    timeout=30
+    Show History    ${PREDICATE_HISTORY_BTN}
+    Sleep    2
+    Capture Page Screenshot
+    Wait Until Page Contains Element    //*[contains(@id,'urn:')]    timeout=20
+    ${elements} =    Get WebElements    //*[contains(@id,'urn:')]
+    ${element} =    Get From List    ${elements}    0
+    ${elementId} =    Set Variable    ${element.get_attribute('id')}
+    Log    ${elementId}
+    Click Element    ${elementId}
+    Capture Page Screenshot
+    Wait Until Page Contains Element    ${CLOSE_HISTORY_VIEW_BTN}    timeout=30
+    Click Element    ${CLOSE_HISTORY_VIEW_BTN}
+    Go Back To Data Vocabularies Frontpage
+    Delete existing profile and create new
+    Modify Profile
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Select Tab    ${ATTRIBUTE_TAB}
+    Add Sub Attribute    Kaikki tietomallit    Henkilötunnus    jhs#henkilotunnus
+    Save Predicate
+    Log To Console    Sub attribute "Henkiötunnus" added
+    Wait Until Page Contains    Yläattribuutti    timeout=30
+    Wait Until Page Contains    jhs:henkilotunnus    timeout=30
+    Show History    ${PREDICATE_HISTORY_BTN}
+    Sleep    2
+    Capture Page Screenshot
+    Wait Until Page Contains Element    //*[contains(@id,'urn:')]    timeout=20
+    ${elements} =    Get WebElements    //*[contains(@id,'urn:')]
+    ${element} =    Get From List    ${elements}    0
+    ${elementId} =    Set Variable    ${element.get_attribute('id')}
+    Log    ${elementId}
+    Click Element    ${elementId}
+    Capture Page Screenshot
+    Wait Until Page Contains Element    ${CLOSE_HISTORY_VIEW_BTN}    timeout=30
+    Click Element    ${CLOSE_HISTORY_VIEW_BTN}
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 

@@ -82,6 +82,7 @@ ${PNG_DOWNLOAD}    id=PNG_download_dropdown
 ${SVG_DOWNLOAD}    id=SVG_download_dropdown
 ${EXPORT_MODEL_DDL}    id=model_export_dropdown
 ${OPEN_LINK_MODAL}    class=modal-body
+${CLOSE_HISTORY_VIEW_BTN}    id=close_history_view_button
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
@@ -158,6 +159,7 @@ ${CREATE_PREDICATE_BTN}    id=create_predicate_button
 ${CREATE_SUB_PREDICATE_BTN}    //*[contains(@id,'create_sub_predicate')]
 ${CREATE_SUPER_PREDICATE_BTN}    //*[contains(@id,'create_super_predicate')]
 ${COPY_PREDICATE_BTN}    //*[contains(@id,'copy_predicate')]
+${PREDICATE_HISTORY_BTN}    id=predicate_edit_buttons_history
 #Associations
 ${ASSOCIATION_TAB}    id=association_tab_heading_link
 ${CREATE_NEW_ASSOCIATION_LINK}    //*[contains(@id,'create_new_LisaaUusiAssosiaatio')]
@@ -943,3 +945,14 @@ Convert To Attribute
 Convert To Association
     Wait Until Element Is Enabled    ${CONVERT_TO_ASSOCIATION}    timeout=30
     Click Element    ${CONVERT_TO_ASSOCIATION}
+
+Show History
+    [Arguments]    ${element}
+    Wait Until Element Is Enabled    ${element}    timeout=30
+    Click Element    ${element}
+
+Modify Profile
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
+    Click Element    ${MODEL_DETAILS_TAB}
+    Wait Until Page Contains Element    ${MODIFY_MODEL}    timeout=30
+    Click Element    ${MODIFY_MODEL}
