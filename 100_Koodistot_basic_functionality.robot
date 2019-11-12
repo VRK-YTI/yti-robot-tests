@@ -366,7 +366,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 115. Check the visibility of the INCOMPLETE status code list
     [Documentation]    Check that code list with INCOMPLETE status is visible
     ...    in frontpage search for certain users only. YTI-903.
-    [Tags]    regression    100
+    [Tags]    regression    test    100
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
     Upload codelist    ${Code_list_with_30_codes_incomplete}    ${CODE_LIST_26}
