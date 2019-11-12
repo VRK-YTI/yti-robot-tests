@@ -214,6 +214,8 @@ ${IMPORT_CREATE_BACK_BTN}    id=import_create_back_button
 ${CANCEL_CODE_MOD_BTN}    id=editable_cancel_button
 ${MODIFY_CODE_BTN}    id=editable_edit_button
 ${CODE_NAME_INPUT}    id=code_name_input_fi
+${CODE_NAME_INPUT_EN}    id=code_name_input_en
+${CODE_NAME_INPUT_SV}    id=code_name_input_sv
 ${CODE_CODEVALUE_INPUT}    id=code_value_input
 ${CODE_DESC_INPUT}    id=code_description_textarea_fi
 ${CODE_SHORT_NAME_INPUT}    id=code_shortname_input
@@ -508,6 +510,54 @@ Create code list
     Run Keyword If    ${code_value_exists}    Cancel code list creation
     ...    ELSE    Save code list after creation    ${codelist_name}
 
+Create Code List With All Languages
+    [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name_fi}    ${codelist_name_en}
+    ...    ${codelist_name_sv}    ${classification}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name_fi}
+    Sleep    1
+    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
+    Run Keyword If    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name_fi}
+    Sleep    1
+    Wait Until Element Is Enabled    ${ADD_CODE_LIST_BTN}    timeout=60
+    Click Element    ${ADD_CODE_LIST_BTN}
+    Wait Until Element Is Enabled    ${CREATE CODE_LIST_BTN}    timeout=60
+    Click Element    ${CREATE CODE_LIST_BTN}
+    ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
+    Run Keyword If    ${vocabularies_error}    Close error modal
+    Wait Until Element Is Enabled    ${CANCEL_CREATION_BTN}    timeout=20
+    Click Element    ${CANCEL_CREATION_BTN}
+    Sleep    4
+    Change content language    ${ALL_LANGUAGE_BTN}
+    Wait Until Element Is Enabled    ${SELECT_REGISTRY_BTN}    timeout=60
+    Click Element    ${SELECT_REGISTRY_BTN}
+    Wait Until Element Is Enabled    //*[contains(text(), "${registry}")]    timeout=60
+    Click Element    //*[contains(text(), "${registry}")]
+    Run Keyword If    '${cumulative}' == 'Cumulative'    Select Cumulative Code List Checkbox    ${cumulative}
+    Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_VALUE_INPUT}    ${codelist_value}
+    Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click Button    ${ADD_ORGANIZATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=20
+    Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
+    Wait Until Page Contains Element    //*[contains(text(), "${organization}")]    timeout=20
+    Click Element    //*[contains(text(), "${organization}")]
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT}    ${codelist_name_fi}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_EN}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT_EN}    ${codelist_name_en}
+    Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT_SV}    timeout=20
+    Input Text    ${CODE_LIST_NAME_INPUT_SV}    ${codelist_name_sv}
+    Click Button    ${ADD_CLASSIFICATION_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
+    Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${classification}
+    Wait Until Page Contains Element    //*[contains(text(), "${classification}")]    timeout=20
+    Click Element    //*[contains(text(), "${classification}")]
+    Sleep    1
+    ${code_value_exists}=    Run Keyword And Return Status    Page should contain    Koodiston tunnus on jo käytössä tässä rekisterissä.
+    Run Keyword If    ${code_value_exists}    Cancel code list creation
+    ...    ELSE    Save code list after creation    ${codelist_name_fi}
+
 Create Code List Version From File
     [Arguments]    ${file_format}    ${codelist}    ${codelist_name}
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
@@ -670,6 +720,36 @@ Create new code to code list
     Click Element    ${SAVE_NEW_CODE_BTN}
     Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
     Log To Console    ${code_name} created
+
+Create New Code With All Languages
+    [Arguments]    ${code_value}    ${code_name_fi}    ${code_name_en}    ${code_name_sv}    ${code_status}    ${sub_code_list}
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Page Contains Element    ${CREATE_CODE_BTN}    timeout=20
+    Click Element    ${CREATE_CODE_BTN}
+    ${vocabularies_error}=    Run Keyword And Return Status    Page should contain    Ei yhteyttä Sanastoihin.
+    Run Keyword If    ${vocabularies_error}    Close error modal
+    Wait Until Page Contains Element    ${CANCEL_CREATION_BTN}    timeout=20
+    Click Element    ${CANCEL_CREATION_BTN}
+    Change content language    ${ALL_LANGUAGE_BTN}
+    Wait Until Element Is Visible    ${CODE_CODEVALUE_INPUT}    timeout=60
+    Input Text    ${CODE_CODEVALUE_INPUT}    ${code_value}
+    Wait Until Page Contains Element    ${CODE_NAME_INPUT}    timeout=20
+    Input Text    ${CODE_NAME_INPUT}    ${code_name_fi}
+    Wait Until Page Contains Element    ${CODE_NAME_INPUT_EN}    timeout=20
+    Input Text    ${CODE_NAME_INPUT_EN}    ${code_name_en}
+    Wait Until Page Contains Element    ${CODE_NAME_INPUT_SV}    timeout=20
+    Input Text    ${CODE_NAME_INPUT_SV}    ${code_name_sv}
+    Wait Until Page Contains Element    ${CODE_STATUS_DDL}    timeout=20
+    Click Element    ${CODE_STATUS_DDL}
+    Wait Until Page Contains Element    ${code_status}    timeout=20
+    Click Element    ${code_status}
+    ${sub_code_list_length}=    Get Length    ${sub_code_list}
+    Run Keyword If    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
+    Wait Until Page Contains Element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Click Element    ${SAVE_NEW_CODE_BTN}
+    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
+    Log To Console    ${code_name_fi} created
 
 Add sub code list
     [Arguments]    ${sub_code_list}

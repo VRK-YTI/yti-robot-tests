@@ -653,6 +653,33 @@ Resource          resources/Extension_resources.robot
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
 
+219. Create new code list and codes with different languages
+    [Documentation]    Create new code list and codes with different languages
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Superuser
+    Create Code List With All Languages    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    koodisto6000_fi    koodisto6000_en
+    ...    koodisto6000_sv    Asuminen
+    Wait Until Page Contains    koodisto6000_fi    timeout=20
+    Wait Until Page Contains    koodisto6000_en    timeout=20
+    Wait Until Page Contains    koodisto6000_sv    timeout=20
+    Create New Code With All Languages    NewCode001    newCode001_fi    newCode001_en    newCode001_sv    ${DRAFT_STATUS}    ${EMPTY}
+    Wait Until Page Contains    NewCode001 - newCode001_fi    timeout=30
+    Wait Until Page Contains    koodisto6000_fi    timeout=20
+    Wait Until Page Contains    Koodin arvo    timeout=20
+    Wait Until Page Contains    NewCode001    timeout=20
+    Wait Until Page Contains    Koodin nimi    timeout=20
+    Wait Until Page Contains    newCode001_en    timeout=20
+    Wait Until Page Contains    newCode001_fi    timeout=20
+    Wait Until Page Contains    newCode001_sv    timeout=20
+    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Sleep    1
+    Remove code    NewCode001 - newCode001_fi
+    Click Element    ${CODELIST_INFO_TAB}
+    Wait Until Page Contains    koodisto6000_fi    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    koodisto6000_fi
+
 *** Keywords ***
 Go back to Koodistot frontpage
     Wait until page contains element    ${FRONTPAGE_LINK}    timeout=20
