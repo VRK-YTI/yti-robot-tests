@@ -545,7 +545,6 @@ Resource          resources/Extension_resources.robot
     Click Element    ${TARGET_STATUS_DDL}
     Wait Until Page Contains Element    ${INCOMPLETE_STATUS_TARGET}    timeout=60
     Wait Until Page Contains Element    ${DRAFT_STATUS_TARGET}    timeout=60
-    Wait Until Page Contains Element    ${SUGGESTED_STATUS_TARGET}    timeout=60
     Wait Until Page Contains Element    ${VALID_STATUS_TARGET}    timeout=60
     Wait Until Page Contains Element    ${SUPERSEDED_STATUS_TARGET}    timeout=60
     Wait Until Page Contains Element    ${RETIRED_STATUS_TARGET}    timeout=60
@@ -561,7 +560,6 @@ Resource          resources/Extension_resources.robot
     Click Element    ${TARGET_STATUS_DDL}
     Sleep    1
     Page Should Not Contain Element    ${DRAFT_STATUS_TARGET}    timeout=60
-    Page Should Not Contain Element    ${SUGGESTED_STATUS_TARGET}    timeout=60
     Page Should Not Contain Element    ${SUPERSEDED_STATUS_TARGET}    timeout=60
     Page Should Not Contain Element    ${RETIRED_STATUS_TARGET}    timeout=60
     Page Should Not Contain Element    ${INVALID_STATUS_TARGET}    timeout=60
