@@ -330,12 +330,12 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Testcode 28_fi    timeout=60
     Wait Until Page Contains    Kuvaus_fi    timeout=60
     Wait Until Page Contains    Määritelmä_fi    timeout=60
-    Change content language    ${CONTENT_LANGUAGE_EN}
+    Change Content Language    ${CONTENT_LANGUAGE_EN}
     Wait Until Page Contains    Koodisto600_en    timeout=60
     Wait Until Page Contains    Testcode 28_en    timeout=60
     Wait Until Page Contains    Kuvaus_en    timeout=60
     Wait Until Page Contains    Määritelmä_en    timeout=60
-    Change content language    ${CONTENT_LANGUAGE_SW_UG}
+    Change Content Language    ${CONTENT_LANGUAGE_SW_UG}
     Wait Until Page Contains    Koodisto600_sw    timeout=60
     Wait Until Page Contains    Testcode 28_sw    timeout=60
     Wait Until Page Contains    Kuvaus_sw    timeout=60
@@ -343,9 +343,8 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=60
     Click Element    ${2_BREADCRUMB_LINK}
     Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
-    Wait Until Element Is Visible    ${CODELIST_INFO_TAB}    timeout=60
-    Click Element    ${CODELIST_INFO_TAB}
-    Change content language    ${CONTENT_LANGUAGE_SV}
+    Click Code List Info Tab
+    Change Content Language    ${CONTENT_LANGUAGE_SV}
     Wait Until Page Contains    Koodisto600_sv    timeout=60
     Wait Until Page Contains    Kuvaus_sv    timeout=60
     Wait Until Page Contains    Määritelmä_sv    timeout=60
@@ -357,7 +356,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    30 koodia    timeout=60
     Wait Until Element Is Visible    //*[contains(text(), "testcode28 - Testcode 28_sv")]    timeout=60
     Click Element    //*[contains(text(), "testcode28 - Testcode 28_sv")]
-    Change content language    ${CONTENT_LANGUAGE_AR_SO}
+    Change Content Language    ${CONTENT_LANGUAGE_AR_SO}
     Wait Until Page Contains    Testcode 28_ar    timeout=60
     Wait Until Page Contains    Kuvaus_ar    timeout=60
     Wait Until Page Contains    Määritelmä_ar    timeout=60
@@ -369,8 +368,7 @@ Resource          resources/Extension_resources.robot
     [Setup]    Test Case Setup Admin
     Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
     Click Element    ${MODIFY_CODE_LIST}
     Wait Until Page Contains Element    ${CODE_LIST_STATUS_DDL}    timeout=20
@@ -673,10 +671,36 @@ Resource          resources/Extension_resources.robot
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Remove code    NewCode001 - newCode001_fi
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    koodisto6000_fi    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    koodisto6000_fi
+
+220. Remove language that is in use in the code list
+    [Documentation]    Import code list, codes and extension with different languages.
+    ...    Try to remove languages that are in use in the code list and check error message. YTI-1048.
+    [Tags]    regression    test    200
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Codes_list_and_extension_with_languages}    ${CODE_LIST_14}
+    Wait Until Page Contains    25 koodia    timeout=20
+    Click Code List Info Tab
+    Change Content Language    ${ALL_LANGUAGE_BTN}
+    Wait Until Page Contains    Test codescheme2 with long names    timeout=20
+    Wait Until Page Contains    Testikoodisto2 pitkillä arvoilla    timeout=20
+    Modify code list
+    Wait Until Page Contains Element    ${REMOVE_AB_LANGUAGE}    timeout=20
+    Click Element    ${REMOVE_AB_LANGUAGE}
+    Wait Until Page Contains Element    ${REMOVE_EN_LANGUAGE}    timeout=20
+    Click Element    ${REMOVE_EN_LANGUAGE}
+    Wait Until Page Contains Element    ${REMOVE_FI_LANGUAGE}    timeout=20
+    Click Element    ${REMOVE_FI_LANGUAGE}
+    Wait Until Page Contains Element    ${REMOVE_TT_LANGUAGE}    timeout=20
+    Click Element    ${REMOVE_TT_LANGUAGE}
+    Save code list
+    Wait Until Page Contains    ${Error_remove_languages}    timeout=60
+    Click Confirmation
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_14}
 
 *** Keywords ***
 Go back to Koodistot frontpage

@@ -52,8 +52,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Check values from Draft Code list
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
@@ -76,8 +75,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Testikoodi 02    timeout=20
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Check values from Valid Code list
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_9}
@@ -135,7 +133,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
     Remove code    NewCode001 - newCode001
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}
@@ -213,8 +211,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
     Wait Until Page Contains    koodi504 - Koodi504    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    T1333    timeout=20
     Wait Until Page Contains    Vakiokoodikoodisto    timeout=20
     Wait Until Page Contains    Vakiokoodi    timeout=20
@@ -236,8 +233,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
     Wait Until Page Contains    koodi504 - Koodi504    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
     Click Element    ${MODIFY_CODE_LIST}
     Wait Until Page Contains Element    ${ADD_DEFAULTCODE_BTN}
@@ -322,8 +318,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
     Log To Console    Code list saved
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Koodisto6000    timeout=20
     Wait Until Page Contains    tutkija    timeout=20
     Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
@@ -348,8 +343,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Terminologies
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Check values from Draft Code list
     Create new code to code list with concept    Tutkija    Testiautomaatiosanasto
     Wait Until Page Contains    NewCode001 - tutkija    timeout=20
@@ -398,8 +392,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    3
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
     Click Element    ${MODIFY_CODE_LIST}
     Wait Until Page Contains Element    ${ADD_LINK_DDL}    timeout=30
@@ -454,8 +447,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Log To Console    Code links copied
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    englanti    timeout=20
     Wait Until Page Contains    suomi    timeout=20
     Wait Until Page Contains    ruotsi    timeout=20
@@ -569,8 +561,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_languagecode}    ${CODE_LIST_9}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=60
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Koodisto7000    timeout=20
     Wait Until Page Contains    koodisto7000    timeout=20
     Wait Until Page Contains    Testirekisteri    timeout=20
@@ -618,8 +609,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait Until Page Contains Element    ${SAVE_NEW_CODE_LIST}    timeout=20
     Click Element    ${SAVE_NEW_CODE_LIST}
-    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Koodisto6000    timeout=20
     Wait Until Page Contains    automobiili    timeout=20
     Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
@@ -674,8 +664,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Button    ${EXPAND_ALL_BTN}
     Sleep    3
     Log To Console    Expand all button clicked
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Log To Console    Back button press successful from Code page
     Sleep    2
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
@@ -737,8 +726,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Page Should Not Contain    10 koodia    timeout=20
     Page Should Not Contain    testikoodi01 - Testikoodi 01    timeout=20
     Log To Console    Codes were not copied
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Sleep    1
     Wait Until Page Contains    englanti    timeout=20
     Wait Until Page Contains    suomi    timeout=20
@@ -868,8 +856,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Tila    timeout=20
     Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
     Wait Until Page Contains    koodisto7000    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    01.11.2018 -    timeout=20
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
     Click Element    ${MODIFY_CODE_LIST}
@@ -904,8 +891,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist    ${Code_list_with_links}    ${CODE_LIST_21}
     Sleep    2
     Wait Until Page Contains    30 koodia    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Käyttöedellytys    timeout=20
     Wait Until Page Contains    Testikäyttöedellytys    timeout=20
     Wait Until Page Contains    Käyttökohde    timeout=20
@@ -1069,7 +1055,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    2
     Remove code    NewCode001 - newCode001
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    koodisto6000    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_8}    ${CODE_LIST_9}
@@ -1118,8 +1104,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
     Wait Until Page Contains    10 koodia    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
@@ -1136,8 +1121,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Log To Console    New version of code list created
     Wait Until Page Contains    10 koodia    timeout=20
     Log To Console    All codes are copied
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Log To Console    Default code is copied
     Return to Koodistot frontpage
@@ -1317,8 +1301,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
     Wait Until Page Contains    10 koodia    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
@@ -1336,8 +1319,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Log To Console    New version of code list created
     Wait Until Page Contains    10 koodia    timeout=20
     Log to Console    All codes are copied
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Log to Console    Default code is copied
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
@@ -1362,8 +1344,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    koodistot    test    500
     [Setup]    Test Case Setup Superuser
     Create code list    ${REGISTRY_1}    Cumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
@@ -1395,8 +1376,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Log to Console    New version of code list created
     Wait Until Page Contains    6 koodia    timeout=20
     Log to Console    All codes are copied
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
     Click Element    ${CODELIST_CODES_TAB}
@@ -1421,8 +1401,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
     Wait Until Page Contains    10 koodia    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Wait Until Page Contains    Ei    timeout=20
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=20
@@ -1450,8 +1429,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Log to Console    New version of code list created
     Wait Until Page Contains    10 koodia    timeout=20
     Log to Console    All codes are copied
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Wait Until Element Is Enabled    ${CODELIST_CODES_TAB}    timeout=20
     Click Element    ${CODELIST_CODES_TAB}
@@ -1506,8 +1484,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Sleep    3
     Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Koodiston uusi kuvaus    timeout=20
     Update code list    ${Code_list_with_30_Codes_updated_csv}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
     Sleep    2
@@ -1599,8 +1576,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Update code list    ${Code_list_with_30_Codes_updated}    ${CODE_LIST_24}    ${FILE_FORMAT_Excel}
     Wait Until Page Contains Element    ${CODELIST_VARIANTS_TAB}    timeout=20
     Wait Until Page Contains Element    ${VERSION_TAB}    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Wait Until Page Contains    Kyllä    timeout=20
     Return to Koodistot frontpage
@@ -1700,9 +1676,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Codes_list_with_languages}    ${CODE_LIST_9}
     Wait Until Page Contains    30 koodia    timeout=20
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
-    Change content language    ${ALL_LANGUAGE_BTN}
+    Click Code List Info Tab
+    Change Content Language    ${ALL_LANGUAGE_BTN}
     Wait Until Page Contains    koodisto7000_af_NA    timeout=60
     Wait Until Page Contains    koodisto7000_TT    timeout=60
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
@@ -1730,9 +1705,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Page Contains    30 koodia    timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=60
-    Click Element    ${CODELIST_INFO_TAB}
-    Change content language    ${ALL_LANGUAGE_BTN}
+    Click Code List Info Tab
+    Change Content Language    ${ALL_LANGUAGE_BTN}
     Wait Until Page Contains    koodisto7000_af_NA    timeout=60
     Wait Until Page Contains    koodisto7000_TT    timeout=60
     Log To Console    New version of code list created

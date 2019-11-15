@@ -45,6 +45,11 @@ ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
 ${EUPL_LICENCE_PAGE}    id=license_link
 ${ALL_LANGUAGE_BTN}    id=all_languages_content_lang_dropdown_button
+${REMOVE_AB_LANGUAGE}    id=remove_ab_languagecode_link
+${REMOVE_EN_LANGUAGE}    id=remove_en_languagecode_link
+${REMOVE_FI_LANGUAGE}    id=remove_fi_languagecode_link
+${REMOVE_TT_LANGUAGE}    id=remove_tt_languagecode_link
+${CONFIRM_ALERT_MODAL_BTN}    id=confirm_alert_modal_button
 #Frontpage buttons
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
@@ -362,6 +367,7 @@ ${Code_links_with_space}    ${DATAFOLDER}${/}Code_links_with_space.xlsx
 ${Code_list_with_30_codes_incomplete}    ${DATAFOLDER}${/}Code_list_with_30_codes_incomplete.xlsx
 ${Codes_with_order}    ${DATAFOLDER}${/}Codes_with_order.xlsx
 ${Codes_list_with_languages}    ${DATAFOLDER}${/}Code_list_with_languages.xlsx
+${Codes_list_and_extension_with_languages}    ${DATAFOLDER}${/}Code_list_codes_extensions_and_members_with_languages.xlsx
 #CSV paths
 ${Codes_status_with_space_csv}    ${DATAFOLDER}${/}Codes_status_with_space_csv.csv
 ${Code_links_with_space_csv}    ${DATAFOLDER}${/}Code_links_with_space_csv.csv
@@ -370,6 +376,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 ${Error_remove_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/extension/koodiliitoslaajennus/member/
 ${Error_no_code_status_changes}    Tilaa ei vaihdettu yhteenkään koodiin. Ei löytynyt koodeja vaihdettavassa tilassa.
+${Error_remove_languages}    abhaasi,englanti,suomi,tataari
 #JSON Export
 ${Json_export_dcat}    ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR","JUST","REGI","SOCI","TECH","TRAN"]
 
@@ -528,7 +535,7 @@ Create Code List With All Languages
     Wait Until Element Is Enabled    ${CANCEL_CREATION_BTN}    timeout=20
     Click Element    ${CANCEL_CREATION_BTN}
     Sleep    4
-    Change content language    ${ALL_LANGUAGE_BTN}
+    Change Content Language    ${ALL_LANGUAGE_BTN}
     Wait Until Element Is Enabled    ${SELECT_REGISTRY_BTN}    timeout=60
     Click Element    ${SELECT_REGISTRY_BTN}
     Wait Until Element Is Enabled    //*[contains(text(), "${registry}")]    timeout=60
@@ -731,7 +738,7 @@ Create New Code With All Languages
     Run Keyword If    ${vocabularies_error}    Close error modal
     Wait Until Page Contains Element    ${CANCEL_CREATION_BTN}    timeout=20
     Click Element    ${CANCEL_CREATION_BTN}
-    Change content language    ${ALL_LANGUAGE_BTN}
+    Change Content Language    ${ALL_LANGUAGE_BTN}
     Wait Until Element Is Visible    ${CODE_CODEVALUE_INPUT}    timeout=60
     Input Text    ${CODE_CODEVALUE_INPUT}    ${code_value}
     Wait Until Page Contains Element    ${CODE_NAME_INPUT}    timeout=20
@@ -941,7 +948,7 @@ Upload codelist in CSV format
     Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]    timeout=60
     Log To Console    Code list ${codelist_name} imported
 
-Change content language
+Change Content Language
     [Arguments]    ${language}
     Wait Until Page Contains Element    ${CONTENT_LANGUAGE_DDL}    timeout=20
     Click Button    ${CONTENT_LANGUAGE_DDL}
@@ -972,3 +979,11 @@ Select navigation menu link
 Modify code
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
     Click Element    ${MODIFY_CODE_BTN}
+
+Click Confirmation
+    Wait Until Element Is Enabled    ${CONFIRM_ALERT_MODAL_BTN}    timeout=60
+    Click Element    ${CONFIRM_ALERT_MODAL_BTN}
+
+Click Code List Info Tab
+    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=60
+    Click Element    ${CODELIST_INFO_TAB}

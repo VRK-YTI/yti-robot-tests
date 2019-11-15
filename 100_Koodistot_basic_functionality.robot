@@ -270,7 +270,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Import code list in Excel format
     Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
     Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
-    Change content language    ${CONTENT_LANGUAGE_EN}
+    Change Content Language    ${CONTENT_LANGUAGE_EN}
     Wait Until Page Contains Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
     Click Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
     Wait Until Page Contains    Koodisto    timeout=20
@@ -285,8 +285,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Viimeisin muokkaus    timeout=20
     Wait Until Page Contains Element    ${2_BREADCRUMB_LINK}    timeout=20
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Tunnus    timeout=20
     Wait Until Page Contains    dcat01    timeout=20
     Wait Until Page Contains    Koodiston nimi    timeout=20
@@ -324,7 +323,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains Element    //*[contains(text(), "Testirekisteri")]    timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "Yleiset tieto- ja hallintopalvelut")]    timeout=30
     Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
-    Change content language    ${CONTENT_LANGUAGE_EN}
+    Change Content Language    ${CONTENT_LANGUAGE_EN}
     Wait Until Page Contains Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]    timeout=20
     Click Element    //*[contains(text(), "AGRI - Agriculture, fisheries, forestry and food")]
     Wait Until Page Contains    Koodisto    timeout=30
@@ -350,8 +349,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Viimeisin muokkaus    timeout=30
     Wait Until Page Contains Element    ${2_BREADCRUMB_LINK}    timeout=20
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    Tunnus    timeout=30
     Wait Until Page Contains    dcat01    timeout=30
     Wait Until Page Contains    Koodiston nimi    timeout=30

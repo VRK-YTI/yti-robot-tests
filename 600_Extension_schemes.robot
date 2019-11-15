@@ -375,8 +375,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    25 koodia    timeout=120
     Wait Until Page Contains Element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
     Log To Console    New version of code list created
-    Wait Until Page Contains Element    ${CODELIST_INFO_TAB}    timeout=30
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Page Contains    O1234567890123456789012345678901234567333    timeout=20
     Wait Until Page Contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait Until Page Contains    Testirekisteri    timeout=20
@@ -598,8 +597,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_2}")]    timeout=30
     Click Element    //*[contains(text(), "${CODE_LIST_2}")]
     Wait Until Page Contains    ${CODE_LIST_2}
-    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=20
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=20
     Click Element    ${MODIFY_CODE_LIST}
     Wait Until Element Is Enabled    ${CODE_LIST_NAME_INPUT}    timeout=30
@@ -934,8 +932,7 @@ Resource          resources/Extension_resources.robot
     Sleep    2
     Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
-    Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=30
-    Click Element    ${CODELIST_INFO_TAB}
+    Click Code List Info Tab
     Wait until page contains    Asuminen    timeout=20
     Wait until page contains    Vakiokoodi    timeout=20
     Wait until page contains    testcode28 - Testcode 28    timeout=20
