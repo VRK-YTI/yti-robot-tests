@@ -14,16 +14,14 @@ Resource          resources/Extension_resources.robot
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait Until Element Is Enabled    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click Element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=20
-    Click Element    ${MODIFY_CODE_BTN}
+    Modify code
     Wait Until Element Is Enabled    ${CODE_NAME_INPUT}    timeout=20
     Input Text    ${CODE_NAME_INPUT}    Tämä on uusi nimi koodille
     Wait Until Element Is Enabled    ${CODE_DESC_INPUT}    timeout=20
     Input Text    ${CODE_DESC_INPUT}    Tämä on uusi kuvaus koodille
     Wait Until Element Is Enabled    ${CODE_SHORT_NAME_INPUT}    timeout=20
     Input Text    ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
-    Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click Element    ${SAVE_CODE_MOD_BTN}
+    Save code modification
     Wait Until Page Contains    Tämä on uusi nimi koodille    timeout=20
     Wait Until Page Contains    Tämä on uusi kuvaus koodille    timeout=20
     Wait Until Page Contains    Tämä on uusi lyhyt nimi    timeout=20
@@ -37,8 +35,7 @@ Resource          resources/Extension_resources.robot
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait until page contains element    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click Element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait until page contains element    ${MODIFY_CODE_BTN}    timeout=20
-    Click Element    ${MODIFY_CODE_BTN}
+    Modify code
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Click Element    ${ADD_LINK_DDL}
     Wait until page contains element    ${LINK_BTN}    timeout=20
@@ -51,16 +48,14 @@ Resource          resources/Extension_resources.robot
     Wait until page contains    Liittyvä linkki    timeout=20
     Wait until page contains    https://www.suomi.fi/etusivu/    timeout=20
     Click Element    //*[contains(text(), "https://www.suomi.fi/etusivu/")]
-    Wait until page contains element    id=external_ref_url_link
+    Wait Until Page Contains Element    id=external_ref_url_link    timeout=20
     Click Element    id=external_ref_url_link
     Select Window    url=https://www.suomi.fi/etusivu/
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait until page contains element    ${LINK_MODAL_OK_BTN}    timeout=20
     Click Element    ${LINK_MODAL_OK_BTN}
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click Element    ${SAVE_CODE_MOD_BTN}
-    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=120
-    Click Element    ${MODIFY_CODE_BTN}
+    Save code modification
+    Modify code
     Wait until page contains element    ${ADD_LINK_DDL}    timeout=30
     Click Element    ${ADD_LINK_DDL}
     Wait until page contains element    ${LINK_BTN}    timeout=20
@@ -76,9 +71,8 @@ Resource          resources/Extension_resources.robot
     Wait until page contains element    ${REMOVE_LINK_CONF_BTN}    timeout=20
     Click Element    ${REMOVE_LINK_CONF_BTN}
     Wait Until Page Does Not Contain    https://www.suomi.fi/etusivu/    timeout=20
-    Wait until page contains element    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click Element    ${SAVE_CODE_MOD_BTN}
-    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=120
+    Save code modification
+    Wait Until Page Does Not Contain    https://www.suomi.fi/etusivu/    timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 202. Add Creative Commons license to DRAFT Code
@@ -88,9 +82,7 @@ Resource          resources/Extension_resources.robot
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Wait Until Element Is Enabled    //*[contains(text(), "${TEST_CODE_1}")]    timeout=20
     Click Element    //*[contains(text(), "${TEST_CODE_1}")]
-    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=20
-    Click Element    ${MODIFY_CODE_BTN}
-    Sleep    1
+    Modify code
     Wait Until Element Is Enabled    ${ADD_LINK_DDL}    timeout=30
     Click Element    ${ADD_LINK_DDL}
     Wait Until Element Is Enabled    ${LICENSE_BTN}    timeout=20
@@ -101,10 +93,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${SELECT_LINK_BTN}
     Wait Until Page Contains    Lisenssi    timeout=20
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Sleep    1
-    Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click Element    ${SAVE_CODE_MOD_BTN}
-    Wait Until Element Is Visible    ${MODIFY_CODE_BTN}    timeout=90
+    Save code modification
     Modify code
     Wait Until Page Contains    Lisenssi    timeout=20
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
@@ -114,8 +103,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Element Is Enabled    ${REMOVE_LINK_CONF_BTN}    timeout=20
     Click Element    ${REMOVE_LINK_CONF_BTN}
     Wait Until Page Does Not Contain    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait Until Element Is Enabled    ${SAVE_CODE_MOD_BTN}    timeout=20
-    Click Element    ${SAVE_CODE_MOD_BTN}
+    Save code modification
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
 203. Modify link for DRAFT Code
@@ -123,15 +111,22 @@ Resource          resources/Extension_resources.robot
     ...    and remove the link. YTI-444, YTI-614.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
-    Wait Until Element Is Enabled    //*[contains(text(), "${CODE_1000}")]    timeout=20
-    Click Element    //*[contains(text(), "${CODE_1000}")]
-    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=20
-    Click Element    ${MODIFY_CODE_BTN}
+    Upload codelist in Excel format    ${Codes_list_with_languages}    ${CODE_LIST_9}
+    Wait Until Page Contains    30 koodia    timeout=20
+    Change Content Language    ${ALL_LANGUAGE_BTN}
+    Wait Until Element Is Enabled    //*[contains(text(), "testcode28 - Testcode28_fi")]    timeout=20
+    Click Element    //*[contains(text(), "testcode28 - Testcode28_fi")]
+    Modify code
     Wait Until Element Is Enabled    ${ADD_LINK_DDL}    timeout=20
     Click Element    ${ADD_LINK_DDL}
     Wait Until Element Is Enabled    ${LINK_BTN}    timeout=20
     Click Element    ${LINK_BTN}
+    Wait Until Element Is Enabled    ${LINK_NAME_INPUT_FI}    timeout=20
+    Click Element    ${LINK_NAME_INPUT_FI}
+    Input Text    ${LINK_NAME_INPUT_FI}    suomi.fi
+    Wait Until Element Is Enabled    ${LINK_NAME_INPUT_AB}    timeout=20
+    Click Element    ${LINK_NAME_INPUT_AB}
+    Input Text    ${LINK_NAME_INPUT_AB}    www.suomi.fi_ab
     Wait Until Element Is Enabled    ${LINK_URL_INPUT}    timeout=20
     Click Element    ${LINK_URL_INPUT}
     Input Text    ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
@@ -142,16 +137,16 @@ Resource          resources/Extension_resources.robot
     Modify code
     Wait Until Element Is Enabled    ${MODIFY_LINK_ICON}    timeout=20
     Click Element    ${MODIFY_LINK_ICON}
-    Wait Until Element Is Enabled    ${LINK_NAME_INPUT}    timeout=20
-    Click Element    ${LINK_NAME_INPUT}
-    Input Text    ${LINK_NAME_INPUT}    www.suomi.fi
+    Wait Until Element Is Enabled    ${LINK_NAME_INPUT_FI}    timeout=20
+    Click Element    ${LINK_NAME_INPUT_FI}
+    Input Text    ${LINK_NAME_INPUT_fi}    www.suomi.fi
     Wait Until Element Is Enabled    ${SAVE_LINK_MODIFY_BTN}    timeout=20
     Click Element    ${SAVE_LINK_MODIFY_BTN}
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    www.suomi.fi    timeout=20
     Save code modification
     Reload Page
-    [Teardown]    Remove code lists    ${CODE_LIST_2}
+    [Teardown]    Remove code lists    ${CODE_LIST_9}
 
 204. Set start date and end date for Code
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.

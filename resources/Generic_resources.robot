@@ -341,7 +341,8 @@ ${DELETE_LINK_ICON}    //*[@class="icon icon-trash"]
 ${REMOVE_LINK_CONF_BTN}    id=confirm_confirmation_modal_button
 ${SELECT_LINK_BTN}    id=select_link_button
 ${MODIFY_LINK_ICON}    //*[@class="icon icon-pencil"]
-${LINK_NAME_INPUT}    id=link_title_input
+${LINK_NAME_INPUT_FI}    id=link_title_input_fi
+${LINK_NAME_INPUT_AB}    id=link_title_input_ab
 ${SAVE_LINK_MODIFY_BTN}    id=save_button
 ${LINK_BTN}       id=ExternalReference_link_propertytype_dropdown_button
 ${LICENSE_BTN}    id=ExternalReference_license_propertytype_dropdown_button
@@ -376,7 +377,7 @@ ${Error_registry_with_codelists}    Rekisterillä on koodistoja. Poista koodisto
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 ${Error_remove_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/extension/koodiliitoslaajennus/member/
 ${Error_no_code_status_changes}    Tilaa ei vaihdettu yhteenkään koodiin. Ei löytynyt koodeja vaihdettavassa tilassa.
-${Error_remove_languages}    abhaasi,englanti,suomi,tataari
+${Error_remove_languages}    abhaasi, englanti, suomi, tataari
 #JSON Export
 ${Json_export_dcat}    ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR","JUST","REGI","SOCI","TECH","TRAN"]
 
