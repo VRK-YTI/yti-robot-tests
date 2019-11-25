@@ -756,7 +756,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${EXPORT_CLASS_DDL}
     Wait Until Element Is Visible    ${EXPORT_JSON_LD}    timeout=30
     Click Element    ${EXPORT_JSON_LD}
-    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson&lang=fi&raw=true
     Wait Until Page Contains    "@id" : "autom:Testiluokka",    timeout=30
     Page Should Not Contain    {"errorMessage":"Not found"}
     Page Should Not Contain    Whitelabel Error Page
@@ -768,8 +768,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${EXPORT_CLASS_DDL}
     Wait Until Element Is Visible    ${EXPORT_Turtle}    timeout=30
     Click Element    ${EXPORT_Turtle}
-    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
-    Wait Until Page Contains    <http://uri.suomi.fi/datamodel/ns/autom>    timeout=30
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=text%2Fturtle&lang=fi&raw=true
     Wait Until Page Contains    "Testiluokka"@fi    timeout=30
     Page Should Not Contain    {"errorMessage":"Not found"}
     Page Should Not Contain    Whitelabel Error Page
@@ -780,7 +779,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${EXPORT_CLASS_DDL}
     Wait Until Element Is Visible    ${EXPORT_RDF}    timeout=30
     Click Element    ${EXPORT_RDF}
-    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Frdf%2Bxml&lang=fi&raw=true
     Wait Until Page Contains    xmlns:autom="http://uri.suomi.fi/datamodel/ns/autom#"    timeout=30
     Page Should Not Contain    {"errorMessage":"Not found"}
     Page Should Not Contain    Whitelabel Error Page
@@ -791,7 +790,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${EXPORT_CLASS_DDL}
     Wait Until Element Is Visible    ${EXPORT_XML}    timeout=30
     Click Element    ${EXPORT_XML}
-    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fxml&lang=fi&raw=true
     Wait Until Page Contains    sawsdl:modelReference="http://uri.suomi.fi/datamodel/ns/autom#Testiluokka">    timeout=30
     Page Should Not Contain    {"errorMessage":"Not found"}
     Page Should Not Contain    Whitelabel Error Page
@@ -802,7 +801,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${EXPORT_CLASS_DDL}
     Wait Until Element Is Visible    ${EXPORT_JSON_Schema}    timeout=30
     Click Element    ${EXPORT_JSON_Schema}
-    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
     Wait Until Page Contains    "id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka.jschema",    timeout=30
     Page Should Not Contain    {"errorMessage":"Not found"}
     Page Should Not Contain    Whitelabel Error Page
@@ -813,7 +812,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${EXPORT_CLASS_DDL}
     Wait Until Element Is Visible    ${EXPORT_JSON_LD_Context}    timeout=30
     Click Element    ${EXPORT_JSON_LD_Context}
-    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
     Wait Until Page Contains    "@context":{    timeout=30
     Wait Until Page Contains    "Testiluokka":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"    timeout=30
     Page Should Not Contain    {"errorMessage":"Not found"}
@@ -850,7 +849,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${EXPORT_MODEL_DDL}
     Wait Until Element Is Visible    ${EXPORT_MODEL_JSON_Schema}    timeout=30
     Click Element    ${EXPORT_MODEL_JSON_Schema}
-    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel/api/v1/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
+    Select Window    url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportModel?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
     Page Should Not Contain    "@id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"
     Page Should Not Contain    Whitelabel Error Page
     Page Should Not Contain    {"errorMessage":"Not found"}
