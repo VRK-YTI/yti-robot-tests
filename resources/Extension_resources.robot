@@ -51,7 +51,7 @@ ${Calc_def_hierarchy_extensions_csv}    ${DATAFOLDER}${/}Calculation_definition_
 #error messages
 ${Error_missing_codeschemes}    Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen liitettyihin koodistoihin.
 ${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa tunnisteella:
-${Error_max_hierarchy_level}    Jäsenten maksimi hierarkkinen taso ylittyi.
+${Error_max_hierarchy_level}    Jäsenten hierarkkisten tasojen maksimiarvo ylittyi.
 ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä 6.
 ${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 3.
 ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa:

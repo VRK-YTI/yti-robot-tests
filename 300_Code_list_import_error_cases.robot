@@ -41,7 +41,7 @@ ${Error_invalid_status_value}    Aineistossa oleva STATUS-sarakkeen arvo ei ole 
 ${Error_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja: STATUS
 ${Error_duplicate_code_lists}    Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla.
 ${Error_invalid_code_list}    Tunnus on virheellinen rivillä 2. Sallitut merkit ovat: a-zA-Z0-9_-
-${Error_codes_max_hierarchy_level}    Koodien maksimi hierarkkinen taso ylittyi.
+${Error_codes_max_hierarchy_level}    Koodien hierarkkisten tasojen maksimiarvo ylittyi.
 ${Error_only_one_code_list}    Tiedostossa saa olla vain yksi koodisto.
 ${Error_code_list_exists}    Koodisto on jo olemassa.
 ${Error_invalid_propertytype}    Linkkiin liitettyä tyypitystä ei ole olemassa.
