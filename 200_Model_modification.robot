@@ -88,13 +88,20 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
-202. Add new Core Vocabulary
-    [Documentation]    Add new Core Vocabulary and delete Core Vocabulary
+202. Add new class to Core Vocabulary
+    [Documentation]    Add new Core Vocabulary and add new class
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Log To Console    Automaatiokirjasto Core Vocabulary created
+    Select And Edit Profile    Automaatiokirjasto
+    Log To Console    Automaatiokirjasto Core Vocabulary selected
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Add Class    Rooli    ${NAMESPACE_1}
+    Log To Console    Class "Rooli" added
     Go Back To Data Vocabularies Frontpage
-    [Teardown]    Delete Automaatiokirjasto Core Vocabulary
+    [Teardown]    Delete profile    ${MODEL_2}
 
 203. Modify Core Vocabulary
     [Documentation]    Modify Core Vocabulary and delete Core Vocabulary
@@ -1263,6 +1270,42 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${CLOSE_HISTORY_VIEW_BTN}
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
+
+237. Add association between two classes in core vocabulary
+    [Documentation]    Add association between two classes in core vocabulary
+    [Tags]    regression    tietomallit    test    200
+    [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
+    Log To Console    Automaatiokirjasto Core Vocabulary created
+    Select And Edit Profile    Automaatiokirjasto
+    Log To Console    Automaatiokirjasto Core Vocabulary selected
+    Import Namespace    Julkishallinnon tietokomponentit
+    Save Model
+    Select Model Tab    ${MODEL_DATA_TAB}
+    Create New Class Without Referencing Concept    Uusiluokka
+    Save Class
+    Wait Until Page Contains    Uusiluokka    timeout=30
+    Log To Console    Class "Uusiluokka" added without referencing concept
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
+    Wait Until Page Contains    Testiluokka    timeout=30
+    Log To Console    Class "Testiluokka" added without referencing concept
+    Add Association    Rekisteröinti
+    Log To Console    Association "Rekisteröinti" added
+    Wait Until Page Contains Element    ${VALUE_CLASS_BTN}    timeout=30
+    Click Element    ${VALUE_CLASS_BTN}
+    Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
+    Input Text    ${SEARCH_CLASS_INPUT}    Uusiluokka
+    Wait Until Element Is Enabled    //*[contains(@id, 'Uusiluokka_search_result_link')]    timeout=30
+    Click Element    //*[contains(@id, 'Uusiluokka_search_result_link')]
+    Wait Until Element Is Enabled    ${SPECIALIZE_CLASS}    timeout=30
+    Click Element    ${SPECIALIZE_CLASS}
+    Sleep    2
+    Save Class
+    Wait Until Page Contains    Rekisteröinti    timeout=30
+    Wait Until Page Contains    lib:Uusiluokka    timeout=30
+    Log To Console    Association "Rekisteröinti" added between "Uusiluokka" and "Testiluokka"
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_2}
 
 *** Keywords ***
 Test Case Setup Terminologies

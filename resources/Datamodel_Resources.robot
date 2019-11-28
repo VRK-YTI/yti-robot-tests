@@ -10,6 +10,7 @@ ${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatiomalli
+${MODEL_2}        Automaatiokirjasto
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 ${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
 ${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
