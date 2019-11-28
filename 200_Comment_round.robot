@@ -54,6 +54,14 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Terminology
     Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Saturnus    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${RETIRED_0}
+    Wait Until Page Contains    kommentti1    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "Saturnus")]    timeout=20
+    Click Element    //*[contains(text(), "Saturnus")]
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Wait Until Page Contains    Testiautomaatiosanasto    timeout=20
+    Wait Until Page Contains    Saturnus    timeout=20
+    Close Window
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros
 
@@ -64,6 +72,14 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Data Vocabularies With New Class
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Automobiili    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${SUPERSEDED_0}
+    Wait Until Page Contains    kommentti1    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "Automobiili")]    timeout=20
+    Click Element    //*[contains(text(), "Automobiili")]
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+    Wait Until Page Contains    Testiautomaatio    timeout=20
+    Wait Until Page Contains    Automobiili    timeout=20
+    Close Window
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros
 
