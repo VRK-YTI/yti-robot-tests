@@ -279,7 +279,7 @@ Resource          resources/Extension_resources.robot
 
 209. Add broader code for code when code is not found from the system
     [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
-    [Tags]    koodistot
+    [Tags]    koodistot    regression    test    200
     [Setup]    Test Case Setup Superuser
     Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Wait until page contains element    //*[contains(text(), "Testcode 29")]    timeout=20
