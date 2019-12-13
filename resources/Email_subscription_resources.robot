@@ -4,11 +4,11 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
-${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.suomi.fi/
-${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.suomi.fi/
-${DATA_VOCABULRIES_ENVIRONMENT_URL}    https://tietomallit.suomi.fi/
-${COMMENTS_ENVIRONMENT_URL}    https://kommentit.suomi.fi/
-${GROUPMANAGEMENT_ENVIRONMENT_URL}    https://rhp.suomi.fi/
+${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.dev.yti.cloud.vrk.fi/
+${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.dev.yti.cloud.vrk.fi/
+${DATA_VOCABULRIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
+${COMMENTS_ENVIRONMENT_URL}    https://kommentit.dev.yti.cloud.vrk.fi/
+${GROUPMANAGEMENT_ENVIRONMENT_URL}    https://rhp.dev.yti.cloud.vrk.fi/
 ${SELENIUM_SPEED}    0.5
 #Buttons and links
 ${PROVIDER_DDL}    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
@@ -61,20 +61,24 @@ eDuuni Login
 
 Login With Id Field Option 1
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK}    timeout=20
+    Sleep    1
     Input Text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
     Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK}    timeout=20
     Click Element    ${ID_NEXT_ELEMENT_HOOK}
     Wait Until Element Is Enabled    ${PASSWORD_ELEMENT_HOOK}    timeout=20
+    Sleep    1
     Input Text    ${PASSWORD_ELEMENT_HOOK}    ${TEST_PASSWORD}
     Wait Until Element Is Enabled    ${PASSWORD_NEXT_ELEMENT_HOOK}    timeout=20
     Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
 
 Login With Id Field Option 2
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_2}    timeout=20
+    Sleep    1
     Input Text    ${ID_ELEMENT_HOOK_2}    ${TEST_EMAIL}
     Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK_2}    timeout=20
     Click Element    ${ID_NEXT_ELEMENT_HOOK_2}
     Wait Until Element Is Enabled    ${PASSWORD_ELEMENT_HOOK_2}    timeout=20
+    Sleep    1
     Input Text    ${PASSWORD_ELEMENT_HOOK_2}    ${TEST_PASSWORD}
     Wait Until Element Is Enabled    ${SIGN_IN_HOOK_2}    timeout=20
     Click Element    ${SIGN_IN_HOOK_2}

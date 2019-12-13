@@ -66,6 +66,8 @@ ${PROPERTYTYPE_FILTER_DDL}    id=selected_propertytype_filter_dropdown
 ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    id=Extension_crossReferenceList_propertytype_filter_dropdown
 ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    id=Extension_calculationHierarchy_propertytype_filter_dropdown
 ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}    id=Extension_definitionHierarchy_propertytype_filter_dropdown
+${USER_DETAILS_LINK}    id=navigation_link_user_details
+${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
 #Registry
 ${CREATE_REGISTRY_BTN}    id=create_registry_button
 ${REGISTRY_VALUE_INPUT}    id=registry_value_input
@@ -147,6 +149,9 @@ ${MARK_CUMULATIVE_CODE_LIST_CHECKBOX}    id=mark_codelist_cumulative_checkbox
 ${UPDATE_CODE_LIST_FROM_FILE_BTN}    id=update_codelist_from_file_button
 ${CHANGE_CODE_STATUSES_CHECKBOX}    id=change_code_statuses_too_checkbox
 ${CODE_LIST_FEEDBACK_INPUT}    id=codelist_feedback_channel_textarea_fi
+${ADD_SUBSCRIPTION_BTN}    id=add_subscription_button
+${DELETE_SUBSCRIPTION_BTN}    id=delete_subscription_button
+${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
@@ -988,3 +993,37 @@ Click Confirmation
 Click Code List Info Tab
     Wait Until Element Is Enabled    ${CODELIST_INFO_TAB}    timeout=60
     Click Element    ${CODELIST_INFO_TAB}
+
+Search For Code List
+    [Arguments]    ${code_list}
+    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${code_list}
+    Sleep    1
+
+Add Email Subscription For Code List
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Element Is Enabled    ${ADD_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${ADD_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+
+Remove Email Subscription For Code List
+    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
+    Click Element    ${CODE_LIST_DDL}
+    Wait Until Element Is Enabled    ${DELETE_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${DELETE_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+
+Select Code List
+    [Arguments]    ${code_list}
+    Wait Until Page Contains Element    //*[contains(text(), "${code_list}")]    timeout=20
+    Click Element    //*[contains(text(), "${code_list}")]
+
+Select Tab
+    [Arguments]    ${tab}
+    Wait Until Page Contains Element    ${tab}    timeout=20
+    Click Element    ${tab}
