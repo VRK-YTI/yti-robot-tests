@@ -133,10 +133,3 @@ Restore Finnish language
     Wait Until Page Contains    Kaikki organisaatiot    timeout=30
     Wait Until Page Contains    Rajaa tietoalueella    timeout=30
     Close All Browsers
-
-Select navigation menu link
-    [Arguments]    ${navigation_menu_link}
-    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click Element    ${NAVIGATION_MENU_DDL}
-    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
-    Click Element    //*[contains(text(), "${navigation_menu_link}")]

@@ -38,6 +38,7 @@ ${TESTIORGANISAATIO}    id=Testiorganisaatio_organization_select
 ${AUTOMAATIOTESTAUS}    id=Automaatiotestaus_organization_select
 #Generic locators
 ${OPEN_MODAL}     class=modal-open
+${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
 #Frontpage Buttons and links
 ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${IMPERSONATE_USER_DROPDOWN}    id=fakeable_user_dropdown
@@ -84,6 +85,10 @@ ${VOCABULARY_STATUS_DDL}    id=selected_vocabulary_status_input_dropdown
 ${VOCABULARY_STATUS_INCOMPLETE}    id=INCOMPLETE_vocabulary_status_input_dropdown
 ${VOCABULARY_STATUS_DRAFT}    id=DRAFT_vocabulary_status_input_dropdown
 ${VOCABULARY_DDL}    id=vocabularyDropdown
+${ADD_SUBSCRIPTION_BTN}    id=add_subscription_button
+${DELETE_SUBSCRIPTION_BTN}    id=delete_subscription_button
+${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
+${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
@@ -713,3 +718,30 @@ Set Frontpage Search Term
     [Arguments]    ${search_term}
     Wait Until Element Is Enabled    ${SEARCH_INPUT}    timeout=30
     Input Text    ${SEARCH_INPUT}    ${search_term}
+
+Add Email Subscription For Terminology
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=20
+    Click Element    ${VOCABULARY_DDL}
+    Wait Until Element Is Enabled    ${ADD_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${ADD_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription added
+
+Remove Email Subscription For Terminology
+    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=20
+    Click Element    ${VOCABULARY_DDL}
+    Wait Until Element Is Enabled    ${DELETE_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${DELETE_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription removed
+
+Select navigation menu link
+    [Arguments]    ${navigation_menu_link}
+    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click Element    ${NAVIGATION_MENU_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
