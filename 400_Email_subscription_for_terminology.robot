@@ -6,7 +6,6 @@ Library           SeleniumLibrary
 Library           String
 Resource          resources/Terminology_Resources.robot
 Resource          resources/Email_subscription_resources.robot
-Resource          resources/Login_details.robot
 
 *** Test Cases ***
 400. Add and remove email subscription for new terminology
