@@ -4,7 +4,7 @@ Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Library           String
-Resource          resources/Terminology_resources.robot
+Resource          resources/Terminology_Resources.robot
 Resource          resources/Email_subscription_resources.robot
 Resource          resources/Login_details.robot
 
