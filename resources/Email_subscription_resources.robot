@@ -32,8 +32,8 @@ ${TOOL}           Koodistot
 *** Keywords ***
 Open Tool
     [Arguments]    ${environment_url}
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment    ${environment_url}
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment    ${environment_url}
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome    ${environment_url}
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome    ${environment_url}
     ...    ELSE    Open Browser    ${environment_url}    browser=${BROWSER}
     Set Selenium Speed    ${SELENIUM_SPEED}
     Sleep    2
@@ -83,7 +83,7 @@ Login With Id Field Option 2
     Wait Until Element Is Enabled    ${SIGN_IN_HOOK_2}    timeout=20
     Click Element    ${SIGN_IN_HOOK_2}
 
-Open Chrome to Environment
+Open Chrome
     [Arguments]    ${environment_url}
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    --headless
