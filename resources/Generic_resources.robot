@@ -1008,6 +1008,7 @@ Add Email Subscription For Code List
     Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
     Click Element    ${CONFIRMATION_YES_BTN}
     Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription added
 
 Remove Email Subscription For Code List
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
@@ -1017,6 +1018,7 @@ Remove Email Subscription For Code List
     Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
     Click Element    ${CONFIRMATION_YES_BTN}
     Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription removed
 
 Select Code List
     [Arguments]    ${code_list}
