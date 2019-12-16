@@ -10,7 +10,8 @@ ${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatiomalli
-${MODEL_2}        Automaatiokirjasto
+${PREFIX_1}       autom
+${PREFIX_2}       lib
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 ${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
 ${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
@@ -19,6 +20,11 @@ ${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remov
 ${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 ${NAMESPACE_1}    Julkishallinnon tietokomponentit
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
+#Users
+${TEST_ADMIN_ID}    id=impersonate_user_testiadmin@localhost_link
+${TEST_ADMIN_NAME}    Test Admin
+${TEST_SUPERUSER_ID}    id=testisuperuser@localhost_fakeable_user_link
+${TEST_SUPERUSER_NAME}    Test Superuser
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
@@ -201,17 +207,19 @@ ${namespace_in_use}    Tunniste on jo käytössä
 
 *** Keywords ***
 Test Case Setup
+    [Arguments]    ${user_id}    ${user_name}
     Open Tietomallit
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Select user
+    Select user    ${user_id}    ${user_name}
 
 Select user
+    [Arguments]    ${user_id}    ${user_name}
     Wait Until Element Is Enabled    ${IMPERSONATE_USER_DROPDOWN}    timeout=60
     Click Element    ${IMPERSONATE_USER_DROPDOWN}
-    Wait Until Page Contains Element    ${USER_1}    timeout=30
-    Click Element    ${USER_1}
-    Wait Until Page Contains    Test Admin    timeout=20
-    Sleep    2
+    Wait Until Element Is Visible    ${user_id}    timeout=30
+    Click Element    ${user_id}
+    Sleep    0.5
+    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
 
 Open Tietomallit
     Open Browser with Settings
@@ -243,41 +251,42 @@ Go Back To Data Vocabularies Frontpage
     Click Element    ${MAIN_PAGE_LINK}
     Sleep    2
 
-Test Case Setup Create Testiautomaatio profile
-    Test Case Setup
+Create Profile
+    [Arguments]    ${profile}    ${prefix}
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${MODEL_1}")]    limit=1
-    run keyword if    ${model_exists}    Delete existing profile and create new
-    ...    ELSE    Create Testiautomaatio profile
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${profile}")]    limit=1
+    run keyword if    ${model_exists}    Delete Existing Profile And Create New    ${profile}    ${prefix}
+    ...    ELSE    Create New Profile    ${profile}    ${prefix}
     Go Back To Data Vocabularies Frontpage
 
 Test Case Teardown Delete Testiautomaatio profile
     Delete Testiautomaatio profile
 
-Test Case Setup Create Automaatiokirjasto Core Vocabulary
-    Test Case Setup
+Create Core Vocabulary
+    [Arguments]    ${core_vocabulary}    ${prefix}
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
-    run keyword if    ${model_exists}    Delete existing core vocabulary and create new
-    ...    ELSE    Create Automaatiokirjasto Core Vocabulary
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${core_vocabulary}
+    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${core_vocabulary}")]    limit=1
+    run keyword if    ${model_exists}    Delete Existing Core Vocabulary And Create New    ${core_vocabulary}    ${prefix}
+    ...    ELSE    Create New Core Vocabulary    ${core_vocabulary}    ${prefix}
     Go Back To Data Vocabularies Frontpage
 
 Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
     Delete Automaatiokirjasto Core Vocabulary
 
-Create Testiautomaatio profile
+Create New Profile
+    [Arguments]    ${profile}    ${prefix}
     Wait Until Element Is Enabled    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
     Wait Until Page Contains Element    ${ADD_PROFILE_BTN}    timeout=30
     Click Element    ${ADD_PROFILE_BTN}
     Wait Until Page Contains Element    ${MODEL_LABEL_INPUT}    timeout=30
-    Input Text    ${MODEL_LABEL_INPUT}    ${MODEL_1}
+    Input Text    ${MODEL_LABEL_INPUT}    ${profile}
     Wait Until Page Contains Element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
     Wait Until Page Contains Element    ${MODEL_PREFIX_INPUT}    timeout=30
-    Input Text    ${MODEL_PREFIX_INPUT}    autom
+    Input Text    ${MODEL_PREFIX_INPUT}    ${prefix}
     Wait Until Page Contains Element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
     Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=30
@@ -289,7 +298,7 @@ Create Testiautomaatio profile
     Wait Until Page Contains Element    ${SAVE_NEW_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_NEW_MODEL_BTN}
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
-    Log To Console    ${MODEL_1} profile created
+    Log To Console    ${profile} profile created
     Sleep    2
 
 Delete Testiautomaatio profile
@@ -311,33 +320,35 @@ Delete Testiautomaatio profile
     Sleep    2
     Close All Browsers
 
-Delete existing profile and create new
-    Wait Until Element Is Enabled    //*[contains(text(), "${MODEL_1}")]    timeout=30
-    Click Element    //*[contains(text(), "${MODEL_1}")]
+Delete Existing Profile And Create New
+    [Arguments]    ${profile}    ${prefix}
+    Wait Until Element Is Enabled    //*[contains(text(), "${profile}")]    timeout=30
+    Click Element    //*[contains(text(), "${profile}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
-    #Sleep    2
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains    tietomallia    timeout=30
-    Log To Console    ${MODEL_1} profile deleted
-    Create Testiautomaatio profile
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Sleep    2
+    Page Should Not Contain Element    //*[contains(text(), "${profile}")]
+    Log To Console    ${profile} profile deleted
+    Create New Profile    ${profile}    ${prefix}
 
-Create Automaatiokirjasto Core Vocabulary
+Create New Core Vocabulary
+    [Arguments]    ${core_vocabulary}    ${prefix}
     Wait Until Element Is Enabled    ${ADD_MODEL_BTN}    timeout=30
     Click Element    ${ADD_MODEL_BTN}
     Wait Until Page Contains Element    ${ADD_LIBRARY_BTN}    timeout=30
     Click Element    ${ADD_LIBRARY_BTN}
     Wait Until Page Contains Element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
-    Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    ${CORE_VOCABULARY_1}
+    Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    ${core_vocabulary}
     Wait Until Page Contains Element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Tämä on kuvaus
     Wait Until Page Contains Element    ${CORE_VOCABULARY_PREFIX_INPUT}    timeout=30
-    Input Text    ${CORE_VOCABULARY_PREFIX_INPUT}    lib
+    Input Text    ${CORE_VOCABULARY_PREFIX_INPUT}    ${prefix}
     Wait Until Page Contains Element    ${VOCABULARY_ADD_CLASSIFICATION}    timeout=30
     Click Element    ${VOCABULARY_ADD_CLASSIFICATION}
     Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=30
@@ -349,7 +360,7 @@ Create Automaatiokirjasto Core Vocabulary
     Wait Until Page Contains Element    ${SAVE_NEW_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_NEW_CORE_VOCABULARY_BTN}
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
-    Log To Console    Automaatiokirjasto Core Vocabulary created
+    Log To Console    ${core_vocabulary} core vocabulary created
     Sleep    2
 
 Delete Automaatiokirjasto Core Vocabulary
@@ -371,9 +382,10 @@ Delete Automaatiokirjasto Core Vocabulary
     Sleep    2
     Close All Browsers
 
-Delete existing core vocabulary and create new
-    Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
-    Click Element    //*[contains(text(), "Automaatiokirjasto")]
+Delete Existing Core Vocabulary And Create New
+    [Arguments]    ${core_vocabulary}    ${prefix}
+    Wait Until Page Contains Element    //*[contains(text(), "${core_vocabulary}")]    timeout=30
+    Click Element    //*[contains(text(), "${core_vocabulary}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
@@ -382,10 +394,11 @@ Delete existing core vocabulary and create new
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Sleep    2
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    Wait Until Page Contains    tietomallia    timeout=30
-    Log To Console    Automaatiokirjasto Core Vocabulary deleted
-    Create Automaatiokirjasto Core Vocabulary
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${core_vocabulary}
+    Sleep    2
+    Page Should Not Contain Element    //*[contains(text(), "${core_vocabulary}")]
+    Log To Console    ${core_vocabulary} Core Vocabulary deleted
+    Create New Core Vocabulary    ${core_vocabulary}    ${prefix}
 
 Select model
     [Arguments]    ${model}
@@ -498,10 +511,11 @@ Add Class
     Click Element    //*[contains(text(), "${model}")]
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
-    Wait Until Element Is Visible    //*[contains(text(), "${class}")]    timeout=60
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(text(), "${class}")]    timeout=60
     Click Element    //*[contains(text(), "${class}")]
     Sleep    2
-    Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
+    Wait Until Element Is Enabled    ${SPECIALIZE_CLASS}    timeout=30
     Click Element    ${SPECIALIZE_CLASS}
     Sleep    2
 
@@ -710,10 +724,10 @@ Add Association
     Click Element    ${ADD_PROPERTY_DDL}
     Wait Until Element Is Enabled    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
-    Sleep    2
+    Sleep    3
     Wait Until Element Is Enabled    ${ALL_TYPES_DDL}    timeout=30
     Click Element    ${ALL_TYPES_DDL}
-    Sleep    2
+    Sleep    3
     Wait Until Element Is Enabled    //*[contains(text(), "Assosiaatio")]    timeout=30
     Click Element    //*[contains(text(), "Assosiaatio")]
     Wait Until Page Contains Element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
@@ -782,6 +796,7 @@ Create New Class Without Referencing Concept
     Click Element    ${ADD_NEW_CLASS}
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Sleep    2
     Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_LINK}    timeout=60
     Click Element    ${CREATE_NEW_CLASS_LINK}
     Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    timeout=60
@@ -809,15 +824,18 @@ Create new class and suggest concept to terminologies
     Click Element    ${CREATE_NEW_CLASS_BTN}
     Sleep    2
 
-Create new shape by referencing external uri
+Create New Shape By Referencing External Uri
     [Arguments]    ${external_uri}    ${class}
     Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
     Click Element    ${ADD_NEW_CLASS}
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
-    Sleep    2
+    Sleep    3
+    Wait Until Element Is Enabled    ${CREATE_NEW_SHAPE_BY_REF_URI}    timeout=30
+    Sleep    1
     Click Element    ${CREATE_NEW_SHAPE_BY_REF_URI}
-    Sleep    2
+    Sleep    3
+    Wait Until Page Contains Element    ${EXTERNAL_URI_INPUT}    timeout=60
     Input Text    ${EXTERNAL_URI_INPUT}    ${external_uri}
     Sleep    3
     Wait Until Element Is Visible    ${USE_SELECTION_BTN}    timeout=30
@@ -826,7 +844,7 @@ Create new shape by referencing external uri
 
 Delete profile
     [Arguments]    ${profile}
-    Select user
+    Select user    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains Element    //*[contains(text(), "${profile}")]    timeout=30
@@ -880,13 +898,13 @@ Add Property For Class
     Click Element    ${ADD_PROPERTY_BTN}
     Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${property}
-    Wait Until Element Is Visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
-    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}
-    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
-    Wait Until Page Contains Element    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
     Click Element    ${CREATE_AND_USE_ATTRIBUTE}
     Log To Console    Property for class added
     Sleep    1

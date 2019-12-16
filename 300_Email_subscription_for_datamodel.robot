@@ -11,7 +11,8 @@ Resource          resources/Email_subscription_resources.robot
 300. Add and remove email subscription for new profile
     [Documentation]    Add and remove email subscription for new profile
     [Tags]    regression    test    300
-    [Setup]    Test Case Setup Create Testiautomaatio profile
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
     Go Back To Data Vocabularies Frontpage
     Open Tool    ${DATA_VOCABULRIES_ENVIRONMENT_URL}
     Select model    Testiautomaatiomalli

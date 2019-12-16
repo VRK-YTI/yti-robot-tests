@@ -33,9 +33,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 200. Modify profile
     [Documentation]    Modify existing profile
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Wait Until Page Contains Element    ${MODEL_LABEL_INPUT}    timeout=30
     Input Text    ${MODEL_LABEL_INPUT}    Uusi nimi
     Wait Until Page Contains Element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
@@ -75,9 +76,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 201. Add new class to profile
     [Documentation]    Add new class to profile
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
@@ -91,25 +93,25 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 202. Add new class to Core Vocabulary
     [Documentation]    Add new Core Vocabulary and add new class
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
-    Log To Console    Automaatiokirjasto Core Vocabulary created
-    Select And Edit Profile    Automaatiokirjasto
-    Log To Console    Automaatiokirjasto Core Vocabulary selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Core Vocabulary    ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${CORE_VOCABULARY_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
     Add Class    Rooli    ${NAMESPACE_1}
     Log To Console    Class "Rooli" added
     Go Back To Data Vocabularies Frontpage
-    [Teardown]    Delete profile    ${MODEL_2}
+    [Teardown]    Delete profile    ${CORE_VOCABULARY_1}
 
 203. Modify Core Vocabulary
     [Documentation]    Modify Core Vocabulary and delete Core Vocabulary
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
-    Log To Console    Automaatiokirjasto Core Vocabulary created
-    Select And Edit Core Vocabulary    Automaatiokirjasto
-    Log To Console    Automaatiokirjasto Core Vocabulary selcted
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Core Vocabulary    ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${CORE_VOCABULARY_1}
     Wait Until Page Contains Element    ${CORE_VOCABULARY_LABEL_INPUT}    timeout=30
     Input Text    ${CORE_VOCABULARY_LABEL_INPUT}    Uusi nimi
     Wait Until Page Contains Element    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    timeout=30
@@ -137,10 +139,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 204. Add new attribute and association
     [Documentation]    Add new attribute and association for class
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select And Edit Profile    Testiautomaatiomalli
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
@@ -163,9 +165,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 205. Add association between two classes
     [Documentation]    Add association between two classes
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
@@ -202,9 +205,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 206. Create new class without referencing concept
     [Documentation]    Create new class without referencing concept
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
@@ -219,14 +223,15 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 207. Create new shape by referencing external uri
     [Documentation]    Create new shape by referencing external uri
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
     Click Element    ${MODEL_DATA_TAB}
-    Create new shape by referencing external uri    ${external_uri}    ${class}
+    Create New Shape By Referencing External Uri    ${external_uri}    ${class}
     Confirm All Properties For Class And Save
     Wait Until Page Contains    Maksu    timeout=30
     Log To Console    Shape "Maksu" added by referencing external uri
@@ -236,10 +241,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 208. Add new class to profile and remove properties
     [Documentation]    Add new class to profile and remove properties
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
@@ -258,10 +263,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 209. Create new class and add referencing concept and vocabulary
     [Documentation]    Create new class and add referencing concept and vocabulary
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    ${vocabulary}
     Save Model
@@ -284,10 +289,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 210. Add several classes to profile, check history and remove one class
     [Documentation]    Add several classes to profile, check class history information and remove one class
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
@@ -319,10 +324,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 211. Add reference data for profile
     [Documentation]    Create profile and add reference data for that profile
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Wait Until Page Contains Element    ${ADD_REF_DATA_BTN}    timeout=30
     Click Element    ${ADD_REF_DATA_BTN}
     Wait Until Element Is Visible    ${REF_DATA_FILTER_DDL}    timeout=30
@@ -347,10 +352,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Alajärvi    timeout=30
     Wait Until Page Contains Element    ${USE_SELCTION_BTN}    timeout=30
     Click Element    ${USE_SELCTION_BTN}
-    Sleep    2
-    Wait Until Page Contains Element    //*[contains(text(), "Tallenna")]    timeout=30
-    Click Element    //*[contains(text(), "Tallenna")]
-    Wait Until Element Is Visible    ${MODIFY_MODEL}    timeout=30
+    Save Model
     Wait Until Page Contains    Kunnat 2018    timeout=30
     Log To Console    Reference data "Kunnat 2018" added for profile
     Go Back To Data Vocabularies Frontpage
@@ -361,78 +363,73 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     ...    Change status as INCOMPLETE and check that deletion of profile, class,
     ...    attribute and association is possible.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Log To Console    Class "Testiluokka" added without referencing concept
     Create new attribute    Testiattribuutti
     Create new association    Testiassosiaatio
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
-    Wait Until Page Contains Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
+    Wait Until Element Is Enabled    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span
-    Wait Until Page Contains Element    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
+    Wait Until Element Is Enabled    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
     Click Element    ${PREDICATE_STATE_INCOMPLETE}
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
     Click Element    ${PREDICATE_EDIT_SAVE_BTN}
     Wait Until Page Contains    Keskeneräinen    timeout=30
-    Wait Until Page Contains Element    ${PREDICATE_REMOVE_BTN}    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    ${PREDICATE_REMOVE_BTN}    timeout=30
     Click Element    ${PREDICATE_REMOVE_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Log To Console    Incomplete state association removed
-    Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
-    Click Element    ${ATTRIBUTE_TAB}
-    Wait Until Page Contains Element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
+    Select Tab    ${ATTRIBUTE_TAB}
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'testiattribuutti_tabset_link')]
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
-    Wait Until Page Contains Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
+    Wait Until Element Is Enabled    //*[@id="predicateState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="predicateState"]/div/div/iow-selection-transclude/span
-    Wait Until Page Contains Element    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
+    Wait Until Element Is Enabled    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
     Click Element    ${PREDICATE_STATE_INCOMPLETE}
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
     Click Element    ${PREDICATE_EDIT_SAVE_BTN}
     Wait Until Page Contains    Keskeneräinen    timeout=30
-    Wait Until Page Contains Element    ${PREDICATE_REMOVE_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${PREDICATE_REMOVE_BTN}    timeout=30
     Click Element    ${PREDICATE_REMOVE_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Log To Console    Incomplete state attribute removed
-    Wait Until Page Contains Element    ${CLASS_TAB}    timeout=30
-    Click Element    ${CLASS_TAB}
-    Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
-    Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
-    Wait Until Page Contains Element    ${MODIFY_CLASS}    timeout=60
-    Click Element    ${MODIFY_CLASS}
-    Wait Until Page Contains Element    //*[@id="classState"]/div/div/iow-selection-transclude/span    timeout=30
+    Sleep    1
+    Select And Edit Class    Testiluokka
+    Sleep    1
+    Wait Until Element Is Enabled    //*[@id="classState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="classState"]/div/div/iow-selection-transclude/span
-    Wait Until Page Contains Element    ${CLASS_STATE_INCOMPLETE}    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    ${CLASS_STATE_INCOMPLETE}    timeout=30
     Click Element    ${CLASS_STATE_INCOMPLETE}
     Save Class
-    Wait Until Page Contains Element    ${REMOVE_CLASS_BTN}    timeout=60
+    Sleep    1
+    Wait Until Element Is Enabled    ${REMOVE_CLASS_BTN}    timeout=60
     Click Element    ${REMOVE_CLASS_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
     Wait Until Page Does Not Contain Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
-    Wait Until Page Contains Element    ${MODIFY_MODEL}    timeout=30
-    Click Element    ${MODIFY_MODEL}
-    Wait Until Page Contains Element    //*[@id="modelState"]/div/div/iow-selection-transclude/span    timeout=30
+    Modify Profile
+    Wait Until Element Is Enabled    //*[@id="modelState"]/div/div/iow-selection-transclude/span    timeout=30
     Click Element    //*[@id="modelState"]/div/div/iow-selection-transclude/span
-    Wait Until Page Contains Element    ${MODEL_STATE_INCOMPLETE}    timeout=30
+    Wait Until Element Is Enabled    ${MODEL_STATE_INCOMPLETE}    timeout=30
     Click Element    ${MODEL_STATE_INCOMPLETE}
-    Wait Until Page Contains Element    ${SAVE_MODEL_BTN}    timeout=30
-    Click Element    ${SAVE_MODEL_BTN}
+    Save Model
     Wait Until Page Contains    Keskeneräinen    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
@@ -441,44 +438,35 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile, attribute and association.
     ...    Check that converting attribute to association and vice versa is successful.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
-    Log To Console    Class "Testiluokka" added without referencing concept
     Create new attribute    Testiattribuutti
     Create new association    Testiassosiaatio
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
-    Wait Until Page Contains Element    ${CONVERT_TO_ATTRIBUTE}    timeout=30
+    Wait Until Element Is Enabled    ${CONVERT_TO_ATTRIBUTE}    timeout=30
     Click Element    ${CONVERT_TO_ATTRIBUTE}
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
-    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
-    Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=30
-    Wait Until Page Contains Element    ${ASSOCIATION_TAB}    timeout=30
-    Click Element    ${ASSOCIATION_TAB}
-    Page Should Not Contain element    //*[contains(@id,'testiassosiaatio_tabset_link')]    timeout=60
-    Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
-    Click Element    ${ATTRIBUTE_TAB}
-    Wait Until Page Contains Element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
+    Save Predicate
+    Select Tab    ${ASSOCIATION_TAB}
+    Wait Until Page Does Not Contain Element    //*[contains(@id,'testiassosiaatio_tabset_link')]    timeout=60
+    Select Tab    ${ATTRIBUTE_TAB}
+    Wait Until Element Is Enabled    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
     Click Element    //*[contains(@id,'testiattribuutti_tabset_link')]
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
-    Wait Until Page Contains Element    ${CONVERT_TO_ASSOCIATION}    timeout=30
+    Wait Until Element Is Enabled    ${CONVERT_TO_ASSOCIATION}    timeout=30
     Click Element    ${CONVERT_TO_ASSOCIATION}
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_SAVE_BTN}    timeout=30
-    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
-    Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=30
-    Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
-    Click Element    ${ATTRIBUTE_TAB}
-    Page Should Not Contain Element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
+    Save Predicate
+    Select Tab    ${ATTRIBUTE_TAB}
+    Wait Until Page Does Not Contain Element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=60
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
 
@@ -487,36 +475,33 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     ...    to association is not possible when it is used by the profile.
     ...    Check that error message is displayed.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
-    Log To Console    Class "Testiluokka" added without referencing concept
     Create new attribute    Testiattribuutti
-    Wait Until Page Contains Element    ${CLASS_TAB}    timeout=60
-    Click Element    ${CLASS_TAB}
-    Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
+    Select Tab    ${CLASS_TAB}
+    Wait Until Element Is Enabled    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
     Add Attribute    Testiattribuutti
     Save Class
-    Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
-    Click Element    ${ATTRIBUTE_TAB}
-    Wait Until Page Contains Element    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
+    Select Tab    ${ATTRIBUTE_TAB}
+    Wait Until Element Is Enabled    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
     Click Element    //*[contains(@id,'testiattribuutti_tabset_link')]
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
     Wait Until Page Contains Element    ${CONVERT_TO_ASSOCIATION}    timeout=30
     Click Element    ${CONVERT_TO_ASSOCIATION}
     Wait Until Page Contains    ${predicate_change_error}    timeout=30
+    Sleep    1
     Click Element    ${CLOSE_BTN}
-    Wait Until Page Contains Element    ${PREDICATE_EDIT_CANCEL_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_CANCEL_BTN}    timeout=30
     Click Element    ${PREDICATE_EDIT_CANCEL_BTN}
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_1}
@@ -525,32 +510,31 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and two classes. Add new attribute for class before saving the class.
     ...    Check that new class is created.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
-    Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
+    Wait Until Element Is Enabled    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
     Create New Class Without Referencing Concept    Testiluokka2
     Wait Until Element Is Visible    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
     Wait Until Element Is Visible    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
-    Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
+    Wait Until Element Is Enabled    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    testiattribuutti
     Wait Until Element Is Visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
-    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}
-    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
-    Wait Until Page Contains Element    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
     Click Element    ${CREATE_AND_USE_ATTRIBUTE}
     Sleep    2
     Save Class
@@ -564,14 +548,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new class to profile and suggest concept to Terminologies tool.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    Testiautomaatiosanasto
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create new class and suggest concept to terminologies    Testiluokka    Testiluokan määritelmä
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
@@ -589,7 +570,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
     Wait Until Page Contains Element    ${CONCEPTS_TAB}    timeout=30
     Click Element    ${CONCEPTS_TAB}
-    Wait Until Page Contains Element    //*[contains(@id,'concept-4_concept_list_listitem')]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(@id,'concept-4_concept_list_listitem')]    timeout=30
     Click Element    //*[contains(@id,'concept-4_concept_list_listitem')]
     Wait Until Page Contains    Testiluokka    timeout=30
     Close All Browsers
@@ -600,13 +581,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies
     Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    Testiautomaatiosanasto
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka1
     Wait Until Element Is Visible    ${ADD_PROPERTY_DDL}    timeout=30
     Click Element    ${ADD_PROPERTY_DDL}
@@ -614,20 +593,20 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${ADD_PROPERTY_BTN}
     Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    Testiattribuutti
-    Wait Until Element Is Visible    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
-    Wait Until Page Contains Element    ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    timeout=30
+    Wait Until Element Is Enabled    ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    timeout=30
     Click Element    ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}
-    Wait Until Page Contains Element    ${CONCEPT_DEFINITION_INPUT}    timeout=30
+    Wait Until Element Is Enabled    ${CONCEPT_DEFINITION_INPUT}    timeout=30
     Input Text    ${CONCEPT_DEFINITION_INPUT}    Testiattribuutin määritelmä
-    Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
     Sleep    1
     Wait Until Element Is Enabled    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
     Click Element    ${CREATE_AND_USE_ATTRIBUTE}
     Sleep    2
     Save Class
-    Wait Until Page Contains Element    //*[contains(text(), "Testiattribuutti")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "Testiattribuutti")]    timeout=30
     Click Element    //*[contains(text(), "Testiattribuutti")]
     Sleep    1
     Wait Until Page Contains Element    //*[contains(text(), "autom:testiattribuutti")]    timeout=30
@@ -645,7 +624,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${ADD_PROPERTY_BTN}
     Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    Testiassosiaatio
-    Wait Until Element Is Visible    ${CREATE_NEW_ASSOCIATION_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${CREATE_NEW_ASSOCIATION_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ASSOCIATION_LINK}
     Wait Until Page Contains Element    ${SUGGEST_ASSOCIATION_TO_TERMINOLOGIES}    timeout=30
     Click Element    ${SUGGEST_ASSOCIATION_TO_TERMINOLOGIES}
@@ -676,11 +655,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
     Wait Until Page Contains Element    ${CONCEPTS_TAB}    timeout=30
     Click Element    ${CONCEPTS_TAB}
-    Wait Until Page Contains Element    //*[contains(@id,'concept-4_concept_list_listitem')]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(@id,'concept-4_concept_list_listitem')]    timeout=30
     Click Element    //*[contains(@id,'concept-4_concept_list_listitem')]
     Wait Until Page Contains    Testiattribuutti    timeout=30
     Sleep    1
-    Wait Until Page Contains Element    //*[contains(@id,'concept-5_concept_list_listitem')]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(@id,'concept-5_concept_list_listitem')]    timeout=30
     Click Element    //*[contains(@id,'concept-5_concept_list_listitem')]
     Wait Until Page Contains    Testiassosiaatio    timeout=30
     Sleep    1
@@ -691,10 +670,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and create new namespace. Check that namespace prefix can not be
     ...    "example" or same as the model prefix. Check that namespace can be added only once. Add two classes.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
@@ -714,6 +693,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Input Text    ${NAMESPACE_PREFIX}    autom1
     Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
     Click Element    ${NAMESPACE_CREATE}
+    Sleep    2
     Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
     Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
@@ -729,8 +709,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${CANCEL_SEARCH_NAMESPACE}
     Save Model
     Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/autom1/    timeout=30
-    Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    uusiluokka10
     Save Class
     Wait Until Element Is Enabled    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
@@ -746,14 +725,13 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and class.
     ...    Check that export for class is succesfull in all formats.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
@@ -834,19 +812,18 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and class.
     ...    Deactivate class and check that deactivated class is not used in JSON Schema generation.
     [Tags]    regression    tietomallit    200    test
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka
-    Wait Until Page Contains Element    ${DEACTIVATED_CHECKBOX}    timeout=30
+    Wait Until Element Is Enabled    ${DEACTIVATED_CHECKBOX}    timeout=30
     Click Element    ${DEACTIVATED_CHECKBOX}
     Save Class
-    Sleep    10
+    Sleep    5
     Wait Until Page Contains    Testiluokka    timeout=30
     Wait Until Page Contains    Deaktivoitu    timeout=30
     Wait Until Page Contains    Kyllä    timeout=30
@@ -869,10 +846,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and create new namespace. Check that namespace URI is set
     ...    correctly with certain prefix. Add two classes.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Wait Until Element Is Enabled    ${IMPORT_NAMESPACE}    timeout=30
     Click Element    ${IMPORT_NAMESPACE}
@@ -898,8 +875,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Model
     Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/iow#    timeout=30
     Wait Until Page Contains    namesapce_iow    timeout=30
-    Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    uusiluokka10
     Save Class
     Wait Until Page Contains Element    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
@@ -915,14 +891,13 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile, class, attribute and association.
     ...    Check that changing ID for class, attribute and association is successful. YTI-821.
     [Tags]    regression    tietomallit    200    test
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
@@ -930,19 +905,21 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select And Edit Class    Testiluokka
     Wait Until Element Is Enabled    ${CLASS_ID}    timeout=60
     Input Text    ${CLASS_ID}    Testiluokka_123
-    Sleep    1
+    Sleep    3
     Save Class
     Wait Until Page Contains Element    //*[contains(text(), "autom:Testiluokka_123")]    timeout=60
     Create new attribute    testiattribuutti
     Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
     Wait Until Element Is Enabled    ${PREDICATE_ID}    timeout=60
     Input Text    ${PREDICATE_ID}    testiattribuutti_123
+    Sleep    3
     Save Predicate
     Wait Until Page Contains Element    //*[contains(text(), "autom:testiattribuutti_123")]    timeout=60
     Create new association    testiassosiaatio
     Select And Edit Predicate    ${ASSOCIATION_TAB}    testiassosiaatio
     Wait Until Element Is Enabled    ${PREDICATE_ID}    timeout=60
     Input Text    ${PREDICATE_ID}    testiassosiaatio_123
+    Sleep    3
     Save Predicate
     Wait Until Page Contains Element    //*[contains(text(), "autom:testiassosiaatio_123")]
     Go Back To Data Vocabularies Frontpage
@@ -953,26 +930,28 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     ...    add property pairs for attribute. Delete one attribute and check that removed attribute
     ...    can not be added as property pair.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
-    Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    Vertailuluokka1
     Add Property For Class    testi arvo
+    Sleep    1
     Add Property For Class    max arvo
+    Sleep    1
     Add Property For Class    min arvo
+    Sleep    1
     Add Property Pair    ${PROPERTY_EQUALS_BTN}    autom#maxarvo
     Add Property Pair    ${PROPERTY_LESS_THAN_BTN}    autom#maxarvo
     Add Property Pair    ${PROPERTY_LESS_THAN_OR_EQUALS_BTN}    autom#maxarvo
-    Wait Until Page Contains Element    id=class_property_TestiArvo_accordion_button    timeout=60
+    Wait Until Element Is Enabled    id=class_property_TestiArvo_accordion_button    timeout=60
     Click Element    id=class_property_TestiArvo_accordion_button
     Wait Until Element Is Enabled    //*[contains(text(), "Poista attribuutti")]
     Click Element    //*[contains(text(), "Poista attribuutti")]
-    Wait Until Page Contains Element    id=class_property_MinArvo_accordion_button    timeout=60
+    Wait Until Element Is Enabled    id=class_property_MinArvo_accordion_button    timeout=60
     Click Element    id=class_property_MinArvo_accordion_button
     Wait Until Element Is Enabled    ${PROPERTY_DISJOINT_BTN}    timeout=30
     Click Element    ${PROPERTY_DISJOINT_BTN}
@@ -998,15 +977,14 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and create urn namespace. Add equivalent class from URN namespace for
     ...    class and check that equivalent class is displayed correctly. YTI-732.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Maximize Browser Window
-    Select and edit Testiautomaatio profile
-    Log To Console    Testiautomaatio profile selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Create New Namespace    testi urn    urn:testurn:testi    urn1
     Save Model
-    Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=30
-    Click Element    ${MODEL_DATA_TAB}
+    Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    uusiluokka10
     Save Class
     Wait Until Element Is Enabled    //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
@@ -1026,8 +1004,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub class is successful.
     ...    Check that super class information is shown in sub class information. YTI-166.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1043,8 +1023,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub class is successful when namespace is not added for model.
     ...    Check that super class information is shown in sub class information. YTI-166.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1059,8 +1041,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 227. Add super class
     [Documentation]    Check that adding super class is successful.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1074,8 +1058,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 228. Copy class
     [Documentation]    Check that copying class is successful.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1090,8 +1076,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub attribute is successful.
     ...    Check that super attribute information is shown in sub attribute information. YTI-1047.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1107,8 +1095,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 230. Add super attribute
     [Documentation]    Check that adding super attribute is successful.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1124,8 +1114,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 231. Copy attribute
     [Documentation]    Check that adding super attribute is successful.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1142,8 +1134,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub association is successful.
     ...    Check that super association information is shown in sub association information.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1160,8 +1154,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 233. Copy association
     [Documentation]    Check that copying association is successful.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1177,8 +1173,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 234. Add super association
     [Documentation]    Check that adding super association is successful.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1194,8 +1192,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 235. Convert sub attribute to association
     [Documentation]    Create sub attribute and convert it to association. YTI-1090.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1221,8 +1221,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create model and sub attribute and delete both. Check that history information
     ...    is visible after deleting and creating same model and sub attribute again. YTI-107.
     [Tags]    regression    test    tietomallit    200
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select And Edit Profile    Testiautomaatiomalli
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1245,7 +1247,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${CLOSE_HISTORY_VIEW_BTN}    timeout=30
     Click Element    ${CLOSE_HISTORY_VIEW_BTN}
     Go Back To Data Vocabularies Frontpage
-    Delete existing profile and create new
+    Delete Existing Profile And Create New    ${MODEL_1}    ${PREFIX_1}
     Modify Profile
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -1274,10 +1276,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 237. Add association between two classes in core vocabulary
     [Documentation]    Add association between two classes in core vocabulary
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Create Automaatiokirjasto Core Vocabulary
-    Log To Console    Automaatiokirjasto Core Vocabulary created
-    Select And Edit Profile    Automaatiokirjasto
-    Log To Console    Automaatiokirjasto Core Vocabulary selected
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Core Vocabulary    ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    Go Back To Data Vocabularies Frontpage
+    Select And Edit Profile    ${CORE_VOCABULARY_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -1305,14 +1307,18 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    lib:Uusiluokka    timeout=30
     Log To Console    Association "Rekisteröinti" added between "Uusiluokka" and "Testiluokka"
     Go Back To Data Vocabularies Frontpage
-    [Teardown]    Delete profile    ${MODEL_2}
+    [Teardown]    Delete profile    ${CORE_VOCABULARY_1}
 
 *** Keywords ***
 Test Case Setup Terminologies
     Terminology Setup
-    Test Case Setup Create Testiautomaatio profile
+    #Test Case Setup Create Testiautomaatio profile
+    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
+    Go Back To Data Vocabularies Frontpage
 
 Test Case Teardown Terminologies
-    Test Case Setup
+    Open Tietomallit
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Delete profile    ${MODEL_1}
     Terminology Teardown

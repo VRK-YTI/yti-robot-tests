@@ -17,7 +17,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    tietomallit    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${INFORMATION_LINK}    timeout=20
     Click Element    ${INFORMATION_LINK}
     Wait Until Page Contains    Tietoa Tietomalleista    timeout=20
@@ -32,7 +32,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    tietomallit    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${EUPL_LICENSE_LINK}    timeout=20
     Click Element    ${EUPL_LICENSE_LINK}
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
@@ -44,7 +44,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
     [Tags]    local    tietomallit
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${DESCRIPTION_OF_FILE_LINK}    timeout=20
     Click Element    ${DESCRIPTION_OF_FILE_LINK}
     Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
@@ -55,7 +55,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    tietomallit    test    100
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Change user interface language    ${LANGUAGE_EN}
     Wait Until Page Contains    Data Vocabularies    timeout=20
     Wait Until Page Contains    All organizations    timeout=20
@@ -65,7 +65,8 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 104. Search for DRAFT model
     [Documentation]    Search for DRAFT model with frontpage search function.
     [Tags]    regression    tietomallit    test    100
-    [Setup]    Test Case Setup Create Testiautomaatio profile
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Create Profile    ${MODEL_1}    ${PREFIX_1}
     Go Back To Data Vocabularies Frontpage
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
@@ -74,12 +75,12 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains Element    ${ADD_CLASS_BTN}    timeout=30
     Sleep    1
     Go Back To Data Vocabularies Frontpage
-    [Teardown]    Test Case Teardown Delete Testiautomaatio profile
+    [Teardown]    Delete profile    ${MODEL_1}
 
 106. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
-    [Tags]    regression    test    100
-    [Setup]    Test Case Setup
+    [Tags]    regression    tietomallit    test    100
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Select navigation menu link    Käyttäjätiedot
     Wait Until Page Contains    Käyttäjätiedot    timeout=20
     Wait Until Page Contains    Nimi    timeout=20
@@ -227,7 +228,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 114. Open CC BY 4.0 license page
     [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
     [Tags]    regression    tietomallit    test
-    [Setup]    Test Case Setup
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Element Is Enabled    ${LICENSE_ICON_TEXT_LINK}    timeout=30
     Click Element    ${LICENSE_ICON_TEXT_LINK}
     Select Window    title=Creative Commons — Attribution 4.0 International — CC BY 4.0
