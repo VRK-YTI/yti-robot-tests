@@ -247,14 +247,6 @@ Restore Finnish language
     Wait Until Page Contains    Luokitus    timeout=20
     Close All Browsers
 
-Select navigation menu link
-    [Arguments]    ${navigation_menu_link}=Käyttäjätiedot
-    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click Element    ${NAVIGATION_MENU_DDL}
-    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
-    Click Element    //*[contains(text(), "${navigation_menu_link}")]
-    Sleep    2
-
 Change user interface language
     [Arguments]    ${language}
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=20

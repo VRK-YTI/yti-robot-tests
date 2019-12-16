@@ -84,6 +84,12 @@ ${SVG_DOWNLOAD}    id=SVG_download_dropdown
 ${EXPORT_MODEL_DDL}    id=model_export_dropdown
 ${OPEN_LINK_MODAL}    class=modal-body
 ${CLOSE_HISTORY_VIEW_BTN}    id=close_history_view_button
+${MODEL_ACTION_MENU}    id=model_action_menu
+${ADD_SUBSCRIPTION_BTN}    id=add_subscription_button
+${DELETE_SUBSCRIPTION_BTN}    id=remove_subscription_button
+${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
+${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
+${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
@@ -820,6 +826,7 @@ Create new shape by referencing external uri
 
 Delete profile
     [Arguments]    ${profile}
+    Select user
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains Element    //*[contains(text(), "${profile}")]    timeout=30
@@ -957,3 +964,31 @@ Modify Profile
     Click Element    ${MODEL_DETAILS_TAB}
     Wait Until Page Contains Element    ${MODIFY_MODEL}    timeout=30
     Click Element    ${MODIFY_MODEL}
+
+Add Email Subscription For Datamodel
+    Wait Until Element Is Enabled    ${MODEL_ACTION_MENU}    timeout=20
+    Click Element    ${MODEL_ACTION_MENU}
+    Wait Until Element Is Enabled    ${ADD_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${ADD_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription added
+
+Remove Email Subscription For Datamodel
+    Wait Until Element Is Enabled    ${MODEL_ACTION_MENU}    timeout=20
+    Click Element    ${MODEL_ACTION_MENU}
+    Wait Until Element Is Enabled    ${DELETE_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${DELETE_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription removed
+
+Select navigation menu link
+    [Arguments]    ${navigation_menu_link}
+    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click Element    ${NAVIGATION_MENU_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
+    Sleep    2
