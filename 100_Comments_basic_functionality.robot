@@ -59,29 +59,29 @@ Resource          resources/Generic_resources.robot
     Wait Until Page Contains    All organizations    timeout=30
     Wait Until Page Contains    All statuses    timeout=30
     Sleep    1
-    [Teardown]    Restore Finnish language
+    [Teardown]    Restore Finnish Language
 
 104. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
-    Select navigation menu link    Käyttäjätiedot
+    Select Navigation Menu Link    Käyttäjätiedot
     Wait Until Page Contains    Käyttäjätiedot    timeout=20
     Wait Until Page Contains    Nimi    timeout=20
     Wait Until Page Contains    Sähköposti    timeout=20
     Wait Until Page Contains    Organisaatiot ja roolit    timeout=20
-    Select navigation menu link    yhteentoimiva.suomi.fi
+    Select Navigation Menu Link    yhteentoimiva.suomi.fi
     Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
-    Select navigation menu link    Suomi.fi-koodistot
+    Select Navigation Menu Link    Suomi.fi-koodistot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait Until Page Contains    Koodistot    timeout=40
     Wait Until Page Contains    Hae koodistoa    timeout=40
     Wait Until Page Contains    Rajaa tietoalueella    timeout=40
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
-    Select navigation menu link    Suomi.fi-sanastot
+    Select Navigation Menu Link    Suomi.fi-sanastot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait Until Page Contains    Sanastot    timeout=40
     Wait Until Page Contains    Hae sanastoja    timeout=40
@@ -89,7 +89,7 @@ Resource          resources/Generic_resources.robot
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Sleep    1
-    Select navigation menu link    Suomi.fi-tietomallit
+    Select Navigation Menu Link    Suomi.fi-tietomallit
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Wait Until Page Contains    Tietomallit    timeout=40
     Wait Until Page Contains    Etusivu    timeout=40
@@ -97,24 +97,3 @@ Resource          resources/Generic_resources.robot
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Sleep    1
     Close All Browsers
-
-*** Keywords ***
-Restore Finnish language
-    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
-    Click Element    ${LANGUAGE_DROPDOWN_BTN}
-    Wait Until Element Is Visible    ${LANGUAGE_FI}    timeout=20
-    Click Element    ${LANGUAGE_FI}
-    Wait Until Page Contains    Kommentit - ${ENVIRONMENT_IDENTIFIER}    timeout=30
-    Wait Until Page Contains    Luo uusi kommentointikierros    timeout=30
-    Wait Until Page Contains    Kaikki työkalut    timeout=20
-    Wait Until Page Contains    Kaikki organisaatiot    timeout=20
-    Wait Until Page Contains    Kaikki tilat    timeout=20
-    Close All Browsers
-
-Select navigation menu link
-    [Arguments]    ${navigation_menu_link}
-    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
-    Click Element    ${NAVIGATION_MENU_DDL}
-    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
-    Click Element    //*[contains(text(), "${navigation_menu_link}")]
-    Sleep    2

@@ -85,6 +85,12 @@ ${NEW_SUGGESTION_LABEL_INPUT_0}    id=commenthread_0_label_text_input
 ${NEW_SUGGESTION_DESCRIPTION_INPUT_0}    id=commenthread_0_description_text_input
 ${NEW_SUGGESTION_LABEL_INPUT_1}    id=commenthread_1_label_text_input
 ${NEW_SUGGESTION_DESCRIPTION_INPUT_1}    id=commenthread_1_description_text_input
+#Email subscription
+${ADD_SUBSCRIPTION_BTN}    id=add_subscription_button
+${DELETE_SUBSCRIPTION_BTN}    id=delete_subscription_button
+${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
+${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
+${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
 #Commenting
 ${START_COMMENTING_BTN}    id=start_commenting_button
 ${SEND_COMMENTS_BTN_BOTTOM}    id=send_comments_button_bottom
@@ -166,10 +172,10 @@ Create Comment Round
     Wait Until Page Contains Element    ${COMMENTROUND_ORGANIZATION_INPUT}    timeout=20
     Input Text    ${COMMENTROUND_ORGANIZATION_INPUT}    Testiorganisaatio
     Click Element    //*[contains(text(), "Testiorganisaatio")]
-    Wait Until Page Contains Element    ${SAVE_COMMENTROUND}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_COMMENTROUND}    timeout=20
     Click Element    ${SAVE_COMMENTROUND}
     Sleep    1
-    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
+    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=60
     Log To Console    Comment round created
 
 Uncheck Only Selected Resources Checkbox
@@ -318,6 +324,61 @@ Send Inline Comment For Comment Thread
     Input Text    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    ${comment}
     Wait Until Element Is Enabled    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}    timeout=30
     Click Element    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}
+
+Search Comment Round
+    [Arguments]    ${comment_round}
+    Wait Until Element Is Enabled    ${SEARCH_BOX_INPUT}    timeout=30
+    Input Text    ${SEARCH_BOX_INPUT}    ${comment_round}
+
+Select Comment Round
+    [Arguments]    ${comment_round}
+    Wait Until Element Is Enabled    //*[contains(text(), "${comment_round}")]    timeout=30
+    Click Element    //*[contains(text(), "${comment_round}")]
+
+Add Email Subscription For Comment Round
+    Wait Until Element Is Enabled    ${COMMENTROUND_DDL}    timeout=20
+    Click Element    ${COMMENTROUND_DDL}
+    Wait Until Element Is Enabled    ${ADD_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${ADD_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription added
+
+Remove Email Subscription For Comment Round
+    Wait Until Element Is Enabled    ${COMMENTROUND_DDL}    timeout=20
+    Click Element    ${COMMENTROUND_DDL}
+    Wait Until Element Is Enabled    ${DELETE_SUBSCRIPTION_BTN}    timeout=20
+    Click Element    ${DELETE_SUBSCRIPTION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
+    Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Log To Console    Email subscription removed
+
+Select Navigation Menu Link
+    [Arguments]    ${navigation_menu_link}
+    Wait Until Page Contains Element    ${NAVIGATION_MENU_DDL}    timeout=20
+    Click Element    ${NAVIGATION_MENU_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
+    Click Element    //*[contains(text(), "${navigation_menu_link}")]
+    Sleep    2
+
+Restore Finnish Language
+    Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}
+    Click Element    ${LANGUAGE_DROPDOWN_BTN}
+    Wait Until Element Is Visible    ${LANGUAGE_FI}    timeout=20
+    Click Element    ${LANGUAGE_FI}
+    Wait Until Page Contains    Kommentit - ${ENVIRONMENT_IDENTIFIER}    timeout=30
+    Wait Until Page Contains    Luo uusi kommentointikierros    timeout=30
+    Wait Until Page Contains    Kaikki työkalut    timeout=20
+    Wait Until Page Contains    Kaikki organisaatiot    timeout=20
+    Wait Until Page Contains    Kaikki tilat    timeout=20
+    Close All Browsers
+
+Select Tab
+    [Arguments]    ${tab}
+    Wait Until Page Contains Element    ${tab}    timeout=20
+    Click Element    ${tab}
 
 Test Case Setup Reference Data
     [Arguments]    ${codelist}    ${codelist_name}
