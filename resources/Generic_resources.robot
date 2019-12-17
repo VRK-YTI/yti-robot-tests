@@ -261,6 +261,7 @@ Start Comment Round
     Wait Until Page Contains Element    ${CONFIRM_BTN}    timeout=20
     Click Element    ${CONFIRM_BTN}
     Wait Until Page Contains    Käynnissä    timeout=20
+    Log To Console    Comment round started
 
 Close Comment Round
     Wait Until Page Contains Element    ${COMMENTROUND_DDL}    timeout=20
