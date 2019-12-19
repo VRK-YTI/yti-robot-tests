@@ -125,6 +125,21 @@ Resource          resources/Terminology_Resources.robot
     Log To Console    CC BY 4.0 license page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
 
+107. Check URI links
+    [Documentation]    Check that URI links are working correctly
+    [Tags]    regression    sanastot    test    100
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Open Sanastot
+    Set Selenium Speed    ${SELENIUM_SPEED}
+    GO To    http://uri.suomi.fi/terminology/jhs/
+    Wait Until Page Contains    Julkisen hallinnon yhteinen sanasto    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/terminology/jhs/J187
+    Wait Until Page Contains    aihe    timeout=30
+    Wait Until Page Contains    URI    timeout=30
+    Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
+    Sleep    2
+
 *** Keywords ***
 Restore Finnish language
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
