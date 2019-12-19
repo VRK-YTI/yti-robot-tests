@@ -268,3 +268,18 @@ Resource          resources/Data_Vocabularies_resources.robot
     Close Comment Round
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+
+213. Check URI links
+    [Documentation]    Check that comment round URI link is working correctly
+    [Tags]    regression    kommentit    test    100
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
+    Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
+    ${uri}=    Get Text    //*[contains(text(), "http://uri.suomi.fi/comments/round/")]
+    Log    Comment round URI is ${uri}
+    Open Comments
+    Set Selenium Speed    ${SELENIUM_SPEED}
+    GO To    ${uri}
+    Wait Until Page Contains    Testiautomaatiokierros    timeout=30
+    Log To Console    URI link opened successfully
+    Sleep    2
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
