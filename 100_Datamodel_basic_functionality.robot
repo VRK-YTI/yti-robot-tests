@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Datamodel application
 Suite Teardown    Close All Browsers
+Test Teardown     Close All Browsers
 Library           SeleniumLibrary
 Resource          resources/Datamodel_Resources.robot
 
@@ -236,6 +237,19 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Sleep    2
     Log To Console    CC BY 4.0 license page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+
+115. Check URI links
+    [Documentation]    Check that URI links are working correctly
+    [Tags]    regression    tietomallit    test    100
+    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Open Tietomallit
+    Set Selenium Speed    ${SELENIUM_SPEED}
+    GO To    http://uri.suomi.fi/datamodel/ns/jhs#
+    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/datamodel/ns/jhs#Henkilo
+    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
+    Sleep    2
 
 *** Keywords ***
 Restore Finnish language

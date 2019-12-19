@@ -82,7 +82,6 @@ ${ADD_PROFILE_BTN}    id=add_profile_button
 ${ADD_LIBRARY_BTN}    id=add_library_button
 ${MODIFY_MODEL}    id=model_edit_buttons_edit
 ${SHOW_HISTORY_BTN}    id=model_edit_buttons_history
-${MODEL_STATE_INCOMPLETE}    id=modelState_INCOMPLETE
 ${MAXIMAXE_BTN}    id=maximize_button
 ${DOWNLOAD_DDL}    id=download_dropdown
 ${PNG_DOWNLOAD}    id=PNG_download_dropdown
@@ -96,6 +95,11 @@ ${DELETE_SUBSCRIPTION_BTN}    id=remove_subscription_button
 ${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
 ${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
 ${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
+${CHANGE_RESOURCES_STATUSES_CHECKBOX}    id=change_resource_statuses_too_checkbox
+#Status
+${MODEL_STATE_DDL}    id=modelState
+${MODEL_STATE_INCOMPLETE}    id=modelState_INCOMPLETE
+${MODEL_STATE_VALID}    id=modelState_VALID
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
@@ -805,6 +809,7 @@ Create New Class Without Referencing Concept
     Wait Until Element Is Enabled    ${CREATE_NEW_CLASS_BTN}    timeout=30
     Click Element    ${CREATE_NEW_CLASS_BTN}
     Log To Console    New class without referencing concept created
+    Wait Until Element Is Enabled    ${MODIFY_CLASS}    timeout=60
     Sleep    2
 
 Create new class and suggest concept to terminologies
@@ -1010,3 +1015,23 @@ Select navigation menu link
     Wait Until Page Contains Element    //*[contains(text(), "${navigation_menu_link}")]    timeout=30
     Click Element    //*[contains(text(), "${navigation_menu_link}")]
     Sleep    2
+
+Change Profile Status
+    [Arguments]    ${profile_status}    ${resource_status}
+    Wait Until Element Is Enabled    ${MODEL_STATE_DDL}    timeout=20
+    Click Element    ${MODEL_STATE_DDL}
+    Wait Until Page Contains Element    //*[contains(text(), "${profile_status}")]    timeout=30
+    Click Element    //*[contains(text(), "${profile_status}")]
+    ${confirmation}=    Run Keyword And Return Status    Page should contain    Haluatko varmasti vaihtaa tilaa?
+    Run Keyword If    ${confirmation}    Confirm Action
+    Run Keyword If    '${resource_status}' == 'True'    Enforce Resource Status Change    ${resource_status}
+
+Enforce Resource Status Change
+    [Arguments]    ${resource_status}
+    Select Checkbox    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
+    Sleep    1
+    Checkbox Should Be Selected    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
+
+Confirm Action
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Click Element    ${CONFIRMATION_YES_BTN}
