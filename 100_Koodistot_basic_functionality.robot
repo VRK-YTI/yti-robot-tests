@@ -405,6 +405,31 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_26}
 
+116. Check URI links
+    [Documentation]    Check that URI links are working correctly in DEV, TEST and PROD environments
+    [Tags]    regression    koodistot    test    100
+    [Setup]    Test Case Setup Admin
+    Open Koodistot
+    Set Selenium Speed    ${SELENIUM_SPEED}
+    GO To    http://uri.suomi.fi/codelist/eu/dcat
+    Wait Until Page Contains    DCAT-AP-luokitus    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/codelist/eu/dcat/code/AGRI
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/codelist/eu/dcat?env=awsdev
+    Wait Until Page Contains    DCAT-AP-luokitus    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/codelist/eu/dcat/code/AGRI?env=awsdev
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/codelist/eu/dcat?env=awstest
+    Wait Until Page Contains    DCAT-AP-luokitus    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/codelist/eu/dcat/code/AGRI?env=awstest
+    Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
+    Sleep    2
+
 *** Keywords ***
 Restore Finnish language
     Wait Until Page Contains Element    ${LANGUAGE_DROPDOWN_BTN}    timeout=30
