@@ -139,6 +139,22 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    URI    timeout=30
     Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
     Sleep    2
+    GO To    http://uri.suomi.fi/terminology/jhs/?env=awsdev
+    Wait Until Page Contains    JHSMETA    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/terminology/jhs/J187?env=awsdev
+    Wait Until Page Contains    aihe    timeout=30
+    Wait Until Page Contains    URI    timeout=30
+    Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/terminology/jhs/?env=awstest
+    Wait Until Page Contains    Julkisen hallinnon yhteinen sanasto    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/terminology/jhs/J187?env=awstest
+    Wait Until Page Contains    aihe    timeout=30
+    Wait Until Page Contains    URI    timeout=30
+    Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
+    Sleep    2
 
 *** Keywords ***
 Restore Finnish language
