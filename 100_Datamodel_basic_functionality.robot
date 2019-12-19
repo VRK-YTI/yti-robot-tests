@@ -250,6 +250,18 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     GO To    http://uri.suomi.fi/datamodel/ns/jhs#Henkilo
     Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
     Sleep    2
+    GO To    http://uri.suomi.fi/datamodel/ns/jhs?env=awsdev
+    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/datamodel/ns/jhs#Henkilo?env=awsdev
+    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/datamodel/ns/jhs?env=awstest
+    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
+    Sleep    2
+    GO To    http://uri.suomi.fi/datamodel/ns/jhs#Henkilo?env=awstest
+    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
+    Sleep    2
 
 *** Keywords ***
 Restore Finnish language
