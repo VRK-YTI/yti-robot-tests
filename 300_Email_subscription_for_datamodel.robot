@@ -14,7 +14,7 @@ Resource          resources/Email_subscription_resources.robot
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Profile    ${MODEL_1}    ${PREFIX_1}
     Go Back To Data Vocabularies Frontpage
-    Open Tool    ${DATA_VOCABULRIES_ENVIRONMENT_URL}
+    Open Tool    ${DATA_VOCABULARIES_ENVIRONMENT_URL}
     Select model    Testiautomaatiomalli
     Add Email Subscription For Datamodel
     Select navigation menu link    Käyttäjätiedot

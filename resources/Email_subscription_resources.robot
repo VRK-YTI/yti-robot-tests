@@ -6,7 +6,7 @@ Library           SeleniumLibrary
 ${BROWSER}        chrome
 ${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.dev.yti.cloud.vrk.fi/
 ${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.dev.yti.cloud.vrk.fi/
-${DATA_VOCABULRIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
+${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
 ${COMMENTS_ENVIRONMENT_URL}    https://kommentit.dev.yti.cloud.vrk.fi/
 ${GROUPMANAGEMENT_ENVIRONMENT_URL}    https://rhp.dev.yti.cloud.vrk.fi/
 ${SELENIUM_SPEED}    0.5
