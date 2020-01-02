@@ -10,8 +10,10 @@ ${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatiomalli
+${MODEL_2}        Tilamalli
 ${PREFIX_1}       autom
 ${PREFIX_2}       lib
+${PREFIX_3}       tatm
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 ${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
 ${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
@@ -23,7 +25,7 @@ ${ENVIRONMENT_IDENTIFIER}    AWSDEV
 #Users
 ${TEST_ADMIN_ID}    id=impersonate_user_testiadmin@localhost_link
 ${TEST_ADMIN_NAME}    Test Admin
-${TEST_SUPERUSER_ID}    id=testisuperuser@localhost_fakeable_user_link
+${TEST_SUPERUSER_ID}    id=impersonate_user_testisuperuser@localhost_link
 ${TEST_SUPERUSER_NAME}    Test Superuser
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
@@ -52,6 +54,7 @@ ${DESCRIPTION_OF_FILE_LINK}    id=description_of_file_link
 ${ADD_CLASS_BTN}    id=add_new_class_button
 ${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
 ${CLOSE_BTN}      //div[1]/div/div/div[3]/button
+${CONFIRM_ALERT_BTN}    id=confirm_alert_modal_button
 #Model
 ${MODEL_DETAILS_TAB}    id=modelDetailsTab
 ${MODEL_DATA_TAB}    id=dataTab
@@ -97,9 +100,30 @@ ${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
 ${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
 ${CHANGE_RESOURCES_STATUSES_CHECKBOX}    id=change_resource_statuses_too_checkbox
 #Status
-${MODEL_STATE_DDL}    id=modelState
+${MODEL_STATE_DDL}    id=modelState_item_select
 ${MODEL_STATE_INCOMPLETE}    id=modelState_INCOMPLETE
+${MODEL_STATE_DRAFT}    id=modelState_DRAFT
 ${MODEL_STATE_VALID}    id=modelState_VALID
+${MODEL_STATE_SUPERSEDED}    id=modelState_SUPERSEDED
+${MODEL_STATE_RETIRED}    id=modelState_RETIRED
+${MODEL_STATE_INVALID}    id=modelState_INVALID
+${MASS_MIGRATE_STATUSES_BTN}    id=mass_migrate_datamodel_statuses_button
+${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}    id=enforce_status_transition_rules_checkbox
+${STARTING_STATUS_DDL}    id=selected_migrate_resource_statuses_from_status_input_dropdown
+${TARGET_STATUS_DDL}    id=selected_migrate_resource_statuses_to_status_input_dropdown
+${STARTING_STATUS_INCOMPLETE}    id=INCOMPLETE_migrate_resource_statuses_from_status_input_dropdown
+${STARTING_STATUS_DRAFT}    id=DRAFT_migrate_resource_statuses_from_status_input_dropdown
+${STARTING_STATUS_VALID}    id=VALID_migrate_resource_statuses_from_status_input_dropdown
+${STARTING_STATUS_SUPERSEDED}    id=SUPERSEDED_migrate_resource_statuses_from_status_input_dropdown
+${STARTING_STATUS_RETIRED}    id=RETIRED_migrate_resource_statuses_from_status_input_dropdown
+${STARTING_STATUS_INVALID}    id=INVALID_migrate_resource_statuses_from_status_input_dropdown
+${TARGET_STATUS_INCOMPLETE}    id=INCOMPLETE_migrate_resource_statuses_to_status_input_dropdown
+${TARGET_STATUS_DRAFT}    id=DRAFT_migrate_resource_statuses_to_status_input_dropdown
+${TARGET_STATUS_VALID}    id=VALID_migrate_resource_statuses_to_status_input_dropdown
+${TARGET_STATUS_SUPERSEDED}    id=SUPERSEDED_migrate_resource_statuses_to_status_input_dropdown
+${TARGET_STATUS_RETIRED}    id=RETIRED_migrate_resource_statuses_to_status_input_dropdown
+${TARGET_STATUS_INVALID}    id=INVALID_migrate_resource_statuses_to_status_input_dropdown
+${SAVE_MIGRATE_RESOURCE_STATUSES}    id=migrate_resource_statuses_button
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
@@ -1017,21 +1041,43 @@ Select navigation menu link
     Sleep    2
 
 Change Profile Status
-    [Arguments]    ${profile_status}    ${resource_status}
+    [Arguments]    ${profile_status}
     Wait Until Element Is Enabled    ${MODEL_STATE_DDL}    timeout=20
     Click Element    ${MODEL_STATE_DDL}
     Wait Until Page Contains Element    //*[contains(text(), "${profile_status}")]    timeout=30
     Click Element    //*[contains(text(), "${profile_status}")]
-    ${confirmation}=    Run Keyword And Return Status    Page should contain    Haluatko varmasti vaihtaa tilaa?
-    Run Keyword If    ${confirmation}    Confirm Action
-    Run Keyword If    '${resource_status}' == 'True'    Enforce Resource Status Change    ${resource_status}
 
 Enforce Resource Status Change
-    [Arguments]    ${resource_status}
+    Wait Until Element Is Enabled    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}    timeout=30
     Select Checkbox    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
     Sleep    1
     Checkbox Should Be Selected    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
 
 Confirm Action
-    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
+    Wait Until Page Contains Element    ${CONFIRMATION_YES_BTN}    timeout=20
     Click Element    ${CONFIRMATION_YES_BTN}
+    Sleep    1
+
+Confirm Alert
+    Wait Until Page Contains Element    ${CONFIRM_ALERT_BTN}    timeout=20
+    Click Element    ${CONFIRM_ALERT_BTN}
+    Sleep    1
+
+Change All Resource Statuses
+    [Arguments]    ${status_enforce}    ${starting_status}    ${target_status}
+    Wait Until Element Is Enabled    ${MODEL_ACTION_MENU}    timeout=20
+    Click Element    ${MODEL_ACTION_MENU}
+    Wait Until Element Is Enabled    ${MASS_MIGRATE_STATUSES_BTN}    timeout=20
+    Click Element    ${MASS_MIGRATE_STATUSES_BTN}
+    Run Keyword If    '${status_enforce}' == 'True'    Click Element    ${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}
+    Wait Until Element Is Enabled    ${STARTING_STATUS_DDL}    timeout=20
+    Click Element    ${STARTING_STATUS_DDL}
+    Wait Until Element Is Enabled    ${starting_status}    timeout=30
+    Click Element    ${starting_status}
+    Sleep    1
+    Wait Until Element Is Enabled    ${TARGET_STATUS_DDL}    timeout=20
+    Click Element    ${TARGET_STATUS_DDL}
+    Wait Until Element Is Enabled    ${target_status}    timeout=30
+    Click Element    ${target_status}
+    Wait Until Element Is Enabled    ${SAVE_MIGRATE_RESOURCE_STATUSES}    timeout=30
+    Click Element    ${SAVE_MIGRATE_RESOURCE_STATUSES}
