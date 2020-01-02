@@ -1081,3 +1081,33 @@ Change All Resource Statuses
     Click Element    ${target_status}
     Wait Until Element Is Enabled    ${SAVE_MIGRATE_RESOURCE_STATUSES}    timeout=30
     Click Element    ${SAVE_MIGRATE_RESOURCE_STATUSES}
+
+Mass Migrate Statuses
+    Wait Until Element Is Enabled    ${MODEL_ACTION_MENU}    timeout=20
+    Click Element    ${MODEL_ACTION_MENU}
+    Wait Until Element Is Enabled    ${MASS_MIGRATE_STATUSES_BTN}    timeout=20
+    Click Element    ${MASS_MIGRATE_STATUSES_BTN}
+
+Enforce Status Transition Rules
+    Wait Until Element Is Enabled    ${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}    timeout=20
+    Click Element    ${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}
+    Sleep    1
+    Checkbox Should Be Selected    ${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}
+
+Set Startig Status
+    [Arguments]    ${starting_status}
+    Wait Until Element Is Enabled    ${STARTING_STATUS_DDL}    timeout=20
+    Click Element    ${STARTING_STATUS_DDL}
+    Wait Until Element Is Enabled    ${starting_status}    timeout=30
+    Click Element    ${starting_status}
+
+Set Target Status
+    [Arguments]    ${target_status}
+    Wait Until Element Is Enabled    ${TARGET_STATUS_DDL}    timeout=20
+    Click Element    ${TARGET_STATUS_DDL}
+    Wait Until Element Is Enabled    ${target_status}    timeout=30
+    Click Element    ${target_status}
+
+Save Migrate Resource Statuses
+    Wait Until Element Is Enabled    ${SAVE_MIGRATE_RESOURCE_STATUSES}    timeout=30
+    Click Element    ${SAVE_MIGRATE_RESOURCE_STATUSES}
