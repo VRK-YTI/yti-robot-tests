@@ -27,6 +27,8 @@ ${TEST_ADMIN_ID}    id=impersonate_user_testiadmin@localhost_link
 ${TEST_ADMIN_NAME}    Test Admin
 ${TEST_SUPERUSER_ID}    id=impersonate_user_testisuperuser@localhost_link
 ${TEST_SUPERUSER_NAME}    Test Superuser
+${TEST_DATAMODEL_ID}    id=impersonate_user_testdatamodel@localhost_link
+${TEST_DATAMODEL_NAME}    Test Datamodel
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
@@ -677,7 +679,8 @@ Create new attribute
     Click Element    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}
     Wait Until Page Contains Element    ${CREATE_NEW_ATTRIBUTE_BTN}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
-    Wait Until Element Is Visible    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
+    Sleep    1
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_SAVE_BTN}
     Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=60
     Wait Until Page Contains    ${attribute}    timeout=60
@@ -737,7 +740,8 @@ Create new association
     Click Element    ${CREATE_NEW_ASSOCIATION_WITHOUT_REF_LINK}
     Wait Until Page Contains Element    ${CREATE_NEW_ASSOCIATION_BTN}    timeout=30
     Click Element    ${CREATE_NEW_ASSOCIATION_BTN}
-    Wait Until Element Is Visible    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
+    Sleep    1
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_SAVE_BTN}
     Wait Until Element Is Visible    ${PREDICATE_EDIT_BTN}    timeout=60
     Wait Until Page Contains    ${association}    timeout=60
@@ -1052,6 +1056,7 @@ Enforce Resource Status Change
     Select Checkbox    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
     Sleep    1
     Checkbox Should Be Selected    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
+    Log To Console    Change resource statuses checkbox selected
 
 Confirm Action
     Wait Until Page Contains Element    ${CONFIRMATION_YES_BTN}    timeout=20
