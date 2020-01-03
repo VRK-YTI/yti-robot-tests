@@ -127,7 +127,7 @@ Resource          resources/Datamodel_Resources.robot
     Confirm Alert
     Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
-    Wait Until Page contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_2}
@@ -154,7 +154,7 @@ Resource          resources/Datamodel_Resources.robot
     Confirm Alert
     Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
-    Wait Until Page contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
     Select Model Tab    ${MODEL_DATA_TAB}
     Modify Profile
@@ -231,7 +231,7 @@ Resource          resources/Datamodel_Resources.robot
     Wait Until Page Contains Element    ${TARGET_STATUS_INVALID}    timeout=30
     Click Element    ${TARGET_STATUS_INCOMPLETE}
     Save Migrate Resource Statuses
-    Wait Until Page contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${CORE_VOCABULARY_1}
@@ -271,7 +271,7 @@ Resource          resources/Datamodel_Resources.robot
     Confirm Alert
     Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
-    Wait Until Page contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${CORE_VOCABULARY_1}
