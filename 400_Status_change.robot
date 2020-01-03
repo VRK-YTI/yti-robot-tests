@@ -38,8 +38,9 @@ Resource          resources/Datamodel_Resources.robot
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_2}
 
-401. Enforce resource status transition rules
-    [Documentation]    Change resource statuses with enforce transition rules
+401. Change resource statuses with enforcing transition rules
+    [Documentation]    Change all resource statuses from DRAFT to INCOMPLETE as superuser with
+    ...    enforcing transition rules. Check that certain status elements are not visible.
     [Tags]    tietomallit    regression    test    400
     [Setup]    Test Case Setup    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
     Create Profile    ${MODEL_2}    ${PREFIX_3}
@@ -61,6 +62,36 @@ Resource          resources/Datamodel_Resources.robot
     Page Should Not Contain Element    ${TARGET_STATUS_SUPERSEDED}
     Page Should Not Contain Element    ${TARGET_STATUS_RETIRED}
     Page Should Not Contain Element    ${TARGET_STATUS_INVALID}
+    Click Element    ${TARGET_STATUS_INCOMPLETE}
+    Save Migrate Resource Statuses
+    Confirm Alert
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_2}
+
+402. Change resource statuses without enforcing transition rules
+    [Documentation]    Change all resource statuses from DRAFT to INCOMPLETE as superuser without
+    ...    enforcing transition rules.
+    [Tags]    tietomallit    regression    test    400
+    [Setup]    Test Case Setup    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
+    Create Profile    ${MODEL_2}    ${PREFIX_3}
+    Select model    ${MODEL_2}
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
+    Select Tab    ${ATTRIBUTE_TAB}
+    Create new attribute    Testiattribuutti
+    Select Tab    ${ASSOCIATION_TAB}
+    Create new association    Testiassosiaatio
+    Mass Migrate Statuses
+    Set Startig Status    ${STARTING_STATUS_DRAFT}
+    Wait Until Page Contains    Resursseja: 3    timeout=10
+    Wait Until Element Is Enabled    ${TARGET_STATUS_DDL}    timeout=20
+    Click Element    ${TARGET_STATUS_DDL}
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}    timeout=30
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}    timeout=30
+    Wait Until Page Contains Element    ${TARGET_STATUS_DRAFT}    timeout=30
+    Wait Until Page Contains Element    ${TARGET_STATUS_SUPERSEDED}    timeout=30
+    Wait Until Page Contains Element    ${TARGET_STATUS_RETIRED}    timeout=30
+    Wait Until Page Contains Element    ${TARGET_STATUS_INVALID}    timeout=30
     Click Element    ${TARGET_STATUS_INCOMPLETE}
     Save Migrate Resource Statuses
     Confirm Alert
