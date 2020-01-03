@@ -1081,6 +1081,7 @@ Change All Resource Statuses
     Click Element    ${target_status}
     Wait Until Element Is Enabled    ${SAVE_MIGRATE_RESOURCE_STATUSES}    timeout=30
     Click Element    ${SAVE_MIGRATE_RESOURCE_STATUSES}
+    Log To Console    Resource statuses changed
 
 Mass Migrate Statuses
     Wait Until Element Is Enabled    ${MODEL_ACTION_MENU}    timeout=20
@@ -1093,6 +1094,7 @@ Enforce Status Transition Rules
     Click Element    ${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}
     Sleep    1
     Checkbox Should Be Selected    ${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}
+    Log To Console    Status transition rules checkbox selected
 
 Set Startig Status
     [Arguments]    ${starting_status}
@@ -1100,6 +1102,7 @@ Set Startig Status
     Click Element    ${STARTING_STATUS_DDL}
     Wait Until Element Is Enabled    ${starting_status}    timeout=30
     Click Element    ${starting_status}
+    Log To Console    Starting status selected
 
 Set Target Status
     [Arguments]    ${target_status}
@@ -1107,7 +1110,9 @@ Set Target Status
     Click Element    ${TARGET_STATUS_DDL}
     Wait Until Element Is Enabled    ${target_status}    timeout=30
     Click Element    ${target_status}
+    Log To Console    Target status selected
 
 Save Migrate Resource Statuses
     Wait Until Element Is Enabled    ${SAVE_MIGRATE_RESOURCE_STATUSES}    timeout=30
     Click Element    ${SAVE_MIGRATE_RESOURCE_STATUSES}
+    Log To Console    Resource status change saved
