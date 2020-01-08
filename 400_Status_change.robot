@@ -16,7 +16,7 @@ Resource          resources/Datamodel_Resources.robot
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Modify Profile
@@ -48,7 +48,7 @@ Resource          resources/Datamodel_Resources.robot
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Mass Migrate Statuses
@@ -78,7 +78,7 @@ Resource          resources/Datamodel_Resources.robot
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Mass Migrate Statuses
@@ -107,7 +107,7 @@ Resource          resources/Datamodel_Resources.robot
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Mass Migrate Statuses
@@ -141,7 +141,7 @@ Resource          resources/Datamodel_Resources.robot
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Modify Profile
@@ -179,7 +179,7 @@ Resource          resources/Datamodel_Resources.robot
     Add Class    Rooli    ${NAMESPACE_1}
     Log To Console    Class "Rooli" added
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Mass Migrate Statuses
@@ -215,7 +215,7 @@ Resource          resources/Datamodel_Resources.robot
     Add Class    Rooli    ${NAMESPACE_1}
     Log To Console    Class "Rooli" added
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Mass Migrate Statuses
@@ -251,7 +251,7 @@ Resource          resources/Datamodel_Resources.robot
     Add Class    Rooli    ${NAMESPACE_1}
     Log To Console    Class "Rooli" added
     Select Tab    ${ATTRIBUTE_TAB}
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Mass Migrate Statuses
@@ -275,3 +275,47 @@ Resource          resources/Datamodel_Resources.robot
     Confirm Alert
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${CORE_VOCABULARY_1}
+
+408. Change status for profile
+    [Documentation]    Change status for profile
+    [Tags]    tietomallit    regression    test    400
+    [Setup]    Test Case Setup    ${TEST_DATAMODEL_ID}    ${TEST_DATAMODEL_NAME}
+    Create Profile    ${MODEL_2}    ${PREFIX_3}
+    Select model    ${MODEL_2}
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
+    Select Tab    ${ATTRIBUTE_TAB}
+    Create New Attribute    Testiattribuutti
+    Select Tab    ${ASSOCIATION_TAB}
+    Create new association    Testiassosiaatio
+    Modify Profile
+    Wait Until Element Is Enabled    ${MODEL_STATE_DDL}    timeout=20
+    Click Element    ${MODEL_STATE_DDL}
+    Wait Until Page Contains Element    ${MODEL_STATE_DRAFT}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_STATE_INCOMPLETE}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_STATE_VALID}    timeout=30
+    Page Should Not Contain Element    ${MODEL_STATE_SUPERSEDED}
+    Page Should Not Contain Element    ${MODEL_STATE_RETIRED}
+    Page Should Not Contain Element    ${MODEL_STATE_INVALID}
+    Click Element    ${MODEL_STATE_VALID}
+    Wait Until Element Is Enabled    ${SAVE_MODEL_BTN}    timeout=30
+    Click Element    ${SAVE_MODEL_BTN}
+    Confirm Action
+    Modify Profile
+    Wait Until Element Is Enabled    ${MODEL_STATE_DDL}    timeout=20
+    Click Element    ${MODEL_STATE_DDL}
+    Wait Until Page Contains Element    ${MODEL_STATE_VALID}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_STATE_RETIRED}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_STATE_INVALID}    timeout=30
+    Page Should Not Contain Element    ${MODEL_STATE_DRAFT}
+    Page Should Not Contain Element    ${MODEL_STATE_INCOMPLETE}
+    Page Should Not Contain Element    ${MODEL_STATE_SUPERSEDED}
+    Click Element    ${MODEL_STATE_RETIRED}
+    Wait Until Element Is Enabled    ${SAVE_MODEL_BTN}    timeout=30
+    Click Element    ${SAVE_MODEL_BTN}
+    Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
+    Modify Profile
+    Change Profile Status    Luonnos
+    Save Model
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_2}

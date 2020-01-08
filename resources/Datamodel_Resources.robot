@@ -665,7 +665,7 @@ Add Attribute
     Click Element    ${CONFIRM_PREDICATE_BTN}
     Sleep    2
 
-Create new attribute
+Create New Attribute
     [Arguments]    ${attribute}
     Wait Until Page Contains Element    ${ATTRIBUTE_TAB}    timeout=30
     Click Element    ${ATTRIBUTE_TAB}

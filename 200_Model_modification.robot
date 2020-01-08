@@ -374,7 +374,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
     Log To Console    Class "Testiluokka" added without referencing concept
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Create new association    Testiassosiaatio
     Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
@@ -448,7 +448,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Create new association    Testiassosiaatio
     Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
@@ -485,7 +485,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
     Wait Until Page Contains    Testiluokka    timeout=30
-    Create new attribute    Testiattribuutti
+    Create New Attribute    Testiattribuutti
     Select Tab    ${CLASS_TAB}
     Wait Until Element Is Enabled    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
     Click Element    //*[contains(@id,'Testiluokka_tabset_link')]
@@ -908,7 +908,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Sleep    3
     Save Class
     Wait Until Page Contains Element    //*[contains(text(), "autom:Testiluokka_123")]    timeout=60
-    Create new attribute    testiattribuutti
+    Create New Attribute    testiattribuutti
     Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
     Wait Until Element Is Enabled    ${PREDICATE_ID}    timeout=60
     Input Text    ${PREDICATE_ID}    testiattribuutti_123
