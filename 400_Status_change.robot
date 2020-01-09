@@ -351,12 +351,5 @@ Resource          resources/Datamodel_Resources.robot
     Page Should Not Contain Element    ${CLASS_STATE_SUPERSEDED}
     Click Element    ${CLASS_STATE_RETIRED}
     Save Class
-    Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
-    Select And Edit Class    Testiluokka
-    Wait Until Element Is Enabled    ${CLASS_STATE_DDL}    timeout=20
-    Click Element    ${CLASS_STATE_DDL}
-    Wait Until Page Contains Element    ${CLASS_STATE_DRAFT}    timeout=30
-    Click Element    ${CLASS_STATE_DRAFT}
-    Save Class
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_2}
