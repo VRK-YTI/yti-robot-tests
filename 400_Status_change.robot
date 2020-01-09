@@ -319,3 +319,44 @@ Resource          resources/Datamodel_Resources.robot
     Save Model
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_2}
+
+409. Change status for class
+    [Documentation]    Change status for class
+    [Tags]    tietomallit    regression    test    400
+    [Setup]    Test Case Setup    ${TEST_DATAMODEL_ID}    ${TEST_DATAMODEL_NAME}
+    Create Profile    ${MODEL_2}    ${PREFIX_3}
+    Select model    ${MODEL_2}
+    Create New Class Without Referencing Concept    Testiluokka
+    Save Class
+    Select And Edit Class    Testiluokka
+    Wait Until Element Is Enabled    ${CLASS_STATE_DDL}    timeout=20
+    Click Element    ${CLASS_STATE_DDL}
+    Wait Until Page Contains Element    ${CLASS_STATE_DRAFT}    timeout=30
+    Wait Until Page Contains Element    ${CLASS_STATE_INCOMPLETE}    timeout=30
+    Wait Until Page Contains Element    ${CLASS_STATE_VALID}    timeout=30
+    Page Should Not Contain Element    ${CLASS_STATE_SUPERSEDED}
+    Page Should Not Contain Element    ${CLASS_STATE_RETIRED}
+    Page Should Not Contain Element    ${CLASS_STATE_INVALID}
+    Click Element    ${CLASS_STATE_VALID}
+    Save Class
+    #Confirm Action
+    Select And Edit Class    Testiluokka
+    Wait Until Element Is Enabled    ${CLASS_STATE_DDL}    timeout=20
+    Click Element    ${CLASS_STATE_DDL}
+    Wait Until Page Contains Element    ${CLASS_STATE_VALID}    timeout=30
+    Wait Until Page Contains Element    ${CLASS_STATE_RETIRED}    timeout=30
+    Wait Until Page Contains Element    ${CLASS_STATE_INVALID}    timeout=30
+    Page Should Not Contain Element    ${CLASS_STATE_DRAFT}
+    Page Should Not Contain Element    ${CLASS_STATE_INCOMPLETE}
+    Page Should Not Contain Element    ${CLASS_STATE_SUPERSEDED}
+    Click Element    ${CLASS_STATE_RETIRED}
+    Save Class
+    Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
+    Select And Edit Class    Testiluokka
+    Wait Until Element Is Enabled    ${CLASS_STATE_DDL}    timeout=20
+    Click Element    ${CLASS_STATE_DDL}
+    Wait Until Page Contains Element    ${CLASS_STATE_DRAFT}    timeout=30
+    Click Element    ${CLASS_STATE_DRAFT}
+    Save Class
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_2}

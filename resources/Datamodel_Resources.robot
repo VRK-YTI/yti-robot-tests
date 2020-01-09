@@ -126,6 +126,13 @@ ${TARGET_STATUS_SUPERSEDED}    id=SUPERSEDED_migrate_resource_statuses_to_status
 ${TARGET_STATUS_RETIRED}    id=RETIRED_migrate_resource_statuses_to_status_input_dropdown
 ${TARGET_STATUS_INVALID}    id=INVALID_migrate_resource_statuses_to_status_input_dropdown
 ${SAVE_MIGRATE_RESOURCE_STATUSES}    id=migrate_resource_statuses_button
+${CLASS_STATE_DDL}    id=classState_item_select
+${CLASS_STATE_INCOMPLETE}    id=classState_INCOMPLETE
+${CLASS_STATE_DRAFT}    id=classState_DRAFT
+${CLASS_STATE_VALID}    id=classState_VALID
+${CLASS_STATE_SUPERSEDED}    id=classState_SUPERSEDED
+${CLASS_STATE_RETIRED}    id=classState_RETIRED
+${CLASS_STATE_INVALID}    id=classState_INVALID
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
