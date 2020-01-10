@@ -274,7 +274,7 @@ Resource          resources/Extension_resources.robot
     Create DPM extension    ${CREATE_DPM_TYPED_DOMAIN_BTN}    True    ${DRAFT_STATUS}
     Wait Until Page Contains    dpmTypedDomain    timeout=20
     Sleep    3
-    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Wait Until Element Is Enabled    //*[contains(text(), "testcode28 - Testcode 28")]    timeout=20
     Click Element    //*[contains(text(), "testcode28 - Testcode 28")]
@@ -282,7 +282,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Data type (en)    timeout=20
     Wait Until Page Contains    -    timeout=20
     Sleep    3
-    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Wait Until Element Is Enabled    //*[contains(text(), "testcode54 - Testcode 54")]    timeout=20
     Click Element    //*[contains(text(), "testcode54 - Testcode 54")]
