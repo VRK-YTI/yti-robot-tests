@@ -139,6 +139,7 @@ ${PREDICATE_STATE_VALID}    id=predicateState_VALID
 ${PREDICATE_STATE_SUPERSEDED}    id=predicateState_SUPERSEDED
 ${PREDICATE_STATE_RETIRED}    id=predicateState_RETIRED
 ${PREDICATE_STATE_INVALID}    id=predicateState_INVALID
+${PREDICATE_STATE_DDL}    id=predicateState_item_select
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label
@@ -194,7 +195,6 @@ ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    id=create_new_LuoUusiAttribuuttiIlma
 ${CREATE_NEW_ATTRIBUTE_BTN}    id=searchConceptModalConfirmButton
 ${PREDICATE_EDIT_SAVE_BTN}    id=predicate_edit_buttons_save
 ${PREDICATE_EDIT_BTN}    id=predicate_edit_buttons_edit
-${PREDICATE_STATE_DDL}    id=predicateState
 ${PREDICATE_REMOVE_BTN}    id=predicate_edit_buttons_remove
 ${CONVERT_TO_ASSOCIATION}    id=predicate_change_type
 ${PREDICATE_EDIT_CANCEL_BTN}    id=predicate_edit_buttons_cancel

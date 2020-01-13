@@ -363,9 +363,7 @@ Resource          resources/Datamodel_Resources.robot
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
     Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
-    Sleep    1
     Wait Until Element Is Enabled    ${PREDICATE_STATE_DDL}    timeout=20
-    Sleep    1
     Click Element    ${PREDICATE_STATE_DDL}
     Wait Until Page Contains Element    ${PREDICATE_STATE_DRAFT}    timeout=30
     Wait Until Page Contains Element    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
@@ -377,9 +375,7 @@ Resource          resources/Datamodel_Resources.robot
     Save Predicate
     #Confirm Action
     Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
-    Sleep    1
     Wait Until Element Is Enabled    ${PREDICATE_STATE_DDL}    timeout=20
-    Sleep    1
     Click Element    ${PREDICATE_STATE_DDL}
     Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}    timeout=30
     Wait Until Page Contains Element    ${PREDICATE_STATE_RETIRED}    timeout=30
