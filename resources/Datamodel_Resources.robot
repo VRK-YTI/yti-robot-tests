@@ -133,6 +133,12 @@ ${CLASS_STATE_VALID}    id=classState_VALID
 ${CLASS_STATE_SUPERSEDED}    id=classState_SUPERSEDED
 ${CLASS_STATE_RETIRED}    id=classState_RETIRED
 ${CLASS_STATE_INVALID}    id=classState_INVALID
+${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
+${PREDICATE_STATE_DRAFT}    id=predicateState_DRAFT
+${PREDICATE_STATE_VALID}    id=predicateState_VALID
+${PREDICATE_STATE_SUPERSEDED}    id=predicateState_SUPERSEDED
+${PREDICATE_STATE_RETIRED}    id=predicateState_RETIRED
+${PREDICATE_STATE_INVALID}    id=predicateState_INVALID
 #namespace
 ${CREATE_NEW_NAMESPACE}    id=create_new_namespace_button
 ${NAMESPACE_LABEL}    id=label

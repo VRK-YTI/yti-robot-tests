@@ -353,3 +353,37 @@ Resource          resources/Datamodel_Resources.robot
     Save Class
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    ${MODEL_2}
+
+410. Change status for predicate
+    [Documentation]    Change status for predicate
+    [Tags]    tietomallit    regression    test    400
+    [Setup]    Test Case Setup    ${TEST_DATAMODEL_ID}    ${TEST_DATAMODEL_NAME}
+    Create Profile    ${MODEL_2}    ${PREFIX_3}
+    Select model    ${MODEL_2}
+    Select Tab    ${ATTRIBUTE_TAB}
+    Create New Attribute    Testiattribuutti
+    Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
+    Wait Until Element Is Enabled    ${PREDICATE_STATE_DDL}    timeout=20
+    Click Element    ${PREDICATE_STATE_DDL}
+    Wait Until Page Contains Element    ${PREDICATE_STATE_DRAFT}    timeout=30
+    Wait Until Page Contains Element    ${PREDICATE_STATE_INCOMPLETE}    timeout=30
+    Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}    timeout=30
+    Page Should Not Contain Element    ${PREDICATE_STATE_SUPERSEDED}
+    Page Should Not Contain Element    ${PREDICATE_STATE_RETIRED}
+    Page Should Not Contain Element    ${PREDICATE_STATE_INVALID}
+    Click Element    ${PREDICATE_STATE_VALID}
+    Save Predicate
+    #Confirm Action
+    Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
+    Wait Until Element Is Enabled    ${PREDICATE_STATE_DDL}    timeout=20
+    Click Element    ${PREDICATE_STATE_DDL}
+    Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}    timeout=30
+    Wait Until Page Contains Element    ${PREDICATE_STATE_RETIRED}    timeout=30
+    Wait Until Page Contains Element    ${PREDICATE_STATE_INVALID}    timeout=30
+    Page Should Not Contain Element    ${PREDICATE_STATE_DRAFT}
+    Page Should Not Contain Element    ${PREDICATE_STATE_INCOMPLETE}
+    Page Should Not Contain Element    ${PREDICATE_STATE_SUPERSEDED}
+    Click Element    ${PREDICATE_STATE_RETIRED}
+    Save Predicate
+    Go Back To Data Vocabularies Frontpage
+    [Teardown]    Delete profile    ${MODEL_2}
