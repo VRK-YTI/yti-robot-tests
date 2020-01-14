@@ -564,19 +564,20 @@ Add Class
 
 Add several classes
     [Arguments]    @{class_items}
-    : FOR    ${class_item}    IN    @{class_items}
-    \    Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
-    \    Click Element    ${ADD_NEW_CLASS}
-    \    Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
-    \    Wait Until Page Contains Element    //*[contains(@id,'${class_item}_search_class_link')]    timeout=60
-    \    Click Element    //*[contains(@id,'${class_item}_search_class_link')]
-    \    Sleep    2
-    \    Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
-    \    Click Element    ${SPECIALIZE_CLASS}
-    \    Sleep    1
-    \    Confirm All Properties For Class And Save
-    \    Sleep    2
+    FOR    ${class_item}    IN    @{class_items}
+        Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
+        Click Element    ${ADD_NEW_CLASS}
+        Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
+        Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
+        Wait Until Page Contains Element    //*[contains(@id,'${class_item}_search_class_link')]    timeout=60
+        Click Element    //*[contains(@id,'${class_item}_search_class_link')]
+        Sleep    2
+        Wait Until Page Contains Element    ${SPECIALIZE_CLASS}    timeout=30
+        Click Element    ${SPECIALIZE_CLASS}
+        Sleep    1
+        Confirm All Properties For Class And Save
+        Sleep    2
+    END
 
 Add Sub Class
     [Arguments]    ${model}    ${class}    ${class_link}
@@ -646,9 +647,10 @@ Confirm All Properties For Class And Save
 
 Deselect properties for class and save
     [Arguments]    @{class_properties}
-    : FOR    ${class_property}    IN    @{class_properties}
-    \    Unselect Checkbox    ${class_property}
-    \    Checkbox Should Not Be Selected    ${class_property}
+    FOR    ${class_property}    IN    @{class_properties}
+        Unselect Checkbox    ${class_property}
+        Checkbox Should Not Be Selected    ${class_property}
+    END
     Wait Until Page Contains Element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Wait Until Page Contains Element    ${SAVE_CLASS}    timeout=30

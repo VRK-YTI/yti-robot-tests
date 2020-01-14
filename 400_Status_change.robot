@@ -338,8 +338,9 @@ Resource          resources/Datamodel_Resources.robot
     Page Should Not Contain Element    ${CLASS_STATE_RETIRED}
     Page Should Not Contain Element    ${CLASS_STATE_INVALID}
     Click Element    ${CLASS_STATE_VALID}
-    Save Class
-    #Confirm Action
+    Wait Until Element Is Enabled    ${SAVE_CLASS}    timeout=60
+    Click Element    ${SAVE_CLASS}
+    Confirm Action
     Select And Edit Class    Testiluokka
     Wait Until Element Is Enabled    ${CLASS_STATE_DDL}    timeout=20
     Click Element    ${CLASS_STATE_DDL}
@@ -372,8 +373,9 @@ Resource          resources/Datamodel_Resources.robot
     Page Should Not Contain Element    ${PREDICATE_STATE_RETIRED}
     Page Should Not Contain Element    ${PREDICATE_STATE_INVALID}
     Click Element    ${PREDICATE_STATE_VALID}
-    Save Predicate
-    #Confirm Action
+    Wait Until Element Is Enabled    ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
+    Click Element    ${PREDICATE_EDIT_SAVE_BTN}
+    Confirm Action
     Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
     Wait Until Element Is Enabled    ${PREDICATE_STATE_DDL}    timeout=20
     Click Element    ${PREDICATE_STATE_DDL}
