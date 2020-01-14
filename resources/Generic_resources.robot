@@ -438,48 +438,50 @@ Return to Koodistot frontpage
 
 Remove code lists
     [Arguments]    @{code_list_items}
-    : FOR    ${code_list_item}    IN    @{code_list_items}
-    \    Return to Koodistot frontpage
-    \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    \    Wait Until Element Is enabled    ${SEARCH_BOX_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=60
-    \    Click Element    //*[contains(text(), "${code_list_item}")]
-    \    Wait Until Page Contains    ${code_list_item}    timeout=60
-    \    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
-    \    Click Element    ${CODE_LIST_DDL}
-    \    Wait Until Element Is Enabled    ${DELETE_CODE_LIST_BTN}    timeout=20
-    \    Click Element    ${DELETE_CODE_LIST_BTN}
-    \    Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    \    Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
-    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=90
-    \    Log To Console    ${code_list_item} removed
-    \    Sleep    1
+    FOR    ${code_list_item}    IN    @{code_list_items}
+        Return to Koodistot frontpage
+        Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+        Wait Until Element Is enabled    ${SEARCH_BOX_INPUT}    timeout=30
+        Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+        Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=60
+        Click Element    //*[contains(text(), "${code_list_item}")]
+        Wait Until Page Contains    ${code_list_item}    timeout=60
+        Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
+        Click Element    ${CODE_LIST_DDL}
+        Wait Until Element Is Enabled    ${DELETE_CODE_LIST_BTN}    timeout=20
+        Click Element    ${DELETE_CODE_LIST_BTN}
+        Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+        Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
+        Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
+        Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+        Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=90
+        Log To Console    ${code_list_item} removed
+        Sleep    1
+    END
     Close All Browsers
 
 Remove code lists and leave browser open
     [Arguments]    @{code_list_items}
-    : FOR    ${code_list_item}    IN    @{code_list_items}
-    \    Return to Koodistot frontpage
-    \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=60
-    \    Click Element    //*[contains(text(), "${code_list_item}")]
-    \    Wait Until Page Contains    ${code_list_item}
-    \    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
-    \    Click Element    ${CODE_LIST_DDL}
-    \    Wait Until Page Contains Element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    \    Click Element    ${DELETE_CODE_LIST_BTN}
-    \    Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    \    Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
-    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.
-    \    Log To Console    ${code_list_item} removed
-    \    Sleep    1
+    FOR    ${code_list_item}    IN    @{code_list_items}
+        Return to Koodistot frontpage
+        Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+        Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+        Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+        Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=60
+        Click Element    //*[contains(text(), "${code_list_item}")]
+        Wait Until Page Contains    ${code_list_item}
+        Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+        Click Element    ${CODE_LIST_DDL}
+        Wait Until Page Contains Element    ${DELETE_CODE_LIST_BTN}    timeout=20
+        Click Element    ${DELETE_CODE_LIST_BTN}
+        Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+        Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
+        Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
+        Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+        Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.
+        Log To Console    ${code_list_item} removed
+        Sleep    1
+    END
 
 Create code list
     [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
@@ -524,8 +526,7 @@ Create code list
     ...    ELSE    Save code list after creation    ${codelist_name}
 
 Create Code List With All Languages
-    [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name_fi}    ${codelist_name_en}
-    ...    ${codelist_name_sv}    ${classification}
+    [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name_fi}    ${codelist_name_en}    ${codelist_name_sv}    ${classification}
     Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
     Input Text    ${SEARCH_BOX_INPUT}    ${codelist_name_fi}
     Sleep    1

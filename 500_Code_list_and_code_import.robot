@@ -388,9 +388,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
     Wait Until Element Is Visible    ${SAVE_CODE_MOD_BTN}    timeout=20
     Click Element    ${SAVE_CODE_MOD_BTN}
-    Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
     Sleep    3
-    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Click Code List Info Tab
     Wait Until Page Contains Element    ${MODIFY_CODE_LIST}    timeout=20
@@ -408,10 +408,11 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Wait Until Page Contains Element    ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
     Click Element    ${SAVE_CODE_LIST_MOD_BTN}
-    Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=60
+    Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
     Wait Until Page Contains    Lisenssi    timeout=20
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
     Log To Console    CC by 4.0 added
+    Sleep    3
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
     Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
@@ -424,6 +425,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=60
     Click Element    ${SAVE_NEW_CODE_LIST}
     Log To Console    New version of code list created
+    Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
     Wait Until Element Is Visible    ${EXPAND_ALL_BTN}    timeout=60
     Click Element    ${EXPAND_ALL_BTN}
     Log To Console    Expand all pressed
@@ -445,7 +447,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
     Log To Console    Code links copied
-    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Sleep    3
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Click Code List Info Tab
     Wait Until Page Contains    englanti    timeout=20
