@@ -1717,6 +1717,40 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_10}    ${CODE_LIST_9}
 
+544. Import code list and codes with same PREFLABEL and DEFINITION values
+    [Documentation]    Import code list and codes with same PREFLABEL, DEFINITION and DESCRIPTION values. YTI-1252.
+    [Tags]    regression    test    500
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in Excel format    ${Code_list_with_same_preflabel_values}    ${CODE_LIST_27}
+    Change Content Language    ${ALL_LANGUAGE_BTN}
+    Wait Until Page Contains    Koodisto3000    timeout=20
+    Wait Until Page Contains    Kuvaus    timeout=20
+    Wait Until Page Contains    Määritelmä    timeout=20
+    Wait Until Page Contains    xxxx    timeout=20
+    Wait Until Page Contains    FI    timeout=20
+    Wait Until Page Contains    EN    timeout=20
+    Wait Until Page Contains    SV    timeout=20
+    Wait Until Page Contains    BEM    timeout=20
+    Wait Until Page Contains    AF    timeout=20
+    Wait Until Page Contains    AB    timeout=20
+    Wait Until Page Contains    AY    timeout=20
+    Import codes in Excel format
+    Upload codes    ${Codes_with_same_preflabel_and_definition_value}
+    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
+    Click Element    ${CODELIST_CODES_TAB}
+    Wait Until Page Contains    310 koodia    timeout=20
+    Wait Until Element Is Enabled    //*[contains(text(), "005 - Alajärvi")]    timeout=20
+    Click Element    //*[contains(text(), "005 - Alajärvi")]
+    Wait Until Page Contains    Alajärvi    timeout=20
+    Wait Until Page Contains    FI    timeout=20
+    Wait Until Page Contains    EN    timeout=20
+    Wait Until Page Contains    SV    timeout=20
+    Wait Until Page Contains    BEM    timeout=20
+    Wait Until Page Contains    Alajärven määritelmä    timeout=20
+    Wait Until Page Contains    AB    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_27}
+
 *** Keywords ***
 Check values from Draft Code list
     Page should contain    Tunnus
