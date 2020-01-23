@@ -320,29 +320,30 @@ Return To Koodistot Frontpage
 
 Remove Code Lists
     [Arguments]    @{code_list_items}
-    : FOR    ${code_list_item}    IN    @{code_list_items}
-    \    Return To Koodistot Frontpage
-    \    Reference Data Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Sleep    1
-    \    Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=20
-    \    ${code_list_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${code_list_item}")]
-    \    Run Keyword Unless    ${code_list_exists}    Run Keywords    Log To Console    Remove Code List ${code_list_item} did not find the code list to delete
-    \    ...    AND    Return From Keyword
-    \    Click Element    //*[contains(text(), "${code_list_item}")]
-    \    Wait Until Page Contains    ${code_list_item}    timeout=90
-    \    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
-    \    Click Element    ${CODE_LIST_DDL}
-    \    Wait Until Page Contains Element    ${DELETE_CODE_LIST_BTN}    timeout=20
-    \    Click Element    ${DELETE_CODE_LIST_BTN}
-    \    Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
-    \    Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
-    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=90
-    \    Log To Console    ${code_list_item} removed
-    \    Sleep    1
+    FOR    ${code_list_item}    IN    @{code_list_items}
+        Return To Koodistot Frontpage
+        Reference Data Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+        Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+        Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+        Sleep    1
+        Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=20
+        ${code_list_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${code_list_item}")]
+        Run Keyword Unless    ${code_list_exists}    Run Keywords    Log To Console    Remove Code List ${code_list_item} did not find the code list to delete
+        ...    AND    Return From Keyword
+        Click Element    //*[contains(text(), "${code_list_item}")]
+        Wait Until Page Contains    ${code_list_item}    timeout=90
+        Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
+        Click Element    ${CODE_LIST_DDL}
+        Wait Until Page Contains Element    ${DELETE_CODE_LIST_BTN}    timeout=20
+        Click Element    ${DELETE_CODE_LIST_BTN}
+        Wait Until Page Contains Element    ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
+        Click Element    ${REMOVE_CODE_LIST_CONF_BTN}
+        Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=60
+        Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+        Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=90
+        Log To Console    ${code_list_item} removed
+        Sleep    1
+    END
 
 Create Code List
     [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}

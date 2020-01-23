@@ -70,6 +70,7 @@ ${COMMENT_TEXT_INPUT}    id=commentthread_proposed_text_input
 ${PROPOSED_STATUS_DDL}    id=selected_proposed_status_undefined
 ${COMMENTS_TAB}    id=commentround_comments_tab
 ${RESOURCES_TAB}    id=commentround_resources_tab
+${INFO_TAB}       id=commentround_information_tab
 ${START_COMMENT_ROUND_BTN}    id=start_commentround_button
 ${CLOSE_COMMENT_ROUND_BTN}    id=end_commentround_button
 ${COMMENT_TEXT_INPUT_0}    id=commentthread_proposed_text_input_0
@@ -105,6 +106,13 @@ ${INLINE_REPLY_BTN_SUFFIX}    _reply_button
 ${INLINE_REPLY_INPUT_SUFFIX}    _input
 ${INLINE_SEND_REPLY_BTN_SUFFIX}    _send_button
 ${CLOSE_INLINE_COMMENT_0_BTN}    id=close_commentthread_0_comments_button
+#Temporary users
+${ADD_TEMP_USER_BTN}    id=add_tempuser_button
+${USER_0_FIRSTNAME_INPUT}    id=user_0_firstname_input
+${USER_0_LASTNAME_INPUT}    id=user_0_lastname_input
+${USER_0_EMAIL_INPUT}    id=user_0_email_input
+${ADD_USERS_BTN}    id=add_users_button
+${USERS_MODAL_OPEN}    class=modal-content
 
 *** Keywords ***
 Test Case Setup Admin
@@ -169,8 +177,9 @@ Create Comment Round
     Run Keyword if    '${allow_new_comment_threads}' == 'True'    Allow New Comment Threads
     Wait Until Page Contains Element    ${COMMENTROUND_ADD_ORGANIZATION}    timeout=20
     Click Element    ${COMMENTROUND_ADD_ORGANIZATION}
-    Wait Until Page Contains Element    ${COMMENTROUND_ORGANIZATION_INPUT}    timeout=20
+    Wait Until Element Is Enabled    ${COMMENTROUND_ORGANIZATION_INPUT}    timeout=20
     Input Text    ${COMMENTROUND_ORGANIZATION_INPUT}    Testiorganisaatio
+    Wait Until Element Is Enabled    //*[contains(text(), "Testiorganisaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Wait Until Element Is Enabled    ${SAVE_COMMENTROUND}    timeout=20
     Click Element    ${SAVE_COMMENTROUND}
@@ -256,9 +265,9 @@ Add Resource Status
 Start Comment Round
     Wait Until Element Is Enabled    ${COMMENTROUND_DDL}    timeout=20
     Click Element    ${COMMENTROUND_DDL}
-    Wait Until Page Contains Element    ${START_COMMENT_ROUND_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${START_COMMENT_ROUND_BTN}    timeout=20
     Click Element    ${START_COMMENT_ROUND_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${CONFIRM_BTN}    timeout=20
     Click Element    ${CONFIRM_BTN}
     Wait Until Page Contains    Käynnissä    timeout=20
     Log To Console    Comment round started
@@ -314,7 +323,8 @@ Comment On Resource 1
 Send Comments
     Wait Until Element Is Enabled    ${SEND_COMMENTS_BTN}    timeout=30
     Click Element    ${SEND_COMMENTS_BTN}
-    Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
+    Sleep    2
+    Wait Until Element Is Enabled    ${START_COMMENTING_BTN}    timeout=30
 
 Send Inline Comment For Comment Thread
     [Arguments]    ${id}    ${comment}
@@ -380,6 +390,29 @@ Select Tab
     [Arguments]    ${tab}
     Wait Until Page Contains Element    ${tab}    timeout=20
     Click Element    ${tab}
+
+Edit Comment Round
+    Wait Until Element Is Enabled    ${EDIT_COMMENTROUND}    timeout=20
+    Click Element    ${EDIT_COMMENTROUND}
+
+Add Temporary Users
+    [Arguments]    ${firstname}    ${lastname}    ${email}
+    Wait Until Element Is Enabled    ${ADD_TEMP_USER_BTN}    timeout=20
+    Click Element    ${ADD_TEMP_USER_BTN}
+    Wait Until Element Is Enabled    ${USER_0_FIRSTNAME_INPUT}    timeout=20
+    Input Text    ${USER_0_FIRSTNAME_INPUT}    ${firstname}
+    Wait Until Element Is Enabled    ${USER_0_LASTNAME_INPUT}    timeout=20
+    Input Text    ${USER_0_LASTNAME_INPUT}    ${lastname}
+    Wait Until Element Is Enabled    ${USER_0_EMAIL_INPUT}    timeout=20
+    Input Text    ${USER_0_EMAIL_INPUT}    ${email}
+    Wait Until Element Is Enabled    ${ADD_USERS_BTN}    timeout=20
+    Click Element    ${ADD_USERS_BTN}
+    Wait Until Page Does Not Contain Element    ${USERS_MODAL_OPEN}    timeout=120
+
+Save Comment Round
+    Wait Until Element Is Enabled    ${SAVE_COMMENTROUND}    timeout=30
+    Click Element    ${SAVE_COMMENTROUND}
+    Wait Until Element Is Enabled    ${EDIT_COMMENTROUND}    timeout=60
 
 Test Case Setup Reference Data
     [Arguments]    ${codelist}    ${codelist_name}

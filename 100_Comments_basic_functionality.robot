@@ -12,9 +12,9 @@ Resource          resources/Generic_resources.robot
     [Setup]    Test Case Setup Admin
     Wait Until Page Contains Element    ${INFORMATION_LINK}    timeout=30
     Click Element    ${INFORMATION_LINK}
-    Wait Until Page Contains    Tietoa Kommentointikierroksesta
-    Wait Until Page Contains    Katso myös
-    Wait Until Page Contains    Ota yhteyttä
+    Wait Until Page Contains    Tietoa Kommentit-työkalusta    timeout=20
+    Wait Until Page Contains    Katso myös    timeout=20
+    Wait Until Page Contains    Ota yhteyttä    timeout=20
     [Teardown]    Return to Comments frontpage
 
 101. Open EUPL-1.2 license page
