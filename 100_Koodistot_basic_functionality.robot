@@ -19,8 +19,9 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains Element    id=information_link    timeout=20
     Click Element    id=information_link
     Wait Until Page Contains    Tietoa Koodistoista    timeout=30
+    Wait Until Page Contains    Koodistot-työkalu on tarkoitettu    timeout=30
+    Wait Until Page Contains    Koodistot-työkalulla voi    timeout=30
     Wait Until Page Contains    Hyödyt käyttäjille    timeout=30
-    Wait Until Page Contains    Miten Koodistot-työkalu toimii?    timeout=30
     Wait Until Page Contains    Miten voin liittyä työkalun käyttäjäksi    timeout=30
     Wait Until Page Contains    Katso myös    timeout=30
     Wait Until Page Contains    Ota yhteyttä    timeout=30

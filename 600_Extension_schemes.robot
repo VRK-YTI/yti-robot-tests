@@ -47,6 +47,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${ADD_DEFAULTCODE_BTN}
     Wait Until Page Contains Element    ${SEARCH_DEFAULTCODE_INPUT}
     Input Text    ${SEARCH_DEFAULTCODE_INPUT}    25
+    Wait Until Element Is Enabled    //*[contains(text(), "Testikoodi 25")]    timeout=20
     Click Element    //*[contains(text(), "Testikoodi 25")]
     Wait Until Page Contains Element    ${ADD_MEMBER_BTN}    timeout=20
     Click Element    ${ADD_MEMBER_BTN}
@@ -1346,3 +1347,22 @@ Resource          resources/Extension_resources.robot
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Koodi1111    ${EMPTY}
     Sleep    1
     [Teardown]    Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
+
+637. Import code list, extensions and members, create member manually
+    [Documentation]    Import code list, extensions and members with MEMBER-IDs, create member manually. YTI-1085
+    [Tags]    koodistot    regression    600    test
+    [Setup]    Test Case Setup Superuser
+    Upload codelist in excel format    ${Code_list_with_extensions_and_member_relations}    ${CODE_LIST_25}
+    Wait Until Page Contains    25 koodia    timeout=90
+    Select Tab    ${EXTENSIONS_TAB}
+    Select Tab    ${CALC_HIERARCHY_TAB}
+    Wait Until Element Is Enabled    id=test_100ext2_view_extension    timeout=30
+    Click Element    id=test_100ext2_view_extension
+    Wait Until Page Contains    25 jäsentä    timeout=20
+    Create member for calculation hierarchy    Jäsen10    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testikoodi 01    Testikoodi 06
+    Sleep    3
+    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${3_BREADCRUMB_LINK}
+    Wait Until Page Contains    26 jäsentä    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_25}

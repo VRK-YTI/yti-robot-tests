@@ -1,4 +1,4 @@
-﻿*** Variables ***
+*** Variables ***
 ${CALCULATION_HIERARCHY}    id=create_extension_calculationhierarchy_button
 ${DEFINITION_HIERARCHY}    id=create_extension_definitionhierarchy_button
 ${CROSS_REFERENCE_LIST}    id=create_extension_cross-reference-list_button
@@ -43,6 +43,7 @@ ${code_list_extensions_100_members}    ${DATAFOLDER}${/}Code_list_with_extension
 ${Code_list_with_multiple_extensions}    ${DATAFOLDER}${/}filter_Code_list_with_multiple_extensions.xlsx
 ${Code_list_codes_DPM_all_invalid_propertytype}    ${DATAFOLDER}${/}Code_list_codes_DPM_all_invalid_propertytype.xlsx
 ${Code_list_codes_DPM_all_no_values}    ${DATAFOLDER}${/}Code_list_codes_DPM_all_no_values.xlsx
+${Code_list_with_extensions_and_member_relations}    ${DATAFOLDER}${/}Code_list_with_extensions_and_member_relations.xlsx
 #CSV paths
 ${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
 ${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
@@ -266,17 +267,18 @@ Remove codelist
 
 Remove code lists with extensions
     [Arguments]    @{code_list_items}
-    : FOR    ${code_list_item}    IN    @{code_list_items}
-    \    Return to Koodistot frontpage
-    \    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    \    Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-    \    Sleep    1
-    \    Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=30
-    \    Click Element    //*[contains(text(), "${code_list_item}")]
-    \    Wait Until Page Contains    ${code_list_item}    timeout=60
-    \    ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
-    \    Run Keyword If    ${extension_exists}    Delete extension before code list    ${code_list_item}
+    FOR    ${code_list_item}    IN    @{code_list_items}
+        Return to Koodistot frontpage
+        Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+        Wait Until Element Is Visible    ${SEARCH_BOX_INPUT}    timeout=30
+        Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
+        Sleep    1
+        Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=30
+        Click Element    //*[contains(text(), "${code_list_item}")]
+        Wait Until Page Contains    ${code_list_item}    timeout=60
+        ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
+        Run Keyword If    ${extension_exists}    Delete extension before code list    ${code_list_item}
+    END
     ...    ELSE    Continue code list deletion    ${code_list_item}
     Sleep    2
     Close All Browsers
@@ -297,24 +299,25 @@ Continue code list deletion
 
 Delete extension before code list
     [Arguments]    ${code_list_item}
-    : FOR    ${CheckStatus}    IN RANGE    10
-    \    ${Status}    Get Text    //*[contains(text(), "LAAJENNUKSET")]
-    \    Page Should Contain    ${status}
-    \    Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
-    \    Click Element    ${EXTENSIONS_TAB}
-    \    Sleep    1
-    \    Wait Until Element Is Enabled    //*[contains(@id,'_view_extension')]    timeout=20
-    \    Click Element    //*[contains(@id,'_view_extension')]
-    \    Wait Until Element Is Enabled    ${EXTENSION_DDL}    timeout=30
-    \    Click Element    ${EXTENSION_DDL}
-    \    Wait Until Page Contains Element    ${EXTENSION_DELETE_BTN}    timeout=30
-    \    Click element    ${EXTENSION_DELETE_BTN}
-    \    Wait Until Page Contains Element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
-    \    Click Element    ${CONFIRM_DELETE_EXTENSION_BTN}
-    \    Log To Console    Extension deleted
-    \    Sleep    3
-    \    ${exit}=    Run Keyword And Return Status    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
-    \    Exit For Loop If    ${exit}
+    FOR    ${CheckStatus}    IN RANGE    10
+        ${Status}    Get Text    //*[contains(text(), "LAAJENNUKSET")]
+        Page Should Contain    ${status}
+        Wait Until Element Is Enabled    ${EXTENSIONS_TAB}    timeout=20
+        Click Element    ${EXTENSIONS_TAB}
+        Sleep    1
+        Wait Until Element Is Enabled    //*[contains(@id,'_view_extension')]    timeout=20
+        Click Element    //*[contains(@id,'_view_extension')]
+        Wait Until Element Is Enabled    ${EXTENSION_DDL}    timeout=30
+        Click Element    ${EXTENSION_DDL}
+        Wait Until Page Contains Element    ${EXTENSION_DELETE_BTN}    timeout=30
+        Click element    ${EXTENSION_DELETE_BTN}
+        Wait Until Page Contains Element    ${CONFIRM_DELETE_EXTENSION_BTN}    timeout=30
+        Click Element    ${CONFIRM_DELETE_EXTENSION_BTN}
+        Log To Console    Extension deleted
+        Sleep    3
+        ${exit}=    Run Keyword And Return Status    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
+        Exit For Loop If    ${exit}
+    END
     Continue code list deletion    ${code_list_item}
 
 Create DPM extension

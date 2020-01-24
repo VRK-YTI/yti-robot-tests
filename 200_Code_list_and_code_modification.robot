@@ -648,8 +648,7 @@ Resource          resources/Extension_resources.robot
     [Documentation]    Create new code list and codes with different languages
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Superuser
-    Create Code List With All Languages    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    koodisto6000_fi    koodisto6000_en
-    ...    koodisto6000_sv    Asuminen
+    Create Code List With All Languages    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    koodisto6000_fi    koodisto6000_en    koodisto6000_sv    Asuminen
     Wait Until Page Contains    koodisto6000_fi    timeout=20
     Wait Until Page Contains    koodisto6000_en    timeout=20
     Wait Until Page Contains    koodisto6000_sv    timeout=20
