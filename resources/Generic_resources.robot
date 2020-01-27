@@ -134,6 +134,15 @@ Select User
     Wait Until Page Contains    ${user_name}    timeout=60
     Sleep    1
 
+Open Chrome to URL
+    [Arguments]    ${url}
+    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    --headless
+    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
+    ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
+    Set Window Size    1920    1080
+    Go To    ${url}
+
 Open Comments
     Open Browser with Settings
     Wait Until Page Contains    Kommentit    timeout=60

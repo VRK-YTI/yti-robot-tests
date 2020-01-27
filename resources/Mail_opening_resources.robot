@@ -3,6 +3,7 @@ Documentation     Resource file for opening mailbox
 Library           ImapLibrary
 Library           SeleniumLibrary
 Library           Collections
+Resource          resources/Generic_resources.robot
 
 *** Keywords ***
 Check Mailbox
@@ -11,7 +12,6 @@ Check Mailbox
     ${body}    Get Email Body    ${LATEST}
     ${ret}    Should Match Regexp    ${body}    (http:\/\/uri\.suomi\.fi\/comments\/round\/(.*)&token=(.[^"]*))
     ${invitationLink}    Get From List    ${ret}    1
-    Set Test Variable    ${invitationLink}
-    Open Browser    ${invitationLink}    ${browser}
+    Open Chrome to URL    ${invitationLink}
     Sleep    1
     Close Mailbox
