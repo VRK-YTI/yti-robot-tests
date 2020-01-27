@@ -313,30 +313,31 @@ Delete Terminology
 
 Delete Terminologies
     [Arguments]    @{terminology_items}
-    : FOR    ${terminology_item}    IN    @{terminology_items}
-    \    Go Back To Sanastot Frontpage
-    \    Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
-    \    Wait Until Element Is enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    \    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
-    \    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
-    \    Wait Until Page Contains Element    //*[contains(text(), "${terminology_item}")]    timeout=60
-    \    ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology_item}")]
-    \    Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${terminology_item} did not find the terminology to delete
-    \    ...    AND    Return From Keyword
-    \    Click Element    //*[contains(text(), "${terminology_item}")]
-    \    Wait Until Page Contains    ${terminology_item}    timeout=60
-    \    Wait Until Element Is Visible    ${TERMINOLOGY_TAB}    timeout=30
-    \    Click Element    ${TERMINOLOGY_TAB}
-    \    Wait Until Element Is Visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
-    \    Click Element    ${REMOVE_VOCABULARY_BTN}
-    \    Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
-    \    Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    \    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    \    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
-    \    Sleep    2
-    \    Page Should Not Contain Element    //*[contains(text(), "${terminology_item}")]
-    \    Log To Console    ${terminology_item} removed
-    \    Sleep    1
+    FOR    ${terminology_item}    IN    @{terminology_items}
+        Go Back To Sanastot Frontpage
+        Select user    ${TEST_SUPERUSER_ID}    ${TEST_SUPERUSER_NAME}
+        Wait Until Element Is enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+        Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+        Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
+        Wait Until Page Contains Element    //*[contains(text(), "${terminology_item}")]    timeout=60
+        ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology_item}")]
+        Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${terminology_item} did not find the terminology to delete
+        ...    AND    Return From Keyword
+        Click Element    //*[contains(text(), "${terminology_item}")]
+        Wait Until Page Contains    ${terminology_item}    timeout=60
+        Wait Until Element Is Visible    ${TERMINOLOGY_TAB}    timeout=30
+        Click Element    ${TERMINOLOGY_TAB}
+        Wait Until Element Is Visible    ${REMOVE_VOCABULARY_BTN}    timeout=60
+        Click Element    ${REMOVE_VOCABULARY_BTN}
+        Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
+        Click Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}
+        Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+        Input Text    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
+        Sleep    2
+        Page Should Not Contain Element    //*[contains(text(), "${terminology_item}")]
+        Log To Console    ${terminology_item} removed
+        Sleep    1
+    END
     Close All Browsers
 
 Delete existing terminological vocabulary and create new
@@ -538,25 +539,27 @@ Edit Collection
 
 Add Broader Concepts For Collection
     [Arguments]    @{concept_items}
-    : FOR    ${concept_item}    IN    @{concept_items}
-    \    Wait Until Page Contains Element    ${COLLECTION_BROADER_CONCEPT_BTN}    timeout=30
-    \    Click Element    ${COLLECTION_BROADER_CONCEPT_BTN}
-    \    Wait Until Page Contains Element    //*[contains(text(), "${concept_item}")]    timeout=30
-    \    Click Element    //*[contains(text(), "${concept_item}")]
-    \    Wait Until Page Contains    ${concept_item}    timeout=30
-    \    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
-    \    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    FOR    ${concept_item}    IN    @{concept_items}
+        Wait Until Page Contains Element    ${COLLECTION_BROADER_CONCEPT_BTN}    timeout=30
+        Click Element    ${COLLECTION_BROADER_CONCEPT_BTN}
+        Wait Until Page Contains Element    //*[contains(text(), "${concept_item}")]    timeout=30
+        Click Element    //*[contains(text(), "${concept_item}")]
+        Wait Until Page Contains    ${concept_item}    timeout=30
+        Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
+        Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    END
 
 Add Members For Collection
     [Arguments]    @{concept_items}
-    : FOR    ${concept_item}    IN    @{concept_items}
-    \    Wait Until Page Contains Element    ${COLLECTION_MEMBER_CONCEPT_BTN}    timeout=30
-    \    Click Element    ${COLLECTION_MEMBER_CONCEPT_BTN}
-    \    Wait Until Page Contains Element    //*[contains(text(), "${concept_item}")]    timeout=30
-    \    Click Element    //*[contains(text(), "${concept_item}")]
-    \    Wait Until Page Contains    ${concept_item}    timeout=30
-    \    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
-    \    Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    FOR    ${concept_item}    IN    @{concept_items}
+        Wait Until Page Contains Element    ${COLLECTION_MEMBER_CONCEPT_BTN}    timeout=30
+        Click Element    ${COLLECTION_MEMBER_CONCEPT_BTN}
+        Wait Until Page Contains Element    //*[contains(text(), "${concept_item}")]    timeout=30
+        Click Element    //*[contains(text(), "${concept_item}")]
+        Wait Until Page Contains    ${concept_item}    timeout=30
+        Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=20
+        Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
+    END
 
 Import Concepts
     [Arguments]    ${file_format}    ${file}    ${delimiter}

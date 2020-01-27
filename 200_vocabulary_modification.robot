@@ -492,8 +492,9 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 
 213. Add definition for concept
     [Documentation]    Create new vocabulary and import concepts. Add another definition in Finnish and concept reference for concept.
-    [Tags]    sanastot    regression    test    200
+    [Tags]    sanastot
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Set Selenium Speed    0.5
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
     Go Back To Sanastot Frontpage
@@ -513,12 +514,13 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    i
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    j
     Press key    ${CONCEPT_DEFINITION_FI_1_INPUT}    a
-    Wait Until Page Contains Element    ${ADD_CONCEPT_REFERENCE_1}    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    ${ADD_CONCEPT_REFERENCE_1}    timeout=30
     Click Element    ${ADD_CONCEPT_REFERENCE_1}
-    Wait Until Page Contains Element    //*[contains(@id,'_search_result_concept')]
+    Wait Until Element Is Enabled    //*[contains(@id,'_search_result_concept')]
     Click Element    //*[contains(@id,'_search_result_concept')]
     Sleep    1
-    Wait Until Page Contains Element    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
+    Wait Until Element Is Enabled    ${SEARCH_CONCEPT_CONFIRM_BTN}    timeout=30
     Click Element    ${SEARCH_CONCEPT_CONFIRM_BTN}
     Save Concept
     Sleep    5
@@ -529,7 +531,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 
 214. Add note for concept
     [Documentation]    Create new vocabulary and import concepts. Add another note in Finnish and concept reference for concept.
-    [Tags]    regression    sanastot    200    test
+    [Tags]    sanastot
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Maximize Browser Window
