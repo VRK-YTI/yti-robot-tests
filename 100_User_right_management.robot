@@ -10,11 +10,11 @@ Resource          resources/Login_details.robot
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    rhp    test
     [Setup]    Test Case Setup
-    Wait Until Page Contains Element    //app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a    timeout=20
-    Click Element    //app-root/app-footer/div/div[2]/div[2]/ul/li[1]/a
-    Wait Until Page Contains    Tietoa yhteentoimivuusalustan oikeuksienhallinnasta (käyttövaltuuksien hallinnasta)
-    Wait Until Page Contains    Katso myös
-    Wait Until Page Contains    Ota yhteyttä
+    Wait Until Page Contains Element    ${INFORMATION_LINK}    timeout=20
+    Click Element    ${INFORMATION_LINK}
+    Wait Until Page Contains    Tietoa Yhteentoimivuusalustan oikeuksienhallinnasta    timeout=20
+    Wait Until Page Contains    Katso myös    timeout=20
+    Wait Until Page Contains    Ota yhteyttä    timeout=20
     [Teardown]    Go back to RHP frontpage
 
 101. Open EUPL-1.2 license page

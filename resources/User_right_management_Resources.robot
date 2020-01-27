@@ -9,6 +9,7 @@ ${LANGUAGE_EN}    id=en_available_language
 ${LANGUAGE_FI}    id=fi_available_language
 ${ORGANIZATION_1}    Testiorganisaatio
 #Buttons and links
+${INFORMATION_LINK}    id=information_link
 ${PROVIDER_DDL}    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
 ${CONTINUE_LOGIN_BTN}    id=ContentPlaceHolder1_Button1
 ${ID_ELEMENT_HOOK_2}    id=Email
