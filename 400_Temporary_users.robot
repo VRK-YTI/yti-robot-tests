@@ -2,7 +2,7 @@
 Documentation     Test Suite for comment round temporary users
 Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
-Library           Selenium2Library
+Library           SeleniumLibrary
 Library           ImapLibrary
 Resource          resources/Reference_Data_resources.robot
 Resource          resources/Generic_resources.robot
@@ -17,7 +17,7 @@ Resource          resources/Mail_opening_resources.robot
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Select Tab    ${INFO_TAB}
     Edit Comment Round
-    Add Temporary Users    Yti    Test    ytitest5@gmail.com
+    Add Temporary Users    Yti    Test    ${TEST_TEMPUSER_EMAIL}
     Sleep    2
     Save Comment Round
     Sleep    1

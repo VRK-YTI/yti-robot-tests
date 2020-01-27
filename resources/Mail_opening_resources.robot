@@ -1,17 +1,17 @@
 *** Settings ***
 Documentation     Resource file for opening mailbox
 Library           ImapLibrary
-Library           Selenium2Library
+Library           SeleniumLibrary
 Library           Collections
 
 *** Keywords ***
 Check Mailbox
-    Open Mailbox    host=imap.gmail.com    user=ydfgdgdgdgdfg    password=asdasdasasd
-    ${LATEST} =    Wait For Email    sender=xsfsdfsdfsd    timeout=30
+    Open Mailbox    host=imap.gmail.com    user=${TEST_TEMPUSER_EMAIL}    password=${TEST_TEMPUSER_PASSWORD}
+    ${LATEST} =    Wait For Email    sender=${TEST_EMAIL_SENDER}    timeout=30    status=UNSEEN
     ${body}    Get Email Body    ${LATEST}
-    ${ret}    Should Match Regexp    ${body}    (http:\/\/uri\.suomi\.fi\/comments\/round\/(.*)&token=(.*))
-    ${token}    Get From List    ${ret}    1
-    Set Test Variable    ${token}
-    Open Browser    ${token}    ${browser}
+    ${ret}    Should Match Regexp    ${body}    (http:\/\/uri\.suomi\.fi\/comments\/round\/(.*)&token=(.[^"]*))
+    ${invitationLink}    Get From List    ${ret}    1
+    Set Test Variable    ${invitationLink}
+    Open Browser    ${invitationLink}    ${browser}
     Sleep    1
     Close Mailbox
