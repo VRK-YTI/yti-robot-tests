@@ -278,9 +278,9 @@ Remove code lists with extensions
         Wait Until Page Contains    ${code_list_item}    timeout=60
         ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
         Run Keyword If    ${extension_exists}    Delete extension before code list    ${code_list_item}
+        ...    ELSE    Continue code list deletion    ${code_list_item}
+        Sleep    2
     END
-    ...    ELSE    Continue code list deletion    ${code_list_item}
-    Sleep    2
     Close All Browsers
 
 Continue code list deletion
