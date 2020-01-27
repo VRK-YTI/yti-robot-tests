@@ -3,7 +3,7 @@ Documentation     Resource file for opening mailbox
 Library           ImapLibrary
 Library           SeleniumLibrary
 Library           Collections
-Resource          resources/Generic_resources.robot
+Resource          Generic_resources.robot
 
 *** Keywords ***
 Check Mailbox
