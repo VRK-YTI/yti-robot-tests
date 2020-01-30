@@ -446,3 +446,25 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Does Not Contain    xxx    timeout=20
     Return to Koodistot frontpage
     [Teardown]    Remove code lists    ${CODE_LIST_16}
+
+713. Create DPM Metric extension and create new code for code list
+    [Documentation]    Create DPM Metric extension and create new code for code list.
+    ...    Check that code creation is successful. YTI-1307
+    [Tags]    koodistot    regression    700    test
+    [Setup]    Test Case Setup Superuser
+    Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
+    Click Breadcrumb2 Link
+    Create new code to code list    NewCode002    newCode002    ${DRAFT_STATUS}    ${EMPTY}
+    Click Breadcrumb2 Link
+    Create new code to code list    NewCode003    newCode003    ${DRAFT_STATUS}    ${EMPTY}
+    Click Breadcrumb2 Link
+    Sleep    2
+    Create DPM extension    ${CREATE_DPM_METRIC_BTN}    True    ${DRAFT_STATUS}
+    Wait Until Page Contains    DPM Metric (en)    timeout=20
+    Click Breadcrumb2 Link
+    Create new code to code list    NewCode004    newCode004    ${DRAFT_STATUS}    ${EMPTY}
+    Click Breadcrumb2 Link
+    Wait Until Page Contains    4 koodia    timeout=20
+    Return to Koodistot frontpage
+    [Teardown]    Remove code lists    ${CODE_LIST_8}

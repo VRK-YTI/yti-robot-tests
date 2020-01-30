@@ -733,7 +733,7 @@ Create new code to code list
     Click Element    ${code_status}
     ${sub_code_list_length}=    Get Length    ${sub_code_list}
     Run Keyword If    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
-    Wait Until Page Contains Element    ${SAVE_NEW_CODE_BTN}    timeout=20
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_BTN}    timeout=20
     Click Element    ${SAVE_NEW_CODE_BTN}
     Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
     Log To Console    ${code_name} created
@@ -1033,3 +1033,9 @@ Select Tab
     [Arguments]    ${tab}
     Wait Until Page Contains Element    ${tab}    timeout=20
     Click Element    ${tab}
+
+Click Breadcrumb2 Link
+    Sleep    4
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
+    Click Element    ${2_BREADCRUMB_LINK}
+    Sleep    1
