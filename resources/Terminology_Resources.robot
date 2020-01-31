@@ -392,17 +392,18 @@ Create Terminological Dictionary and import vocabulary
     Click Element    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
     Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Wait Until Element Is Enabled    //*[contains(text(), "${ORGANIZATION_1}")]    timeout=30
     Click Element    //*[contains(text(), "${ORGANIZATION_1}")]
     Wait Until Page Contains Element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click Element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${CLASSIFICATION_2}")]
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(text(), "${CLASSIFICATION_2}")]    timeout=30
     Click Element    //*[contains(text(), "${CLASSIFICATION_2}")]
     Wait Until Page Contains Element    ${ADD_DESCRIPTION_DDL}    timeout=30
     Click Element    ${ADD_DESCRIPTION_DDL}
-    Click button    ${NEW_DESCRIPTION_FI}
+    Click Button    ${NEW_DESCRIPTION_FI}
     Wait Until Page Contains Element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
     Input Text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
     Wait Until Page Contains Element    ${PREFIX_INPUT}    timeout=30
@@ -413,7 +414,7 @@ Create Terminological Dictionary and import vocabulary
     Click Element    ${VOCABULARY_DDL}
     Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
     Click Element    ${IMPORT_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
+    Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}    timeout=30
     Choose File    ${FILE_UPLOAD_INPUT}    ${test_concepts}
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click Element    ${FILE_UPLOAD_BTN}
@@ -432,13 +433,13 @@ Create Terminological Dictionary without concepts
     Click Element    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
     Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${ORGANIZATION_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_1}")]
+    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_1}")]    timeout=30
     Click Element    //*[contains(text(), "${ORGANIZATION_1}")]
     Wait Until Page Contains Element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click Element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${CLASSIFICATION_1}")]
+    Wait Until Page Contains Element    //*[contains(text(), "${CLASSIFICATION_1}")]    timeout=30
     Click Element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Wait Until Page Contains Element    ${PREFIX_INPUT}    timeout=30
     Input Text    ${PREFIX_INPUT}    ${PREFIX_2}
