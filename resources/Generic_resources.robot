@@ -176,6 +176,7 @@ Create Comment Round
     Click Element    ${tool}
     Wait Until Page Contains Element    ${SEARCH_LINKED_SOURCE_INPUT}    timeout=30
     Input Text    ${SEARCH_LINKED_SOURCE_INPUT}    ${source}
+    Sleep    1
     Wait Until Element Is Enabled    //*[contains(text(), "${source}")]    timeout=30
     Click Element    //*[contains(text(), "${source}")]
     Wait Until Page Contains Element    ${COMMENTROUND_NAME_INPUT}    timeout=30

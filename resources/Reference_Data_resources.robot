@@ -290,7 +290,7 @@ Reference Data Select User
     [Arguments]    ${user_id}    ${user_name}
     Wait Until Element Is Enabled    ${REFERENCE_DATA_USER_DROPDOWN}    timeout=60
     Click Element    ${REFERENCE_DATA_USER_DROPDOWN}
-    Wait Until Element Is Visible    ${user_id}    timeout=60
+    Wait Until Element Is Enabled    ${user_id}    timeout=60
     Click Element    ${user_id}
     Sleep    0.5
     Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
