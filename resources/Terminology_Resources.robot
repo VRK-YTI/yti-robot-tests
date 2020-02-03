@@ -439,7 +439,8 @@ Create Terminological Dictionary without concepts
     Click Element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${CLASSIFICATION_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${CLASSIFICATION_1}")]    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(text(), "${CLASSIFICATION_1}")]    timeout=30
     Click Element    //*[contains(text(), "${CLASSIFICATION_1}")]
     Wait Until Page Contains Element    ${PREFIX_INPUT}    timeout=30
     Input Text    ${PREFIX_INPUT}    ${PREFIX_2}
