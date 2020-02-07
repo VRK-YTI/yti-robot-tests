@@ -292,7 +292,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element    //*[contains(text(), "Testiautomaatiosanasto (Luonnos)")]
     Wait Until Page Contains Element    ${SEARCH_CONCEPT_INPUT}    timeout=20
     Input Text    ${SEARCH_CONCEPT_INPUT}    tutkija
-    Wait Until Page Contains Element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]    timeout=60
+    Sleep    2
+    Wait Until Element Is Enabled    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]    timeout=60
     Click Element    //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]
     Log To Console    Concept added
     Wait Until Element Is Visible    ${SELECT_REGISTRY_BTN}    timeout=30
@@ -300,7 +301,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Enabled    //*[contains(text(), "${REGISTRY_1}")]    timeout=30
     Click Element    //*[contains(text(), "${REGISTRY_1}")]
     Log To Console    Registry added
-    Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}
+    Wait Until Page Contains Element    ${CODE_LIST_VALUE_INPUT}    timeout=30
     Input Text    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
     Click Button    ${ADD_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=20
@@ -314,7 +315,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains Element    //*[contains(text(), "Testiorganisaatio")]    timeout=60
     Click Element    //*[contains(text(), "Testiorganisaatio")]
     Sleep    2
-    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}
+    Wait Until Element Is Enabled    ${SAVE_NEW_CODE_LIST}    timeout=30
     Click Element    ${SAVE_NEW_CODE_LIST}
     Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
     Log To Console    Code list saved

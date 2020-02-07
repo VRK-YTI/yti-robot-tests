@@ -444,9 +444,10 @@ Remove code lists
     FOR    ${code_list_item}    IN    @{code_list_items}
         Return to Koodistot frontpage
         Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-        Wait Until Element Is enabled    ${SEARCH_BOX_INPUT}    timeout=30
+        Wait Until Element Is Enabled    ${SEARCH_BOX_INPUT}    timeout=30
         Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-        Wait Until Page Contains Element    //*[contains(text(), "${code_list_item}")]    timeout=60
+        Sleep    0.5
+        Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=60
         Click Element    //*[contains(text(), "${code_list_item}")]
         Wait Until Page Contains    ${code_list_item}    timeout=60
         Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=20
