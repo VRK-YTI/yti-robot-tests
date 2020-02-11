@@ -249,6 +249,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Uusi määritelmä    timeout=20
     Wait Until Page Contains    Uusi muutostieto    timeout=20
     Wait Until Page Contains    Oikeusturva    timeout=20
+    Wait Until Page Contains    Yhteydenotto    timeout=20
     Wait Until Page Contains    Ylläpitäjän yhteystiedot    timeout=20
     [Teardown]    Remove code lists    Testinimi
 
