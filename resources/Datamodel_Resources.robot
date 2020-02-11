@@ -14,6 +14,7 @@ ${MODEL_2}        Tilamalli
 ${PREFIX_1}       autom
 ${PREFIX_2}       lib
 ${PREFIX_3}       tatm
+${PREFIX_4}       aeghi
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 ${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
 ${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
@@ -22,6 +23,8 @@ ${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remov
 ${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 ${NAMESPACE_1}    Julkishallinnon tietokomponentit
 ${ENVIRONMENT_IDENTIFIER}    AWSDEV
+${DEV_suffix}     ?env=awsdev
+${TEST_suffix}    ?env=awstest
 #Users
 ${TEST_ADMIN_ID}    id=impersonate_user_testiadmin@localhost_link
 ${TEST_ADMIN_NAME}    Test Admin
@@ -244,6 +247,11 @@ ${EXPORT_XML}     id=class_export_show_application_xml
 ${EXPORT_JSON_Schema}    id=class_export_show_application_schema_json
 ${EXPORT_MODEL_JSON_Schema}    id=model_export_show_application_schema_json
 ${EXPORT_JSON_LD_Context}    id=class_export_show_application_ld_json_context
+#Versions
+${CREATE_NEW_VERSION_BTN}    id=create_new_datamodel_version_button
+${NEW_VERSION_PREFIX_INPUT}    id=new_datamodel_version_prefix_input
+${SAVE_NEW_VERSION_BTN}    id=save_new_datamodel_version_button
+${VERSION_MODAL}    class=app-new-datamodel-version-modal
 #Error messages
 ${error_reserved_namespace_prefix}    Tunniste on jo käytössä tai on varattu
 ${namespace_in_use}    Tunniste on jo käytössä
@@ -911,6 +919,26 @@ Delete profile
     Sleep    2
     Close All Browsers
 
+Delete Profile And Leave Browser Open
+    [Arguments]    ${profile}
+    Select user    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Wait Until Page Contains Element    //*[contains(text(), "${profile}")]    timeout=30
+    Click Element    //*[contains(text(), "${profile}")]
+    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
+    Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${REMOVE_MODEL_BTN}
+    Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Sleep    2
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Wait Until Page Contains    tietomallia    timeout=30
+    Log To Console    "${profile}" profile deleted
+    Sleep    2
+
 Select And Edit Predicate
     [Arguments]    ${predicate_tab}    ${predicate}
     Wait Until Element Is Enabled    ${predicate_tab}    timeout=60
@@ -1136,3 +1164,39 @@ Save Migrate Resource Statuses
     Wait Until Element Is Enabled    ${SAVE_MIGRATE_RESOURCE_STATUSES}    timeout=30
     Click Element    ${SAVE_MIGRATE_RESOURCE_STATUSES}
     Log To Console    Resource status change saved
+
+Create New Version
+    [Arguments]    ${prefix}
+    Wait Until Element Is Enabled    ${MODEL_ACTION_MENU}    timeout=20
+    Click Element    ${MODEL_ACTION_MENU}
+    Wait Until Element Is Enabled    ${CREATE_NEW_VERSION_BTN}    timeout=20
+    Click Element    ${CREATE_NEW_VERSION_BTN}
+    Wait Until Element Is Enabled    ${NEW_VERSION_PREFIX_INPUT}    timeout=20
+    Input Text    ${NEW_VERSION_PREFIX_INPUT}    ${prefix}
+    Wait Until Element Is Enabled    ${SAVE_NEW_VERSION_BTN}    timeout=20
+    Click Element    ${SAVE_NEW_VERSION_BTN}
+    Wait Until Element Is Enabled    ${CONFIRM_ALERT_BTN}    timeout=20
+    Click Element    ${CONFIRM_ALERT_BTN}
+    Log To Console    New version of datamodel created
+
+Delete Versions
+    [Arguments]    ${profile}
+    Select user    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Wait Until Element Is Enabled    //*[contains(text(), "${profile}")]    timeout=30
+    Click Element    //*[contains(text(), "${profile}")]
+    Wait Until Element Is Enabled    ${MODEL_DETAILS_TAB}    timeout=30
+    Click Element    ${MODEL_DETAILS_TAB}
+    Wait Until Element Is Enabled    ${REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${REMOVE_MODEL_BTN}
+    Wait Until Element Is Enabled    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
+    Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
+    Sleep    2
+    Log To Console    Profile version deleted
+    Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
+    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Sleep    1
+    ${profileExists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${profile}")]
+    Run Keyword If    ${profileExists}    Delete Versions    ${profile}
+    ...    ELSE    Close All Browsers
