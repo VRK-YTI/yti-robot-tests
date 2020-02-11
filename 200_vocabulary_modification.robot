@@ -13,7 +13,7 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
 
 *** Test Cases ***
 200. Modify DRAFT vocabulary
-    [Documentation]    Modify DRAFT vocabulary
+    [Documentation]    Modify DRAFT vocabulary and add contact information
     [Tags]    regression    sanastot    test    200
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
@@ -33,12 +33,16 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Input Text    ${VOCABULARY_TITLE_TEXTAREA}    Testiautomaatiosanasto
     Wait Until Page Contains Element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
     Input Text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
+    Wait Until Element Is Enabled    ${VOCABULARY_SOURCE_INPUT}    timeout=30
+    Input Text    ${VOCABULARY_SOURCE_INPUT}    Yhteystiedot tähän
     Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${EDIT_VOCABULARY_BTN}    timeout=60
     Sleep    1
     Wait Until Page Contains    Testiautomaatiosanasto    timeout=30
     Wait Until Page Contains    Tämä on kuvaus    timeout=30
+    Wait Until Page Contains    Yhteydenotto    timeout=30
+    Wait Until Page Contains    Yhteystiedot tähän    timeout=30
     Log To Console    Title and description of Terminological Vocabulary modified
     Go Back To Sanastot Frontpage
     [Teardown]    Delete Terminology    ${VOCABULARY_1}

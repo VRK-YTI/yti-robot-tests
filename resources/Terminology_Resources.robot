@@ -89,6 +89,7 @@ ${ADD_SUBSCRIPTION_BTN}    id=add_subscription_button
 ${DELETE_SUBSCRIPTION_BTN}    id=delete_subscription_button
 ${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
 ${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
+${VOCABULARY_SOURCE_INPUT}    id=vocabulary_source_input
 #Concept buttons
 ${ADD_NEW_CONCEPT_BTN}    id=concept_list_add_concept_button
 ${TERM_LITERAL_VALUE_INPUT}    id=concept_prefLabelXl_0_prefLabel_fi_0_input
