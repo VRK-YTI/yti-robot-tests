@@ -104,6 +104,7 @@ ${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
 ${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
 ${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
 ${CHANGE_RESOURCES_STATUSES_CHECKBOX}    id=change_resource_statuses_too_checkbox
+${MODEL_CONTACT_INPUT}    id=modelContact
 #Status
 ${MODEL_STATE_DDL}    id=modelState_item_select
 ${MODEL_STATE_INCOMPLETE}    id=modelState_INCOMPLETE

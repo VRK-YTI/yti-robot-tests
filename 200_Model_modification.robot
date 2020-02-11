@@ -52,6 +52,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Log To Console    Contributor removed
     Sleep    1
     Add Contributor    Automaatiotestaus
+    Wait Until Element Is Enabled    ${MODEL_CONTACT_INPUT}    timeout=30
+    Input Text    ${MODEL_CONTACT_INPUT}    Tähän yhteystiedot
     Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
     Wait Until Page Contains Element    ${LINK_URL_INPUT}    timeout=30
@@ -70,6 +72,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Kulttuuri    timeout=30
     Wait Until Page Contains    Automaatiotestaus    timeout=30
     Wait Until Page Contains    www.suomi.fi/etusivu/    timeout=30
+    Wait Until Page Contains    Yhteydenotto    timeout=30
+    Wait Until Page Contains    Tähän yhteystiedot    timeout=30
     Go Back To Data Vocabularies Frontpage
     [Teardown]    Delete profile    Uusi nimi
 
