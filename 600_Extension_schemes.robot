@@ -886,7 +886,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${SAVE_MEMBER}
     Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
     Sleep    4
-    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=60
+    Wait Until Element Is Enabled    ${3_BREADCRUMB_LINK}    timeout=60
     Click Element    ${3_BREADCRUMB_LINK}
     Wait Until Page Contains Element    //*[contains(text(), "Testcode 30 · Koodisto600 · Testirekisteri")]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "Testcode 63 · Koodisto800 · Testirekisteri")]    timeout=20
