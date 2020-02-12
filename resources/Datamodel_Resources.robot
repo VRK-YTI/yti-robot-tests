@@ -904,7 +904,8 @@ Delete profile
     Select user    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
-    Wait Until Page Contains Element    //*[contains(text(), "${profile}")]    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(text(), "${profile}")]    timeout=30
     Click Element    //*[contains(text(), "${profile}")]
     Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
     Click Element    ${MODEL_DETAILS_TAB}
