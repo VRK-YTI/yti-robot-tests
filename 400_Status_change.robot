@@ -307,9 +307,9 @@ Resource          resources/Datamodel_Resources.robot
     Wait Until Page Contains Element    ${MODEL_STATE_VALID}    timeout=30
     Wait Until Page Contains Element    ${MODEL_STATE_RETIRED}    timeout=30
     Wait Until Page Contains Element    ${MODEL_STATE_INVALID}    timeout=30
+    Wait Until Page Contains Element    ${MODEL_STATE_SUPERSEDED}    timeout=30
     Page Should Not Contain Element    ${MODEL_STATE_DRAFT}
     Page Should Not Contain Element    ${MODEL_STATE_INCOMPLETE}
-    Page Should Not Contain Element    ${MODEL_STATE_SUPERSEDED}
     Click Element    ${MODEL_STATE_RETIRED}
     Wait Until Element Is Enabled    ${SAVE_MODEL_BTN}    timeout=30
     Click Element    ${SAVE_MODEL_BTN}
@@ -347,9 +347,9 @@ Resource          resources/Datamodel_Resources.robot
     Wait Until Page Contains Element    ${CLASS_STATE_VALID}    timeout=30
     Wait Until Page Contains Element    ${CLASS_STATE_RETIRED}    timeout=30
     Wait Until Page Contains Element    ${CLASS_STATE_INVALID}    timeout=30
+    Wait Until Page Contains Element    ${CLASS_STATE_SUPERSEDED}    timeout=30
     Page Should Not Contain Element    ${CLASS_STATE_DRAFT}
     Page Should Not Contain Element    ${CLASS_STATE_INCOMPLETE}
-    Page Should Not Contain Element    ${CLASS_STATE_SUPERSEDED}
     Click Element    ${CLASS_STATE_RETIRED}
     Save Class
     Go Back To Data Vocabularies Frontpage
@@ -382,9 +382,9 @@ Resource          resources/Datamodel_Resources.robot
     Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}    timeout=30
     Wait Until Page Contains Element    ${PREDICATE_STATE_RETIRED}    timeout=30
     Wait Until Page Contains Element    ${PREDICATE_STATE_INVALID}    timeout=30
+    Wait Until Page Contains Element    ${PREDICATE_STATE_SUPERSEDED}
     Page Should Not Contain Element    ${PREDICATE_STATE_DRAFT}
     Page Should Not Contain Element    ${PREDICATE_STATE_INCOMPLETE}
-    Page Should Not Contain Element    ${PREDICATE_STATE_SUPERSEDED}
     Click Element    ${PREDICATE_STATE_RETIRED}
     Save Predicate
     Go Back To Data Vocabularies Frontpage
