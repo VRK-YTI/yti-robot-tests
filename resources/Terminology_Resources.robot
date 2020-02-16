@@ -672,13 +672,13 @@ Create New Terminology With Parameters
     Click Element    ${ADD_ORGANIZATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_ORGANIZATION_INPUT}    timeout=30
     Input Text    ${SEARCH_ORGANIZATION_INPUT}    ${organization}
-    Wait Until Page Contains Element    //*[contains(text(), "${organization}")]
+    Wait Until Page Contains Element    //*[contains(text(), "${organization}")]    timeout=30
     Click Element    //*[contains(text(), "${organization}")]
     Wait Until Page Contains Element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
     Click Element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${information_domain}
-    Wait Until Page Contains Element    //*[contains(text(), "${information_domain}")]
+    Wait Until Element Is Enabled    //*[contains(text(), "${information_domain}")]    timeout=30
     Click Element    //*[contains(text(), "${information_domain}")]
     Wait Until Page Contains Element    ${PREFIX_INPUT}    timeout=30
     Input Text    ${PREFIX_INPUT}    ${prefix}
