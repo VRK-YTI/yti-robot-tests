@@ -414,12 +414,12 @@ Resource          resources/Extension_resources.robot
     Click Element    ${VALID_STATUS_TARGET}
     Wait Until Element Is Enabled    ${SAVE_CODE_STATUS_CHANGE_BTN}    timeout=20
     Click Element    ${SAVE_CODE_STATUS_CHANGE_BTN}
+    Click Yes Confirmation
     Wait Until Page Contains    Tila vaihdettu 30 koodiin.    timeout=20
     Sleep    1
     Wait Until Element Is Enabled    ${CLOSE_ALERT_MODAL_LINK}    timeout=30
     Click Element    ${CLOSE_ALERT_MODAL_LINK}
-    Wait Until Page Contains Element    ${CODELIST_CODES_TAB}    timeout=20
-    Click Element    ${CODELIST_CODES_TAB}
+    Select Tab    ${CODELIST_CODES_TAB}
     Wait Until Element Is Visible    //*[contains(text(), "testcode29 - Testcode 29")]    timeout=60
     Click Element    //*[contains(text(), "testcode29 - Testcode 29")]
     Wait Until Page Contains    Koodin arvo    timeout=60
@@ -562,6 +562,7 @@ Resource          resources/Extension_resources.robot
     Click Element    ${VALID_STATUS_TARGET}
     Wait Until Element Is Enabled    ${SAVE_CODE_STATUS_CHANGE_BTN}    timeout=20
     Click Element    ${SAVE_CODE_STATUS_CHANGE_BTN}
+    Click Yes Confirmation
     Wait Until Page Contains    Tila vaihdettu 30 koodiin.    timeout=20
     Sleep    1
     Wait Until Element Is Enabled    ${CLOSE_ALERT_MODAL_LINK}    timeout=30

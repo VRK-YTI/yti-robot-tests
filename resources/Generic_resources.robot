@@ -1040,3 +1040,7 @@ Click Breadcrumb2 Link
     Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=30
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    1
+
+Click Yes Confirmation
+    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=30
+    Click Element    ${CONFIRMATION_YES_BTN}
