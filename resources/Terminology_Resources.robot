@@ -678,6 +678,7 @@ Create New Terminology With Parameters
     Click Element    ${ADD_NEW_CLASSIFICATION_BTN}
     Wait Until Page Contains Element    ${SEARCH_CLASSIFICATION_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASSIFICATION_INPUT}    ${information_domain}
+    Sleep    1
     Wait Until Element Is Enabled    //*[contains(text(), "${information_domain}")]    timeout=30
     Click Element    //*[contains(text(), "${information_domain}")]
     Wait Until Page Contains Element    ${PREFIX_INPUT}    timeout=30
