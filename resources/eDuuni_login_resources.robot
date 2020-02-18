@@ -15,7 +15,7 @@ ${PROVIDER_DDL}    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
 ${CONTINUE_LOGIN_BTN}    id=ContentPlaceHolder1_Button1
 ${ID_ELEMENT_HOOK_2}    id=Email
 ${ID_NEXT_ELEMENT_HOOK_2}    id=next
-${PASSWORD_ELEMENT_HOOK_2}    id=Passwd
+${PASSWORD_ELEMENT_HOOK_2}    id=Password
 ${SIGN_IN_HOOK_2}    id=signIn
 ${ID_ELEMENT_HOOK}    id=identifierId
 ${PASSWORD_ELEMENT_HOOK}    //*[contains(@name,'password')]
