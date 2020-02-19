@@ -189,7 +189,7 @@ Create member for calculation hierarchy
     Wait Until Page Contains Element    ${SAVE_MEMBER}    timeout=30
     Click Button    ${SAVE_MEMBER}
     Sleep    1
-    Wait Until Element Is Visible    ${MODIFY_MEMBER_BTN}    timeout=60
+    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
     Log To Console    ${member_name} created
     Sleep    2
 

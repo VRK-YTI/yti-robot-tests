@@ -446,7 +446,7 @@ Remove code lists
         Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
         Wait Until Element Is Enabled    ${SEARCH_BOX_INPUT}    timeout=30
         Input Text    ${SEARCH_BOX_INPUT}    ${code_list_item}
-        Sleep    0.5
+        Sleep    1
         Wait Until Element Is Enabled    //*[contains(text(), "${code_list_item}")]    timeout=60
         Click Element    //*[contains(text(), "${code_list_item}")]
         Wait Until Page Contains    ${code_list_item}    timeout=60
