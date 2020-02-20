@@ -33,8 +33,8 @@ ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div
     Input Text    ${VOCABULARY_TITLE_TEXTAREA}    Testiautomaatiosanasto
     Wait Until Page Contains Element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
     Input Text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
-    Wait Until Element Is Enabled    ${VOCABULARY_SOURCE_INPUT}    timeout=30
-    Input Text    ${VOCABULARY_SOURCE_INPUT}    Yhteystiedot tähän
+    Wait Until Element Is Enabled    ${VOCABULARY_CONTACT_TEXTAREA}    timeout=30
+    Input Text    ${VOCABULARY_CONTACT_TEXTAREA}    Yhteystiedot tähän
     Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
     Click Element    ${SAVE_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${EDIT_VOCABULARY_BTN}    timeout=60
