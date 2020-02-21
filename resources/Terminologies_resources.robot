@@ -190,7 +190,8 @@ Delete Terminology
     Log To Console    Terminology test case setup done
     Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Sleep    1
+    Wait Until Element Is Enabled    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
     Click Element    //*[contains(text(), "${VOCABULARY_1}")]
     Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
     Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
