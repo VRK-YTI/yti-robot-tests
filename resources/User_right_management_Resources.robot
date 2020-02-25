@@ -70,7 +70,6 @@ eDuuni Login
     ...    ELSE    Login With Id Field Option 2
 
 Login With Id Field Option 1
-    Log Elements
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK}    timeout=20
     Input Text    ${ID_ELEMENT_HOOK}    ${TEST_EMAIL}
     Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK}    timeout=20
@@ -81,7 +80,6 @@ Login With Id Field Option 1
     Click Element    ${PASSWORD_NEXT_ELEMENT_HOOK}
 
 Login With Id Field Option 2
-    Log Elements
     Wait Until Element Is Enabled    ${ID_ELEMENT_HOOK_2}    timeout=20
     Input Text    ${ID_ELEMENT_HOOK_2}    ${TEST_EMAIL}
     Wait Until Element Is Enabled    ${ID_NEXT_ELEMENT_HOOK_2}    timeout=20
@@ -112,11 +110,3 @@ Go back to RHP frontpage
     Click Element    //*[contains(text(), "Etusivu")]
     Sleep    2
     Close All Browsers
-
-Log Elements
-    ${elements}=    Get WebElements    //input
-    Log To Console    Input elements
-    FOR    ${element}    IN    @{elements}
-        Log To Console    ID: ${element.get_attribute('id')}
-        Log To Console    Type: ${element.get_attribute('type')}
-    END
