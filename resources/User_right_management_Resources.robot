@@ -15,7 +15,7 @@ ${CONTINUE_LOGIN_BTN}    id=ContentPlaceHolder1_Button1
 ${ID_ELEMENT_HOOK_2}    id=Email
 ${ID_NEXT_ELEMENT_HOOK_2}    id=next
 ${PASSWORD_ELEMENT_HOOK_2}    //*[contains(@type,'password')]
-${SIGN_IN_HOOK_2}    id=signIn
+${SIGN_IN_HOOK_2}    id=next
 ${ID_ELEMENT_HOOK}    id=identifierId
 ${PASSWORD_ELEMENT_HOOK}    //*[contains(@name,'password')]
 ${ID_NEXT_ELEMENT_HOOK}    id=identifierNext
