@@ -89,7 +89,7 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     Wait Until Page Contains    Organisaatiot ja roolit    timeout=20
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=Yhteentoimivuusalusta | Suomidigi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
@@ -284,13 +284,13 @@ Change user interface language
 
 Click through guide
     [Arguments]    ${final_text}
-    : FOR    ${ClickNext}    IN RANGE    300
-    \    ${Next}    Get Text    ${GUIDE_NEXT_BTN}
-    \    Page Should Contain    ${Next}
-    \    Wait Until Page Contains Element    ${GUIDE_NEXT_BTN}    timeout=20
-    \    Click Element    ${GUIDE_NEXT_BTN}
-    \    ${exit}=    Run Keyword And Return Status    Page Should Contain element    //*[contains(text(), "${final_text}")]
-    \    Exit For Loop If    ${exit}
+    FOR    ${ClickNext}    IN RANGE    300
+    ${Next}    Get Text    ${GUIDE_NEXT_BTN}
+    Page Should Contain    ${Next}
+    Wait Until Page Contains Element    ${GUIDE_NEXT_BTN}    timeout=20
+    Click Element    ${GUIDE_NEXT_BTN}
+    ${exit}=    Run Keyword And Return Status    Page Should Contain element    //*[contains(text(), "${final_text}")]
+    Exit For Loop If    ${exit}
     Wait Until Page Contains Element    ${GUIDE_CLOSE_BTN}    timeout=20
     Click Element    ${GUIDE_CLOSE_BTN}
     Log To Console    Guide through succesfully!
