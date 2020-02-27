@@ -78,7 +78,7 @@ Resource          resources/Login_details.robot
     Wait Until Page Contains    Organisaatio ja roolit    timeout=40
     Sleep    1
     Select navigation menu link    yhteentoimiva.suomi.fi
-    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Select Window    title=Yhteentoimivuusalusta | Suomidigi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Select navigation menu link    Suomi.fi-sanastot
