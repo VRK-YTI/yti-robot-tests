@@ -71,7 +71,7 @@ Resource          resources/Generic_resources.robot
     Wait Until Page Contains    Sähköposti    timeout=20
     Wait Until Page Contains    Organisaatiot ja roolit    timeout=20
     Select Navigation Menu Link    yhteentoimiva.suomi.fi
-    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Select Window    title=Yhteentoimivuusalusta | Suomidigi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Select Navigation Menu Link    Suomi.fi-koodistot
