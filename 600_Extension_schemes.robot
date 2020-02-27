@@ -67,7 +67,7 @@ Resource          resources/Extension_resources.robot
     Wait Until Page Contains    Laajennus    timeout=20
     Wait Until Page Contains    Koulutus, kulttuuri ja urheilu    timeout=20
     Sleep    4
-    Wait Until Element Is Visible    ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Element Is Enabled    ${2_BREADCRUMB_LINK}    timeout=60
     Click Element    ${2_BREADCRUMB_LINK}
     Sleep    3
     Wait Until Page Contains Element    ${EXPORT_DDL}    timeout=20

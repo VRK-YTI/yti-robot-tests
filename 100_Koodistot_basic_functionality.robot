@@ -239,7 +239,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Rekisterit    timeout=40
     Wait Until Page Contains Element    ${REGISTRY_DDL}    timeout=40
     Select navigation menu link    yhteentoimiva.suomi.fi
-    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
+    Select Window    title=Yhteentoimivuusalusta | Suomidigi
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link    Suomi.fi-sanastot
