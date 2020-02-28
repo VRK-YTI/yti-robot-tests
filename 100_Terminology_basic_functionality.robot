@@ -86,8 +86,8 @@ Resource          resources/Terminology_Resources.robot
     Wait Until Page Contains    Organisaatiot ja roolit    timeout=60
     Wait Until Page Contains    Lähetä käyttöoikeuspyyntö    timeout=60
     Select navigation menu link    yhteentoimiva.suomi.fi
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=yhteentoimiva.suomi.fi – yhteentoimiva.suomi.fi
-    Wait Until Page Contains    Yhteentoimivuusalusta ja -menetelmä    timeout=60
+    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=Yhteentoimivuusalusta | Suomidigi
+    Wait Until Page Contains    Yhteentoimivuusalusta    timeout=60
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Select navigation menu link    Suomi.fi-koodistot
