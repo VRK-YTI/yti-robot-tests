@@ -32,4 +32,4 @@ Resource          resources/Generic_resources.robot
     Select Navigation Menu Link    Käyttäjätiedot
     Page Should Not Contain Element    ${USER_DETAILS_SUBSCRIPTIONS_TAB}
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
