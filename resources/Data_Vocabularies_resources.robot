@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
-${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
+${DATA_VOCABULARIES_ENVIRONMENT_URL}    https://tietomallit.test.yti.cloud.vrk.fi/
 ${DATA_VOCABULARIES_USER_1}    id=impersonate_user_testiadmin@localhost_link
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
@@ -401,18 +401,19 @@ Add class
 
 Add several classes
     [Arguments]    @{class_items}
-    : FOR    ${class_item}    IN    @{class_items}
-    \    Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
-    \    Click Element    ${ADD_NEW_CLASS}
-    \    Wait Until Page Contains element    ${SEARCH_CLASS_INPUT}    timeout=30
-    \    Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
-    \    Click Element    //*[contains(text(), "${class_item}")]
-    \    Sleep    2
-    \    Wait Until Page Contains element    ${SPECIALIZE_CLASS}    timeout=30
-    \    Click Element    ${SPECIALIZE_CLASS}
-    \    Sleep    1
-    \    Confirm all properties for class and save
-    \    Sleep    2
+    FOR    ${class_item}    IN    @{class_items}
+        Wait Until Page Contains Element    ${ADD_NEW_CLASS}    timeout=30
+        Click Element    ${ADD_NEW_CLASS}
+        Wait Until Page Contains element    ${SEARCH_CLASS_INPUT}    timeout=30
+        Input Text    ${SEARCH_CLASS_INPUT}    ${class_item}
+        Click Element    //*[contains(text(), "${class_item}")]
+        Sleep    2
+        Wait Until Page Contains element    ${SPECIALIZE_CLASS}    timeout=30
+        Click Element    ${SPECIALIZE_CLASS}
+        Sleep    1
+        Confirm all properties for class and save
+        Sleep    2
+    END
 
 Save class
     Wait Until Page Contains element    ${SAVE_CLASS}    timeout=30
@@ -431,9 +432,10 @@ Confirm all properties for class and save
 
 Deselect properties for class and save
     [Arguments]    @{class_properties}
-    : FOR    ${class_property}    IN    @{class_properties}
-    \    Unselect Checkbox    ${class_property}
-    \    Checkbox Should Not Be Selected    ${class_property}
+    FOR    ${class_property}    IN    @{class_properties}
+        Unselect Checkbox    ${class_property}
+        Checkbox Should Not Be Selected    ${class_property}
+    END
     Wait Until Page Contains element    ${CONFIRM_ADD_PROPERTIES}    timeout=30
     Click Element    ${CONFIRM_ADD_PROPERTIES}
     Wait Until Page Contains element    ${SAVE_CLASS}    timeout=30

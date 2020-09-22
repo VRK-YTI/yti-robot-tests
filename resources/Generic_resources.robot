@@ -1,7 +1,7 @@
 *** Variables ***
 ${SELENIUM_SPEED}    0.5
 ${BROWSER}        chrome
-${COMMENTS_ENVIRONMENT_URL}    https://kommentit.dev.yti.cloud.vrk.fi/
+${COMMENTS_ENVIRONMENT_URL}    https://kommentit.test.yti.cloud.vrk.fi/
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${SUPER_USER_ID}    id=testisuperuser@localhost
@@ -86,6 +86,10 @@ ${NEW_SUGGESTION_LABEL_INPUT_0}    id=commenthread_0_label_text_input
 ${NEW_SUGGESTION_DESCRIPTION_INPUT_0}    id=commenthread_0_description_text_input
 ${NEW_SUGGESTION_LABEL_INPUT_1}    id=commenthread_1_label_text_input
 ${NEW_SUGGESTION_DESCRIPTION_INPUT_1}    id=commenthread_1_description_text_input
+#Comment round state
+${COMMENT_ROUND_STATE_CLOSED}    id=CLOSED_status_filter_dropdown
+${COMMENT_ROUND_STATE_IN_PROGRESS}    id=INPROGRESS_status_filter_dropdown
+${COMMENT_ROUND_STATE_ALL}    id=all_selected_status_filter_dropdown
 #Email subscription
 ${ADD_SUBSCRIPTION_BTN}    id=add_subscription_button
 ${DELETE_SUBSCRIPTION_BTN}    id=delete_subscription_button
@@ -177,8 +181,8 @@ Create Comment Round
     Wait Until Page Contains Element    ${SEARCH_LINKED_SOURCE_INPUT}    timeout=30
     Input Text    ${SEARCH_LINKED_SOURCE_INPUT}    ${source}
     Sleep    3
-    Wait Until Element Is Enabled    //*[contains(text(), "${source}")]    timeout=30
-    Click Element    //*[contains(text(), "${source}")]
+    Wait Until Element Is Enabled    //*[@id='undefined_resource_link']//*[contains(text(), "${source}")]    timeout=30
+    Click Element    //*[@id='undefined_resource_link']//*[contains(text(), "${source}")]
     Wait Until Page Contains Element    ${COMMENTROUND_NAME_INPUT}    timeout=30
     Input Text    ${COMMENTROUND_NAME_INPUT}    ${round_name}
     Wait Until Page Contains Element    ${COMMENTROUND_DESCRIPTION_INPUT}    timeout=30
@@ -208,8 +212,9 @@ Allow New Comment Threads
     Checkbox Should Be Selected    ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}
 
 Delete Comment Round
-    [Arguments]    ${comment_round_name}
+    [Arguments]    ${comment_round_name}    ${state}
     Test Case Setup Superuser
+    Select Comment Round State    ${state}
     Wait Until Page Contains Element    //*[contains(text(), "${comment_round_name}")]    timeout=60
     Click Element    //*[contains(text(), "${comment_round_name}")]
     Wait Until Page Contains Element    //*[contains(text(), "${comment_round_name}")]    timeout=60
@@ -220,7 +225,8 @@ Delete Comment Round
     Wait Until Page Contains Element    ${CONFIRM_BTN}    timeout=20
     Click Element    ${CONFIRM_BTN}
     Wait Until Page Contains Element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
-    Wait until page does not contain element    //*[contains(text(), "${comment_round_name}")]    timeout=10
+    Select Comment Round State    ${state}
+    Wait Until Page Does Not Contain Element    //*[contains(text(), "${comment_round_name}")]    timeout=20
     Log To Console    ${comment_round_name} Deleted
 
 Add Resource For Comment Round
@@ -424,6 +430,14 @@ Save Comment Round
     Click Element    ${SAVE_COMMENTROUND}
     Wait Until Element Is Enabled    ${EDIT_COMMENTROUND}    timeout=60
 
+Select Comment Round State
+    [Arguments]    ${state}
+    Wait Until Element Is Enabled    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Click Element    ${STATUS_DROPDOWN_BTN}
+    Wait Until Element Is Enabled    ${state}    timeout=10
+    Click Element    ${state}
+    Sleep    1
+
 Test Case Setup Reference Data
     [Arguments]    ${codelist}    ${codelist_name}
     Reference Data Setup    ${codelist}    ${codelist_name}
@@ -434,19 +448,19 @@ Test Case Setup Reference Data And Code Without prefLabel
     Test Case Setup Superuser
 
 Test Case Teardown Reference Data
-    [Arguments]    ${codelist_name}    ${comment_round_name}
+    [Arguments]    ${codelist_name}    ${comment_round_name}    ${state}
     Reference Data Test Case Setup Superuser
     Reference Data Teardown    ${codelist_name}
-    Delete Comment Round    ${comment_round_name}
+    Delete Comment Round    ${comment_round_name}    ${state}
 
 Test Case Setup Terminology
     Terminology Setup
     Test Case Setup Superuser
 
 Test Case Teardown Terminology
-    [Arguments]    ${comment_round_name}
+    [Arguments]    ${comment_round_name}    ${state}
     Terminology Teardown
-    Delete Comment Round    ${comment_round_name}
+    Delete Comment Round    ${comment_round_name}    ${state}
 
 Test Case Setup Data Vocabularies
     Data Vocabularies Setup
@@ -457,6 +471,6 @@ Test Case Setup Data Vocabularies With New Class
     Test Case Setup Superuser
 
 Test Case Teardown Data Vocabularies
-    [Arguments]    ${comment_round_name}
+    [Arguments]    ${comment_round_name}    ${state}
     Data Vocabularies Teardown
-    Delete Comment Round    ${comment_round_name}
+    Delete Comment Round    ${comment_round_name}    ${state}

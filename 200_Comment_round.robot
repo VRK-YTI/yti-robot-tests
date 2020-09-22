@@ -17,7 +17,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 201. Create new comment round for terminology
     [Documentation]    Create new terminology with concepts in Terminologies tool and create new comment round for the terminology.
@@ -26,7 +26,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Terminology
     Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 202. Create new comment round for profile
     [Documentation]    Create new profile in Data Vocabularies tool and create new comment round for the profile.
@@ -35,7 +35,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     [Setup]    Test Case Setup Data Vocabularies
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 203. Add resources from Reference Data for comment round
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -45,7 +45,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Create Comment Round    ${REFERENCE_DATA_TOOL}    koodisto6000    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 204. Add resources from Terminologies for comment round
     [Documentation]    Create new terminology with concepts in Terminologies tool and create new comment round
@@ -63,7 +63,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 205. Add resources from Data Vocabularies for comment round
     [Documentation]    Create new profile in Data Vocabularies tool and create new comment round for the profile.
@@ -81,7 +81,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 206. Add new resources from Reference Data for comment round after comment round has started
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -95,7 +95,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Add Resource For Comment Round    Testcode 57    ${COMMENT_TEXT_INPUT_1}    kommentti22    ${EMPTY}    ${EMPTY}
     Close Comment Round
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_CLOSED}
 
 207. Send comment for Reference Data resource
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -113,7 +113,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 208. Remove Reference Data resources from comment round
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -149,7 +149,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Page Should Not Contain    Testcode 30
     Page Should Not Contain    Testcode 35
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 209. Add Reference Data resource without prefLabel to comment round
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -168,7 +168,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Close Window
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
 
 210. Check comment round results
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -208,7 +208,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Page Contains    Voimassa oleva:    timeout=20
     Wait Until Page Contains    (100.0 %)    timeout=20
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_CLOSED}
 
 211. Send inline comment for resource
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -251,7 +251,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Page Should Not Contain    Inline kommentti 1    timeout=20
     Page Should Not Contain    Inline kommentti 2    timeout=20
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
 
 212. Create new suggestion for comment round
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
@@ -267,7 +267,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Create New Suggestion    Ehdotus2    Kuvaus2
     Close Comment Round
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_CLOSED}
 
 213. Check URI links
     [Documentation]    Check that comment round URI link is working correctly
@@ -282,4 +282,4 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Page Contains    Testiautomaatiokierros    timeout=30
     Log To Console    URI link opened successfully
     Sleep    2
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_ALL}
