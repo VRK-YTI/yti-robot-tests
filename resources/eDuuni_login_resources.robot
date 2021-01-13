@@ -4,12 +4,19 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}        chrome
+#prod env
 ${REFERENCE_DATA_ENVIRONMENT_URL}    https://koodistot.suomi.fi/
 ${TERMINOLOGIES_ENVIRONMENT_URL}    https://sanastot.suomi.fi/
 ${DATA_VOCABULRIES_ENVIRONMENT_URL}    https://tietomallit.suomi.fi/
 ${COMMENTS_ENVIRONMENT_URL}    https://kommentit.suomi.fi/
 ${GROUPMANAGEMENT_ENVIRONMENT_URL}    https://rhp.suomi.fi/
 ${SELENIUM_SPEED}    0.5
+#test env
+${REFERENCE_DATA_ENVIRONMENT_URL_TEST}    https://koodistot.test.yti.cloud.vrk.fi/
+${TERMINOLOGIES_ENVIRONMENT_URL_TEST}    https://sanastot.test.yti.cloud.vrk.fi/
+${DATA_VOCABULRIES_ENVIRONMENT_URL_TEST}    https://tietomallit.test.yti.cloud.vrk.fi/
+${COMMENTS_ENVIRONMENT_URL_TEST}    https://kommentit.test.yti.cloud.vrk.fi/
+${GROUPMANAGEMENT_ENVIRONMENT_URL_TEST}    https://rhp.test.yti.cloud.vrk.fi/
 #Buttons and links
 ${PROVIDER_DDL}    id=ContentPlaceHolder1_PassiveIdentityProvidersDropDownList
 ${CONTINUE_LOGIN_BTN}    id=ContentPlaceHolder1_Button1
