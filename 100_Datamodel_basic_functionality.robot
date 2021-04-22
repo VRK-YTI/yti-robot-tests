@@ -244,24 +244,18 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Open Tietomallit
     Set Selenium Speed    ${SELENIUM_SPEED}
-    GO To    http://uri.suomi.fi/datamodel/ns/jhs#
+    GO To    http://uri.suomi.fi/datamodel/ns/jhs
     Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
-    Sleep    2
-    GO To    http://uri.suomi.fi/datamodel/ns/jhs#Henkilo
-    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
-    Sleep    2
+    Title Should Be    Tietomallit
+    Sleep    1
     GO To    http://uri.suomi.fi/datamodel/ns/jhs?env=awsdev
     Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
-    Sleep    2
-    GO To    http://uri.suomi.fi/datamodel/ns/jhs#Henkilo?env=awsdev
-    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
-    Sleep    2
+    Title Should Be    AWSDEV - Tietomallit
+    Sleep    1
     GO To    http://uri.suomi.fi/datamodel/ns/jhs?env=awstest
     Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
-    Sleep    2
-    GO To    http://uri.suomi.fi/datamodel/ns/jhs#Henkilo?env=awstest
-    Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
-    Sleep    2
+    Title Should Be    AWSTEST - Tietomallit
+    Sleep    1
 
 *** Keywords ***
 Restore Finnish language
