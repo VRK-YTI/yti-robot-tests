@@ -683,10 +683,36 @@ Add Attribute
     Click Element    //*[contains(text(), "Attribuutti")]
     Wait Until Element Is Enabled    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
-    Wait Until Element Is Enabled    //*[contains(text(), "${attribute}")]    timeout=30
-    Click Element    //*[contains(text(), "${attribute}")]
+    Wait Until Element Is Enabled    //*[contains(@id, "create_new_LisaaUusiAttribuutti")]    timeout=30
+    Click Element    //*[contains(@id, "create_new_LisaaUusiAttribuutti")]
+    Wait Until Element Is Enabled    //*[contains(@id, "create_new_LuoUusiAttribuutti")]    timeout=30
+    Click Element    //*[contains(@id, "create_new_LuoUusiAttribuutti")]
+    Wait Until Element Is Enabled    id=searchConceptModalConfirmButton    timeout=30
+    Click Element    id=searchConceptModalConfirmButton
     Wait Until Element Is Enabled    ${CONFIRM_PREDICATE_BTN}    timeout=30
-    Click Element    ${CONFIRM_PREDICATE_BTN}
+    Click Element    ${CONFIRM_PREDICATE_BTN} 
+    Sleep    2
+
+Add Existing Attribute
+    [Arguments]    ${attribute}
+    Wait Until Element Is Enabled    ${MODIFY_CLASS}    timeout=30
+    Click Element    ${MODIFY_CLASS}
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_DDL}    timeout=30
+    Click Element    ${ADD_PROPERTY_DDL}
+    Wait Until Element Is Enabled    ${ADD_PROPERTY_BTN}    timeout=30
+    Click Element    ${ADD_PROPERTY_BTN}
+    Sleep    2
+    Wait Until Element Is Enabled    ${ALL_TYPES_DDL}    timeout=30
+    Click Element    ${ALL_TYPES_DDL}
+    Sleep    2
+    Wait Until Element Is Enabled    //*[contains(text(), "Attribuutti")]    timeout=30
+    Click Element    //*[contains(text(), "Attribuutti")]
+    Wait Until Element Is Enabled    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
+    Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
+    Wait Until Element Is Enabled    //*[contains(@id, "search_result_link")]    timeout=30
+    Click Element    //*[contains(@id, "search_result_link")]
+    Wait Until Element Is Enabled    ${CONFIRM_PREDICATE_BTN}    timeout=30
+    Click Element    ${CONFIRM_PREDICATE_BTN} 
     Sleep    2
 
 Create New Attribute
@@ -788,10 +814,14 @@ Add Association
     Click Element    //*[contains(text(), "Assosiaatio")]
     Wait Until Page Contains Element    ${SEARCH_ATTRIBUTE_INPUT}    timeout=30
     Input Text    ${SEARCH_ATTRIBUTE_INPUT}    ${association}
-    Wait Until Element Is Enabled    //*[contains(text(), "${association}")]    timeout=30
-    Click Element    //*[contains(text(), "${association}")]
+    Wait Until Element Is Enabled    //*[contains(@id, "create_new_LisaaUusiAssosiaatio")]    timeout=30
+    Click Element    //*[contains(@id, "create_new_LisaaUusiAssosiaatio")]
+    Wait Until Element Is Enabled    //*[contains(@id, "create_new_LuoUusiAssosiaatio")]    timeout=30
+    Click Element    //*[contains(@id, "create_new_LuoUusiAssosiaatio")]
+    Wait Until Element Is Enabled    id=searchConceptModalConfirmButton    timeout=30
+    Click Element    id=searchConceptModalConfirmButton
     Wait Until Element Is Enabled    ${CONFIRM_PREDICATE_BTN}    timeout=30
-    Click Element    ${CONFIRM_PREDICATE_BTN}
+    Click Element    ${CONFIRM_PREDICATE_BTN} 
     Sleep    2
 
 Add Sub Association
