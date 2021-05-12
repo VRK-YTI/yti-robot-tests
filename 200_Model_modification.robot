@@ -498,13 +498,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Select Tab    ${ATTRIBUTE_TAB}
     Wait Until Element Is Enabled    //*[contains(@id,'testiattribuutti_tabset_link')]    timeout=30
     Click Element    //*[contains(@id,'testiattribuutti_tabset_link')]
-    Log To Console    "Attribute selected"
     Wait Until Element Is Enabled    ${PREDICATE_EDIT_BTN}    timeout=60
     Click Element    ${PREDICATE_EDIT_BTN}
-    Log To Console    "Edit button clicked"
     Wait Until Page Contains Element    ${CONVERT_TO_ASSOCIATION}    timeout=30
     Click Element    ${CONVERT_TO_ASSOCIATION}
-    Log To Console    "Convert button clicked"
     Wait Until Page Contains    ${predicate_change_error}    timeout=30
     Sleep    1
     Click Element    ${CLOSE_BTN}
