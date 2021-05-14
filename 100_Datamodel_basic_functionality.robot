@@ -230,11 +230,13 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
     [Documentation]    Verify that CC BY 4.0 license page is opened correctly.
     [Tags]    regression    tietomallit    test
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
+    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    ${LICENSE_ICON_TEXT_LINK}    timeout=30
     Click Element    ${LICENSE_ICON_TEXT_LINK}
+    Sleep  ${SLEEP_TIMEOUT}
     Select Window    title=Creative Commons — Attribution 4.0 International — CC BY 4.0
     Wait Until Page Contains    Attribution 4.0 International    timeout=20
-    Sleep    2
+    Sleep  ${SLEEP_TIMEOUT}
     Log To Console    CC BY 4.0 license page opened
     Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
 
