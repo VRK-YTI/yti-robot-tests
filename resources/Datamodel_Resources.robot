@@ -627,8 +627,10 @@ Add Sub Class
     Click Element    ${CLASS_MODEL_DDL}
     Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=60
     Click Element    //*[contains(text(), "${model}")]
+    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    //*[contains(@id,'${class_link}_search_class_link')]    timeout=60
     Click Element    //*[contains(@id,'${class_link}_search_class_link')]
     Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
@@ -644,8 +646,10 @@ Add Super Class
     Click Element    ${CLASS_MODEL_DDL}
     Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=60
     Click Element    //*[contains(text(), "${model}")]
+    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    //*[contains(@id,'${class_link}_search_class_link')]    timeout=60
     Click Element    //*[contains(@id,'${class_link}_search_class_link')]
     Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
@@ -661,8 +665,10 @@ Copy Class
     Click Element    ${CLASS_MODEL_DDL}
     Wait Until Element Is Visible    //*[contains(text(), "${model}")]    timeout=60
     Click Element    //*[contains(text(), "${model}")]
+    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Page Contains Element    ${SEARCH_CLASS_INPUT}    timeout=30
     Input Text    ${SEARCH_CLASS_INPUT}    ${class}
+    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    //*[contains(@id,'${class_link}_search_class_link')]    timeout=60
     Click Element    //*[contains(@id,'${class_link}_search_class_link')]
     Wait Until Element Is Enabled    ${ACTIONS_BTN}    timeout=30
