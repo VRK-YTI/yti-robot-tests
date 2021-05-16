@@ -338,10 +338,8 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${REF_DATA_FILTER_DDL}
     Wait Until Page Contains Element    //*[contains(text(), "Voimassa oleva")]    timeout=30
     Click Element    //*[contains(text(), "Voimassa oleva")]
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Page Contains Element    ${SEARCH_REF_DATA_INPUT}    timeout=30
     Input Text    ${SEARCH_REF_DATA_INPUT}    Kunnat 2018
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    //*[contains(@id,'kunta_1_20180101_search_result_link')]    timeout=60
     Click Element    //*[contains(text(), "Kunnat 2018")]
     Sleep    2

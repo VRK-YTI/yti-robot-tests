@@ -1010,7 +1010,6 @@ Delete profile
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains    tietomallia    timeout=30
@@ -1033,7 +1032,6 @@ Delete Profile And Leave Browser Open
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains    tietomallia    timeout=30
@@ -1073,10 +1071,8 @@ Add Property For Class
     Click Element    ${ADD_PROPERTY_DDL}
     Wait Until Element Is Enabled    ${ADD_PROPERTY_BTN}    timeout=30
     Click Element    ${ADD_PROPERTY_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Page Contains Element    ${TEXT_FILTER_SEARCH_INPUT}    timeout=30
     Input Text    ${TEXT_FILTER_SEARCH_INPUT}    ${property}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_LINK}    timeout=30
     Click Element    ${CREATE_NEW_ATTRIBUTE_LINK}
     Wait Until Element Is Enabled    ${CREATE_NEW_ATTRIBUTE_WITHOUT_REF_LINK}    timeout=30
@@ -1105,7 +1101,6 @@ Create New Namespace
     Click Element    ${IMPORT_NAMESPACE}
     Wait Until Element Is Enabled    ${CREATE_NEW_NAMESPACE}    timeout=30
     Click Element    ${CREATE_NEW_NAMESPACE}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    ${NAMESPACE_LABEL}    timeout=30
     Input Text    ${NAMESPACE_LABEL}    ${label}
     Wait Until Element Is Enabled    ${NAMESPACE_VALUE}    timeout=30
@@ -1113,14 +1108,12 @@ Create New Namespace
     Wait Until Element Is Enabled    ${NAMESPACE_PREFIX}    timeout=30
     Input Text    ${NAMESPACE_PREFIX}    ${prefix}
     Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
-    Sleep  ${SLEEP_TIMEOUT}
     Click Element    ${NAMESPACE_CREATE}
 
 Add Link
     [Arguments]    ${url}    ${name}    ${description}
     Wait Until Element Is Enabled    ${ADD_LINK}    timeout=30
     Click Element    ${ADD_LINK}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    ${LINK_URL_INPUT}    timeout=30
     Input Text    ${LINK_URL_INPUT}    ${url}
     Wait Until Element Is Enabled    ${LINK_NAME_INPUT}    timeout=30
@@ -1128,7 +1121,6 @@ Add Link
     Wait Until Element Is Enabled    ${LINK_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${LINK_DESCRIPTION_INPUT}    ${description}
     Wait Until Element Is Enabled    ${CREATE_NEW_LINK}    timeout=30
-    Sleep  ${SLEEP_TIMEOUT}
     Click Element    ${CREATE_NEW_LINK}
     Wait Until Page Does Not Contain Element    ${OPEN_LINK_MODAL}    timeout=120
     Log To Console    New link added
@@ -1278,10 +1270,8 @@ Create New Version
     Click Element    ${MODEL_ACTION_MENU}
     Wait Until Element Is Enabled    ${CREATE_NEW_VERSION_BTN}    timeout=20
     Click Element    ${CREATE_NEW_VERSION_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    ${NEW_VERSION_PREFIX_INPUT}    timeout=20
     Input Text    ${NEW_VERSION_PREFIX_INPUT}    ${prefix}
-    Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    ${SAVE_NEW_VERSION_BTN}    timeout=20
     Click Element    ${SAVE_NEW_VERSION_BTN}
     Wait Until Element Is Enabled    ${CONFIRM_ALERT_BTN}    timeout=20
@@ -1303,7 +1293,6 @@ Delete Versions
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Element Is Enabled    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${CONFIRM_REMOVE_MODEL_BTN}
-    Sleep    2
     Log To Console    Profile version deleted
     Sleep  ${SLEEP_TIMEOUT}
     Wait Until Element Is Enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=60
