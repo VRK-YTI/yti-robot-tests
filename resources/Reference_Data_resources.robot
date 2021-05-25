@@ -27,7 +27,7 @@ ${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
-${STATUS_DROPDOWN_BTN}    id=status_filter_dropdown
+${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
 ${SEARCH_CODE_CHECKBOX}    id=search_code_details_checkbox
 ${FRONTPAGE_LINK}    id=main_page_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown

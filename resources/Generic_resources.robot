@@ -24,7 +24,7 @@ ${ENVIRONMENT_IDENTIFIER}    AWSDEV
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
-${STATUS_DROPDOWN_BTN}    id=status_filter_dropdown
+${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
 ${FRONTPAGE_LINK}    id=main_page_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
 ${SEARCH_BOX_INPUT}    id=search_box_input
