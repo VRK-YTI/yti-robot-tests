@@ -113,7 +113,7 @@ Resource          resources/Data_Vocabularies_resources.robot
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
 
 208. Remove Reference Data resources from comment round
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
