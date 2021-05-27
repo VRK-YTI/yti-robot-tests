@@ -540,7 +540,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element    ${CREATE_NEW_ATTRIBUTE_BTN}
     Wait Until Element Is Enabled    ${CREATE_AND_USE_ATTRIBUTE}    timeout=30
     Click Element    ${CREATE_AND_USE_ATTRIBUTE}
-    Sleep    2
+    Sleep  ${SLEEP_TIMEOUT}
     Save Class
     Wait Until Page Contains    Testiluokka2    timeout=30
     Wait Until Page Contains Element    //*[contains(@id,'Testiluokka_tabset_link')]    timeout=60
