@@ -7,6 +7,7 @@ Resource          Generic_resources.robot
 
 *** Keywords ***
 Check Mailbox
+    Log To Console  Opening mail box ${TEST_TEMPUSER_EMAIL}
     Open Mailbox    host=imap.gmail.com    user=${TEST_TEMPUSER_EMAIL}    password=${TEST_TEMPUSER_PASSWORD}
     ${LATEST} =    Wait For Email    sender=${TEST_EMAIL_SENDER}    timeout=30    status=UNSEEN
     ${body}    Get Email Body    ${LATEST}
