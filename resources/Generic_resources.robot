@@ -90,6 +90,7 @@ ${NEW_SUGGESTION_DESCRIPTION_INPUT_1}    id=commenthread_1_description_text_inpu
 ${COMMENT_ROUND_STATE_CLOSED}    id=CLOSED_status_filter_dropdown
 ${COMMENT_ROUND_STATE_IN_PROGRESS}    id=INPROGRESS_status_filter_dropdown
 ${COMMENT_ROUND_STATE_ALL}    id=all_selected_status_filter_dropdown
+${COMMNET_ROUND_STATE_INCOMPLETE}  id=INCOMPLETE_status_filter_dropdown
 #Email subscription
 ${ADD_SUBSCRIPTION_BTN}    id=add_subscription_button
 ${DELETE_SUBSCRIPTION_BTN}    id=delete_subscription_button
@@ -432,9 +433,9 @@ Save Comment Round
 
 Select Comment Round State
     [Arguments]    ${state}
-    Wait Until Element Is Enabled    ${STATUS_DROPDOWN_BTN}    timeout=30
+    Wait Until Page Contains Element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click Element    ${STATUS_DROPDOWN_BTN}
-    Wait Until Element Is Enabled    ${state}    timeout=10
+    Wait Until Page Contains Element    ${state}    timeout=10
     Click Element    ${state}
     Sleep    1
 

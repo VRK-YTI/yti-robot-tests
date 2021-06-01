@@ -193,7 +193,7 @@ Create Data Vocabulary Profile
     Wait Until Page Contains Element    ${MODEL_DESCRIPTION_INPUT}    timeout=30
     Input Text    ${MODEL_DESCRIPTION_INPUT}    Tämä on kuvaus
     Wait Until Page Contains Element    ${MODEL_PREFIX_INTPUT}    timeout=30
-    Input Text    ${MODEL_PREFIX_INTPUT}    autom
+    Input Text    ${MODEL_PREFIX_INTPUT}    cmts_autom
     Wait Until Page Contains Element    ${ADD_CLASSIFICATION}    timeout=30
     Click Element    ${ADD_CLASSIFICATION}
     Wait Until Page Contains Element    //*[contains(text(), "Asuminen")]    timeout=30

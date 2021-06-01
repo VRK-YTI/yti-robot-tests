@@ -207,7 +207,7 @@ ${CODE_LIST_4}    testiautomaatiokoodisto
 ${CODE_LIST_5}    Ammattiluokitus 2010
 ${CODE_LIST_6}    testiautomaatiokoodisto 2
 ${CODE_LIST_7}    T200
-${CODE_LIST_8}    koodisto6000
+${CODE_LIST_8}    codelist_for_comments_1
 ${CODE_LIST_9}    koodisto7000
 ${CODE_LIST_10}    koodisto7001
 ${CODE_LIST_11}    koodisto7002
