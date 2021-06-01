@@ -30,5 +30,3 @@ Resource          resources/Mail_opening_resources.robot
     Sleep    5
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
-
-

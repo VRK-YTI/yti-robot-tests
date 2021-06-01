@@ -433,10 +433,8 @@ Save Comment Round
 
 Select Comment Round State
     [Arguments]    ${state}
-    # Wait Until Element Is Enabled    ${STATUS_DROPDOWN_BTN}    timeout=30
     Wait Until Page Contains Element    ${STATUS_DROPDOWN_BTN}    timeout=30
     Click Element    ${STATUS_DROPDOWN_BTN}
-    # Wait Until Element Is Enabled    ${state}    timeout=10
     Wait Until Page Contains Element    ${state}    timeout=10
     Click Element    ${state}
     Sleep    1
