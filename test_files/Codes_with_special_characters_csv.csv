@@ -1,0 +1,12 @@
+CODEVALUE,URI,ORDER,BROADER,STATUS,SHORTNAME,CONCEPTURI,SUBCODESCHEME,HIERARCHYLEVEL,STARTDATE,ENDDATE,CREATED,MODIFIED,HREF
++,http://uri.suomi.fi/codelist/test/000/code/%2B,1,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+++,http://uri.suomi.fi/codelist/test/000/code/%2B%2B,2,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+*,http://uri.suomi.fi/codelist/test/000/code/*,3,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+**,http://uri.suomi.fi/codelist/test/000/code/**,4,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+##,http://uri.suomi.fi/codelist/test/000/code/%23%23,5,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+&,http://uri.suomi.fi/codelist/test/000/code/%26,6,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+&&,http://uri.suomi.fi/codelist/test/000/code/%26%26,7,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+.,http://uri.suomi.fi/codelist/test/000/code/U%2B002E,8,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+..,http://uri.suomi.fi/codelist/test/000/code/U%2B002EU%2B002E,9,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+--,http://uri.suomi.fi/codelist/test/000/code/--,10,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
+#,http://uri.suomi.fi/codelist/test/000/code/%23,11,,DRAFT,,,,1,,,2019-10-10 10:18:52,2019-10-10 10:18:52,
