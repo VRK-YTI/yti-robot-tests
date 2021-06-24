@@ -1,9 +1,9 @@
 *** Settings ***
-Resource          resources/keywords/User_right_management_Resources.robot
+Resource          ../resources/keywords/User_right_management_Resources.robot
 
-Resource          resources/variables/test_files.robot
+Resource          ../resources/variables/test_files.robot
 
-Resource          ../yti-robot-common/resources/resources_and_libraries.robot
+Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 
 *** Variables ***
 #Excel paths
