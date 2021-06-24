@@ -13,7 +13,7 @@ Open Chrome to Environment
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
-    Go To    ${environment_url}z
+    Go To    ${environment_url}
 
 Input text with wait
     [Arguments]  ${element}  ${text}  ${timeout}=30
