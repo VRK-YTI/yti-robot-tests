@@ -2,7 +2,7 @@
 Documentation     Test Suite for basic functionality of User right management application
 Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
-Resource          resources/resources_and_libraries.robot
+Resource          ../resources/resources_and_libraries.robot
 
 *** Test Cases ***
 100. Open Information about the service page
