@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../yti-robot-common/resources/resources_and_libraries.robot
+Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 
 Resource          ../resources/keywords/Data_Vocabularies_resources.robot
 Resource          ../resources/keywords/Email_subscription_resources.robot
