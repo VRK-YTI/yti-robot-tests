@@ -4,8 +4,6 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${DATA_VOCABULARIES_USER_1}    id=impersonate_user_testiadmin@localhost_link
-${LANGUAGE_EN}    id=en_ui_language_dropdown
-${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatio
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 ${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button

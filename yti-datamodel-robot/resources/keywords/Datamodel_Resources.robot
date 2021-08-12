@@ -6,8 +6,6 @@ Library           SeleniumLibrary
 ${SLEEP_TIMEOUT}    2
 ${SELENIUM_SPEED}    0.5
 ${USER_1}         id=impersonate_user_testiadmin@localhost_link
-${LANGUAGE_EN}    id=en_ui_language_dropdown
-${LANGUAGE_FI}    id=fi_ui_language_dropdown
 ${MODEL_1}        Testiautomaatiomalli
 ${MODEL_2}        Tilamalli
 ${PREFIX_1}       autom
