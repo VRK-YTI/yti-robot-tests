@@ -8,6 +8,7 @@ ${SUPER_USER_ID}        id=testisuperuser@localhost
 ${SUPER_USER_NAME}      Test Superuser
 
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
+${LANGUAGE_DROPDOWN_BTN}        id=select_lang_dropdown
 
 *** Keywords ***
 Select Superuser

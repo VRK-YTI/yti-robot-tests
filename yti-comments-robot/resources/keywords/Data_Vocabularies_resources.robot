@@ -19,7 +19,6 @@ ${CREATE_NEW_CLASS_BTN}    id=searchConceptModalConfirmButton
 ${class_2}        automobiili
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
-${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
 ${DATA_VOCABULARIES_USER_DROPDOWN}    id=impersonate_user_link
 ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${TEXT_FILTER_SEARCH_INPUT}    id=text_filter_search_input

@@ -20,7 +20,6 @@ ${TERMINOLOGIES_TOOL}    id=terminology_integration_container_type_filter_dropdo
 ${DATA_VOCABULARIES_TOOL}    id=datamodel_integration_container_type_filter_dropdown
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
-${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
 ${FRONTPAGE_LINK}    id=main_page_link
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown

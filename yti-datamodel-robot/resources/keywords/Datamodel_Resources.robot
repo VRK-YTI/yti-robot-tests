@@ -32,7 +32,6 @@ ${TEST_DATAMODEL_ID}    id=impersonate_user_testdatamodel@localhost_link
 ${TEST_DATAMODEL_NAME}    Test Datamodel
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
-${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${TEXT_FILTER_SEARCH_INPUT}    id=text_filter_search_input
