@@ -28,6 +28,6 @@ Check Mailbox
     ${body}    Get Email Body    ${LATEST}
     ${ret}    Should Match Regexp    ${body}    (http:\/\/uri\.suomi\.fi\/comments\/round\/(.*)&token=(.[^"]*))
     ${invitationLink}    Get From List    ${ret}    1
-    Open Chrome to URL    ${invitationLink}
+    Open Chrome to Environment    ${invitationLink}
     Sleep    1
     Close Mailbox
