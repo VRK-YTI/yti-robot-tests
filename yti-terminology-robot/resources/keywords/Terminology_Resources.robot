@@ -204,13 +204,6 @@ Test Case Setup
     Set Selenium Speed    ${SELENIUM_SPEED}
     Select User    ${user_id}    ${user_name}
 
-Select User
-    [Arguments]    ${user_id}    ${user_name}
-    Click Element with wait    ${IMPERSONATE_USER_DROPDOWN}     timeout=30
-    Click Element with wait   ${user_id}                        timeout=30
-    Sleep    0.5
-    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
-
 Create Terminological Vocabulary with concepts
     [Arguments]    ${terminology}
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
