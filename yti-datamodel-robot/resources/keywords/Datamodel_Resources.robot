@@ -257,6 +257,7 @@ Test Case Setup
     [Arguments]    ${user_id}    ${user_name}
     Open Tietomallit
     Set Selenium Speed    ${SELENIUM_SPEED}
+    Select user           ${user_id}            ${user_name}
 
 Open Tietomallit
     Open Browser with Settings      ${DATA_VOCABULARIES_ENVIRONMENT_URL}
