@@ -236,11 +236,6 @@ Create Terminological Vocabulary without concepts
 Test Case Teardown
     Close All Browsers
 
-Open Browser with Settings
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment
-    ...    ELSE    Open Browser    ${TERMINOLOGIES_ENVIRONMENT_URL}    browser=${BROWSER}
-
 Open Chrome to Environment
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    --headless
