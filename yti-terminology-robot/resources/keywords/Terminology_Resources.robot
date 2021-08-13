@@ -236,17 +236,8 @@ Create Terminological Vocabulary without concepts
 Test Case Teardown
     Close All Browsers
 
-Open Chrome to Environment
-    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument    --headless
-    Call Method    ${chrome_options}    add_argument    --single-process
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
-    ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
-    Set Window Size    1920    1080
-    Go To    ${TERMINOLOGIES_ENVIRONMENT_URL}
-
 Open Sanastot
-    Open Browser with Settings
+    Open Browser with Settings  ${TERMINOLOGIES_ENVIRONMENT_URL}
     Wait Until Page Contains    Sanastot    timeout=20
     Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=20
 
