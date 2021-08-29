@@ -4,6 +4,9 @@ Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Resource          ../resources/resources_and_libraries.robot
 
+*** Variables ***
+${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
+
 *** Test Cases ***
 400. Add and remove email subscription for new terminology
     [Documentation]    Add and remove email subscription for new terminology

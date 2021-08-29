@@ -9,6 +9,7 @@ ${EXT_LINK}       //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1
 ${CONCEPT_REF}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div/div[2]/div/div/div/div/p/a
 ${CONCEPT_REF_2}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[1]/dl/dd/app-localized-input/div/div[2]/div[2]/div/div/div/div/p/a
 ${CONCEPT_REF_3}    //*[@id="conceptsTab-panel"]/app-concepts/div/div/div[3]/div[1]/app-concept/div/form/app-concept-form/div/app-property[2]/dl/dd/app-localized-input/div/div[2]/div[2]/div/div/div/div/p/a
+${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
 
 *** Test Cases ***
 200. Modify DRAFT vocabulary

@@ -4,6 +4,9 @@ Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Resource          ../resources/resources_and_libraries.robot
 
+*** Variables ***
+${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
+
 *** Test Cases ***
 300. Import Concepts to the Terminological Vocabulary, related concepts not found from CSV
     [Documentation]    Import Concepts to the Terminological Vocabulary. Check that error message is displayed in
