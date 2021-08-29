@@ -1,7 +1,5 @@
 *** Variables ***
 ${USER_1}         //a[@class='dropdown-item'][contains(text(),'Test Admin')]
-${LANGUAGE_EN}    id=en_language_selection_link
-${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${VOCABULARY_3}    Testiautomaatioasiasanasto
@@ -20,8 +18,6 @@ ${SELENIUM_SPEED}    0.5
 ${FRONTPAGE_LINK}    id=0_breadcrumb_link
 ${OPEN_MODAL}     class=modal-open
 #Frontpage Buttons and links
-${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
-${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${FRONTPAGE_SEARCH_BOX}    id=vocabularies_search_input
 ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
 #Vocabulary buttons

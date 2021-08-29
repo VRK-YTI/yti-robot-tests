@@ -5,6 +5,12 @@ Test Teardown     Test Case Teardown Generic Teardown
 
 Resource          ../resources/resources_and_libraries.robot
 
+*** Variables ***
+${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
+${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
+${LANGUAGE_EN}    id=en_language_selection_link
+${LANGUAGE_FI}    id=fi_language_selection_link
+
 *** Test Cases ***
 600. Import code list with extension
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,

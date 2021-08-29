@@ -6,6 +6,10 @@ Test Teardown     Test Case Teardown Generic Teardown
 Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
+${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
+${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
+${LANGUAGE_EN}    id=en_language_selection_link
+${LANGUAGE_FI}    id=fi_language_selection_link
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
