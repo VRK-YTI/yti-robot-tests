@@ -7,10 +7,8 @@ Test Setup        Test Case Setup Superuser
 Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
-${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
+${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
-${LANGUAGE_EN}    id=en_language_selection_link
-${LANGUAGE_FI}    id=fi_language_selection_link
 
 *** Test Cases ***
 700. Create DPM Metric extension and update code extensions

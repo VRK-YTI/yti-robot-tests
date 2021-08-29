@@ -6,10 +6,8 @@ Resource          resources/eDuuni_login_resources.robot
 Resource          resources/Login_details.robot
 
 *** Variables ***
-${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
+${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
-${LANGUAGE_EN}    id=en_language_selection_link
-${LANGUAGE_FI}    id=fi_language_selection_link
 
 *** Test Cases ***
 800. Open Reference Data tool with eDuuni login
