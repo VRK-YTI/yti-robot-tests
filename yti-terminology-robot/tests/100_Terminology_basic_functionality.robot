@@ -6,7 +6,7 @@ Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
 ${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
-${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
+${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
 
