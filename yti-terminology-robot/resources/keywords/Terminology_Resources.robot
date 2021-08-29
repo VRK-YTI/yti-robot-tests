@@ -38,7 +38,6 @@ ${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
 ${FRONTPAGE_SEARCH_BOX}    id=vocabularies_search_input
 ${FRONTPAGE_CONCEPT_DEEP_SEARCH}    id=search_concepts_checkbox
 ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
-${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 ${LICENSE_ICON_TEXT_LINK}    id=licence_icon_text_link
 ${EUPL_LICENCE_LINK}    id=license_link
 ${FRONTPAGE_ORGANIZATION_FILTER}    id=organization_filter_dropdown

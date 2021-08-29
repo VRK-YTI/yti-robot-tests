@@ -6,6 +6,7 @@ Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
 ${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
+${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 
 *** Test Cases ***
 400. Add and remove email subscription for new terminology

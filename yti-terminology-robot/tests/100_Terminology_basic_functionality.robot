@@ -9,6 +9,7 @@ ${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
 ${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${LANGUAGE_EN}    id=en_language_selection_link
 ${LANGUAGE_FI}    id=fi_language_selection_link
+${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 
 *** Test Cases ***
 100. Open Information about the service page

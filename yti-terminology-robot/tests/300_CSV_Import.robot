@@ -6,6 +6,7 @@ Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
 ${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
+${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 
 *** Test Cases ***
 300. Import Concepts to the Terminological Vocabulary, related concepts not found from CSV
