@@ -1,12 +1,12 @@
 *** Settings ***
-Resource          resources/keywords/eDuuni_login_resources.robot
-Resource          resources/keywords/Generic_resources.robot
-Resource          resources/keywords/Extension_resources.robot
-Resource          resources/keywords/Terminologies_resources.robot
+Resource          ../resources/keywords/eDuuni_login_resources.robot
+Resource          ../resources/keywords/Generic_resources.robot
+Resource          ../resources/keywords/Extension_resources.robot
+Resource          ../resources/keywords/Terminologies_resources.robot
 
-Resource          resources/variables/test_files.robot
+Resource          ../resources/variables/test_files.robot
 
-Resource          ../yti-robot-common/resources/resources_and_libraries.robot
+Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 
 *** Variables ***
 
