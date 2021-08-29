@@ -7,8 +7,8 @@ Resource          ../resources/resources_and_libraries.robot
 *** Variables ***
 ${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
-${LANGUAGE_EN}    id=en_ui_language_dropdown
-${LANGUAGE_FI}    id=fi_ui_language_dropdown
+${LANGUAGE_EN}    id=en_language_selection_link
+${LANGUAGE_FI}    id=fi_language_selection_link
 
 *** Test Cases ***
 100. Open Information about the service page

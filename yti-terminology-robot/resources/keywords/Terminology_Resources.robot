@@ -11,8 +11,6 @@ ${TEST_TERMINOLOGY_ID}    id=testterminology@localhost_fakeable_user_link
 ${TEST_TERMINOLOGY_NAME}    Test Terminology
 ${TEST_NOGROUP_ID}    id=dummy@localhost_fakeable_user_link
 ${TEST_NOGROUP_NAME}    Test Nogroup
-${LANGUAGE_EN}    id=en_language_selection_link
-${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${VOCABULARY_3}    Abc123
@@ -37,8 +35,6 @@ ${AUTOMAATIOTESTAUS}    id=Automaatiotestaus_organization_select
 ${OPEN_MODAL}     class=modal-open
 ${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
 #Frontpage Buttons and links
-${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
-${IMPERSONATE_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${FRONTPAGE_SEARCH_BOX}    id=vocabularies_search_input
 ${FRONTPAGE_CONCEPT_DEEP_SEARCH}    id=search_concepts_checkbox
 ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
