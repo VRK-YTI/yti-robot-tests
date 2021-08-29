@@ -7,7 +7,7 @@ Resource          ../resources/resources_and_libraries.robot
 *** Test Cases ***
 400. Add and remove email subscription for new terminology
     [Documentation]    Add and remove email subscription for new terminology
-    [Tags]    regression    test    400
+    [Tags]     test    400
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Terminological Vocabulary with concepts    ${VOCABULARY_1}
     Go Back To Sanastot Frontpage
