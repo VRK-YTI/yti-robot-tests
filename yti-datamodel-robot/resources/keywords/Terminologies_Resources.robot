@@ -17,7 +17,6 @@ ${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
 ${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
 #Frontpage Buttons and links
-${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
 ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    id=vocabularies_search_input
 ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button

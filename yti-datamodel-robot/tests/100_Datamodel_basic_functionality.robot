@@ -12,6 +12,7 @@ ${Create_class_text}    Onnittelut uuden luokan lisäämisessä onnistumisesta!
 ${Specialize_class_text}    Onnittelut luokan erikoistamisessa onnistumisesta!
 ${Add_attribute_text}    Onnittelut attribuutin lisäämisessä onnistumisesta!
 ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisesta!
+${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
 
 *** Test Cases ***
 100. Open Information about the service page
