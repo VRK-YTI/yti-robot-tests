@@ -4,6 +4,9 @@ Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Resource          ../resources/resources_and_libraries.robot
 
+*** Variables ***
+${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
+
 *** Test Cases ***
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
