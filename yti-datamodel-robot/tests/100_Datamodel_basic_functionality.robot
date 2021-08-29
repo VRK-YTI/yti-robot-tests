@@ -13,6 +13,8 @@ ${Specialize_class_text}    Onnittelut luokan erikoistamisessa onnistumisesta!
 ${Add_attribute_text}    Onnittelut attribuutin lisäämisessä onnistumisesta!
 ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisesta!
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
+${LANGUAGE_EN}    id=en_ui_language_dropdown
+${LANGUAGE_FI}    id=fi_ui_language_dropdown
 
 *** Test Cases ***
 100. Open Information about the service page
@@ -57,11 +59,11 @@ ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
-    Change user interface language    en_ui_language_dropdown
+    Change user interface language    ${LANGUAGE_EN}
     Wait Until Page Contains    Data Vocabularies    timeout=20
     Wait Until Page Contains    All organizations    timeout=20
     Wait Until Page Contains    All model types    timeout=20
-    [Teardown]    Change user interface language    fi_ui_language_dropdown
+    [Teardown]    Change user interface language    ${LANGUAGE_FI}
 
 104. Search for DRAFT model
     [Documentation]    Search for DRAFT model with frontpage search function.

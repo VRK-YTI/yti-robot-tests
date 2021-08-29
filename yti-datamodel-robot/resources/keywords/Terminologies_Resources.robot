@@ -1,7 +1,5 @@
 *** Variables ***
 ${USER_1_TERMINOLOGIES}    id=testiadmin@localhost_fakeable_user_link
-${LANGUAGE_EN}    id=en_language_selection_link
-${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${VOCABULARY_3}    Testiautomaatioasiasanasto
