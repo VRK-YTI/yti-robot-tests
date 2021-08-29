@@ -57,11 +57,11 @@ ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    tietomallit    test    100
     [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
-    Change user interface language    ${LANGUAGE_EN}
+    Change user interface language    en_ui_language_dropdown
     Wait Until Page Contains    Data Vocabularies    timeout=20
     Wait Until Page Contains    All organizations    timeout=20
     Wait Until Page Contains    All model types    timeout=20
-    [Teardown]    Change user interface language    ${LANGUAGE_FI}
+    [Teardown]    Change user interface language    fi_ui_language_dropdown
 
 104. Search for DRAFT model
     [Documentation]    Search for DRAFT model with frontpage search function.

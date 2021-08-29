@@ -47,8 +47,9 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains Element    ${REMOVE_Testiorganisaatio}    timeout=30
     Click Element    ${REMOVE_Testiorganisaatio}
     Log To Console    Contributor removed
-    Sleep    1
+    Sleep    2
     Add Contributor    Automaatiotestaus
+    Sleep    2
     Wait Until Element Is Enabled    ${MODEL_CONTACT_INPUT}    timeout=30
     Input Text    ${MODEL_CONTACT_INPUT}    Tähän yhteystiedot
     Wait Until Page Contains Element    ${ADD_LINK}    timeout=30
