@@ -6,11 +6,6 @@ Resource          ../resources/keywords/Terminology_Resources.robot
 
 Resource          ../resources/variables/test_files.robot
 
-
-*** Variables ***
-#Excel paths
-${DATAFOLDER}     ${CURDIR}${/}test_files
-
 *** Keywords ***
 Test Case Teardown Generic Teardown
     Close All Browsers

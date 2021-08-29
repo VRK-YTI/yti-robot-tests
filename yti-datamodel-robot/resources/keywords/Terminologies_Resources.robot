@@ -60,7 +60,6 @@ ${IMPORT_CANCEL_BTN}    id=import_cancel_button
 ${IMPORT_YES_BTN}    id=import_yes_button
 ${CONCEPT_LIST_SEARCH_INPUT}    id=concept_list_search_concept_input
 #CSV paths
-${DATAFOLDER}     ${EXECDIR}${/}test_files
 ${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
 ${invalid_related_concepts}    ${DATAFOLDER}${/}test_concepts_invalid_related_concepts_csv.csv
 ${empty_related_concepts}    ${DATAFOLDER}${/}empty_related_concepts_csv.csv
