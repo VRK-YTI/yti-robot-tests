@@ -1491,7 +1491,7 @@ Suggest concept to Terminologies
     [Arguments]    ${concept}    ${terminologies}    ${concept_name}    ${definition}
     Input Text with wait    ${SEARCH_CONCEPT_INPUT}    ${concept}       timeout=20
     Click Element with wait   ${VOCABULARY_SELECTION_DDL}       timeout=20
-    Click Element that containst text       ${terminologies}      timeout=20
+    Click Element that contains text       ${terminologies}      timeout=20
     Click Element with wait    ${OPEN_TERMINOLOGY_MODAL_BTN}        timeout=20
     Input Text with wait    ${CONCEPT_SUGGESTION_NAME_INPUT}    ${concept_name}     timeout=60
     Input Text with wait   ${CONCEPT_DEFINITION_INPUT}    ${definition}     timeout=20

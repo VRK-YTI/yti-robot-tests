@@ -395,7 +395,7 @@ Remove code lists and leave browser open
 
 Create code list
     [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
-    Input text with wait        ${SEARCH_BOX_INPUT} ${codelist_name}    timeout=30
+    Input text with wait        ${SEARCH_BOX_INPUT}     ${codelist_name}    timeout=30
     Sleep    1
 
     ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.

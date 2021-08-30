@@ -179,7 +179,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait     css=div.ngb-dp-week:nth-child(2) > div:nth-child(1)             timeout=20
 
     Save code list
-    Click element with wait     ${Error_end_date_before_start_date}     timeout=20
+    Wait until page contains    ${Error_end_date_before_start_date}     timeout=20
     Click element with wait     ${CANCEL_CODE_MOD_BTN}                  timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
