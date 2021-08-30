@@ -244,11 +244,11 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains Element    ${ADD_CLASSIFICATION_BTN}    timeout=20
     Click Button    ${ADD_CLASSIFICATION_BTN}
     Input Text with wait    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen      timeout=20
-    Click element that contains     Asuminen    timeout=60
+    Click element that contains text     Asuminen    timeout=60
     Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
     Click Button    ${ADD_ORGANIZATION_BTN}
     Input Text with wait   ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio    timeout=20
-    Click element that contains     Testiorganisaatio    timeout=60
+    Click element that contains text     Testiorganisaatio    timeout=60
     Click element with wait     ${SAVE_NEW_CODE_LIST}    timeout=30
     Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
     Log To Console    Code list saved
