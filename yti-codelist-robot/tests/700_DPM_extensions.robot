@@ -271,7 +271,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     [Tags]    koodistot    regression    700    test
     Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
-    Click element that contains text        testcode57 - Testcode 57"    timeout=20
+    Click element that contains text        testcode57 - Testcode 57    timeout=20
 
     Wait Until Page Contains    dpmDimension    timeout=20
     Wait Until Page Contains    Domain reference (en)    timeout=20

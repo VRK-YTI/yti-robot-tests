@@ -212,7 +212,7 @@ Create DPM extension
     [Arguments]    ${extension_type}    ${member_auto_create}    ${extension_status}
     Click element with wait             ${CODE_LIST_DDL}        timeout=30
     Click element with wait             ${extension_type}       timeout=30
-    Run Keyword If    '${member_auto_create}' == 'True'    Click element with wait      ${AUTO_CREATE_MEMBERS_CHECKBOX}     timeout
+    Run Keyword If    '${member_auto_create}' == 'True'    Click element with wait      ${AUTO_CREATE_MEMBERS_CHECKBOX}     timeout=20
 
     Input Text with wait                ${START_DATE_INPUT}     2018-11-01      timeout=20
     Input Text with wait                ${END_DATE_INPUT}       2020-11-01      timeout=20

@@ -194,7 +194,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Code List Info Tab
     Click element with wait     ${MODIFY_CODE_LIST}                     timeout=20
     Click element with wait     ${ADD_DEFAULTCODE_BTN}                  timeout=20
-    Input Text text with wait    ${SEARCH_DEFAULTCODE_INPUT}    505     timeout=20
+    Input Text with wait    ${SEARCH_DEFAULTCODE_INPUT}    505     timeout=20
     Click elment that contains text     Koodi505                        timeout=20
     Click element with wait     ${SAVE_NEW_CODE_LIST}                   timeout=20
     Wait Until Element Is Visible    ${MODIFY_CODE_LIST}                timeout=60
