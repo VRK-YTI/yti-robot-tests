@@ -180,6 +180,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 
     Save code list
     Wait until page contains    ${Error_end_date_before_start_date}     timeout=20
+    Click element with wait     id=close_error_modal_button             timeout=20
     Click element with wait     ${CANCEL_CODE_MOD_BTN}                  timeout=20
     [Teardown]    Remove code lists    ${CODE_LIST_4}
 
