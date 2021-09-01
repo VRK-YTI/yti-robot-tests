@@ -55,8 +55,7 @@ Create extension
     Click element with wait             ${EXTENSION_STATUS_DDL}                                 timeout=20
     Click element with wait             ${extension_status}                                     timeout=20
 
-    ${code_list_name_length}=    Get Length    ${code_list_name}
-    Run Keyword If    ${code_list_name_length} > 0    Add code list to extension    ${code_list_name}
+    Run Keyword If  "${code_list_name}"!="${EMPTY}"    Add code list to extension    ${code_list_name}
     Run Keyword If    '${member_auto_create}' == 'True'    Click element with wait  ${AUTO_CREATE_MEMBERS_CHECKBOX}
     Capture Page Screenshot
     Wait Until Element Is Enabled       ${SAVE_EXTENSION}       timeout=30
@@ -84,8 +83,7 @@ Create member for definition hierarchy
     Click Button                        ${CREATE_MEMBER_BTN}
     Input text with wait                ${MEMBER_NAME_INPUT}    ${member_name}  timeout=30
 
-    ${code_list_name_length}=    Get Length    ${code_list_name}
-    Run Keyword If    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
+    Run Keyword If  "${code_list_name}"!="${EMPTY}"    Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
     Wait Until Page Contains Element    ${SAVE_MEMBER}              timeout=30
     Click Button                        ${SAVE_MEMBER}
@@ -104,8 +102,7 @@ Create member for calculation hierarchy
     Run Keyword If    ${comparison_operator_length} > 0    Add comparison operator    ${comparison_operator}
     ${unary_operator_length}=    Get Length    ${unary_operator}
     Run Keyword If    ${unary_operator_length} > 0    Add unary operator    ${unary_operator}
-    ${code_list_name_length}=    Get Length    ${code_list_name}
-    Run Keyword If    ${code_list_name_length} > 0    Add code to member from code list    ${code_list_name}    ${code}
+    Run Keyword If  "${code_list_name}"!="${EMPTY}"   Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
 
     ${broader_member_length}=    Get Length    ${broader_member}

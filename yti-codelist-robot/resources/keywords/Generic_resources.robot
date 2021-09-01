@@ -615,8 +615,7 @@ Create new code to code list
     Click element with wait     ${CODE_STATUS_DDL}                          timeout=20
     Click element with wait     ${code_status}                              timeout=20
 
-    ${sub_code_list_length}=    Get Length    ${sub_code_list}
-    Run Keyword If    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
+    Run Keyword If  "${sub_code_list}"!="${EMPTY}"    Add sub code list    ${sub_code_list}
 
     Click element with wait             ${SAVE_NEW_CODE_BTN}                timeout=20
 
@@ -643,8 +642,7 @@ Create New Code With All Languages
     Click element with wait         ${CODE_STATUS_DDL}      timeout=20
     Click element with wait         ${code_status}          timeout=20
 
-    ${sub_code_list_length}=    Get Length    ${sub_code_list}
-    Run Keyword If    ${sub_code_list_length} > 0    Add sub code list    ${sub_code_list}
+    Run Keyword If  "${sub_code_list}"!="${EMPTY}"     Add sub code list    ${sub_code_list}
 
     Click element with wait         ${SAVE_NEW_CODE_BTN}        timeout=20
     Wait Until Page Contains Element    ${MODIFY_CODE_BTN}      timeout=60

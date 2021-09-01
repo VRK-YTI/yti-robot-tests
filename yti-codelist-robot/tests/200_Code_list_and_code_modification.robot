@@ -605,7 +605,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    koodisto6000_fi    timeout=20
     Wait Until Page Contains    koodisto6000_en    timeout=20
     Wait Until Page Contains    koodisto6000_sv    timeout=20
-    Create New Code With All Languages    NewCode001    newCode001_fi    newCode001_en    newCode001_sv    ${DRAFT_STATUS}    @{EMPTY}
+    Create New Code With All Languages    NewCode001    newCode001_fi    newCode001_en    newCode001_sv    ${DRAFT_STATUS}    ${EMPTY}
     Wait Until Page Contains    NewCode001 - newCode001_fi      timeout=30
     Wait Until Page Contains    koodisto6000_fi                 timeout=20
     Wait Until Page Contains    Koodin arvo                     timeout=20
