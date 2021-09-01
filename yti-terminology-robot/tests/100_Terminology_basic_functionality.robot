@@ -149,7 +149,7 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Wait Until Page Contains    JHSMETA    timeout=30
     Sleep    2
     GO To    http://uri.suomi.fi/terminology/jhs/J187?env=awsdev
-    Wait Until Page Contains    aihe    timeout=30
+    Wait Until Page Contains    Aihe    timeout=30
     Wait Until Page Contains    URI    timeout=30
     Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
     Sleep    2
