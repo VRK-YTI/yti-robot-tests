@@ -194,8 +194,7 @@ Delete Data Vocabularies Profile
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -211,8 +210,7 @@ Delete Data Vocabularies Profile
 Delete existing profile and create new
     Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -253,8 +251,7 @@ Delete Automaatiokirjasto Core Vocabulary
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -270,8 +267,7 @@ Delete Automaatiokirjasto Core Vocabulary
 Delete existing core vocabulary and create new
     Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Wait Until Page Contains Element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30
@@ -299,8 +295,7 @@ Select and edit Testiautomaatio profile
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
     Click Element    //*[contains(text(), "Testiautomaatio")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Wait Until Page Contains Element    ${MODIFY_MODEL}    timeout=30
     Click Element    ${MODIFY_MODEL}
 
@@ -309,8 +304,7 @@ Select and edit Automaatiokirjasto Core Vocabulary
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
     Click Element    //*[contains(text(), "Automaatiokirjasto")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Wait Until Page Contains Element    ${MODIFY_CORE_VOCABULARY_BTN}    timeout=30
     Click Element    ${MODIFY_CORE_VOCABULARY_BTN}
 
@@ -515,8 +509,7 @@ Delete profile
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains element    //*[contains(text(), "${profile}")]    timeout=30
     Click Element    //*[contains(text(), "${profile}")]
-    Wait Until Page Contains element    ${MODEL_DETAILS_TAB}    timeout=30
-    Click Element    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Wait Until Page Contains element    ${REMOVE_MODEL_BTN}    timeout=30
     Click Element    ${REMOVE_MODEL_BTN}
     Wait Until Page Contains element    ${CONFIRM_REMOVE_MODEL_BTN}    timeout=30

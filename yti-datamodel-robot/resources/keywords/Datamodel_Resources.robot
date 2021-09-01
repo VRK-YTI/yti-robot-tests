@@ -399,8 +399,7 @@ Select And Edit Profile
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${model}     timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "${model}")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
-    Click Element with wait    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Click Element with wait    ${MODIFY_MODEL}
     Log To Console    ${model} profile selected for editing
 
@@ -409,8 +408,7 @@ Select and edit Testiautomaatio profile
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}       timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "${MODEL_1}")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
-    Click Element with wait    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Click Element with wait    ${MODIFY_MODEL}
 
 Select And Edit Core Vocabulary
@@ -419,8 +417,7 @@ Select And Edit Core Vocabulary
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}     timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "Automaatiokirjasto")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
-    Click Element with wait    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}             timeout=60
     Click Element with wait    ${MODIFY_CORE_VOCABULARY_BTN}
 
 Select and edit Automaatiokirjasto Core Vocabulary
@@ -428,8 +425,7 @@ Select and edit Automaatiokirjasto Core Vocabulary
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}     timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "Automaatiokirjasto")]
-    Wait Until Page Contains Element    ${MODEL_DETAILS_TAB}    timeout=60
-    Click Element with wait    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}                               timeout=60
     Click Element with wait    ${MODIFY_CORE_VOCABULARY_BTN}
 
 Add Information Domain
@@ -733,7 +729,7 @@ Delete profile
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "${profile}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}                     timeout=60
     Click Element with wait    ${REMOVE_MODEL_BTN}
     Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
@@ -747,7 +743,7 @@ Delete Profile And Leave Browser Open
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "${profile}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Click Element with wait    ${REMOVE_MODEL_BTN}
     Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
@@ -928,7 +924,7 @@ Delete Versions
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=30
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "${profile}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Click Element with wait    ${REMOVE_MODEL_BTN}
     Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN}
     Log To Console    Profile version deleted
