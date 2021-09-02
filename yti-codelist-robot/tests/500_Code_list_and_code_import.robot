@@ -230,9 +230,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    koodistot    regression    test    500
     [Setup]    Test Case Setup Terminologies
     Log To Console    Vocabulary added
-    Click element with wait     ${ADD_CODE_LIST_BTN}    timeout=60
-    Click element with wait     ${CREATE CODE_LIST_BTN}    timeout=60
-    Click element with wait     ${VOCABULARY_SELECTION_DDL}    timeout=60
+    Click element with wait     ${ADD_CODE_LIST_BTN}            timeout=60
+    Click element with wait     ${CREATE CODE_LIST_BTN}         timeout=60
+    Click element with wait     ${VOCABULARY_SELECTION_DDL}     timeout=60
     Click element that contains text        Testiautomaatiosanasto (Luonnos)
     Input Text with wait        ${SEARCH_CONCEPT_INPUT}    tutkija  timeout=20
     Click element with wait     //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]    timeout=60
@@ -1477,8 +1477,7 @@ Create new code to code list with concept
     [Arguments]    ${concept}    ${vocabulary}
     Wait Until Page Contains Element    ${CODE_LIST_DDL}
     Wait Until Page Contains Element    ${CREATE_CODE_BTN}
-    Wait Until Page Contains Element    ${VOCABULARY_SELECTION_DDL}
-    Click Element with wait   ${VOCABULARY_SELECTION_DDL}       timeout=20
+    Click Element with wait   ${VOCABULARY_SELECTION_DDL}               timeout=60
     Click Element with wait   //*[contains(@id, '${vocabulary}')]       timeout=20
     Input Text with wait   ${SEARCH_CONCEPT_INPUT}    ${concept}        timeout=20
     Click Element with wait    //*[@id="${vocabulary}_${concept}_concept_link"]     timeout=60
@@ -1490,11 +1489,11 @@ Create new code to code list with concept
 Suggest concept to Terminologies
     [Arguments]    ${concept}    ${terminologies}    ${concept_name}    ${definition}
     Input Text with wait    ${SEARCH_CONCEPT_INPUT}    ${concept}       timeout=20
-    Click Element with wait   ${VOCABULARY_SELECTION_DDL}       timeout=20
-    Click Element that contains text       ${terminologies}      timeout=20
+    Click Element with wait   ${VOCABULARY_SELECTION_DDL}           timeout=60
+    Click Element that contains text       ${terminologies}         timeout=20
     Click Element with wait    ${OPEN_TERMINOLOGY_MODAL_BTN}        timeout=20
     Input Text with wait    ${CONCEPT_SUGGESTION_NAME_INPUT}    ${concept_name}     timeout=60
-    Input Text with wait   ${CONCEPT_DEFINITION_INPUT}    ${definition}     timeout=20
+    Input Text with wait    ${CONCEPT_DEFINITION_INPUT}         ${definition}       timeout=20
 
     Click Element with wait   ${SAVE_CONCEPT_SUGGESTION_BTN}        timeout=20
     Wait Until Page Contains    Haluatko ehdottaa käsitettä ${concept_name} sanastoon    timeout=20

@@ -80,7 +80,6 @@ ${SEARCH_DEFAULTCODE_INPUT}    id=search_linked_code_input
 ${SAVE_CODE_LIST_MOD_BTN}    id=editable_save_button
 ${CANCEL_CREATION_BTN}    id=cancel_modal_button
 ${SEARCH_CONCEPT_INPUT}    id=search_concept_input
-${VOCABULARY_SELECTION_DDL}    id=selected_vocabulary_selection_dropdown
 ${CREATE_NEW_VERSION_BTN}    id=clone_codelist_button
 ${ATTACH_VARIANT_BTN}    id=attach_variant_button
 ${SEARCH_VARIANT_INPUT}    id=search_variant_input
