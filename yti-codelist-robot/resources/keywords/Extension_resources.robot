@@ -105,8 +105,7 @@ Create member for calculation hierarchy
     Run Keyword If  "${code_list_name}"!="${EMPTY}"   Add code to member from code list    ${code_list_name}    ${code}
     ...    ELSE    Add code to member    ${code}
 
-    ${broader_member_length}=    Get Length    ${broader_member}
-    Run Keyword If    ${broader_member_length} > 0    Add broader member    ${broader_member}
+    Run Keyword If  "${broader_member}"!="${EMPTY}"    Add broader member    ${broader_member}
 
     Wait Until Page Contains Element    ${SAVE_MEMBER}    timeout=30
     Click Button                        ${SAVE_MEMBER}
