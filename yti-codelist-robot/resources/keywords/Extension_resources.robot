@@ -64,9 +64,9 @@ Create extension
     Log To Console    ${extension_name} created
 
 Delete extension
-    Click element with wait             ${EXTENSION_DDL}                timeout=30
-    Click element with wait             ${EXTENSION_DELETE_BTN}         timeout=30
-    Click element with wait             ${CONFIRM_DELETE_EXTENSION_BTN} timeout=30
+    Click element with wait             ${EXTENSION_DDL}                    timeout=30
+    Click element with wait             ${EXTENSION_DELETE_BTN}             timeout=30
+    Click element with wait             ${CONFIRM_DELETE_EXTENSION_BTN}     timeout=30
     Log To Console    Extension deleted
 
 Add code list to extension
