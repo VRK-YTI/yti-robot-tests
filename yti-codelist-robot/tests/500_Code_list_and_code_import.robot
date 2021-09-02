@@ -95,7 +95,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    NewCode001    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    newCode001    timeout=20
-    Click elmeent with wait     ${2_BREADCRUMB_LINK}    timeout=30
+    Click elment with wait     ${2_BREADCRUMB_LINK}    timeout=30
     Sleep    1
     Remove code    NewCode001 - newCode001
     Click Code List Info Tab
@@ -195,7 +195,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element with wait     ${MODIFY_CODE_LIST}                     timeout=20
     Click element with wait     ${ADD_DEFAULTCODE_BTN}                  timeout=20
     Input Text with wait    ${SEARCH_DEFAULTCODE_INPUT}    505     timeout=20
-    Click elment that contains text     Koodi505                        timeout=20
+    Click element that contains text     Koodi505                        timeout=20
     Click element with wait     ${SAVE_NEW_CODE_LIST}                   timeout=20
     Wait Until Element Is Visible    ${MODIFY_CODE_LIST}                timeout=60
     Wait Until Page Contains    Vakiokoodi                              timeout=20
