@@ -948,7 +948,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
     Log To Console    New version of code list created
     Wait Until Page Contains    10 koodia    timeout=20
-    Click element that contains text        testikoodi01 - Testikoodi 01"    timeout=20
+    Click element that contains text        testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Click element that contains text        Testikoodi 01       timeout=20
     Click Element with wait    ${MODIFY_CODE_BTN}       timeout=20
