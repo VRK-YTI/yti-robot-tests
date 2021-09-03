@@ -250,13 +250,13 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     [Documentation]    Import empty Excel file and check error message. YTI-569.
     [Tags]    regression    test    300
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${empty}
+    Choose File    ${FILE_UPLOAD_BTN}    ${empty_file}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_empty_Excel}    timeout=20
     Cancel code list import
     Import code list in CSV format
-    Choose File    ${FILE_UPLOAD_BTN}    ${empty}
+    Choose File    ${FILE_UPLOAD_BTN}    ${empty_file}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_codevalue_missing}    timeout=20

@@ -89,7 +89,7 @@ ${Code_list_invalid_propertytype}    ${DATAFOLDER}${/}Code_list_with_links_inval
 ${Code_list_invalid_enddate}    ${DATAFOLDER}${/}Code_list_with_links_invalid_endate.xlsx
 ${Same_sub_code_list}    ${DATAFOLDER}${/}same_sub_code_list.xlsx
 ${Unknown_sub_code_list}    ${DATAFOLDER}${/}unknown_sub_code_list.xlsx
-${empty}          ${DATAFOLDER}${/}empty.xlsx
+${empty_file}          ${DATAFOLDER}${/}empty.xlsx
 ${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
 ${Code_list_with_invalid_link_urls}    ${DATAFOLDER}${/}Code_list_with_invalid_link_URLs.xlsx
 ${Code_list_invalid_delimiter_in_language_code}    ${DATAFOLDER}${/}Code_list_invalid_delimiter_in_language_code.xlsx
@@ -119,7 +119,7 @@ ${Same_order_values}    ${DATAFOLDER}${/}Codes_with_same_order_values.xlsx
 ${Codes_with_order_values}    ${DATAFOLDER}${/}Codes_with_order_values.xlsx
 ${Codes_with_existing_order_values}    ${DATAFOLDER}${/}Codes_with_existing_order_values.xlsx
 ${Codes_with_invalid_order_values}    ${DATAFOLDER}${/}Codes_with_invalid_order_values.xlsx
-${empty}          ${DATAFOLDER}${/}empty.xlsx
+${empty_file}          ${DATAFOLDER}${/}empty.xlsx
 ${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
 #CSV paths
 ${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.csv

@@ -319,7 +319,7 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
     Import codes in Excel format
-    Upload codes    ${empty}
+    Upload codes    ${empty_file}
     Wait Until Page Contains    ${Error_empty_Excel}    timeout=20
     Cancel code import
     Import codes in Excel format
