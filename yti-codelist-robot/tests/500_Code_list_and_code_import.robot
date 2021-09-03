@@ -95,7 +95,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    NewCode001    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    newCode001    timeout=20
-    Click elment with wait     ${2_BREADCRUMB_LINK}    timeout=30
+    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
     Sleep    1
     Remove code    NewCode001 - newCode001
     Click Code List Info Tab
