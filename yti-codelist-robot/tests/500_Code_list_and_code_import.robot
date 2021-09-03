@@ -963,8 +963,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
     Log To Console    Version history tab exists after code was updated
     Return to Koodistot frontpage
-    Click Element with wait    ${STATUS_DROPDOWN_BTN}       timeout=30
-    Click Element that contains text    ${ALL_STATUSES_FI} timeout=20
+    Click Element with wait    ${STATUS_DROPDOWN_BTN}               timeout=30
+    Click Element that contains text    ${ALL_STATUSES_FI}          timeout=20
     Input Text with wait   ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}    timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_9}")]    timeout=30
     Click Element that contains text        ${CODE_LIST_9}      timeout=30
