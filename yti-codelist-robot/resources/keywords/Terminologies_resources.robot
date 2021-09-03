@@ -152,7 +152,7 @@ Delete Testiautomaatiosanasto
     Wait Until Element Is Visible           ${FRONTPAGE_SEARCH_BOX}                     timeout=30
     Input Text with wait                    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}  timeout=30
 
-    Page Should Contain Element             //*[contains(text(), "0 hakutulosta")]
+    Page Should not Contain Element         //*[contains(text(), "${VOCABULARY_1}")]
     Log To Console                          Testiautomaatiosanasto deleted
     Close All Browsers
 
