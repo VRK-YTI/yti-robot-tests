@@ -666,6 +666,7 @@ Remove code
     Log To Console    ${code} removed
 
 Delete registery
+    [Arguments]    ${registry}
     Click element with wait         ${NAVIGATION_MENU_DDL}    timeout=20
     Click element with wait         ${NAVIGATION_MENU_REGISTRIES}
     Click element with wait         //*[contains(text(), "${registry}")]    timeout=30
@@ -678,7 +679,7 @@ Delete registry with code lists
     Return to Koodistot frontpage
     Select user                     ${SUPER_USER_ID}    ${SUPER_USER_NAME}
 
-    Delete registery
+    Delete registery                ${registry}
 
     Wait Until Page Contains        ${Error_registry_with_codelists}    timeout=20
     Click element with wait         ${CLOSE_ERROR_MESSAGE_BTN}          timeout=20
@@ -690,7 +691,7 @@ Delete empty registry
     [Arguments]    ${registry}
     Return to Koodistot frontpage
     Select user                         ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-    Delete registery
+    Delete registery                    ${registry}
 
     Click element with wait             ${REGISTRY_FILTER_DDL}      timeout=20
     Page Should Not Contain Element     //*[contains(text(), "Automaatiorekisteri")]
