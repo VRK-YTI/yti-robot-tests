@@ -656,14 +656,16 @@ Add sub code list
 
 Remove code
     [Arguments]    ${code}
-    Click element with wait         //*[contains(text(), "${code}")]    timeout=20
-    Click element with wait         ${CODE_DDL}    timeout=20
-    Click element with wait         ${REMOVE_CODE_BTN}    timeout=20
-    Click element with wait         ${REMOVE_CODE_CONF_BTN}    timeout=20
-    Click element with wait         ${CODELIST_INFO_TAB}    timeout=60
+    Click element with wait             //*[contains(text(), "${code}")]    timeout=20
+    Click element with wait             ${CODE_DDL}    timeout=20
+    Click element with wait             ${REMOVE_CODE_BTN}    timeout=20
+    Click element with wait             ${REMOVE_CODE_CONF_BTN}    timeout=20
 
-    Page Should Not Contain Element    ${code}
-    Log To Console    ${code} removed
+    Wait Until Element Is Enabled       ${CODELIST_INFO_TAB}    timeout=60
+    Page Should Not Contain Element     ${code}
+    Log To Console                      ${code} removed
+
+
 
 Delete registery
     [Arguments]    ${registry}

@@ -888,7 +888,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
     Click element with wait     ${SAVE_NEW_CODE_LIST}    timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    New version of code list created
+    Log To Console    New version of codeRemove code list created
     Click element with wait     ${EXPAND_ALL_BTN}    timeout=20
     Sleep    1
     Log To Console    Expand all pressed
