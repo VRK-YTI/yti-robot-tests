@@ -1475,14 +1475,14 @@ Check updated code listing
 
 Create new code to code list with concept
     [Arguments]    ${concept}    ${vocabulary}
-    Wait Until Page Contains Element    ${CODE_LIST_DDL}
-    Wait Until Page Contains Element    ${CREATE_CODE_BTN}
-    Click Element with wait   ${VOCABULARY_SELECTION_DDL}               timeout=60
-    Click Element with wait   //*[contains(@id, '${vocabulary}')]       timeout=20
-    Input Text with wait   ${SEARCH_CONCEPT_INPUT}    ${concept}        timeout=20
-    Click Element with wait    //*[@id="${vocabulary}_${concept}_concept_link"]     timeout=60
-    Input Text with wait    ${CODE_CODEVALUE_INPUT}    NewCode001       timeout=20
-    Click Element with wait    ${SAVE_NEW_CODE_BTN}     timeout=60
+    Click Element with wait     ${CODE_LIST_DDL}                            timeout=20
+    Click Element with wait     ${CREATE_CODE_BTN}                          timeout=20
+    Click Element with wait     ${VOCABULARY_SELECTION_DDL}                 timeout=20
+    Click Element with wait     //*[contains(@id, '${vocabulary}')]         timeout=20
+    Input Text with wait        ${SEARCH_CONCEPT_INPUT}    ${concept}        timeout=20
+    Click Element with wait     //*[@id="${vocabulary}_${concept}_concept_link"]     timeout=60
+    Input Text with wait        ${CODE_CODEVALUE_INPUT}    NewCode001       timeout=20
+    Click Element with wait     ${SAVE_NEW_CODE_BTN}     timeout=60
     Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
     Log to Console    New code "${concept}" created
 

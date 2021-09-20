@@ -141,14 +141,14 @@ Delete Testiautomaatiosanasto
     ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${VOCABULARY_1}")]
     Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${VOCABULARY_1} did not find the terminology to delete
     ...    AND    Return From Keyword
-    Click element that contains text        ${VOCABULARY_1}                 timeout=30
+    Click element that contains text        ${VOCABULARY_1}                     timeout=30
     Wait until page contains                ${VOCABULARY_1}                     timeout=30
     Click element with wait                 ${TERMINOLOGY_TAB}                  timeout=30
     Wait until page contains                Testiautomaatiosanasto              timeout=20
     Click element with wait                 ${REMOVE_VOCABULARY_BTN}            timeout=30
     Click element with wait                 ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
 
-    Log To Console    Vocabulary remove done
+    Log To Console                          Vocabulary remove done
     #Wait Until Element Is Visible           ${FRONTPAGE_SEARCH_BOX}                     timeout=30
     #Input Text with wait                    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}  timeout=30
     #Sleep                                   5
