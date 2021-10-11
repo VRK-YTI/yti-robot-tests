@@ -78,12 +78,9 @@ ${concepts_from_controlled_vocabularies}    ${DATAFOLDER}${/}concepts_from_contr
 
 *** Keywords ***
 Terminology Select user
-    Wait until page contains element    ${TERMINOLOGY_USER_DROPDOWN}    timeout=60
-    Click element    ${TERMINOLOGY_USER_DROPDOWN}
-    Wait until page contains element    ${USER_1}    timeout=60
-    Click element    ${USER_1}
+    Click element with wait     ${TERMINOLOGY_USER_DROPDOWN}     timeout=60
+    Click element with wait     ${USER_1}                        timeout=60
     Wait Until Page Contains    Test Admin    timeout=60
-    Sleep    1
 
 Open Sanastot
     Open Browser with Settings  ${TERMINOLOGIES_ENVIRONMENT_URL}
@@ -129,7 +126,6 @@ Create Testiautomaatiosanasto and import vocabulary
     Click element with wait             ${IMPORT_YES_BTN}                                               timeout=30
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}               timeout=120
     Wait Until Element Is Enabled               ${ADD_NEW_CONCEPT_BTN}      timeout=90
-    Log To Console    Testiautomaatiosanasto created
 
 Delete Testiautomaatiosanasto
     Terminology Test Case Setup
@@ -148,7 +144,6 @@ Delete Testiautomaatiosanasto
     Click element with wait                 ${REMOVE_VOCABULARY_BTN}            timeout=30
     Click element with wait                 ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
 
-    Log To Console                          Vocabulary remove done
     #Wait Until Element Is Visible           ${FRONTPAGE_SEARCH_BOX}                     timeout=30
     #Input Text with wait                    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}  timeout=30
     #Sleep                                   5
@@ -173,4 +168,3 @@ Check concept suggestion in Terminologies
     Wait until page contains    Ehdotus    timeout=20
     Wait until page contains    Tämä on kulkuneuvo    timeout=20
     Wait until page contains    Test Superuser    timeout=20
-    Log To Console    Concept found

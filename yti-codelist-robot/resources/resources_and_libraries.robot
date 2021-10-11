@@ -1,5 +1,4 @@
 *** Settings ***
-Resource          ../resources/keywords/eDuuni_login_resources.robot
 Resource          ../resources/keywords/Generic_resources.robot
 Resource          ../resources/keywords/Extension_resources.robot
 Resource          ../resources/keywords/Terminologies_resources.robot
@@ -8,26 +7,13 @@ Resource          ../resources/variables/test_files.robot
 
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 
-*** Variables ***
-
 *** Keywords ***
 Test Case Teardown Generic Teardown
+    Run keyword and ignore error    Print console logs
     Close All Browsers
 
 Test Case Suite Teardown Generic Teardown
     Close All Browsers
-
-Test Case Teardown restoring Finnish language
-    Click element with wait     ${LANGUAGE_DROPDOWN_BTN}   timeout=30
-    Click element with wait     ${LANGUAGE_FI}
-
-    Wait Until Page Contains    ${CODE_LIST_1}
-    Wait Until Page Contains    Kaikki tilat                timeout=30
-    Wait Until Page Contains    Kaikki rekisterit           timeout=30
-    Wait Until Page Contains    Kaikki organisaatiot        timeout=30
-    Wait Until Page Contains    Luokitus                    timeout=30
-
-    Test Case Teardown Generic Teardown
 
 Test Case Setup Generic Setup
     Open Koodistot
@@ -50,36 +36,27 @@ Test Case Setup Terminologies
 
 Test Case Teardown Terminologies
     Terminology Teardown
-    Test Case Setup Superuser
-    Remove code lists    automobiili
+    Remove codelist teardown    automobiili
 
 Test Case Teardown concept for code list from Terminologies
     Terminology Teardown
-    Log to Console    Terminology teardown done
-    Test Case Setup Superuser
-    Log to Console    Test Case Setup Superuser done
-    Remove code lists    tutkija
+    Remove codelist teardown    tutkija
 
 Test Case Teardown Code with concept
     Terminology Teardown
-    Log to Console    Test Case Teardown Code with concept done
-    Test Case Setup Superuser
-    Log to Console    Test Case Setup Superuser done
-    Remove code lists    ${CODE_LIST_8}
+    Remove codelist teardown    ${CODE_LIST_8}
 
 Terminology Setup
     Test Case Setup Create Testiautomaatiosanasto
 
 Terminology Teardown
+    Print console logs
     Delete Testiautomaatiosanasto
 
 Terminology Test Case Setup
     Open Sanastot
     Set Selenium Speed    ${SELENIUM_SPEED}
     Terminology Select user
-
-Terminology Test Case Teardown
-    Close All Browsers
 
 Test Case Setup Create Testiautomaatiosanasto
     Terminology Test Case Setup
@@ -88,3 +65,17 @@ Test Case Setup Create Testiautomaatiosanasto
     Run Keyword If    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
     ...    ELSE    Create Testiautomaatiosanasto and import vocabulary
     Go back to Sanastot frontpage
+
+Remove codelist teardown
+    [Arguments]  @{codelist}
+    Test Case Teardown Generic Teardown
+    Test Case Setup Generic Setup
+    Remove list of codes    @{codelist}
+    Close all browsers
+
+Remove codelist with extensions teardown
+    [Arguments]  @{codelist}
+    Test Case Teardown Generic Teardown
+    Test Case Setup Generic Setup
+    Remove code lists with extensions    @{codelist}
+    Close all browsers

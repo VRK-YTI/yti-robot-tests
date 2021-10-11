@@ -14,7 +14,7 @@ ${MEMBER_USER_NAME}    Test Member
 ${NO_GROUP_USER_ID}    dummy@localhost
 ${NO_GROUP_USER_NAME}    Test Nogroup
 #Generic
-${SELENIUM_SPEED}    0.5
+${SELENIUM_SPEED}    0
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
@@ -45,10 +45,10 @@ ${REMOVE_TT_LANGUAGE}    id=remove_tt_languagecode_link
 ${CONFIRM_ALERT_MODAL_BTN}    id=confirm_alert_modal_button
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
-${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown
-${SEARCH_CODE_CHECKBOX}    id=search_code_details_checkbox
-${FRONTPAGE_LINK}    id=main_page_link
-${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
+${STATUS_DROPDOWN_BTN}      id=selected_status_filter_dropdown
+${SEARCH_CODE_CHECKBOX}     id=search_code_details_checkbox
+${FRONTPAGE_LINK}           id=main_page_link
+${NAVIGATION_MENU_DDL}      id=navigation_menu_dropdown
 ${NAVIGATION_MENU_REGISTRIES}    id=navigation_link_registries
 ${REGISTRY_FILTER_DDL}    id=selected_registry_filter_dropdown
 ${SEARCH_BOX_INPUT}    id=search_box_input
@@ -107,9 +107,9 @@ ${DELETE_CODE_LIST_BTN}    id=delete_codelist_button
 ${REMOVE_CODE_LIST_CONF_BTN}    id=confirm_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}    id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}    id=search_code_box_input
-${CODELIST_INFO_TAB}    id=codelist_info_tab
-${CODELIST_CODES_TAB}    id=codelist_codes_tabs
-${CODELIST_VARIANTS_TAB}    id=codelist_variants_tab
+${CODELIST_INFO_TAB}        //span[text() = 'TIEDOT' or text() = 'INFORMATION' or text() = 'UPPGIFTER']  #id=codelist_info_tab
+${CODELIST_CODES_TAB}       //span[text() = 'KOODIT' or text() = 'CODES' or text() = 'KODER']  #id=codelist_codes_tabs
+${CODELIST_VARIANTS_TAB}    //span[text() = 'Variantit']  # or text() = '' or text() = '']  #id=codelist_variants_tab
 ${ADD_DEFAULTCODE_BTN}    id=add_code_button
 ${REMOVE_DEFAULTCODE}    id=remove_code_link
 ${SEARCH_DEFAULTCODE_INPUT}    id=search_linked_code_input
@@ -124,7 +124,7 @@ ${START_DATE_INPUT}    id=start_date_input
 ${END_DATE_INPUT}    id=end_date_input
 ${CODE_LIST_DDL}    id=codeSchemeDropdown
 ${EXPORT_DDL}     id=exportDropdown
-${VERSION_TAB}    id=codelist_versionhistory_tab
+${VERSION_TAB}    //span[text() = 'Versiohistoria']  #id=codelist_versionhistory_tab
 ${CLOSE_ERROR_MODAL_BTN}    id=close_error_modal_button
 ${OPEN_TERMINOLOGY_MODAL_BTN}    id=open_terminology_modal_button_for_concept_suggestion
 ${CONFIRMATION_YES_BTN}    id=confirm_confirmation_modal_button
@@ -146,7 +146,7 @@ ${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
 #Extensions
 ${EXTENSION_DDL}    id=extensionDropdown
 ${IMPORT_EXTENSIONS_BTN}    id=import_extensions_button
-${EXTENSIONS_TAB}    id=codelist_extensions_tab
+${EXTENSIONS_TAB}    //span[text() = 'LAAJENNUKSET']  #id=codelist_extensions_tab
 ${ADD_MEMBER_BTN}    id=add_member_button
 ${SEARCH_EXTENSION_INPUT}    id=search_linked_extension_input
 ${EXTENSION_FILE_UPLOAD}    id=fileupload_input
@@ -181,12 +181,12 @@ ${SEARCH_MEMBER_INPUT}    id=search_linked_member_input
 ${MEMBER_BACK_BTN}    id=member_back_button
 ${COMPARISON_OPERATOR_INPUT}    id=member_membervalue_comparisonOperator_input
 ${UNARY_OPERATOR_INPUT}    id=member_membervalue_unaryOperator_input
-${CALC_HIERARCHY_TAB}    id=codelist_extension_calculationHierarchy_tab
+${CALC_HIERARCHY_TAB}    //span[text() = 'LASKENTAHIERARKIAT']      #id=codelist_extension_calculationHierarchy_tab
 ${DEF_HIERARCHY_TAB}    id=codelist_extension_definitionHierarchy_tab
-${EXTENSION_INFO_TAB}    id=extension_info_tab
-${CROSS_REFERENCE_LIST_TAB}    id=codelist_extension_crossReferenceList_tab
-${MEMBERS_TAB}    id=extension_members_tab
-${MEMBER_INFO_TAB}    id=member_info_tab
+${EXTENSION_INFO_TAB}    //span[text() = 'TIEDOT' or text() = 'INFORMATION' or text() = 'UPPGIFTER']      #id=extension_info_tab
+${CROSS_REFERENCE_LIST_TAB}  //span[text() = 'Koodiliitokset']   #id=codelist_extension_crossReferenceList_tab
+${MEMBERS_TAB}    //span[text() = 'JÄSENET']       #id=extension_members_tab
+${MEMBER_INFO_TAB}    //span[text() = 'TIEDOT' or text() = 'INFORMATION' or text() = 'UPPGIFTER']      #id=member_info_tab
 ${AUTO_CREATE_MEMBERS_CHECKBOX}    id=auto_create_members_checkbox
 ${CREATE_MISSING_MEMBERS_BTN}    id=create_missing_members_button
 ${CLOSE_ALERT_MODAL_LINK}    id=close_alert_modal_link
@@ -264,8 +264,8 @@ ${SAVE_CODE_STATUS_CHANGE_BTN}    id=migrate_code_statuses_button
 ${CANCEL_CODE_STATUS_CHANGE_BTN}    id=cancel_migrate_code_statuses_button
 ${ENFORCE_STATUS_TRANSITION_CHECKBOX}    id=enforce_status_transition_rules_checkbox
 #Code lists and Codes
-${CODE_LIST_1}    Kunnat 2018
-${CODE_LIST_1_EN}    Municipalities 2018
+${CODE_LIST_KUNNAT}    Kunnat 2018
+${CODE_LIST_KUNNAT_EN}    Municipalities 2018
 ${CODE_LIST_2}    testiautomaatiokoodisto1
 ${CODE_LIST_3}    Palveluluokitus
 ${CODE_LIST_4}    testiautomaatiokoodisto
@@ -356,8 +356,8 @@ ${Json_export_dcat}    ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR",
 *** Keywords ***
 Open Koodistot
     Open Browser with Settings  ${REFERENCE_DATA_ENVIRONMENT_URL}
-    Wait Until Page Contains    Koodistot    timeout=60
-    Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=60
+    Wait Until Page Contains    Koodistot           timeout=60
+    Wait Until Page Contains    KIRJAUDU SISÄÄN     timeout=60
 
 Return to Koodistot frontpage
     Click element with wait         ${FRONTPAGE_LINK}       timeout=60
@@ -365,10 +365,9 @@ Return to Koodistot frontpage
 
 Remove list of codes
     [Arguments]    @{code_list_items}
+    Return to Koodistot frontpage
+    Select Superuser
     FOR    ${code_list_item}    IN    @{code_list_items}
-        Return to Koodistot frontpage
-
-        Select user                         ${SUPER_USER_ID}        ${SUPER_USER_NAME}
         Input text with wait                ${SEARCH_BOX_INPUT}     ${code_list_item}       timeout=30
 
         Click element that contains text    ${code_list_item}                               timeout=60
@@ -380,27 +379,12 @@ Remove list of codes
 
         Input text with wait                ${SEARCH_BOX_INPUT}   ${code_list_item}         timeout=60
 
-        Wait Until Page Contains            Haulla ei löytynyt yhtään koodistoa.            timeout=90
-        Log To Console                      ${code_list_item} removed
+        Wait Until Page Contains                     Rajaa hakutuloksia            timeout=90
+        Wait until page does not contain element     //a[contains(@class, 'name') and text() = '${code_list_item}']      timeout=10
     END
-
-Remove code lists
-    [Arguments]    @{code_list_items}
-    Remove list of codes  @{code_list_items}
-    Close All Browsers
-
-Remove code lists and leave browser open
-    [Arguments]    @{code_list_items}
-    Remove list of codes  @{code_list_items}
 
 Create code list
     [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name}    ${classification}
-    Input text with wait        ${SEARCH_BOX_INPUT}     ${codelist_name}    timeout=30
-    Sleep    1
-
-    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    Run Keyword If    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
-
     Click element with wait     ${ADD_CODE_LIST_BTN}                                    timeout=60
     Click element with wait     ${CREATE CODE_LIST_BTN}                                 timeout=60
 
@@ -432,12 +416,6 @@ Create code list
 
 Create Code List With All Languages
     [Arguments]    ${registry}    ${cumulative}    ${codelist_value}    ${organization}    ${codelist_name_fi}    ${codelist_name_en}    ${codelist_name_sv}    ${classification}
-    Input text with wait    ${SEARCH_BOX_INPUT}    ${codelist_name_fi}          timeout=30
-    Sleep    1
-
-    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    Run Keyword If    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name_fi}
-
     Click element with wait     ${ADD_CODE_LIST_BTN}                            timeout=60
     Click element with wait     ${CREATE CODE_LIST_BTN}                         timeout=60
 
@@ -445,7 +423,6 @@ Create Code List With All Languages
     Run Keyword If    ${vocabularies_error}    Close error modal
 
     Click element with wait     ${CANCEL_CREATION_BTN}                          timeout=20
-    Sleep    2
 
     Change Content Language    ${ALL_LANGUAGE_BTN}
 
@@ -491,15 +468,12 @@ Create Code List Version From File
 Select Cumulative Code List Checkbox
     [Arguments]    ${cumulative}
     Click element with wait             ${CREATE_CUMULATIVE_CODE_LIST}          timeout=30
-
     Checkbox Should Be Selected         ${CREATE_CUMULATIVE_CODE_LIST}
 
 Save code list after creation
     [Arguments]    ${codelist_name}
     Click element with wait             ${SAVE_NEW_CODE_LIST}                   timeout=30
-
     Wait Until Element Is Visible       ${CODE_LIST_DDL}                        timeout=120
-    Log To Console                      ${codelist_name} created
 
 Cancel code list creation
     Click element with wait             ${CANCEL_CODE_CREATE_BTN}               timeout=30
@@ -523,8 +497,6 @@ Upload codelist
     Click Button                        ${UPLOAD_FILE_BTN}
 
     Wait Until Element Is Visible       ${CODE_LIST_DDL}                                timeout=120
-    Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]       timeout=30
-    Log To Console                      Code list ${codelist_name} imported
 
 Update code list
     [Arguments]    ${code_list}    ${codelist_name}    ${file_format}
@@ -541,30 +513,29 @@ Update code list
     Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator                timeout=90
     Wait Until Element Is Enabled               ${CODE_LIST_DDL}                            timeout=120
     Wait Until Page Contains Element            //*[contains(text(), "${codelist_name}")]   timeout=30
-    Log To Console                              Code list ${codelist_name} updated
 
 Import code list in Excel format
-    Click element with wait         ${ADD_CODE_LIST_BTN}        timeout=60
-    Click element with wait         ${IMPORT_CODE_LIST_BTN}     timeout=60
-    Click element with wait         ${SELECT_REGISTRY_BTN}      timeout=60
+    Click element with wait             ${ADD_CODE_LIST_BTN}        timeout=60
+    Click element with wait             ${IMPORT_CODE_LIST_BTN}     timeout=60
+    Click element with wait             ${SELECT_REGISTRY_BTN}      timeout=60
 
-    Click Button                    ${REGISTRY_1}
+    Click Button                        ${REGISTRY_1}
 
-    Click element with wait         ${FILE_FORMAT_BTN}    timeout=60
-    Click element with wait         ${FILE_FORMAT_Excel}    timeout=60
+    Click element with wait             ${FILE_FORMAT_BTN}          timeout=60
+    Click element with wait             ${FILE_FORMAT_Excel}        timeout=60
 
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=60
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}          timeout=60
 
 Import code list in CSV format
-    Click element with wait         ${IMPORT_CODE_LIST_BTN}    timeout=60
-    Click element with wait         ${SELECT_REGISTRY_BTN}    timeout=60
+    Click element with wait         ${IMPORT_CODE_LIST_BTN}         timeout=60
+    Click element with wait         ${SELECT_REGISTRY_BTN}          timeout=60
 
     Click Button                    ${REGISTRY_1}
 
-    Click element with wait         ${FILE_FORMAT_BTN}    timeout=60
-    Click element with wait         ${FILE_FORMAT_CSV}    timeout=60
+    Click element with wait         ${FILE_FORMAT_BTN}              timeout=60
+    Click element with wait         ${FILE_FORMAT_CSV}              timeout=60
 
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=60
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}          timeout=60
 
 Upload codes
     [Arguments]    ${codes}
@@ -575,8 +546,6 @@ Upload codes
 
     Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator    timeout=90
     Wait Until Element Is Visible               ${CODE_LIST_DDL}                timeout=120
-
-    Log To Console    Codes imported
 
 Cancel code import
     Click Button    ${CLOSE_ERROR_MESSAGE_BTN}
@@ -620,7 +589,6 @@ Create new code to code list
     Click element with wait             ${SAVE_NEW_CODE_BTN}                timeout=20
 
     Wait Until Page Contains Element    ${MODIFY_CODE_BTN}                  timeout=60
-    Log To Console    ${code_name} created
 
 Create New Code With All Languages
     [Arguments]    ${code_value}    ${code_name_fi}    ${code_name_en}    ${code_name_sv}    ${code_status}    ${sub_code_list}
@@ -646,7 +614,6 @@ Create New Code With All Languages
 
     Click element with wait         ${SAVE_NEW_CODE_BTN}        timeout=20
     Wait Until Page Contains Element    ${MODIFY_CODE_BTN}      timeout=60
-    Log To Console    ${code_name_fi} created
 
 Add sub code list
     [Arguments]    ${sub_code_list}
@@ -663,9 +630,6 @@ Remove code
 
     Wait Until Element Is Enabled       ${CODELIST_INFO_TAB}    timeout=60
     Page Should Not Contain Element     ${code}
-    Log To Console                      ${code} removed
-
-
 
 Delete registery
     [Arguments]    ${registry}
@@ -686,8 +650,8 @@ Delete registry with code lists
     Wait Until Page Contains        ${Error_registry_with_codelists}    timeout=20
     Click element with wait         ${CLOSE_ERROR_MESSAGE_BTN}          timeout=20
 
-    Remove code lists and leave browser open    ${code_list}
-    Delete empty registry    ${registry}
+    Remove list of codes            ${code_list}
+    Delete empty registry           ${registry}
 
 Delete empty registry
     [Arguments]    ${registry}
@@ -697,7 +661,6 @@ Delete empty registry
 
     Click element with wait             ${REGISTRY_FILTER_DDL}      timeout=20
     Page Should Not Contain Element     //*[contains(text(), "Automaatiorekisteri")]
-    Log To Console                      ${registry} deleted
 
 Create registry
     [Arguments]    ${registry_value}    ${registry_name}    ${organization}    ${registry_description}
@@ -723,12 +686,10 @@ Continue registry creation
     Input text with wait            ${REGISTRY_DESCRIPTION_INPUT}  ${registry_description}      timeout=20
     Click element with wait         ${SAVE_REGISTRY}                                            timeout=30
     Wait Until Element Is Enabled   ${REGISTRY_DDL}                                             timeout=30
-    Log To Console    ${registry_name} created
 
 Cancel registry creation
     Click element with wait         ${CANCEL_CODE_MOD_BTN}    timeout=20
 
-    Log To Console    Cancel registry creation
     Return to Koodistot frontpage
 
 Create new version of code list
@@ -745,7 +706,6 @@ Create new version of code list
     Click Element that contains text    ${classification}   timeout=20
 
     Save code list
-    Log To Console    New version ${codelist_name} created
 
 Modify code list
     Click element with wait         ${CODELIST_INFO_TAB}                timeout=20
@@ -758,33 +718,22 @@ Cancel code list import
 
 Upload codelist in Excel format
     [Arguments]    ${codelist}    ${codelist_name}
-    Input text with wait    ${SEARCH_BOX_INPUT}    ${codelist_name}     timeout=90
+    Click element with wait         ${ADD_CODE_LIST_BTN}                                timeout=20
+    Click element with wait         ${IMPORT_CODE_LIST_BTN}                             timeout=20
+    Click element with wait         ${SELECT_REGISTRY_BTN}                              timeout=20
+    Click element with wait         //*[contains(text(), "${REGISTRY_1}")]              timeout=60
+    Click element with wait         ${FILE_FORMAT_BTN}                                  timeout=60
+    Click element with wait         ${FILE_FORMAT_Excel}                                timeout=20
 
-    ${code_list_exists}=    Run Keyword And Return Status    Page Should Not Contain    Haulla ei löytynyt yhtään koodistoa.
-    Run Keyword If    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
-
-    Click element with wait         ${ADD_CODE_LIST_BTN}                    timeout=20
-    Click element with wait         ${IMPORT_CODE_LIST_BTN}                 timeout=20
-    Click element with wait         ${SELECT_REGISTRY_BTN}                  timeout=20
-    Click element with wait         //*[contains(text(), "${REGISTRY_1}")]  timeout=60
-    Click element with wait         ${FILE_FORMAT_BTN}                      timeout=60
-    Click element with wait         ${FILE_FORMAT_Excel}                    timeout=20
-
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}                  timeout=20
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}                              timeout=20
     Choose File                         ${FILE_UPLOAD_BTN}    ${codelist}
 
-    Click element with wait             ${UPLOAD_FILE_BTN}                      timeout=60
+    Click element with wait             ${UPLOAD_FILE_BTN}                              timeout=60
 
-    Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]    timeout=60
-    Log To Console                      Code list ${codelist_name} imported
+    Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]       timeout=60
 
 Upload codelist in CSV format
     [Arguments]    ${codelist}    ${codelist_name}
-    Input text with wait    ${SEARCH_BOX_INPUT}    ${codelist_name}   timeout=30
-
-    ${code_list_exists}=    Run Keyword And Return Status    Page should not contain    Haulla ei löytynyt yhtään koodistoa.
-    Run Keyword If    ${code_list_exists}    Remove code lists and leave browser open    ${codelist_name}
-
     Click element with wait         ${ADD_CODE_LIST_BTN}        timeout=20
     Click element with wait         ${IMPORT_CODE_LIST_BTN}     timeout=20
     Click element with wait         ${SELECT_REGISTRY_BTN}      timeout=20
@@ -797,7 +746,6 @@ Upload codelist in CSV format
 
     Click element with wait             ${UPLOAD_FILE_BTN}      timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]    timeout=60
-    Log To Console                      Code list ${codelist_name} imported
 
 Change Content Language
     [Arguments]    ${language}
@@ -840,7 +788,6 @@ Add Email Subscription For Code List
     Click element with wait                     ${CONFIRMATION_YES_BTN}         timeout=20
 
     Wait Until Page Contains Element            ${SUBSCRIPTION_BELL_ICON}       timeout=20
-    Log To Console                              Email subscription added
 
 Remove Email Subscription For Code List
     Click element with wait                     ${CODE_LIST_DDL}                timeout=20
@@ -848,7 +795,6 @@ Remove Email Subscription For Code List
     Click element with wait                     ${CONFIRMATION_YES_BTN}         timeout=20
 
     Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}       timeout=20
-    Log To Console                              Email subscription removed
 
 Select Code List
     [Arguments]    ${code_list}
@@ -856,5 +802,5 @@ Select Code List
 
 Select Tab
     [Arguments]    ${tab}
-    Click element with wait     ${tab}                     timeout=30
+    Click element with wait             ${tab}                     timeout=30
 

@@ -75,13 +75,3 @@ Login With Id Field Option 2
     Input Text    ${PASSWORD_ELEMENT_HOOK_2}    ${TEST_PASSWORD}
     Wait Until Element Is Enabled    ${SIGN_IN_HOOK_2}    timeout=20
     Click Element    ${SIGN_IN_HOOK_2}
-
-Open Chrome
-    [Arguments]    ${environment_url}
-    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument    --headless
-    Call Method    ${chrome_options}    add_argument    --single-process
-    Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
-    ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}
-    Set Window Size    1920    1080
-    Go To    ${environment_url}

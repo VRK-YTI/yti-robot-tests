@@ -21,7 +21,7 @@ ${Error_invalid_propertytype}    Ei sallittu tyypitys laajennus-aineistolle: Ext
 *** Keywords ***
 Upload extension
     [Arguments]    ${extension}    ${file_format}
-    Click element with wait     ${CODE_LIST_DDL}                timeout=30
+    Click element with wait     ${CODE_LIST_DDL}                timeout=60
     Click element with wait     ${IMPORT_EXTENSIONS_BTN}        timeout=30
     Click element with wait     ${FILE_FORMAT_UPLOAD}           timeout=20
     Click element with wait     ${file_format}                  timeout=20
@@ -156,19 +156,18 @@ Remove codelist
     Wait Until Page Contains            ${code_list}
     Click element that contains text    TIEDOT                                  timeout=20
     Page Should Contain                 testiautomaatiokoodisto
-    Page Should Contain                 testiautomaatiokoodisto1
+    Page Should Contain                 ${CODE_LIST_2}
 
     Click element with wait             ${DELETE_CODE_LIST_BTN}                 timeout=20
     Click element with wait             ${REMOVE_CODE_LIST_CONF_BTN}            timeout=20
     Input text with wait                id=search_box_input    ${code_list}     timeout=30
-    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.
+    Wait Until Page Contains            Haulla ei löytynyt yhtään koodistoa.    timeout=60
 
 Remove code lists with extensions
     [Arguments]    @{code_list_items}
+    Return to Koodistot frontpage
+    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
     FOR    ${code_list_item}    IN    @{code_list_items}
-        Return to Koodistot frontpage
-        Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
-
         Input text with wait                ${SEARCH_BOX_INPUT}    ${code_list_item}    timeout=30
         Click element that contains text    ${code_list_item}                           timeout=30
         Wait Until Page Contains            ${code_list_item}                           timeout=60
@@ -176,7 +175,6 @@ Remove code lists with extensions
         Run Keyword If    ${extension_exists}    Delete extension before code list    ${code_list_item}
         ...    ELSE    Continue code list deletion    ${code_list_item}
     END
-    Close All Browsers
 
 Continue code list deletion
     [Arguments]    ${code_list_item}
@@ -184,9 +182,8 @@ Continue code list deletion
     Click element with wait             ${DELETE_CODE_LIST_BTN}         timeout=20
     Click element with wait             ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
 
-    Input text with wait                ${SEARCH_BOX_INPUT}    ${code_list_item}    timeout=60
-    Wait Until Page Contains            Haulla ei löytynyt yhtään koodistoa.    timeout=60
-    Log To Console    ${code_list_item} removed
+    #Input text with wait                ${SEARCH_BOX_INPUT}    ${code_list_item}    timeout=60
+    #Wait Until Page Contains            Haulla ei löytynyt yhtään koodistoa.        timeout=60
 
 Delete extension before code list
     [Arguments]    ${code_list_item}

@@ -35,36 +35,33 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     [Documentation]    Import Code list (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression    test    300
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_no_codeValue}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_no_codeValue}    timeout=20
+    Choose File                         ${FILE_UPLOAD_BTN}          ${Code_list_no_codeValue}
+    Click element with wait             ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains            ${Error_no_codeValue}       timeout=20
     Cancel code list import
-    Import code list in CSV format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_no_codeValue_csv}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
 
-    Wait Until Page Contains    ${Error_no_codeValue}    timeout=20
+    Import code list in CSV format
+    Choose File                         ${FILE_UPLOAD_BTN}          ${Code_list_no_codeValue_csv}
+    Click element with wait             ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains            ${Error_no_codeValue}       timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 301. Import code list with missing CLASSIFICATION value
     [Documentation]    Import Code list with missing CLASSIFICATION value and check error message
     [Tags]    regression    test    300
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    Tuo
-    Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
+    Choose File                         ${FILE_UPLOAD_BTN}          ${Code_list_no_classification}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}     timeout=20
+    Click Button                        Tuo
+    Wait Until Page Contains            ${Error_no_classification_value}    timeout=20
     Cancel code list import
+
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification_csv}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    Tuo
     Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 302. Import code list with invalid CLASSIFICATION value
     [Documentation]    Import Code list (Excel, CSV) with invalid CLASSIFICATION value and check error message
@@ -75,13 +72,13 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
+
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification_csv}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 303. Import code list with missing STATUS value
     [Documentation]    Import Code list with missing STATUS value and check error message
@@ -92,7 +89,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_status_value}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 304. Import code list with invalid STATUS value
     [Documentation]    Import Code list with invalid STATUS value and check error message
@@ -103,7 +99,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_status_value}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 305. Import code list with duplicate columns
     [Documentation]    Import Code list with duplicate columns and check error message
@@ -114,7 +109,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_duplicate_columns}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 306. Import code list with duplicate code lists
     [Documentation]    Import Code list with duplicate Code lists and check error message
@@ -125,7 +119,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_duplicate_code_lists}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 307. Import code list with invalid codeValue
     [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
@@ -136,13 +129,13 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_code_list}    timeout=20
     Cancel code list import
+
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue_csv}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_code_list}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 308. Import code list with maximum hierarchies reached for codes
     [Documentation]    Import Code list (Excel) with maximum hierarchies reached
@@ -154,7 +147,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_codes_max_hierarchy_level}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 309. Create new version of code list from invalid file
     [Documentation]    Create new version of code list from file which contains two code lists
@@ -176,8 +168,8 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_only_one_code_list}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_9}
+
+    [Teardown]    Remove codelist teardown    ${CODE_LIST_9}
 
 310. Create new version of code list from file with same codevalue
     [Documentation]    Create new version of code list from file with same codevalue
@@ -199,8 +191,8 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_code_list_exists}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
-    [Teardown]    Remove code lists    ${CODE_LIST_9}
+
+    [Teardown]    Remove codelist teardown     ${CODE_LIST_9}
 
 311. Import code list with invalid propertytype in links
     [Documentation]    Import code list with links and with invalid propertytype in links sheet and check error message
@@ -211,7 +203,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_propertytype}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 312. Import code list with invalid end date
     [Documentation]    Import code list with invalid end date and check error message. YTI-290.
@@ -222,7 +213,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_enddate}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 313. Import code list with same sub code list
     [Documentation]    Import code list with same sub code list and check error message. YTI-317.
@@ -233,7 +223,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_same_sub_code_list}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 314. Import code list with unknown sub code list
     [Documentation]    Import code list with unknown sub code list and check error message. YTI-317.
@@ -244,7 +233,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_unknown_sub_code_list}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 315. Import empty Excel file
     [Documentation]    Import empty Excel file and check error message. YTI-569.
@@ -255,13 +243,13 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_empty_Excel}    timeout=20
     Cancel code list import
+
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${empty_file}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_codevalue_missing}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 316. Import Excel file with no content
     [Documentation]    Import Excel file with no content and check error message. YTI-574.
@@ -272,7 +260,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_content}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 317. Import code list with invalid link URLs
     [Documentation]    Import code list with invalid link URLs and check error message
@@ -283,7 +270,6 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_link_urls}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
 
 318. Import code list with invalid delimiter in LANGUAGECODE column
     [Documentation]    Import code list with invalid delimiter in LANGUAGECODE column
@@ -295,4 +281,3 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_language_code_delimiter}    timeout=20
     Cancel code list import
-    Return to Koodistot frontpage
