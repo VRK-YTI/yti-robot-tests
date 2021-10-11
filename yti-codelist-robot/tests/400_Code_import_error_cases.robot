@@ -13,7 +13,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.
-${Error_with_invalid_status}    Aineistossa oleva STATUS-sarakkeen Error_with_duplicate_columns_csvarvo ei ole sallittu: xxxxxxxx
+${Error_with_invalid_status}    Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu: xxxxxxxx
 ${Error_with_invalid_broader}    Aineistossa olevaa BROADER-sarakkeen koodia ei löydy tunnuksella koodi1007.
 ${Error_with_same_broader}    BROADER-sarakkeen arvo viittaa koodiin itseensä.
 ${Error_with_duplicate_columns}    Aineistosta löytyi sama sarake useita kertoja: STATUS
