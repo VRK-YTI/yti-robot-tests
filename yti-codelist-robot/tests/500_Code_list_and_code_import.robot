@@ -247,7 +247,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element that contains text        ${concept_uri}  timeout=20
 
     Sleep                           5
-    Wait Until Keyword Succeeds     90 seconds    5 seconds    Switch Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Wait Until Keyword Succeeds     90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait Until Page Contains    Suositettava termi    timeout=60
     Wait Until Page Contains    tutkija    timeout=60
     Wait Until Page Contains    Person who does the research    timeout=60
@@ -255,7 +255,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Close Window
 
     Sleep               5
-    Switch Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
     [Teardown]    Test Case Teardown concept for code list from Terminologies
 
@@ -690,7 +690,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element that contains text        ${CODE_LIST_9}    timeout=20
 
     Sleep               10
-    Switch Window       url=${REFERENCE_DATA_ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=${CODE_LIST_9}
+    Select Window       url=${REFERENCE_DATA_ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=${CODE_LIST_9}
     Wait Until Page Contains    ${CODE_LIST_9}    timeout=20
     Click element with wait     ${CODELIST_VARIANTS_TAB}    timeout=20
     Wait Until Page Contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20

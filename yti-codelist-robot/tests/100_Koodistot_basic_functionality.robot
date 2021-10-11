@@ -32,13 +32,13 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Click element with wait     ${EUPL_LICENCE_PAGE}    timeout=20
 
     Sleep                           5
-    Wait Until Keyword Succeeds     90 seconds    5 seconds    Switch Window    url=https://ec.europa.eu/info/european-union-public-licence
+    Wait Until Keyword Succeeds     90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
 
     Wait Until Page Contains    European Union Public Licence    timeout=30
     Wait Until Page Contains    What is the EUPL?    timeout=30
 
     Sleep            5
-    Switch Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
@@ -47,7 +47,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 
     Sleep            5
-    Switch Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
+    Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
 
 103. Search for VALID code list
     [Documentation]    Search for VALID code list with frontpage search function.
@@ -223,42 +223,42 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 
     Sleep                           5
-    Switch Window                   title=Yhteentoimivuusalusta | Suomidigi
+    Select Window                   title=Yhteentoimivuusalusta | Suomidigi
     Close Window
 
     Sleep                           5
-    Switch Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link     Suomi.fi-sanastot
 
     Sleep                           5
-    Switch Window                   url=${TERMINOLOGIES_ENVIRONMENT_URL}
+    Select Window                   url=${TERMINOLOGIES_ENVIRONMENT_URL}
     Wait Until Page Contains        Sanastot                timeout=40
     Wait Until Page Contains        Hae sanastoja           timeout=40
     Wait Until Page Contains        Rajaa tietoalueella     timeout=40
     Close Window
 
     Sleep                           5
-    Switch Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link     Suomi.fi-tietomallit
 
     Sleep                           5
-    Switch Window                   url=${DATA_VOCABULARIES_ENVIRONMENT_URL}
+    Select Window                   url=${DATA_VOCABULARIES_ENVIRONMENT_URL}
     Wait Until Page Contains        Tietomallit         timeout=40
     Wait Until Page Contains        Etusivu             timeout=40
     Close Window
 
     Sleep                           5
-    Switch Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link     Suomi.fi-kommentit
 
     Sleep                           5
-    Switch Window                   url=${COMMENTS_ENVIRONMENT_URL}
+    Select Window                   url=${COMMENTS_ENVIRONMENT_URL}
     Wait Until Page Contains        Kommentit           timeout=40
     Wait Until Page Contains        Etusivu             timeout=40
     Close Window
 
     Sleep                           5
-    Switch Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
 113. Change content language for code list
     [Documentation]    Change content language for code list and check

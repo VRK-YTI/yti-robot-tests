@@ -53,10 +53,10 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait             id=external_ref_url_link        timeout=20
 
     Sleep               5
-    Switch Window       url=https://www.suomi.fi/etusivu/
+    Select Window       url=https://www.suomi.fi/etusivu/
 
     Sleep               5
-    Switch Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
     Click element with wait             ${LINK_MODAL_OK_BTN}    timeout=20
 

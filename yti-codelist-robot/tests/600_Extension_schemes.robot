@@ -1002,13 +1002,13 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait      ${EXPORT_JSON}    timeout=20
 
     Sleep               5
-    Switch Window       url=${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/O1234567890123456789012345678901234567111/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty
+    Select Window       url=${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/O1234567890123456789012345678901234567111/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty
     Page should contain    "codeValue" : "O1234567890123456789012345678901234567111",
     Page should contain    "uri" : "http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111",
     Close Window
 
     Sleep               5
-    Switch Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Select Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Click element with wait      ${EXPORT_DDL}    timeout=20
     Click element with wait      ${EXPORT_JSON_AS_FILE_BTN}    timeout=20
 
