@@ -108,7 +108,7 @@ ${REMOVE_CODE_LIST_CONF_BTN}            id=confirm_confirmation_modal_button
 ${CREATE CODE_LIST_BTN}                 id=create_new_codelist_button
 ${SEARCH_CODE_BOX_INPUT}                id=search_code_box_input
 ${CODELIST_INFO_TAB}                    id=codelist_info_tab            #//span[text() = 'TIEDOT' or text() = 'INFORMATION' or text() = 'UPPGIFTER']
-${CODELIST_CODES_TAB}                   id=codelist_codes_tabs          #//span[text() = 'KOODIT' or text() = 'CODES' or text() = 'KODER']
+${CODELIST_CODES_TAB}                   id=codelist_codes_tab           #//span[text() = 'KOODIT' or text() = 'CODES' or text() = 'KODER']
 ${CODELIST_VARIANTS_TAB}                id=codelist_variants_tab        #//span[text() = 'Variantit']  # or text() = '' or text() = '']
 ${ADD_DEFAULTCODE_BTN}                  id=add_code_button
 ${REMOVE_DEFAULTCODE}                   id=remove_code_link
