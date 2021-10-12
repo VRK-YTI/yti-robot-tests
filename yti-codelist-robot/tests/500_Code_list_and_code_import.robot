@@ -52,7 +52,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Click element with wait     ${CODELIST_CODES_TAB}    timeout=20
     Wait Until Page Contains    6 koodia    timeout=20
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
@@ -66,14 +65,12 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Click element with wait     ${CODELIST_CODES_TAB}
     Wait Until Page Contains    6 koodia    timeout=20
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
     Wait Until Page Contains    koodi504 - Koodi504    timeout=20
     Import codes in Excel format
     Upload codes    ${Update_Codes}
-    Click element with wait     ${CODELIST_CODES_TAB}
     Wait Until Page Contains    6 koodia    timeout=20
     Check updated code listing
     [Teardown]    Remove codelist teardown    ${CODE_LIST_8}
@@ -171,7 +168,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Click element with wait     ${CODELIST_CODES_TAB}    timeout=20
     Wait Until Page Contains    6 koodia    timeout=20
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
@@ -200,7 +196,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
     Import codes in CSV format
     Upload codes    ${Draft_Codes_with_broader_csv}
-    Click element with wait     ${CODELIST_CODES_TAB}
     Wait Until Page Contains    6 koodia    timeout=20
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
@@ -1065,7 +1060,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
-    Click element with wait     ${CODELIST_CODES_TAB}
     Wait Until Page Contains    6 koodia    timeout=20
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
@@ -1309,7 +1303,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Testikoodisto_T200}    ${CODE_LIST_7}
     Import codes in CSV format
     Upload codes    ${Codes_with_special_characters_csv}
-    Click element with wait     ${CODELIST_CODES_TAB}
     Wait Until Page Contains    11 koodia    timeout=20
     [Teardown]    Remove codelist teardown    ${CODE_LIST_7}
 
