@@ -41,7 +41,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    testikoodi02    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    Testikoodi 02    timeout=20
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2
     Click Code List Info Tab
     Check values from Valid Code list
     [Teardown]    Remove codelist teardown    ${CODE_LIST_9}
@@ -86,7 +87,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    NewCode001    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    newCode001    timeout=20
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2
     Remove code    NewCode001 - newCode001
     Click Code List Info Tab
     Wait Until Page Contains    ${CODE_LIST_8}    timeout=20
@@ -122,7 +124,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    testikoodi02    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    Testikoodi 02    timeout=20
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2
     Return to Koodistot frontpage
     Input Text with wait    ${SEARCH_BOX_INPUT}    ${CODE_LIST_11}  timeout=30
     Click element that contains text     ${CODE_LIST_11}    timeout=30
@@ -298,8 +301,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
     Click element with wait     ${SAVE_CODE_MOD_BTN}    timeout=20
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=60
-    Sleep  5
-    Click element with wait         ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2
     Click Code List Info Tab
     Click element with wait     ${MODIFY_CODE_LIST}     timeout=20
     Click element with wait     ${ADD_LINK_DDL}         timeout=30
@@ -347,8 +350,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
     Log To Console    Code links copied
-    Sleep  5
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2
     Click Code List Info Tab
     Wait Until Page Contains    englanti    timeout=20
     Wait Until Page Contains    suomi    timeout=20
@@ -733,7 +736,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    https://käyttöohje.fi    timeout=20
     Wait Until Page Contains    Julkaisu    timeout=20
     Wait Until Page Contains    Testijulkaisu_fi    timeout=20
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2
     Click element that contains text        testcode57 - Testcode 57    timeout=20
     Wait Until Page Contains    Lisenssi    timeout=20
     Wait Until Page Contains    Uusi lisenssi    timeout=20
@@ -799,8 +803,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Liittyvä koodisto    timeout=20
     Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
 
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
-
+    Select breadcrump link 2
     Import codes in CSV format
     Upload codes    ${Codes_update_sub_code_list_csv}
     Click element that contains text        testcode57 - Testcode 57    timeout=20
@@ -823,9 +826,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    NewCode001    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    newCode001    timeout=20
-    Wait Until Page Contains     - ${CODE_LIST_9}    timeout=20
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+    Wait Until Page Contains     - ${CODE_LIST_9}    timeout=20'
 
+    Select breadcrump link 2
     Remove code    NewCode001 - newCode001
     Click Code List Info Tab
     Wait Until Page Contains    ${CODE_LIST_8}    timeout=20
@@ -998,10 +1001,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    NewCode001    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    newCode001    timeout=20
-    Click Element with wait    ${2_BREADCRUMB_LINK}     timeout=30
 
+    Select breadcrump link 2
     Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
-    Log To Console    Version history tab exists on current ie. latest version after code was created
     Return to Koodistot frontpage
     Click Element with wait                 ${STATUS_DROPDOWN_BTN}      timeout=30
     Click element that contains text        ${ALL_STATUSES_FI}          timeout=30
@@ -1126,11 +1128,11 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element with wait   ${REMOVE_CODE_BTN}        timeout=20
     Click Element with wait   ${REMOVE_CODE_CONF_BTN}       timeout=20
     Click Element with wait   ${CLOSE_ERROR_MESSAGE_BTN}        timeout=20
-    Click Element with wait    ${2_BREADCRUMB_LINK}     timeout=30
 
+    Select breadcrump link 2
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep  5
-    Click Element with wait       ${2_BREADCRUMB_LINK}      timeout=30
+
+    Select breadcrump link 2
     Wait Until Element Is Visible    //*[contains(text(), "NewCode001 - newCode001")]    timeout=60
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
@@ -1156,7 +1158,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Voimassa oleva    timeout=20
     Wait Until Page Contains    Uuden koodin kuvaus    timeout=20
     Wait Until Page Contains    01.01.2019 - 01.01.2020    timeout=20
-    Click Element with wait   ${2_BREADCRUMB_LINK}      timeout=30
+
+    Select breadcrump link 2
     Click Code List Info Tab
     Wait Until Page Contains    Koodiston uusi kuvaus    timeout=20
     Update code list    ${Code_list_with_30_Codes_updated_csv}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
@@ -1254,20 +1257,16 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
     Create new code to code list    +    plus    ${DRAFT_STATUS}    ${EMPTY}
 
-    Sleep  3
-    Click Element with wait     ${2_BREADCRUMB_LINK}      timeout=30
+    Select breadcrump link 2
     Create new code to code list    &    ja    ${DRAFT_STATUS}    ${EMPTY}
 
-    Sleep  3
-    Click Element with wait     ${2_BREADCRUMB_LINK}      timeout=30
+    Select breadcrump link 2
     Create new code to code list    *    tähti    ${DRAFT_STATUS}    ${EMPTY}
 
-    Sleep  3
-    Click Element with wait     ${2_BREADCRUMB_LINK}      timeout=30
+    Select breadcrump link 2
     Create new code to code list    .    piste    ${DRAFT_STATUS}    ${EMPTY}
 
-    Sleep  3
-    Click Element with wait     ${2_BREADCRUMB_LINK}      timeout=30
+    Select breadcrump link 2
     Wait Until Page Contains    5 koodia    timeout=20
 
     Open Koodistot
@@ -1280,7 +1279,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait until page contains    Koodin nimi    timeout=20
     Wait until page contains    tähti    timeout=20
 
-    Click Element with wait     ${2_BREADCRUMB_LINK}      timeout=30
+    Select breadcrump link 2
     Remove code    . - piste
     Wait Until Page Contains    4 koodia    timeout=30
     [Teardown]    Remove codelist teardown    ${CODE_LIST_4}

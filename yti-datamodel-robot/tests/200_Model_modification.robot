@@ -29,6 +29,9 @@ ${class_json_ld_frame_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/a93
 ${class_framed_json_ld}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/61658254-be26-4815-a168-a9f4325d8d15
 ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/cad2b19c-faee-4aca-942c-2775ef13e268
 
+${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
+${PREFIX_1}       autom
+
 *** Test Cases ***
 200. Modify profile
     [Documentation]    Modify existing profile

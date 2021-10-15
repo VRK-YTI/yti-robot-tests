@@ -20,8 +20,7 @@ ${CONTENT_LANGUAGE_FI}          id=fi_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_SV}          id=sv_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_AR_SO}       id=ar-SO_content_lang_dropdown_button
 ${CONTENT_LANGUAGE_SW_UG}       id=sw-UG_content_lang_dropdown_button
-${2_BREADCRUMB_LINK}            id=2_breadcrumb_link
-${3_BREADCRUMB_LINK}            id=3_breadcrumb_link
+
 ${EUPL_LICENCE_PAGE}            id=license_link
 ${ALL_LANGUAGE_BTN}             id=all_languages_content_lang_dropdown_button
 ${REMOVE_AB_LANGUAGE}           id=remove_ab_languagecode_link

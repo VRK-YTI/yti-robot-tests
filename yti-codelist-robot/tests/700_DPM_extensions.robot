@@ -38,7 +38,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Hierarchy reference (en)                timeout=20
     Wait Until Page Contains    eee                                     timeout=20
 
-    Click Element with wait    ${2_BREADCRUMB_LINK}     timeout=30
+    Select breadcrump link 2
     Click Element with wait    ${EXTENSIONS_TAB}        timeout=20
     Click Element with wait    ${EXPORT_DDL}            timeout=20
     Click Element with wait    ${EXPORT_TYPE_EXCEL}     timeout=20
@@ -68,8 +68,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    DPM Metric (en)    timeout=20
 
-    Sleep                       5
-    Click element with wait     ${2_BREADCRUMB_LINK}                                    timeout=30
+    Select breadcrump link 2
     Click element that contains text       testcode28 - Testcode 28                    timeout=20
     Click element with wait     ${MODIFY_CODE_BTN}                                      timeout=20
     Input Text with wait        ${DPM_BALANCE_TYPE_INPUT}           Credit              timeout=20
@@ -101,8 +100,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create DPM extension        ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}       False           ${DRAFT_STATUS}
     Wait Until Page Contains    dpmExplicitDomain                       timeout=20
 
-    Sleep                       5
-    Click element with wait     ${2_BREADCRUMB_LINK}                    timeout=30
+    Select breadcrump link 2
     Click element that contains text        testcode57 - Testcode 57    timeout=60
     Click element with wait     ${MODIFY_CODE_BTN}                      timeout=20
     Input Text with wait        ${DPM_EXPLICIT_DOMAIN_INPUT}    yyy     timeout=20
@@ -125,7 +123,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Member XBRL code prefix (en)    timeout=20
     Wait Until Page Contains    yyy                             timeout=20
 
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element with wait     ${EXTENSIONS_TAB}       timeout=20
     Click element with wait     ${EXPORT_DDL}           timeout=20
     Click element with wait     ${EXPORT_TYPE_EXCEL}    timeout=20
@@ -141,8 +139,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create DPM extension        ${CREATE_DPM_DIMENSION_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    dpmDimension                                        timeout=20
 
-    Sleep                       5
-    Click element with wait     ${2_BREADCRUMB_LINK}                                timeout=30
+    Select breadcrump link 2
     Click element that contains text        testcode28 - Testcode 28                timeout=20
     Click element with wait     ${MODIFY_CODE_BTN}                                  timeout=20
     Input Text with wait        ${DPM_DIMENSION_DOMAIN_REFERENCE_INPUT}    aaa      timeout=20
@@ -166,7 +163,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Domain reference (en)    timeout=20
     Wait Until Page Contains    yyy    timeout=20
 
-    Click element with wait                 ${2_BREADCRUMB_LINK}        timeout=30
+    Select breadcrump link 2
     Click element that contains text        testcode57 - Testcode 57    timeout=20
 
     Wait Until Page Contains    dpmDimension    timeout=20
@@ -202,7 +199,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Member XBRL code prefix (en)    timeout=20
     Wait Until Page Contains    xxx    timeout=20
 
-    Click element with wait             ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element with wait             ${EXTENSIONS_TAB}       timeout=20
 
     Wait Until Element Is Visible    //*[contains(text(), "dpmDimension")]    timeout=20
@@ -232,15 +229,14 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create DPM extension    ${CREATE_DPM_TYPED_DOMAIN_BTN}    True    ${DRAFT_STATUS}
     Wait Until Page Contains    dpmTypedDomain    timeout=20
 
-    Sleep                       5
-    Click element with wait             ${2_BREADCRUMB_LINK}        timeout=30
+    Select breadcrump link 2
     Click element that contains text    testcode28 - Testcode 28    timeout=20
 
     Wait Until Page Contains    dpmTypedDomain    timeout=20
     Wait Until Page Contains    Data type (en)    timeout=20
     Wait Until Page Contains    -    timeout=20
 
-    Click element with wait             ${2_BREADCRUMB_LINK}        timeout=30
+    Select breadcrump link 2
     Click element that contains text    testcode54 - Testcode 54    timeout=20
 
     Wait Until Page Contains    dpmTypedDomain    timeout=20
@@ -286,7 +282,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Remove code    testcode57 - Testcode 57
     Wait Until Page Does Not Contain Element    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
 
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element with wait     ${EXTENSIONS_TAB}       timeout=20
 
     Wait Until Element Is Visible    //*[contains(text(), "dpmDimension")]    timeout=20
@@ -362,7 +358,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Member XBRL code prefix (en)    timeout=20
     Wait Until Page Contains    xxx    timeout=20
 
-    Click element with wait         ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Update code list    ${Code_list_codes_DPM_all_no_values}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
 
     Click element that contains text        testcode57 - Testcode 57    timeout=20
@@ -396,28 +392,23 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Set selenium speed              0.5
     Create code list                ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
 
-    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep                           2
-    Click element with wait         ${2_BREADCRUMB_LINK}       timeout=30
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}'
 
+    Select breadcrump link 2
     Create new code to code list    NewCode002    newCode002    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep                           2
-    Click element with wait         ${2_BREADCRUMB_LINK}       timeout=30
 
+    Select breadcrump link 2
     Create new code to code list    NewCode003    newCode003    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep                           2
-    Click element with wait         ${2_BREADCRUMB_LINK}       timeout=30
 
-    Sleep                           2
+
+    Select breadcrump link 2
     Create DPM extension            ${CREATE_DPM_METRIC_BTN}    True    ${DRAFT_STATUS}
     Wait Until Page Contains        DPM Metric (en)    timeout=20
-    Sleep                           2
-    Click element with wait         ${2_BREADCRUMB_LINK}       timeout=30
 
+    Select breadcrump link 2
     Create new code to code list    NewCode004    newCode004    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep                           2
-    Click element with wait         ${2_BREADCRUMB_LINK}       timeout=30
 
+    Select breadcrump link 2
     Wait Until Page Contains        4 koodia    timeout=20
 
     [Teardown]    Remove codelist teardown    ${CODE_LIST_8}

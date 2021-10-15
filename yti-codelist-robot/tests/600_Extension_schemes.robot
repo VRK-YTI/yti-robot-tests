@@ -25,7 +25,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    testcode25    timeout=20
     Wait Until Page Contains    Testikoodi 25    timeout=20
     Wait Until Page Contains    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/code/testcode25    timeout=20
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2b
     Click element with wait      ${EXTENSIONS_TAB}    timeout=20
 
     Wait Until Element Is Visible    //*[contains(@id,'222_view_extension')]    timeout=30
@@ -61,8 +62,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Laajennus    timeout=20
     Wait Until Page Contains    Koulutus, kulttuuri ja urheilu    timeout=20
 
-    Sleep                        5
-    Click element with wait      ${2_BREADCRUMB_LINK}       timeout=60
+    Select breadcrump link 2
     Click element with wait      ${EXPORT_DDL}              timeout=20
     Click element with wait      ${EXPORT_TYPE_EXCEL}       timeout=30
 
@@ -104,7 +104,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 
     Wait Until Page Contains    - Member 1 · Testcode 57 <=    timeout=20
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "- Member 1 · Testcode 57 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
     Wait Until Page Contains    Extension 1    timeout=20
 
@@ -177,8 +177,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    testcode57 - Testcode 57
     Page should not contain    - Jäsen2 · Testcode 29 <=
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
-
+    Select breadcrump link 3
     Wait Until Page Contains    Testilaajennus55    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "- Member 1 · Testcode 57 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
     Page Should Not Contain Element    ${EXPAND_ALL_BTN}
@@ -213,7 +212,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    <=    timeout=20
     Wait Until Page Contains    testcode28 - Testcode 28    timeout=20
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 3
     Click element with wait      ${EXPORT_DDL}    timeout=20
     Click element with wait      ${EXPORT_MEMBERS_TYPE_CSV}    timeout=20
 
@@ -295,7 +294,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - ${CODE_LIST_2}    Koodi1000    ${EMPTY}
     Wait Until Page Contains    Koodi1000 - Koodi1000    timeout=20
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 - ${CODE_LIST_2} - Testirekisteri")]    timeout=20
 
     [Teardown]    Remove codelist with extensions teardown    ${CODE_LIST_16}    ${CODE_LIST_2}
@@ -355,7 +354,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    01.01.2018 - 01.01.2020    timeout=20
     Wait Until Page Contains    URI    timeout=20
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "Laajenna kaikki")]    timeout=20
 
     Click element with wait      //*[contains(text(), "educ · Koulutus, kulttuuri ja urheilu")]    timeout=20
@@ -365,7 +364,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    08.01.2018 - 08.01.2020    timeout=20
     Wait Until Page Contains    URI    timeout=20
 
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element with wait      ${EXTENSIONS_TAB}    timeout=30
     Click element with wait      ${CALC_HIERARCHY_TAB}    timeout=30
 
@@ -383,7 +382,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    01.01.2018 - 01.01.2020    timeout=20
     Wait Until Page Contains    URI    timeout=20
 
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element with wait      ${VERSION_TAB}    timeout=30
     Wait Until Page Contains    Testikoodisto3 pitkillä arvoilla    timeout=20
     Wait Until Page Contains    Testikoodisto2 pitkillä arvoilla    timeout=20
@@ -393,7 +392,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Luonnos    timeout=20
     Wait Until Page Contains    Voimassa oleva    timeout=20
 
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element with wait      ${EXPORT_DDL}    timeout=20
     Click element with wait      ${EXPORT_TYPE_EXCEL}   timeout=30
 
@@ -473,7 +472,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Upload extension    ${Calc_def_hierarchy_extensions_csv}    ${FILE_FORMAT_CSV}
 
     Click element with wait      //*[contains(@id,'111_view_extension')]    timeout=20
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+
+    Select breadcrump link 2
     Click element with wait      ${VERSION_TAB}    timeout=30
 
     Wait Until Page Contains    ${CODE_LIST_16}    timeout=20
@@ -508,7 +508,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - ${CODE_LIST_2}    Koodi1000    ${EMPTY}
     Wait Until Page Contains    Koodi1000 - Koodi1000    timeout=20
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 - ${CODE_LIST_2} - Testirekisteri")]    timeout=20
 
     Return to Koodistot frontpage
@@ -574,7 +574,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    testiautomaatiokoodisto - ${CODE_LIST_2}    Koodi1000    ${EMPTY}
     Wait Until Page Contains    Koodi1000 - Koodi1000    timeout=20
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 - ${CODE_LIST_2} - Testirekisteri")]    timeout=60
 
     Return to Koodistot frontpage
@@ -605,7 +605,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    - Jäsen10 · Testikoodi 01 <=    timeout=20
     Wait Until Page Contains    - Jäsen9 · Testikoodi 16 · Testikoodisto2 pitkillä arvoilla · Testirekisteri <=    timeout=20
 
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 3
     Wait Until Page Contains    Testilaajennus22    timeout=20
     Wait Until Page Contains    10 jäsentä    timeout=20
 
@@ -639,8 +639,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 
     Click element with wait      ${SAVE_MEMBER}    timeout=20
     Wait Until Element Is Visible    ${MODIFY_MEMBER_BTN}    timeout=60
-    Sleep                        5
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=60
+
+    Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "Testcode 30 · ${CODE_LIST_16} · Testirekisteri")]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "Testcode 63 · Koodisto800 · Testirekisteri")]    timeout=20
 
@@ -694,7 +694,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Element Is Visible    //*[contains(text(), "Testcode 28 · ${CODE_LIST_16} · Testirekisteri")]    timeout=60
     Wait until page contains    60 jäsentä    timeout=20
 
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Create extension    ${DEFINITION_HIERARCHY}    ${EXTENSION_VALUE_2}    ${EXTENSION_NAME_2}    ${DRAFT_STATUS}    ${CODE_LIST_22}    False
     Wait until page contains    Tällä laajennuksella ei ole yhtään jäsentä.    timeout=30
     Click element with wait      ${EXTENSION_DDL}    timeout=20
@@ -755,9 +755,9 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait      //*[contains(text(), "800 - Koodisto800")]    timeout=20
     Click element with wait      //*[contains(text(), "Testcode 63 - Koodisto800")]    timeout=20
     Click element with wait      ${SAVE_MEMBER}    timeout=20
-    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
-    Sleep                        5
-    Click element with wait      ${3_BREADCRUMB_LINK}    timeout=60
+    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60'
+
+    Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "Testcode 30 · ${CODE_LIST_16} · Testirekisteri")]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "Testcode 63 · Koodisto800 · Testirekisteri")]    timeout=20
 
@@ -791,7 +791,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Element Is Visible    //*[contains(text(), "Testcode 28 · Koodisto300 · Testirekisteri")]    timeout=60
     Wait until page contains    30 jäsentä    timeout=20
 
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click Code List Info Tab
     Wait until page contains    Asuminen    timeout=20
     Wait until page contains    Vakiokoodi    timeout=20
@@ -852,7 +852,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait until page contains    ${Error_linked_code}    timeout=20
     Click element with wait      ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
 
-    Click element with wait      ${2_BREADCRUMB_LINK}                       timeout=30
+    Select breadcrump link 2
     Click element with wait      ${EXTENSIONS_TAB}                          timeout=30
     Click element with wait      //*[contains(@id,'111_view_extension')]    timeout=30
     Delete extension
@@ -1047,7 +1047,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait until page contains    115 jäsentä    timeout=20
     Wait Until Element Is Enabled    ${EXPAND_ALL_BTN}    timeout=20
 
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element with wait      ${EXTENSIONS_TAB}    timeout=20
     Click element with wait      ${CALC_HIERARCHY_TAB}    timeout=20
     Click element with wait      id=test_100ext2_view_extension    timeout=30
@@ -1089,13 +1089,13 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Input Text with wait         ${SEARCH_BOX_INPUT}    rty                     timeout=30
     Click element with wait      ${SEARCH_EXTENSION_CHECKBOX}                   timeout=30
 
-    sleep                        2
+    Sleep                        2
     Click element with wait      ${PROPERTYTYPE_FILTER_DDL}                     timeout=30
     Click element with wait      ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}     timeout=30
 
-    Wait Until Element Is Not Visible    //*[contains(text(), "${CODE_LIST_16}")]    timeout=60
-    Click element with wait      ${PROPERTYTYPE_FILTER_DDL}                     timeout=30
-    Click element with wait      ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
+    Wait Until Element Is Not Visible   //*[contains(text(), "${CODE_LIST_16}")]    timeout=60
+    Click element with wait             ${PROPERTYTYPE_FILTER_DDL}                     timeout=30
+    Click element with wait             ${PROPERTYTYPE_CALCULATIONHIERARCHY_FILTER}    timeout=30
 
     Wait Until Element Is Not Visible    //*[contains(text(), "${CODE_LIST_16}")]    timeout=60
 
@@ -1133,9 +1133,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Select superuser
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
-    Sleep    5
 
-    Click element with wait      ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    DCAT-AP-luokitus    True
     Create member for calculation hierarchy    ${MEMBER_NAME_1}    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Koodi1111    ${EMPTY}
 
@@ -1151,8 +1150,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click Element with wait    id=test_100ext2_view_extension
     Wait Until Page Contains    25 jäsentä    timeout=20
     Create member for calculation hierarchy    Jäsen10    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testikoodi 01    Testikoodi 06
-    Sleep    5
-    Click Element with wait    ${3_BREADCRUMB_LINK}
+
+    Select breadcrump link 3
     Wait Until Page Contains    26 jäsentä    timeout=20
 
     [Teardown]    Remove codelist teardown    ${CODE_LIST_25}

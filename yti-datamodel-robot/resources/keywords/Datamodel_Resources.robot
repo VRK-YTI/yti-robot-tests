@@ -253,9 +253,7 @@ Go Back To Data Vocabularies Frontpage
 
 Create Profile
     [Arguments]    ${profile}    ${prefix}
-    Sleep  ${SLEEP_TIMEOUT}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
-    Sleep  ${SLEEP_TIMEOUT}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${profile}")]    limit=1
     run keyword if    ${model_exists}    Delete Existing Profile And Create New    ${profile}    ${prefix}
     ...    ELSE    Create New Profile    ${profile}    ${prefix}
@@ -292,7 +290,6 @@ Create New Profile
     Click Element with wait   //*[contains(text(), "Testiorganisaatio")]
     Click Element with wait   ${SAVE_NEW_MODEL_BTN}
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
-    Log To Console    ${profile} profile created
 
 Delete Testiautomaatio profile
     Sleep  ${SLEEP_TIMEOUT}

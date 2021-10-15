@@ -31,6 +31,9 @@ ${TERMINOLOGIES ENVIRONMENT URL}        https://sanastot.dev.yti.cloud.vrk.fi/
 ${DATA VOCABULARIES ENVIRONMENT URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
 ${REFERENCE DATA ENVIRONMENT URL}       https://koodistot.dev.yti.cloud.vrk.fi/
 
+${2_BREADCRUMB_LINK}            id=2_breadcrumb_link
+${3_BREADCRUMB_LINK}            id=3_breadcrumb_link
+
 *** Keywords ***
 Select Superuser
     Select user             ${SUPER_USER_ID}    ${SUPER_USER_NAME}
@@ -87,3 +90,12 @@ Check Mailbox
     Open Chrome to Environment    ${invitationLink}
 
     Close Mailbox
+
+Select breadcrump link 2
+    sleep                       10
+    Click element with wait     ${2_BREADCRUMB_LINK}                        timeout=20
+
+
+Select breadcrump link 3
+    sleep                       10
+    Click element with wait     ${3_BREADCRUMB_LINK}                        timeout=20

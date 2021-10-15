@@ -269,7 +269,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    URI                                         timeout=20
     Wait Until Page Contains    Viimeisin muokkaus                          timeout=20
 
-    Click element with wait     ${2_BREADCRUMB_LINK}                        timeout=20
     Click Code List Info Tab
     Wait Until Page Contains    Tunnus                                      timeout=20
     Wait Until Page Contains    dcat01                                      timeout=20
@@ -337,7 +336,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    URI                                             timeout=30
     Wait Until Page Contains    Viimeisin muokkaus                              timeout=30
 
-    Click element with wait     ${2_BREADCRUMB_LINK}    timeout=20
+    Select breadcrump link 2
     Click Code List Info Tab
     Wait Until Page Contains    Tunnus                              timeout=30
     Wait Until Page Contains    dcat01                              timeout=30

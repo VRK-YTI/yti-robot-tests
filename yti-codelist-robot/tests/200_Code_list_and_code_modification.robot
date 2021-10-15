@@ -310,7 +310,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Kuvaus_sw               timeout=60
     Wait Until Page Contains    Määritelmä_sw           timeout=60
 
-    Click element with wait         ${2_BREADCRUMB_LINK}    timeout=60
+    Select breadcrump link 2
     Wait Until Element Is Visible   ${CODE_LIST_DDL}        timeout=60
     Click Code List Info Tab
 
@@ -532,7 +532,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Koodin arvo    timeout=60
     Wait Until Page Contains    Voimassa oleva    timeout=60
 
-    Click element with wait             ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=30
     Import codes in CSV format
     Upload codes    ${Codes_status_with_space_csv}
@@ -564,7 +564,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Lisenssi                            timeout=60
     Wait Until Page Contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=60
 
-    Click element with wait             ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=30
     Import codes in CSV format
     Upload codes    ${Code_links_with_space_csv}
@@ -574,7 +574,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Page Should Not Contain    Liittyvä linkki
     Page Should Not Contain    Lisenssi
 
-    Click element with wait             ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Click element that contains text    testcode28 - Testcode 28    timeout=20
     Wait Until Page Contains    Käyttöohje                      timeout=60
     Wait Until Page Contains    https://www.suomi.fi/viestit    timeout=60
@@ -603,7 +603,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    newCode001_fi                   timeout=20
     Wait Until Page Contains    newCode001_sv                   timeout=20
 
-    Click element with wait             ${2_BREADCRUMB_LINK}    timeout=30
+    Select breadcrump link 2
     Remove code    NewCode001 - newCode001_fi
     Click Code List Info Tab
     Wait Until Page Contains    ${CODE_LIST_8}_fi    timeout=20

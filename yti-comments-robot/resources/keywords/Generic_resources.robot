@@ -12,8 +12,7 @@ ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
 ${ORGANIZATION_1}    Testiorganisaatio
 ${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
-${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
-${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
+
 ${REFERENCE_DATA_TOOL}    id=codelist_integration_container_type_filter_dropdown
 ${TERMINOLOGIES_TOOL}    id=terminology_integration_container_type_filter_dropdown
 ${DATA_VOCABULARIES_TOOL}    id=datamodel_integration_container_type_filter_dropdown

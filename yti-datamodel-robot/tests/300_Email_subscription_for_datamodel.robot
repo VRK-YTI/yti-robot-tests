@@ -7,6 +7,10 @@ Test Setup        Test Case Setup Admin
 
 Resource          ../resources/resources_and_libraries.robot
 
+*** Variables ***
+${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
+${PREFIX_1}       autom
+
 *** Test Cases ***
 300. Add and remove email subscription for new profile
     [Documentation]    Add and remove email subscription for new profile

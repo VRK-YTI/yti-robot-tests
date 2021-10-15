@@ -19,8 +19,7 @@ ${Koodisto6000_variant}    id=test_Koodisto6000_variant_link
 ${DRAFT_STATUS}    id=DRAFT_status_input_dropdown
 ${VALID_STATUS}    id=VALID_status_input_dropdown
 ${CONTENT_LANGUAGE_EN}    id=en_content_lang_dropdown_button
-${2_BREADCRUMB_LINK}    id=2_breadcrumb_link
-${3_BREADCRUMB_LINK}    id=3_breadcrumb_link
+
 #Frontpage buttons
 ${USER_RIGHT_MANAGEMENT}    id=navigation_groupmanagement_link
 ${STATUS_DROPDOWN_BTN}    id=selected_status_filter_dropdown

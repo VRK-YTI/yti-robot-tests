@@ -5,7 +5,6 @@ Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup Admin
 
-
 Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
@@ -19,6 +18,9 @@ ${Add_association_text}    Onnittelut assosiaation lisäämisessä onnistumisest
 ${LANGUAGE_DROPDOWN_BTN}    id=ui_language_dropdown
 ${LANGUAGE_EN}    id=en_ui_language_dropdown
 ${LANGUAGE_FI}    id=fi_ui_language_dropdown
+
+${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
+${PREFIX_1}       autom
 
 *** Test Cases ***
 100. Open Information about the service page
@@ -41,7 +43,8 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     [Tags]    regression    tietomallit    test    100
     Click Element with wait   ${EUPL_LICENSE_LINK}      timeout=20
 
-    Switch window with wait    url=https://ec.europa.eu/info/european-union-public-licence
+    sleep                           2
+    Switch window with wait         url=https://ec.europa.eu/info/european-union-public-licence
     Wait Until Page Contains        European Union Public Licence    timeout=30
     Wait Until Page Contains        What is the EUPL?    timeout=30
 
