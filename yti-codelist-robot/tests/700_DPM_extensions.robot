@@ -392,7 +392,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Set selenium speed              0.5
     Create code list                ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
 
-    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}'
+    Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
 
     Select breadcrump link 2
     Create new code to code list    NewCode002    newCode002    ${DRAFT_STATUS}    ${EMPTY}

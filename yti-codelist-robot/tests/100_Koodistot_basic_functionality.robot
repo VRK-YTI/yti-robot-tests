@@ -367,7 +367,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains            1 hakutulos                                     timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]        timeout=30
 
-    Select user    ${CODELIST_USER_ID}    ${CODELIST_USER_NAME}
+    Select codelist user
     Input text with wait                    id=search_box_input      ${CODE_LIST_26}    timeout=30
     Wait Until Page Contains                1 hakutulos                                 timeout=30
     Wait Until Page Contains Element        //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
@@ -381,7 +381,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Input text with wait        id=search_box_input      ${CODE_LIST_26}            timeout=30
     Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.                timeout=60
 
-    Select user    ${MEMBER_USER_ID}    ${MEMBER_USER_NAME}
+    Select member user
     Input text with wait                id=search_box_input      ${CODE_LIST_26}    timeout=30
     Wait Until Page Contains            1 hakutulos                                 timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30

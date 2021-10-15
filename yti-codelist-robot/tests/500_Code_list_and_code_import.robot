@@ -826,7 +826,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    NewCode001    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    newCode001    timeout=20
-    Wait Until Page Contains     - ${CODE_LIST_9}    timeout=20'
+    Wait Until Page Contains     - ${CODE_LIST_9}    timeout=20
 
     Select breadcrump link 2
     Remove code    NewCode001 - newCode001

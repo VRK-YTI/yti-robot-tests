@@ -755,7 +755,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait      //*[contains(text(), "800 - Koodisto800")]    timeout=20
     Click element with wait      //*[contains(text(), "Testcode 63 - Koodisto800")]    timeout=20
     Click element with wait      ${SAVE_MEMBER}    timeout=20
-    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60'
+    Wait Until Element Is Enabled    ${MODIFY_MEMBER_BTN}    timeout=60
 
     Select breadcrump link 3
     Wait Until Page Contains Element    //*[contains(text(), "Testcode 30 · ${CODE_LIST_16} · Testirekisteri")]    timeout=20

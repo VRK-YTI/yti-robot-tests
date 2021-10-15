@@ -101,11 +101,12 @@ Resource          ../resources/resources_and_libraries.robot
     ...    Add new code for commenting, select another user and send comment.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    select superuser
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
-    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+
+    Select admin user
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Click Element with wait    ${COMMENTS_TAB}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
@@ -118,7 +119,7 @@ Resource          ../resources/resources_and_libraries.robot
     ...    Add new codes for commenting, remove selected codes from comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
@@ -145,7 +146,7 @@ Resource          ../resources/resources_and_libraries.robot
     ...    Add new code without prefLabel for commenting, delete code list and comment round.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_Code_without_prefLabel}    ${CODE_LIST_8}
-    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    testcode40    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Wait Until Page Contains    kommentti1    timeout=20
@@ -165,7 +166,7 @@ Resource          ../resources/resources_and_libraries.robot
     ...    Add resources for commenting, send comments from three users and check comment round results.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select admin user
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
@@ -174,20 +175,20 @@ Resource          ../resources/resources_and_libraries.robot
     Comment On Resource 0    Kommentti 1    ${SUPERSEDED_0}
     Comment On Resource 1    Kommentti 2    ${VALID_1}
     Send Comments
-    Log To Console    First commenter's comments added
+
     Select User    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Comment On Resource 1    Kommentti 4    ${VALID_1}
     Send Comments
-    Log To Console    Second commenter's comments added
-    Select User    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+
+    Select superuser
     Start Commenting
     Comment On Resource 0    Kommentti 5    ${INVALID_0}
     Comment On Resource 1    Kommentti 6    ${VALID_1}
     Send Comments
     Log To Console    Third commenter's comments added
-    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select admin user
     Close Comment Round
 
     Click Element with wait   ${RESOURCES_TAB}    timeout=60
@@ -198,6 +199,7 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    Voimassa oleva:    timeout=20
     Wait Until Page Contains    (100.0 %)    timeout=20
     Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_CLOSED}
 
 211. Send inline comment for resource
@@ -205,7 +207,7 @@ Resource          ../resources/resources_and_libraries.robot
     ...    Add resources for commenting, send comments from two users and inline comments from one user.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select admin user
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
@@ -218,7 +220,7 @@ Resource          ../resources/resources_and_libraries.robot
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Send Comments
 
-    Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    Select admin
     Click Element with wait    ${RESOURCES_TAB}
     Click Element with wait    ${VIEW_COMMENT_BUBLE_0}
 
@@ -268,6 +270,5 @@ Resource          ../resources/resources_and_libraries.robot
     Set Selenium Speed    ${SELENIUM_SPEED}
     GO To    ${uri}
     Wait Until Page Contains    Testiautomaatiokierros    timeout=30
-    Log To Console    URI link opened successfully
 
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
