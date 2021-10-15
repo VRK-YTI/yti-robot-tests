@@ -1,5 +1,4 @@
 *** Variables ***
-${SELENIUM_SPEED}    0.5
 ${REFERENCE_DATA_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${ADMIN_USER_NAME}    Test Admin

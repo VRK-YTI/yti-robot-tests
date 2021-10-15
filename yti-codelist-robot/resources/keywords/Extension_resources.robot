@@ -166,7 +166,7 @@ Remove codelist
 Remove code lists with extensions
     [Arguments]    @{code_list_items}
     Return to Koodistot frontpage
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     FOR    ${code_list_item}    IN    @{code_list_items}
         Input text with wait                ${SEARCH_BOX_INPUT}    ${code_list_item}    timeout=30
         Click element that contains text    ${code_list_item}                           timeout=30

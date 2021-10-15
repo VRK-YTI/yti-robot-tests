@@ -881,6 +881,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 
     Input Text with wait   ${SEARCH_BOX_INPUT}    rty789         timeout=30
     Click element with wait      ${SEARCH_EXTENSION_CHECKBOX}    timeout=30
+
+    sleep  2
     Click element with wait      ${PROPERTYTYPE_FILTER_DDL}    timeout=30
     Click element with wait      ${PROPERTYTYPE_CROSSREFERENCELIST_FILTER}    timeout=30
     Wait Until Page Contains            Hakutulokset                                timeout=30
@@ -1001,14 +1003,12 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait      ${EXPORT_DDL}    timeout=20
     Click element with wait      ${EXPORT_JSON}    timeout=20
 
-    Sleep               5
-    Select Window       url=${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/O1234567890123456789012345678901234567111/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty
+    Switch window with wait     url=${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/O1234567890123456789012345678901234567111/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty
     Page should contain    "codeValue" : "O1234567890123456789012345678901234567111",
     Page should contain    "uri" : "http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111",
     Close Window
 
-    Sleep               5
-    Select Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait         title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Click element with wait      ${EXPORT_DDL}    timeout=20
     Click element with wait      ${EXPORT_JSON_AS_FILE_BTN}    timeout=20
 
@@ -1088,6 +1088,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Return to Koodistot frontpage
     Input Text with wait         ${SEARCH_BOX_INPUT}    rty                     timeout=30
     Click element with wait      ${SEARCH_EXTENSION_CHECKBOX}                   timeout=30
+
+    sleep                        2
     Click element with wait      ${PROPERTYTYPE_FILTER_DDL}                     timeout=30
     Click element with wait      ${PROPERTYTYPE_DEFINITIONHIERARCHY_FILTER}     timeout=30
 
@@ -1129,7 +1131,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Select user    ${CODELIST_USER_ID}    ${CODELIST_USER_NAME}
+    Select superuser
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
     Sleep    5
 
@@ -1146,13 +1148,11 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    25 koodia    timeout=90
     Select Tab    ${EXTENSIONS_TAB}
     Select Tab    ${CALC_HIERARCHY_TAB}
-    Wait Until Element Is Enabled    id=test_100ext2_view_extension    timeout=30
-    Click Element    id=test_100ext2_view_extension
+    Click Element with wait    id=test_100ext2_view_extension
     Wait Until Page Contains    25 jäsentä    timeout=20
     Create member for calculation hierarchy    Jäsen10    ${COMPARISON_OPERATOR_1}    ${UNARY_OPERATOR_1}    ${EMPTY}    Testikoodi 01    Testikoodi 06
     Sleep    5
-    Wait Until Element Is Visible    ${3_BREADCRUMB_LINK}    timeout=30
-    Click Element    ${3_BREADCRUMB_LINK}
+    Click Element with wait    ${3_BREADCRUMB_LINK}
     Wait Until Page Contains    26 jäsentä    timeout=20
 
     [Teardown]    Remove codelist teardown    ${CODE_LIST_25}

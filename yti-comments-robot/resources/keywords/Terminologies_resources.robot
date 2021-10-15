@@ -74,7 +74,7 @@ Terminology Teardown
 
 Terminology Test Case Setup
     Open Sanastot
-    Set Selenium Speed    0.5
+    Set Selenium Speed    ${SELENIUM_SPEED}
     Terminology Select user
 
 Terminology Test Case Teardown
@@ -87,11 +87,6 @@ Terminology Select user
     Click Element    ${USER_1}
     Wait Until Page Contains    Test Admin    timeout=60
     Sleep    1
-
-Open Sanastot
-    Open browser with settings      ${TERMINOLOGIES_ENVIRONMENT_URL}
-    Wait Until Page Contains    Sanastot    timeout=20
-    Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=20
 
 Go back to Sanastot frontpage
     Wait Until Page Contains Element    ${TERMINOLOGY_MAIN_PAGE_LINK}    timeout=60

@@ -241,16 +241,14 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ${concept_uri}=    Catenate    SEPARATOR=    ${concept_uri_prefix}    ${uri_environment}
     Click Element that contains text        ${concept_uri}  timeout=20
 
-    Sleep                           5
-    Wait Until Keyword Succeeds     90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait Until Page Contains    Suositettava termi    timeout=60
     Wait Until Page Contains    tutkija    timeout=60
     Wait Until Page Contains    Person who does the research    timeout=60
     Wait Until Page Contains    http://uri.suomi.fi/terminology/111/concept-1    timeout=60
     Close Window
 
-    Sleep               5
-    Select Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
     [Teardown]    Test Case Teardown concept for code list from Terminologies
 
@@ -492,7 +490,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    automobiili    timeout=20
     Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait Until Page Contains    Tämä on kulkuneuvo    timeout=20
-    Return to Koodistot frontpage
+
     Close All Browsers
     Check concept suggestion in Terminologies
     [Teardown]    Test Case Teardown Terminologies
@@ -514,8 +512,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    automobiili    timeout=20
     Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
     Wait Until Page Contains    Tämä on kulkuneuvo    timeout=20
-    Log To Console    Code values checked
-    Return to Koodistot frontpage
+
     Close All Browsers
     Check concept suggestion in Terminologies
     [Teardown]    Test Case Teardown Code with concept
@@ -684,8 +681,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element with wait     ${CODELIST_VARIANTS_TAB}    timeout=20
     Click element that contains text        ${CODE_LIST_9}    timeout=20
 
-    Sleep               10
-    Select Window       url=${REFERENCE_DATA_ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=${CODE_LIST_9}
+    Switch window with wait     url=${REFERENCE_DATA_ENVIRONMENT_URL}codescheme;registryCode=test;schemeCode=Koodisto7000
     Wait Until Page Contains    ${CODE_LIST_9}    timeout=20
     Click element with wait     ${CODELIST_VARIANTS_TAB}    timeout=20
     Wait Until Page Contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
@@ -1244,7 +1240,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Upload codelist in Excel format    ${Code_list_test_dcat}    ${CODE_LIST_20}
 
     Open Koodistot
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
     Wait Until Page Contains    ${Json_export_dcat}    timeout=20
     Switch Browser    1
@@ -1275,7 +1271,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    5 koodia    timeout=20
 
     Open Koodistot
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     GO To    http://uri.suomi.fi/codelist/test/T100/code/*?env=${ENVIRONMENT_IDENTIFIER}
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    T100    timeout=20

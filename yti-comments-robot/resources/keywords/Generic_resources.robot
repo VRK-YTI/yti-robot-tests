@@ -1,5 +1,4 @@
 *** Variables ***
-${SELENIUM_SPEED}    0.5
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${SUPER_USER_ID}    id=testisuperuser@localhost
@@ -116,21 +115,6 @@ ${ADD_USERS_BTN}    id=add_users_button
 ${USERS_MODAL_OPEN}    class=modal-content
 
 *** Keywords ***
-Test Case Setup Admin
-    Open Comments
-    Set Selenium Speed    ${SELENIUM_SPEED}
-    Select Admin
-
-Test Case Setup Superuser
-    Open Comments
-    Set Selenium Speed    ${SELENIUM_SPEED}
-    Select Superuser
-
-Open Comments
-    Open Browser with Settings      ${COMMENTS_ENVIRONMENT_URL}
-    Wait Until Page Contains    Kommentit    timeout=60
-    Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=60
-
 Return To Comments Frontpage
     Click Element with wait   ${FRONTPAGE_LINK}     timeout=60
 
@@ -266,14 +250,10 @@ Select Comment Round
     Click Element with wait    //*[contains(text(), "${comment_round}")]     timeout=30
 
 Add Email Subscription For Comment Round
-    Wait Until Element Is Enabled    ${COMMENTROUND_DDL}    timeout=20
-    Click Element    ${COMMENTROUND_DDL}
-    Wait Until Element Is Enabled    ${ADD_SUBSCRIPTION_BTN}    timeout=20
-    Click Element    ${ADD_SUBSCRIPTION_BTN}
-    Wait Until Element Is Enabled    ${CONFIRMATION_YES_BTN}    timeout=20
-    Click Element    ${CONFIRMATION_YES_BTN}
+    Click Element with wait    ${COMMENTROUND_DDL}
+    Click Element with wait    ${ADD_SUBSCRIPTION_BTN}
+    Click Element with wait    ${CONFIRMATION_YES_BTN}
     Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
-    Log To Console    Email subscription added
 
 Remove Email Subscription For Comment Round
     Click Element with wait    ${COMMENTROUND_DDL}      timeout=20
@@ -295,7 +275,6 @@ Restore Finnish Language
     Wait Until Page Contains    Kaikki työkalut    timeout=20
     Wait Until Page Contains    Kaikki organisaatiot    timeout=20
     Wait Until Page Contains    Kaikki tilat    timeout=20
-    Close All Browsers
 
 Select Tab
     [Arguments]    ${tab}

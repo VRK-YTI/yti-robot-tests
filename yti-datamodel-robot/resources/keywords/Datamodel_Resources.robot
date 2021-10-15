@@ -4,7 +4,6 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${SLEEP_TIMEOUT}    2
-${SELENIUM_SPEED}    0.5
 ${USER_1}         id=impersonate_user_testiadmin@localhost_link
 ${MODEL_1}        Testiautomaatiomalli
 ${MODEL_2}        Tilamalli
@@ -22,10 +21,6 @@ ${NAMESPACE_1}    Julkishallinnon tietokomponentit
 ${DEV_suffix}     ?env=awsdev
 ${TEST_suffix}    ?env=awstest
 #Users
-${TEST_ADMIN_ID}    id=impersonate_user_testiadmin@localhost_link
-${TEST_ADMIN_NAME}    Test Admin
-${TEST_SUPERUSER_ID}    id=impersonate_user_testisuperuser@localhost_link
-${TEST_SUPERUSER_NAME}    Test Superuser
 ${TEST_DATAMODEL_ID}    id=impersonate_user_testdatamodel@localhost_link
 ${TEST_DATAMODEL_NAME}    Test Datamodel
 #Frontpage
@@ -253,21 +248,6 @@ ${error_reserved_namespace_prefix}    Tunniste on jo käytössä tai on varattu
 ${namespace_in_use}    Tunniste on jo käytössä
 
 *** Keywords ***
-Test Case Setup
-    [Arguments]    ${user_id}    ${user_name}
-    Open Tietomallit
-    Set Selenium Speed    ${SELENIUM_SPEED}
-    Select user           ${user_id}            ${user_name}
-
-Open Tietomallit
-    Open Browser with Settings      ${DATA_VOCABULARIES_ENVIRONMENT_URL}
-    Wait Until Page Contains    Tietomallit    timeout=20
-    Wait Until Page Contains    KIRJAUDU SISÄÄN    timeout=20
-
-Go back to Data Vocabularies frontpage and close browsers
-    Click Element with wait    ${MAIN_PAGE_LINK}
-    Close All Browsers
-
 Go Back To Data Vocabularies Frontpage
     Click Element with wait   ${MAIN_PAGE_LINK}  timeout=60
 
@@ -351,7 +331,7 @@ Create New Core Vocabulary
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    ${VOCABULARY_ADD_CLASSIFICATION}
     Click Element with wait    //*[contains(text(), "Asuminen")]
-    Click Element    ${VOCABULARY_ADD_CONTRIBUTOR}
+    Click Element with wait   ${VOCABULARY_ADD_CONTRIBUTOR}
     Click Element with wait    //*[contains(text(), "Testiorganisaatio")]
     Click Element with wait    ${SAVE_NEW_CORE_VOCABULARY_BTN}
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
@@ -537,9 +517,9 @@ Deselect properties for class and save
         Unselect Checkbox    ${class_property}
         Checkbox Should Not Be Selected    ${class_property}
     END
-    Click Element with wait    ${CONFIRM_ADD_PROPERTIES}
-    Click Element with wait    ${SAVE_CLASS}
-    Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
+    Click Element with wait         ${CONFIRM_ADD_PROPERTIES}
+    Click Element with wait         ${SAVE_CLASS}
+    Wait Until Element Is Visible   ${MODIFY_CLASS}    timeout=60
 
 Add Attribute
     [Arguments]    ${attribute}
@@ -587,7 +567,7 @@ Create New Attribute
 
 Add Sub Attribute
     [Arguments]    ${model}    ${attribute}    ${attribute_link}
-    Click Element    ${ADD_NEW_ATTRIBUTE_BTN}
+    Click Element with wait   ${ADD_NEW_ATTRIBUTE_BTN}
     Sleep  ${SLEEP_TIMEOUT}
     Input Text with wait    ${TEXT_FILTER_SEARCH_INPUT}    ${attribute}
     Sleep  ${SLEEP_TIMEOUT}
@@ -632,49 +612,48 @@ Create new association
 
 Add Association
     [Arguments]    ${association}
-    Click Element with wait    ${MODIFY_CLASS}
-    Click Element with wait    ${ADD_PROPERTY_DDL}
-    Click Element with wait    ${ADD_PROPERTY_BTN}
-    Click Element with wait    ${ALL_TYPES_DDL}
-    Click Element with wait    //*[contains(text(), "Assosiaatio")]
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${SEARCH_ATTRIBUTE_INPUT}    ${association}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(@id, "create_new_LisaaUusiAssosiaatio")]
-    Click Element with wait    //*[contains(@id, "create_new_LuoUusiAssosiaatio")]
-    Click Element with wait    id=searchConceptModalConfirmButton
-    Click Element    ${CONFIRM_PREDICATE_BTN} 
-    Sleep    2
+    Click Element with wait     ${MODIFY_CLASS}
+    Click Element with wait     ${ADD_PROPERTY_DDL}
+    Click Element with wait     ${ADD_PROPERTY_BTN}
+    Click Element with wait     ${ALL_TYPES_DDL}
+    Click Element with wait     //*[contains(text(), "Assosiaatio")]
+    Sleep                       ${SLEEP_TIMEOUT}
+    Input Text with wait        ${SEARCH_ATTRIBUTE_INPUT}    ${association}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Click Element with wait     //*[contains(@id, "create_new_LisaaUusiAssosiaatio")]
+    Click Element with wait     //*[contains(@id, "create_new_LuoUusiAssosiaatio")]
+    Click Element with wait     id=searchConceptModalConfirmButton
+    Click Element with wait     ${CONFIRM_PREDICATE_BTN}
 
 Add Sub Association
     [Arguments]    ${model}    ${association}    ${association_link}
-    Click Element with wait    ${ADD_NEW_ASSOCIATION_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(@id,'${association_link}_search_class_link')]       timeout=60
-    Click Element with wait    ${ACTIONS_BTN}
-    Click Element with wait    ${CREATE_SUB_PREDICATE_BTN}
+    Click Element with wait     ${ADD_NEW_ASSOCIATION_BTN}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Input Text with wait        ${TEXT_FILTER_SEARCH_INPUT}    ${association}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Click Element with wait     //*[contains(@id,'${association_link}_search_class_link')]       timeout=60
+    Click Element with wait     ${ACTIONS_BTN}
+    Click Element with wait     ${CREATE_SUB_PREDICATE_BTN}
 
 Copy Association
     [Arguments]    ${model}    ${association}    ${association_link}
-    Click Element with wait    ${ADD_NEW_ASSOCIATION_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(@id,'${association_link}_search_class_link')]       timeout=60
-    Click Element with wait    ${ACTIONS_BTN}
-    Click Element with wait    ${COPY_PREDICATE_BTN}
+    Click Element with wait     ${ADD_NEW_ASSOCIATION_BTN}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Input Text with wait        ${TEXT_FILTER_SEARCH_INPUT}    ${association}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Click Element with wait     //*[contains(@id,'${association_link}_search_class_link')]       timeout=60
+    Click Element with wait     ${ACTIONS_BTN}
+    Click Element with wait     ${COPY_PREDICATE_BTN}
 
 Add Super Association
     [Arguments]    ${model}    ${association}    ${association_link}
-    Click Element with wait    ${ADD_NEW_ASSOCIATION_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${TEXT_FILTER_SEARCH_INPUT}    ${association}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(@id,'${association_link}_search_class_link')]       timeout=60
-    Click Element with wait    ${ACTIONS_BTN}
-    Click Element with wait    ${CREATE_SUPER_PREDICATE_BTN}
+    Click Element with wait     ${ADD_NEW_ASSOCIATION_BTN}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Input Text with wait        ${TEXT_FILTER_SEARCH_INPUT}    ${association}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Click Element with wait     //*[contains(@id,'${association_link}_search_class_link')]       timeout=60
+    Click Element with wait     ${ACTIONS_BTN}
+    Click Element with wait     ${CREATE_SUPER_PREDICATE_BTN}
 
 Change concept for class
     [Arguments]    ${concept}
@@ -699,16 +678,16 @@ Create New Class Without Referencing Concept
 
 Create new class and suggest concept to terminologies
     [Arguments]    ${class}    ${concept_definition}
-    Click Element with wait    ${ADD_NEW_CLASS}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${SEARCH_CLASS_INPUT}    ${class}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    ${CREATE_NEW_CLASS_LINK}
-    Click Element with wait    ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${CONCEPT_DEFINITION_INPUT}    ${concept_definition}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    ${CREATE_NEW_CLASS_BTN}
+    Click Element with wait     ${ADD_NEW_CLASS}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Input Text with wait        ${SEARCH_CLASS_INPUT}           ${class}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Click Element with wait     ${CREATE_NEW_CLASS_LINK}
+    Click Element with wait     ${SUGGEST_CONCEPT_TO_TERMINOLOGIES}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Input Text with wait        ${CONCEPT_DEFINITION_INPUT}    ${concept_definition}
+    Sleep                       ${SLEEP_TIMEOUT}
+    Click Element with wait     ${CREATE_NEW_CLASS_BTN}
 
 Create New Shape By Referencing External Uri
     [Arguments]    ${external_uri}    ${class}
@@ -724,21 +703,18 @@ Create New Shape By Referencing External Uri
 
 Delete profile
     [Arguments]    ${profile}
-    Select user    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "${profile}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}                     timeout=60
-    Click Element with wait    ${REMOVE_MODEL_BTN}
-    Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
-    Log To Console    "${profile}" profile deleted
-    Close All Browsers
+    Sleep                       ${SLEEP_TIMEOUT}
+    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Sleep                       ${SLEEP_TIMEOUT}
+
+    Click Element with wait     //*[contains(text(), "${profile}")]
+    Click Element with wait     ${MODEL_DETAILS_TAB}                     timeout=60
+    Click Element with wait     ${REMOVE_MODEL_BTN}
+    Click Element with wait     ${CONFIRM_REMOVE_MODEL_BTN}
+    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
 
 Delete Profile And Leave Browser Open
     [Arguments]    ${profile}
-    Select user    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Sleep  ${SLEEP_TIMEOUT}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}
     Sleep  ${SLEEP_TIMEOUT}
@@ -794,9 +770,11 @@ Create New Namespace
     [Arguments]    ${label}    ${namespace}    ${prefix}
     Click Element with wait    ${IMPORT_NAMESPACE}
     Click Element with wait    ${CREATE_NEW_NAMESPACE}
-    Input Text with wait    ${NAMESPACE_LABEL}    ${label}      timeout=30
-    Input Text with wait    ${NAMESPACE_VALUE}    ${namespace}      timeout=30
-    Input Text with wait    ${NAMESPACE_PREFIX}    ${prefix}    timeout=30
+
+    Input Text with wait    ${NAMESPACE_LABEL}    ${label}
+    Input Text with wait    ${NAMESPACE_VALUE}    ${namespace}
+    Input Text with wait    ${NAMESPACE_PREFIX}    ${prefix}
+
     Wait Until Element Is Enabled    ${NAMESPACE_CREATE}    timeout=30
     Click Element with wait    ${NAMESPACE_CREATE}
 
@@ -919,18 +897,16 @@ Create New Version
 
 Delete Versions
     [Arguments]    ${profile}
-    Select user    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
-    Sleep  ${SLEEP_TIMEOUT}
+
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=30
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "${profile}")]
     Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
     Click Element with wait    ${REMOVE_MODEL_BTN}
     Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN}
-    Log To Console    Profile version deleted
+
     Sleep  ${SLEEP_TIMEOUT}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     ${profileExists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${profile}")]
     Run Keyword If    ${profileExists}    Delete Versions    ${profile}
-    ...    ELSE    Close All Browsers

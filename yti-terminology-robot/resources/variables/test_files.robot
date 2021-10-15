@@ -14,6 +14,7 @@ ${test_concepts_to_thesaurus_incorrect_column}    ${DATAFOLDER}${/}test_concepts
 ${test_concepts_for_status_filter}    ${DATAFOLDER}${/}test_concepts_filter_csv.csv
 ${test_concepts_for_status_filter_2}    ${DATAFOLDER}${/}test_concepts_filter_2_csv.csv
 ${concept_reference}    ${DATAFOLDER}${/}Concept_reference_csv.csv
+
 #xml paths
 ${tax}            ${DATAFOLDER}${/}Verotussanasto_xml.xml
 ${Concepts_with_dropped_items}    ${DATAFOLDER}${/}Concepts_with_dropped_items_xml.xml

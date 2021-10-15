@@ -31,23 +31,18 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100    koodistot
     Click element with wait     ${EUPL_LICENCE_PAGE}    timeout=20
 
-    Sleep                           5
-    Wait Until Keyword Succeeds     90 seconds    5 seconds    Select Window    url=https://ec.europa.eu/info/european-union-public-licence
+    Switch window with wait        url=https://ec.europa.eu/info/european-union-public-licence
 
     Wait Until Page Contains    European Union Public Licence    timeout=30
     Wait Until Page Contains    What is the EUPL?    timeout=30
 
-    Sleep            5
-    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait        title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
     [Tags]    local
     Click element with wait     id=description_of_file_link    timeout=20
-
-
-    Sleep            5
-    Select Window    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
+    Switch window with wait    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
 
 103. Search for VALID code list
     [Documentation]    Search for VALID code list with frontpage search function.
@@ -221,44 +216,35 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains Element    ${REGISTRY_DDL}         timeout=40
     Select navigation menu link         yhteentoimiva.suomi.fi
 
-
-    Sleep                           5
-    Select Window                   title=Yhteentoimivuusalusta | Suomidigi
+    Switch window with wait                   title=Yhteentoimivuusalusta | Suomidigi
     Close Window
 
-    Sleep                           5
-    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link     Suomi.fi-sanastot
 
-    Sleep                           5
-    Select Window                   url=${TERMINOLOGIES_ENVIRONMENT_URL}
+    Switch window with wait                 url=${TERMINOLOGIES_ENVIRONMENT_URL}
     Wait Until Page Contains        Sanastot                timeout=40
     Wait Until Page Contains        Hae sanastoja           timeout=40
     Wait Until Page Contains        Rajaa tietoalueella     timeout=40
     Close Window
 
-    Sleep                           5
-    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link     Suomi.fi-tietomallit
 
-    Sleep                           5
-    Select Window                   url=${DATA_VOCABULARIES_ENVIRONMENT_URL}
+    Switch window with wait                 url=${DATA_VOCABULARIES_ENVIRONMENT_URL}
     Wait Until Page Contains        Tietomallit         timeout=40
     Wait Until Page Contains        Etusivu             timeout=40
     Close Window
 
-    Sleep                           5
-    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Select navigation menu link     Suomi.fi-kommentit
 
-    Sleep                           5
-    Select Window                   url=${COMMENTS_ENVIRONMENT_URL}
+    Switch window with wait                 url=${COMMENTS_ENVIRONMENT_URL}
     Wait Until Page Contains        Kommentit           timeout=40
     Wait Until Page Contains        Etusivu             timeout=40
     Close Window
 
-    Sleep                           5
-    Select Window                   title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
 113. Change content language for code list
     [Documentation]    Change content language for code list and check
@@ -376,7 +362,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains            1 hakutulos                                     timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]        timeout=30
 
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     Input text with wait                id=search_box_input      ${CODE_LIST_26}        timeout=30
     Wait Until Page Contains            1 hakutulos                                     timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]        timeout=30
@@ -386,12 +372,12 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains                1 hakutulos                                 timeout=30
     Wait Until Page Contains Element        //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
 
-    Select user    ${DATAMODEL_USER_ID}    ${DATAMODEL_USER_NAME}
+    Select Datamodel user
     Input text with wait                id=search_box_input      ${CODE_LIST_26}    timeout=30
     Wait Until Page Contains            1 hakutulos                                 timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
 
-    Select user    ${NO_GROUP_USER_ID}    ${NO_GROUP_USER_NAME}
+    Select no group user
     Input text with wait        id=search_box_input      ${CODE_LIST_26}            timeout=30
     Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.                timeout=60
 
@@ -400,7 +386,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains            1 hakutulos                                 timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
 
-    Select user    ${TERMINOLOGY_USER_ID}    ${TERMINOLOGY_USER_NAME}
+    Select terminology user
     Input text with wait                id=search_box_input     ${CODE_LIST_26}     timeout=30
     Wait Until Page Contains            1 hakutulos                                 timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30

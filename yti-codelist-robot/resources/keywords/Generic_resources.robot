@@ -1,20 +1,6 @@
 *** Variables ***
-${ADMIN_USER_ID}                id=testiadmin@localhost
-${ADMIN_USER_NAME}              Test Admin
-${SUPER_USER_ID}                id=testisuperuser@localhost
-${SUPER_USER_NAME}              Test Superuser
-${CODELIST_USER_ID}             testcodelist@localhost
-${CODELIST_USER_NAME}           Test Codelist
-${DATAMODEL_USER_ID}            testdatamodel@localhost
-${DATAMODEL_USER_NAME}          Test Datamodel
-${TERMINOLOGY_USER_ID}          testterminology@localhost
-${TERMINOLOGY_USER_NAME}        Test Terminology
-${MEMBER_USER_ID}               testmember@localhost
-${MEMBER_USER_NAME}             Test Member
-${NO_GROUP_USER_ID}             dummy@localhost
-${NO_GROUP_USER_NAME}           Test Nogroup
+
 #Generic
-${SELENIUM_SPEED}               0
 ${LANGUAGE_EN}                  id=en
 ${LANGUAGE_FI}                  id=fi
 ${LANGUAGE_SV}                  På svenska (SV)
@@ -643,7 +629,7 @@ Delete registery
 Delete registry with code lists
     [Arguments]    ${registry}    ${code_list}
     Return to Koodistot frontpage
-    Select user                     ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
 
     Delete registery                ${registry}
 
@@ -656,7 +642,7 @@ Delete registry with code lists
 Delete empty registry
     [Arguments]    ${registry}
     Return to Koodistot frontpage
-    Select user                         ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     Delete registery                    ${registry}
 
     Click element with wait             ${REGISTRY_FILTER_DDL}      timeout=20

@@ -1,7 +1,9 @@
 *** Settings ***
 Documentation     Test Suite for creating comment round
-Suite Teardown    Close All Browsers
-Test Teardown     Close All Browsers
+Suite Setup       Test Case Suite Setup Generic Setup
+Suite Teardown    Test Case Suite Teardown Generic Teardown
+Test Teardown     Test Case Teardown Generic Teardown
+Test Setup        Test Case Setup admin
 Resource          ../resources/resources_and_libraries.robot
 
 *** Test Cases ***
@@ -50,13 +52,14 @@ Resource          ../resources/resources_and_libraries.robot
     Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Saturnus    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${RETIRED_0}
     Wait Until Page Contains    kommentti1    timeout=20
-    Wait Until Page Contains Element    //*[contains(text(), "Saturnus")]    timeout=20
-    Click Element    //*[contains(text(), "Saturnus")]
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Click Element with wait    //*[contains(text(), "Saturnus")]
+
+    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
     Wait Until Page Contains    Testiautomaatiosanasto    timeout=20
     Wait Until Page Contains    Saturnus    timeout=20
     Close Window
-    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
+
+    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
@@ -68,13 +71,14 @@ Resource          ../resources/resources_and_libraries.robot
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Automobiili    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Wait Until Page Contains    kommentti1    timeout=20
-    Wait Until Page Contains Element    //*[contains(text(), "Automobiili")]    timeout=20
-    Click Element    //*[contains(text(), "Automobiili")]
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+
+    Click Element with wait    //*[contains(text(), "Automobiili")]
+    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Wait Until Page Contains    Testiautomaatio    timeout=20
     Wait Until Page Contains    Automobiili    timeout=20
     Close Window
-    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
+
+    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
@@ -103,8 +107,7 @@ Resource          ../resources/resources_and_libraries.robot
     Start Comment Round
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
-    Wait Until Element Is Enabled    ${COMMENTS_TAB}    timeout=30
-    Click Element    ${COMMENTS_TAB}
+    Click Element with wait    ${COMMENTS_TAB}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
     Return To Comments Frontpage
@@ -120,25 +123,16 @@ Resource          ../resources/resources_and_libraries.robot
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
     Add Resource For Comment Round    Testcode 35    ${COMMENT_TEXT_INPUT_2}    kommentti3    ${STATUS_DDL_2}    ${VALID_2}
-    Wait Until Page Contains Element    ${EDIT_COMMENTROUND}    timeout=20
-    Click Element    ${EDIT_COMMENTROUND}
-    Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
-    Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
-    Wait Until Page Contains Element    ${CONFIRMATION_BTN}    timeout=20
-    Click Element    ${CONFIRMATION_BTN}
-    Log To Console    First resource removed
-    Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
-    Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
-    Wait Until Page Contains Element    ${CONFIRMATION_BTN}    timeout=20
-    Click Element    ${CONFIRMATION_BTN}
-    Log To Console    Second resource removed
-    Wait Until Page Contains Element    ${REMOVE_COMMENT_THREAD_0_BTN}    timeout=20
-    Click Element    ${REMOVE_COMMENT_THREAD_0_BTN}
-    Wait Until Page Contains Element    ${CONFIRMATION_BTN}    timeout=20
-    Click Element    ${CONFIRMATION_BTN}
-    Log To Console    Third resource removed
-    Wait Until Page Contains Element    ${SAVE_COMMENTROUND}    timeout=20
-    Click Element    ${SAVE_COMMENTROUND}
+
+    Click Element with wait    ${EDIT_COMMENTROUND}
+    Click Element with wait    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Click Element with wait    ${CONFIRMATION_BTN}
+    Click Element with wait    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Click Element with wait    ${CONFIRMATION_BTN}
+    Click Element with wait    ${REMOVE_COMMENT_THREAD_0_BTN}
+    Click Element with wait    ${CONFIRMATION_BTN}
+    Click Element with wait    ${SAVE_COMMENTROUND}
+
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
     Page Should Not Contain    Testcode 28
     Page Should Not Contain    Testcode 30
@@ -155,13 +149,14 @@ Resource          ../resources/resources_and_libraries.robot
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    testcode40    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Wait Until Page Contains    kommentti1    timeout=20
-    Wait Until Page Contains Element    //*[contains(text(), "testcode40")]    timeout=60
-    Click Element    //*[contains(text(), "testcode40")]
-    Wait Until Keyword Succeeds    90 seconds    5 seconds    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+
+    Click Element with wait    //*[contains(text(), "testcode40")]    timeout=60
+    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait Until Page Contains    ${CODE_LIST_8}    timeout=20
     Wait Until Page Contains    testcode40    timeout=20
     Close Window
-    Select Window    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
+
+    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
@@ -194,8 +189,8 @@ Resource          ../resources/resources_and_libraries.robot
     Log To Console    Third commenter's comments added
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
     Close Comment Round
-    Wait Until Element Is Enabled    ${RESOURCES_TAB}    timeout=60
-    Click Element    ${RESOURCES_TAB}
+
+    Click Element with wait   ${RESOURCES_TAB}    timeout=60
     Wait Until Page Contains    Korvattu:    timeout=20
     Wait Until Page Contains    (33.3 %)    timeout=20
     Wait Until Page Contains    Virheellinen:    timeout=20
@@ -217,32 +212,29 @@ Resource          ../resources/resources_and_libraries.robot
     Start Commenting
     Comment On Resource 0    Kommentti 1    ${SUPERSEDED_0}
     Send Comments
-    Log To Console    First commenter's comments added
+
     Select User    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Send Comments
-    Log To Console    Second commenter's comments added
+
     Select User    ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
-    Wait Until Element Is Visible    ${RESOURCES_TAB}    timeout=30
-    Click Element    ${RESOURCES_TAB}
-    Wait Until Element Is Visible    ${VIEW_COMMENT_BUBLE_0}    timeout=30
-    Click Element    ${VIEW_COMMENT_BUBLE_0}
+    Click Element with wait    ${RESOURCES_TAB}
+    Click Element with wait    ${VIEW_COMMENT_BUBLE_0}
+
     Wait Until Page Contains Element    //app-hierarchical-comment    timeout=20
     ${elements} =    Get WebElements    //app-hierarchical-comment
     ${element} =    Get From List    ${elements}    0
     ${element_1} =    Get From List    ${elements}    1
     ${elementId} =    Set Variable    ${element.get_attribute('id')}
     ${elementId_1} =    Set Variable    ${element_1.get_attribute('id')}
+
     Send Inline Comment For Comment Thread    ${elementId}    Inline kommentti 1
-    Log To Console    First inline comment added
     Send Inline Comment For Comment Thread    ${elementId_1}    Inline kommentti 2
-    Log To Console    Second inline comment added
     Wait Until Page Contains    Inline kommentti 1    timeout=20
     Wait Until Page Contains    Inline kommentti 2    timeout=20
-    Capture Page Screenshot
-    Wait Until Element Is Visible    ${CLOSE_INLINE_COMMENT_0_BTN}    timeout=30
-    Click Element    ${CLOSE_INLINE_COMMENT_0_BTN}
+
+    Click Element with wait    ${CLOSE_INLINE_COMMENT_0_BTN}
     Page Should Not Contain    Inline kommentti 1    timeout=20
     Page Should Not Contain    Inline kommentti 2    timeout=20
     Return To Comments Frontpage
@@ -266,15 +258,16 @@ Resource          ../resources/resources_and_libraries.robot
 
 213. Check URI links
     [Documentation]    Check that comment round URI link is working correctly
-    [Tags]    regression    kommentit    test    100
+    [Tags]    regression    kommentit    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     ${uri}=    Get Text    //*[contains(text(), "http://uri.suomi.fi/comments/round/")]
     Log    Comment round URI is ${uri}
+
     Open Comments
     Set Selenium Speed    ${SELENIUM_SPEED}
     GO To    ${uri}
     Wait Until Page Contains    Testiautomaatiokierros    timeout=30
     Log To Console    URI link opened successfully
-    Sleep    2
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}

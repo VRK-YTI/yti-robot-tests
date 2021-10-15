@@ -52,11 +52,8 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element that contains text    https://www.suomi.fi/etusivu/   timeout=20
     Click element with wait             id=external_ref_url_link        timeout=20
 
-    Sleep               5
-    Select Window       url=https://www.suomi.fi/etusivu/
-
-    Sleep               5
-    Select Window       title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    Switch window with wait     url=https://www.suomi.fi/etusivu/
+    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
     Click element with wait             ${LINK_MODAL_OK_BTN}    timeout=20
 
@@ -202,7 +199,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Element Is Enabled       ${MODIFY_CODE_LIST}     timeout=60
     Wait Until Page Contains            Virheellinen            timeout=20
     Click element with wait             ${FRONTPAGE_LINK}       timeout=20
-    Select user                         ${SUPER_USER_ID}        ${SUPER_USER_NAME}
+    Select superuser
 
     [Teardown]    Remove codelist teardown    ${CODE_LIST_6}
 
@@ -268,11 +265,11 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element that contains text    Testcode 28                  timeout=20
 
     Open Koodistot
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=600
 
     Click element that contains text    Testcode 28                  timeout=20
-    Select user    ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    Select superuser
     Click element with wait             ${CODE_DDL}                  timeout=30
     Click element with wait             ${REMOVE_CODE_BTN}           timeout=20
     Click element with wait             ${CONFIRMATION_YES_BTN}      timeout=20
@@ -294,22 +291,21 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Update code list    ${Code_list_codes_with_languages}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
     Wait until page contains    30 koodia    timeout=60
 
-
     Click element that contains text    testcode28 - Testcode 28_fi                  timeout=20
 
-    Wait Until Page Contains    ${CODE_LIST_16}             timeout=60
+    Wait Until Page Contains    Koodisto600             timeout=60
     Wait Until Page Contains    Testcode 28_fi          timeout=60
     Wait Until Page Contains    Kuvaus_fi               timeout=60
     Wait Until Page Contains    Määritelmä_fi           timeout=60
 
-    Change Content Language     ${CONTENT_LANGUAGE_EN}
-    Wait Until Page Contains    ${CODE_LIST_16}_en          timeout=60
+    Change Content Language    ${CONTENT_LANGUAGE_EN}
+    Wait Until Page Contains    Koodisto600_en          timeout=60
     Wait Until Page Contains    Testcode 28_en          timeout=60
     Wait Until Page Contains    Kuvaus_en               timeout=60
     Wait Until Page Contains    Määritelmä_en           timeout=60
 
-    Change Content Language     ${CONTENT_LANGUAGE_SW_UG}
-    Wait Until Page Contains    ${CODE_LIST_16}_sw          timeout=60
+    Change Content Language    ${CONTENT_LANGUAGE_SW_UG}
+    Wait Until Page Contains    Koodisto600_sw          timeout=60
     Wait Until Page Contains    Testcode 28_sw          timeout=60
     Wait Until Page Contains    Kuvaus_sw               timeout=60
     Wait Until Page Contains    Määritelmä_sw           timeout=60
@@ -319,7 +315,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click Code List Info Tab
 
     Change Content Language     ${CONTENT_LANGUAGE_SV}
-    Wait Until Page Contains    ${CODE_LIST_16}_sv          timeout=60
+    Wait Until Page Contains    Koodisto600_sv          timeout=60
     Wait Until Page Contains    Kuvaus_sv               timeout=60
     Wait Until Page Contains    Määritelmä_sv           timeout=60
     Wait Until Page Contains    muutostieto_sv          timeout=60
@@ -327,12 +323,10 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 
     Upload codes    ${Update_codes_with_languages}
 
-    Click element with wait     ${CODELIST_CODES_TAB}    timeout=20
-
     Wait Until Page Contains    30 koodia    timeout=60
     Click element that contains text    testcode28 - Testcode 28_sv     timeout=20
 
-    Change Content Language     ${CONTENT_LANGUAGE_AR_SO}
+    Change Content Language    ${CONTENT_LANGUAGE_AR_SO}
     Wait Until Page Contains    Testcode 28_ar      timeout=60
     Wait Until Page Contains    Kuvaus_ar           timeout=60
     Wait Until Page Contains    Määritelmä_ar       timeout=60

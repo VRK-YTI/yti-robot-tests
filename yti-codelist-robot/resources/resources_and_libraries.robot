@@ -50,8 +50,10 @@ Terminology Setup
     Test Case Setup Create Testiautomaatiosanasto
 
 Terminology Teardown
-    Print console logs
+    Test Case Teardown Generic Teardown
+    Terminology Test Case Setup
     Delete Testiautomaatiosanasto
+    Close All Browsers
 
 Terminology Test Case Setup
     Open Sanastot

@@ -111,7 +111,7 @@ Data Vocabularies Setup With New Class
 
 Test Case Setup
     Open Tietomallit
-    Set Selenium Speed    0.5
+    Set Selenium Speed      ${SELENIUM_SPEED}
     Data Vocabularies Select user
 
 Data Vocabularies Select user

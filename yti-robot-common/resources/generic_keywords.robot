@@ -1,6 +1,9 @@
 *** Settings ***
 Library           helpers.py
 
+*** Variables ***
+${HEADLESS}=  True
+
 *** Keywords ***
 Open Browser with Settings
     [Arguments]    ${environment_url}
@@ -11,8 +14,8 @@ Open Browser with Settings
 Open Chrome to Environment
     [Arguments]    ${environment_url}
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument    --headless
-    Call Method    ${chrome_options}    add_argument    --single-process
+    Run Keyword If    '${HEADLESS}' != 'False'  Call Method    ${chrome_options}    add_argument    --headless
+    #Call Method    ${chrome_options}    add_argument    --single-process
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=/usr/local/bin/chromedriver
     ...    ELSE    Create Webdriver    Chrome    chrome_options=${chrome_options}      executable_path=${CHROME_DRIVER_PATH}
     Set Window Size    1920    1080
@@ -33,6 +36,11 @@ Click element with wait
     Wait Until Element Is Enabled       ${element}    timeout=${timeout}
     Wait For Condition                  return document.readyState=="complete"      timeout=${timeout}
     Wait Until Keyword Succeeds         5x  500ms  Click Element  ${element}
+
+
+Switch window with wait
+    [Arguments]     ${window}
+    Wait Until Keyword Succeeds     90 seconds    5 seconds    Switch window    ${window}
 
 Click element that contains text
     [Arguments]  ${text}  ${timeout}=30
