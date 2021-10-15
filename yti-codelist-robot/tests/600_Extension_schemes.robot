@@ -26,7 +26,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Testikoodi 25    timeout=20
     Wait Until Page Contains    http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567111/code/testcode25    timeout=20
 
-    Select breadcrump link 2b
+    Select breadcrump link 2
     Click element with wait      ${EXTENSIONS_TAB}    timeout=20
 
     Wait Until Element Is Visible    //*[contains(@id,'222_view_extension')]    timeout=30
