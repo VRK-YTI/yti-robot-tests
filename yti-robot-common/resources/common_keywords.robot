@@ -53,7 +53,7 @@ Select no group user
 Select codelist user
     Select user             ${CODELIST_USER_ID}    ${CODELIST_USER_NAME}
 
-Select memeber user
+Select member user
     Select user             ${MEMBER_USER_ID}    ${MEMBER_USER_NAME}
 
 Select user
