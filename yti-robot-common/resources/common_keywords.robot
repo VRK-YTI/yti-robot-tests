@@ -1,6 +1,4 @@
 *** Variables ***
-${SELENIUM_SPEED}               0
-
 ${ADMIN_USER_ID}            //*[@id="testiadmin@localhost"] | //*[@id="impersonate_user_testiadmin@localhost_link"] | //*[@id="testiadmin@localhost_fakeable_user_link"]
 ${ADMIN_USER_NAME}          Test Admin
 
