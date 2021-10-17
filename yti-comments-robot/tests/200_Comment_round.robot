@@ -29,7 +29,6 @@ Resource          ../resources/resources_and_libraries.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Data Vocabularies
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
-    Return To Comments Frontpage
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 203. Add resources from Reference Data for comment round
@@ -52,8 +51,8 @@ Resource          ../resources/resources_and_libraries.robot
     Click Element with wait    //*[contains(text(), "Saturnus")]
 
     Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    Wait Until Page Contains    Testiautomaatiosanasto    timeout=20
-    Wait Until Page Contains    Saturnus    timeout=20
+    Wait Until Page Contains    Testiautomaatiosanasto      timeout=20
+    Wait Until Page Contains    Saturnus                    timeout=20
     Close Window
 
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}

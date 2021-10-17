@@ -449,6 +449,7 @@ Create Code List Version From File
 
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}                      timeout=20
     Upload codelist                     ${codelist}    ${codelist_name}
+    Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator                timeout=90
 
 Select Cumulative Code List Checkbox
     [Arguments]    ${cumulative}

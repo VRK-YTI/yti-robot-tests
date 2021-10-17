@@ -625,7 +625,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Save Code List With Confirmation
     Wait Until Page Contains    Voimassa oleva    timeout=60
     Create Code List Version From File    ${FILE_FORMAT_Excel}    ${Code_list_version3}    ${CODE_LIST_11}
-    Click element with wait     ${VERSION_TAB}    timeout=20
+    Click element with wait     ${VERSION_TAB}    timeout=60
     Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
     Page Should Not Contain    03.03.2018 - 31.03.2018
     Wait Until Page Contains    ${CODE_LIST_9}    timeout=20

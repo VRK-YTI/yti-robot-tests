@@ -68,7 +68,9 @@ Test Case Teardown Terminology
     Delete Terminology      ${VOCABULARY_1}
     Close all browsers
 
-    #Test Case Teardown Data Vocabularies    ${comment_round_name}    ${state}
+    Test Case Setup Superuser
+    Delete Comment Round    ${comment_round_name}    ${state}
+    Close all browsers
 
 Test Case Setup Data Vocabularies
     Data Vocabularies Setup
