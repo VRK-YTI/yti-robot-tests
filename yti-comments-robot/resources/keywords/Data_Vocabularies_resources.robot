@@ -102,14 +102,11 @@ ${MODIFY_CORE_VOCABULARY_BTN}    //*[@id="'model'"]/div/form/fieldset/div/editab
 Data Vocabularies Setup
     Test Case Setup Create Profile
 
-Data Vocabularies Teardown
-    Delete Data Vocabularies Profile
-
 Data Vocabularies Setup With New Class
     Test Case Setup Create Profile
     Create New Class For Profile    ${class_2}
 
-Test Case Setup
+Test Case Setup datamodel
     Open Tietomallit
     Set Selenium Speed      ${SELENIUM_SPEED}
     Data Vocabularies Select user
@@ -135,7 +132,7 @@ Go back to Data Vocabularies frontpage
     Sleep    2
 
 Test Case Setup Create Profile
-    Test Case Setup
+    Test Case Setup datamodel
     Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
@@ -147,7 +144,7 @@ Test Case Teardown Delete Testiautomaatio profile
     Delete Testiautomaatio profile
 
 Test Case Setup Create Automaatiokirjasto Core Vocabulary
-    Test Case Setup
+    Test Case Setup datamodel
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
@@ -184,7 +181,6 @@ Create Data Vocabulary Profile
     Sleep    2
 
 Delete Data Vocabularies Profile
-    Test Case Setup
     Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
@@ -196,8 +192,6 @@ Delete Data Vocabularies Profile
     Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
     Wait Until Page Contains    tietomallia    timeout=30
-
-    Close All Browsers
 
 Delete existing profile and create new
     Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
@@ -235,8 +229,6 @@ Create Automaatiokirjasto Core Vocabulary
     Click element with wait  //*[contains(text(), "Testiorganisaatio")]
     Wait Until Page Contains Element    ${SAVE_CORE_VOCABULARY_BTN}    timeout=30
     Click element with wait  ${SAVE_CORE_VOCABULARY_BTN}
-    Log To Console    Automaatiokirjasto Core Vocabulary created
-    Sleep    2
 
 Delete Automaatiokirjasto Core Vocabulary
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
@@ -251,8 +243,6 @@ Delete Automaatiokirjasto Core Vocabulary
     Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
     Input Text    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
     Wait Until Page Contains    tietomallia    timeout=30
-
-    Close All Browsersd
 
 Delete existing core vocabulary and create new
     Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
@@ -496,7 +486,7 @@ Create new shape by referencing external uri
 
 Delete profile
     [Arguments]    ${profile}
-    Test Case Setup
+    Test Case Setup datamodel
     Wait Until Page Contains element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=30
     Input Text    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${profile}
     Wait Until Page Contains element    //*[contains(text(), "${profile}")]    timeout=30

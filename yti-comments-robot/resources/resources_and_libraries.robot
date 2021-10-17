@@ -48,8 +48,10 @@ Test Case Teardown Reference Data
 
     Reference Data Test Case Setup Superuser
     Reference Data Teardown    ${codelist_name}
-    Delete Comment Round    ${comment_round_name}    ${state}
 
+
+    Test Case Setup Superuser
+    Delete Comment Round    ${comment_round_name}    ${state}
     Close all browsers
 
 Test Case Setup Terminology
@@ -62,11 +64,11 @@ Test Case Teardown Terminology
     [Arguments]    ${comment_round_name}    ${state}
     Test Case Teardown Generic Teardown
 
-    Test Case Setup Terminology
+    Terminology Test Case Setup
     Delete Terminology
+    Close all browsers
 
     Test Case Teardown Data Vocabularies    ${comment_round_name}    ${state}
-    Close all browsers
 
 Test Case Setup Data Vocabularies
     Data Vocabularies Setup
@@ -78,8 +80,15 @@ Test Case Setup Data Vocabularies With New Class
 
 Test Case Teardown Data Vocabularies
     [Arguments]    ${comment_round_name}    ${state}
-    Data Vocabularies Teardown
+    Test Case Teardown Generic Teardown
+
+    Test Case Setup datamodel
+    Delete Data Vocabularies Profile
+    Close all browsers
+
+    Test Case Setup Superuser
     Delete Comment Round    ${comment_round_name}    ${state}
+    Close all browsers
 
 Terminology Test Case Setup
     Open Sanastot

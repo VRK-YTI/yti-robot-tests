@@ -150,7 +150,6 @@ Allow New Comment Threads
 
 Delete Comment Round
     [Arguments]    ${comment_round_name}    ${state}
-    Test Case Setup Superuser
     Select Comment Round State    ${state}
     Click Element that contains text    ${comment_round_name}       timeout=60
     Wait Until Page Contains Element    //*[contains(text(), "${comment_round_name}")]    timeout=60
