@@ -9,7 +9,6 @@ Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
 ${LANGUAGE_DROPDOWN_BTN}        id=select_lang_dropdown
-${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${CODELIST}                     900_testing_code_list
 
 *** Test Cases ***

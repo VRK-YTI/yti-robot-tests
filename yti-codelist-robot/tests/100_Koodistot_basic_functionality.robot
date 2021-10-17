@@ -8,7 +8,6 @@ Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
-${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${navigation_menu_link}    Käyttäjätiedot
 ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 

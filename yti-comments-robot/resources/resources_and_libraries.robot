@@ -65,10 +65,10 @@ Test Case Teardown Terminology
     Test Case Teardown Generic Teardown
 
     Terminology Test Case Setup
-    Delete Terminology
+    Delete Terminology      ${VOCABULARY_1}
     Close all browsers
 
-    Test Case Teardown Data Vocabularies    ${comment_round_name}    ${state}
+    #Test Case Teardown Data Vocabularies    ${comment_round_name}    ${state}
 
 Test Case Setup Data Vocabularies
     Data Vocabularies Setup
@@ -93,12 +93,11 @@ Test Case Teardown Data Vocabularies
 Terminology Test Case Setup
     Open Sanastot
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Terminology Select user
+    Select admin
 
 Test Case Setup Create Terminology
     Terminology Test Case Setup
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Input Text with wait   ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
     Run Keyword If    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
     ...    ELSE    Create Testiautomaatiosanasto and import vocabulary

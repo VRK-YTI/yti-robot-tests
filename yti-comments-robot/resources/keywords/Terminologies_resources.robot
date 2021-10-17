@@ -1,7 +1,4 @@
 *** Variables ***
-${USER_1}         id=testiadmin@localhost_fakeable_user_link
-${LANGUAGE_EN}    id=en_language_selection_link
-${LANGUAGE_FI}    id=fi_language_selection_link
 ${VOCABULARY_1}    Testiautomaatiosanasto
 ${VOCABULARY_2}    Testiautomaatiosanasto2
 ${VOCABULARY_3}    Testiautomaatioasiasanasto
@@ -16,13 +13,11 @@ ${TERM_1}         Automaatio
 ${TERM_2}         tutkimus
 ${REMOVE_ORGANIZATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[1]/dl/dd/app-organization-input/div/div[2]/a/i
 ${REMOVE_CLASSIFICATION_1}    //app-root/div/app-concepts/div/div[1]/div/app-vocabulary/div/div[2]/form/app-vocabulary-form/div/app-reference[2]/dl/dd/app-group-input/div/div[2]/a/i
+${FRONTPAGE_LINK}    id=0_breadcrumb_link
 ${OPEN_MODAL}     class=modal-open
 #Frontpage Buttons and links
-${LANGUAGE_DROPDOWN_BTN}    id=language_dropdown_link
-${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 ${FRONTPAGE_SEARCH_BOX}    id=vocabularies_search_input
 ${ADD_VOCABULARY_BTN}    id=add_vocabulary_button
-${TERMINOLOGY_MAIN_PAGE_LINK}    id=main_page_link
 #Vocabulary buttons
 ${EDIT_VOCABULARY_BTN}    id=vocabulary_editable_start_editing_button
 ${VOCABULARY_TITLE_TEXTAREA}    id=vocabulary_prefLabel_fi_0_input
@@ -64,92 +59,80 @@ ${CONFIRM_REMOVE_CONCEPT_BTN}    id=delete_confirmation_yes_button
 ${IMPORT_CANCEL_BTN}    id=import_cancel_button
 ${IMPORT_YES_BTN}    id=import_yes_button
 ${CONCEPT_LIST_SEARCH_INPUT}    id=concept_list_search_concept_input
+#CSV paths
+${concepts_from_controlled_vocabularies}    ${DATAFOLDER}${/}concepts_from_controlled_vocabularies_csv.csv
 
 *** Keywords ***
-Terminology Select user
-    Wait Until Page Contains Element    ${TERMINOLOGY_USER_DROPDOWN}    timeout=60
-    Click element with wait  ${TERMINOLOGY_USER_DROPDOWN}
-    Wait Until Page Contains Element    ${USER_1}    timeout=60
-    Click element with wait  ${USER_1}
-    Wait Until Page Contains    Test Admin    timeout=60
-    Sleep    1
-
 Go back to Sanastot frontpage
-    Click element with wait  ${TERMINOLOGY_MAIN_PAGE_LINK}
+    Click element with wait     ${FRONTPAGE_LINK}    timeout=60
+
+Check concept suggestion in Terminologies
+    Terminology Test Case Setup
+
+    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Click element that contains text    ${VOCABULARY_1}
+
+    Wait until page contains            ${VOCABULARY_1}             timeout=30
+    Wait until page contains            Testiautomaatiosanasto      timeout=20
+
+    Input Text with wait                ${CONCEPT_LIST_SEARCH_INPUT}    automobiili
+    Click element that contains text    automobiili
+
+    Wait until page contains    Ehdotus                 timeout=20
+    Wait until page contains    Tämä on kulkuneuvo      timeout=20
+    Wait until page contains    Test Superuser          timeout=20
 
 Delete existing terminological vocabulary and create new
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element with wait  //*[contains(text(), "${VOCABULARY_1}")]
-    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
-    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
-    Click element with wait  ${TERMINOLOGY_TAB}
-    Wait Until Page Contains    Testiautomaatiosanasto    timeout=20
-    Wait Until Page Contains Element    ${REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element with wait  ${REMOVE_VOCABULARY_BTN}
-    Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
-    Click element with wait  ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Click element that contains text    ${VOCABULARY_1}
+    Wait until page contains            ${VOCABULARY_1}
+    Click element with wait             ${TERMINOLOGY_TAB}
+    Wait until page contains            Testiautomaatiosanasto              timeout=20
 
-    Input Text with wait   ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}    timeout=60
-    Wait until page does not Contain Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Click element with wait             ${REMOVE_VOCABULARY_BTN}
+    Click element with wait             ${CONFIRM_REMOVE_VOCABULARY_BTN}
 
     Create Testiautomaatiosanasto and import vocabulary
 
 Create Testiautomaatiosanasto and import vocabulary
     Terminology Test Case Setup
-    Wait Until Page Contains Element    ${ADD_VOCABULARY_BTN}    timeout=30
-    Click element with wait  ${ADD_VOCABULARY_BTN}
-    Wait Until Page Contains Element    ${TITLE_INPUT_FI}    timeout=30
-    Input Text    ${TITLE_INPUT_FI}    ${VOCABULARY_1}
-    Wait Until Page Contains Element    ${ADD_VOCABULARY_ORGANIZATION_BTN}    timeout=30
-    Click element with wait  ${ADD_VOCABULARY_ORGANIZATION_BTN}
-    Wait Until Page Contains Element    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    timeout=30
-    Input Text    ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${ORGANIZATION_2}")]
-    Click element with wait  //*[contains(text(), "${ORGANIZATION_2}")]
-    Wait Until Page Contains Element    ${ADD_NEW_CLASSIFICATION_BTN}    timeout=30
-    Click element with wait  ${ADD_NEW_CLASSIFICATION_BTN}
-    Wait Until Page Contains Element    ${TERMINOLOGY_CLASSIFICATION_INPUT}    timeout=30
-    Input Text    ${TERMINOLOGY_CLASSIFICATION_INPUT}    ${TERMINOLOGY_CLASSIFICATION_2}
-    Wait Until Page Contains Element    //*[contains(text(), "${TERMINOLOGY_CLASSIFICATION_2}")]
-    Click element with wait  //*[contains(text(), "${TERMINOLOGY_CLASSIFICATION_2}")]
-    Wait Until Page Contains Element    ${ADD_DESCRIPTION_DDL}    timeout=30
-    Click element with wait  ${ADD_DESCRIPTION_DDL}
-    Click Button    ${NEW_DESCRIPTION_FI}
-    Wait Until Page Contains Element    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    timeout=30
-    Input Text    ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}    Tämä on kuvaus
-    Wait Until Page Contains Element    ${PREFIX_INPUT}    timeout=30
-    Input Text    ${PREFIX_INPUT}    ${PREFIX_1}
-    Wait Until Page Contains Element    ${SAVE_VOCABULARY_BTN}    timeout=30
-    Click element with wait  ${SAVE_VOCABULARY_BTN}
-    Wait Until Element Is Enabled    ${VOCABULARY_DDL}    timeout=30
-    Click element with wait  ${VOCABULARY_DDL}
-    Wait Until Element Is Visible    ${IMPORT_VOCABULARY_BTN}    timeout=60
-    Click element with wait  ${IMPORT_VOCABULARY_BTN}
-    Choose File    ${FILE_UPLOAD_INPUT}    ${test_concepts}
-    Wait Until Page Contains Element    ${UPLOAD_FILE}    timeout=30
-    Click element with wait  ${UPLOAD_FILE}
-    Wait Until Page Contains Element    ${IMPORT_YES_BTN}    timeout=30
-    Click element with wait  ${IMPORT_YES_BTN}
-    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
-    Wait Until Element Is Visible    ${ADD_NEW_CONCEPT_BTN}    timeout=90
+    Click element with wait             ${ADD_VOCABULARY_BTN}
+    Input Text with wait                ${TITLE_INPUT_FI}    ${VOCABULARY_1}
+    Click element with wait             ${ADD_VOCABULARY_ORGANIZATION_BTN}
+    Input Text with wait                ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
+    Click element that contains text    ${ORGANIZATION_2}
+    Click element with wait             ${ADD_NEW_CLASSIFICATION_BTN}
+    Input Text with wait                ${TERMINOLOGY_CLASSIFICATION_INPUT}    ${TERMINOLOGY_CLASSIFICATION_2}
+    Click element that contains text    ${TERMINOLOGY_CLASSIFICATION_2}
+    Click element with wait             ${ADD_DESCRIPTION_DDL}
+
+    Click Button                        ${NEW_DESCRIPTION_FI}
+    Input Text with wait                ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}       Tämä on kuvaus
+    Input Text with wait                ${PREFIX_INPUT}                             ${PREFIX_1}
+    Click element with wait             ${SAVE_VOCABULARY_BTN}                                          timeout=60
+    Click element with wait             ${VOCABULARY_DDL}                                               timeout=90
+    Click element with wait             ${IMPORT_VOCABULARY_BTN}                                        timeout=90
+    Choose File                         ${FILE_UPLOAD_INPUT}    ${concepts_from_controlled_vocabularies}
+
+    Click element with wait             ${UPLOAD_FILE}
+    Click element with wait             ${IMPORT_YES_BTN}
+
+    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}               timeout=120
+    Wait Until Element Is Enabled               ${ADD_NEW_CONCEPT_BTN}      timeout=90
 
 Delete Terminology
-    Terminology Test Case Setup
+    [Arguments]    ${terminology}
+    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${terminology}
 
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Sleep    1
-    Wait Until Element Is Enabled    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    Click element with wait  //*[contains(text(), "${VOCABULARY_1}")]
-    Wait Until Page Contains    ${VOCABULARY_1}    timeout=30
-    Wait Until Page Contains Element    ${TERMINOLOGY_TAB}    timeout=30
-    Click element with wait  ${TERMINOLOGY_TAB}
-    Wait Until Page Contains    Testiautomaatiosanasto    timeout=20
+    Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=30
+    # Cut teardown execution if terminology does not exist
+    ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
+    Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${terminology} did not find the terminology to delete
+    ...    AND    Return From Keyword
 
-    Click element with wait  ${REMOVE_VOCABULARY_BTN}
-    Click element with wait  ${CONFIRM_REMOVE_VOCABULARY_BTN}
+    Click element that contains text    ${VOCABULARY_1}
+    Wait until page contains            ${VOCABULARY_1}
 
-    Sleep    3
-    Input Text with wait   ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Click element with wait             ${TERMINOLOGY_TAB}
+    Click element with wait             ${REMOVE_VOCABULARY_BTN}
+    Click element with wait             ${CONFIRM_REMOVE_VOCABULARY_BTN}
 
-    Wait until page does Not Contain Element    //*[contains(text(), "${VOCABULARY_1}")]  timeout=30

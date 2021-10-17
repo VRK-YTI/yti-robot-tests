@@ -9,7 +9,6 @@ Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
-${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 5.
 ${Error_no_status_value}    Aineistossa puuttuu arvo sarakkeesta STATUS riviltä 7.

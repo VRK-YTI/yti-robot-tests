@@ -21,7 +21,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Terminology
     Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
-    [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
+    [Teardown]  Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 202. Create new comment round for profile
     [Documentation]    Create new profile in Data Vocabularies tool and create new comment round for the profile.

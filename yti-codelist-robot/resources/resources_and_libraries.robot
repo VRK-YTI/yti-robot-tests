@@ -58,7 +58,7 @@ Terminology Teardown
 Terminology Test Case Setup
     Open Sanastot
     Set Selenium Speed    ${SELENIUM_SPEED}
-    Terminology Select user
+    Select admin
 
 Test Case Setup Create Testiautomaatiosanasto
     Terminology Test Case Setup

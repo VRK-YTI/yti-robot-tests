@@ -8,7 +8,6 @@ Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
-${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
 #Error messages
 ${Error_no_codeValue}    Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä 2.
 ${Error_no_classification_value}    Aineistolle annettua tietoaluetta ei löydy.
