@@ -438,7 +438,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
     Wait Until Page Contains    ${CODE_LIST_8}    timeout=20
     Click element with wait     ${CODELIST_VARIANTS_TAB}    timeout=20
-    Page should not contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=20
+    Page should not contain    Seuraavat koodistot ovat tämän koodiston variantteja:
     Wait Until Page Contains    Tämä koodisto on määritelty variantiksi seuraavissa koodistoissa:    timeout=20
     Wait Until Page Contains    ${CODE_LIST_9}    timeout=20
 
@@ -566,11 +566,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input Text with wait    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}  timeout=20
     Click element with wait     ${SAVE_NEW_CODE_LIST}    timeout=20
     Click element with wait     ${CONFIRMATION_YES_BTN}    timeout=20
-    Log To Console    Code list saved
-    Log To Console    New code list version created as empty
-    Page Should Not Contain    10 koodia    timeout=20
-    Page Should Not Contain    testikoodi01 - Testikoodi 01    timeout=20
-    Log To Console    Codes were not copied
+
+    Page Should Not Contain    10 koodia
+    Page Should Not Contain    testikoodi01 - Testikoodi 01
+
     Click Code List Info Tab
 
     Wait Until Page Contains    englanti    timeout=20
@@ -768,7 +767,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element with wait     id=remove_200_code_scheme_link    timeout=20
     Click element with wait     ${SAVE_NEW_CODE_BTN}    timeout=20
 
-    Page should not contain    200 - Linkkikoodisto    timeout=20
+    Page should not contain    200 - Linkkikoodisto
     Click element with wait     ${MODIFY_CODE_BTN}    timeout=20
     Click element with wait     ${SUB_CODE_LIST_BTN}    timeout=20
     Input Text with wait        ${SEARCH_SUB_CODE_LIST_INPUT}    Linkkikoodisto  timeout=20
@@ -853,16 +852,14 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Log To Console    New version of codeRemove code list created
     Click element with wait     ${EXPAND_ALL_BTN}    timeout=20
 
-    Log To Console    Expand all pressed
     Wait Until Page Contains    10 koodia    timeout=20
     Click element that contains text     testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Remove code    testikoodi01 - Testikoodi 01
     Wait Until Page Contains    ${CODE_LIST_10}    timeout=20
     Wait Until Page Contains    testikoodi02 - Testikoodi 02    timeout=20
-    Page should not contain    testikoodi01 - Testikoodi 01    timeout=20
+    Page should not contain    testikoodi01 - Testikoodi 01
     Wait Until Element Is Enabled    ${VERSION_TAB}    timeout=20
-    Log To Console    Version history tab exists after code was removed
 
     [Teardown]    Remove codelist teardown    ${CODE_LIST_10}    ${CODE_LIST_9}
 

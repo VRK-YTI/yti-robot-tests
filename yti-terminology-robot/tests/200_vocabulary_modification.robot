@@ -534,17 +534,17 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Select admin
     Wait Until Element Is Enabled    //*[contains(text(), "123")]       timeout=30
     Wait Until Element Is Enabled    //*[contains(text(), "456")]       timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "789")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
 
     Select terminology user
     Wait Until Element Is Enabled    //*[contains(text(), "123")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "456")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "789")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "456")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
 
     Select no group user
-    Page Should Not Contain Element    //*[contains(text(), "123")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "456")]    timeout=30
-    Page Should Not Contain Element    //*[contains(text(), "789")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "123")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "456")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
 
     [Teardown]    Test case teardown delete Terminologies    ${VOCABULARY_3}    ${VOCABULARY_4}    ${VOCABULARY_5}
 

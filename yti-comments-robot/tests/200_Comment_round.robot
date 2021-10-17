@@ -237,8 +237,8 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    Inline kommentti 2    timeout=20
 
     Click Element with wait    ${CLOSE_INLINE_COMMENT_0_BTN}
-    Page Should Not Contain    Inline kommentti 1    timeout=20
-    Page Should Not Contain    Inline kommentti 2    timeout=20
+    Page Should Not Contain    Inline kommentti 1
+    Page Should Not Contain    Inline kommentti 2
     Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
 

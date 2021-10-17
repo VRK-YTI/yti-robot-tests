@@ -768,7 +768,7 @@ ${PREFIX_1}       autom
     Click Element with wait    //*[contains(text(), "Poista attribuutti")]
     Click Element with wait    id=class_property_MinArvo_accordion_button       timeout=60
     Click Element with wait    ${PROPERTY_DISJOINT_BTN}
-    Page Should Not Contain Element    //*[contains(@id,'autom#testiarvo_search_result_link')]    timeout=30
+    Page Should Not Contain Element    //*[contains(@id,'autom#testiarvo_search_result_link')]
 
     Click Element with wait    //*[contains(@id,'autom#maxarvo_search_result_link')]
     Click Element with wait    //*[contains(text(), "Käytä attribuuttia")]
@@ -1001,7 +1001,7 @@ ${PREFIX_1}       autom
     Wait Until Page Contains Element    //*[contains(@id,'aihe_tabset_link')]    timeout=30
     Select Tab    ${ATTRIBUTE_TAB}
 
-    Page Should Not Contain Element    //*[contains(@id,'aihe_tabset_link')]    timeout=30
+    Page Should Not Contain Element    //*[contains(@id,'aihe_tabset_link')]
 
 236. Check sub attribute history information
     [Documentation]    Create model and sub attribute and delete both. Check that history information

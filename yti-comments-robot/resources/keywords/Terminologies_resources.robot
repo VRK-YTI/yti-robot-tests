@@ -114,11 +114,10 @@ Delete existing terminological vocabulary and create new
     Switch window with wait  ${REMOVE_VOCABULARY_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Switch window with wait  ${CONFIRM_REMOVE_VOCABULARY_BTN}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Sleep    2
-    Page Should Not Contain Element    //*[contains(text(), "${VOCABULARY_1}")]
-    Log To Console    Testiautomaatiosanasto deleted
+
+    Input Text with wait   ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}    timeout=60
+    Wait until page does not Contain Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+
     Create Testiautomaatiosanasto and import vocabulary
 
 Create Testiautomaatiosanasto and import vocabulary
@@ -177,12 +176,10 @@ Delete Terminology
     Switch window with wait  ${REMOVE_VOCABULARY_BTN}
     Wait Until Page Contains Element    ${CONFIRM_REMOVE_VOCABULARY_BTN}    timeout=30
     Switch window with wait  ${CONFIRM_REMOVE_VOCABULARY_BTN}
+
     Sleep    3
-    Log To Console    Vocabulary remove done
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input Text    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Sleep    1
-    Page Should Not Contain Element    //*[contains(text(), "${VOCABULARY_1}")]
-    Sleep    1
-    Log To Console    Testiautomaatiosanasto deleted
+    Input Text with wait   ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+
+    Wait until page does Not Contain Element    //*[contains(text(), "${VOCABULARY_1}")]  timeout=30
+
     Close All Browsers

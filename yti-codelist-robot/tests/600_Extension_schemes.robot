@@ -817,7 +817,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait      ${EXTENSIONS_TAB}    timeout=20
     Click element with wait      ${CROSS_REFERENCE_LIST_TAB}    timeout=20
     Click element with wait      //*[contains(@id,'test_600crossrefrencelist_view_extension')]    timeout=20
-    Page should not contain    Tällä laajennuksella ei ole vielä yhtään koodiliitosta.    timeout=20
+    Page should not contain    Tällä laajennuksella ei ole vielä yhtään koodiliitosta.
     Wait Until Page Contains Element    //*[contains(text(), "Jäsen02 · Testcode 29 · ${CODE_LIST_16} · Testirekisteri")]    timeout=20
     Click element with wait      ${MEMBERS_TAB}    timeout=30
     Wait until page contains    30 jäsentä    timeout=20
