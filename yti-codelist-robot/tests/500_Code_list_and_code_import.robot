@@ -531,9 +531,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains Element    ${EXPAND_ALL_BTN}    timeout=20
     Log To Console    Codes visible and expand button shown
     Click Button    ${EXPAND_ALL_BTN}
-    Log To Console    Expand all button clicked
+
+    Sleep                       5
     Click Code List Info Tab
-    Log To Console    Back button press successful from Code page
     Click element with wait      ${MODIFY_CODE_LIST}    timeout=20
     Click element with wait      ${ADD_LINK_DDL}    timeout=30
     Click element with wait     ${LICENSE_BTN}    timeout=20

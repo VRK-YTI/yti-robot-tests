@@ -295,7 +295,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Koodi1000 - Koodi1000    timeout=20
 
     Select breadcrump link 3
-    Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 - ${CODE_LIST_2} - Testirekisteri")]    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 · ${CODE_LIST_2} · Testirekisteri")]
 
     [Teardown]    Remove codelist with extensions teardown    ${CODE_LIST_16}    ${CODE_LIST_2}
 
@@ -509,7 +509,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Koodi1000 - Koodi1000    timeout=20
 
     Select breadcrump link 3
-    Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 - ${CODE_LIST_2} - Testirekisteri")]    timeout=20
+    Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 · ${CODE_LIST_2} · Testirekisteri")]    timeout=20
 
     Return to Koodistot frontpage
     Input Text with wait   ${SEARCH_BOX_INPUT}    ${CODE_LIST_2}    timeout=30
@@ -575,7 +575,7 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Wait Until Page Contains    Koodi1000 - Koodi1000    timeout=20
 
     Select breadcrump link 3
-    Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 - ${CODE_LIST_2} - Testirekisteri")]    timeout=60
+    Wait Until Page Contains Element    //*[contains(text(), "Koodi1000 · ${CODE_LIST_2} · Testirekisteri")]    timeout=60
 
     Return to Koodistot frontpage
     Input Text with wait   ${SEARCH_BOX_INPUT}    ${CODE_LIST_2}    timeout=30
