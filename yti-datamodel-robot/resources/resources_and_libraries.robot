@@ -1,6 +1,6 @@
 *** Settings ***
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
-Resource          ../../yti-robot-common/resources/keywords/Terminologies_resources.robot
+Resource          ../../yti-codelist-robot/resources/keywords/Terminologies_resources.robot
 
 Resource          ../resources/keywords/Datamodel_Resources.robot
 
