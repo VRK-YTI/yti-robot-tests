@@ -496,11 +496,11 @@ ${TERMINOLOGY_USER_DROPDOWN}    id=fakeable_user_dropdown
     Click element with wait     ${ORIGINAL_STATUS_DDL}      timeout=20
     Click element with wait     ${DRAFT_STATUS_ORIGINAL}    timeout=20
     Click element with wait     ${TARGET_STATUS_DDL}        timeout=20
-    Page Should Not Contain Element    ${DRAFT_STATUS_TARGET}           timeout=60
-    Page Should Not Contain Element    ${SUPERSEDED_STATUS_TARGET}      timeout=60
-    Page Should Not Contain Element    ${RETIRED_STATUS_TARGET}         timeout=60
-    Page Should Not Contain Element    ${INVALID_STATUS_TARGET}         timeout=60
-    Page Should Contain Element        ${INCOMPLETE_STATUS_TARGET}      timeout=20
+    Page Should Not Contain Element    ${DRAFT_STATUS_TARGET}
+    Page Should Not Contain Element    ${SUPERSEDED_STATUS_TARGET}
+    Page Should Not Contain Element    ${RETIRED_STATUS_TARGET}
+    Page Should Not Contain Element    ${INVALID_STATUS_TARGET}
+    Page Should Contain Element        ${INCOMPLETE_STATUS_TARGET}
 
     Click element with wait            ${VALID_STATUS_TARGET}           timeout=20
     Click element with wait            ${SAVE_CODE_STATUS_CHANGE_BTN}   timeout=20

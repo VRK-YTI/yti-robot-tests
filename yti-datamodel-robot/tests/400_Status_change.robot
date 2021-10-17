@@ -64,7 +64,7 @@ ${PREFIX_1}       autom
     Set Startig Status    ${STARTING_STATUS_DRAFT}
 
     Click Element with wait             ${TARGET_STATUS_DDL}            timeout=20
-    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
     Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
     Page Should Not Contain Element     ${TARGET_STATUS_DRAFT}
     Page Should Not Contain Element     ${TARGET_STATUS_SUPERSEDED}

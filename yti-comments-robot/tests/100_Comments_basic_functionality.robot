@@ -19,11 +19,12 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    test    100
     Click Element with wait    ${LICENSE_LINK}      timeout=20
-    Switch window with wait    url=https://ec.europa.eu/info/european-union-public-licence
+
+    Switch window with wait     url=https://ec.europa.eu/info/european-union-public-licence
     Wait Until Page Contains    European Union Public Licence    timeout=30
     Wait Until Page Contains    What is the EUPL?    timeout=30
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
+    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Kommentit
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly

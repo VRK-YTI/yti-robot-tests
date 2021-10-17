@@ -13,7 +13,6 @@ Resource          ../resources/resources_and_libraries.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
-    Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 201. Create new comment round for terminology
@@ -22,7 +21,6 @@ Resource          ../resources/resources_and_libraries.robot
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Terminology
     Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
-    Return To Comments Frontpage
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 202. Create new comment round for profile
@@ -41,7 +39,6 @@ Resource          ../resources/resources_and_libraries.robot
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
-    Return To Comments Frontpage
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 204. Add resources from Terminologies for comment round
@@ -59,8 +56,6 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    Saturnus    timeout=20
     Close Window
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
-    Return To Comments Frontpage
     [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 205. Add resources from Data Vocabularies for comment round
@@ -73,6 +68,7 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    kommentti1    timeout=20
 
     Click Element with wait    //*[contains(text(), "Automobiili")]
+
     Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Wait Until Page Contains    Testiautomaatio    timeout=20
     Wait Until Page Contains    Automobiili    timeout=20
@@ -93,7 +89,7 @@ Resource          ../resources/resources_and_libraries.robot
     Start Comment Round
     Add Resource For Comment Round    Testcode 57    ${COMMENT_TEXT_INPUT_1}    kommentti22    ${EMPTY}    ${EMPTY}
     Close Comment Round
-    Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_CLOSED}
 
 207. Send comment for Reference Data resource
@@ -111,7 +107,7 @@ Resource          ../resources/resources_and_libraries.robot
     Click Element with wait    ${COMMENTS_TAB}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
     Wait Until Page Contains    Korvattu    timeout=20
-    Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
 
 208. Remove Reference Data resources from comment round
@@ -138,7 +134,7 @@ Resource          ../resources/resources_and_libraries.robot
     Page Should Not Contain    Testcode 28
     Page Should Not Contain    Testcode 30
     Page Should Not Contain    Testcode 35
-    Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 209. Add Reference Data resource without prefLabel to comment round
@@ -158,7 +154,7 @@ Resource          ../resources/resources_and_libraries.robot
     Close Window
 
     Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
-    Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 210. Check comment round results
@@ -198,7 +194,6 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    (66.7 %)    timeout=20
     Wait Until Page Contains    Voimassa oleva:    timeout=20
     Wait Until Page Contains    (100.0 %)    timeout=20
-    Return To Comments Frontpage
 
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_CLOSED}
 
@@ -239,7 +234,7 @@ Resource          ../resources/resources_and_libraries.robot
     Click Element with wait    ${CLOSE_INLINE_COMMENT_0_BTN}
     Page Should Not Contain    Inline kommentti 1
     Page Should Not Contain    Inline kommentti 2
-    Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
 
 212. Create new suggestion for comment round
@@ -255,7 +250,7 @@ Resource          ../resources/resources_and_libraries.robot
     Start Comment Round
     Create New Suggestion    Ehdotus2    Kuvaus2
     Close Comment Round
-    Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_CLOSED}
 
 213. Check URI links

@@ -23,6 +23,5 @@ Resource          ../resources/resources_and_libraries.robot
     Check Mailbox
     Wait Until Page Contains    Testiautomaatiokierros    timeout=30
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
-    Sleep    5
-    Return To Comments Frontpage
+
     [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}

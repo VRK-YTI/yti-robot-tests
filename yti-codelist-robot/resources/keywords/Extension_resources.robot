@@ -196,7 +196,7 @@ Delete extension before code list
         Click element with wait             ${EXTENSION_DELETE_BTN}                 timeout=30
         Click element with wait             ${CONFIRM_DELETE_EXTENSION_BTN}         timeout=30
         Log To Console                      Extension deleted
-        ${exit}=    Run Keyword And Return Status    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]   timeout=20
+        ${exit}=    Run Keyword And Return Status    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
         Exit For Loop If    ${exit}
     END
     Continue code list deletion    ${code_list_item}

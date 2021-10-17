@@ -127,7 +127,7 @@ Delete existing terminological vocabulary and create new
     Click element with wait             ${CONFIRM_REMOVE_VOCABULARY_BTN}
 
     Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Page Should Not Contain Element     //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
+    Page Should Not Contain Element     //*[contains(text(), "${VOCABULARY_1}")]
 
     Create Testiautomaatiosanasto and import vocabulary
 
