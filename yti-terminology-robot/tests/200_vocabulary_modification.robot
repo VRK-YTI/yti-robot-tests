@@ -532,8 +532,8 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Wait Until Element Is Enabled    //*[contains(text(), "789")]    timeout=30
 
     Select admin
-    Wait Until Element Is Enabled    //*[contains(text(), "123")]    timeout=30
-    Wait Until Element Is Enabled    //*[contains(text(), "456")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "123")]       timeout=30
+    Wait Until Element Is Enabled    //*[contains(text(), "456")]       timeout=30
     Page Should Not Contain Element    //*[contains(text(), "789")]    timeout=30
 
     Select terminology user
