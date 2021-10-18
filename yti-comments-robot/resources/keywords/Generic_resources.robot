@@ -119,34 +119,34 @@ Return To Comments Frontpage
 
 Create Comment Round
     [Arguments]    ${tool}    ${source}    ${round_name}    ${description}    ${only_selected_resources}    ${allow_new_comment_threads}
-    Click Element with wait     ${CREATE_COMMENT_ROUND_BTN}         timeout=20
-    Click Element with wait     ${SELECT_TOOL_DDL}                  timeout=20
-    Click Element with wait     ${tool}                             timeout=30
+    Click Element with wait     ${CREATE_COMMENT_ROUND_BTN}
+    Click Element with wait     ${SELECT_TOOL_DDL}
+    Click Element with wait     ${tool}
 
-    Input Text with wait        ${SEARCH_LINKED_SOURCE_INPUT}    ${source}   timeout=30
+    Input Text with wait        ${SEARCH_LINKED_SOURCE_INPUT}    ${source}
 
-    Click Element with wait    //*[@id='undefined_resource_link']//*[contains(text(), "${source}")]     timeout=30
+    Click Element with wait    //*[@id='undefined_resource_link']//*[contains(text(), "${source}")]
 
-    Input Text with wait   ${COMMENTROUND_NAME_INPUT}    ${round_name}      timeout=30
-    Input Text with wait    ${COMMENTROUND_DESCRIPTION_INPUT}    ${description}     timeout=30
+    Input Text with wait    ${COMMENTROUND_NAME_INPUT}           ${round_name}
+    Input Text with wait    ${COMMENTROUND_DESCRIPTION_INPUT}    ${description}
 
     Run Keyword if    '${only_selected_resources}' == 'True'    Uncheck Only Selected Resources Checkbox
     Run Keyword if    '${allow_new_comment_threads}' == 'True'    Allow New Comment Threads
 
-    Click Element with wait   ${COMMENTROUND_ADD_ORGANIZATION}      timeout=20
-    Input Text with wait    ${COMMENTROUND_ORGANIZATION_INPUT}    Testiorganisaatio     timeout=20
-    Click Element that contains text    Testiorganisaatio       timeout=30
-    Click Element with wait   ${SAVE_COMMENTROUND}      timeout=20
+    Click Element with wait     ${COMMENTROUND_ADD_ORGANIZATION}
+    Input Text with wait        ${COMMENTROUND_ORGANIZATION_INPUT}    Testiorganisaatio
+    Click Element that contains text    Testiorganisaatio
+    Click Element with wait     ${SAVE_COMMENTROUND}
 
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=60
 
 Uncheck Only Selected Resources Checkbox
-    Click Element with wait            ${ONLY_SELCTED_RESOURCES_CHECKBOX}       timeout=30
+    Click Element with wait            ${ONLY_SELCTED_RESOURCES_CHECKBOX}
     Checkbox Should Not Be Selected    ${ONLY_SELCTED_RESOURCES_CHECKBOX}
 
 Allow New Comment Threads
-    Click Element with wait   ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}     timeout=30
-    Checkbox Should Be Selected    ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}
+    Click Element with wait         ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}
+    Checkbox Should Be Selected     ${ALLOW_NEW_COMMENT_THREADS_CHECKBOX}
 
 Delete Comment Round
     [Arguments]    ${comment_round_name}    ${state}
@@ -154,9 +154,9 @@ Delete Comment Round
     Click Element that contains text    ${comment_round_name}       timeout=60
     Wait Until Page Contains Element    //*[contains(text(), "${comment_round_name}")]    timeout=60
 
-    Click Element with wait    ${COMMENTROUND_DDL}      timeout=20
-    Click Element with wait    ${DELETE_COMMENTROUND_BTN}       timeout=20
-    Click Element with wait   ${CONFIRM_BTN}    timeout=20
+    Click Element with wait    ${COMMENTROUND_DDL}
+    Click Element with wait    ${DELETE_COMMENTROUND_BTN}
+    Click Element with wait    ${CONFIRM_BTN}
 
     Wait Until Page Contains Element    ${CREATE_COMMENT_ROUND_BTN}    timeout=20
     Select Comment Round State    ${state}
@@ -166,85 +166,85 @@ Delete Comment Round
 Add Resource For Comment Round
     [Arguments]    ${resource}    ${comment_box}    ${comment}    ${status_ddl}    ${status}
     Click Element with wait    ${RESOURCES_TAB}     timeout=60
-    Click Element with wait    ${EDIT_COMMENTROUND}     timeout=30
-    Click Element with wait    ${ADD_NEW_RESOURCE_BTN}      timeout=30
+    Click Element with wait    ${EDIT_COMMENTROUND}
+    Click Element with wait    ${ADD_NEW_RESOURCE_BTN}
 
-    Input Text with wait    ${SEARCH_LINKED_SOURCE_INPUT}    ${resource}    timeout=30
-    Click Element with wait   //*[contains(text(), "${resource}")]      timeout=30
+    Input Text with wait    ${SEARCH_LINKED_SOURCE_INPUT}    ${resource}
+    Click Element with wait   //*[contains(text(), "${resource}")]
     Click Element with wait    ${SELECT_RESOURCE_BTN}       timeout=60
-    Input Text with wait   ${comment_box}    ${comment}     timeout=30
+    Input Text with wait   ${comment_box}    ${comment}
 
     ${status_length}=    Get Length    ${status_ddl}
     Run Keyword If    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
-    Click Element with wait   ${SAVE_COMMENTROUND}      timeout=30
+    Click Element with wait   ${SAVE_COMMENTROUND}
     Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
 
 Create New Suggestion
     [Arguments]    ${suggestion_label}    ${suggestion_description}
     Click Element with wait    ${RESOURCES_TAB}     timeout=60
-    Click Element with wait   ${EDIT_COMMENTROUND}      timeout=30
-    Click Element with wait    ${ADD_NEW_RESOURCE_BTN}      timeout=30
-    Click Element with wait   ${CREATE_SUGGESTION_BTN}      timeout=30
+    Click Element with wait   ${EDIT_COMMENTROUND}
+    Click Element with wait    ${ADD_NEW_RESOURCE_BTN}
+    Click Element with wait   ${CREATE_SUGGESTION_BTN}
 
     Input Text with wait    //*[contains(@id, '_label_text_input')]    ${suggestion_label}      timeout=30
     Input Text with wait   //*[contains(@id, '_description_text_input')]    ${suggestion_description}       timeout=30
 
-    Click Element with wait    ${SAVE_COMMENTROUND}     timeout=30
-    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}    timeout=30
+    Click Element with wait          ${SAVE_COMMENTROUND}
+    Wait Until Element Is Visible    ${EDIT_COMMENTROUND}
 
 Add Resource Status
     [Arguments]    ${status_ddl}    ${status}
-    Click Element with wait   ${status_ddl}     timeout=30
-    Click Element with wait    ${status}        timeout=30
+    Click Element with wait     ${status_ddl}
+    Click Element with wait     ${status}
 
 Start Comment Round
-    Click Element with wait    ${COMMENTROUND_DDL}      timeout=20
-    Click Element with wait    ${START_COMMENT_ROUND_BTN}       timeout=20
-    Click Element with wait    ${CONFIRM_BTN}       timeout=20
-    Wait Until Page Contains    Käynnissä    timeout=20
+    Click Element with wait    ${COMMENTROUND_DDL}
+    Click Element with wait    ${START_COMMENT_ROUND_BTN}
+    Click Element with wait    ${CONFIRM_BTN}
+    Wait Until Page Contains    Käynnissä
 
 Close Comment Round
-    Click Element with wait    ${COMMENTROUND_DDL}      timeout=20
-    Click Element with wait    ${CLOSE_COMMENT_ROUND_BTN}        timeout=20
-    Click Element with wait    ${CONFIRM_BTN}       timeout=20
+    Click Element with wait    ${COMMENTROUND_DDL}
+    Click Element with wait    ${CLOSE_COMMENT_ROUND_BTN}
+    Click Element with wait    ${CONFIRM_BTN}
     Wait Until Page Contains    Suljettu    timeout=20
 
 Comment On Resource
     [Arguments]    ${comment_box}    ${comment}    ${status_ddl}    ${status}
-    Click Element with wait    ${COMMENTS_TAB}      timeout=30
-    Click Element with wait    ${START_COMMENTING_BTN}      timeout=30
-    Input Text with wait   ${comment_box}    ${comment}     timeout=30
+    Click Element with wait    ${COMMENTS_TAB}
+    Click Element with wait    ${START_COMMENTING_BTN}
+    Input Text with wait   ${comment_box}    ${comment}
     ${status_length}=    Get Length    ${status_ddl}
     Run Keyword If    ${status_length} > 0    Add Resource Status    ${status_ddl}    ${status}
-    Click Element with wait   ${SEND_COMMENTS_BTN}      timeout=30
+    Click Element with wait   ${SEND_COMMENTS_BTN}
     Wait Until Element Is Visible    ${START_COMMENTING_BTN}    timeout=30
 
 Start Commenting
-    Click Element with wait   ${COMMENTS_TAB}       timeout=30
-    Click Element with wait    ${START_COMMENTING_BTN}      timeout=30
+    Click Element with wait   ${COMMENTS_TAB}
+    Click Element with wait    ${START_COMMENTING_BTN}
 
 Comment On Resource 0
     [Arguments]    ${comment}    ${status}
     Input Text with wait   ${COMMENT_TEXT_INPUT_0}    ${comment}        timeout=30
-    Click Element with wait   ${STATUS_DDL_0}       timeout=30
-    Click Element with wait   ${status}     timeout=30
+    Click Element with wait   ${STATUS_DDL_0}
+    Click Element with wait   ${status}
 
 Comment On Resource 1
     [Arguments]    ${comment}    ${status}
     Input Text with wait    ${COMMENT_TEXT_INPUT_1}    ${comment}       timeout=30
-    Click Element with wait    ${STATUS_DDL_1}      timeout=30
-    Click Element with wait    ${status}        timeout=30
+    Click Element with wait    ${STATUS_DDL_1}
+    Click Element with wait    ${status}
 
 Send Comments
-    Click Element with wait    ${SEND_COMMENTS_BTN}             timeout=30
+    Click Element with wait    ${SEND_COMMENTS_BTN}
     Wait Until Element Is Enabled    ${START_COMMENTING_BTN}    timeout=30
 
 Send Inline Comment For Comment Thread
     [Arguments]    ${id}    ${comment}
-    Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}          timeout=30
-    Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}        timeout=30
-    Input Text with wait       ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    ${comment}     timeout=30
-    Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}     timeout=30
+    Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}
+    Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}
+    Input Text with wait       ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    ${comment}
+    Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}
 
 Search Comment Round
     [Arguments]    ${comment_round}
@@ -252,7 +252,7 @@ Search Comment Round
 
 Select Comment Round
     [Arguments]    ${comment_round}
-    Click Element with wait    //*[contains(text(), "${comment_round}")]     timeout=30
+    Click Element with wait    //*[contains(text(), "${comment_round}")]
 
 Add Email Subscription For Comment Round
     Click Element with wait    ${COMMENTROUND_DDL}
@@ -261,46 +261,46 @@ Add Email Subscription For Comment Round
     Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
 
 Remove Email Subscription For Comment Round
-    Click Element with wait    ${COMMENTROUND_DDL}      timeout=20
-    Click Element with wait    ${DELETE_SUBSCRIPTION_BTN}       timeout=20
-    Click Element with wait    ${CONFIRMATION_YES_BTN}      timeout=20
+    Click Element with wait    ${COMMENTROUND_DDL}
+    Click Element with wait    ${DELETE_SUBSCRIPTION_BTN}
+    Click Element with wait    ${CONFIRMATION_YES_BTN}
     Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
 
 Select Navigation Menu Link
     [Arguments]    ${navigation_menu_link}
-    Click Element with wait    ${NAVIGATION_MENU_DDL}       timeout=20
-    Click Element with wait    //*[contains(text(), "${navigation_menu_link}")]     timeout=30
+    Click Element with wait    ${NAVIGATION_MENU_DDL}
+    Click Element with wait    //*[contains(text(), "${navigation_menu_link}")]
 
 Restore Finnish Language
-    Click Element with wait    ${LANGUAGE_DROPDOWN_BTN}     timeout=20
-    Click Element with wait    ${LANGUAGE_FI}               timeout=20
+    Click Element with wait    ${LANGUAGE_DROPDOWN_BTN}
+    Click Element with wait    ${LANGUAGE_FI}
     Wait Until Page Contains    Kommentit - ${ENVIRONMENT_IDENTIFIER}    timeout=30
-    Wait Until Page Contains    Luo uusi kommentointikierros    timeout=30
-    Wait Until Page Contains    Kaikki työkalut    timeout=20
-    Wait Until Page Contains    Kaikki organisaatiot    timeout=20
-    Wait Until Page Contains    Kaikki tilat    timeout=20
+    Wait Until Page Contains    Luo uusi kommentointikierros             timeout=30
+    Wait Until Page Contains    Kaikki työkalut                          timeout=20
+    Wait Until Page Contains    Kaikki organisaatiot                     timeout=20
+    Wait Until Page Contains    Kaikki tilat                             timeout=20
 
 Select Tab
     [Arguments]    ${tab}
-    Click Element with wait    ${tab}       timeout=20
+    Click Element with wait    ${tab}
 
 Edit Comment Round
-    Click Element with wait    ${EDIT_COMMENTROUND}     timeout=20
+    Click Element with wait    ${EDIT_COMMENTROUND}
 
 Add Temporary Users
     [Arguments]    ${firstname}    ${lastname}    ${email}
-    Click Element with wait   ${ADD_TEMP_USER_BTN}     timeout=20
-    Input Text with wait    ${USER_0_FIRSTNAME_INPUT}    ${firstname}     timeout=20
-    Input Text with wait    ${USER_0_LASTNAME_INPUT}    ${lastname}     timeout=20
-    Input Text with wait    ${USER_0_EMAIL_INPUT}    ${email}     timeout=20
-    Click Element with wait    ${ADD_USERS_BTN}     timeout=20
+    Click Element with wait   ${ADD_TEMP_USER_BTN}
+    Input Text with wait    ${USER_0_FIRSTNAME_INPUT}    ${firstname}
+    Input Text with wait    ${USER_0_LASTNAME_INPUT}    ${lastname}
+    Input Text with wait    ${USER_0_EMAIL_INPUT}    ${email}
+    Click Element with wait    ${ADD_USERS_BTN}
     Wait Until Page Does Not Contain Element    ${USERS_MODAL_OPEN}    timeout=120
 
 Save Comment Round
-    Click Element with wait    ${SAVE_COMMENTROUND}     timeout=30
+    Click Element with wait    ${SAVE_COMMENTROUND}
     Wait Until Element Is Enabled    ${EDIT_COMMENTROUND}    timeout=60
 
 Select Comment Round State
     [Arguments]    ${state}
-    Click Element with wait    ${STATUS_DROPDOWN_BTN}    timeout=30
-    Click Element with wait    ${state}    timeout=10
+    Click Element with wait    ${STATUS_DROPDOWN_BTN}
+    Click Element with wait    ${state}

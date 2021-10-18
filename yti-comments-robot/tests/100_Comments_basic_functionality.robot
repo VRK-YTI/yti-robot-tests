@@ -10,7 +10,7 @@ Resource          ../resources/resources_and_libraries.robot
 100. Open Information about the service page
     [Documentation]    Verify that Information about the service page is opened correctly.
     [Tags]    regression    test    100
-    Click Element with wait     ${INFORMATION_LINK}      timeout=30
+    Click Element with wait     ${INFORMATION_LINK}
     Wait Until Page Contains    Tietoa Kommentit-työkalusta    timeout=20
     Wait Until Page Contains    Katso myös    timeout=20
     Wait Until Page Contains    Ota yhteyttä    timeout=20
@@ -18,7 +18,7 @@ Resource          ../resources/resources_and_libraries.robot
 101. Open EUPL-1.2 license page
     [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    test    100
-    Click Element with wait    ${LICENSE_LINK}      timeout=20
+    Click Element with wait    ${LICENSE_LINK}
 
     Switch window with wait     url=https://ec.europa.eu/info/european-union-public-licence
     Wait Until Page Contains    European Union Public Licence    timeout=30
@@ -29,7 +29,7 @@ Resource          ../resources/resources_and_libraries.robot
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly
     [Tags]    local
-    Click Element with wait    ${DESCRIPTION_OF_FILE_LINK}      timeout=20
+    Click Element with wait    ${DESCRIPTION_OF_FILE_LINK}
     Switch window with wait  url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
 
 103. Change user interface language
@@ -37,7 +37,8 @@ Resource          ../resources/resources_and_libraries.robot
     ...    Check that language settings do not change in page reload.
     [Tags]    regression    test    100
     Click Element with wait     ${LANGUAGE_DROPDOWN_BTN}        timeout=40
-    Click Element with wait     ${LANGUAGE_EN}                  timeout=20
+    Click Element with wait     ${LANGUAGE_EN}
+
     Wait Until Page Contains    Comments - ${ENVIRONMENT_IDENTIFIER}    timeout=30
     Wait Until Page Contains    Add new comment round    timeout=30
     Wait Until Page Contains    All tools    timeout=30
