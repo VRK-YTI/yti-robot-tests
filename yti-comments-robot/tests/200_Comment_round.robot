@@ -6,7 +6,7 @@ Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup admin
 Resource          ../resources/resources_and_libraries.robot
 
-Test Timeout      3 minutes
+Test Timeout      5 minutes
 
 *** Test Cases ***
 200. Create new comment round for code list
@@ -103,7 +103,7 @@ Test Timeout      3 minutes
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
 
-    Select admin user
+    Select admin
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Click Element with wait    ${COMMENTS_TAB}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
@@ -163,7 +163,7 @@ Test Timeout      3 minutes
     ...    Add resources for commenting, send comments from three users and check comment round results.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Select admin user
+    Select admin
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
@@ -185,7 +185,7 @@ Test Timeout      3 minutes
     Comment On Resource 1    Kommentti 6    ${VALID_1}
     Send Comments
     Log To Console    Third commenter's comments added
-    Select admin user
+    Select admin
     Close Comment Round
 
     Click Element with wait   ${RESOURCES_TAB}    timeout=60
@@ -203,7 +203,7 @@ Test Timeout      3 minutes
     ...    Add resources for commenting, send comments from two users and inline comments from one user.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Select admin user
+    Select admin
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
