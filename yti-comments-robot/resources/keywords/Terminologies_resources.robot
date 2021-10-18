@@ -60,7 +60,7 @@ ${IMPORT_CANCEL_BTN}    id=import_cancel_button
 ${IMPORT_YES_BTN}    id=import_yes_button
 ${CONCEPT_LIST_SEARCH_INPUT}    id=concept_list_search_concept_input
 #CSV paths
-${concepts_from_controlled_vocabularies}    ${DATAFOLDER}${/}concepts_from_controlled_vocabularies_csv.csv
+${test_concepts_csv}    ${DATAFOLDER}${/}test_concepts_csv.csv
 
 *** Keywords ***
 Go back to Sanastot frontpage
@@ -111,7 +111,7 @@ Create Testiautomaatiosanasto and import vocabulary
     Click element with wait             ${SAVE_VOCABULARY_BTN}                                          timeout=60
     Click element with wait             ${VOCABULARY_DDL}                                               timeout=90
     Click element with wait             ${IMPORT_VOCABULARY_BTN}                                        timeout=90
-    Choose File                         ${FILE_UPLOAD_INPUT}    ${concepts_from_controlled_vocabularies}
+    Choose File                         ${FILE_UPLOAD_INPUT}    ${test_concepts_csv}
 
     Click element with wait             ${UPLOAD_FILE}
     Click element with wait             ${IMPORT_YES_BTN}
