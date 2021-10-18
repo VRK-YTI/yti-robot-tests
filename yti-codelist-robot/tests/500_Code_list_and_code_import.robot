@@ -524,71 +524,71 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ...    without codes. Check that other code list information is copied to new version. YTI-1163, YTI-873.
     [Tags]    regression    test    koodistot    500
     Upload codelist in Excel format    ${Code_list_with_feedback_column}    ${CODE_LIST_9}
-    Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
-    Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
-    Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
-    Wait Until Page Contains Element    ${EXPAND_ALL_BTN}    timeout=20
-    Log To Console    Codes visible and expand button shown
+    Wait Until Page Contains    testikoodi01 - Testikoodi 01
+    Wait Until Page Contains    testikoodi04 - Testikoodi 04
+    Wait Until Page Contains    testikoodi06 - Testikoodi 06
+    Wait Until Page Contains Element    ${EXPAND_ALL_BTN}
+
     Click Button    ${EXPAND_ALL_BTN}
 
-    Sleep                       5
+    Sleep                           5
     Click Code List Info Tab
-    Click element with wait      ${MODIFY_CODE_LIST}    timeout=20
-    Click element with wait      ${ADD_LINK_DDL}    timeout=30
-    Click element with wait     ${LICENSE_BTN}    timeout=20
-    Click element with wait     ${CCBY4.0}    timeout=20
-    Click element with wait     ${SELECT_LINK_BTN}    timeout=20
+    Click element with wait         ${MODIFY_CODE_LIST}
+    Click element with wait         ${ADD_LINK_DDL}
+    Click element with wait         ${LICENSE_BTN}
+    Click element with wait         ${CCBY4.0}
+    Click element with wait         ${SELECT_LINK_BTN}
 
-    Wait Until Page Contains    Lisenssi    timeout=20
-    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait Until Page Contains Element    ${ADD_LINK_DDL}    timeout=30
-    Click element with wait     ${ADD_LINK_DDL}             timeout=20
-    Click element with wait     ${DROPDOWN_ITEM_LINK}       timeout=20
-    Input Text with wait        ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/      timeout=20
-    Click element with wait     ${ADD_BTN}    timeout=20
-    Wait Until Page Contains    Liittyvä linkki    timeout=20
-    Page Should Contain    https://www.suomi.fi/etusivu/
-    Click element with wait     ${SAVE_CODE_LIST_MOD_BTN}    timeout=20
-    Wait Until Element Is Visible    ${MODIFY_CODE_LIST}    timeout=30
-    Wait Until Page Contains    Lisenssi    timeout=20
-    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait Until Page Contains    Liittyvä linkki    timeout=20
-    Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
-    Log To Console    links are saved
-    Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
-    Click Button    ${CODE_LIST_DDL}
-    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}    timeout=20
-    Click Button    ${CREATE_NEW_VERSION_BTN}
-    Log To Console    Create new version button pressed
-    Click element with wait     ${CREATE_CODELIST_VERSION_AS_EMPTY}    timeout=20
-    Input Text with wait    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}  timeout=20
-    Input Text with wait    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}  timeout=20
-    Click element with wait     ${SAVE_NEW_CODE_LIST}    timeout=20
-    Click element with wait     ${CONFIRMATION_YES_BTN}    timeout=20
+    Wait Until Page Contains        Lisenssi
+    Wait Until Page Contains        Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)
+
+    Click element with wait             ${ADD_LINK_DDL}
+    Click element with wait             ${DROPDOWN_ITEM_LINK}
+    Input Text with wait                ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
+    Click element with wait             ${ADD_BTN}
+    Wait Until Page Contains            Liittyvä linkki
+    Page Should Contain                 https://www.suomi.fi/etusivu/
+    Click element with wait             ${SAVE_CODE_LIST_MOD_BTN}
+    Wait Until Element Is Visible       ${MODIFY_CODE_LIST}
+    Wait Until Page Contains            Lisenssi
+    Wait Until Page Contains            Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)
+    Wait Until Page Contains            Liittyvä linkki
+    Wait Until Page Contains            https://www.suomi.fi/etusivu/
+
+    Wait Until Page Contains Element    ${CODE_LIST_DDL}
+    Click Button                        ${CODE_LIST_DDL}
+
+    Wait Until Page Contains Element    ${CREATE_NEW_VERSION_BTN}
+    Click Button                        ${CREATE_NEW_VERSION_BTN}
+
+    Click element with wait     ${CREATE_CODELIST_VERSION_AS_EMPTY}
+    Input Text with wait        ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}
+    Input Text with wait        ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}
+    Click element with wait     ${SAVE_NEW_CODE_LIST}
+    Click element with wait     ${CONFIRMATION_YES_BTN}
 
     Page Should Not Contain    10 koodia
     Page Should Not Contain    testikoodi01 - Testikoodi 01
 
     Click Code List Info Tab
 
-    Wait Until Page Contains    englanti    timeout=20
-    Wait Until Page Contains    suomi    timeout=20
-    Wait Until Page Contains    ruotsi    timeout=20
-    Wait Until Page Contains    kuvausFI    timeout=20
-    Wait Until Page Contains    määritelmäFI    timeout=20
-    Wait Until Page Contains    muutostietoFI    timeout=20
-    Wait Until Page Contains    101    timeout=20
-    Wait Until Page Contains    lähdeFI    timeout=20
-    Wait Until Page Contains    lakiperusteFI    timeout=20
-    Wait Until Page Contains    sitovuustasoFI    timeout=20
+    Wait Until Page Contains    englanti
+    Wait Until Page Contains    suomi
+    Wait Until Page Contains    ruotsi
+    Wait Until Page Contains    kuvausFI
+    Wait Until Page Contains    määritelmäFI
+    Wait Until Page Contains    muutostietoFI
+    Wait Until Page Contains    101
+    Wait Until Page Contains    lähdeFI
+    Wait Until Page Contains    lakiperusteFI
+    Wait Until Page Contains    sitovuustasoFI
     Wait Until Page Contains    Linkit
-    Wait Until Page Contains    Lisenssi    timeout=20
-    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Wait Until Page Contains    Liittyvä linkki    timeout=20
-    Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
-    Wait Until Page Contains    Yhteydenotto    timeout=20
-    Wait Until Page Contains    Aineiston palauteosoite_fi    timeout=20
-    Log To Console    Links are copied
+    Wait Until Page Contains    Lisenssi
+    Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)
+    Wait Until Page Contains    Liittyvä linkki
+    Wait Until Page Contains    https://www.suomi.fi/etusivu/
+    Wait Until Page Contains    Yhteydenotto
+    Wait Until Page Contains    Aineiston palauteosoite_fi
 
     [Teardown]    Remove codelist teardown    ${CODE_LIST_10}    ${CODE_LIST_9}
 

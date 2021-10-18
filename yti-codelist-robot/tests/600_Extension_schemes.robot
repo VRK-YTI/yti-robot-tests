@@ -830,33 +830,34 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Tags]    regression    koodistot    600    test
     Upload codelist in excel format    ${Extensions_new_version_creation}    ${CODE_LIST_14}
 
-    Wait until page contains    25 koodia    timeout=20
-    Click element with wait      ${CODE_LIST_DDL}    timeout=20
-    Click element with wait      ${CREATE_NEW_VERSION_BTN}    timeout=30
+    Wait until page contains        25 koodia
+    Click element with wait         ${CODE_LIST_DDL}
+    Click element with wait         ${CREATE_NEW_VERSION_BTN}
 
-    Input Text with wait    ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}    timeout=60
-    Input Text with wait   ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_19}           timeout=30
+    Input Text with wait            ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_5}    timeout=60
+    Input Text with wait            ${CODE_LIST_NAME_INPUT}     ${CODE_LIST_19}
 
-    Click element with wait      ${SAVE_NEW_CODE_LIST}    timeout=30
-    Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Wait until page contains    25 koodia    timeout=120
+    Click element with wait             ${SAVE_NEW_CODE_LIST}
+    Wait Until Element Is Enabled       ${CODE_LIST_DDL}    timeout=60
+    Wait until page contains            25 koodia           timeout=120
 
-    Click element with wait      //*[contains(text(), "testcode01 - Testikoodi 01")]    timeout=20
+    Click element with wait         //*[contains(text(), "testcode01 - Testikoodi 01")]    timeout=20
 
-    Wait until page contains    testcode01 - Testikoodi 01    timeout=20
-    Click element with wait      ${CODE_DDL}    timeout=20
-    Click element with wait      ${REMOVE_CODE_BTN}    timeout=20
-    Click element with wait      ${REMOVE_CODE_CONF_BTN}    timeout=20
+    Wait until page contains        testcode01 - Testikoodi 01    timeout=60
+    Click element with wait         ${CODE_DDL}
+    Click element with wait         ${REMOVE_CODE_BTN}
+    Click element with wait         ${REMOVE_CODE_CONF_BTN}
+    Wait until page contains        ${Error_linked_code}
 
-    Wait until page contains    ${Error_linked_code}    timeout=20
-    Click element with wait      ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
+    Click element with wait         ${CLOSE_ERROR_MESSAGE_BTN}
 
     Select breadcrump link 2
-    Click element with wait      ${EXTENSIONS_TAB}                          timeout=30
-    Click element with wait      //*[contains(@id,'111_view_extension')]    timeout=30
+    Click element with wait         ${EXTENSIONS_TAB}
+    Click element with wait         //*[contains(@id,'111_view_extension')]
     Delete extension
 
-    Wait Until Element Is Visible    ${VERSION_TAB}    timeout=30
+    Wait Until Element Is Visible    ${VERSION_TAB}
+
     [Teardown]    Remove codelist teardown    ${CODE_LIST_19}    ${CODE_LIST_14}
 
 627. Extend front page search to extensions and codes
