@@ -6,6 +6,8 @@ Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup admin
 Resource          ../resources/resources_and_libraries.robot
 
+Test Timeout      3 minutes
+
 *** Test Cases ***
 200. Create new comment round for code list
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.

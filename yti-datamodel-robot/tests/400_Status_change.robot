@@ -6,6 +6,8 @@ Test Teardown     Test Case Teardown Delete profile    ${MODEL_2}
 Test Setup        Test Case Setup Admin
 Resource          ../resources/resources_and_libraries.robot
 
+Test Timeout      5 minutes
+
 *** Variables ***
 ${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${PREFIX_1}       autom

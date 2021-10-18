@@ -92,10 +92,10 @@ Check Mailbox
     Close Mailbox
 
 Select breadcrump link 2
-    Sleep                       5
+    Sleep                       10
     Click element with wait     ${2_BREADCRUMB_LINK}                        timeout=20
 
 
 Select breadcrump link 3
-    Sleep                       5
+    Sleep                       10
     Click element with wait     ${3_BREADCRUMB_LINK}                        timeout=20

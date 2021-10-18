@@ -5,6 +5,8 @@ Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Delete profile    ${MODEL_1}
 Test Setup        Test Case Setup Admin
 
+Test Timeout      5 minutes
+
 Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
