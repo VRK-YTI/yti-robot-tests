@@ -1,16 +1,14 @@
 *** Settings ***
 Documentation     Test Suite for datamodel and resource status change
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Delete model    ${PREFIX_3}
-Test Setup        Test Case Setup Admin
+Test Setup        Test Case setup create profile     ${MODEL_2}   ${PREFIX_3}
 Resource          ../resources/resources_and_libraries.robot
 
 *** Test Cases ***
 400. Change status for profile and resources
     [Documentation]    Change status for profile and resources
     [Tags]    tietomallit    regression    test    400
-    Create Profile      ${MODEL_2}    ${PREFIX_3}
     Select model        ${MODEL_2}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
@@ -42,9 +40,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Change all profile resource statuses from DRAFT to INCOMPLETE as superuser with
     ...    enforcing transition rules. Check that certain status elements are not visible.
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup Superuser
-    Create Profile      ${MODEL_2}    ${PREFIX_3}
-
+    [Setup]   Test Case setup create profile     ${MODEL_2}   ${PREFIX_3}   superuser
     Select model        ${MODEL_2}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
@@ -73,8 +69,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Change all profile resource statuses from DRAFT to INCOMPLETE as superuser without
     ...    enforcing transition rules.
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup Superuser
-    Create Profile      ${MODEL_2}    ${PREFIX_3}
+    [Setup]   Test Case setup create profile     ${MODEL_2}   ${PREFIX_3}   superuser
     Select model        ${MODEL_2}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
@@ -104,8 +99,6 @@ Resource          ../resources/resources_and_libraries.robot
 403. Change profile resource statuses as Test Admin
     [Documentation]    Change all profile resource statuses from DRAFT to VALID as Test Admin.
     [Tags]    tietomallit    regression    test    400
-    Create Profile    ${MODEL_2}    ${PREFIX_3}
-
     Select model    ${MODEL_2}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
@@ -141,8 +134,7 @@ Resource          ../resources/resources_and_libraries.robot
 404. Change status for core vocabulary and resources
     [Documentation]    Change status for core vocabulary and resources as Test Datamodel user
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup datamodel user
-    Create Core Vocabulary    ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    [Setup]   Test Case setup create vocabulary     ${CORE_VOCABULARY_1}   ${PREFIX_2}   datamodel
 
     Select model    ${CORE_VOCABULARY_1}
     Create New Class Without Referencing Concept    Testiluokka
@@ -178,8 +170,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to INCOMPLETE as superuser with
     ...    enforcing transition rules. Check that certain status elements are not visible.
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup Superuser
-    Create Core Vocabulary    ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    [Setup]   Test Case setup create Vocabulary     ${CORE_VOCABULARY_1}   ${PREFIX_2}   superuser
 
     Select And Edit Profile    ${CORE_VOCABULARY_1}
     Import Namespace    Julkishallinnon tietokomponentit
@@ -218,9 +209,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to INCOMPLETE as superuser without
     ...    enforcing transition rules.
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup Superuser
-    Create Core Vocabulary    ${CORE_VOCABULARY_1}    ${PREFIX_2}
-
+    [Setup]   Test Case setup create Vocabulary     ${CORE_VOCABULARY_1}   ${PREFIX_2}   superuser
     Select And Edit Profile     ${CORE_VOCABULARY_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -258,7 +247,7 @@ Resource          ../resources/resources_and_libraries.robot
 407. Change core vocabulary resource statuses as Test Admin
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to VALID as Test Admin.
     [Tags]    tietomallit    regression    test    400
-    Create Core Vocabulary          ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    [Setup]   Test Case setup create Vocabulary     ${CORE_VOCABULARY_1}   ${PREFIX_2}
 
     Select And Edit Profile         ${CORE_VOCABULARY_1}
     Import Namespace                Julkishallinnon tietokomponentit
@@ -301,8 +290,7 @@ Resource          ../resources/resources_and_libraries.robot
 408. Change status for profile
     [Documentation]    Change status for profile
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup datamodel user
-    Create Profile    ${MODEL_2}    ${PREFIX_3}
+    [Setup]   Test Case setup create profile     ${MODEL_2}   ${PREFIX_3}   datamodel
     Select model    ${MODEL_2}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
@@ -346,8 +334,7 @@ Resource          ../resources/resources_and_libraries.robot
 409. Change status for class
     [Documentation]    Change status for class
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup datamodel user
-    Create Profile    ${MODEL_2}    ${PREFIX_3}
+    [Setup]   Test Case setup create profile     ${MODEL_2}   ${PREFIX_3}   datamodel
     Select model    ${MODEL_2}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
@@ -379,8 +366,7 @@ Resource          ../resources/resources_and_libraries.robot
 410. Change status for predicate
     [Documentation]    Change status for predicate
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup datamodel user
-    Create Profile    ${MODEL_2}    ${PREFIX_3}
+    [Setup]   Test Case setup create profile     ${MODEL_2}   ${PREFIX_3}   datamodel
     Select model    ${MODEL_2}
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti

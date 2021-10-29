@@ -1,6 +1,5 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Datamodel application
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup Admin
@@ -128,12 +127,19 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Wait Until Page Contains    Julkishallinnon tietokomponentit    timeout=30
     Title Should Be    AWSTEST - Tietomallit
 
-116. Delete profile
+116. Create and delete profile
     [Documentation]    Create and delete profile
     [Tags]    regression    tietomallit    test    100
     Create Profile              ${MODEL_1}    ${PREFIX_1}
     Delete datamodel            ${MODEL_1}
     [Teardown]  run keyword if test failed   Delete model ${PREFIX_1} with api
+
+117. Create and delete vocabulary
+    [Documentation]    Create and delete vocabulary
+    [Tags]    regression    tietomallit    test    100
+    Create Core Vocabulary  ${CORE_VOCABULARY_1}   ${PREFIX_2}
+    Delete datamodel        ${CORE_VOCABULARY_1}
+    [Teardown]  run keyword if test failed   Delete model ${PREFIX_2} with api
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.

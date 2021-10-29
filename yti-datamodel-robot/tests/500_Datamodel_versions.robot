@@ -1,16 +1,14 @@
 *** Settings ***
 Documentation     Test Suite for datamodel versioning
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Delete model    ${PREFIX_1}  ${PREFIX_4}
-Test Setup        Test Case Setup Admin
+Test Setup        Test Case setup create profile     ${MODEL_1}   ${PREFIX_1}
 Resource          ../resources/resources_and_libraries.robot
 
 *** Test Cases ***
 500. Create profile and create new version of profile
     [Documentation]    Create profile and resources and create new version of profile.
     [Tags]    regression    tietomallit    test    500
-    Create Profile      ${MODEL_1}    ${PREFIX_1}
     Select model        ${MODEL_1}
 
     Create New Class Without Referencing Concept    Testiluokka

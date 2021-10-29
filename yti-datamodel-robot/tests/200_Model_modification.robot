@@ -1,9 +1,8 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Data Vocabularies application
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Delete model    ${PREFIX_1}
-Test Setup        Test Case Setup Admin
+Test Setup        Test Case setup create profile     ${MODEL_1}   ${PREFIX_1}
 
 Resource          ../resources/resources_and_libraries.robot
 
@@ -33,8 +32,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 200. Modify profile
     [Documentation]    Modify existing profile
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Input Text with wait        ${MODEL_LABEL_INPUT}            Uusi nimi
     Input Text with wait        ${MODEL_DESCRIPTION_INPUT}      Uusi kuvaus
@@ -60,13 +57,9 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Yhteydenotto            timeout=30
     Wait Until Page Contains    Tähän yhteystiedot      timeout=30
 
-    [Teardown]    Test Case Teardown Delete model    ${PREFIX_1}
-
 201. Add new class to profile
     [Documentation]    Add new class to profile
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -78,7 +71,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 202. Add new class to Core Vocabulary
     [Documentation]    Add new Core Vocabulary and add new class
     [Tags]    regression    tietomallit    test    200
-    Create Core Vocabulary      ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    [Setup]  Test case setup create vocabulary   ${CORE_VOCABULARY_1}    ${PREFIX_2}
 
     Select And Edit Profile     ${CORE_VOCABULARY_1}
     Import Namespace            Julkishallinnon tietokomponentit
@@ -91,7 +84,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 203. Modify Core Vocabulary
     [Documentation]    Modify Core Vocabulary and delete Core Vocabulary
     [Tags]    regression    tietomallit    test    200
-    Create Core Vocabulary      ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    [Setup]  Test case setup create vocabulary   ${CORE_VOCABULARY_1}    ${PREFIX_2}
 
     Select And Edit Profile     ${CORE_VOCABULARY_1}
     Input Text with wait        ${CORE_VOCABULARY_LABEL_INPUT}          Uusi nimi
@@ -116,8 +109,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 204. Add new attribute and association
     [Documentation]    Add new attribute and association for class
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}          ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -138,8 +129,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 205. Add association between two classes
     [Documentation]    Add association between two classes
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -165,8 +154,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 206. Create new class without referencing concept
     [Documentation]    Create new class without referencing concept
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -180,8 +167,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 207. Create new shape by referencing external uri
     [Documentation]    Create new shape by referencing external uri
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -195,8 +180,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 208. Add new class to profile and remove properties
     [Documentation]    Add new class to profile and remove properties
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -212,8 +195,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 209. Create new class and add referencing concept and vocabulary
     [Documentation]    Create new class and add referencing concept and vocabulary
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    ${vocabulary}
@@ -231,8 +212,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 210. Add several classes to profile, check history and remove one class
     [Documentation]    Add several classes to profile, check class history information and remove one class
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -255,8 +234,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 211. Add reference data for profile
     [Documentation]    Create profile and add reference data for that profile
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Click Element with wait    ${ADD_REF_DATA_BTN}
     Click Element with wait    ${REF_DATA_FILTER_DDL}
@@ -285,8 +262,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     ...    Change status as INCOMPLETE and check that deletion of profile, class,
     ...    attribute and association is possible.
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -339,8 +314,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile, attribute and association.
     ...    Check that converting attribute to association and vice versa is successful.
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -374,8 +347,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     ...    to association is not possible when it is used by the profile.
     ...    Check that error message is displayed.
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -405,8 +376,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and two classes. Add new attribute for class before saving the class.
     ...    Check that new class is created.
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Save Model
@@ -434,7 +403,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 216. Create new class and suggest concept to Terminologies tool
     [Documentation]    Create new class to profile and suggest concept to Terminologies tool.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Terminologies
+    [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}
     Click Element with wait    //*[contains(text(), "Etusivu")]
     Create Profile              ${MODEL_1}    ${PREFIX_1}
 
@@ -472,7 +441,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies
     Click Element with wait    //*[contains(text(), "Etusivu")]
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
+    Create Profile             ${MODEL_1}    ${PREFIX_1}
 
     Maximize Browser Window
     Select And Edit Profile    ${MODEL_1}
@@ -540,8 +509,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and create new namespace. Check that namespace prefix can not be
     ...    "example" or same as the model prefix. Check that namespace can be added only once. Add two classes.
     [Tags]    regression    tietomallit    test    200
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
     Click Element with wait     ${IMPORT_NAMESPACE}
@@ -580,8 +547,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and class.
     ...    Check that export for class is succesfull in all formats.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -652,8 +617,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and class.
     ...    Deactivate class and check that deactivated class is not used in JSON Schema generation.
     [Tags]    regression    tietomallit    200    test
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -679,8 +642,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and create new namespace. Check that namespace URI is set
     ...    correctly with certain prefix. Add two classes.
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile     ${MODEL_1}
     Import Namespace            Julkishallinnon tietokomponentit
 
@@ -717,8 +678,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile, class, attribute and association.
     ...    Check that changing ID for class, attribute and association is successful. YTI-821.
     [Tags]    regression    tietomallit    200    test
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -750,8 +709,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     ...    add property pairs for attribute. Delete one attribute and check that removed attribute
     ...    can not be added as property pair.
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -788,8 +745,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create new profile and create urn namespace. Add equivalent class from URN namespace for
     ...    class and check that equivalent class is displayed correctly. YTI-732.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Create New Namespace    testi urn    urn:testurn:testi    urn1
@@ -814,8 +769,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub class is successful.
     ...    Check that super class information is shown in sub class information. YTI-166.
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -831,8 +784,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub class is successful when namespace is not added for model.
     ...    Check that super class information is shown in sub class information. YTI-166.
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -847,8 +798,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 227. Add super class
     [Documentation]    Check that adding super class is successful.
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -862,8 +811,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 228. Copy class
     [Documentation]    Check that copying class is successful.
     [Tags]    regression    tietomallit    test    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -878,8 +825,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub attribute is successful.
     ...    Check that super attribute information is shown in sub attribute information. YTI-1047.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -895,8 +840,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 230. Add super attribute
     [Documentation]    Check that adding super attribute is successful.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -912,8 +855,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 231. Copy attribute
     [Documentation]    Check that adding super attribute is successful.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -930,8 +871,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Check that adding sub association is successful.
     ...    Check that super association information is shown in sub association information.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -948,8 +887,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 233. Copy association
     [Documentation]    Check that copying association is successful.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -965,8 +902,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 234. Add super association
     [Documentation]    Check that adding super association is successful.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -982,8 +917,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 235. Convert sub attribute to association
     [Documentation]    Create sub attribute and convert it to association. YTI-1090.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -1009,8 +942,6 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     [Documentation]    Create model and sub attribute and delete both. Check that history information
     ...    is visible after deleting and creating same model and sub attribute again. YTI-107.
     [Tags]    regression    test    tietomallit    200
-    Create Profile    ${MODEL_1}    ${PREFIX_1}
-
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
@@ -1058,7 +989,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 237. Add association between two classes in core vocabulary
     [Documentation]    Add association between two classes in core vocabulary
     [Tags]    regression    tietomallit    test    200
-    Create Core Vocabulary    ${CORE_VOCABULARY_1}    ${PREFIX_2}
+    [Setup]   Test Case setup create Vocabulary     ${CORE_VOCABULARY_1}   ${PREFIX_2}
 
     Select And Edit Profile    ${CORE_VOCABULARY_1}
     Import Namespace    Julkishallinnon tietokomponentit

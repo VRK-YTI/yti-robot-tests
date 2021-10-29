@@ -24,14 +24,11 @@ Test Case Teardown Delete model
 Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
-Test Case Suite Setup Generic Setup
-    Log  generic suite setup
-
 Test Case Setup Generic Setup
     Open Tietomallit
     Set Selenium Speed      ${SELENIUM_SPEED}
 
-Test Case Setup datamodel user
+Test Case Setup datamodel
     Test Case Setup Generic Setup
     Select datamodel user
 
@@ -42,6 +39,16 @@ Test Case Setup Admin
 Test Case Setup Superuser
     Test Case Setup Generic Setup
     Select Superuser
+
+Test Case setup create profile
+    [Arguments]         ${model}    ${prefix}   ${user}=Admin
+    run keyword         Test Case Setup ${user}
+    Create Profile      ${model}    ${prefix}
+
+Test case setup create vocabulary
+    [Arguments]             ${model}    ${prefix}   ${user}=Admin
+    run keyword             Test Case Setup ${user}
+    Create Core Vocabulary  ${model}    ${prefix}
 
 Terminology Test Case Setup
     Open sanastot
@@ -60,3 +67,4 @@ Test Case Teardown Terminologies
     #Delete Testiautomaatiosanasto
     #Close all browsers
     #Delete terminology 111 with api
+
