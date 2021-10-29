@@ -73,7 +73,7 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    Automobiili    timeout=20
     Close Window
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommenti
+    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 206. Add new resources from Reference Data for comment round after comment round has started

@@ -83,7 +83,7 @@ Test Case Teardown Data Vocabularies
     [Arguments]    ${comment_round_name}    ${state}
     Test Case Teardown Generic Teardown
 
-    Delete model ${PREFIX_1} with api
+    Delete model cmts_autom with api
 
     Test Case Setup Superuser
     Delete Comment Round    ${comment_round_name}    ${state}
