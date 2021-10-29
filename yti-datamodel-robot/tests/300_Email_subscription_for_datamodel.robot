@@ -10,7 +10,7 @@ Resource          ../resources/resources_and_libraries.robot
 *** Test Cases ***
 300. Add and remove email subscription for new profile
     [Documentation]    Add and remove email subscription for new profile
-    [Tags]    regression    test    300
+    [Tags]     test    300
     Create Profile    ${MODEL_1}    ${PREFIX_1}
 
     Select model                    Testiautomaatiomalli
