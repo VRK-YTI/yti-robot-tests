@@ -469,8 +469,7 @@ Confirm All Properties For Class And Save
 Deselect properties for class and save
     [Arguments]    @{class_properties}
     FOR    ${class_property}    IN    @{class_properties}
-        Unselect Checkbox    ${class_property}
-        Checkbox Should Not Be Selected    ${class_property}
+        Unselect Checkbox with wait    ${class_property}
     END
     Click Element with wait         ${CONFIRM_ADD_PROPERTIES}
     Click Element with wait         ${SAVE_CLASS}
@@ -766,8 +765,7 @@ Change Profile Status
     Click Element with wait    //*[contains(text(), "${profile_status}")]
 
 Enforce Resource Status Change
-    Select Checkbox    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
-    Checkbox Should Be Selected    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
+    Select Checkbox with wait    ${CHANGE_RESOURCES_STATUSES_CHECKBOX}
 
 Confirm Action
     Click Element with wait    ${CONFIRMATION_YES_BTN}

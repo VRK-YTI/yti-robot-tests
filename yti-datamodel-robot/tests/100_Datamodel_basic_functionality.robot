@@ -47,8 +47,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 
     Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
 
-103.
-
+103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    tietomallit    test    100
     Change user interface language      ${LANGUAGE_EN}

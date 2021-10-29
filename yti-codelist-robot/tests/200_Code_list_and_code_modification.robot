@@ -344,8 +344,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait     ${CODE_LIST_STATUS_DDL}     timeout=20
     Click element with wait     ${VALID_STATUS}             timeout=20
 
-    Wait Until Element Is Enabled    ${CHANGE_CODE_STATUSES_CHECKBOX}    timeout=20
-    Select Checkbox    ${CHANGE_CODE_STATUSES_CHECKBOX}
+    Select Checkbox with wait    ${CHANGE_CODE_STATUSES_CHECKBOX}
 
     Click element with wait     ${SAVE_CODE_LIST_MOD_BTN}   timeout=30
     Click element with wait     ${CONFIRMATION_YES_BTN}    timeout=30
@@ -490,7 +489,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains Element    ${RETIRED_STATUS_TARGET}        timeout=60
     Wait Until Page Contains Element    ${INVALID_STATUS_TARGET}        timeout=60
 
-    Select Checkbox    ${ENFORCE_STATUS_TRANSITION_CHECKBOX}
+    Select Checkbox with wait    ${ENFORCE_STATUS_TRANSITION_CHECKBOX}
 
     Click element with wait     ${ORIGINAL_STATUS_DDL}      timeout=20
     Click element with wait     ${DRAFT_STATUS_ORIGINAL}    timeout=20

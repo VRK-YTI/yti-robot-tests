@@ -49,7 +49,6 @@ Test Case Teardown Reference Data
     Reference Data Test Case Setup Superuser
     Reference Data Teardown    ${codelist_name}
 
-
     Test Case Setup Superuser
     Delete Comment Round    ${comment_round_name}    ${state}
     Close all browsers
@@ -84,9 +83,7 @@ Test Case Teardown Data Vocabularies
     [Arguments]    ${comment_round_name}    ${state}
     Test Case Teardown Generic Teardown
 
-    Test Case Setup datamodel
-    Delete Data Vocabularies Profile
-    Close all browsers
+    Delete model ${PREFIX_1} with api
 
     Test Case Setup Superuser
     Delete Comment Round    ${comment_round_name}    ${state}
@@ -99,8 +96,5 @@ Terminology Test Case Setup
 
 Test Case Setup Create Terminology
     Terminology Test Case Setup
-    Input Text with wait   ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
-    Run Keyword If    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
-    ...    ELSE    Create Testiautomaatiosanasto and import vocabulary
+    Create Testiautomaatiosanasto and import vocabulary
     Go back to Sanastot frontpage

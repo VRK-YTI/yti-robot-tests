@@ -12,6 +12,7 @@ Resource          ../resources/resources_and_libraries.robot
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
+
     Return To Comments Frontpage
     Open Tool    ${COMMENTS_ENVIRONMENT_URL}
     Search Comment Round    Testiautomaatiokierros
@@ -21,6 +22,7 @@ Resource          ../resources/resources_and_libraries.robot
     Select Tab    ${USER_DETAILS_SUBSCRIPTIONS_TAB}
     Wait Until Page Contains    Kommenttien aineistot    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatiokierros")]    timeout=20
+
     Return To Comments Frontpage
     Search Comment Round    Testiautomaatiokierros
     Select Comment Round    Testiautomaatiokierros

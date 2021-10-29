@@ -37,6 +37,23 @@ Click element with wait
     Wait For Condition                  return document.readyState=="complete"      timeout=${timeout}
     Wait Until Keyword Succeeds         5x  500ms  Click Element  ${element}
 
+Unselect Checkbox with wait
+    [Arguments]  ${element}  ${timeout}=30
+    Wait Until Page Contains Element    ${element}    timeout=${timeout}
+    Wait Until Element Is Visible       ${element}    timeout=${timeout}
+    Wait Until Element Is Enabled       ${element}    timeout=${timeout}
+    Wait For Condition                  return document.readyState=="complete"      timeout=${timeout}
+    Unselect Checkbox                   ${element}
+    Checkbox Should Not Be Selected      ${element}
+
+Select Checkbox with wait
+    [Arguments]  ${element}  ${timeout}=30
+    Wait Until Page Contains Element    ${element}    timeout=${timeout}
+    Wait Until Element Is Visible       ${element}    timeout=${timeout}
+    Wait Until Element Is Enabled       ${element}    timeout=${timeout}
+    Wait For Condition                  return document.readyState=="complete"      timeout=${timeout}
+    Select Checkbox                   ${element}
+    Checkbox Should Be Selected         ${element}
 
 Switch window with wait
     [Arguments]     ${window}

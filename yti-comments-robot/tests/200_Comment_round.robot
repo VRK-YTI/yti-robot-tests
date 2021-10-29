@@ -68,13 +68,12 @@ Resource          ../resources/resources_and_libraries.robot
 
     Click Element with wait    //*[contains(text(), "Automobiili")]
 
-    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Wait Until Page Contains    Testiautomaatio    timeout=20
     Wait Until Page Contains    Automobiili    timeout=20
     Close Window
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommentit
-    Return To Comments Frontpage
+    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Kommenti
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
 206. Add new resources from Reference Data for comment round after comment round has started

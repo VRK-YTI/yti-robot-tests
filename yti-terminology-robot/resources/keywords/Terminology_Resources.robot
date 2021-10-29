@@ -186,8 +186,7 @@ ${CONCEPTS_LIST}    id=concept_list_selectable_concepts_list
 *** Keywords ***
 Create Terminological Vocabulary with concepts
     [Arguments]    ${terminology}
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait   ${FRONTPAGE_SEARCH_BOX}    ${terminology}    timeout=30
     Sleep    2
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
@@ -197,8 +196,7 @@ Create Terminological Vocabulary with concepts
 
 Create Terminological Vocabulary without concepts
     [Arguments]    ${terminology}
-    Wait Until Page Contains Element   ${FRONTPAGE_CONCEPT_DEEP_SEARCH}    timeout=30
-    Unselect Checkbox       ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait       ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology}  timeout=30
 
     ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
@@ -211,8 +209,7 @@ Go Back To Sanastot Frontpage
 
 Delete Terminology
     [Arguments]    ${terminology}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
 
     Wait Until Page Contains Element    //*[contains(text(), "${terminology}")]    timeout=20
@@ -227,8 +224,7 @@ Delete Terminology
     Click Element with wait     ${REMOVE_VOCABULARY_BTN}      timeout=60
     Click Element with wait     ${CONFIRM_REMOVE_VOCABULARY_BTN}
 
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
     Page Should Not Contain Element    //*[contains(text(), "${terminology}")]
 
@@ -237,8 +233,7 @@ Delete Terminologies
     Go Back To Sanastot Frontpage
     Select superuser
     FOR    ${terminology_item}    IN    @{terminology_items}
-        Wait Until Element Is enabled    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-        Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+        Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
         Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
         Wait Until Page Contains Element    //*[contains(text(), "${terminology_item}")]    timeout=60
         ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology_item}")]
@@ -262,8 +257,7 @@ Delete existing terminological vocabulary and create new
     Click Element with wait    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click Element with wait    ${CONFIRM_REMOVE_VOCABULARY_BTN}
 
-    Wait Until Element Is Visible    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}    timeout=60
-    Unselect Checkbox                ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait                ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
     Page Should Not Contain Element    //*[contains(text(), "${terminology}")]
 
@@ -278,8 +272,7 @@ Delete existing terminological vocabulary and create new without concepts
     Click Element with wait    ${REMOVE_VOCABULARY_BTN}    timeout=60
     Click Element with wait    ${CONFIRM_REMOVE_VOCABULARY_BTN}
 
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
 
     Page Should Not Contain Element    //*[contains(text(), "${terminology}")]
@@ -349,8 +342,7 @@ Delete Terminological Dictionary
 
 Select Dictionary
     [Arguments]    ${dictionary}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${dictionary}
 
     Click Element with wait    //*[contains(text(), "${dictionary}")]
@@ -358,8 +350,7 @@ Select Dictionary
 
 Select And Edit Dictionary
     [Arguments]    ${dictionary}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${dictionary}
 
     Click Element with wait    //*[contains(text(), "${dictionary}")]
@@ -469,8 +460,7 @@ Save Terminology
 
 Create New Terminology With Parameters
     [Arguments]    ${terminology}    ${status}    ${organization}    ${information_domain}    ${prefix}
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
 
     ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
@@ -498,8 +488,7 @@ Remove Terminology And Leave Browser Open
     Click Element with wait    ${REMOVE_VOCABULARY_BTN}
     Click Element with wait    ${CONFIRM_REMOVE_VOCABULARY_BTN}
 
-    Wait Until Element Is Visible    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Unselect Checkbox    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
 
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology}
     Page Should Not Contain Element    //*[contains(text(), "${terminology}")]
@@ -536,8 +525,7 @@ Select navigation menu link
 
 Find and select vocabulary with deeb search
     [Arguments]  ${vocabulary}
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Unselect Checkbox           ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
+    Unselect Checkbox with wait           ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${vocabulary}
     Click Element with wait     //*[contains(text(), "${vocabulary}")]
     Wait Until Page Contains    ${vocabulary}

@@ -69,7 +69,7 @@ Go back to Sanastot frontpage
 Check concept suggestion in Terminologies
     Terminology Test Case Setup
 
-    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}     timeout=60
     Click element that contains text    ${VOCABULARY_1}
 
     Wait until page contains            ${VOCABULARY_1}             timeout=30
@@ -121,7 +121,7 @@ Create Testiautomaatiosanasto and import vocabulary
 
 Delete Terminology
     [Arguments]    ${terminology}
-    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${terminology}
+    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${terminology}     timeout=60
 
     Wait until page contains element    //*[contains(text(), "${terminology}")]    timeout=30
     # Cut teardown execution if terminology does not exist

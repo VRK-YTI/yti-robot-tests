@@ -109,51 +109,20 @@ Data Vocabularies Setup With New Class
 Test Case Setup datamodel
     Open Tietomallit
     Set Selenium Speed      ${SELENIUM_SPEED}
-    Data Vocabularies Select user
-
-Data Vocabularies Select user
-    Wait Until Page Contains Element    ${DATA_VOCABULARIES_USER_DROPDOWN}    timeout=30
-    Click element with wait  ${DATA_VOCABULARIES_USER_DROPDOWN}
-    Wait Until Page Contains Element    ${DATA_VOCABULARIES_USER_1}    timeout=60
-    Click element with wait  ${DATA_VOCABULARIES_USER_1}
-    Wait Until Page Contains    Test Admin    timeout=20
-    Sleep    2
-
-Go back to Data Vocabularies frontpage and close browsers
-    Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=30
-    Click element with wait  ${MAIN_PAGE_LINK}
-    Sleep    2
-    Close All Browsers
+    Select admin
 
 Go back to Data Vocabularies frontpage
-    Wait Until Element Is Visible    ${MAIN_PAGE_LINK}    timeout=60
-    Sleep    3
     Click element with wait  ${MAIN_PAGE_LINK}
-    Sleep    2
 
 Test Case Setup Create Profile
     Test Case Setup datamodel
-    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input text with wait    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatio")]    limit=1
-    Run Keyword If    ${model_exists}    Delete existing profile and create new
-    ...    ELSE    Create Data Vocabulary Profile
+    Create Data Vocabulary Profile
     Go back to Data Vocabularies frontpage
-
-Test Case Teardown Delete Testiautomaatio profile
-    Delete Testiautomaatio profile
 
 Test Case Setup Create Automaatiokirjasto Core Vocabulary
     Test Case Setup datamodel
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Automaatiokirjasto")]    limit=1
-    Run Keyword If    ${model_exists}    Delete existing core vocabulary and create new
-    ...    ELSE    Create Automaatiokirjasto Core Vocabulary
+    Create Automaatiokirjasto Core Vocabulary
     Go back to Data Vocabularies frontpage
-
-Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
-    Delete Automaatiokirjasto Core Vocabulary
 
 Create Data Vocabulary Profile
     Wait Until Page Contains Element    ${ADD_MODEL_BTN}    timeout=30
@@ -177,36 +146,6 @@ Create Data Vocabulary Profile
     Wait Until Page Contains Element    ${SAVE_NEW_MODEL_BTN}    timeout=30
     Click element with wait  ${SAVE_NEW_MODEL_BTN}
     Wait Until Page Contains Element    ${MODEL_DATA_TAB}    timeout=90
-    Log To Console    Testiautomaatio profile created
-    Sleep    2
-
-Delete Data Vocabularies Profile
-    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input text with wait    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
-    Click element with wait  //*[contains(text(), "Testiautomaatio")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-    Click element with wait  ${REMOVE_MODEL_BTN}
-    Click element with wait  ${CONFIRM_REMOVE_MODEL_BTN}
-
-    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input text with wait    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains    tietomallia    timeout=30
-
-Delete existing profile and create new
-    Wait Until Page Contains Element    //*[contains(text(), "Testiautomaatio")]    timeout=30
-    Click element with wait  //*[contains(text(), "Testiautomaatio")]
-
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-
-    Click element with wait  ${REMOVE_MODEL_BTN}
-    Click element with wait  ${CONFIRM_REMOVE_MODEL_BTN}
-
-    Wait Until Page Contains Element    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input text with wait    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Wait Until Page Contains    tietomallia    timeout=30
-
-    Create Data Vocabulary Profile
 
 Create Automaatiokirjasto Core Vocabulary
     Click element with wait  ${ADD_MODEL_BTN}
@@ -220,37 +159,9 @@ Create Automaatiokirjasto Core Vocabulary
     Click element with wait  //*[contains(text(), "Testiorganisaatio")]
     Click element with wait  ${SAVE_CORE_VOCABULARY_BTN}
 
-Delete Automaatiokirjasto Core Vocabulary
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=30
-    Input text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
-    Click element with wait  //*[contains(text(), "Automaatiokirjasto")]
-
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-    Click element with wait  ${REMOVE_MODEL_BTN}
-    Click element with wait  ${CONFIRM_REMOVE_MODEL_BTN}
-
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    Wait Until Page Contains    tietomallia    timeout=30
-
-Delete existing core vocabulary and create new
-    Wait Until Page Contains Element    //*[contains(text(), "Automaatiokirjasto")]    timeout=30
-    Click element with wait  //*[contains(text(), "Automaatiokirjasto")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-
-    Click element with wait  ${REMOVE_MODEL_BTN}
-    Click element with wait  ${CONFIRM_REMOVE_MODEL_BTN}
-
-    Wait Until Page Contains Element    ${FRONTPAGE_SEARCH_BOX}    timeout=60
-    Input text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    Wait Until Page Contains    tietomallia    timeout=30
-
-    Create Automaatiokirjasto Core Vocabulary
-
 Select model
     [Arguments]    ${model}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${model}
+    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${model}     timeout=60
     Click element with wait  //*[contains(text(), "${model}")]
 
     Wait Until Page Contains    ${model}    timeout=30
@@ -338,8 +249,7 @@ Confirm all properties for class and save
 Deselect properties for class and save
     [Arguments]    @{class_properties}
     FOR    ${class_property}    IN    @{class_properties}
-        Unselect Checkbox    ${class_property}
-        Checkbox Should Not Be Selected    ${class_property}
+        Unselect Checkbox with wait    ${class_property}
     END
     Click element with wait  ${CONFIRM_ADD_PROPERTIES}
     Click element with wait  ${SAVE_CLASS}
@@ -403,20 +313,6 @@ Create new shape by referencing external uri
     Sleep    3
     Click element with wait  ${USE_SELECTION_BTN}
     Sleep    2
-
-Delete profile
-    [Arguments]    ${profile}
-    Test Case Setup datamodel
-    Input Text with wait    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${profile}
-    Click element with wait  //*[contains(text(), "${profile}")]
-    Click Element with wait  ${MODEL_DETAILS_TAB}     timeout=60
-    Click element with wait  ${REMOVE_MODEL_BTN}
-    Click element with wait  ${CONFIRM_REMOVE_MODEL_BTN}
-
-    Input Text with wait    ${DATA_VOCABULARIES_FRONTPAGE_SEARCH_BOX}    ${profile}    timeout=60
-    Wait Until Page Contains    tietomallia    timeout=30
-
-    Close All Browsers
 
 Create New Class For Profile
     [Arguments]    ${class_2}
