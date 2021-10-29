@@ -19,6 +19,12 @@ ${NAMESPACE_1}    Julkishallinnon tietokomponentit
 ${DEV_suffix}     ?env=awsdev
 ${TEST_suffix}    ?env=awstest
 
+${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
+${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
+${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable_button
+${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
+${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
+
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
 ${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
