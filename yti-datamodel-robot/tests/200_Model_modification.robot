@@ -2,7 +2,7 @@
 Documentation     Test Suite for basic functionality of Data Vocabularies application
 Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Test Case Teardown Delete profile    ${MODEL_1}
+Test Teardown     Test Case Teardown Delete profile    ${PREFIX_1}
 Test Setup        Test Case Setup Admin
 
 Resource          ../resources/resources_and_libraries.robot
@@ -29,16 +29,12 @@ ${class_json_ld_frame_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/a93
 ${class_framed_json_ld}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/61658254-be26-4815-a168-a9f4325d8d15
 ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/cad2b19c-faee-4aca-942c-2775ef13e268
 
-${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
-${PREFIX_1}       autom
-
 *** Test Cases ***
 200. Modify profile
     [Documentation]    Modify existing profile
     [Tags]    regression    tietomallit    test    200
     Create Profile              ${MODEL_1}    ${PREFIX_1}
 
-    Go Back To Data Vocabularies Frontpage
     Select And Edit Profile     ${MODEL_1}
     Input Text with wait        ${MODEL_LABEL_INPUT}            Uusi nimi
     Input Text with wait        ${MODEL_DESCRIPTION_INPUT}      Uusi kuvaus
@@ -64,7 +60,7 @@ ${PREFIX_1}       autom
     Wait Until Page Contains    Yhteydenotto            timeout=30
     Wait Until Page Contains    Tähän yhteystiedot      timeout=30
 
-    [Teardown]    Test Case Teardown Delete profile    Uusi nimi
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_1}
 
 201. Add new class to profile
     [Documentation]    Add new class to profile
@@ -90,7 +86,7 @@ ${PREFIX_1}       autom
 
     Select Model Tab            ${MODEL_DATA_TAB}
     Add Class                   Rooli                   ${NAMESPACE_1}
-    [Teardown]    Test Case Teardown Delete profile    ${CORE_VOCABULARY_1}
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
 
 203. Modify Core Vocabulary
     [Documentation]    Modify Core Vocabulary and delete Core Vocabulary
@@ -115,7 +111,7 @@ ${PREFIX_1}       autom
     Wait Until Page Contains    Automaatiotestaus       timeout=30
     Wait Until Page Contains    www.suomi.fi/etusivu/   timeout=30
 
-    [Teardown]    Test Case Teardown Delete profile    Uusi nimi
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
 
 204. Add new attribute and association
     [Documentation]    Add new attribute and association for class
@@ -439,6 +435,9 @@ ${PREFIX_1}       autom
     [Documentation]    Create new class to profile and suggest concept to Terminologies tool.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies
+    Click Element with wait    //*[contains(text(), "Etusivu")]
+    Create Profile              ${MODEL_1}    ${PREFIX_1}
+
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
     Add vocabulary    Testiautomaatiosanasto
@@ -456,6 +455,7 @@ ${PREFIX_1}       autom
     Go Back To Data Vocabularies Frontpage
 
     Close All Browsers
+
     Terminology Test Case Setup
     Input Text with wait        ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
     Click Element with wait    //*[contains(text(), "${VOCABULARY_1}")]
@@ -465,12 +465,14 @@ ${PREFIX_1}       autom
     Click Element with wait    //*[contains(@id,'concept-4_concept_list_listitem')]
     Wait Until Page Contains    Testiluokka         timeout=30
 
-    [Teardown]    Test Case Teardown Terminologies
+    [Teardown]    Test Case Teardown Terminologies      ${PREFIX_1}
 
 217. Create new attribute and association and suggest concepts to Terminologies tool
     [Documentation]    Create new attribute and association for profile and suggest concepts to Terminologies tool.
     [Tags]    regression    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies
+    Click Element with wait    //*[contains(text(), "Etusivu")]
+    Create Profile              ${MODEL_1}    ${PREFIX_1}
 
     Maximize Browser Window
     Select And Edit Profile    ${MODEL_1}
@@ -532,7 +534,7 @@ ${PREFIX_1}       autom
     Click Element with wait         //*[contains(@id,'concept-5_concept_list_listitem')]    timeout=30
     Wait Until Page Contains        Testiassosiaatio    timeout=30
 
-    [Teardown]    Test Case Teardown Terminologies
+    [Teardown]    Test Case Teardown Terminologies      ${PREFIX_1}
 
 218. Create new namespace
     [Documentation]    Create new profile and create new namespace. Check that namespace prefix can not be
@@ -545,7 +547,7 @@ ${PREFIX_1}       autom
     Click Element with wait     ${IMPORT_NAMESPACE}
     Click Element with wait     ${CREATE_NEW_NAMESPACE}
 
-    Input Text with wait        ${NAMESPACE_LABEL}    autom1
+    Input Text with wait        ${NAMESPACE_LABEL}      autom1
     Input Text with wait        ${NAMESPACE_VALUE}      http://uri.suomi.fi/datamodel/ns/autom1/
     Input Text with wait        ${NAMESPACE_PREFIX}     autom
     Input Text with wait        ${NAMESPACE_PREFIX}     example
@@ -630,7 +632,7 @@ ${PREFIX_1}       autom
     Click Element with wait    ${EXPORT_CLASS_DDL}
     Click Element with wait    ${EXPORT_JSON_Schema}
     Switch window with wait  url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fschema%2Bjson&lang=fi&raw=true
-    Wait Until Page Contains    "id":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka.jschema",    timeout=30
+    Wait Until Page Contains    "id": "http://uri.suomi.fi/datamodel/ns/autom#Testiluokka.jschema",    timeout=30
     Page Should Not Contain    {"errorMessage":"Not found"}
     Page Should Not Contain    Whitelabel Error Page
     Close Window
@@ -640,9 +642,9 @@ ${PREFIX_1}       autom
     Click Element with wait    ${EXPORT_JSON_LD_Context}
 
     Switch window with wait  url=${DATA_VOCABULARIES_ENVIRONMENT_URL}datamodel-api/api/v1/exportResource?graph=http%3A%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2Fautom%23Testiluokka&content-type=application%2Fld%2Bjson%2Bcontext&lang=fi&raw=true
-    Wait Until Page Contains    "@context":{    timeout=30
-    Wait Until Page Contains    "Testiluokka":"http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"    timeout=30
-    Page Should Not Contain    {"errorMessage":"Not found"}
+    Wait Until Page Contains    "@context": {    timeout=30
+    Wait Until Page Contains    "Testiluokka": "http://uri.suomi.fi/datamodel/ns/autom#Testiluokka"    timeout=30
+    Page Should Not Contain    {"errorMessage": "Not found"}
     Page Should Not Contain    Whitelabel Error Page
     Close Window
 
@@ -1082,5 +1084,5 @@ ${PREFIX_1}       autom
     Wait Until Page Contains    Rekisteröinti       timeout=30
     Wait Until Page Contains    lib:Uusiluokka      timeout=30
 
-    [Teardown]    Test Case Teardown Delete profile    ${CORE_VOCABULARY_1}
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
 

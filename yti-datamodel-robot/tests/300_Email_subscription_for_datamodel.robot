@@ -2,14 +2,10 @@
 Documentation     Test Suite for datamodel email subscription
 Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Test Case Teardown Delete profile    ${MODEL_1}
+Test Teardown     Test Case Teardown Delete profile    ${PREFIX_1}
 Test Setup        Test Case Setup Admin
 
 Resource          ../resources/resources_and_libraries.robot
-
-*** Variables ***
-${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
-${PREFIX_1}       autom
 
 *** Test Cases ***
 300. Add and remove email subscription for new profile

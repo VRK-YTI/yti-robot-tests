@@ -2,13 +2,9 @@
 Documentation     Test Suite for datamodel and resource status change
 Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Test Case Teardown Delete profile    ${MODEL_2}
+Test Teardown     Test Case Teardown Delete profile    ${PREFIX_3}
 Test Setup        Test Case Setup Admin
 Resource          ../resources/resources_and_libraries.robot
-
-*** Variables ***
-${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
-${PREFIX_1}       autom
 
 *** Test Cases ***
 400. Change status for profile and resources
@@ -78,8 +74,8 @@ ${PREFIX_1}       autom
     ...    enforcing transition rules.
     [Tags]    tietomallit    regression    test    400
     [Setup]    Test Case Setup Superuser
-    Create Profile    ${MODEL_2}    ${PREFIX_3}
-    Select model    ${MODEL_2}
+    Create Profile      ${MODEL_2}    ${PREFIX_3}
+    Select model        ${MODEL_2}
     Create New Class Without Referencing Concept    Testiluokka
     Save Class
 
@@ -93,13 +89,14 @@ ${PREFIX_1}       autom
     Set Startig Status    ${STARTING_STATUS_DRAFT}
     Wait Until Page Contains    Resursseja: 3    timeout=10
 
-    Click Element with wait             ${TARGET_STATUS_DDL}            timeout=20
+    Click Element with wait             ${TARGET_STATUS_DDL}
     Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeTEST_ADMIN_IDout=30
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
     Wait Until Page Contains Element    ${TARGET_STATUS_DRAFT}          timeout=30
     Wait Until Page Contains Element    ${TARGET_STATUS_SUPERSEDED}     timeout=30
     Wait Until Page Contains Element    ${TARGET_STATUS_RETIRED}        timeout=30
     Wait Until Page Contains Element    ${TARGET_STATUS_INVALID}        timeout=30
+
     Click Element with wait             ${TARGET_STATUS_INCOMPLETE}
     Save Migrate Resource Statuses
     Confirm Alert
@@ -107,7 +104,6 @@ ${PREFIX_1}       autom
 403. Change profile resource statuses as Test Admin
     [Documentation]    Change all profile resource statuses from DRAFT to VALID as Test Admin.
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup    ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Profile    ${MODEL_2}    ${PREFIX_3}
 
     Select model    ${MODEL_2}
@@ -176,7 +172,7 @@ ${PREFIX_1}       autom
     Change Profile Status    Luonnos
     Save Model
 
-    [Teardown]    Test Case Teardown Delete profile    ${CORE_VOCABULARY_1}
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
 
 405. Change core vocabulary resource statuses with enforcing transition rules
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to INCOMPLETE as superuser with
@@ -216,7 +212,7 @@ ${PREFIX_1}       autom
     Save Migrate Resource Statuses
     Confirm Alert
 
-    [Teardown]    Test Case Teardown Delete profile    ${CORE_VOCABULARY_1}
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
 
 406. Change core vocabulary resource statuses without enforcing transition rules
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to INCOMPLETE as superuser without
@@ -257,12 +253,11 @@ ${PREFIX_1}       autom
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
 
-    [Teardown]    Test Case Teardown Delete profile    ${CORE_VOCABULARY_1}
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
 
 407. Change core vocabulary resource statuses as Test Admin
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to VALID as Test Admin.
     [Tags]    tietomallit    regression    test    400
-    [Setup]    Test Case Setup      ${TEST_ADMIN_ID}    ${TEST_ADMIN_NAME}
     Create Core Vocabulary          ${CORE_VOCABULARY_1}    ${PREFIX_2}
 
     Select And Edit Profile         ${CORE_VOCABULARY_1}
@@ -301,7 +296,7 @@ ${PREFIX_1}       autom
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
 
-    [Teardown]    Test Case Teardown Delete profile    ${CORE_VOCABULARY_1}
+    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
 
 408. Change status for profile
     [Documentation]    Change status for profile

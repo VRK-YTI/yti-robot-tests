@@ -2,13 +2,9 @@
 Documentation     Test Suite for datamodel versioning
 Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Test Case Teardown Delete profile    ${MODEL_2}
+Test Teardown     Test Case Teardown Delete profile    ${PREFIX_1}  ${PREFIX_4}
 Test Setup        Test Case Setup Admin
 Resource          ../resources/resources_and_libraries.robot
-
-*** Variables ***
-${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
-${PREFIX_1}       autom
 
 *** Test Cases ***
 500. Create profile and create new version of profile
@@ -31,9 +27,7 @@ ${PREFIX_1}       autom
     ...    ELSE    Go To    http://uri.suomi.fi/datamodel/ns/${PREFIX_4}${TEST_suffix}
     Wait Until Page Contains    Testiautomaatiomalli    timeout=30
 
-    Select Model Tab    ${MODEL_DETAILS_TAB}
+    Select Model Tab            ${MODEL_DETAILS_TAB}
     Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/aeghi    timeout=30
     Wait Until Page Contains    Aiempi versio    timeout=30
     Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/autom    timeout=30
-
-    [Teardown]    Test Case Teardown Delete versions    ${MODEL_1}

@@ -1,6 +1,6 @@
 *** Settings ***
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
-Resource          ../../yti-codelist-robot/resources/keywords/Terminologies_resources.robot
+#Resource          ../../yti-codelist-robot/resources/keywords/Terminologies_resources.robot
 
 Resource          ../resources/keywords/Datamodel_Resources.robot
 
@@ -14,20 +14,12 @@ Test Case Teardown Generic Teardown
     Close All Browsers
 
 Test Case Teardown Delete profile
-    [Arguments]    ${profile}
+    [Arguments]    @{profiles}
     Test Case Teardown Generic Teardown
 
-    Test Case Setup Superuser
-    Delete profile          ${profile}
-    Close all browsers
-
-Test Case Teardown Delete versions
-    [Arguments]    ${version}
-    Test Case Teardown Generic Teardown
-
-    Test Case Setup Superuser
-    Delete Versions          ${version}
-    Close all browsers
+    FOR    ${profile}    IN    @{profiles}
+        Delete model ${profile} with api
+    END
 
 Test Case Suite Teardown Generic Teardown
     Close All Browsers
@@ -56,25 +48,15 @@ Terminology Test Case Setup
     Set Selenium Speed          ${SELENIUM_SPEED}
     Select admin
 
-Terminology Teardown
-    Test Case Teardown Generic Teardown
-    Terminology Test Case Setup
-    Delete Testiautomaatiosanasto
-    Close all browsers
-
 Test Case Setup Terminologies
     Terminology Test Case Setup
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}    timeout=60
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "Testiautomaatiosanasto")]
-    run keyword if    ${vocabulary_exists}    Delete existing terminological vocabulary and create new
-    ...    ELSE    Create Testiautomaatiosanasto and import vocabulary
-
-    Click Element with wait    //*[contains(text(), "Etusivu")]
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
+    Create Testiautomaatiosanasto and import vocabulary
 
 Test Case Teardown Terminologies
-    Test Case Teardown Generic Teardown
+    [Arguments]    @{profiles}
+    Test Case Teardown Delete profile       @{profiles}
 
-    Test Case Setup Admin
-    Delete profile    ${MODEL_1}
-    Terminology Teardown
+    #Terminology Test Case Setup
+    #Delete Testiautomaatiosanasto
+    #Close all browsers
+    #Delete terminology 111 with api

@@ -253,14 +253,8 @@ Go Back To Data Vocabularies Frontpage
 
 Create Profile
     [Arguments]    ${profile}    ${prefix}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
-    ${model_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${profile}")]    limit=1
-    run keyword if    ${model_exists}    Delete Existing Profile And Create New    ${profile}    ${prefix}
-    ...    ELSE    Create New Profile    ${profile}    ${prefix}
+    Create New Profile    ${profile}    ${prefix}
     Go Back To Data Vocabularies Frontpage
-
-Test Case Teardown Delete Testiautomaatio profile
-    Delete Testiautomaatio profile
 
 Create Core Vocabulary
     [Arguments]    ${core_vocabulary}    ${prefix}
@@ -271,9 +265,6 @@ Create Core Vocabulary
     run keyword if    ${model_exists}    Delete Existing Core Vocabulary And Create New    ${core_vocabulary}    ${prefix}
     ...    ELSE    Create New Core Vocabulary    ${core_vocabulary}    ${prefix}
     Go Back To Data Vocabularies Frontpage
-
-Test Case Teardown Delete Automaatiokirjasto Core Vocabulary
-    Delete Automaatiokirjasto Core Vocabulary
 
 Create New Profile
     [Arguments]    ${profile}    ${prefix}
@@ -291,19 +282,6 @@ Create New Profile
     Click Element with wait   ${SAVE_NEW_MODEL_BTN}
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
 
-Delete Testiautomaatio profile
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait   //*[contains(text(), "${MODEL_1}")]
-    Click Element with wait   ${MODEL_DETAILS_TAB}
-    Click Element with wait   ${REMOVE_MODEL_BTN}
-    Click Element with wait   ${CONFIRM_REMOVE_MODEL_BTN}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}       timeout=60
-    Log To Console    ${MODEL_1} profile deleted
-    Close All Browsers
-
 Delete Existing Profile And Create New
     [Arguments]    ${profile}    ${prefix}
     Click Element with wait   //*[contains(text(), "${profile}")]
@@ -314,7 +292,7 @@ Delete Existing Profile And Create New
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     Page Should Not Contain Element    //*[contains(text(), "${profile}")]
-    Log To Console    ${profile} profile deleted
+
     Create New Profile    ${profile}    ${prefix}
 
 Create New Core Vocabulary
@@ -334,20 +312,6 @@ Create New Core Vocabulary
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
     Log To Console    ${core_vocabulary} core vocabulary created
 
-Delete Automaatiokirjasto Core Vocabulary
-    Sleep  ${SLEEP_TIMEOUT}
-    Input  with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "Automaatiokirjasto")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}
-    Click Element with wait    ${REMOVE_MODEL_BTN}
-    Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}     timeout=60
-    Sleep  ${SLEEP_TIMEOUT}
-    Log To Console    Automaatiokirjasto Core Vocabulary deleted
-    Close All Browsers
-
 Delete Existing Core Vocabulary And Create New
     [Arguments]    ${core_vocabulary}    ${prefix}
     Click Element with wait    //*[contains(text(), "${core_vocabulary}")]
@@ -358,13 +322,12 @@ Delete Existing Core Vocabulary And Create New
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${core_vocabulary}       timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     Page Should Not Contain Element    //*[contains(text(), "${core_vocabulary}")]
-    Log To Console    ${core_vocabulary} Core Vocabulary deleted
     Create New Core Vocabulary    ${core_vocabulary}    ${prefix}
 
 Select model
     [Arguments]    ${model}
     Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${model}
+    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${model}       timeout=60
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(text(), "${model}")]
     Log To Console    ${model} selected
@@ -701,7 +664,7 @@ Create New Shape By Referencing External Uri
 Delete profile
     [Arguments]    ${profile}
     Sleep                       ${SLEEP_TIMEOUT}
-    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${profile}
+    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
     Sleep                       ${SLEEP_TIMEOUT}
 
     Click Element with wait     //*[contains(text(), "${profile}")]
@@ -709,19 +672,6 @@ Delete profile
     Click Element with wait     ${REMOVE_MODEL_BTN}
     Click Element with wait     ${CONFIRM_REMOVE_MODEL_BTN}
     Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
-
-Delete Profile And Leave Browser Open
-    [Arguments]    ${profile}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "${profile}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-    Click Element with wait    ${REMOVE_MODEL_BTN}
-    Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
-    Wait Until Page Contains    tietomallia    timeout=30
-    Log To Console    "${profile}" profile deleted
 
 Select And Edit Predicate
     [Arguments]    ${predicate_tab}    ${predicate}
@@ -885,25 +835,8 @@ Save Migrate Resource Statuses
 
 Create New Version
     [Arguments]    ${prefix}
-    Click Element with wait    ${MODEL_ACTION_MENU}
-    Click Element with wait    ${CREATE_NEW_VERSION_BTN}
-    Input Text with wait    ${NEW_VERSION_PREFIX_INPUT}    ${prefix}
-    Click Element with wait    ${SAVE_NEW_VERSION_BTN}
-    Click Element with wait    ${CONFIRM_ALERT_BTN}
-    Log To Console    New version of datamodel created
-
-Delete Versions
-    [Arguments]    ${profile}
-
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=30
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "${profile}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-    Click Element with wait    ${REMOVE_MODEL_BTN}
-    Click Element with wait    ${CONFIRM_REMOVE_MODEL_BTN}
-
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
-    Sleep  ${SLEEP_TIMEOUT}
-    ${profileExists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${profile}")]
-    Run Keyword If    ${profileExists}    Delete Versions    ${profile}
+    Click Element with wait     ${MODEL_ACTION_MENU}
+    Click Element with wait     ${CREATE_NEW_VERSION_BTN}
+    Input Text with wait        ${NEW_VERSION_PREFIX_INPUT}    ${prefix}
+    Click Element with wait     ${SAVE_NEW_VERSION_BTN}
+    Click Element with wait     ${CONFIRM_ALERT_BTN}
