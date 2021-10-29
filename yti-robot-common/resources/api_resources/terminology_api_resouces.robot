@@ -11,7 +11,3 @@ Delete terminology ${prefix} with api
     ${data}=        Catenate     id=http:%2F%2Furi.suomi.fi%2Fdatamodel%2Fns%2F${prefix}
     ${response}=    Delete      ${DELETE_MODEL_API_POINT}?${data}  headers=${headers}
     [Return]        ${response}
-
-Create authentication header
-    ${headers}=     Create Dictionary   Content-Type    application/json    Authorization    Bearer ${API_KEY}
-    [Return]        ${headers}
