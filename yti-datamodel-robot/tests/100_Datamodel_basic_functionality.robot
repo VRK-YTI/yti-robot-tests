@@ -133,7 +133,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     [Documentation]    Create and delete profile
     [Tags]    regression    tietomallit    test    100
     Create Profile              ${MODEL_1}    ${PREFIX_1}
-    Delete profile              ${MODEL_1}
+    Delete datamodel            ${MODEL_1}
     [Teardown]  run keyword if test failed   Delete model ${PREFIX_1} with api
 
 102. Open Description of file page
@@ -151,7 +151,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Click Element with wait     ${GUIDE_CORE_VOCABULARY}    timeout=20
     Click through guide         ${Core_vocabulary_text}
 
-    [Teardown]    Test Case Teardown Delete profile    ${MODEL_1}
+    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
 
 108. Guide through creating new Application Profile
     [Documentation]    Guide through creating new Application Profile
@@ -162,7 +162,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Click Element with wait     ${GUIDE_APPLICATION_PROFILE}    timeout=20
     Click through guide         ${Application_profile_text}
 
-    [Teardown]    Test Case Teardown Delete profile    ${MODEL_1}
+    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
 
 109. Guide through requiring a namespace
     [Documentation]    Guide through requiring a namespace
@@ -174,7 +174,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Click Element with wait     ${GUIDE_NAMESPACE}          timeout=20
     Click through guide         ${Namespace_text}
 
-    [Teardown]    Test Case Teardown Delete profile    ${MODEL_1}
+    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
 
 110. Guide through creating a class
     [Documentation]    Guide through creating a class
@@ -186,7 +186,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Click Element with wait     ${GUIDE_CREATE_CLASS}    timeout=20
     Click through guide         ${Create_class_text}
 
-    [Teardown]    Test Case Teardown Delete profile    ${MODEL_1}
+    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
 
 111. Guide through specializing a class
     [Documentation]    Guide through specializing a class
@@ -198,7 +198,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Click Element with wait     ${GUIDE_SPECIALIZE_CLASS}   timeout=20
     Click through guide         ${Specialize_class_text}
 
-    [Teardown]    Test Case Teardown Delete profile    ${MODEL_1}
+    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
 
 112. Guide through adding an attribute
     [Documentation]    Guide through adding an attribute
@@ -210,7 +210,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Click Element with wait     ${GUIDE_ADD_ATTRIBUTE}      timeout=20
     Click through guide         ${Add_attribute_text}
 
-    [Teardown]    Test Case Teardown Delete profile    ${MODEL_1}
+    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
 
 113. Guide through adding an association
     [Documentation]    Guide through adding an association
@@ -222,7 +222,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Click Element with wait     ${GUIDE_ADD_ASSOCIATION}    timeout=20
     Click through guide         ${Add_association_text}
 
-    [Teardown]    Test Case Teardown Delete profile    ${MODEL_1}
+    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
 
 *** Keywords ***
 Change user interface language

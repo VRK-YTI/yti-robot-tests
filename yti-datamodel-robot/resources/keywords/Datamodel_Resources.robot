@@ -288,40 +288,39 @@ Create New Profile
 
 Delete Existing Profile And Create New
     [Arguments]    ${profile}    ${prefix}
-    Click Element with wait   //*[contains(text(), "${profile}")]
-    Click Element with wait   ${MODEL_DETAILS_TAB}
-    Click Element with wait   ${REMOVE_MODEL_BTN}
-    Click Element with wait   ${CONFIRM_REMOVE_MODEL_BTN}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
-    Page Should Not Contain Element    //*[contains(text(), "${profile}")]
+    Delete datamodel          ${profile}
+    Create New Profile      ${profile}    ${prefix}
 
-    Create New Profile    ${profile}    ${prefix}
+Create datamodel
+    Input Text with wait    ${CORE_VOCABULARY_LABEL_INPUT}          ${core_vocabulary}
+    Input Text with wait    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Tämä on kuvaus
+    Input Text with wait    ${CORE_VOCABULARY_PREFIX_INPUT}         ${prefix}
+
+    Click Element with wait    ${VOCABULARY_ADD_CLASSIFICATION}
+    Click Element with wait    //*[contains(text(), "Asuminen")]
+    Click Element with wait    ${VOCABULARY_ADD_CONTRIBUTOR}
+    Click Element with wait    //*[contains(text(), "Testiorganisaatio")]
 
 Create New Core Vocabulary
     [Arguments]    ${core_vocabulary}    ${prefix}
     Click Element with wait     ${ADD_MODEL_BTN}
     Click Element with wait     ${ADD_LIBRARY_BTN}
 
-    Input Text with wait    ${CORE_VOCABULARY_LABEL_INPUT}    ${core_vocabulary}
+    Input Text with wait    ${CORE_VOCABULARY_LABEL_INPUT}          ${core_vocabulary}
     Input Text with wait    ${CORE_VOCABULARY_DESCRIPTION_INPUT}    Tämä on kuvaus
-    Input Text with wait    ${CORE_VOCABULARY_PREFIX_INPUT}    ${prefix}
+    Input Text with wait    ${CORE_VOCABULARY_PREFIX_INPUT}         ${prefix}
 
     Click Element with wait    ${VOCABULARY_ADD_CLASSIFICATION}
     Click Element with wait    //*[contains(text(), "Asuminen")]
-    Click Element with wait   ${VOCABULARY_ADD_CONTRIBUTOR}
+    Click Element with wait    ${VOCABULARY_ADD_CONTRIBUTOR}
     Click Element with wait    //*[contains(text(), "Testiorganisaatio")]
     Click Element with wait    ${SAVE_NEW_CORE_VOCABULARY_BTN}
     Wait Until Element Is Enabled    ${MODEL_DATA_TAB}    timeout=60
 
 Delete Existing Core Vocabulary And Create New
     [Arguments]    ${core_vocabulary}    ${prefix}
-    Click Element with wait             //*[contains(text(), "${core_vocabulary}")]
-    Click Element with wait             ${MODEL_DETAILS_TAB}
-    Click Element with wait             ${REMOVE_MODEL_BTN}
-    Click Element with wait             ${CONFIRM_REMOVE_MODEL_BTN}
-    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${core_vocabulary}       timeout=60
-    Page Should Not Contain Element     //*[contains(text(), "${core_vocabulary}")]
-    Create New Core Vocabulary          ${core_vocabulary}    ${prefix}
+    Delete datamodel                ${core_vocabulary}
+    Create New Core Vocabulary      ${core_vocabulary}    ${prefix}
 
 Select model
     [Arguments]    ${model}
@@ -649,15 +648,17 @@ Create New Shape By Referencing External Uri
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    ${USE_SELECTION_BTN}
 
-Delete profile
-    [Arguments]    ${profile}
-    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
+Delete datamodel
+    [Arguments]    ${datamodel}
+    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${datamodel}       timeout=60
 
-    Click Element with wait     //*[contains(text(), "${profile}")]
+    Click Element with wait     //*[contains(text(), "${datamodel}")]
     Click Element with wait     ${MODEL_DETAILS_TAB}                     timeout=60
     Click Element with wait     ${REMOVE_MODEL_BTN}
     Click Element with wait     ${CONFIRM_REMOVE_MODEL_BTN}
-    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${profile}       timeout=60
+
+    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${datamodel}       timeout=60
+    Page Should Not Contain Element    //*[contains(text(), "${datamodel}")]
 
 Select And Edit Predicate
     [Arguments]    ${predicate_tab}    ${predicate}

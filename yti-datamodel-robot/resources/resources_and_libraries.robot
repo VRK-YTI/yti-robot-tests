@@ -13,12 +13,12 @@ Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs
     Close All Browsers
 
-Test Case Teardown Delete profile
-    [Arguments]    @{profiles}
+Test Case Teardown Delete model
+    [Arguments]    @{models}
     Test Case Teardown Generic Teardown
 
-    FOR    ${profile}    IN    @{profiles}
-        Delete model ${profile} with api
+    FOR    ${model}    IN    @{models}
+        Delete model ${model} with api
     END
 
 Test Case Suite Teardown Generic Teardown
@@ -53,8 +53,8 @@ Test Case Setup Terminologies
     Create Testiautomaatiosanasto and import vocabulary
 
 Test Case Teardown Terminologies
-    [Arguments]    @{profiles}
-    Test Case Teardown Delete profile       @{profiles}
+    [Arguments]    @{models}
+    Test Case Teardown Delete model       @{models}
 
     #Terminology Test Case Setup
     #Delete Testiautomaatiosanasto

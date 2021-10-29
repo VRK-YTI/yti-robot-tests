@@ -2,7 +2,7 @@
 Documentation     Test Suite for datamodel versioning
 Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Test Case Teardown Delete profile    ${PREFIX_1}  ${PREFIX_4}
+Test Teardown     Test Case Teardown Delete model    ${PREFIX_1}  ${PREFIX_4}
 Test Setup        Test Case Setup Admin
 Resource          ../resources/resources_and_libraries.robot
 

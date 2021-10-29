@@ -2,7 +2,7 @@
 Documentation     Test Suite for datamodel and resource status change
 Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Test Case Teardown Delete profile    ${PREFIX_3}
+Test Teardown     Test Case Teardown Delete model    ${PREFIX_3}
 Test Setup        Test Case Setup Admin
 Resource          ../resources/resources_and_libraries.robot
 
@@ -172,7 +172,7 @@ Resource          ../resources/resources_and_libraries.robot
     Change Profile Status    Luonnos
     Save Model
 
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
 
 405. Change core vocabulary resource statuses with enforcing transition rules
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to INCOMPLETE as superuser with
@@ -212,7 +212,7 @@ Resource          ../resources/resources_and_libraries.robot
     Save Migrate Resource Statuses
     Confirm Alert
 
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
 
 406. Change core vocabulary resource statuses without enforcing transition rules
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to INCOMPLETE as superuser without
@@ -253,7 +253,7 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
 
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
 
 407. Change core vocabulary resource statuses as Test Admin
     [Documentation]    Change all core vocabulary resource statuses from DRAFT to VALID as Test Admin.
@@ -296,7 +296,7 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
 
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
 
 408. Change status for profile
     [Documentation]    Change status for profile

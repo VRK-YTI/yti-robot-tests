@@ -2,7 +2,7 @@
 Documentation     Test Suite for basic functionality of Data Vocabularies application
 Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Test Case Teardown Delete profile    ${PREFIX_1}
+Test Teardown     Test Case Teardown Delete model    ${PREFIX_1}
 Test Setup        Test Case Setup Admin
 
 Resource          ../resources/resources_and_libraries.robot
@@ -60,7 +60,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Yhteydenotto            timeout=30
     Wait Until Page Contains    Tähän yhteystiedot      timeout=30
 
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_1}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_1}
 
 201. Add new class to profile
     [Documentation]    Add new class to profile
@@ -86,7 +86,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
     Select Model Tab            ${MODEL_DATA_TAB}
     Add Class                   Rooli                   ${NAMESPACE_1}
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
 
 203. Modify Core Vocabulary
     [Documentation]    Modify Core Vocabulary and delete Core Vocabulary
@@ -111,7 +111,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Automaatiotestaus       timeout=30
     Wait Until Page Contains    www.suomi.fi/etusivu/   timeout=30
 
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
 
 204. Add new attribute and association
     [Documentation]    Add new attribute and association for class
@@ -247,9 +247,9 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
     Wait Until Page Contains                    Historialliset versiot          timeout=10
 
-    Click Element with wait                     ${CLOSE_HISTORY_BTN}            timeout=30
-    Click Element with wait                     ${REMOVE_CLASS_BTN}             timeout=30
-    Click Element with wait                     ${CONFIRM_REMOVE_MODEL_BTN}     timeout=30
+    Click Element with wait                     ${CLOSE_HISTORY_BTN}
+    Click Element with wait                     ${REMOVE_CLASS_BTN}
+    Click Element with wait                     ${CONFIRM_REMOVE_MODEL_BTN}
     Wait Until Page Does Not Contain Element    //*[contains(@id, 'Ajanjakso_tabset_link')]     timeout=30
 
 211. Add reference data for profile
@@ -1084,5 +1084,5 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Rekisteröinti       timeout=30
     Wait Until Page Contains    lib:Uusiluokka      timeout=30
 
-    [Teardown]    Test Case Teardown Delete profile    ${PREFIX_2}
+    [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
 
