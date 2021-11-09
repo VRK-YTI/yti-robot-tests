@@ -22,7 +22,7 @@ Create terminology ${terminology} with api
     ...             templateGraphId=${template_graph_id}
     ...             &prefix=${terminology}
     ${json}=        Create terminology json from file
-    ...             ..\\yti-robot-common\\resources\\api_resources\\json_files\\terminology_create.json
+    ...             ${CURDIR}\\json_files\\terminology_create.json
     ...             ${terminology}
     ...             ${graph_id}
     ...             ${template_graph_id}
