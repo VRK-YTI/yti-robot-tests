@@ -66,35 +66,9 @@ ${test_concepts_csv}    ${DATAFOLDER}${/}test_concepts_csv.csv
 Go back to Sanastot frontpage
     Click element with wait     ${FRONTPAGE_LINK}    timeout=60
 
-Check concept suggestion in Terminologies
-    Terminology Test Case Setup
-
-    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}     timeout=60
-    Click element that contains text    ${VOCABULARY_1}
-
-    Wait until page contains            ${VOCABULARY_1}             timeout=30
-    Wait until page contains            Testiautomaatiosanasto      timeout=20
-
-    Input Text with wait                ${CONCEPT_LIST_SEARCH_INPUT}    automobiili
-    Click element that contains text    automobiili
-
-    Wait until page contains    Ehdotus                 timeout=20
-    Wait until page contains    Tämä on kulkuneuvo      timeout=20
-    Wait until page contains    Test Superuser          timeout=20
-
-Delete existing terminological vocabulary and create new
-    Click element that contains text    ${VOCABULARY_1}
-    Wait until page contains            ${VOCABULARY_1}
-    Click element with wait             ${TERMINOLOGY_TAB}
-    Wait until page contains            Testiautomaatiosanasto              timeout=20
-
-    Click element with wait             ${REMOVE_VOCABULARY_BTN}
-    Click element with wait             ${CONFIRM_REMOVE_VOCABULARY_BTN}
-
-    Create Testiautomaatiosanasto and import vocabulary
-
 Create Testiautomaatiosanasto and import vocabulary
-    Terminology Test Case Setup
+    Open Sanastot
+    Select admin
     Click element with wait             ${ADD_VOCABULARY_BTN}
     Input Text with wait                ${TITLE_INPUT_FI}    ${VOCABULARY_1}
     Click element with wait             ${ADD_VOCABULARY_ORGANIZATION_BTN}

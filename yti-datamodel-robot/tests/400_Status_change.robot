@@ -47,7 +47,6 @@ Resource          ../resources/resources_and_libraries.robot
 
     Select Tab              ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab              ${ASSOCIATION_TAB}
     Create new association  Testiassosiaatio
 
@@ -76,7 +75,6 @@ Resource          ../resources/resources_and_libraries.robot
 
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
 
@@ -105,7 +103,6 @@ Resource          ../resources/resources_and_libraries.robot
 
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
 
@@ -142,7 +139,6 @@ Resource          ../resources/resources_and_libraries.robot
 
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
 
@@ -184,7 +180,6 @@ Resource          ../resources/resources_and_libraries.robot
 
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
 
@@ -222,7 +217,6 @@ Resource          ../resources/resources_and_libraries.robot
 
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
 
@@ -260,7 +254,6 @@ Resource          ../resources/resources_and_libraries.robot
     Add Class    Rooli    ${NAMESPACE_1}
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
 
@@ -297,7 +290,6 @@ Resource          ../resources/resources_and_libraries.robot
 
     Select Tab    ${ATTRIBUTE_TAB}
     Create New Attribute    Testiattribuutti
-
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Modify Profile

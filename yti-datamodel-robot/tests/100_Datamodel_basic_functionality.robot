@@ -46,6 +46,12 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 
     Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
 
+102. Open Description of file page
+    [Documentation]    Verify that Description of file page is opened correctly.
+    [Tags]    regression    tietomallit    test    100
+    Click Element with wait     ${DESCRIPTION_OF_FILE_LINK}    timeout=20
+    Switch window with wait     url=https://wiki.dvv.fi/display/YTIJD/Tietosuojaseloste
+
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
     [Tags]    regression    tietomallit    test    100
@@ -141,111 +147,8 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Delete datamodel        ${CORE_VOCABULARY_1}
     [Teardown]  run keyword if test failed   Delete model ${PREFIX_2} with api
 
-102. Open Description of file page
-    [Documentation]    Verify that Description of file page is opened correctly.
-    [Tags]    local    tietomallit
-    Click Element with wait     ${DESCRIPTION_OF_FILE_LINK}    timeout=20
-    Switch window with wait             url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
-
-107. Guide through creating new Core Vocabulary
-    [Documentation]    Guide through creating new Core Vocabulary
-    [Tags]    tietomallit
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-
-    Click Element with wait     ${GUIDE_BTN}                timeout=20
-    Click Element with wait     ${GUIDE_CORE_VOCABULARY}    timeout=20
-    Click through guide         ${Core_vocabulary_text}
-
-    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
-
-108. Guide through creating new Application Profile
-    [Documentation]    Guide through creating new Application Profile
-    [Tags]    tietomallit
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-
-    Click Element with wait     ${GUIDE_BTN}                    timeout=20
-    Click Element with wait     ${GUIDE_APPLICATION_PROFILE}    timeout=20
-    Click through guide         ${Application_profile_text}
-
-    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
-
-109. Guide through requiring a namespace
-    [Documentation]    Guide through requiring a namespace
-    [Tags]    tietomallit
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select model    ${MODEL_1}
-
-    Click Element with wait     ${GUIDE_BTN}                timeout=20
-    Click Element with wait     ${GUIDE_NAMESPACE}          timeout=20
-    Click through guide         ${Namespace_text}
-
-    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
-
-110. Guide through creating a class
-    [Documentation]    Guide through creating a class
-    [Tags]    tietomallit
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select model    ${MODEL_1}
-
-    Click Element with wait     ${GUIDE_BTN}        timeout=20
-    Click Element with wait     ${GUIDE_CREATE_CLASS}    timeout=20
-    Click through guide         ${Create_class_text}
-
-    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
-
-111. Guide through specializing a class
-    [Documentation]    Guide through specializing a class
-    [Tags]    tietomallit
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select model    ${MODEL_1}
-
-    Click Element with wait     ${GUIDE_BTN}                timeout=20
-    Click Element with wait     ${GUIDE_SPECIALIZE_CLASS}   timeout=20
-    Click through guide         ${Specialize_class_text}
-
-    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
-
-112. Guide through adding an attribute
-    [Documentation]    Guide through adding an attribute
-    [Tags]    tietomallit
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select model    ${MODEL_1}
-
-    Click Element with wait     ${GUIDE_BTN}                timeout=20
-    Click Element with wait     ${GUIDE_ADD_ATTRIBUTE}      timeout=20
-    Click through guide         ${Add_attribute_text}
-
-    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
-
-113. Guide through adding an association
-    [Documentation]    Guide through adding an association
-    [Tags]    tietomallit
-    [Setup]    Test Case Setup Create Testiautomaatio profile
-    Select model    ${MODEL_1}
-
-    Click Element with wait     ${GUIDE_BTN}                timeout=20
-    Click Element with wait     ${GUIDE_ADD_ASSOCIATION}    timeout=20
-    Click through guide         ${Add_association_text}
-
-    [Teardown]    Test Case Teardown Delete model    ${MODEL_1}
-
 *** Keywords ***
 Change user interface language
     [Arguments]    ${language}
     Click Element with wait    ${LANGUAGE_DROPDOWN_BTN}
     Click Element with wait    ${language}
-
-Click through guide
-    [Arguments]    ${final_text}
-    FOR    ${ClickNext}    IN RANGE    300
-        ${Next}    Get Text    ${GUIDE_NEXT_BTN}
-        Page Should Contain    ${Next}
-
-        Click Element with wait   ${GUIDE_NEXT_BTN}
-        ${exit}=    Run Keyword And Return Status    Page Should Contain element    //*[contains(text(), "${final_text}")]
-        Exit For Loop If    ${exit}
-
-        Click Element with wait    ${GUIDE_CLOSE_BTN}
-        Log To Console    Guide through succesfully!
-        Sleep    3
-    EMD

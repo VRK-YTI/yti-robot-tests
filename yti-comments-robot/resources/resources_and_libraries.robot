@@ -1,7 +1,6 @@
 *** Settings ***
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 
-Resource          ../resources/keywords/Data_Vocabularies_resources.robot
 Resource          ../resources/keywords/Generic_resources.robot
 Resource          ../resources/keywords/Reference_Data_resources.robot
 Resource          ../resources/keywords/Terminologies_resources.robot
@@ -54,16 +53,20 @@ Test Case Teardown Reference Data
     Close all browsers
 
 Test Case Setup Terminology
+    [Arguments]     ${terminology}
+    #Create terminology ${terminology} with api
     Test Case Setup Create Terminology
     Close all browsers
 
     Test Case Setup Superuser
 
 Test Case Teardown Terminology
-    [Arguments]    ${comment_round_name}    ${state}
+    [Arguments]    ${comment_round_name}    ${state}  ${terminology}
     Test Case Teardown Generic Teardown
 
-    Terminology Test Case Setup
+    #Delete terminology ${terminology} with api
+    Open Sanastot
+    Select admin
     Delete Terminology      ${VOCABULARY_1}
     Close all browsers
 
@@ -72,11 +75,15 @@ Test Case Teardown Terminology
     Close all browsers
 
 Test Case Setup Data Vocabularies
-    Data Vocabularies Setup
+    [Arguments]    ${model}     ${prefix}
+    Create profile ${model} with prefix ${prefix} api
     Test Case Setup Superuser
 
 Test Case Setup Data Vocabularies With New Class
-    Data Vocabularies Setup With New Class
+    [Arguments]    ${model}     ${model_prefix}   ${class_prefix}
+    Create profile ${model} with prefix ${model_prefix} api
+    Add class ${class_prefix} to model ${model_prefix}
+
     Test Case Setup Superuser
 
 Test Case Teardown Data Vocabularies
@@ -89,12 +96,8 @@ Test Case Teardown Data Vocabularies
     Delete Comment Round    ${comment_round_name}    ${state}
     Close all browsers
 
-Terminology Test Case Setup
-    Open Sanastot
-    Set Selenium Speed    ${SELENIUM_SPEED}
-    Select admin
-
 Test Case Setup Create Terminology
-    Terminology Test Case Setup
+    Open Sanastot
+    Select admin
     Create Testiautomaatiosanasto and import vocabulary
     Go back to Sanastot frontpage

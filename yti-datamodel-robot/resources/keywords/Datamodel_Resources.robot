@@ -32,17 +32,6 @@ ${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${TEXT_FILTER_SEARCH_INPUT}    id=text_filter_search_input
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
 
-${GUIDE_BTN}                id=start_help_link
-${GUIDE_CORE_VOCABULARY}    id=OhjeUudenTietokomponenttikirjastonLuomiseen_help_link
-${GUIDE_APPLICATION_PROFILE}    id=OhjeUudenSoveltamisprofiilinLuomiseen_help_link
-${GUIDE_NAMESPACE}    id=NimiavaruudenLisaamisenOhjeistus_help_link
-${GUIDE_CREATE_CLASS}    id=UudenLuokanLuomisenOhjeistus_help_link
-${GUIDE_SPECIALIZE_CLASS}    id=LuokanErikoistamisenOhjeistus_help_link
-${GUIDE_ADD_ATTRIBUTE}    id=AttribuutinLisaamisenOhjeistus_help_link
-${GUIDE_ADD_ASSOCIATION}    id=AssosiaationLisaamisenOhjeistus_help_link
-${GUIDE_NEXT_BTN}    id=help_popover_next_button
-${GUIDE_CLOSE_BTN}    id=help_popover_close_button
-
 ${FRONTPAGE_LINK}    id=Etusivu_breadcrumb_link
 ${MAIN_PAGE_LINK}    id=main_page_link
 ${LICENSE_ICON_TEXT_LINK}    id=licence_icon_text_link
@@ -550,6 +539,7 @@ Copy Attribute
 
 Create new association
     [Arguments]    ${association}
+    sleep                      0.1
     Click Element with wait    ${ASSOCIATION_TAB}
     Click Element with wait    ${ADD_NEW_ASSOCIATION_BTN}
     Sleep  ${SLEEP_TIMEOUT}

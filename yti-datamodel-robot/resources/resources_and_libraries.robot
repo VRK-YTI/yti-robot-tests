@@ -43,28 +43,20 @@ Test Case Setup Superuser
 Test Case setup create profile
     [Arguments]         ${model}    ${prefix}   ${user}=Admin
     run keyword         Test Case Setup ${user}
-    Create Profile      ${model}    ${prefix}
+    Create profile ${model} with prefix ${prefix} api
 
 Test case setup create vocabulary
     [Arguments]             ${model}    ${prefix}   ${user}=Admin
     run keyword             Test Case Setup ${user}
-    Create Core Vocabulary  ${model}    ${prefix}
-
-Terminology Test Case Setup
-    Open sanastot
-    Set Selenium Speed          ${SELENIUM_SPEED}
-    Select admin
+    Create vocabulary ${model} with prefix ${prefix} api
 
 Test Case Setup Terminologies
-    Terminology Test Case Setup
-    Create Testiautomaatiosanasto and import vocabulary
+    [Arguments]     ${model}    ${prefix}   ${terminology}   ${user}=Admin
+    Create terminology ${terminology} with api
+    Test Case setup create profile  ${model}    ${prefix}   ${user}
 
 Test Case Teardown Terminologies
-    [Arguments]    @{models}
+    [Arguments]    ${terminology}   @{models}
     Test Case Teardown Delete model       @{models}
 
-    #Terminology Test Case Setup
-    #Delete Testiautomaatiosanasto
-    #Close all browsers
-    #Delete terminology 111 with api
-
+    Delete terminology ${terminology} with api

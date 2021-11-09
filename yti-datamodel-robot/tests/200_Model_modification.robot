@@ -7,6 +7,8 @@ Test Setup        Test Case setup create profile     ${MODEL_1}   ${PREFIX_1}
 Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
+${VOCABULARY_1}     Testiautomaatiosanasto2
+
 ${class}          Maksu
 ${class_2}        auto
 ${namespace}      Julkishallinnon tietokomponentit
@@ -331,6 +333,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Predicate
 
     Select Tab    ${ASSOCIATION_TAB}
+    sleep                      0.1
     Wait Until Page Does Not Contain Element    //*[contains(@id,'testiassosiaatio_tabset_link')]       timeout=60
     Select Tab    ${ATTRIBUTE_TAB}
 
@@ -403,13 +406,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 216. Create new class and suggest concept to Terminologies tool
     [Documentation]    Create new class to profile and suggest concept to Terminologies tool.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}
-    Click Element with wait    //*[contains(text(), "Etusivu")]
-    Create Profile              ${MODEL_1}    ${PREFIX_1}
-
+    [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}   ${VOCABULARY_1}
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
-    Add vocabulary    Testiautomaatiosanasto
+    Add vocabulary    ${VOCABULARY_1}
     Save Model
 
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -420,33 +420,29 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Käsitteen määritelmä    timeout=30
     Wait Until Page Contains    Testiluokan määritelmä  timeout=30
     Wait Until Page Contains    Sanasto                 timeout=30
-    Wait Until Page Contains    Testiautomaatiosanasto  timeout=30
-    Go Back To Data Vocabularies Frontpage
-
+    Wait Until Page Contains    ${VOCABULARY_1}         timeout=30
     Close All Browsers
 
-    Terminology Test Case Setup
-    Input Text with wait        ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
-    Click Element with wait    //*[contains(text(), "${VOCABULARY_1}")]
+    Open sanastot
+    Select admin
+    Input Text with wait        id=vocabularies_search_input    ${VOCABULARY_1}
+    Click Element with wait     //*[contains(text(), "${VOCABULARY_1}")]
     Wait Until Page Contains    ${VOCABULARY_1}     timeout=30
 
-    Click Element with wait    ${CONCEPTS_TAB}
-    Click Element with wait    //*[contains(@id,'concept-4_concept_list_listitem')]
+    Click Element with wait     id=conceptsTab
+    Click Element with wait     //*[contains(@id,'concept-0_concept_list_listitem')]
     Wait Until Page Contains    Testiluokka         timeout=30
 
-    [Teardown]    Test Case Teardown Terminologies      ${PREFIX_1}
+    [Teardown]    Test Case Teardown Terminologies     ${VOCABULARY_1}      ${PREFIX_1}
 
 217. Create new attribute and association and suggest concepts to Terminologies tool
     [Documentation]    Create new attribute and association for profile and suggest concepts to Terminologies tool.
     [Tags]    regression    tietomallit    test    200
-    [Setup]    Test Case Setup Terminologies
-    Click Element with wait    //*[contains(text(), "Etusivu")]
-    Create Profile             ${MODEL_1}    ${PREFIX_1}
-
+    [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}   ${VOCABULARY_1}
     Maximize Browser Window
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
-    Add vocabulary    Testiautomaatiosanasto
+    Add vocabulary      ${VOCABULARY_1}
     Save Model
 
     Select Model Tab            ${MODEL_DATA_TAB}
@@ -470,7 +466,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Käsitteen määritelmä            timeout=30
     Wait Until Page Contains    Testiattribuutin määritelmä     timeout=30
     Wait Until Page Contains    Sanasto                         timeout=30
-    Wait Until Page Contains    Testiautomaatiosanasto          timeout=30
+    Wait Until Page Contains    ${VOCABULARY_1}                 timeout=30
 
     Click Element with wait    ${MODIFY_CLASS}
     Click Element with wait    ${ADD_PROPERTY_DDL}
@@ -487,23 +483,25 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Wait Until Page Contains    Käsitteen määritelmä            timeout=30
     Wait Until Page Contains    Testiassosiaation määritelmä    timeout=30
     Wait Until Page Contains    Sanasto                         timeout=30
-    Wait Until Page Contains    Testiautomaatiosanasto          timeout=30
+    Wait Until Page Contains    ${VOCABULARY_1}                 timeout=30
     Save Class
 
     Close All Browsers
-    Terminology Test Case Setup
-    Input Text with wait            ${FRONTPAGE_SEARCH_BOX_TERMINOLOGIES}    ${VOCABULARY_1}
+
+    Open sanastot
+    Select admin
+    Input Text with wait            id=vocabularies_search_input     ${VOCABULARY_1}
     Click Element with wait         //*[contains(text(), "${VOCABULARY_1}")]
     Wait Until Page Contains        ${VOCABULARY_1}    timeout=30
 
-    Click Element with wait         ${CONCEPTS_TAB}    timeout=30
-    Click Element with wait         //*[contains(@id,'concept-4_concept_list_listitem')]    timeout=30
-
+    Click Element with wait         id=conceptsTab    timeout=30
+    Click Element with wait         //*[contains(@id,'concept-0_concept_list_listitem')]    timeout=30
     Wait Until Page Contains        Testiattribuutti    timeout=30
-    Click Element with wait         //*[contains(@id,'concept-5_concept_list_listitem')]    timeout=30
+
+    Click Element with wait         //*[contains(@id,'concept-1_concept_list_listitem')]    timeout=30
     Wait Until Page Contains        Testiassosiaatio    timeout=30
 
-    [Teardown]    Test Case Teardown Terminologies      ${PREFIX_1}
+    [Teardown]    Test Case Teardown Terminologies     ${VOCABULARY_1}      ${PREFIX_1}
 
 218. Create new namespace
     [Documentation]    Create new profile and create new namespace. Check that namespace prefix can not be

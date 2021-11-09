@@ -19,15 +19,15 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Create new terminology with concepts in Terminologies tool and create new comment round for the terminology.
     ...    Delete terminology and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Terminology
-    Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
-    [Teardown]  Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
+    [Setup]    Test Case Setup Terminology      ${VOCABULARY_1}
+    Create Comment Round    ${TERMINOLOGIES_TOOL}    ${VOCABULARY_1}    Testiautomaatiokierros    kuvaus    False    False
+    [Teardown]  Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}       ${VOCABULARY_1}
 
 202. Create new comment round for profile
     [Documentation]    Create new profile in Data Vocabularies tool and create new comment round for the profile.
     ...    Delete profile and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Data Vocabularies
+    [Setup]    Test Case Setup Data Vocabularies        Testiautomaatio     cmts_autom
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
     [Teardown]    Test Case Teardown Data Vocabularies    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
 
@@ -44,24 +44,24 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Create new terminology with concepts in Terminologies tool and create new comment round
     ...    for the terminology. Add new concepts for comment round and delete code list and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Terminology
-    Create Comment Round    ${TERMINOLOGIES_TOOL}    Testiautomaatiosanasto    Testiautomaatiokierros    kuvaus    False    False
+    [Setup]    Test Case Setup Terminology      ${VOCABULARY_1}
+    Create Comment Round    ${TERMINOLOGIES_TOOL}    ${VOCABULARY_1}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Saturnus    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${RETIRED_0}
     Wait Until Page Contains    kommentti1    timeout=20
     Click Element with wait    //*[contains(text(), "Saturnus")]
 
     Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    Wait Until Page Contains    Testiautomaatiosanasto      timeout=20
-    Wait Until Page Contains    Saturnus                    timeout=20
+    Wait Until Page Contains    ${VOCABULARY_1}                 timeout=20
+    Wait Until Page Contains    Saturnus                        timeout=20
     Close Window
 
-    [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}
+    [Teardown]    Test Case Teardown Terminology    Testiautomaatiokierros    ${COMMNET_ROUND_STATE_INCOMPLETE}     ${VOCABULARY_1}
 
 205. Add resources from Data Vocabularies for comment round
     [Documentation]    Create new profile in Data Vocabularies tool and create new comment round for the profile.
     ...    Add new class for comment round and delete code list and comment round.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Data Vocabularies With New Class
+    [Setup]    Test Case Setup Data Vocabularies With New Class     Testiautomaatio     cmts_autom      Automobiili
     Create Comment Round    ${DATA_VOCABULARIES_TOOL}    Testiautomaatio    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Automobiili    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Wait Until Page Contains    kommentti1    timeout=20
