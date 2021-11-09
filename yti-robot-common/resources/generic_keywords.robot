@@ -8,8 +8,8 @@ ${HEADLESS}=  True
 Open Browser with Settings
     [Arguments]    ${environment_url}
     Run Keyword If    '${BROWSER}' == 'chrome-jenkins'    Open Chrome to Environment  ${environment_url}
-    ...    ELSE IF    '${BROWSER}' == 'chrome-local'    Open Chrome to Environment  ${environment_url}
-    ...    ELSE    Open Browser    ${environment_url}    browser=${BROWSER}
+    ...    ELSE IF    '${BROWSER}' == 'chrome-local'      Open Chrome to Environment  ${environment_url}
+    ...    ELSE    Open Browser    ${environment_url}     browser=${BROWSER}
 
 Open Chrome to Environment
     [Arguments]    ${environment_url}
@@ -57,7 +57,7 @@ Select Checkbox with wait
 
 Switch window with wait
     [Arguments]     ${window}
-    Wait Until Keyword Succeeds     90 seconds    5 seconds    Select window    ${window}
+    Wait Until Keyword Succeeds     90 seconds    5 seconds    Switch window    ${window}
 
 Click element that contains text
     [Arguments]  ${text}  ${timeout}=30

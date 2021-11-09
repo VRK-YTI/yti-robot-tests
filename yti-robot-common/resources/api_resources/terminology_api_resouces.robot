@@ -1,5 +1,6 @@
 *** Settings ***
 Library               RequestsLibrary
+Resource              common_api_resources.robot
 
 *** Variables ***
 ${DELETE_TERMINOLOGY_API_POINT}=      ${TERMINOLOGIES_ENVIRONMENT_URL}terminology-api/api/v1/frontend/vocabulary
@@ -22,7 +23,7 @@ Create terminology ${terminology} with api
     ...             templateGraphId=${template_graph_id}
     ...             &prefix=${terminology}
     ${json}=        Create terminology json from file
-    ...             ${EXECDIR}\\json_files\\terminology_create.json
+    ...             ${JSON_FILE_FOLDER}${/}terminology_create.json
     ...             ${terminology}
     ...             ${graph_id}
     ...             ${template_graph_id}
