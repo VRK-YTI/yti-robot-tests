@@ -22,7 +22,7 @@ Create terminology ${terminology} with api
     ...             templateGraphId=${template_graph_id}
     ...             &prefix=${terminology}
     ${json}=        Create terminology json from file
-    ...             ${CURDIR}\\json_files\\terminology_create.json
+    ...             ${EXECDIR}\\json_files\\terminology_create.json
     ...             ${terminology}
     ...             ${graph_id}
     ...             ${template_graph_id}

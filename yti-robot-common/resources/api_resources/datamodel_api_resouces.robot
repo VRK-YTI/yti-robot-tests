@@ -13,7 +13,7 @@ ${service}=          P1
 Create profile ${model} with prefix ${prefix} api
     ${headers}=     Create authentication header
     ${json}=        Create datamodel json from file
-    ...             ${CURDIR}\\json_files\\datamodel_profile_create.json
+    ...             ${EXECDIR}\\json_files\\datamodel_profile_create.json
     ...             ${model}
     ...             ${prefix}
     ${response}=    Put         ${CREATE_MODEL_API_POINT}     headers=${headers}  data=${json}
@@ -22,7 +22,7 @@ Create profile ${model} with prefix ${prefix} api
 Create vocabulary ${model} with prefix ${prefix} api
     ${headers}=     Create authentication header
     ${json}=        Create datamodel json from file
-    ...             ${CURDIR}\\json_files\\datamodel_vocabulary_create.json
+    ...             ${EXECDIR}\\json_files\\datamodel_vocabulary_create.json
     ...             ${model}
     ...             ${prefix}
     ${response}=    Put         ${CREATE_MODEL_API_POINT}     headers=${headers}  data=${json}
@@ -31,7 +31,7 @@ Create vocabulary ${model} with prefix ${prefix} api
 Add class ${prefix} to model ${model}
     ${headers}=     Create authentication header
     ${json}=        Create class add json from file
-    ...             ${CURDIR}\\json_files\\datamodel_create_class.json
+    ...             ${EXECDIR}\\json_files\\datamodel_create_class.json
     ...             ${model}
     ...             ${prefix}
     ${data}=        catenate
