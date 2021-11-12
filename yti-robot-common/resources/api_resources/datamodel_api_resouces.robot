@@ -64,8 +64,9 @@ Create class add json from file
     [Arguments]     ${file}     ${model}    ${prefix}
     ${json_string}=      Get File    ${file}
     ${json}=             evaluate        json.loads('''${json_string}''')    json
-    set to dictionary    ${json["@graph"]}                      @id=http://uri.suomi.fi/datamodel/ns/${model}#${prefix}
-    set to dictionary    ${json["@graph"]}                      @isDefinedBy=http://uri.suomi.fi/datamodel/ns/${model}
-    set to dictionary    ${json["@graph"]["name"]}              @fi=${prefix}
+    ${id}=               catenate        http://uri.suomi.fi/datamodel/ns/${model}#${prefix}
+    set to dictionary    ${json["@graph"]}                      @id=${id}
+    set to dictionary    ${json["@graph"]}                      isDefinedBy=http://uri.suomi.fi/datamodel/ns/${model}
+    set to dictionary    ${json["@graph"]["name"]}              fi=${prefix}
     ${json_string}=      evaluate        json.dumps(${json})                 json
     [Return]        ${json_string}
