@@ -5,6 +5,7 @@ Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 Resource          ../resources/keywords/Datamodel_Resources.robot
 
 Resource          ../resources/variables/test_files.robot
+Library           ScreenCapLibrary
 
 *** Variables ***
 
@@ -12,6 +13,8 @@ Resource          ../resources/variables/test_files.robot
 Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs
     Close All Browsers
+    Run Keyword If    '${RECORD}' == 'True'      Stop video recording
+    run keyword if test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}
 
 Test Case Teardown Delete model
     [Arguments]    @{models}
@@ -25,6 +28,7 @@ Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
 Test Case Setup Generic Setup
+    Run Keyword If    '${RECORD}' == 'True'      Start video recording      name=${TEST NAME}
     Open Tietomallit
     Set Selenium Speed      ${SELENIUM_SPEED}
 

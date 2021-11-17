@@ -57,6 +57,7 @@ Create datamodel json from file
     set to dictionary    ${json["@graph"]}                      preferredXMLNamespacePrefix=${prefix}
     set to dictionary    ${json["@graph"]["label"]}             fi=${model}
     set to dictionary    ${json["@graph"]["comment"]}           fi=${model}
+    set to dictionary    ${json["@context"]}                    ${prefix}=http://uri.suomi.fi/datamodel/ns/${prefix}#
     ${json_string}=      evaluate        json.dumps(${json})                 json
     [Return]        ${json_string}
 
@@ -68,5 +69,6 @@ Create class add json from file
     set to dictionary    ${json["@graph"]}                      @id=${id}
     set to dictionary    ${json["@graph"]}                      isDefinedBy=http://uri.suomi.fi/datamodel/ns/${model}
     set to dictionary    ${json["@graph"]["name"]}              fi=${prefix}
+    set to dictionary    ${json["@context"]}                    ${prefix}=http://uri.suomi.fi/datamodel/ns/${prefix}#
     ${json_string}=      evaluate        json.dumps(${json})                 json
     [Return]        ${json_string}

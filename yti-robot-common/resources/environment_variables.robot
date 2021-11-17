@@ -4,6 +4,7 @@ ${TEST_EMAIL}                           yalusta.testitunnus@gmail.com
 ${TEST PASSWORD}                        ${EMPTY}
 ${BROWSER}                              chrome
 ${ENVIRONMENT_IDENTIFIER}               AWSDEV
+${RECORD}                               False
 
 ${SELENIUM_SPEED}                       0
 
