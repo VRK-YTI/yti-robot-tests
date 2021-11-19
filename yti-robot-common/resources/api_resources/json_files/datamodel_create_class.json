@@ -1,0 +1,282 @@
+{
+  "@graph": {
+    "@id": "http://uri.suomi.fi/datamodel/ns/${model}#${prefix}",
+    "@type": [
+      "rdfs:Class"
+    ],
+    "created": "2021-11-01T16:55:25.250Z",
+    "modified": "2021-11-01T16:55:25.250Z",
+    "isDefinedBy": "http://uri.suomi.fi/datamodel/ns/${model}",
+    "versionInfo": "DRAFT",
+    "name": {
+      "fi": "${prefix}"
+    },
+    "description": {},
+    "editorialNote": {}
+  },
+  "@context": {
+    "label": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#label",
+      "@container": "@language"
+    },
+    "modified": {
+      "@id": "http://purl.org/dc/terms/modified",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "created": {
+      "@id": "http://purl.org/dc/terms/created",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "name": {
+      "@id": "http://www.w3.org/ns/shacl#name",
+      "@container": "@language"
+    },
+    "versionInfo": {
+      "@id": "http://www.w3.org/2002/07/owl#versionInfo"
+    },
+    "isDefinedBy": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "@type": "@id"
+    },
+    "dcap": "http://purl.org/ws-mmi-dc/terms/",
+    "schema": "http://schema.org/",
+    "void": "http://rdfs.org/ns/void#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "skosxl": "http://www.w3.org/2008/05/skos-xl#",
+    "dcam": "http://purl.org/dc/dcam/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "afn": "http://jena.hpl.hp.com/ARQ/function#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "iow": "http://uri.suomi.fi/datamodel/ns/iow#",
+    "sd": "http://www.w3.org/ns/sparql-service-description#",
+    "at": "http://publications.europa.eu/ontology/authority/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "text": "http://jena.apache.org/text#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "httpv": "http://www.w3.org/2011/http#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "ts": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "test": "http://uri.suomi.fi/datamodel/ns/test#",
+    "comment": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#comment",
+      "@container": "@language"
+    },
+    "definition": {
+      "@id": "http://www.w3.org/2004/02/skos/core#definition",
+      "@container": "@language"
+    },
+    "hasPart": {
+      "@id": "http://purl.org/dc/terms/hasPart",
+      "@type": "@id"
+    },
+    "homepage": {
+      "@id": "http://xmlns.com/foaf/0.1/homepage"
+    },
+    "identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "imports": {
+      "@id": "http://www.w3.org/2002/07/owl#imports",
+      "@type": "@id"
+    },
+    "isPartOf": {
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "@id"
+    },
+    "nodeKind": {
+      "@id": "http://www.w3.org/ns/shacl#nodeKind",
+      "@type": "@id"
+    },
+    "prefLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@container": "@language"
+    },
+    "title": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@container": "@language"
+    },
+    "editorialNote": {
+      "@id": "http://www.w3.org/2004/02/skos/core#editorialNote",
+      "@container": "@language"
+    },
+    "localName": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#localName"
+    },
+    "status": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#status"
+    },
+    "inScheme": {
+      "@id": "http://www.w3.org/2004/02/skos/core#inScheme",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#range",
+      "@type": "@id"
+    },
+    "subPropertyOf": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+      "@type": "@id"
+    },
+    "equivalentProperty": {
+      "@id": "http://www.w3.org/2002/07/owl#equivalentProperty",
+      "@type": "@id"
+    },
+    "datatype": {
+      "@id": "http://www.w3.org/ns/shacl#datatype",
+      "@type": "@id"
+    },
+    "subject": {
+      "@id": "http://purl.org/dc/terms/subject",
+      "@type": "@id"
+    },
+    "creator": {
+      "@id": "http://purl.org/dc/terms/creator"
+    },
+    "description": {
+      "@id": "http://www.w3.org/ns/shacl#description",
+      "@container": "@language"
+    },
+    "order": {
+      "@id": "http://www.w3.org/ns/shacl#order"
+    },
+    "example": {
+      "@id": "http://www.w3.org/2004/02/skos/core#example"
+    },
+    "defaultValue": {
+      "@id": "http://www.w3.org/ns/shacl#defaultValue"
+    },
+    "maxCount": {
+      "@id": "http://www.w3.org/ns/shacl#maxCount"
+    },
+    "minCount": {
+      "@id": "http://www.w3.org/ns/shacl#minCount"
+    },
+    "maxLength": {
+      "@id": "http://www.w3.org/ns/shacl#maxLength"
+    },
+    "minLength": {
+      "@id": "http://www.w3.org/ns/shacl#minLength"
+    },
+    "inValues": {
+      "@id": "http://www.w3.org/ns/shacl#in",
+      "@container": "@list"
+    },
+    "hasValue": {
+      "@id": "http://www.w3.org/ns/shacl#hasValue"
+    },
+    "in": null,
+    "pattern": {
+      "@id": "http://www.w3.org/ns/shacl#pattern"
+    },
+    "type": {
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "@id"
+    },
+    "node": {
+      "@id": "http://www.w3.org/ns/shacl#node",
+      "@type": "@id"
+    },
+    "path": {
+      "@id": "http://www.w3.org/ns/shacl#path",
+      "@type": "@id"
+    },
+    "classIn": {
+      "@id": "http://www.w3.org/ns/shacl#classIn",
+      "@type": "@id"
+    },
+    "memberOf": {
+      "@id": "http://purl.org/dc/dcam/memberOf"
+    },
+    "stem": {
+      "@id": "http://www.w3.org/ns/shacl#stem",
+      "@type": "@id"
+    },
+    "languageIn": {
+      "@id": "http://www.w3.org/ns/shacl#languageIn",
+      "@container": "@list"
+    },
+    "isResourceIdentifier": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#isResourceIdentifier"
+    },
+    "uniqueLang": {
+      "@id": "http://www.w3.org/ns/shacl#uniqueLang"
+    },
+    "isXmlWrapper": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#isXmlWrapper"
+    },
+    "isXmlAttribute": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#isXmlAttribute"
+    },
+    "readOnlyValue": {
+      "@id": "http://schema.org/readonlyValue"
+    },
+    "deactivated": {
+      "@id": "http://www.w3.org/ns/shacl#deactivated"
+    },
+    "equals": {
+      "@id": "http://www.w3.org/ns/shacl#equals",
+      "@type": "@id"
+    },
+    "disjoint": {
+      "@id": "http://www.w3.org/ns/shacl#disjoint",
+      "@type": "@id"
+    },
+    "lessThan": {
+      "@id": "http://www.w3.org/ns/shacl#lessThan",
+      "@type": "@id"
+    },
+    "lessThanOrEquals": {
+      "@id": "http://www.w3.org/ns/shacl#lessThanOrEquals",
+      "@type": "@id"
+    },
+    "abstract": {
+      "@id": "http://www.w3.org/ns/shacl#abstract"
+    },
+    "property": {
+      "@id": "http://www.w3.org/ns/shacl#property",
+      "@type": "@id"
+    },
+    "targetClass": {
+      "@id": "http://www.w3.org/ns/shacl#targetClass",
+      "@type": "@id"
+    },
+    "subClassOf": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "@type": "@id"
+    },
+    "equivalentClass": {
+      "@id": "http://www.w3.org/2002/07/owl#equivalentClass",
+      "@type": "@id"
+    },
+    "constraint": {
+      "@id": "http://www.w3.org/ns/shacl#constraint",
+      "@type": "@id"
+    },
+    "orCond": {
+      "@id": "http://www.w3.org/ns/shacl#or",
+      "@container": "@list"
+    },
+    "andCond": {
+      "@id": "http://www.w3.org/ns/shacl#and",
+      "@container": "@list"
+    },
+    "notCond": {
+      "@id": "http://www.w3.org/ns/shacl#not",
+      "@container": "@list"
+    },
+    "minProperties": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#minProperties"
+    },
+    "maxProperties": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#maxProperties"
+    },
+    "absolutePath": {
+      "@id": "http://www.w3.org/2011/http#absolutePath"
+    }
+  }
+}
