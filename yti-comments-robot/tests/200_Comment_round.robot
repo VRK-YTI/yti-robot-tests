@@ -212,12 +212,14 @@ Resource          ../resources/resources_and_libraries.robot
     Send Comments
 
     Close all browsers
+    Open Koodistot
     Select User    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Send Comments
 
     Close all browsers
+    Open Koodistot
     Select admin user
     Click Element with wait    ${RESOURCES_TAB}
     Click Element with wait    ${VIEW_COMMENT_BUBLE_0}
