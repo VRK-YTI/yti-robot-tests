@@ -77,7 +77,7 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
 
-    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Switch window with wait     NEW
     Wait Until Page Contains    Sanastot    timeout=20
     Wait Until Page Contains    Hae sanastoja    timeout=20
     Wait Until Page Contains    Rajaa tietoalueella    timeout=20
@@ -138,14 +138,14 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     [Tags]    regression    tietomallit    test    100
     Create Profile              ${MODEL_1}    ${PREFIX_1}
     Delete datamodel            ${MODEL_1}
-    [Teardown]  run keyword if test failed   Delete model ${PREFIX_1} with api
+    [Teardown]  run keyword if test failed   Test Case Teardown Delete model    ${PREFIX_1}
 
 117. Create and delete vocabulary
     [Documentation]    Create and delete vocabulary
     [Tags]    regression    tietomallit    test    100
     Create Core Vocabulary  ${CORE_VOCABULARY_1}   ${PREFIX_2}
     Delete datamodel        ${CORE_VOCABULARY_1}
-    [Teardown]  run keyword if test failed   Delete model ${PREFIX_2} with api
+    [Teardown]  run keyword if test failed      Test Case Teardown Delete model    ${PREFIX_2}
 
 *** Keywords ***
 Change user interface language

@@ -113,6 +113,9 @@ ${USER_0_EMAIL_INPUT}    id=user_0_email_input
 ${ADD_USERS_BTN}    id=add_users_button
 ${USERS_MODAL_OPEN}    class=modal-content
 
+${CODE_LIST_8}          codelist_for_comments_1
+${CODE_LIST_8_CODE}     6000
+
 *** Keywords ***
 Return To Comments Frontpage
     Click Element with wait   ${FRONTPAGE_LINK}     timeout=60

@@ -10,76 +10,84 @@ Resource          ../resources/resources_and_libraries.robot
 ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 
 *** Test Cases ***
+
 200. Modify DRAFT Code
     [Documentation]    Modify name, description and short name values for DRAFT code.
     [Tags]    regression    test    200
-    Upload codelist in Excel format     ${testiautomaatiokoodisto_with_code}                ${CODE_LIST_4}
-    Click element that contains text    ${TEST_CODE_1}                                      timeout=20
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_4}
+    Click element that contains text    ${TEST_CODE_1}
+
     Modify code
-    Input text with wait        ${CODE_NAME_INPUT}          Tämä on uusi nimi koodille      timeout=20
-    Input text with wait        ${CODE_DESC_INPUT}          Tämä on uusi kuvaus koodille    timeout=20
-    Input text with wait        ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi         timeout=20
+    Input text with wait        ${CODE_NAME_INPUT}          Tämä on uusi nimi koodille
+    Input text with wait        ${CODE_DESC_INPUT}          Tämä on uusi kuvaus koodille
+    Input text with wait        ${CODE_SHORT_NAME_INPUT}    Tämä on uusi lyhyt nimi
 
     Save code modification
-    Wait Until Page Contains    Tämä on uusi nimi koodille      timeout=20
-    Wait Until Page Contains    Tämä on uusi kuvaus koodille    timeout=20
-    Wait Until Page Contains    Tämä on uusi lyhyt nimi         timeout=20
+    Wait Until Page Contains    Tämä on uusi nimi koodille      timeout=30
+    Wait Until Page Contains    Tämä on uusi kuvaus koodille    timeout=30
+    Wait Until Page Contains    Tämä on uusi lyhyt nimi         timeout=30
 
-    [Teardown]    Remove codelist teardown      ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown      T100
 
 201. Add link to the DRAFT Code
     [Documentation]    Add link to the draft code, check link functionalty, check that it is not possible to add
     ...    same link url again and remove the link.
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
-    Click element that contains text    ${TEST_CODE_1}      timeout=20
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_4}
+    Click element that contains text    ${TEST_CODE_1}
 
     Modify code
 
-    Click element with wait         ${ADD_LINK_DDL}         timeout=30
-    Click element with wait         ${LINK_BTN}             timeout=20
-    Click element with wait         ${LINK_URL_INPUT}       timeout=20
+    Click element with wait         ${ADD_LINK_DDL}
+    Click element with wait         ${LINK_BTN}
+    Click element with wait         ${LINK_URL_INPUT}
 
-    Input text with wait            ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/  timeout=20
+    Input text with wait            ${LINK_URL_INPUT}    https://www.suomi.fi/etusivu/
 
-    Click element with wait         ${ADD_BTN}                          timeout=20
+    Click element with wait         ${ADD_BTN}
 
-    Wait until page contains        Liittyvä linkki                     timeout=20
-    Wait until page contains        https://www.suomi.fi/etusivu/       timeout=20
+    Wait until page contains        Liittyvä linkki                     timeout=30
+    Wait until page contains        https://www.suomi.fi/etusivu/       timeout=30
 
 
-    Click element that contains text    https://www.suomi.fi/etusivu/   timeout=20
-    Click element with wait             id=external_ref_url_link        timeout=20
+    Click element that contains text    https://www.suomi.fi/etusivu/
+    Click element with wait             id=external_ref_url_link
 
     Switch window with wait     url=https://www.suomi.fi/etusivu/
     Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
-    Click element with wait             ${LINK_MODAL_OK_BTN}    timeout=20
+    Click element with wait             ${LINK_MODAL_OK_BTN}
 
     Save code modification
     Modify code
-    Click element with wait             ${ADD_LINK_DDL}         timeout=30
-    Click element with wait             ${LINK_BTN}             timeout=20
-    Click element with wait             ${LINK_URL_INPUT}       timeout=20
+    Click element with wait             ${ADD_LINK_DDL}
+    Click element with wait             ${LINK_BTN}
+    Click element with wait             ${LINK_URL_INPUT}
 
-    Input text with wait                ${LINK_URL_INPUT}   https://www.suomi.fi/etusivu/  timeout=20
+    Input text with wait                ${LINK_URL_INPUT}   https://www.suomi.fi/etusivu/
 
-    Wait until page contains            Linkki on jo käytössä tässä koodistossa.    timeout=20
+    Wait until page contains            Linkki on jo käytössä tässä koodistossa.    timeout=30
 
-    Click element with wait             ${CANCEL_CREATION_BTN}                      timeout=20
-    Click element with wait             ${DELETE_LINK_ICON}                         timeout=20
-    Click element with wait             ${REMOVE_LINK_CONF_BTN}                     timeout=20
+    Click element with wait             ${CANCEL_CREATION_BTN}
+    Click element with wait             ${DELETE_LINK_ICON}
+    Click element with wait             ${REMOVE_LINK_CONF_BTN}
 
-    Wait Until Page Does Not Contain    https://www.suomi.fi/etusivu/    timeout=20
+    Wait Until Page Does Not Contain    https://www.suomi.fi/etusivu/    timeout=30
     Save code modification
-    Wait Until Page Does Not Contain    https://www.suomi.fi/etusivu/    timeout=20
+    Wait Until Page Does Not Contain    https://www.suomi.fi/etusivu/    timeout=30
 
-    [Teardown]    Remove codelist teardown   ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown      T100
 
 202. Add Creative Commons license to DRAFT Code
     [Documentation]    Add Creative Commons license to draft code and remove the license.
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_4}
     Click element that contains text    ${TEST_CODE_1}      timeout=20
 
     Modify code
@@ -99,13 +107,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Does Not Contain    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)       timeout=20
     Save code modification
 
-    [Teardown]    Remove codelist teardown  ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown      T100
 
 203. Modify link for DRAFT Code
     [Documentation]    Add link to the DRAFT code, modify link name, check the name from TIEDOT-tab
     ...    and remove the link. YTI-444, YTI-614.
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${Codes_list_with_languages}    ${CODE_LIST_9}
+    Create codelist from Excel ${Codes_list_with_languages} to test with api
+
+    Search and open codelist            ${CODE_LIST_9}
     Wait Until Page Contains    30 koodia    timeout=20
     Change Content Language    ${ALL_LANGUAGE_BTN}
 
@@ -141,7 +151,9 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.
     ...    YTI-438
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_4}
     Click element that contains text  ${TEST_CODE_1}    timeout=20
 
     Click element with wait     ${MODIFY_CODE_BTN}                                                  timeout=20
@@ -157,12 +169,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Save code modification
     Wait Until Page Contains    02.01.2018 - 27.02.2018    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown      T100
 
 205. Set end date before start date for Code list
     [Documentation]    Set end date before start date for code list and check error message.
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_4}
     Click element that contains text   ${TEST_CODE_1}                                           timeout=20
 
     Click element with wait     ${MODIFY_CODE_BTN}                                              timeout=20
@@ -180,12 +194,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait     id=close_error_modal_button             timeout=20
     Click element with wait     ${CANCEL_CODE_MOD_BTN}                  timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown      T100
 
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list. YTI-445
     [Tags]    regression    test    200    status_change
-    Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
+    Create codelist from Excel ${testiautomaatiokoodisto2_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_6}
     Modify code list
 
     Click element with wait     ${CODE_LIST_STATUS_DDL}    timeout=20
@@ -198,14 +214,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Element Is Enabled       ${MODIFY_CODE_LIST}     timeout=60
     Wait Until Page Contains            Virheellinen            timeout=20
     Click element with wait             ${FRONTPAGE_LINK}       timeout=20
-    Select superuser
-
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_6}
+    [Teardown]    Remove codelist teardown    testiautomaatiokoodisto2
 
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list. YTI-523, YTI-873.
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
+    Create codelist from Excel ${testiautomaatiokoodisto2_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_6}
     Modify code list
     Input text with wait        ${CODE_LIST_NAME_INPUT}         Testinimi                   timeout=20
     Input text with wait        ${CODE_LIST_DESC_INPUT}         Uusi kuvaus                 timeout=20
@@ -222,13 +238,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Yhteydenotto                timeout=20
     Wait Until Page Contains    Ylläpitäjän yhteystiedot    timeout=20
 
-    [Teardown]    Remove codelist teardown    Testinimi
+    [Teardown]    Remove codelist teardown    testiautomaatiokoodisto2
 
 208. Modify classification for DRAFT Code list
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
     ...    remove classification.
     [Tags]    regression    test    200
-    Upload codelist in Excel format     ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+
+    Search and open codelist            ${CODE_LIST_4}
     Modify code list
 
     Page should contain element         ${CLASSIFICATION_2}
@@ -248,14 +266,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 
     Wait until page contains element    //*[contains(text(), "${CODE_LIST_4}")]    timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown      T100
 
 209. Add broader code for code when code is not found from the system
     [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
     [Tags]    koodistot    regression    test    200
-    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
 
-
+    Search and open codelist            ${CODE_LIST_16}
     Click element that contains text    Testcode 29                  timeout=20
 
     Click element with wait             ${MODIFY_CODE_BTN}           timeout=20
@@ -264,11 +282,11 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element that contains text    Testcode 28                  timeout=20
 
     Open Koodistot
-    Select superuser
+    Select superuser user
     Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=600
 
     Click element that contains text    Testcode 28                  timeout=20
-    Select superuser
+    Select superuser user
     Click element with wait             ${CODE_DDL}                  timeout=30
     Click element with wait             ${REMOVE_CODE_BTN}           timeout=20
     Click element with wait             ${CONFIRMATION_YES_BTN}      timeout=20
@@ -279,12 +297,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait until page contains    Koodia ei löydy.    timeout=20
     Click element with wait             ${CLOSE_ERROR_MESSAGE_BTN}   timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}
+    [Teardown]    Remove codelist teardown    600
 
 210. Update code list values vith different languages
     [Documentation]    Import code list and update code list and code values vith different languages. YTI-674
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${Code_list_codes_with_languages_empty}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Update code list    ${Code_list_codes_with_languages}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
@@ -330,13 +350,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Kuvaus_ar           timeout=60
     Wait Until Page Contains    Määritelmä_ar       timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}
+    [Teardown]    Remove codelist teardown    600
 
 211. Change code statuses with code list status change
     [Documentation]    Change code statuses with code list status change. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
-    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
     Click Code List Info Tab
 
@@ -365,13 +387,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Koodin nimi         timeout=60
     Wait Until Page Contains    Voimassa oleva      timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}
+    [Teardown]    Remove codelist teardown    600
 
 212. Change code statuses with mass function
     [Documentation]    Change code statuses with mass function. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
-    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Click element with wait     ${CODE_LIST_DDL}                timeout=20
@@ -394,13 +418,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Koodin nimi         timeout=60
     Wait Until Page Contains    Voimassa oleva      timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}
+    [Teardown]    Remove codelist teardown    600
 
 213. Change code statuses with mass function as superuser
     [Documentation]    Change code statuses with mass function as superuser from Valid to Draft.
     ...    Check that status change is successful. YTI-41.
     [Tags]    regression    test    200    status_change
-    Upload codelist in Excel format    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Create codelist from Excel ${Code_list_with_30_Codes_valid} to test with api
+
+    Search and open codelist            ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Click element with wait     ${CODE_LIST_DDL}                timeout=20
@@ -421,13 +447,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Koodin nimi    timeout=60
     Wait Until Page Contains    Luonnos        timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_17}
+    [Teardown]    Remove codelist teardown    700
 
 214. Change code statuses with mass function as superuser
     [Documentation]    Change code statuses with mass function as superuser from Valid to Draft.
     ...    Check that status change is successful. YTI-41.
     [Tags]    regression    test    200    status_change
-    Upload codelist in Excel format    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Create codelist from Excel ${Code_list_with_30_Codes_valid} to test with api
+
+    Search and open codelist            ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Click element with wait     ${CODE_LIST_DDL}                    timeout=20
@@ -448,12 +476,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Koodin nimi     timeout=60
     Wait Until Page Contains    Luonnos         timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_17}
+    [Teardown]    Remove codelist teardown    700
 
 215. Change code statuses with mass function and with invalid original status
     [Documentation]    Change code statuses with mass function and with invalid original status. Check Error message. YTI-41.
     [Tags]    regression    test    200    status_change
-    Upload codelist in Excel format    ${Code_list_with_30_Codes_valid}    ${CODE_LIST_17}
+    Create codelist from Excel ${Code_list_with_30_Codes_valid} to test with api
+
+    Search and open codelist            ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Click element with wait     ${CODE_LIST_DDL}                    timeout=20
@@ -468,12 +498,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 
     Click element with wait     ${CLOSE_ALERT_MODAL_LINK}           timeout=30
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_17}
+    [Teardown]    Remove codelist teardown    700
 
 216. Enforce status transition rules with code status change mass function
     [Documentation]    Enforce status transition rules with code status change mass function for superuser. YTI-41.
     [Tags]    regression    test    200    status_change
-    Upload codelist in Excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Click element with wait     ${CODE_LIST_DDL}                timeout=20
@@ -513,14 +545,16 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Koodin nimi         timeout=60
     Wait Until Page Contains    Voimassa oleva      timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}
+    [Teardown]    Remove codelist teardown    600
 
 217. Import code list and codes with upper case/lower case status values
     [Documentation]    Import code list and codes (Excel,CSV) with extra space and upper case/lower case letters in status values.
     ...    Check that import is successful.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Admin
-    Upload codelist in Excel format    ${Code_list_with_30_Codes_status_with_space}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Import codes in Excel format
@@ -539,14 +573,16 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Koodin arvo         timeout=60
     Wait Until Page Contains    Voimassa oleva      timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}
+    [Teardown]    Remove codelist teardown    600
 
 218. Import links to codes with Import codes function
     [Documentation]    Import links to codes with Import codes function (Excel,CSV).
     ...    Check that links are working when extra space is defined in HREF columns in code Excel.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Admin
-    Upload codelist in Excel format    ${Code_list_with_30_codes_and_instructions_link}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_codes_and_instructions_link} to test with api
+
+    Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
     Import codes in Excel format
 
@@ -582,7 +618,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    Lisenssi                        timeout=60
     Wait Until Page Contains    Creative Commons CC0 1.0 Yleismaailmallinen (CC0 1.0)    timeout=60
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}
+    [Teardown]    Remove codelist teardown    600
 
 219. Create new code list and codes with different languages
     [Documentation]    Create new code list and codes with different languages
@@ -606,13 +642,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click Code List Info Tab
     Wait Until Page Contains    ${CODE_LIST_8}_fi    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_8}_fi
+    [Teardown]    Remove codelist teardown    Koodisto6000
 
 220. Remove language that is in use in the code list
     [Documentation]    Import code list, codes and extension with different languages.
     ...    Try to remove languages that are in use in the code list and check error message. YTI-1048.
     [Tags]    regression    test    200
-    Upload codelist in Excel format    ${Codes_list_and_extension_with_languages}    ${CODE_LIST_14}
+    Create codelist from Excel ${Codes_list_and_extension_with_languages} to test with api
+
+    Search and open codelist            ${CODE_LIST_14}
     Wait Until Page Contains    25 koodia    timeout=20
 
     Click Code List Info Tab
@@ -630,7 +668,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    ${Error_remove_languages}    timeout=60
     Click Confirmation
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_14}
+    [Teardown]    Remove codelist teardown    O1234567890123456789012345678901234567111
 
 *** Keywords ***
 Choose testiautomaatiokoodisto and edit

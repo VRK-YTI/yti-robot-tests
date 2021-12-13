@@ -1,6 +1,5 @@
 *** Settings ***
 Documentation     Test Suite for vocabulary modification
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test case teardown delete terminology     ${VOCABULARY_1}
 Test Setup        Test Case Setup admin
@@ -521,7 +520,7 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter_2}    ${EMPTY}
     Go Back To Sanastot Frontpage
 
-    Select superuser
+    Select superuser user
     Create New Terminology With Parameters    ${VOCABULARY_5}    ${VOCABULARY_STATUS_INCOMPLETE}    Yhteentoimivuusalustan ylläpito    Eläkkeet    267
     Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter_2}    ${EMPTY}
 
@@ -531,7 +530,7 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Wait Until Element Is Enabled    //*[contains(text(), "456")]    timeout=30
     Wait Until Element Is Enabled    //*[contains(text(), "789")]    timeout=30
 
-    Select admin
+    Select admin user
     Wait Until Element Is Enabled    //*[contains(text(), "123")]       timeout=30
     Wait Until Element Is Enabled    //*[contains(text(), "456")]       timeout=30
     wait until page does not contain element    //*[contains(text(), "789")]    timeout=30

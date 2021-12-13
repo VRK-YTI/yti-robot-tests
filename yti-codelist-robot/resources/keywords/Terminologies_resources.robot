@@ -75,58 +75,24 @@ ${test_concepts_to_thesaurus_incorrect_column}    ${DATAFOLDER}${/}test_concepts
 ${concepts_from_controlled_vocabularies}    ${DATAFOLDER}${/}concepts_from_controlled_vocabularies_csv.csv
 
 *** Keywords ***
-Go back to Sanastot frontpage
-    Click element with wait     ${FRONTPAGE_LINK}    timeout=60
-
 Check concept suggestion in Terminologies
-    Terminology Test Case Setup
+    Open sanastot
 
-    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Click element that contains text    ${VOCABULARY_1}
+    #Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
+    #Click element that contains text    ${VOCABULARY_1}
 
-    Wait until page contains            ${VOCABULARY_1}             timeout=30
-    Wait until page contains            Testiautomaatiosanasto      timeout=20
+    #Wait until page contains            ${VOCABULARY_1}             timeout=30
+    #Wait until page contains            Testiautomaatiosanasto      timeout=20
 
-    Input Text with wait                ${CONCEPT_LIST_SEARCH_INPUT}    automobiili
-    Click element that contains text    automobiili
+    #Input Text with wait                ${CONCEPT_LIST_SEARCH_INPUT}    automobiili
+    #Click element that contains text    automobiili
 
-    Wait until page contains    Ehdotus                 timeout=20
-    Wait until page contains    Tämä on kulkuneuvo      timeout=20
-    Wait until page contains    Test Superuser          timeout=20
-
-Delete Testiautomaatiosanasto
-    Input Text with wait             ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-
-    Wait until page contains element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=30
-    # Cut teardown execution if terminology does not exist
-    ${terminology_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${VOCABULARY_1}")]
-    Run Keyword Unless    ${terminology_exists}    Run Keywords    Log To Console    Delete Terminology ${VOCABULARY_1} did not find the terminology to delete
-    ...    AND    Return From Keyword
-
-    Click element that contains text        ${VOCABULARY_1}
-    Wait until page contains                ${VOCABULARY_1}
-    Click element with wait                 ${TERMINOLOGY_TAB}
-    Wait until page contains                Testiautomaatiosanasto              timeout=20
-
-    Click element with wait                 ${REMOVE_VOCABULARY_BTN}
-    Click element with wait                 ${CONFIRM_REMOVE_VOCABULARY_BTN}
-
-Delete existing terminological vocabulary and create new
-    Click element that contains text    ${VOCABULARY_1}
-    Wait until page contains            ${VOCABULARY_1}
-    Click element with wait             ${TERMINOLOGY_TAB}
-    Wait until page contains            Testiautomaatiosanasto              timeout=20
-
-    Click element with wait             ${REMOVE_VOCABULARY_BTN}
-    Click element with wait             ${CONFIRM_REMOVE_VOCABULARY_BTN}
-
-    Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    Page Should Not Contain Element     //*[contains(text(), "${VOCABULARY_1}")]
-
-    Create Testiautomaatiosanasto and import vocabulary
+    #Wait until page contains    Ehdotus                 timeout=20
+    #Wait until page contains    Tämä on kulkuneuvo      timeout=20
+    #Wait until page contains    Test Superuser          timeout=20
 
 Create Testiautomaatiosanasto and import vocabulary
-    Terminology Test Case Setup
+    Open sanastot
     Click element with wait             ${ADD_VOCABULARY_BTN}
     Input Text with wait                ${TITLE_INPUT_FI}    ${VOCABULARY_1}
     Click element with wait             ${ADD_VOCABULARY_ORGANIZATION_BTN}
@@ -147,6 +113,3 @@ Create Testiautomaatiosanasto and import vocabulary
 
     Click element with wait             ${UPLOAD_FILE}
     Click element with wait             ${IMPORT_YES_BTN}
-
-    Wait Until Page Does Not Contain Element    ${OPEN_MODAL}               timeout=120
-    Wait Until Element Is Enabled               ${ADD_NEW_CONCEPT_BTN}      timeout=90

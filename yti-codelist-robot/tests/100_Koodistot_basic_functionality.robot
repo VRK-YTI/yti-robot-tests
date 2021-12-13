@@ -39,9 +39,9 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly. YTI-459
-    [Tags]    local
+    [Tags]    regression    test    100
     Click element with wait     id=description_of_file_link    timeout=20
-    Switch window with wait    url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
+    Switch window with wait     url=https://wiki.dvv.fi/display/YTIJD/Tietosuojaseloste
 
 103. Search for VALID code list
     [Documentation]    Search for VALID code list with frontpage search function.
@@ -73,7 +73,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Viimeisin muokkaus          timeout=20
     Wait Until Page Contains    Voimassa oleva              timeout=20
 
-    [Teardown]    Remove codelist teardown     ${CODE_LIST_6}
+    [Teardown]    Remove codelist teardown     testiautomaatiokoodisto2
 
 104. Search for code list with codeValue
     [Documentation]    Search for code list with codeValue with frontpage search function. YTI-651
@@ -173,7 +173,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Luonnos                                     timeout=20
     Wait Until Page Contains    Viimeisin muokkaus                          timeout=20
 
-    [Teardown]    Remove codelist teardown      ${CODE_LIST_2}
+    [Teardown]    Remove codelist teardown      testiautomaatiokoodisto
 
 111. Filter Codes by codeValue and prefLabel
     [Documentation]    Import codelist and filter Codes by codeValue and prefLabel
@@ -198,7 +198,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Koodin nimi                                 timeout=20
     Wait Until Page Contains    Testi06                                     timeout=20
 
-    [Teardown]    Remove codelist teardown      ${CODE_LIST_13}
+    [Teardown]    Remove codelist teardown      T500
 
 112. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
@@ -218,13 +218,11 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Switch window with wait                   title=Yhteentoimivuusalusta | Suomidigi
     Close Window
 
-    Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Koodistot
-    Select navigation menu link     Suomi.fi-sanastot
+    Switch window with wait         title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
-    Switch window with wait                 url=${TERMINOLOGIES_ENVIRONMENT_URL}
+    Select navigation menu link     Suomi.fi-sanastot
+    Switch window with wait         url=${TERMINOLOGIES_ENVIRONMENT_URL}
     Wait Until Page Contains        Sanastot                timeout=40
-    Wait Until Page Contains        Hae sanastoja           timeout=40
-    Wait Until Page Contains        Rajaa tietoalueella     timeout=40
     Close Window
 
     Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Koodistot
@@ -277,7 +275,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Rekisteri                                   timeout=20
     Wait Until Page Contains    Test registry                               timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_20}
+    [Teardown]    Remove codelist teardown    dcat01
 
 114. Check user interface language and content language in page reload
     [Documentation]    Check that user interface language and content language settings are correct after page reload. YTI-1222.
@@ -347,7 +345,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains    Tietoalue                           timeout=30
     Wait Until Page Contains    Yleiset tieto- ja hallintopalvelut  timeout=30
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_20}
+    [Teardown]    Remove codelist teardown    dcat01
 
 115. Check the visibility of the INCOMPLETE status code list
     [Documentation]    Check that code list with INCOMPLETE status is visible
@@ -361,7 +359,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains            1 hakutulos                                     timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]        timeout=30
 
-    Select superuser
+    Select superuser user
     Input text with wait                id=search_box_input      ${CODE_LIST_26}        timeout=30
     Wait Until Page Contains            1 hakutulos                                     timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]        timeout=30
@@ -390,7 +388,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains            1 hakutulos                                 timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_26}
+    [Teardown]    Remove codelist teardown    600
 
 116. Check URI links
     [Documentation]    Check that URI links are working correctly in DEV, TEST and PROD environments
@@ -413,3 +411,14 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Go To    http://uri.suomi.fi/codelist/eu/dcat/code/AGRI?env=awstest
     Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=30
 
+117. Create codelist from Excel and delete it
+    [Tags]    regression    koodistot    test    100
+    Upload codelist in Excel format     ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Remove list of codes                ${CODE_LIST_4}
+    [Teardown]  run keyword if test failed   Remove codelist teardown      T100
+
+#118. Create codelist from CSV and delete it
+#    [Tags]    regression    koodistot    test    100
+#    Upload codelist in CSV format       ${testiautomaatiokoodisto_with_code}     ${CODE_LIST_4}
+#    Remove list of codes                @{codelist}
+#    [Teardown]  run keyword if test failed   Delete model ${PREFIX_2} with api

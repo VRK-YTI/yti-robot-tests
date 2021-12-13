@@ -1,6 +1,5 @@
 *** Settings ***
 Documentation     Test Suite for CSV Import test cases
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test case teardown delete terminology     ${VOCABULARY_2}
 Test Setup        Test Case Setup admin

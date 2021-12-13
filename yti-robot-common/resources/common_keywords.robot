@@ -25,36 +25,79 @@ ${LANGUAGE_DROPDOWN_BTN}        id=select_lang_dropdown
 ${LANGUAGE_EN}                  id=en
 ${LANGUAGE_FI}                  id=fi
 
-${GROUPMANAGEMENT ENVIRONMENT URL}      https://rhp.dev.yti.cloud.vrk.fi/
-${COMMENTS ENVIRONMENT URL}             https://kommentit.dev.yti.cloud.vrk.fi/
-${TERMINOLOGIES ENVIRONMENT URL}        https://sanastot.dev.yti.cloud.vrk.fi/
-${DATA VOCABULARIES ENVIRONMENT URL}    https://tietomallit.dev.yti.cloud.vrk.fi/
-${REFERENCE DATA ENVIRONMENT URL}       https://koodistot.dev.yti.cloud.vrk.fi/
-
 ${2_BREADCRUMB_LINK}            id=2_breadcrumb_link
 ${3_BREADCRUMB_LINK}            id=3_breadcrumb_link
 
-*** Keywords ***
-Select Superuser
-    Select user             ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+${EDUUNI_EMAIL_PASSWORD}            ${EMPTY}
 
-Select Admin
-    Select user             ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+${ADMIN_EDUUNI_EMAIL}               ytiautomaatioad@outlook.com
+${ADMIN_EDUUNI_PASSWORD}            ${EDUUNI_EMAIL_PASSWORD}
+
+${SUPER_EDUUNI_EMAIL}               ytiautomaatiosuper@outlook.com
+${SUPER_EDUUNI_PASSWORD}            ${EDUUNI_EMAIL_PASSWORD}
+
+${DATAMODEL_EDUUNI_EMAIL}           ytiautomaatiodatamodel@outlook.com
+${DATAMODEL_EDUUNI_PASSWORD}        ${EDUUNI_EMAIL_PASSWORD}
+
+${TEST_EDUUNI_EMAIL}                ytiautomaatiotest@outlook.com
+${TEST_EDUUNI_PASSWORD}             ${EDUUNI_EMAIL_PASSWORD}
+
+${CODELIST_EDUUNI_EMAIL}            ytiautomaatiocodelist@outlook.com
+${CODELIST_EDUUNI_PASSWORD}         ${EDUUNI_EMAIL_PASSWORD}
+
+${TERMINOLOGY_EDUUNI_EMAIL}         ytiautomaatioterminology@outlook.com
+${TERMINOLOGY_EDUUNI_PASSWORD}      ${EDUUNI_EMAIL_PASSWORD}
+
+${MEMBER_EDUUNI_EMAIL}              ytiautomaatiomember@outlook.com
+${MEMBER_EDUUNI_PASSWORD}           ${EDUUNI_EMAIL_PASSWORD}
+
+${NOGROUP_EDUUNI_EMAIL}             ytiautomaationogroup@outlook.com
+${NOGROUP_EDUUNI_PASSWORD}          ${EDUUNI_EMAIL_PASSWORD}
+
+${EDUUNI_LOGIN}                 id=log_in_link
+${EDUUNI_LOGIN_EXISTING}        id=login_modal_button
+
+${EDUUNI_MICROSOFT}                       //*[contains(text(), "Microsoft Account")]
+${EDUUNI_MICROSOFT_EMAIL_INPUT}           //*[@name="loginfmt"]
+${EDUUNI_MICROSOFT_PASSWORD_INPUT}        //*[@name="passwd"]
+${EDUUNI_MICROSOFT_NEXT_BUTTON}           //*[@id="idSIButton9"]
+
+${EDUUNI_GOOGLE}                        //*[contains(text(), "Google")]
+${EDUUNI_GOOGLE_EMAIL_INPUT}            //*[@name="identifier"]
+${EDUUNI_GOOGLE_PASSWORD_INPUT}         //*[@name="password"]
+${EDUUNI_GOOGLE_NEXT_BUTTON}            //*[@jsname="LgbsSe"]
+
+${EDUUNI_TYPE}                          MICROSOFT
+
+
+*** Keywords ***
+Select Superuser user
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user      ${SUPER_USER_ID}    ${SUPER_USER_NAME}
+    ...    ELSE       Logging with eDuuni      ${SUPER_EDUUNI_EMAIL}  ${SUPER_EDUUNI_PASSWORD}
+
+Select Admin user
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user      ${ADMIN_USER_ID}    ${ADMIN_USER_NAME}
+    ...    ELSE       Logging with eDuuni      ${ADMIN_EDUUNI_EMAIL}  ${ADMIN_EDUUNI_PASSWORD}
 
 Select datamodel user
-    Select user             ${TEST_DATAMODEL_ID}    ${TEST_DATAMODEL_NAME}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user      ${TEST_DATAMODEL_ID}    ${TEST_DATAMODEL_NAME}
+    ...    ELSE       Logging with eDuuni      ${DATAMODEL_EDUUNI_EMAIL}  ${DATAMODEL_EDUUNI_PASSWORD}
 
 Select terminology user
-    Select user             ${TEST_TERMINOLOGY_ID}    ${TEST_TERMINOLOGY_NAME}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user  ${TEST_TERMINOLOGY_ID}   ${TEST_TERMINOLOGY_NAME}
+    ...    ELSE       Logging with eDuuni      ${TERMINOLOGY_EDUUNI_EMAIL}  ${TERMINOLOGY_EDUUNI_PASSWORD}
 
 Select no group user
-    Select user             ${TEST_NOGROUP_ID}    ${TEST_NOGROUP_NAME}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user  ${TEST_NOGROUP_ID}  ${TEST_NOGROUP_NAME}
+    ...    ELSE        Logging with eDuuni      ${NOGROUP_EDUUNI_EMAIL}  ${NOGROUP_EDUUNI_PASSWORD}
 
 Select codelist user
-    Select user             ${CODELIST_USER_ID}    ${CODELIST_USER_NAME}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user  ${CODELIST_USER_ID}    ${CODELIST_USER_NAME}
+    ...    ELSE       Logging with eDuuni      ${CODELIST_EDUUNI_EMAIL}  ${CODELIST_EDUUNI_PASSWORD}
 
 Select member user
-    Select user             ${MEMBER_USER_ID}    ${MEMBER_USER_NAME}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user      ${MEMBER_USER_ID}   ${MEMBER_USER_NAME}
+    ...    ELSE       Logging with eDuuni      ${MEMBER_EDUUNI_EMAIL}   ${MEMBER_EDUUNI_PASSWORD}
 
 Select user
     [Arguments]    ${user_id}    ${user_name}
@@ -64,8 +107,8 @@ Select user
 
 Open sanastot
     Open Browser with Settings      ${TERMINOLOGIES_ENVIRONMENT_URL}
-    Wait Until Page Contains        sanastot            timeout=20
-    Wait Until Page Contains        KIRJAUDU SISÄÄN     timeout=20
+    Click element with wait         //section/a[@href="/search"]
+    Wait Until Page Contains        Sanastot            timeout=20
 
 Open Tietomallit
     Open Browser with Settings      ${DATA_VOCABULARIES_ENVIRONMENT_URL}
@@ -99,3 +142,26 @@ Select breadcrump link 2
 Select breadcrump link 3
     Sleep                       10
     Click element with wait     ${3_BREADCRUMB_LINK}                        timeout=20
+
+Logging with eDuuni
+    [Arguments]     ${email}       ${password}
+    Click element with wait         ${EDUUNI_LOGIN}
+    Click element with wait         ${EDUUNI_LOGIN_EXISTING}
+    Run keyword                     Logging eDuuni with ${EDUUNI_TYPE}       ${email}       ${password}
+
+Logging eDuuni with google
+    [Arguments]     ${email}       ${password}
+    Click element with wait             ${EDUUNI_GOOGLE}
+    Input text with wait                ${EDUUNI_GOOGLE_EMAIL_INPUT}       ${email}
+    Click element with wait             ${EDUUNI_GOOGLE_NEXT_BUTTON}
+    Input text with wait                ${EDUUNI_GOOGLE_PASSWORD_INPUT}    ${password}
+    Click element with wait             ${EDUUNI_GOOGLE_NEXT_BUTTON}
+
+Logging eDuuni with microsoft
+    [Arguments]     ${email}       ${password}
+    Click element with wait             ${EDUUNI_MICROSOFT}
+    Input text with wait                ${EDUUNI_MICROSOFT_EMAIL_INPUT}         ${email}
+    Click element with wait             ${EDUUNI_MICROSOFT_NEXT_BUTTON}
+    Input text with wait                ${EDUUNI_MICROSOFT_PASSWORD_INPUT}      ${password}
+    Click element with wait             ${EDUUNI_MICROSOFT_NEXT_BUTTON}
+    Click element with wait             ${EDUUNI_MICROSOFT_NEXT_BUTTON}

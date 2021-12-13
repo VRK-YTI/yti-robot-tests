@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code import error cases
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Remove codelist teardown      ${CODE_LIST_2}
+Test Teardown     Remove codelist teardown      testiautomaatiokoodisto
 
 Test Setup        Test Case Setup Admin
 
@@ -38,6 +38,7 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Tags]    regression    test    400
     Import code list in Excel format
     Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+
     Import codes in Excel format
     Upload codes    ${Codes_codevalue_missing}
     Wait Until Page Contains    ${Error_no_codeValue}    timeout=20

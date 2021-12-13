@@ -26,7 +26,7 @@ Resource          ../resources/resources_and_libraries.robot
     Confirm Action
     Confirm Alert
 
-    Select Superuser
+    Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
     Wait Until Page contains        Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
@@ -123,7 +123,7 @@ Resource          ../resources/resources_and_libraries.robot
     Confirm Action
     Confirm Alert
 
-    Select Superuser
+    Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
@@ -150,7 +150,7 @@ Resource          ../resources/resources_and_libraries.robot
     Confirm Action
     Confirm Alert
 
-    Select Superuser
+    Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
@@ -273,7 +273,7 @@ Resource          ../resources/resources_and_libraries.robot
     Confirm Action
     Confirm Alert
 
-    Select Superuser
+    Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
     Confirm Alert
@@ -317,7 +317,7 @@ Resource          ../resources/resources_and_libraries.robot
     Click Element with wait   ${MODEL_STATE_RETIRED}    timeout=30
     Click Element with wait   ${SAVE_MODEL_BTN}         timeout=30
 
-    Select Superuser
+    Select Superuser user
     Modify Profile
     Change Profile Status    Luonnos
     Save Model

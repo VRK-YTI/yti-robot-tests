@@ -32,17 +32,9 @@ Test Case Setup Generic Setup
     Open Tietomallit
     Set Selenium Speed      ${SELENIUM_SPEED}
 
-Test Case Setup datamodel
+Test Case Setup ${user}
     Test Case Setup Generic Setup
-    Select datamodel user
-
-Test Case Setup Admin
-    Test Case Setup Generic Setup
-    Select Admin
-
-Test Case Setup Superuser
-    Test Case Setup Generic Setup
-    Select Superuser
+    run keyword         Select ${user} user
 
 Test Case setup create profile
     [Arguments]         ${model}    ${prefix}   ${user}=Admin

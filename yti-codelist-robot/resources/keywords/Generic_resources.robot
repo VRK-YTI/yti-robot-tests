@@ -351,7 +351,7 @@ Return to Koodistot frontpage
 Remove list of codes
     [Arguments]    @{code_list_items}
     Return to Koodistot frontpage
-    Select Superuser
+    Select Superuser user
     FOR    ${code_list_item}    IN    @{code_list_items}
         Input text with wait                ${SEARCH_BOX_INPUT}     ${code_list_item}       timeout=30
 
@@ -626,23 +626,10 @@ Delete registery
     Click element with wait         ${DELETE_REGISTRY}    timeout=30
     Click element with wait         ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
 
-Delete registry with code lists
-    [Arguments]    ${registry}    ${code_list}
-    Return to Koodistot frontpage
-    Select superuser
-
-    Delete registery                ${registry}
-
-    Wait Until Page Contains        ${Error_registry_with_codelists}    timeout=20
-    Click element with wait         ${CLOSE_ERROR_MESSAGE_BTN}          timeout=20
-
-    Remove list of codes            ${code_list}
-    Delete empty registry           ${registry}
-
 Delete empty registry
     [Arguments]    ${registry}
     Return to Koodistot frontpage
-    Select superuser
+    Select superuser user
     Delete registery                    ${registry}
 
     Click element with wait             ${REGISTRY_FILTER_DDL}      timeout=20
@@ -766,7 +753,12 @@ Click Code List Info Tab
 
 Search For Code List
     [Arguments]    ${code_list}
-    Input text with wait    ${SEARCH_BOX_INPUT}    ${code_list}    timeout=30
+    Input text with wait    ${SEARCH_BOX_INPUT}    ${code_list}
+
+Search and open codelist
+    [Arguments]    ${code_list}
+    Search For Code List    ${code_list}
+    Select Code List        ${code_list}
 
 Add Email Subscription For Code List
     Click element with wait                     ${CODE_LIST_DDL}                timeout=20

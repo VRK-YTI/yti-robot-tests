@@ -21,7 +21,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 500. Import DRAFT Code list without codes
     [Documentation]    Import DRAFT code list without codes, check that import is successful and remove code list
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Create codelist from Excel ${Code_list_without_codes} to test with api
+    Search and open codelist    ${CODE_LIST_8}
+
     Click Code List Info Tab
     Check values from Draft Code list
     [Teardown]    Remove codelist teardown    ${CODE_LIST_8}
@@ -29,7 +31,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 501. Import VALID Code list with codes
     [Documentation]    Import VALID code list with codes, check that import is successful and remove code list
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_with_codes} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
@@ -49,7 +53,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 502. Import DRAFT codes to existing code list
     [Documentation]    Import DRAFT codes to existing code list, check that import is successful and remove code list
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Create codelist from Excel ${Code_list_without_codes} to test with api
+    Search and open codelist            ${CODE_LIST_8}
+
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
     Wait Until Page Contains    6 koodia    timeout=20
@@ -62,7 +68,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import DRAFT codes to existing code list, check that import is successful,
     ...    update codes and remove code list
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
+    Create codelist from Excel ${Code_list_without_codes} to test with api
+    Search and open codelist            ${CODE_LIST_8}
+
     Import codes in Excel format
     Upload codes    ${Draft_Codes_with_broader}
     Wait Until Page Contains    6 koodia    timeout=20
@@ -97,20 +105,20 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Create new code list with existing codeValue and check error message from
     ...    code list value input field
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    Create codelist from Excel ${testiautomaatiokoodisto1_with_codes} to test with api
+    Search and open codelist    ${CODE_LIST_2}
+
     Wait Until Page Contains    8 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_4}    ${ORGANIZATION_1}    ${CODE_LIST_9}    Asuminen
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_2}
+    [Teardown]    Remove codelist teardown    testiautomaatiokoodisto
 
 506. Import multiple code lists with codes
     [Documentation]    Import multiple code list with codes, check that import is successful. Remove code lists and codes.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Multiple_codelists_and_codes}    ${CODE_LIST_10}
-    Input Text with wait    ${SEARCH_BOX_INPUT}    ${CODE_LIST_10}  timeout=30
-    Click element that contains text     ${CODE_LIST_10}    timeout=30
-    Wait Until Page Contains    ${CODE_LIST_10}    timeout=20
+    Create codelist from Excel ${Multiple_codelists_and_codes} to test with api
+    Search and open codelist    ${CODE_LIST_10}
 
     Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
@@ -150,7 +158,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import code list with codes and DEFAULT CODE, check that import is successful and DEFAULT CODE is
     ...    defined in information tab. Remove code list.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Codelist_with_defaultcode}    ${CODE_LIST_15}
+    Create codelist from Excel ${Codelist_with_defaultcode} to test with api
+    Search and open codelist    ${CODE_LIST_15}
+
     Wait Until Page Contains    6 koodia    timeout=20
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
@@ -161,7 +171,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Vakiokoodi    timeout=20
     Wait Until Page Contains    koodi502 - Koodi502    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_15}
+    [Teardown]    Remove codelist teardown    T1333
 
 509. Create code list and add DEFAULT CODE
     [Documentation]    Create new code list and import codes. Add DEFAULT CODE manually,
@@ -194,8 +204,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
 510. Import DRAFT codes (CSV) to existing code list
     [Documentation]    Import DRAFT codes (CSV) to existing code list, check that import is successful and remove code list
-    [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
+    [Tags]    test  regression  500
+    Create codelist from Excel ${Code_list_without_codes} to test with api
+    Search and open codelist    ${CODE_LIST_8}
+
     Import codes in CSV format
     Upload codes    ${Draft_Codes_with_broader_csv}
     Wait Until Page Contains    6 koodia    timeout=20
@@ -209,31 +221,31 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Create code list and search for a concept from Terminologies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields
     ...    and concept URI is correct. YTI-787.
-    [Tags]    koodistot    regression    test    500
-    [Setup]    Test Case Setup Terminologies
-    Log To Console    Vocabulary added
+    [Tags]    koodistot      test    500
+    [Setup]    Test Case Setup Terminologies        Testiautomaatiosanasto
     Click element with wait     ${ADD_CODE_LIST_BTN}            timeout=60
     Click element with wait     ${CREATE CODE_LIST_BTN}         timeout=60
     Click element with wait     ${VOCABULARY_SELECTION_DDL}     timeout=60
     Click element that contains text        Testiautomaatiosanasto (Luonnos)
-    Input Text with wait        ${SEARCH_CONCEPT_INPUT}    tutkija  timeout=20
+    Input Text with wait        ${SEARCH_CONCEPT_INPUT}    tutkija
     Click element with wait     //*[@id="Testiautomaatiosanasto_Tutkija_concept_link"]    timeout=60
-    Log To Console    Concept added
-    Click element with wait     ${SELECT_REGISTRY_BTN}    timeout=30
-    Click element that contains text    ${REGISTRY_1}    timeout=30
-    Log To Console    Registry added
-    Input Text with wait   ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}     timeout=30
+
+    Click element with wait             ${SELECT_REGISTRY_BTN}
+    Click element that contains text    ${REGISTRY_1}
+
+    Input Text with wait   ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_1}
     Wait Until Page Contains Element    ${ADD_CLASSIFICATION_BTN}    timeout=20
-    Click Button    ${ADD_CLASSIFICATION_BTN}
-    Input Text with wait    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen      timeout=20
-    Click element that contains text     Asuminen    timeout=60
-    Wait Until Page Contains Element    ${ADD_ORGANIZATION_BTN}    timeout=20
-    Click Button    ${ADD_ORGANIZATION_BTN}
-    Input Text with wait   ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio    timeout=20
-    Click element that contains text     Testiorganisaatio    timeout=60
-    Click element with wait     ${SAVE_NEW_CODE_LIST}    timeout=30
-    Wait Until Element Is Visible    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    Code list saved
+
+    Click Button                            ${ADD_CLASSIFICATION_BTN}
+    Input Text with wait                    ${SEARCH_CLASSIFICATION_INPUT}    Asuminen
+    Click element that contains text        Asuminen    timeout=60
+    Wait Until Page Contains Element        ${ADD_ORGANIZATION_BTN}    timeout=20
+    Click Button                            ${ADD_ORGANIZATION_BTN}
+    Input Text with wait                    ${SEARCH_ORGANIZATION_INPUT}    Testiorganisaatio
+    Click element that contains text        Testiorganisaatio    timeout=60
+    Click element with wait                 ${SAVE_NEW_CODE_LIST}
+    Wait Until Element Is Visible           ${CODE_LIST_DDL}    timeout=60
+
     Click Code List Info Tab
     Wait Until Page Contains    Koodisto6000    timeout=20
     Wait Until Page Contains    tutkija    timeout=20
@@ -243,52 +255,56 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ${concept_uri}=    Catenate    SEPARATOR=    ${concept_uri_prefix}    ${uri_environment}
     Click Element that contains text        ${concept_uri}  timeout=20
 
-    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    Wait Until Page Contains    Suositettava termi    timeout=60
-    Wait Until Page Contains    tutkija    timeout=60
-    Wait Until Page Contains    Person who does the research    timeout=60
-    Wait Until Page Contains    http://uri.suomi.fi/terminology/111/concept-1    timeout=60
-    Close Window
+    #Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    #Wait Until Page Contains    Suositettava termi    timeout=60
+    #Wait Until Page Contains    tutkija    timeout=60
+    #Wait Until Page Contains    Person who does the research    timeout=60
+    #Wait Until Page Contains    http://uri.suomi.fi/terminology/111/concept-1    timeout=60
+    #Close Window
 
-    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Koodistot
+    #Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Koodistot
 
-    [Teardown]    Test Case Teardown concept for code list from Terminologies
+    [Teardown]    Test Case Teardown Terminologies   tutkija
 
 512. Create code to code list and get concept for code from Terminologies
     [Documentation]    Create code to code list and search for a concept from Terminologies and bring it to Reference Data.
     ...    Check that the name and definition of the concept will be copied in their respective fields in code, YTI-787.
-    [Tags]    koodistot    regression    test    500
-    [Setup]    Test Case Setup Terminologies
-    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
+    [Tags]    koodistot     test    500
+    [Setup]    Test Case Setup Terminologies    Testiautomaatiosanasto
+    Create codelist from Excel ${Code_list_without_codes} to test with api
+    Search and open codelist    ${CODE_LIST_8}
+
     Click Code List Info Tab
     Check values from Draft Code list
     Create new code to code list with concept    Tutkija    Testiautomaatiosanasto
     Wait Until Page Contains    NewCode001 - tutkija    timeout=20
     Wait Until Page Contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta    timeout=20
 
-    [Teardown]    Test Case Teardown Code with concept
+    [Teardown]    Test Case Teardown Terminologies  ${CODE_LIST_8}
 
 513. Import VALID code list with codes and create new version of code list
     [Documentation]    Import VALID code list with codes and create new version of code list.
     ...    Check that links and codes from the original code list are copied to the new version, YTI-979.
     [Tags]    regression    koodistot    test    500
-    set selenium speed   0.5
-    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    set selenium speed   0.3
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
     Wait Until Page Contains    testikoodi06 - Testikoodi 06    timeout=20
     Wait Until Page Contains Element    ${EXPAND_ALL_BTN}    timeout=20
-    Log To Console    Codes visible and expand button shown
+
     Click Button    ${EXPAND_ALL_BTN}
-    Log To Console    Expand all button clicked
+
     Click element that contains text        ${TEST_CODE_2}    timeout=20
     Wait Until Page Contains    Koodin arvo    timeout=20
     Wait Until Page Contains    testikoodi02    timeout=20
     Wait Until Page Contains    Koodin nimi    timeout=20
     Wait Until Page Contains    Testikoodi 02    timeout=20
     Click element with wait     ${MODIFY_CODE_BTN}    timeout=20
-    Log To Console    Modify code button clicked
+
     Click element with wait     ${ADD_LINK_DDL}         timeout=30
     Click element with wait     ${LINK_BTN}             timeout=20
     Click element with wait     ${LINK_URL_INPUT}       timeout=20
@@ -316,7 +332,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
     Wait Until Page Contains    Lisenssi    timeout=20
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Log To Console    CC by 4.0 added
 
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
@@ -326,11 +341,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input Text with wait   ${CODE_LIST_VALUE_INPUT}    ${CODE_LIST_VALUE_3}  timeout=60
     Input Text with wait   ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}  timeout=20
     Click element with wait     ${SAVE_NEW_CODE_LIST}    timeout=60
-    Log To Console    New version of code list created
+
     Wait Until Element Is Enabled    ${MODIFY_CODE_LIST}    timeout=60
     Click element with wait     ${EXPAND_ALL_BTN}    timeout=60
 
-    Log To Console    Expand all pressed
     Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Page Contains    testikoodi02 - Testikoodi 02    timeout=20
@@ -342,13 +356,11 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    testikoodi08 - Testikoodi 08    timeout=20
     Wait Until Page Contains    testikoodi09 - Testikoodi 09    timeout=20
     Wait Until Page Contains    testikoodi10 - Testikoodi 10    timeout=20
-    Log To Console    All codes are copied
+
     Click Element that contains text        testikoodi02 - Testikoodi 02
 
-    Log To Console    Testikoodi 02 clicked
     Wait Until Page Contains    Liittyvä linkki    timeout=20
     Wait Until Page Contains    https://www.suomi.fi/etusivu/    timeout=20
-    Log To Console    Code links copied
 
     Select breadcrump link 2
     Click Code List Info Tab
@@ -365,8 +377,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Linkit    timeout=20
     Wait Until Page Contains    Lisenssi    timeout=20
     Wait Until Page Contains    Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0)    timeout=20
-    Log To Console    All code list values and links copied
-
     [Teardown]    Remove codelist teardown    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 514. Create and delete registry
@@ -375,10 +385,11 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Tags]    regression    test    500
     Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
     Wait Until Page Contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
+
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
-    [Teardown]    Delete registry with code lists    Rekisteri123 - Automaatiorekisteri    ${CODE_LIST_8}
+    [Teardown]    Delete registry with code lists    Rekisteri123 - Automaatiorekisteri  Rekisteri123    Koodisto6000
 
 515. Create registry with existing registry code value
     [Documentation]    Create registry with existing registry code value and check error message
@@ -386,18 +397,17 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
     Wait Until Page Contains    Tällä rekisterillä ei ole yhtään koodistoa.    timeout=20
     Return to Koodistot frontpage
-    Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
 
+    Create registry    Rekisteri123    Automaatiorekisteri    Testiorganisaatio    Kuvaus
     [Teardown]    Delete empty registry    Rekisteri123 - Automaatiorekisteri
 
 516. Import new VALID code list and attach variant
     [Documentation]    Import two code lists, attach variant to both code lists
     ...    and remove link between variant and code list from the first code list.
     [Tags]    regression    test    koodistot    500
-    Upload codelist in Excel format    ${Variant_code_list}    ${CODE_LIST_8}
-    Return to Koodistot frontpage
-
-    Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Create codelist from Excel ${Variant_code_list} to test with api
+    Create codelist from Excel ${Code_list_with_codes} to test with api
+    Search and open codelist    ${CODE_LIST_9}
 
     Click element with wait     ${CODE_LIST_DDL}    timeout=20
     Click element with wait     ${ATTACH_VARIANT_BTN}    timeout=20
@@ -432,7 +442,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element with wait     //*[contains(@id,'detach_variant_')]    timeout=20
     Click element with wait     ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
     Wait Until Page Does Not Contain    Seuraavat koodistot ovat tämän koodiston variantteja:    timeout=60
-    Log To Console    Variant removed
+
     Click element that contains text        ${CODE_LIST_8}    timeout=20
 
     Wait Until Page Contains    ${CODE_LIST_8}    timeout=20
@@ -447,20 +457,22 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import code list with language codes and check that
     ...    those are taken into use.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_with_languagecode}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_with_languagecode} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Click Code List Info Tab
-    Wait Until Page Contains    ${CODE_LIST_9}    timeout=20
-    Wait Until Page Contains    Testirekisteri    timeout=20
-    Wait Until Page Contains    Asuminen    timeout=20
-    Wait Until Page Contains    Työ ja työttömyys    timeout=20
-    Wait Until Page Contains    Elinkeinot    timeout=20
-    Wait Until Page Contains    Kielikoodi    timeout=20
-    Wait Until Page Contains    asu    timeout=20
-    Wait Until Page Contains    bemba    timeout=20
-    Wait Until Page Contains    englanti    timeout=20
-    Wait Until Page Contains    ruotsi    timeout=20
-    Wait Until Page Contains    suomi    timeout=20
-    Wait Until Page Contains    swahili (Tansania)    timeout=20
+    Wait Until Page Contains    ${CODE_LIST_9}          timeout=20
+    Wait Until Page Contains    Testirekisteri          timeout=20
+    Wait Until Page Contains    Asuminen                timeout=20
+    Wait Until Page Contains    Työ ja työttömyys       timeout=20
+    Wait Until Page Contains    Elinkeinot              timeout=20
+    Wait Until Page Contains    Kielikoodi              timeout=20
+    Wait Until Page Contains    asu                     timeout=20
+    Wait Until Page Contains    bemba                   timeout=20
+    Wait Until Page Contains    englanti                timeout=20
+    Wait Until Page Contains    ruotsi                  timeout=20
+    Wait Until Page Contains    suomi                   timeout=20
+    Wait Until Page Contains    swahili (Tansania)      timeout=20
 
     [Teardown]    Remove codelist teardown    ${CODE_LIST_9}
 
@@ -468,7 +480,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Create code list and suggest concept to Terminologies
     ...    YTI-848.
     [Tags]    regression    test    koodistot    500
-    [Setup]    Test Case Setup Terminologies
+    [Setup]    Test Case Setup Terminologies    Testiautomaatiosanasto
     Click element with wait     ${ADD_CODE_LIST_BTN}    timeout=20
     Click element with wait     ${CREATE CODE_LIST_BTN}    timeout=20
     Suggest concept to Terminologies    automob    Testiautomaatiosanasto (Luonnos)    automobiili    Tämä on kulkuneuvo
@@ -495,21 +507,22 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
     Close All Browsers
     Check concept suggestion in Terminologies
-    [Teardown]    Test Case Teardown Terminologies
+    [Teardown]    Test Case Teardown Terminologies      Koodisto6000
 
 519. Create code to code list list and suggest concept to Terminologies
     [Documentation]    Create code to code list list and suggest concept to Terminologies
     [Tags]    regression    test    koodistot    500
-    [Setup]    Test Case Setup Terminologies
-    Upload codelist in Excel format    ${Code_list_without_codes}    ${CODE_LIST_8}
-    Log To Console    Code list without codes imported
+    [Setup]    Test Case Setup Terminologies    Testiautomaatiosanasto
+    Create codelist from Excel ${Code_list_without_codes} to test with api
+    Search and open codelist            ${CODE_LIST_8}
+
     Click element with wait     ${CODE_LIST_DDL}    timeout=20
     Click element with wait     ${CREATE_CODE_BTN}    timeout=20
     Suggest concept to Terminologies    automob    Testiautomaatiosanasto (Luonnos)    automobiili    Tämä on kulkuneuvo
 
     Input Text with wait    ${CODE_CODEVALUE_INPUT}    NewCode001   timeout=20
     Click element with wait     ${SAVE_NEW_CODE_BTN}    timeout=20
-    Log To Console    New code name saved
+
     Wait Until Page Contains    ${CODE_LIST_8}    timeout=20
     Wait Until Page Contains    automobiili    timeout=20
     Wait Until Page Contains    Käsitteen URI Sanastot-työkalussa    timeout=20
@@ -517,13 +530,15 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
     Close All Browsers
     Check concept suggestion in Terminologies
-    [Teardown]    Test Case Teardown Code with concept
+    [Teardown]    Test Case Teardown Terminologies  ${CODE_LIST_8}
 
 520. Create new version of code list as empty
     [Documentation]    Import VALID code list with codes and create new version of code list
     ...    without codes. Check that other code list information is copied to new version. YTI-1163, YTI-873.
     [Tags]    regression    test    koodistot    500
-    Upload codelist in Excel format    ${Code_list_with_feedback_column}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_with_feedback_column} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    testikoodi01 - Testikoodi 01
     Wait Until Page Contains    testikoodi04 - Testikoodi 04
     Wait Until Page Contains    testikoodi06 - Testikoodi 06
@@ -596,26 +611,28 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import VALID code list with codes and create new version of code list
     ...    from file. YTI-1163.
     [Tags]    regression    test    koodistot    500
-    Import code list in Excel format
-    Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=30
     Create Code List Version From File    ${FILE_FORMAT_Excel}    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Click element with wait     ${VERSION_TAB}    timeout=20
-    Log To Console    Codelist info tab clicked
+
     Wait Until Page Contains    02.03.2018 - 30.03.2018    timeout=20
     Wait Until Page Contains    ${CODE_LIST_16}    timeout=20
     Wait Until Page Contains    ${CODE_LIST_9}    timeout=20
     Wait Until Page Contains    Luonnos    timeout=20
     Wait Until Page Contains    Voimassa oleva    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}    ${CODE_LIST_9}
+    [Teardown]    Remove codelist teardown    600    ${CODE_LIST_9}
 
 522. Create new versions of code list from file and remove original code list
     [Documentation]    Import VALID code list with codes and create new versions of code list
     ...    from file. Remove original code list and check that version listing is updated. YTI-1163.
     [Tags]    regression    test    koodistot    500
-    Import code list in Excel format
-    Upload code list    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=60
     Create Code List Version From File    ${FILE_FORMAT_Excel}    ${Code_list_version2}    ${CODE_LIST_10}
     Wait Until Page Contains    10 koodia    timeout=60
@@ -656,11 +673,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ...    change validity date of the code list 1 and check that date change is
     ...    updated in code list 2 variant listing.
     [Tags]    koodistot    regression    test    500
-    Import codelist in Excel format
-    Upload code list    ${Code_list_with_codes}    ${CODE_LIST_9}
-    Return to Koodistot frontpage
-    Import code list in Excel format
-    Upload code list    ${Variant_no_end_date}    ${CODE_LIST_8}
+    Create codelist from Excel ${Code_list_with_codes} to test with api
+    Create codelist from Excel ${Variant_no_end_date} to test with api
+    Search and open codelist    ${CODE_LIST_8}
+
     Click element with wait     ${CODE_LIST_DDL}    timeout=20
     Click element with wait     ${ATTACH_VARIANT_BTN}    timeout=20
     Input Text with wait        ${SEARCH_VARIANT_INPUT}    ${CODE_LIST_9}  timeout=20
@@ -695,8 +711,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import code list with links, check that links are imported successfully and
     ...    export code list. YTI-1182, YTI-7.
     [Tags]    regression    test    500
-    Import code list in Excel format
-    Upload codelist    ${Code_list_with_links}    ${CODE_LIST_21}
+    Create codelist from Excel ${Code_list_with_links} to test with api
+    Search and open codelist    ${CODE_LIST_21}
 
     Wait Until Page Contains    30 koodia    timeout=20
     Click Code List Info Tab
@@ -742,18 +758,16 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Lähde    timeout=20
     Wait Until Page Contains    Uusi lähde    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_21}
+    [Teardown]    Remove codelist teardown    200
 
 525. Link sub code list for code
     [Documentation]    Import two code lists and link sub code list for code in other code list.
     ...    Try to remove linked code list and check error message. YTI-317.
     [Tags]    regression    test    koodistot    500
-    Import codelist in Excel format
-    Upload code list    ${Code_list_with_links}    ${CODE_LIST_21}
-    Return to Koodistot frontpage
+    Create codelist from Excel ${Code_list_with_links} to test with api
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    Search and open codelist    ${CODE_LIST_16}
 
-    Import code list in Excel format
-    Upload code list    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Click element that contains text        testcode29 - Testcode 29    timeout=20
     Click element with wait     ${MODIFY_CODE_BTN}    timeout=20
     Click element with wait     ${SUB_CODE_LIST_BTN}    timeout=20
@@ -785,18 +799,16 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    ${Error_linked_codelist}    timeout=20
     Click element with wait     ${CLOSE_ERROR_MESSAGE_BTN}    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}    ${CODE_LIST_21}
+    [Teardown]    Remove codelist teardown    600    200
 
 526. Code list import with sub code list for code
     [Documentation]    Import code list with sub code list for code.
     ...    Update sub code lists for codes with CSV code import. YTI-317.
     [Tags]    regression    test    koodistot    500
-    Import codelist in Excel format
-    Upload code list    ${Code_list_with_links}    ${CODE_LIST_21}
-    Return to Koodistot frontpage
+    Create codelist from Excel ${Code_list_with_links} to test with api
+    Create codelist from Excel ${Code_list_with_sub_code_list_in_code} to test with api
+    Search and open codelist    ${CODE_LIST_16}
 
-    Import code list in Excel format
-    Upload code list    ${Code_list_with_sub_code_list_in_code}    ${CODE_LIST_16}
     Click element that contains text        testcode28 - Testcode 28    timeout=20
     Wait Until Page Contains    Liittyvä koodisto    timeout=20
     Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
@@ -808,12 +820,14 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Liittyvä koodisto    timeout=20
     Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_16}    ${CODE_LIST_21}
+    [Teardown]    Remove codelist teardown    600    200
 
 527. Create new code with sub code list
     [Documentation]    Create new code list and create code with with sub coce list.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_with_codes}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_with_codes} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
@@ -837,7 +851,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import VALID code list with codes and create new version of code list.
     ...    Remove code from versioned code list and check that version history tab does not disappear. YTI-451.
     [Tags]    regression    koodistot    test    500
-    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
@@ -848,7 +864,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
     Click element with wait     ${SAVE_NEW_CODE_LIST}    timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    New version of codeRemove code list created
+
     Click element with wait     ${EXPAND_ALL_BTN}    timeout=20
 
     Wait Until Page Contains    10 koodia    timeout=20
@@ -866,7 +882,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import code list with default code and create new version.
     ...    Check that new version is created succesfully and default code is copied.
     [Tags]    regression    koodistot    test    500
-    Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_with_default_code_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
@@ -879,20 +897,20 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input Text with wait    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}      timeout=60
     Click Element with wait    ${SAVE_NEW_CODE_LIST}        timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    New version of code list created
+
     Wait Until Page Contains    10 koodia    timeout=20
-    Log To Console    All codes are copied
+
     Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
-    Log To Console    Default code is copied
-
     [Teardown]    Remove codelist teardown    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 530. Update code attributes in versioned code list's newest version
     [Documentation]    Import VALID code list with codes and create new version of code list.
     ...    Update a code's attributes in the latest code list and check that version history tab does not disappear from any of the versions.
     [Tags]    regression    koodistot    test    500
-    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
@@ -902,7 +920,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input Text with wait    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}      timeout=20
     Click Element with wait   ${SAVE_NEW_CODE_LIST}     timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    New version of code list created
+
     Wait Until Page Contains    10 koodia    timeout=20
     Click element that contains text        testikoodi01 - Testikoodi 01    timeout=20
     Wait Until Page Contains    testikoodi01 - Testikoodi 01    timeout=20
@@ -917,7 +935,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Tämä on uusi lyhyt nimi    timeout=20
     Click Element that contains text     ${CODE_LIST_10}        timeout=30
     Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
-    Log To Console    Version history tab exists after code was updated
+
     Return to Koodistot frontpage
     Click Element with wait    ${STATUS_DROPDOWN_BTN}               timeout=30
     Click Element that contains text    ${ALL_STATUSES_FI}          timeout=20
@@ -932,7 +950,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Import VALID code list with codes and create new version of code list.
     ...    Update a code's attributes in the second latest code list and check that version history tab does not disappear from any of the versions.
     [Tags]    regression    koodistot    test    500
-    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
@@ -944,7 +964,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains Element    ${CODE_LIST_NAME_INPUT}    timeout=20
     Click Element with wait    ${SAVE_NEW_CODE_LIST}  timeout=30
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    New version of code list created
+
     Return to Koodistot frontpage
     Click Element with wait    ${STATUS_DROPDOWN_BTN}       timeout=30
     Click Element that contains text        ${ALL_STATUSES_FI}  timeout=30
@@ -964,7 +984,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Tämä on uusi lyhyt nimi    timeout=30
     Click Element that contains text        ${CODE_LIST_9}    timeout=30
     Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
-    Log To Console    Version history tab exists after code was updated
+
     Return to Koodistot frontpage
     Click Element with wait    ${STATUS_DROPDOWN_BTN}       timeout=30
     Click Element that contains text        ${ALL_STATUSES_FI}  timeout=30
@@ -972,14 +992,16 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element that contains text        ${CODE_LIST_10}    timeout=30
     Click Element that contains text        ${CODE_LIST_10}    timeout=30
     Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
-    Log To Console    Version history tab exists in the new version too after code was updated
+
     [Teardown]    Remove codelist teardown    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 532. Create a new code in versioned code list's newest version
     [Documentation]    Import VALID code list with codes and create new version of code list.
     ...    Create a new code in the latest code list and check that version history tab does not disappear from any of the versions.
     [Tags]    regression    koodistot    test    500
-    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
     Click Button    ${CODE_LIST_DDL}
@@ -989,7 +1011,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input Text with wait    ${CODE_LIST_NAME_INPUT}    ${CODE_LIST_10}      timeout=20
     Click Element with wait   ${SAVE_NEW_CODE_LIST}     timeout=20
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    New version of code list created
 
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
     Wait Until Page Contains    NewCode001 - newCode001    timeout=20
@@ -1006,7 +1027,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Input Text with wait    ${SEARCH_BOX_INPUT}    ${CODE_LIST_9}       timeout=30
     Click element that contains text     ${CODE_LIST_9}    timeout=30
     Wait Until Element Is Visible    ${VERSION_TAB}    timeout=20
-    Log To Console    Version history tab exists on also the 2nd latest version after code was created
     [Teardown]    Remove codelist teardown    ${CODE_LIST_10}    ${CODE_LIST_9}
 
 533. Create new version of code list with default code and change the default code
@@ -1014,7 +1034,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ...    Check that new version is created succesfully and default code is copied.
     ...    Then manually change the default code and ensure that the version history tab is intact.
     [Tags]    regression    koodistot    test    500
-    Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_with_default_code_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
@@ -1028,12 +1050,12 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element with wait   ${SAVE_NEW_CODE_LIST}     timeout=20
 
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log To Console    New version of code list created
+
     Wait Until Page Contains    10 koodia    timeout=20
-    Log to Console    All codes are copied
+
     Click Code List Info Tab
     Wait Until Page Contains    testikoodi04 - Testikoodi 04    timeout=20
-    Log to Console    Default code is copied
+
     Click Element with wait   ${MODIFY_CODE_LIST}           timeout=20
     Click Element with wait   ${ADD_DEFAULTCODE_BTN}        timeout=20
     Click element that contains text        Testikoodi 01    timeout=20
@@ -1084,13 +1106,15 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    ${Error_cumulative_codelist}    timeout=20
     Click Element with wait    ${CLOSE_ERROR_MESSAGE_BTN}       timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_10}    ${CODE_LIST_8}
+    [Teardown]    Remove codelist teardown      koodisto6000    Koodisto7001         #Koodisto6000Koodisto7001
 
 535. Change code list as cumulative after import and create new cumulative code list version and add new code
     [Documentation]    Change code list as cumulative after import and
     ...    create new cumulative code list version and check that codes can not be deleted but new code can be added.
     [Tags]    koodistot    regression    test    500
-    Upload codelist in Excel format    ${Code_list_with_default_code_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_with_default_code_new_version} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    10 koodia    timeout=20
     Click Code List Info Tab
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
@@ -1113,9 +1137,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element with wait    ${SAVE_NEW_CODE_LIST}        timeout=20
 
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    timeout=60
-    Log to Console    New version of code list created
+
     Wait Until Page Contains    10 koodia    timeout=20
-    Log to Console    All codes are copied
+
     Click Code List Info Tab
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Click Element with wait   ${CODELIST_CODES_TAB}  timeout=20
@@ -1184,17 +1208,19 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    ${Error_invalid_codevalue}    timeout=20
     Cancel code list import
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_24}
+    [Teardown]    Remove codelist teardown    600
 
 537. Create new version of code list from file, add variant and update code list from file
     [Documentation]    Create new version of code list from file, add variant, change code list as cumulative
     ...    and update code list from file. Check that code list remains as cumulative and version history and
     ...    variant listing do not disappear after code list update.YTI-498.
     [Tags]    koodistot    regression    test    500
-    Upload codelist in Excel format    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Create codelist from Excel ${Code_list_Codes_new_version} to test with api
+    Create codelist from Excel ${Variant_code_list} to test with api
+    Search and open codelist    ${CODE_LIST_9}
     Wait Until Page Contains    10 koodia    timeout=20
     Return to Koodistot frontpage
-    Upload codelist in Excel format    ${Variant_code_list}    ${CODE_LIST_8}
+    Search and open codelist    ${CODE_LIST_8}
 
     Wait Until Page Contains    25 koodia    timeout=20
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=20
@@ -1205,7 +1231,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
     Click Element with wait   ${VERSION_TAB}        timeout=20
-    Log to Console    Codelist version tab clicked
+
     Wait Until Page Contains    ${CODE_LIST_8}    timeout=20
     Wait Until Page Contains    ${CODE_LIST_16}    timeout=20
 
@@ -1231,26 +1257,27 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Kumulatiivinen koodisto    timeout=20
     Wait Until Page Contains    Kyllä    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_24}    ${CODE_LIST_8}    ${CODE_LIST_9}
+    [Teardown]    Remove codelist teardown    600    ${CODE_LIST_8}    ${CODE_LIST_9}
 
 538. JSON array export for code list codes
     [Documentation]    Import code list and check that JSON array export is successful for code list codes. YTI-645.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_test_dcat}    ${CODE_LIST_20}
+    [Setup]     Test Case Setup superuser
+    Create codelist from Excel ${Code_list_test_dcat} to test with api
 
-    Open Koodistot
-    Select superuser
     Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}codelist-api/api/v1/coderegistries/test/codeschemes/dcat01/codes?array
     Wait Until Page Contains    ${Json_export_dcat}    timeout=20
     Switch Browser    1
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_20}
+    [Teardown]    Remove codelist teardown    dcat01
 
 539. Create new code with special characters
     [Documentation]    Check that code creation with special characters is successful
     ...    Check that URI link for code is working. YTI-672.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    Search and open codelist    ${CODE_LIST_4}
+
     Create new code to code list    +    plus    ${DRAFT_STATUS}    ${EMPTY}
 
     Select breadcrump link 2
@@ -1266,7 +1293,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    5 koodia    timeout=20
 
     Open Koodistot
-    Select superuser
+    Select superuser user
     GO To    http://uri.suomi.fi/codelist/test/T100/code/*?env=${ENVIRONMENT_IDENTIFIER}
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    T100    timeout=20
@@ -1278,20 +1305,23 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Select breadcrump link 2
     Remove code    . - piste
     Wait Until Page Contains    4 koodia    timeout=30
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown    T100
 
 540. Import codes with special characters
     [Documentation]    Check that importing code list and codes with special characters is successful. YTI-672.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Codelist_special_characters_for_codes}    ${CODE_LIST_4}
+    Create codelist from Excel ${Codelist_special_characters_for_codes} to test with api
+    Search and open codelist    ${CODE_LIST_4}
     Wait Until Page Contains    6 koodia    timeout=20
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown    T100
 
 541. Import codes with special characters in CSV format
     [Documentation]    Check that importing codes with special characters in CSV format is successful. YTI-672.
     [Tags]    regression    test    500
     [Setup]    Test Case Setup Superuser
-    Upload codelist in Excel format    ${Testikoodisto_T200}    ${CODE_LIST_7}
+    Create codelist from Excel ${Testikoodisto_T200} to test with api
+    Search and open codelist    ${CODE_LIST_7}
+
     Import codes in CSV format
     Upload codes    ${Codes_with_special_characters_csv}
     Wait Until Page Contains    11 koodia    timeout=20
@@ -1301,20 +1331,24 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     [Documentation]    Check that importing codes is successful when imported file for codes
     ...    contains existing order number. YTI-1002.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    Search and open codelist    ${CODE_LIST_4}
+
     Import codes in CSV format
     Upload codes    ${Codes_with_special_characters_csv}
     Wait Until Page Contains    12 koodia    timeout=20
     Import codes in Excel format
     Upload codes    ${Codes_with_order}
     Wait Until Page Contains    22 koodia    timeout=20
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_4}
+    [Teardown]    Remove codelist teardown    T100
 
 543. Create new version of code list with languages
     [Documentation]    Import code list and create new version. Check that all elements with different
     ...    languages are shown in version creation and copied to the new version.
     [Tags]    regression    test    koodistot    500
-    Upload codelist in Excel format    ${Codes_list_with_languages}    ${CODE_LIST_9}
+    Create codelist from Excel ${Codes_list_with_languages} to test with api
+    Search and open codelist    ${CODE_LIST_9}
+
     Wait Until Page Contains    30 koodia    timeout=20
     Click Code List Info Tab
     Change Content Language    ${ALL_LANGUAGE_BTN}
@@ -1352,7 +1386,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 544. Import code list and codes with same PREFLABEL and DEFINITION values
     [Documentation]    Import code list and codes with same PREFLABEL, DEFINITION and DESCRIPTION values. YTI-1252.
     [Tags]    regression    test    500
-    Upload codelist in Excel format    ${Code_list_with_same_preflabel_values}    ${CODE_LIST_27}
+    Create codelist from Excel ${Code_list_with_same_preflabel_values} to test with api
+    Search and open codelist    ${CODE_LIST_27}
+
     Change Content Language    ${ALL_LANGUAGE_BTN}
     Wait Until Page Contains    Koodisto3000    timeout=20
     Wait Until Page Contains    Kuvaus    timeout=20
@@ -1378,7 +1414,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    Alajärven määritelmä    timeout=20
     Wait Until Page Contains    AB    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_27}
+    [Teardown]    Remove codelist teardown    k3000
 
 *** Keywords ***
 Check values from Draft Code list
@@ -1422,7 +1458,6 @@ Create new code to code list with concept
     Input Text with wait        ${CODE_CODEVALUE_INPUT}    NewCode001       timeout=20
     Click Element with wait     ${SAVE_NEW_CODE_BTN}     timeout=60
     Wait Until Page Contains Element    ${MODIFY_CODE_BTN}    timeout=60
-    Log to Console    New code "${concept}" created
 
 Suggest concept to Terminologies
     [Arguments]    ${concept}    ${terminologies}    ${concept_name}    ${definition}
@@ -1436,18 +1471,3 @@ Suggest concept to Terminologies
     Click Element with wait   ${SAVE_CONCEPT_SUGGESTION_BTN}        timeout=20
     Wait Until Page Contains    Haluatko ehdottaa käsitettä ${concept_name} sanastoon    timeout=20
     Click Element with wait   ${CONFIRMATION_YES_BTN}       timeout=20
-    Log to Console    Concept ${concept_name} suggested succesfully to Terminologies
-
-Remove Code list with concept from Terminologies
-    Input Text with wait   id=search_box_input    ${CODE_LIST_8}        timeout=30
-    Click element that contains text        tutkija    timeout=30
-    Click Element with wait    ${CODELIST_INFO_TAB}     timeout=20
-    Page should contain    Tunnus
-    Page should contain    ${CODE_LIST_8}
-    Page should contain    Koodiston nimi
-    Page should contain    tutkija
-    Click Element with wait    ${DELETE_CODE_LIST_BTN}       timeout=20
-    Click Element with wait    ${REMOVE_CODE_LIST_CONF_BTN}     timeout=20
-    Input Text with wait    id=search_box_input    ${CODE_LIST_8}  timeout=30
-    Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.    timeout=60
-    Close All Browsers

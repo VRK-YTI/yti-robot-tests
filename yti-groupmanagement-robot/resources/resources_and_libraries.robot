@@ -12,10 +12,7 @@ Test Case Teardown Generic Teardown
 Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
-Test Case Suite Setup Generic Setup
-    Log  Genericc suite setup
-
 Test Case Setup admin
     Open RHP
     Set Selenium Speed  ${SELENIUM_SPEED}
-    Select admin
+    Select admin user

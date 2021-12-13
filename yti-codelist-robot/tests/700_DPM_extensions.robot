@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for DPM extensions
 Suite Teardown    Test Case Suite Teardown Generic Teardown
-Test Teardown     Remove codelist teardown      ${CODE_LIST_16}
+Test Teardown     Remove codelist teardown      600
 
 Test Setup        Test Case Setup Superuser
 
@@ -16,7 +16,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list and create DPM Metric extension.
     ...    Update code extensions with Excel import and export Excel and CSV.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    DPM Metric (en)    timeout=20
@@ -48,7 +49,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list and try to update DPM Metric extension
     ...    with invalid Excel sheet with two DMP Metric values defined. Check error message.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
 
     Return to Koodistot frontpage
@@ -62,7 +64,9 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list and create DPM Metric extension.
     ...    set DPM Metric values for code.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    Search and open codelist    ${CODE_LIST_16}
+
     Wait Until Page Contains    30 koodia    timeout=20
     Create DPM extension    ${CREATE_DPM_METRIC_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    DPM Metric (en)    timeout=20
@@ -94,7 +98,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list and Create DPM explicit domain extension.
     ...    Set Member XBRL code prefix value for code. Update all code extensions in code list with Excel import and export Excel and CSV.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia                               timeout=20
     Create DPM extension        ${CREATE_DPM_EXPLICIT_DOMAIN_BTN}       False           ${DRAFT_STATUS}
     Wait Until Page Contains    dpmExplicitDomain                       timeout=20
@@ -133,7 +138,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list and create DPM Dimension extension.
     ...    set DPM Dimension values for code.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
     Create DPM extension        ${CREATE_DPM_DIMENSION_BTN}    False    ${DRAFT_STATUS}
     Wait Until Page Contains    dpmDimension                                        timeout=20
@@ -154,7 +160,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list with codes and DPM Dimension extension.
     ...    Check Domain reference values for codes.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_codes_DPM_Dimension_extension}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_codes_DPM_Dimension_extension} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
     Click element that contains text        testcode28 - Testcode 28    timeout=20
 
@@ -173,7 +180,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list with codes and all DPM extensions.
     ...    Check extension values for codes.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_codes_DPM_extension_all} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
 
     Click element that contains text        testcode57 - Testcode 57    timeout=20
@@ -222,7 +230,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list and create Typed Domain extension with automatic member creation.
     ...    Check and modify Typed Domain value for code.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
 
     Create DPM extension    ${CREATE_DPM_TYPED_DOMAIN_BTN}    True    ${DRAFT_STATUS}
@@ -254,7 +263,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list with codes and all DPM extensions. Check that removing code
     ...    with code extension member is successful.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_codes_DPM_extension_all} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
     Click element that contains text        testcode57 - Testcode 57    timeout=20
 
@@ -294,7 +304,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    Check that correct error message is displayed when trying to import members without sequence IDs,
     ...    Check that updating DPM Metric values is successful with correct sequence ID values in Excel sheet. YTI-612.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_with_DPM_Metric_extension}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_with_DPM_Metric_extension} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
 
     Click element with wait     ${CODE_LIST_DDL}                    timeout=20
@@ -332,7 +343,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import all DPM extensions and remove extension values with Update code list function.
     ...    Check that extension values are removed from code information.
     [Tags]    koodistot    regression    700    test
-    Upload codelist in excel format    ${Code_list_codes_DPM_extension_all}    ${CODE_LIST_16}
+    Create codelist from Excel ${Code_list_codes_DPM_extension_all} to test with api
+    Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=20
 
     Click element that contains text        testcode57 - Testcode 57    timeout=20
@@ -388,7 +400,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Create DPM Metric extension and create new code for code list.
     ...    Check that code creation is successful. YTI-1307
     [Tags]    koodistot    regression    700    test
-    Set selenium speed              0.5
+    Set selenium speed              0.3
     Create code list                ${REGISTRY_1}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
 
     Create new code to code list    NewCode001    newCode001    ${DRAFT_STATUS}    ${EMPTY}
@@ -410,4 +422,4 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Select breadcrump link 2
     Wait Until Page Contains        4 koodia    timeout=20
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_8}
+    [Teardown]    Remove codelist teardown    Koodisto6000

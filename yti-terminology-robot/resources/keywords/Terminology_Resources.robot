@@ -231,7 +231,7 @@ Delete Terminology
 Delete Terminologies
     [Arguments]    @{terminology_items}
     Go Back To Sanastot Frontpage
-    Select superuser
+    Select superuser user
     FOR    ${terminology_item}    IN    @{terminology_items}
         Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
         Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}

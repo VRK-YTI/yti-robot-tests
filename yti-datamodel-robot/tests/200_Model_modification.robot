@@ -405,7 +405,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 216. Create new class and suggest concept to Terminologies tool
     [Documentation]    Create new class to profile and suggest concept to Terminologies tool.
-    [Tags]    regression    tietomallit    test    200
+    [Tags]    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}   ${VOCABULARY_1}
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
@@ -424,7 +424,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Close All Browsers
 
     Open sanastot
-    Select admin
+    Select admin user
     Input Text with wait        id=vocabularies_search_input    ${VOCABULARY_1}
     Click Element with wait     //*[contains(text(), "${VOCABULARY_1}")]
     Wait Until Page Contains    ${VOCABULARY_1}     timeout=30
@@ -437,7 +437,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 217. Create new attribute and association and suggest concepts to Terminologies tool
     [Documentation]    Create new attribute and association for profile and suggest concepts to Terminologies tool.
-    [Tags]    regression    tietomallit    test    200
+    [Tags]    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}   ${VOCABULARY_1}
     Maximize Browser Window
     Select And Edit Profile    ${MODEL_1}
@@ -489,7 +489,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Close All Browsers
 
     Open sanastot
-    Select admin
+    Select admin user
     Input Text with wait            id=vocabularies_search_input     ${VOCABULARY_1}
     Click Element with wait         //*[contains(text(), "${VOCABULARY_1}")]
     Wait Until Page Contains        ${VOCABULARY_1}    timeout=30

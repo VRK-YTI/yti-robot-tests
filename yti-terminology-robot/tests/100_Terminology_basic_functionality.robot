@@ -1,6 +1,5 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Terminology application
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup admin
@@ -38,9 +37,9 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
-    [Tags]    local    sanastot
+    [Tags]    regression    sanastot    test    100
     Click Element with wait   id=description_of_file_link
-    Switch window with wait  url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
+    Switch window with wait     url=https://wiki.dvv.fi/display/YTIJD/Tietosuojaseloste
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -73,7 +72,6 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Select navigation menu link    Käyttäjätiedot
     Wait Until Page Contains    Käyttäjätiedot    timeout=60
     Wait Until Page Contains    Nimi    timeout=60
-    Wait Until Page Contains    Test Admin    timeout=60
     Wait Until Page Contains    Sähköposti    timeout=60
     Wait Until Page Contains    Organisaatiot ja roolit    timeout=60
     Wait Until Page Contains    Lähetä käyttöoikeuspyyntö    timeout=60

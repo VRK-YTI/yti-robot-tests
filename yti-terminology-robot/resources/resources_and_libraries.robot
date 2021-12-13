@@ -33,15 +33,12 @@ Test case teardown delete Terminological Dictionary
 Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
-Test Case Suite Setup Generic Setup
-    Log  Genericc suite setup
-
 Test Case Setup admin
     Open sanastot
     Set Selenium Speed  ${SELENIUM_SPEED}
-    Select admin
+    Select admin user
 
 Test Case Setup superuser
     Open sanastot
     Set Selenium Speed  ${SELENIUM_SPEED}
-    Select superuser
+    Select superuser user

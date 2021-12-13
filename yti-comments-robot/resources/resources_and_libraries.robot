@@ -2,8 +2,6 @@
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 
 Resource          ../resources/keywords/Generic_resources.robot
-Resource          ../resources/keywords/Reference_Data_resources.robot
-Resource          ../resources/keywords/Terminologies_resources.robot
 
 Resource          ../resources/variables/test_files.robot
 
@@ -17,62 +15,40 @@ Test Case Teardown Generic Teardown
 Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
-Test Case Suite Setup Generic Setup
-    Log  Genericc suite setup
-
 Test Case Setup Generic Setup
     Open Comments
     Set Selenium Speed      ${SELENIUM_SPEED}
 
 Test Case Setup Admin
     Test Case Setup Generic Setup
-    Select Admin
+    Select Admin user
 
 Test Case Setup Superuser
     Test Case Setup Generic Setup
-    Select Superuser
+    Select Superuser user
 
 Test Case Setup Reference Data
-    [Arguments]    ${codelist}    ${codelist_name}
-    Reference Data Setup    ${codelist}    ${codelist_name}
-    Test Case Setup Superuser
-
-Test Case Setup Reference Data And Code Without prefLabel
-    Reference Data Setup And Code Without prefLabel
+    [Arguments]    ${codelist}
+    Create codelist from Excel ${codelist} to test with api
     Test Case Setup Superuser
 
 Test Case Teardown Reference Data
-    [Arguments]    ${codelist_name}    ${comment_round_name}    ${state}
+    [Arguments]  ${codelist}  ${comment_round_name}
     Test Case Teardown Generic Teardown
-
-    Reference Data Test Case Setup Superuser
-    Reference Data Teardown    ${codelist_name}
-
-    Test Case Setup Superuser
-    Delete Comment Round    ${comment_round_name}    ${state}
-    Close all browsers
+    Delete codelist ${codelist} from registery test with api
+    Delete comment ${comment_round_name} with api
 
 Test Case Setup Terminology
     [Arguments]     ${terminology}
-    #Create terminology ${terminology} with api
-    Test Case Setup Create Terminology
-    Close all browsers
-
+    Create terminology ${terminology} with api
     Test Case Setup Superuser
 
 Test Case Teardown Terminology
-    [Arguments]    ${comment_round_name}    ${state}  ${terminology}
+    [Arguments]    ${comment_round_name}  ${terminology}
     Test Case Teardown Generic Teardown
 
-    #Delete terminology ${terminology} with api
-    Open Sanastot
-    Select admin
-    Delete Terminology      ${VOCABULARY_1}
-    Close all browsers
-
-    Test Case Setup Superuser
-    Delete Comment Round    ${comment_round_name}    ${state}
-    Close all browsers
+    Delete terminology ${terminology} with api
+    Delete comment ${comment_round_name} with api
 
 Test Case Setup Data Vocabularies
     [Arguments]    ${model}     ${prefix}
@@ -87,17 +63,8 @@ Test Case Setup Data Vocabularies With New Class
     Test Case Setup Superuser
 
 Test Case Teardown Data Vocabularies
-    [Arguments]    ${comment_round_name}    ${state}
+    [Arguments]    ${comment_round_name}
     Test Case Teardown Generic Teardown
 
     Delete model cmts_autom with api
-
-    Test Case Setup Superuser
-    Delete Comment Round    ${comment_round_name}    ${state}
-    Close all browsers
-
-Test Case Setup Create Terminology
-    Open Sanastot
-    Select admin
-    Create Testiautomaatiosanasto and import vocabulary
-    Go back to Sanastot frontpage
+    Delete comment ${comment_round_name} with api
