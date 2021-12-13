@@ -339,11 +339,6 @@ ${Error_remove_languages}               abhaasi, englanti, suomi, tataari
 ${Json_export_dcat}                     ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR","JUST","REGI","SOCI","TECH","TRAN"]
 
 *** Keywords ***
-Open Koodistot
-    Open Browser with Settings  ${REFERENCE_DATA_ENVIRONMENT_URL}
-    Wait Until Page Contains    Koodistot           timeout=60
-    Wait Until Page Contains    KIRJAUDU SISÄÄN     timeout=60
-
 Return to Koodistot frontpage
     Click element with wait         ${FRONTPAGE_LINK}       timeout=60
     Wait Until Element Is Enabled   ${SEARCH_BOX_INPUT}     timeout=60

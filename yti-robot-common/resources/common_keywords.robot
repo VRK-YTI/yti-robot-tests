@@ -131,6 +131,11 @@ Open Comments
     Wait Until Page Contains        Kommentit    timeout=60
     Wait Until Page Contains        KIRJAUDU SISÄÄN    timeout=60
 
+Open Koodistot
+    Open Browser with Settings  ${REFERENCE_DATA_ENVIRONMENT_URL}
+    Wait Until Page Contains    Koodistot           timeout=60
+    Wait Until Page Contains    KIRJAUDU SISÄÄN     timeout=60
+
 Check Mailbox
     Open Mailbox    host=imap.gmail.com    user=${TEST_TEMPUSER_EMAIL}    password=${TEST_TEMPUSER_PASSWORD}
     ${LATEST} =    Wait For Email    sender=${TEST_EMAIL_SENDER}    timeout=30    status=UNSEEN
