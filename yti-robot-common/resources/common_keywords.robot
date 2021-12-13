@@ -20,6 +20,9 @@ ${CODELIST_USER_NAME}        Test Codelist
 ${MEMBER_USER_ID}           //*[@id="testmember@localhost"] | //*[@id="dummy@localhost_fakeable_user_link"]
 ${MEMBER_USER_NAME}         Test Member
 
+${TESTGROUP_USER_ID}        id=testtestgroup@localhost
+${TESTGROUP_USER_NAME}      Test TestGroup
+
 ${IMPERSONATE_USER_DROPDOWN}    //*[@id="impersonate_user_link"] | //*[@id="fakeable_user_dropdown"]
 ${LANGUAGE_DROPDOWN_BTN}        id=select_lang_dropdown
 ${LANGUAGE_EN}                  id=en
@@ -98,6 +101,10 @@ Select codelist user
 Select member user
     Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user      ${MEMBER_USER_ID}   ${MEMBER_USER_NAME}
     ...    ELSE       Logging with eDuuni      ${MEMBER_EDUUNI_EMAIL}   ${MEMBER_EDUUNI_PASSWORD}
+
+Select test user
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Select user      ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
+    ...    ELSE       Logging with eDuuni      ${TEST_EDUUNI_EMAIL}  ${TEST_EDUUNI_PASSWORD}
 
 Select user
     [Arguments]    ${user_id}    ${user_name}

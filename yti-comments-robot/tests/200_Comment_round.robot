@@ -172,7 +172,7 @@ Resource          ../resources/resources_and_libraries.robot
 
     Close all browsers
     Open Koodistot
-    Select User    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
+    Select test user
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Comment On Resource 1    Kommentti 4    ${VALID_1}
@@ -213,7 +213,7 @@ Resource          ../resources/resources_and_libraries.robot
 
     Close all browsers
     Open Koodistot
-    Select User    ${TESTGROUP_USER_ID}    ${TESTGROUP_USER_NAME}
+    Select test user
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Send Comments
