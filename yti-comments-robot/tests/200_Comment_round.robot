@@ -223,7 +223,6 @@ Resource          ../resources/resources_and_libraries.robot
     Open comments
     Select admin user
     Search and select comment round    Testiautomaatiokierros
-    Start Commenting
     Click Element with wait    ${RESOURCES_TAB}
     Click Element with wait    ${VIEW_COMMENT_BUBLE_0}
 
