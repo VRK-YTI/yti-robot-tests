@@ -281,7 +281,7 @@ Resource          ../resources/resources_and_libraries.robot
 
     Close all browsers
     Open Tietomallit
-    Select model        ${MODEL_2}
+    Select model        ${CORE_VOCABULARY_1}
     Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
     Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
