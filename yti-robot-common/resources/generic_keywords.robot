@@ -57,7 +57,7 @@ Select Checkbox with wait
 
 Switch window with wait
     [Arguments]     ${window}
-    Wait Until Keyword Succeeds     90 seconds    5 seconds    Select window    ${window}
+    Wait Until Keyword Succeeds     90 seconds    5 seconds    Switch window    ${window}
 
 Click element that contains text
     [Arguments]  ${text}  ${timeout}=30

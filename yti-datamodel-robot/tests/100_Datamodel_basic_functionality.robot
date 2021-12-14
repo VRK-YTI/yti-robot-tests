@@ -79,8 +79,6 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
 
     Switch window with wait     NEW
     Wait Until Page Contains    Sanastot    timeout=20
-    Wait Until Page Contains    Hae sanastoja    timeout=20
-    Wait Until Page Contains    Rajaa tietoalueella    timeout=20
     Close Window
 
     Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
