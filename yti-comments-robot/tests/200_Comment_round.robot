@@ -101,6 +101,7 @@ Resource          ../resources/resources_and_libraries.robot
     Close all browsers
     Open Koodistot
     Select admin user
+    Search and select comment round    Testiautomaatiokierros
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
     Click Element with wait    ${COMMENTS_TAB}
     Wait Until Page Contains    Ehdotetaan uutta tilaa    timeout=20
@@ -157,10 +158,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add resources for commenting, send comments from three users and check comment round results.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}
-    Close all browsers
-    Open Koodistot
-    Select admin user
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}     Admin
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Add Resource For Comment Round    Testcode 30    ${COMMENT_TEXT_INPUT_1}    kommentti2    ${STATUS_DDL_1}    ${VALID_1}
@@ -173,6 +171,7 @@ Resource          ../resources/resources_and_libraries.robot
     Close all browsers
     Open Koodistot
     Select test user
+    Search and select comment round    Testiautomaatiokierros
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Comment On Resource 1    Kommentti 4    ${VALID_1}
@@ -181,6 +180,7 @@ Resource          ../resources/resources_and_libraries.robot
     Close all browsers
     Open Koodistot
     Select superuser user
+    Search and select comment round    Testiautomaatiokierros
     Start Commenting
     Comment On Resource 0    Kommentti 5    ${INVALID_0}
     Comment On Resource 1    Kommentti 6    ${VALID_1}
@@ -214,6 +214,7 @@ Resource          ../resources/resources_and_libraries.robot
     Close all browsers
     Open Koodistot
     Select test user
+    Search and select comment round    Testiautomaatiokierros
     Start Commenting
     Comment On Resource 0    Kommentti 3    ${INVALID_0}
     Send Comments
@@ -221,6 +222,7 @@ Resource          ../resources/resources_and_libraries.robot
     Close all browsers
     Open Koodistot
     Select admin user
+    Search and select comment round    Testiautomaatiokierros
     Click Element with wait    ${RESOURCES_TAB}
     Click Element with wait    ${VIEW_COMMENT_BUBLE_0}
 

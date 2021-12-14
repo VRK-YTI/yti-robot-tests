@@ -255,6 +255,11 @@ Select Comment Round
     [Arguments]    ${comment_round}
     Click Element with wait    //*[contains(text(), "${comment_round}")]
 
+Search and select comment round
+    [Arguments]    ${comment_round}
+    Search Comment Round    ${comment_round}
+    Select Comment Round    ${comment_round}
+
 Add Email Subscription For Comment Round
     Click Element with wait    ${COMMENTROUND_DDL}
     Click Element with wait    ${ADD_SUBSCRIPTION_BTN}

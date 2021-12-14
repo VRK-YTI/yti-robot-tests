@@ -28,9 +28,9 @@ Test Case Setup Superuser
     Select Superuser user
 
 Test Case Setup Reference Data
-    [Arguments]    ${codelist}
+    [Arguments]    ${codelist}  ${user}=Superuser
     Create codelist from Excel ${codelist} to test with api
-    Test Case Setup Superuser
+    run keyword     Test Case Setup ${user}
 
 Test Case Teardown Reference Data
     [Arguments]  ${codelist}  ${comment_round_name}
