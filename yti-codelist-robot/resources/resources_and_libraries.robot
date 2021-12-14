@@ -58,7 +58,8 @@ Remove codelist with extensions teardown
 
 Delete registry with code lists
     [Arguments]    ${registry}  ${api_registery}    @{codelists}
-    Return to Koodistot frontpage
+    Close all browsers
+    Open koodistot
     Select superuser user
 
     Delete registery                ${registry}

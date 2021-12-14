@@ -359,30 +359,42 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     Wait Until Page Contains            1 hakutulos                                     timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]        timeout=30
 
+    Close all browsers
+    Open Koodistot
     Select superuser user
     Input text with wait                id=search_box_input      ${CODE_LIST_26}        timeout=30
     Wait Until Page Contains            1 hakutulos                                     timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]        timeout=30
 
+    Close all browsers
+    Open Koodistot
     Select codelist user
     Input text with wait                    id=search_box_input      ${CODE_LIST_26}    timeout=30
     Wait Until Page Contains                1 hakutulos                                 timeout=30
     Wait Until Page Contains Element        //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
 
+    Close all browsers
+    Open Koodistot
     Select Datamodel user
     Input text with wait                id=search_box_input      ${CODE_LIST_26}    timeout=30
     Wait Until Page Contains            1 hakutulos                                 timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
 
+    Close all browsers
+    Open Koodistot
     Select no group user
     Input text with wait        id=search_box_input      ${CODE_LIST_26}            timeout=30
     Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.                timeout=60
 
+    Close all browsers
+    Open Koodistot
     Select member user
     Input text with wait                id=search_box_input      ${CODE_LIST_26}    timeout=30
     Wait Until Page Contains            1 hakutulos                                 timeout=30
     Wait Until Page Contains Element    //*[contains(text(), "${CODE_LIST_26}")]    timeout=30
 
+    Close all browsers
+    Open Koodistot
     Select terminology user
     Input text with wait                id=search_box_input     ${CODE_LIST_26}     timeout=30
     Wait Until Page Contains            1 hakutulos                                 timeout=30

@@ -1181,7 +1181,6 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 
     Return to Koodistot frontpage
     Create code list    ${REGISTRY_2}    notCumulative    ${CODE_LIST_VALUE_1}    ${ORGANIZATION_1}    ${CODE_LIST_8}    Asuminen
-    Select superuser user
     Create new code to code list    koodi1111    Koodi1111    ${DRAFT_STATUS}    ${EMPTY}
 
     Select breadcrump link 2

@@ -1292,8 +1292,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Select breadcrump link 2
     Wait Until Page Contains    5 koodia    timeout=20
 
-    Open Koodistot
-    Select superuser user
     GO To    http://uri.suomi.fi/codelist/test/T100/code/*?env=${ENVIRONMENT_IDENTIFIER}
     Wait until page contains    Koodisto    timeout=20
     Wait until page contains    T100    timeout=20

@@ -346,7 +346,6 @@ Return to Koodistot frontpage
 Remove list of codes
     [Arguments]    @{code_list_items}
     Return to Koodistot frontpage
-    Select Superuser user
     FOR    ${code_list_item}    IN    @{code_list_items}
         Input text with wait                ${SEARCH_BOX_INPUT}     ${code_list_item}       timeout=30
 
@@ -623,7 +622,8 @@ Delete registery
 
 Delete empty registry
     [Arguments]    ${registry}
-    Return to Koodistot frontpage
+    Close all browsers
+    Open koodistot
     Select superuser user
     Delete registery                    ${registry}
 

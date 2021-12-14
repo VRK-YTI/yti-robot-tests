@@ -286,7 +286,6 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Go To    ${REFERENCE_DATA_ENVIRONMENT_URL}/codescheme;registryCode=test;schemeCode=600
 
     Click element that contains text    Testcode 28                  timeout=20
-    Select superuser user
     Click element with wait             ${CODE_DDL}                  timeout=30
     Click element with wait             ${REMOVE_CODE_BTN}           timeout=20
     Click element with wait             ${CONFIRMATION_YES_BTN}      timeout=20
