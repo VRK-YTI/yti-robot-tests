@@ -99,7 +99,7 @@ Resource          ../resources/resources_and_libraries.robot
     Start Comment Round
 
     Close all browsers
-    Open Koodistot
+    Open comments
     Select admin user
     Search and select comment round    Testiautomaatiokierros
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
@@ -169,7 +169,7 @@ Resource          ../resources/resources_and_libraries.robot
     Send Comments
 
     Close all browsers
-    Open Koodistot
+    Open comments
     Select test user
     Search and select comment round    Testiautomaatiokierros
     Start Commenting
@@ -178,7 +178,7 @@ Resource          ../resources/resources_and_libraries.robot
     Send Comments
 
     Close all browsers
-    Open Koodistot
+    Open comments
     Select superuser user
     Search and select comment round    Testiautomaatiokierros
     Start Commenting
@@ -212,7 +212,7 @@ Resource          ../resources/resources_and_libraries.robot
     Send Comments
 
     Close all browsers
-    Open Koodistot
+    Open comments
     Select test user
     Search and select comment round    Testiautomaatiokierros
     Start Commenting
@@ -220,7 +220,7 @@ Resource          ../resources/resources_and_libraries.robot
     Send Comments
 
     Close all browsers
-    Open Koodistot
+    Open comments
     Select admin user
     Search and select comment round    Testiautomaatiokierros
     Click Element with wait    ${RESOURCES_TAB}
