@@ -185,8 +185,11 @@ Resource          ../resources/resources_and_libraries.robot
     Comment On Resource 0    Kommentti 5    ${INVALID_0}
     Comment On Resource 1    Kommentti 6    ${VALID_1}
     Send Comments
-    Log To Console    Third commenter's comments added
+
+    Close all browsers
+    Open comments
     Select admin user
+    Search and select comment round    Testiautomaatiokierros
     Close Comment Round
 
     Click Element with wait   ${RESOURCES_TAB}    timeout=60
@@ -203,7 +206,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Import new code list in Reference Data tool and create new comment round for the code list.
     ...    Add resources for commenting, send comments from two users and inline comments from one user.
     [Tags]    regression    test    200
-    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}  Admin
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Start Comment Round
