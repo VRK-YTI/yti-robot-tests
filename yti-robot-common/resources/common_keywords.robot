@@ -45,7 +45,7 @@ ${DATAMODEL_EDUUNI_PASSWORD}        ${EDUUNI_EMAIL_PASSWORD}
 ${TEST_EDUUNI_EMAIL}                ytiautomaatiotest@outlook.com
 ${TEST_EDUUNI_PASSWORD}             ${EDUUNI_EMAIL_PASSWORD}
 
-${CODELIST_EDUUNI_EMAIL}            ytiautomaatiocodelist@outlook.com
+${CODELIST_EDUUNI_EMAIL}            ytiautomaatiocode@outlook.com
 ${CODELIST_EDUUNI_PASSWORD}         ${EDUUNI_EMAIL_PASSWORD}
 
 ${TERMINOLOGY_EDUUNI_EMAIL}         ytiautomaatioterminology@outlook.com
