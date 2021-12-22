@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation     Test Suite for Extensions
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup Superuser
-#Library           AutoRecorder
 
 Resource          ../resources/resources_and_libraries.robot
 
@@ -197,6 +197,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
     [Tags]    regression    koodistot    600    test
+    ${csv_file_path}=   Create calculation hierarchy csv    label_fi=JÃ¤sen
+
     Create codelist from Excel ${Code_list_with_30_Codes} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
@@ -208,7 +210,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains Element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "TIEDOT")]    timeout=20
 
-    Upload members    ${Calculation_hierarchy_members_csv}    ${FILE_FORMAT_CSV}
+    Upload members    ${csv_file_path}    ${FILE_FORMAT_CSV}
     Wait Until Page Contains Element    //*[contains(text(), "- Jäsen2 · Testcode 29 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
 
     Click element with wait      //*[contains(text(), "- Jäsen1 · Testcode 28 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
@@ -431,7 +433,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    ${Error_member_value_invalid}    timeout=20
     Cancel code import
 
-    Upload members    ${Invalid_unaryoperator_value_csv}    ${FILE_FORMAT_CSV}
+    ${csv_file_path}=   Create invalid member csv
+    Upload members    ${csv_file_path}    ${FILE_FORMAT_CSV}
     Wait Until Page Contains    ${Error_member_value_invalid}    timeout=20
     Cancel code import
 
@@ -463,7 +466,9 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    30 koodia    timeout=20
     Wait Until Page Contains    testcode28 - Testcode 28    timeout=20
     Wait Until Page Contains    testcode29 - Testcode 29    timeout=20
-    Upload extension    ${Calc_def_hierarchy_extensions_csv}    ${FILE_FORMAT_CSV}
+
+    ${csv_file_path}=   Create Calc def hierarchy extensions csv
+    Upload extension    ${csv_file_path}    ${FILE_FORMAT_CSV}
     Wait Until Page Contains Element    //*[contains(@id,'111_view_extension')]     timeout=20
 
     Click element with wait             ${CALC_HIERARCHY_TAB}                       timeout=20
@@ -489,7 +494,9 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
     Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
-    Upload extension    ${Calc_def_hierarchy_extensions_csv}    ${FILE_FORMAT_CSV}
+
+    ${csv_file_path}=   Create Calc def hierarchy extensions csv
+    Upload extension    ${csv_file_path}    ${FILE_FORMAT_CSV}
 
     Click element with wait      //*[contains(@id,'111_view_extension')]    timeout=20
 
@@ -545,23 +552,24 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait      ${CODELIST_CODES_TAB}    timeout=30
     Click element with wait      //*[contains(text(), "Koodi1000 - Koodi1000")]    timeout=20
     Click element with wait      ${MODIFY_CODE_BTN}    timeout=20
-    Input Text with wait   ${CODE_NAME_INPUT}    koodin uusi nimi   timeout=30
+    Input Text with wait         ${CODE_NAME_INPUT}    koodin uusi nimi   timeout=30
     Click element with wait      ${SAVE_CODE_MOD_BTN}    timeout=20
     Wait Until Element Is Enabled    ${MODIFY_CODE_BTN}    timeout=120
 
     Return to Koodistot frontpage
-    Input Text with wait   ${SEARCH_BOX_INPUT}    ${CODE_LIST_16}   timeout=30
-    Click element with wait      //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
-    Click element with wait      ${EXTENSIONS_TAB}    timeout=30
+    Input Text with wait        ${SEARCH_BOX_INPUT}    ${CODE_LIST_16}   timeout=30
+    Click element with wait     //*[contains(text(), "${CODE_LIST_16}")]    timeout=30
+    Click element with wait     ${EXTENSIONS_TAB}    timeout=30
 
-    Click element with wait      //*[contains(text(), "extension1 - Extension 1")]    timeout=20
-    Click element with wait      ${EXTENSION_INFO_TAB}    timeout=20
+    Click element with wait     //*[contains(text(), "extension1 - Extension 1")]    timeout=20
+    Click element with wait     ${EXTENSION_INFO_TAB}    timeout=20
     Wait Until Page Contains    ${CODE_LIST_16}    timeout=20
     Wait Until Page Contains    extension1    timeout=20
     Wait Until Page Contains    Extension 1    timeout=20
     Wait Until Page Contains    Laskentahierarkia    timeout=20
     Wait Until Page Contains    ${CODE_LIST_4} - uusi nimi koodistolle    timeout=20
 
+    Reload page
     Click element with wait      ${MEMBERS_TAB}    timeout=20
     Click element with wait      //*[contains(text(), "- Member 1 · koodin uusi nimi · uusi nimi koodistolle · Testirekisteri <=")]    timeout=20
 

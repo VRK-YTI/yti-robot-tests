@@ -8,6 +8,7 @@ ${Definition_hierarchy_members}    ${DATAFOLDER}${/}Definition_hierarchy_members
 ${Extensions_without_codeschemes_value}    ${DATAFOLDER}${/}Extensions_without_codeschemes_value.xlsx
 ${Extensions_invalid_code_in_members_sheet}    ${DATAFOLDER}${/}Extensions_invalid_code_in_members_sheet.xlsx
 ${Extensios_max_hierarchy_level}    ${DATAFOLDER}${/}Extensions_max_hierarchy_level.xlsx
+${Extensios_max_hierarchy_level}    ${DATAFOLDER}${/}Extensions_max_hierarchy_level.xlsx
 ${Extension_Scheme_calculation_hierarchy}    ${DATAFOLDER}${/}Extension_Scheme_calculation_hierarchy.xlsx
 ${Unaryoperator_value_missing}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing.xlsx
 ${Extensions_no_extensionvalue_column}    ${DATAFOLDER}${/}Extensions_no_extensionvalue_column.xlsx
@@ -39,11 +40,6 @@ ${Code_list_with_multiple_extensions}    ${DATAFOLDER}${/}filter_Code_list_with_
 ${Code_list_codes_DPM_all_invalid_propertytype}    ${DATAFOLDER}${/}Code_list_codes_DPM_all_invalid_propertytype.xlsx
 ${Code_list_codes_DPM_all_no_values}    ${DATAFOLDER}${/}Code_list_codes_DPM_all_no_values.xlsx
 ${Code_list_with_extensions_and_member_relations}    ${DATAFOLDER}${/}Code_list_with_extensions_and_member_relations.xlsx
-#CSV paths
-${Calculation_hierarchy_members_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_csv.csv
-${Unaryoperator_value_missing_csv}    ${DATAFOLDER}${/}Calculation_hierarchy_members_unaryoperator_value_missing_csv.csv
-${Invalid_unaryoperator_value_csv}    ${DATAFOLDER}${/}Calculation_members_invalid_unary_operator_csv.csv
-${Calc_def_hierarchy_extensions_csv}    ${DATAFOLDER}${/}Calculation_definition_extensions_csv.csv
 
 #Excel paths
 ${testiautomaatiokoodisto_with_code}    ${DATAFOLDER}${/}testiautomaatiokoodisto_with_code.xlsx
@@ -69,9 +65,6 @@ ${Codes_list_with_languages}    ${DATAFOLDER}${/}Code_list_with_languages.xlsx
 ${Codes_list_and_extension_with_languages}    ${DATAFOLDER}${/}Code_list_codes_extensions_and_members_with_languages.xlsx
 ${Code_list_with_same_preflabel_values}    ${DATAFOLDER}${/}Code_list_with_same_preflabel_values.xlsx
 ${Codes_with_same_preflabel_and_definition_value}    ${DATAFOLDER}${/}Codes_with_same_preflabel_and_definition_value.xlsx
-#CSV paths
-${Codes_status_with_space_csv}    ${DATAFOLDER}${/}Codes_status_with_space_csv.csv
-${Code_links_with_space_csv}    ${DATAFOLDER}${/}Code_links_with_space_csv.csv
 
 #Excel paths
 ${Code_list_no_codeValue}    ${DATAFOLDER}${/}Code_list_no_codeValue.xlsx
@@ -93,12 +86,6 @@ ${empty_file}          ${DATAFOLDER}${/}empty.xlsx
 ${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
 ${Code_list_with_invalid_link_urls}    ${DATAFOLDER}${/}Code_list_with_invalid_link_URLs.xlsx
 ${Code_list_invalid_delimiter_in_language_code}    ${DATAFOLDER}${/}Code_list_invalid_delimiter_in_language_code.xlsx
-#CSV paths
-${Code_list_no_codeValue_csv}    ${DATAFOLDER}${/}Code_list_no_codeValue_csv.csv
-${Code_list_no_classification_csv}    ${DATAFOLDER}${/}Code_list_no_classification_value_csv.csv
-${Code_list_invalid_classification_csv}    ${DATAFOLDER}${/}Code_list_incorrect_classification_value_csv.csv
-${Code_list_invalid_codeValue_csv}    ${DATAFOLDER}${/}Code_list_with_invalid_codevalue_csv.csv
-${2x_code_list_csv}    ${DATAFOLDER}${/}2x_codelists_csv.csv
 
 ${Codes_codevalue_missing}    ${DATAFOLDER}${/}Codes_codevalue_missing.xlsx
 ${Codes_status_missing}    ${DATAFOLDER}${/}Codes_status_missing.xlsx
@@ -121,23 +108,6 @@ ${Codes_with_existing_order_values}    ${DATAFOLDER}${/}Codes_with_existing_orde
 ${Codes_with_invalid_order_values}    ${DATAFOLDER}${/}Codes_with_invalid_order_values.xlsx
 ${empty_file}          ${DATAFOLDER}${/}empty.xlsx
 ${No_content_excel}    ${DATAFOLDER}${/}No_content_excel.xlsx
-#CSV paths
-${Codes_codevalue_missing_csv}    ${DATAFOLDER}${/}Codes_codevalue_missing_csv.csv
-${Codes_status_missing_csv}    ${DATAFOLDER}${/}Codes_status_missing_csv.csv
-${Codes_with_invalid_status_csv}    ${DATAFOLDER}${/}Codes_with_invalid_status_csv.csv
-${Codes_with_invalid_broader_csv}    ${DATAFOLDER}${/}Codes_with_invalid_broader_value_csv.csv
-${Codes_with_same_broader_csv}    ${DATAFOLDER}${/}Codes_with_same_broader_value_csv.csv
-${Codes_with_duplicate_columns_csv}    ${DATAFOLDER}${/}Codes_with_duplicate_columns_csv.csv
-${Codes_with_invalid_HL_csv}    ${DATAFOLDER}${/}Codes_with_invalid_HL_value_csv.csv
-${Codes_without_codevalue_column_csv}    ${DATAFOLDER}${/}Codes_without_codevalue_column_csv.csv
-${Codes_with_invalid_startdate_csv}    ${DATAFOLDER}${/}Codes_with_invalid_startdate_csv.csv
-${Codes_with_invalid_ID_csv}    ${DATAFOLDER}${/}Codes_with_invalid_ID_csv.csv
-${Update_Code_valid_draft_csv}    ${DATAFOLDER}${/}Update_code_valid_draft_csv.csv
-${Duplicate_Codes_csv}    ${DATAFOLDER}${/}Duplicate_codes_csv.csv
-${Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Codes_invalid_codevalue_csv.csv
-${Codes_with_missing_order_value_csv}    ${DATAFOLDER}${/}Codes_with_missing_order_csv.csv
-${Same_order_values_csv}    ${DATAFOLDER}${/}Codes_with_same_order_values_csv.csv
-${Codes_with_invalid_order_values_csv}    ${DATAFOLDER}${/}Codes_with_invalid_order_values_csv.csv
 
 ${Code_list_without_codes}    ${DATAFOLDER}${/}Draft_Code_list_without_codes.xlsx
 ${Code_list_with_codes}    ${DATAFOLDER}${/}Valid_Code_list_with_codes.xlsx
@@ -159,11 +129,3 @@ ${Code_list_with_default_code_new_version}    ${DATAFOLDER}${/}Code_list_codes_d
 ${Code_list_with_30_Codes_updated}    ${DATAFOLDER}${/}Code_list_with_30_Codes_updated.xlsx
 ${Code_list_with_30_Codes_invalid_codevalue}    ${DATAFOLDER}${/}Code_list_with_30_Codes_invalid_codevalue.xlsx
 ${Codelist_special_characters_for_codes}    ${DATAFOLDER}${/}Codelist_special_characters_for_codes.xlsx
-#CSV paths
-${Code_list_without_codes_csv}    ${DATAFOLDER}${/}Draft_Code_list_without_codes_csv.csv
-${Update_Codes_csv}    ${DATAFOLDER}${/}Update_Codes_csv.csv
-${Draft_Codes_with_broader_csv}    ${DATAFOLDER}${/}Draft_Codes_with_broader_csv.csv
-${Codes_update_sub_code_list_csv}    ${DATAFOLDER}${/}Codes_update_sub_code_list_csv.csv
-${Code_list_with_30_Codes_updated_csv}    ${DATAFOLDER}${/}Code_list_with_30_Codes_updated_csv.csv
-${Code_list_with_30_Codes_invalid_codevalue_csv}    ${DATAFOLDER}${/}Code_list_with_30_Codes_invalid_codevalue_csv.csv
-${Codes_with_special_characters_csv}    ${DATAFOLDER}${/}Codes_with_special_characters_csv.csv

@@ -59,20 +59,6 @@ ${CONFIRM_REMOVE_CONCEPT_BTN}    id=delete_confirmation_yes_button
 ${IMPORT_CANCEL_BTN}    id=import_cancel_button
 ${IMPORT_YES_BTN}    id=import_yes_button
 ${CONCEPT_LIST_SEARCH_INPUT}    id=concept_list_search_concept_input
-#CSV paths
-${test_concepts}    ${DATAFOLDER}${/}test_concepts_csv.csv
-${invalid_related_concepts}    ${DATAFOLDER}${/}test_concepts_invalid_related_concepts_csv.csv
-${empty_related_concepts}    ${DATAFOLDER}${/}empty_related_concepts_csv.csv
-${concepts_with_empty_status}    ${DATAFOLDER}${/}test_concept_with_empty_status_csv.csv
-${concepts_with_missing_status}    ${DATAFOLDER}${/}test_concept_with_missing_status_column_csv.csv
-${concepts_with_invalid_column}    ${DATAFOLDER}${/}test_concepts_invalid_column_csv.csv
-${concepts_with_invalid_status_value}    ${DATAFOLDER}${/}test_concepts_invalid_status_value_csv.csv
-${concepts_with_duplicate_definition_columns}    ${DATAFOLDER}${/}test_concepts_duplicate_definition_columns_csv.csv
-${concepts_with_isPartOf_and_status}    ${DATAFOLDER}${/}test_concepts_to_thesaurus_with_isPartOf_status_csv.csv
-${test_concepts_to_thesaurus}    ${DATAFOLDER}${/}test_concept_import_to_thesaurus_csv.csv
-${test_concepts_to_thesaurus_invalid_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_invalid_column_name_csv.csv
-${test_concepts_to_thesaurus_incorrect_column}    ${DATAFOLDER}${/}test_concepts_thesaurus_incorrect_column_name_csv.csv
-${concepts_from_controlled_vocabularies}    ${DATAFOLDER}${/}concepts_from_controlled_vocabularies_csv.csv
 
 *** Keywords ***
 Check concept suggestion in Terminologies
@@ -107,9 +93,12 @@ Create Testiautomaatiosanasto and import vocabulary
     Input Text with wait                ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}       Tämä on kuvaus
     Input Text with wait                ${PREFIX_INPUT}                             ${PREFIX_1}
     Click element with wait             ${SAVE_VOCABULARY_BTN}                                          timeout=60
+
     Click element with wait             ${VOCABULARY_DDL}                                               timeout=90
     Click element with wait             ${IMPORT_VOCABULARY_BTN}                                        timeout=90
-    Choose File                         ${FILE_UPLOAD_INPUT}    ${concepts_from_controlled_vocabularies}
+
+    ${csv_file_path}=                   Create concepts from controlled vocabularies csv
+    Choose File                         ${FILE_UPLOAD_INPUT}    ${csv_file_path}
 
     Click element with wait             ${UPLOAD_FILE}
     Click element with wait             ${IMPORT_YES_BTN}

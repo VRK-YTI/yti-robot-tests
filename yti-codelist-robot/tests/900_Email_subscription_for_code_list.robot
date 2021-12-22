@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for code list email subscription
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Remove codelist teardown      ${CODE_LIST_16}
 
 Test Setup        Test Case Setup Admin
@@ -18,7 +19,6 @@ ${CODELIST}                     900_testing_code_list
     Upload codelist in Excel format     ${Code_list_with_30_Codes}    ${CODE_LIST_16}
 
     Return to Koodistot frontpage
-    #Open Tool    ${REFERENCE_DATA_ENVIRONMENT_URL}
     Search For Code List                ${CODE_LIST_16}
     Select Code List                    ${CODE_LIST_16}
     Add Email Subscription For Code List

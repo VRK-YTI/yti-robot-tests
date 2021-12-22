@@ -2,6 +2,7 @@
 Resource          ../resources/keywords/Generic_resources.robot
 Resource          ../resources/keywords/Extension_resources.robot
 Resource          ../resources/keywords/Terminologies_resources.robot
+Resource          ../resources/keywords/CSV_creation.robot
 
 Resource          ../resources/variables/test_files.robot
 
@@ -11,6 +12,9 @@ Library           ScreenCapLibrary
 *** Keywords ***
 Test Case Suite Teardown Generic Teardown
     Close All Browsers
+
+Test Case Generic Suite setup
+    Delete csv folder
 
 Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs

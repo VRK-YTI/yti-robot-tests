@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code list and Code modification
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup Superuser
 
@@ -294,7 +295,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait             ${SAVE_CODE_MOD_BTN}         timeout=20
 
     Wait until page contains    Koodia ei löydy.    timeout=20
-    Click element with wait             ${CLOSE_ERROR_MESSAGE_BTN}   timeout=20
+    Click element with wait     ${CLOSE_ERROR_MESSAGE_BTN}   timeout=20
 
     [Teardown]    Remove codelist teardown    600
 
@@ -566,7 +567,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Select breadcrump link 2
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=30
     Import codes in CSV format
-    Upload codes    ${Codes_status_with_space_csv}
+    ${csv_file_path}=   Create code status with space csv
+    Upload codes    ${csv_file_path}
 
     Click element that contains text    testcode28 - Testcode 28        timeout=20
     Wait Until Page Contains    Koodin arvo         timeout=60
@@ -600,7 +602,9 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Select breadcrump link 2
     Wait Until Page Contains Element    ${CODE_LIST_DDL}    timeout=30
     Import codes in CSV format
-    Upload codes    ${Code_links_with_space_csv}
+
+    ${csv_file_path}=   Create Code links with space csv
+    Upload codes   ${csv_file_path}
 
     Click element with wait    //*[contains(text(), "testcode57 - Testcode 57")]    timeout=20
     Page Should Not Contain    Käyttöohje

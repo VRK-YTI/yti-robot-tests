@@ -698,6 +698,7 @@ Upload codelist in Excel format
 
     Click element with wait             ${UPLOAD_FILE_BTN}                              timeout=60
 
+    Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator            timeout=90
     Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]       timeout=60
 
 Upload codelist in CSV format

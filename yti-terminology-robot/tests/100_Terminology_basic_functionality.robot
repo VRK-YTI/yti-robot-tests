@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of Terminology application
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup admin
 
@@ -127,13 +128,13 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Wait Until Page Contains    URI    timeout=30
     Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
 
-    GO To    http://uri.suomi.fi/terminology/jhs/?env=awsdev
-    Wait Until Page Contains    JHSMETA    timeout=30
+    #GO To    http://uri.suomi.fi/terminology/jhs/?env=awsdev
+    #Wait Until Page Contains    JHSMETA    timeout=30
 
-    GO To    http://uri.suomi.fi/terminology/jhs/J187?env=awsdev
-    Wait Until Page Contains    Aihe    timeout=30
-    Wait Until Page Contains    URI    timeout=30
-    Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
+    #GO To    http://uri.suomi.fi/terminology/jhs/J187?env=awsdev
+    #Wait Until Page Contains    Aihe    timeout=30
+    #Wait Until Page Contains    URI    timeout=30
+    #Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
 
     GO To    http://uri.suomi.fi/terminology/jhs/?env=awstest
     Wait Until Page Contains    Julkisen hallinnon yhteinen sanasto    timeout=30
@@ -142,5 +143,3 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Wait Until Page Contains    aihe    timeout=30
     Wait Until Page Contains    URI    timeout=30
     Wait Until Page Contains    http://uri.suomi.fi/terminology/jhs/J187    timeout=30
-
-

@@ -1,10 +1,14 @@
 *** Settings ***
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 Resource          ../resources/keywords/Terminology_Resources.robot
+Resource          ../resources/keywords/CSV_creation.robot
 
 Resource          ../resources/variables/test_files.robot
 
 *** Keywords ***
+Test Case Generic Suite setup
+    Delete csv folder
+
 Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs
     Close All Browsers
@@ -12,23 +16,21 @@ Test Case Teardown Generic Teardown
 Test case teardown delete terminology
     [Arguments]  ${terminology}
     Test Case Teardown Generic Teardown
-    Test Case Setup superuser
-    Delete Terminology      ${terminology}
-    Close All Browsers
+    Delete terminology ${terminology} with api
 
 Test case teardown delete Terminologies
     [Arguments]    @{terminology_items}
     Test Case Teardown Generic Teardown
-    Test Case Setup superuser
-    Delete Terminologies      @{terminology_items}
-    Close All Browsers
+    FOR    ${terminology_item}    IN    @{terminology_items}
+        Delete terminology ${terminology_item} with api
+    END
 
 Test case teardown delete Terminological Dictionary
     [Arguments]    ${terminology}
     Test Case Teardown Generic Teardown
-    Test Case Setup superuser
-    Delete Terminological Dictionary      @{terminology}
-    Close All Browsers
+    FOR    ${terminology_item}    IN    @{terminology_items}
+        Delete terminology ${terminology_item} with api
+    END
 
 Test Case Suite Teardown Generic Teardown
     Close All Browsers

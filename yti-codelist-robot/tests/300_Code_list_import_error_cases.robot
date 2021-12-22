@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Code list import error cases
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup Admin
 
@@ -39,8 +40,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Wait Until Page Contains            ${Error_no_codeValue}       timeout=20
     Cancel code list import
 
+    ${csv_file_path}=   Create missing CODEVALUE csv
     Import code list in CSV format
-    Choose File                         ${FILE_UPLOAD_BTN}          ${Code_list_no_codeValue_csv}
+    Choose File                         ${FILE_UPLOAD_BTN}          ${csv_file_path}
     Click element with wait             ${UPLOAD_FILE_BTN}
     Wait Until Page Contains            ${Error_no_codeValue}       timeout=20
     Cancel code list import
@@ -55,8 +57,10 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Wait Until Page Contains            ${Error_no_classification_value}    timeout=20
     Cancel code list import
 
+    ${csv_file_path}=   Create missing CLASSIFICATION csv
+
     Import code list in CSV format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_no_classification_csv}
+    Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    Tuo
     Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
@@ -72,8 +76,10 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
 
+    ${csv_file_path}=  Create invalid CLASSIFICATION csv
+
     Import code list in CSV format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification_csv}
+    Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
@@ -129,8 +135,10 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Wait Until Page Contains    ${Error_invalid_code_list}    timeout=20
     Cancel code list import
 
+    ${csv_file_path}=   Create invalid CODEVALUE csv
+
     Import code list in CSV format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue_csv}
+    Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_code_list}    timeout=20

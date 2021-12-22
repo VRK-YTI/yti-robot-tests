@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for Koodistot basic functionality
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup Admin
 

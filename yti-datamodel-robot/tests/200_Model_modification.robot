@@ -173,11 +173,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
 
-    Click Element with wait                         ${MODEL_DATA_TAB}
-    Create New Shape By Referencing External Uri    ${external_uri}         ${class}
-    Confirm All Properties For Class And Save
-
-    Wait Until Page Contains    Maksu    timeout=30
+    Click Element with wait                       ${MODEL_DATA_TAB}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Create New Shape By Referencing External Uri  ${external_uri}  ${class}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Confirm All Properties For Class And Save
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Wait Until Page Contains    Maksu    timeout=30
 
 208. Add new class to profile and remove properties
     [Documentation]    Add new class to profile and remove properties

@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for DPM extensions
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Remove codelist teardown      600
 
 Test Setup        Test Case Setup Superuser

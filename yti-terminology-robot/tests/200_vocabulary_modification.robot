@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for vocabulary modification
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test case teardown delete terminology     ${VOCABULARY_1}
 Test Setup        Test Case Setup admin
 Resource          ../resources/resources_and_libraries.robot
@@ -310,7 +311,9 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Click Element with wait    ${VOCABULARY_DDL}
     Click Element with wait    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose File    ${FILE_UPLOAD_INPUT}    ${test_concepts_for_status_filter}
+
+    ${csv_file_path}=   Create terminology test concepts for status filter csv
+    Choose File    ${FILE_UPLOAD_INPUT}    ${csv_file_path}
 
     Wait Until Element Is Enabled    ${FILE_UPLOAD_BTN}    timeout=30
     Click Element with wait    ${FILE_UPLOAD_BTN}
@@ -329,6 +332,7 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Wait Until Page Does Not Contain    Jupiter    timeout=20
     Wait Until Page Does Not Contain    Kuu    timeout=20
     Wait Until Page Does Not Contain    Mars    timeout=20
+    [Teardown]  Test case teardown delete terminology     ${VOCABULARY_2}
 
 211. Add external link for concept
     [Documentation]    Create new vocabulary, import concepts and add external link for concept.
@@ -341,7 +345,8 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Click Element with wait    ${IMPORT_VOCABULARY_BTN}
 
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}
-    Choose File    ${FILE_UPLOAD_INPUT}    ${concept_reference}
+    ${csv_file_path}=   Create terminology concept reference csv
+    Choose File    ${FILE_UPLOAD_INPUT}    ${csv_file_path}
     Click Element with wait    ${FILE_UPLOAD_BTN}
     Click Element with wait    ${IMPORT_YES_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
@@ -359,7 +364,7 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Click Element with wait    ${EXT_LINK}
 
     Switch window with wait  title=Etusivu - Suomi.fi
-    Close Window
+    [Teardown]  Test case teardown delete terminology     ${VOCABULARY_2}
 
 212. Add concept reference
     [Documentation]    Create new vocabulary, import concepts and add concept reference.
@@ -371,7 +376,8 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Click Element with wait    ${VOCABULARY_DDL}
     Click Element with wait    ${IMPORT_VOCABULARY_BTN}
 
-    Choose File    ${FILE_UPLOAD_INPUT}    ${concept_reference}
+    ${csv_file_path}=   Create terminology concept reference csv
+    Choose File    ${FILE_UPLOAD_INPUT}    ${csv_file_path}
     Click Element with wait    ${FILE_UPLOAD_BTN}
     Click Element with wait    ${IMPORT_YES_BTN}
     Wait Until Page Does Not Contain Element    ${OPEN_MODAL}    timeout=120
@@ -503,7 +509,8 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
-    Import Concepts    ${CSV_FORMAT_BTN}    ${Concepts_with_semicolon_delimiter}    ${SEMICOLON_DELIMITER_BTN}
+    ${csv_file_path}=   Create terminology Concepts with semicolon delimiter csv
+    Import Concepts    ${CSV_FORMAT_BTN}    ${csv_file_path}    ${SEMICOLON_DELIMITER_BTN}
     Wait Until Page Contains Element    ${CONCEPTS_LIST}    timeout=30
 
     [Teardown]    Test case teardown delete terminology    ${VOCABULARY_2}
@@ -513,16 +520,21 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    for organization's own users only in Terminologies frontpage. YTI-907.
     [Tags]    regression    sanastot    test    200
     Create New Terminology With Parameters    ${VOCABULARY_3}    ${VOCABULARY_STATUS_INCOMPLETE}    Testiorganisaatio    Asuminen    865
-    Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter}    ${EMPTY}
+    ${csv_file_path}=   Create terminology test concepts for status filter csv
+    Import Concepts    ${CSV_FORMAT_BTN}    ${csv_file_path}    ${EMPTY}
     Go Back To Sanastot Frontpage
 
     Create New Terminology With Parameters    ${VOCABULARY_4}    ${VOCABULARY_STATUS_INCOMPLETE}    Automaatiotestaus    Eläkkeet    771
-    Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter_2}    ${EMPTY}
+    ${csv_file_path}=   Create terminology test concepts for status filter 2 csv
+    Import Concepts    ${CSV_FORMAT_BTN}    ${csv_file_path}    ${EMPTY}
     Go Back To Sanastot Frontpage
 
+    Close all browsers
+    Open sanastot
     Select superuser user
     Create New Terminology With Parameters    ${VOCABULARY_5}    ${VOCABULARY_STATUS_INCOMPLETE}    Yhteentoimivuusalustan ylläpito    Eläkkeet    267
-    Import Concepts    ${CSV_FORMAT_BTN}    ${test_concepts_for_status_filter_2}    ${EMPTY}
+    ${csv_file_path}=   Create terminology test concepts for status filter 2 csv
+    Import Concepts    ${CSV_FORMAT_BTN}    ${csv_file_path}    ${EMPTY}
 
     Go Back To Sanastot Frontpage
     Set Frontpage Filters    Abc    ${ALL_ORGANIZATIONS}    ${INCOMPLETE_STATUS}
@@ -530,16 +542,22 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Wait Until Element Is Enabled    //*[contains(text(), "456")]    timeout=30
     Wait Until Element Is Enabled    //*[contains(text(), "789")]    timeout=30
 
+    Close all browsers
+    Open sanastot
     Select admin user
     Wait Until Element Is Enabled    //*[contains(text(), "123")]       timeout=30
     Wait Until Element Is Enabled    //*[contains(text(), "456")]       timeout=30
     wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
 
+    Close all browsers
+    Open sanastot
     Select terminology user
     Wait Until Element Is Enabled    //*[contains(text(), "123")]    timeout=30
     wait until page does not contain element    //*[contains(text(), "456")]    timeout=30
     wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
 
+    Close all browsers
+    Open sanastot
     Select no group user
     wait until page does not contain element    //*[contains(text(), "123")]    timeout=30
     wait until page does not contain element    //*[contains(text(), "456")]    timeout=30

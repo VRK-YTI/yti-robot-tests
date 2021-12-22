@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation     Test Suite for Code list and Code import
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup Superuser
-#Library           AutoRecorder
 
 Resource          ../resources/resources_and_libraries.robot
 
@@ -209,7 +209,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Search and open codelist    ${CODE_LIST_8}
 
     Import codes in CSV format
-    Upload codes    ${Draft_Codes_with_broader_csv}
+    ${csv_file_path}=   Create draft codes with BROADER csv
+    Upload codes    ${csv_file_path}
     Wait Until Page Contains    6 koodia    timeout=20
     Wait Until Page Contains    koodi500 - Koodi500    timeout=20
     Wait Until Page Contains    koodi503 - Koodi503    timeout=20
@@ -815,7 +816,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
     Select breadcrump link 2
     Import codes in CSV format
-    Upload codes    ${Codes_update_sub_code_list_csv}
+    ${csv_file_path}=   Create update sub codelist csv
+    Upload codes    ${csv_file_path}
     Click element that contains text        testcode57 - Testcode 57    timeout=20
     Wait Until Page Contains    Liittyvä koodisto    timeout=20
     Wait Until Page Contains    200 - Linkkikoodisto    timeout=20
@@ -1182,7 +1184,8 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Select breadcrump link 2
     Click Code List Info Tab
     Wait Until Page Contains    Koodiston uusi kuvaus    timeout=20
-    Update code list    ${Code_list_with_30_Codes_updated_csv}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
+    ${csv_file_path}=   Create update codelist with 30 codes csv
+    Update code list    ${csv_file_path}    ${CODE_LIST_24}    ${FILE_FORMAT_CSV}
 
     Click Element with wait   ${CODELIST_INFO_TAB}       timeout=30
     Wait Until Page Contains    Koodiston uusi kuvaus numero 2    timeout=20
@@ -1202,7 +1205,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Element with wait   ${FILE_FORMAT_BTN}        timeout=20
     Click Element with wait   ${FILE_FORMAT_CSV}        timeout=20
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_with_30_Codes_invalid_codevalue_csv}
+
+    ${csv_file_path}=   Create invalid update codelist with 30 codes csv
+    Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
 
     Click Element with wait   ${UPLOAD_FILE_BTN}        timeout=20
     Wait Until Page Contains    ${Error_invalid_codevalue}    timeout=20
@@ -1321,8 +1326,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Search and open codelist    ${CODE_LIST_7}
 
     Import codes in CSV format
-    Upload codes    ${Codes_with_special_characters_csv}
-    Wait Until Page Contains    11 koodia    timeout=20
+    ${csv_file_path}=           Create codes with special characters csv
+    Upload codes                ${csv_file_path}
+    Wait Until Page Contains    11 koodia     timeout=20
     [Teardown]    Remove codelist teardown    ${CODE_LIST_7}
 
 542. Import codes with existing order number
@@ -1333,8 +1339,10 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Search and open codelist    ${CODE_LIST_4}
 
     Import codes in CSV format
-    Upload codes    ${Codes_with_special_characters_csv}
+    ${csv_file_path}=           Create codes with special characters csv
+    Upload codes                ${csv_file_path}
     Wait Until Page Contains    12 koodia    timeout=20
+
     Import codes in Excel format
     Upload codes    ${Codes_with_order}
     Wait Until Page Contains    22 koodia    timeout=20
