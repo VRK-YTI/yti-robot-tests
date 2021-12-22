@@ -163,89 +163,89 @@ Create terminology test concepts for status filter csv
 
 Create terminology test concepts for status filter 2 csv
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mercury  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Venus  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Earth  synonym_en=  prefLabel_sv=  status=${SUGGESTED}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mars  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Jupiter  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
+    ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
     ...  definition_fi=Saturnuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Saturn
     ...  synonym_en=  prefLabel_sv=  status=${SUPERSEDED}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=
+    ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=
     ...  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=
     ...  prefLabel_sv=  status=${RETIRED}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
+    ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
     ...  definition_fi=Neptunuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune
     ...  synonym_en=  prefLabel_sv=  status=${INVALID}
     [Return]  ${csv_file_path}
 
 Create terminology concept reference csv
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mercury  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Venus  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Earth  synonym_en=  prefLabel_sv=  status=${SUGGESTED}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mars  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Jupiter  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
+    ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
     ...  definition_fi=Saturnuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Saturn  synonym_en=
     ...  prefLabel_sv=  status=${SUPERSEDED}
     Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=  prefLabel_sv=  status=${RETIRED}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
+    ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
     ...  definition_fi=Neptunuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune  synonym_en=
     ...  prefLabel_sv=  status=${INVALID}
     [Return]  ${csv_file_path}
 
 Create terminology Concepts with semicolon delimiter csv
     Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mercury  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Venus  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Earth  synonym_en=  prefLabel_sv=  status=${SUGGESTED}
     Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mars  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Jupiter  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
+    ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
     ...  definition_fi=Saturnuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=
     ...  prefLabel_en=Saturn  synonym_en=  prefLabel_sv=  status=${SUPERSEDED}
     Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=
+    ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=
     ...  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=
     ...  prefLabel_sv=  status=${RETIRED}
     ${csv_file_path}=   Append to csv with semicolon      ${TEST NAME}
-    ...  ï»¿prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
+    ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
     ...  definition_fi=Neptunuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune  synonym_en=
     ...  prefLabel_sv=  status=${INVALID}
     [Return]  ${csv_file_path}
