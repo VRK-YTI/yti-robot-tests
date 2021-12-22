@@ -517,9 +517,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Input Text with wait        ${NAMESPACE_PREFIX}     example
     Input Text with wait        ${NAMESPACE_PREFIX}     autom1
 
-    Click Element with wait     ${NAMESPACE_CREATE}
-    Click Element with wait     ${IMPORT_NAMESPACE}
-    Click Element with wait     ${CREATE_NEW_NAMESPACE}
+    Click Element with wait                     ${NAMESPACE_CREATE}
+    Wait until page does not contain element    ${NAMESPACE_CREATE}
+    Click Element with wait                     ${IMPORT_NAMESPACE}
+    Click Element with wait                     ${CREATE_NEW_NAMESPACE}
 
     Input Text with wait        ${NAMESPACE_LABEL}      autom2
     Input Text with wait        ${NAMESPACE_VALUE}      http://uri.suomi.fi/datamodel/ns/autom1/
