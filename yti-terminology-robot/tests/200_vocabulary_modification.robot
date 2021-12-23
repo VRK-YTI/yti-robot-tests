@@ -556,12 +556,12 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     wait until page does not contain element    //*[contains(text(), "456")]    timeout=30
     wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
 
-    #Close all browsers
-    #Open sanastot
-    #Select no group user
-    #wait until page does not contain element    //*[contains(text(), "123")]    timeout=30
-    #wait until page does not contain element    //*[contains(text(), "456")]    timeout=30
-    #wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
+    Close all browsers
+    Open sanastot
+    Select no group user
+    wait until page does not contain element    //*[contains(text(), "123")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "456")]    timeout=30
+    wait until page does not contain element    //*[contains(text(), "789")]    timeout=30
 
     [Teardown]    Test case teardown delete Terminologies    ${VOCABULARY_3}    ${VOCABULARY_4}    ${VOCABULARY_5}
 
