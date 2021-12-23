@@ -368,7 +368,7 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 
 212. Add concept reference
     [Documentation]    Create new vocabulary, import concepts and add concept reference.
-    [Tags]    sanastot    regression    test    200
+    [Tags]    sanastot    test    200
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
     Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
