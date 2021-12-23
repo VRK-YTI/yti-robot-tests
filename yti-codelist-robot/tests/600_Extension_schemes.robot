@@ -197,7 +197,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
     [Tags]    regression    koodistot    600    test
-    ${csv_file_path}=   Create calculation hierarchy csv    label_fi=JÃ¤sen
+    ${csv_file_path}=   Create calculation hierarchy csv
 
     Create codelist from Excel ${Code_list_with_30_Codes} to test with api
     Search and open codelist    ${CODE_LIST_16}

@@ -18,8 +18,8 @@ ${INVALID_CLASIFICATION}            P1.2
 ${DEFAULT_DESCRIPTION_EN}           Description
 ${DEFAULT_DESCRIPTION_FI}           Kuvaus
 ${UPDATED_DESCRIPTION_FI}           Koodiston uusi kuvaus numero 2
-${DEFAULT_DEFINITION_FI}            MÃ¤Ã¤ritelmÃ¤
-${UPDATED_DEFINITION_FI}            Koodiston uusi mÃ¤Ã¤ritelmÃ¤ numero 2
+${DEFAULT_DEFINITION_FI}            Määritelmä
+${UPDATED_DEFINITION_FI}            Koodiston uusi määritelmä numero 2
 ${DEFAULT_DEFINITION_EN}            Definition
 
 ${CODE_LINKS}                       https://www.suomi.fi/etusivu/ | https://yle.fi/ | https://creativecommons.org/publicdomain/zero/1.0/ | https://www.suomi.fi/viestit
@@ -71,7 +71,7 @@ Create invalid CLASSIFICATION csv
     [Return]  ${csv_file_path}
 
 Create invalid member csv
-    [Arguments]     ${code}=testcode28  ${preflabel_fi}=JÃ¤sen1  ${preflabel_en}=Member1
+    [Arguments]     ${code}=testcode28  ${preflabel_fi}=Jäsen1  ${preflabel_en}=Member1
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  UNARYOPERATOR=${UNARYOPERATOR_INVALID}  COMPARISONOPERATOR=${COMPARISONOPERATOR}  CODE=${code}
     ...  PREFLABEL_FI=${preflabel_fi}  PREFLABEL_EN=${preflabel_en}  PREFLABEL_SV=  RELATION=  ORDER=
@@ -91,7 +91,7 @@ Create Calc def hierarchy extensions csv
     [Return]  ${csv_file_path}
 
 Create calculation hierarchy csv
-    [Arguments]     ${code_prefix}=testcode  ${codecount}=15  ${label_en}=Member  ${label_fi}=jasen
+    [Arguments]     ${code_prefix}=testcode  ${codecount}=15  ${label_en}=Member  ${label_fi}=jäsen
     FOR    ${index}    IN RANGE    1    ${codecount}
         ${code_index}=      Evaluate    int(${index}) + int(27)
         ${preflabel_fi}=    Catenate    ${label_fi}${index}
@@ -401,15 +401,15 @@ Create concepts from controlled vocabularies csv
     ...  synonym_fi=tutkielma  example_fi=esim  prefLabel_en=research  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${file_name}
     ...  prefLabel_fi=tutkija  broader_fi=  related_fi=hutkija  isPartOf_fi=hotkija
-    ...  definition_fi=henkilÃ¶ joka ammattimaisesti tieteellisiÃ¤ menetelmiÃ¤ kÃ¤yttÃ¤en tekee tutkimusta
+    ...  definition_fi=henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
     ...  definition_en=Person who does the research  note_fi=Huomautus  synonym_fi=tiedemies  example_fi=esimerkki
     ...  prefLabel_en=researcher  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${file_name}
-    ...  prefLabel_fi=hutkija  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=henkilÃ¶, joka hutkii ammatikseen
-    ...  definition_en=  note_fi=huomio  synonym_fi=  example_fi=TÃ¤mÃ¤ on esimerkki  prefLabel_en=  synonym_en=
+    ...  prefLabel_fi=hutkija  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=henkilö, joka hutkii ammatikseen
+    ...  definition_en=  note_fi=huomio  synonym_fi=  example_fi=Tämä on esimerkki  prefLabel_en=  synonym_en=
     ...  prefLabel_sv=  status=${VALID}
     ${csv_file_path}=   Append to csv      ${file_name}
-    ...  prefLabel_fi=hotkija  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=henkilÃ¶, joka hotkii kaiken
+    ...  prefLabel_fi=hotkija  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=henkilö, joka hotkii kaiken
     ...  definition_en=Person who eats everything  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi  prefLabel_en=
     ...  synonym_en=  prefLabel_sv=  status=${VALID}
     [Return]  ${csv_file_path}
