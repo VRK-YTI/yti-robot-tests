@@ -214,10 +214,22 @@ Create terminology concept reference csv
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=  definition_fi=Uranuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=  prefLabel_sv=  status=${RETIRED}
-    ${csv_file_path}=   Append to csv      ${TEST NAME}
+    Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
     ...  definition_fi=Neptunuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune  synonym_en=
     ...  prefLabel_sv=  status=${INVALID}
+    Append to csv      ${TEST NAME}
+    ...  prefLabel_fi=Aurinko  broader_fi=  related_fi=  isPartOf_fi=
+    ...  definition_fi=Auringon määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Sun  synonym_en=
+    ...  prefLabel_sv=  status=${VALID}
+    Append to csv      ${TEST NAME}
+    ...  prefLabel_fi=Kuu  broader_fi=  related_fi=  isPartOf_fi=Maa
+    ...  definition_fi=Kuun määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Moon  synonym_en=
+    ...  prefLabel_sv=  status=${VALID}
+    ${csv_file_path}=   Append to csv      ${TEST NAME}
+    ...  prefLabel_fi=Planeetta  broader_fi=  related_fi=  isPartOf_fi=
+    ...  definition_fi=N  note_fi=  synonym_fi=  example_fi=  prefLabel_en=  synonym_en=Planet
+    ...  prefLabel_sv=  status=${VALID}
     [Return]  ${csv_file_path}
 
 Create terminology Concepts with semicolon delimiter csv
