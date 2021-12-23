@@ -13,20 +13,20 @@ Create terminology test concepts csv
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=tutkimus  broader_fi=tutkija  related_fi=hutkija  isPartOf_fi=hotkija
     ...  definition_fi=systemaattista ja luovaa toimintaa  note_fi=huomio  synonym_fi=tutkielma  synonym_fi=tutkielma1
-    ...  example_fi=TÃ¤mÃ¤ on esimerkki  prefLabel_en=research  synonym_en=  prefLabel_sv=  status=
+    ...  example_fi=Tämä on esimerkki  prefLabel_en=research  synonym_en=  prefLabel_sv=  status=
      Append to csv      ${TEST NAME}
     ...  prefLabel_fi=tutkija  broader_fi=  related_fi=hutkija  isPartOf_fi=hotkija
-    ...  definition_fi=henkilÃ¶ joka ammattimaisesti tieteellisiÃ¤ menetelmiÃ¤ kÃ¤yttÃ¤en tekee tutkimusta
-    ...  note_fi=Huomautus  synonym_fi=tiedemies  synonym_fi=tiedemies1  example_fi=TÃ¤mÃ¤ on esimerkki
+    ...  definition_fi=henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
+    ...  note_fi=Huomautus  synonym_fi=tiedemies  synonym_fi=tiedemies1  example_fi=Tämä on esimerkki
     ...  prefLabel_en=researcher  synonym_en=  prefLabel_sv=  status=
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hutkija  broader_fi=  related_fi=hotkija  isPartOf_fi=hotkija
-    ...  definition_fi=henkilÃ¶, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  synonym_fi=
-    ...  example_fi=TÃ¤mÃ¤ on esimerkki  prefLabel_en=  synonym_en=  prefLabel_sv=  status=
+    ...  definition_fi=henkilö, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  synonym_fi=
+    ...  example_fi=Tämä on esimerkki  prefLabel_en=  synonym_en=  prefLabel_sv=  status=
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hotkija  broader_fi=hutkija  related_fi=hutkija  isPartOf_fi=hutkija
-    ...  definition_fi=henkilÃ¶, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  synonym_fi=ahne1
-    ...  example_fi=TÃ¤mÃ¤ on esimerkki  prefLabel_en=  synonym_en=  prefLabel_sv=  status=
+    ...  definition_fi=henkilö, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  synonym_fi=ahne1
+    ...  example_fi=Tämä on esimerkki  prefLabel_en=  synonym_en=  prefLabel_sv=  status=
     [Return]  ${csv_file_path}
 
 Create terminology invalid related concepts csv
@@ -36,16 +36,16 @@ Create terminology invalid related concepts csv
     ...  prefLabel_en=research  synonym_en=  prefLabel_sv=  status=${DRAFT}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=tutkija  broader_fi=hutkija  related_fi=hutkija  isPartOf_fi=hotkija
-    ...  definition_fi=henkilÃ¶ joka ammattimaisesti tieteellisiÃ¤ menetelmiÃ¤ kÃ¤yttÃ¤en tekee tutkimusta
+    ...  definition_fi=henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
     ...  note_fi=Huomautus  synonym_fi=tiedemies  example_fi=esimerkki  prefLabel_en=researcher  synonym_en=
     ...  prefLabel_sv=  status=${DRAFT}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hutkija  broader_fi=joku  related_fi=joku  isPartOf_fi=joku
-    ...  definition_fi=henkilÃ¶, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  example_fi=TÃ¤mÃ¤ on esimerkki
+    ...  definition_fi=henkilö, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  example_fi=Tämä on esimerkki
     ...  prefLabel_en=  synonym_en=  prefLabel_sv=  status=${DRAFT}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hotkija  broader_fi=joku  related_fi=joku  isPartOf_fi=joku
-    ...  definition_fi=henkilÃ¶, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
+    ...  definition_fi=henkilö, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
     ...  prefLabel_en=  synonym_en=  prefLabel_sv=  status=${DRAFT}
     [Return]  ${csv_file_path}
 
@@ -77,16 +77,16 @@ Create terminology concepts with invalid column csv
     ...  prefLabel_en=research  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=tutkija  broader_fi=hutkija  related_fi=hutkija  isPartOf_fi=hotkija  definition=
-    ...  definition_fi=henkilÃ¶ joka ammattimaisesti tieteellisiÃ¤ menetelmiÃ¤ kÃ¤yttÃ¤en tekee tutkimusta
+    ...  definition_fi=henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
     ...  note_fi=Huomautus  synonym_fi=tiedemies  example_fi=esimerkki  prefLabel_en=researcher  synonym_en=
     ...  prefLabel_sv=  status=${DRAFT}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hutkija  broader_fi=  related_fi=  isPartOf_fi=  definition=
-    ...  definition_fi=henkilÃ¶, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  example_fi=TÃ¤mÃ¤ on esimerkki
+    ...  definition_fi=henkilö, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  example_fi=Tämä on esimerkki
     ...  prefLabel_en=  synonym_en=  prefLabel_sv=  status=${DRAFT}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hotkija  broader_fi=  related_fi=  isPartOf_fi=  definition=
-    ...  definition_fi=henkilÃ¶, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
+    ...  definition_fi=henkilö, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
     ...  prefLabel_en=  synonym_en=  prefLabel_sv=  status=${DRAFT}
     [Return]  ${csv_file_path}
 
@@ -97,16 +97,16 @@ Create terminology concepts with invalid status value csv
     ...  prefLabel_en=research  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=tutkija  broader_fi=  related_fi=hutkija  isPartOf_fi=hotkija
-    ...  definition_fi=henkilÃ¶ joka ammattimaisesti tieteellisiÃ¤ menetelmiÃ¤ kÃ¤yttÃ¤en tekee tutkimusta
+    ...  definition_fi=henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
     ...  note_fi=Huomautus  synonym_fi=tiedemies  example_fi=esimerkki  prefLabel_en=researcher  synonym_en=
     ...  prefLabel_sv=  status=${xxxxx}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hutkija  broader_fi=  related_fi=  isPartOf_fi=
-    ...  definition_fi=henkilÃ¶, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  example_fi=TÃ¤mÃ¤ on esimerkki
+    ...  definition_fi=henkilö, joka hutkii ammatikseen  note_fi=huomio  synonym_fi=  example_fi=Tämä on esimerkki
     ...  prefLabel_en=  synonym_en=  prefLabel_sv=  status=${VALID}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hotkija  broader_fi=  related_fi=  isPartOf_fi=
-    ...  definition_fi=henkilÃ¶, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
+    ...  definition_fi=henkilö, joka hotkii kaiken  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
     ...  prefLabel_en=  synonym_en=  prefLabel_sv=  status=${VALID}
     [Return]  ${csv_file_path}
 
@@ -118,135 +118,135 @@ Create terminology concepts with duplicate definition columns csv
     ...  status=${VALID}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=tutkija  broader_fi=  related_fi=hutkija  isPartOf_fi=hotkija
-    ...  definition_fi=henkilÃ¶ joka ammattimaisesti tieteellisiÃ¤ menetelmiÃ¤ kÃ¤yttÃ¤en tekee tutkimusta
-    ...  definition_fi=henkilÃ¶ joka ammattimaisesti tieteellisiÃ¤ menetelmiÃ¤ kÃ¤yttÃ¤en tekee tutkimusta2
+    ...  definition_fi=henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta
+    ...  definition_fi=henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta2
     ...  note_fi=Huomautus  synonym_fi=tiedemies  example_fi=esimerkki  prefLabel_en=researcher  synonym_en=
     ...  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=hutkija  broader_fi=  related_fi=  isPartOf_fi=
-    ...  definition_fi=henkilÃ¶, joka hutkii ammatikseen  definition_fi=henkilÃ¶, joka hutkii ammatikseen2
-    ...  note_fi=huomio  synonym_fi=  example_fi=TÃ¤mÃ¤ on esimerkki  prefLabel_en=  synonym_en=  prefLabel_sv=
+    ...  definition_fi=henkilö, joka hutkii ammatikseen  definition_fi=henkilö, joka hutkii ammatikseen2
+    ...  note_fi=huomio  synonym_fi=  example_fi=Tämä on esimerkki  prefLabel_en=  synonym_en=  prefLabel_sv=
     ...  status=${VALID}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=hotkija  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=henkilÃ¶, joka hotkii kaiken
-    ...  definition_fi=henkilÃ¶, joka hotkii kaiken2  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
+    ...  prefLabel_fi=hotkija  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=henkilö, joka hotkii kaiken
+    ...  definition_fi=henkilö, joka hotkii kaiken2  note_fi=huom  synonym_fi=ahne  example_fi=esimerkiksi
     ...  prefLabel_en=  synonym_en=  prefLabel_sv=  status=${VALID}
     [Return]  ${csv_file_path}
 
 Create terminology test concepts for status filter csv
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mercury  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Venus  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan määritelmä  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Earth  synonym_en=  prefLabel_sv=  status=${SUGGESTED}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin määritelmä  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Mars  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Jupiter  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=  definition_fi=Saturnuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=  definition_fi=Saturnuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Saturn  synonym_en=  prefLabel_sv=  status=${SUPERSEDED}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=  definition_fi=Uranuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=  prefLabel_sv=  status=${RETIRED}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
-    ...  definition_fi=Neptunuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune
+    ...  definition_fi=Neptunuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune
     ...  synonym_en=  prefLabel_sv=  status=${INVALID}
     [Return]  ${csv_file_path}
 
 Create terminology test concepts for status filter 2 csv
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mercury  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Venus  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan määritelmä  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Earth  synonym_en=  prefLabel_sv=  status=${SUGGESTED}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mars  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Jupiter  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
-    ...  definition_fi=Saturnuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Saturn
+    ...  definition_fi=Saturnuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Saturn
     ...  synonym_en=  prefLabel_sv=  status=${SUPERSEDED}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=
-    ...  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=
+    ...  definition_fi=Uranuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=
     ...  prefLabel_sv=  status=${RETIRED}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
-    ...  definition_fi=Neptunuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune
+    ...  definition_fi=Neptunuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune
     ...  synonym_en=  prefLabel_sv=  status=${INVALID}
     [Return]  ${csv_file_path}
 
 Create terminology concept reference csv
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mercury  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Venus  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan määritelmä  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Earth  synonym_en=  prefLabel_sv=  status=${SUGGESTED}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mars  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Jupiter  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
-    ...  definition_fi=Saturnuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Saturn  synonym_en=
+    ...  definition_fi=Saturnuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Saturn  synonym_en=
     ...  prefLabel_sv=  status=${SUPERSEDED}
     Append to csv      ${TEST NAME}
-    ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=  definition_fi=Uranuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=  prefLabel_sv=  status=${RETIRED}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
-    ...  definition_fi=Neptunuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune  synonym_en=
+    ...  definition_fi=Neptunuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune  synonym_en=
     ...  prefLabel_sv=  status=${INVALID}
     [Return]  ${csv_file_path}
 
 Create terminology Concepts with semicolon delimiter csv
     Append to csv with semicolon      ${TEST NAME}
-    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Merkurius  broader_fi=  related_fi=  isPartOf_fi=  definition_fi=Merkuriuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mercury  synonym_en=  prefLabel_sv=  status=${DRAFT}
     Append to csv with semicolon      ${TEST NAME}
-    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Venus  broader_fi=Merkurius  related_fi=  isPartOf_fi=  definition_fi=Venuksen määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Venus  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv with semicolon      ${TEST NAME}
-    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan mÃ¤Ã¤ritelmÃ¤  note_fi=
+    ...  prefLabel_fi=Maa  broader_fi=Venus  related_fi=  isPartOf_fi=  definition_fi=Maan määritelmä  note_fi=
     ...  synonym_fi=  example_fi=  prefLabel_en=Earth  synonym_en=  prefLabel_sv=  status=${SUGGESTED}
     Append to csv with semicolon      ${TEST NAME}
-    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Mars  broader_fi=Maa  related_fi=Maa  isPartOf_fi=  definition_fi=Marsin määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Mars  synonym_en=  prefLabel_sv=  status=${INCOMPLETE}
     Append to csv with semicolon      ${TEST NAME}
-    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin mÃ¤Ã¤ritelmÃ¤
+    ...  prefLabel_fi=Jupiter  broader_fi=Mars  related_fi=  isPartOf_fi=  definition_fi=Jupiterin määritelmä
     ...  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Jupiter  synonym_en=  prefLabel_sv=  status=${VALID}
     Append to csv with semicolon      ${TEST NAME}
     ...  prefLabel_fi=Saturnus  broader_fi=Jupiter  related_fi=  isPartOf_fi=
-    ...  definition_fi=Saturnuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=
+    ...  definition_fi=Saturnuksen määritelmä  note_fi=  synonym_fi=  example_fi=
     ...  prefLabel_en=Saturn  synonym_en=  prefLabel_sv=  status=${SUPERSEDED}
     Append to csv with semicolon      ${TEST NAME}
     ...  prefLabel_fi=Uranus  broader_fi=Saturnus  related_fi=  isPartOf_fi=
-    ...  definition_fi=Uranuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=
+    ...  definition_fi=Uranuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Uranus  synonym_en=
     ...  prefLabel_sv=  status=${RETIRED}
     ${csv_file_path}=   Append to csv with semicolon      ${TEST NAME}
     ...  prefLabel_fi=Neptunus  broader_fi=Uranus  related_fi=  isPartOf_fi=Saturnus
-    ...  definition_fi=Neptunuksen mÃ¤Ã¤ritelmÃ¤  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune  synonym_en=
+    ...  definition_fi=Neptunuksen määritelmä  note_fi=  synonym_fi=  example_fi=  prefLabel_en=Neptune  synonym_en=
     ...  prefLabel_sv=  status=${INVALID}
     [Return]  ${csv_file_path}
 
