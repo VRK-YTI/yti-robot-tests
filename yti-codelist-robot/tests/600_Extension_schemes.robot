@@ -683,8 +683,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait      ${EXPORT_DDL}    timeout=20
     Click element with wait      ${EXPORT_CROSS_REFERENCE_CSV}    timeout=30
 
-    # Delete extension
-    # Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
+    Delete extension
+    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
 
     [Teardown]    Remove codelist teardown    600    800
 
