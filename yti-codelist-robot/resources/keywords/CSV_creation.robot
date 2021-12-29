@@ -91,7 +91,7 @@ Create Calc def hierarchy extensions csv
     [Return]  ${csv_file_path}
 
 Create calculation hierarchy csv
-    [Arguments]     ${code_prefix}=testcode  ${codecount}=15  ${label_en}=Member  ${label_fi}=jäsen
+    [Arguments]     ${code_prefix}=testcode  ${codecount}=15  ${label_en}=Member  ${label_fi}=Jäsen
     FOR    ${index}    IN RANGE    1    ${codecount}
         ${code_index}=      Evaluate    int(${index}) + int(27)
         ${preflabel_fi}=    Catenate    ${label_fi}${index}
