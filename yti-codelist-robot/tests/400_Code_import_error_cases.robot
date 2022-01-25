@@ -38,10 +38,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
 
+    ${excel_file_path}=    Create excel Codes codevalue missing
     Import codes in Excel format
-    Upload codes    ${Codes_codevalue_missing}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_no_codeValue}    timeout=20
     Cancel code import
 
@@ -55,9 +57,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) with missing STATUS value and check error message
     [Tags]    regression    test    400    status_change
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes status missing    
     Import codes in Excel format
-    Upload codes    ${Codes_status_missing}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_no_status_value}    timeout=20
     Cancel code import
 
@@ -71,9 +76,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) with invalid STATUS value and check error message
     [Tags]    regression    test    400    status_change
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with invalid status
     Import codes in Excel format
-    Upload codes    ${Codes_with_invalid_status}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_with_invalid_status}    timeout=20
     Cancel code import
 
@@ -87,9 +95,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) with invalid BROADER value and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist             ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with invalid broader value
     Import codes in Excel format
-    Upload codes                ${Codes_with_invalid_broader}
+    Upload codes                ${excel_file_path}
     Wait Until Page Contains    ${Error_with_invalid_broader}               timeout=20
     Cancel code import
 
@@ -103,9 +114,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) when BROADER code references code value of the code itself and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist             ${testiautomaatiokoodisto1_with_codes}      ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with same broader value
     Import codes in Excel format
-    Upload codes                ${Codes_with_same_broader}
+    Upload codes                ${excel_file_path}
     Wait Until Page Contains    ${Error_with_same_broader}                  timeout=20
     Cancel code import
 
@@ -119,9 +133,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) with duplicate columns and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist             ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with duplicate columns
     Import codes in Excel format
-    Upload codes                ${Codes_with_duplicate_columns}
+    Upload codes                ${excel_file_path}
     Wait Until Page Contains    ${Error_with_duplicate_columns}    timeout=20
     Cancel code import
 
@@ -135,18 +152,24 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel) with invalid HIERARCHYLEVEL and check that import is successful.
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist                     ${testiautomaatiokoodisto1_with_codes}      ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with invalid HL value
     Import codes in Excel format
-    Upload codes                        ${Codes_with_invalid_HL}
+    Upload codes                        ${excel_file_path}
     Wait Until Page Contains            8 koodia                                    timeout=20
 
 407. Import codes with CODEVALUE column missing
     [Documentation]    Import codes (Excel, CSV) with CODEVALUE column missing and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist             ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes without codevalue column
     Import codes in Excel format
-    Upload codes                ${Codes_without_codevalue_column}
+    Upload codes                ${excel_file_path}
     Wait Until Page Contains    ${Error_with_codevalue_column_missing}    timeout=20
     Cancel code import
 
@@ -160,9 +183,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import codes (Excel, CSV) with invalid start date and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist             ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with invalid startdate
     Import codes in Excel format
-    Upload codes                ${Codes_with_invalid_startdate}
+    Upload codes                ${excel_file_path}
     Wait Until Page Contains    ${Error_with_invalid_startdate}    timeout=20
     Cancel code import
 
@@ -176,9 +202,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import codes (Excel, CSV) with invalid ID values and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with invalid ID
     Import codes in Excel format
-    Upload codes    ${Codes_with_invalid_ID}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_with_invalid_ID}    timeout=20
     Cancel code import
 
@@ -192,9 +221,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Update Code status from VALID to DRAFT with import function (Excel, CSV) and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Update code valid draft
     Import codes in Excel format
-    Upload codes    ${Update_Code_valid_draft}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_with_update_code_valid_draft}    timeout=20
     Cancel code import
 
@@ -208,9 +240,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import codes (Excel, CSV) with duplicate CODEVALUES and check error message
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Duplicate codes
     Import codes in Excel format
-    Upload codes    ${Duplicate_Codes}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_with_duplicate_codes}    timeout=20
     Cancel code import
 
@@ -224,9 +259,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) with invalid CODEVALUE and check error message. YTI-703
     [Tags]    regression    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes invalid codevalue
     Import codes in Excel format
-    Upload codes    ${Codes_invalid_codevalue}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_invalid_codeValue}    timeout=20
     Cancel code import
 
@@ -240,9 +278,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes (Excel, CSV) with missing ORDER value and check error message. YTI-650
     [Tags]    koodistot
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
     Import codes in Excel format
-    Upload codes    ${Codes_with_missing_order_value}
+    ${excel_file_path}=    Create excel Codes with missing order
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_missing_order}    timeout=20
     Cancel code import
 
@@ -256,9 +297,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes with same ORDER values in Excel/CSV and check error message
     [Tags]    regression    koodistot    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with same order values  
     Import codes in Excel format
-    Upload codes    ${Same_order_values}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_same_order_values}    timeout=20
     Cancel code import
 
@@ -272,9 +316,11 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes with existing ORDER values in Code list and check error message
     [Tags]    koodistot
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
     Import codes in Excel format
-    Upload codes    ${Codes_with_order_values}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_existing_order_values}    timeout=20
     Cancel code import
 
@@ -282,9 +328,12 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes with invalid ORDER values in Excel/CSV and check error message
     [Tags]    regression    koodistot    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
+    ${excel_file_path}=    Create excel Codes with invalid order values
     Import codes in Excel format
-    Upload codes    ${Codes_with_invalid_order_values}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_invalid_order_value}    timeout=20
     Cancel code import
 
@@ -298,14 +347,18 @@ ${Error_empty_Excel}    Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tied
     [Documentation]    Import Codes with Excel-file with no content and check error message
     [Tags]    regression    koodistot    test    400
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
+
     Import codes in Excel format
-    Upload codes    ${empty_file}
+    ${excel_file_path}=    Create excel empty file
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_empty_Excel}    timeout=20
     Cancel code import
 
+    ${excel_file_path}=    Create excel No content excel
     Import codes in Excel format
-    Upload codes    ${No_content_excel}
+    Upload codes    ${excel_file_path}
     Wait Until Page Contains    ${Error_no_content}    timeout=20
     Cancel code import
 

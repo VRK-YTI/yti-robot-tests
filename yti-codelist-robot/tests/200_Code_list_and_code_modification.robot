@@ -15,7 +15,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 200. Modify DRAFT Code
     [Documentation]    Modify name, description and short name values for DRAFT code.
     [Tags]    regression    test    200
-    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_4}
     Click element that contains text    ${TEST_CODE_1}
@@ -36,7 +37,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Add link to the draft code, check link functionalty, check that it is not possible to add
     ...    same link url again and remove the link.
     [Tags]    regression    test    200
-    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_4}
     Click element that contains text    ${TEST_CODE_1}
@@ -86,7 +88,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 202. Add Creative Commons license to DRAFT Code
     [Documentation]    Add Creative Commons license to draft code and remove the license.
     [Tags]    regression    test    200
-    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_4}
     Click element that contains text    ${TEST_CODE_1}      timeout=20
@@ -114,7 +117,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Add link to the DRAFT code, modify link name, check the name from TIEDOT-tab
     ...    and remove the link. YTI-444, YTI-614.
     [Tags]    regression    test    200
-    Create codelist from Excel ${Codes_list_with_languages} to test with api
+    ${excel_file_path}=    Create excel Code list with languages
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_9}
     Wait Until Page Contains    30 koodia    timeout=20
@@ -152,7 +156,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Set validity start date and end date for DRAFT code and clear dates at the end.
     ...    YTI-438
     [Tags]    regression    test    200
-    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_4}
     Click element that contains text  ${TEST_CODE_1}    timeout=20
@@ -175,7 +180,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 205. Set end date before start date for Code list
     [Documentation]    Set end date before start date for code list and check error message.
     [Tags]    regression    test    200
-    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_4}
     Click element that contains text   ${TEST_CODE_1}                                           timeout=20
@@ -200,7 +206,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 206. Change the status of VALID Code list
     [Documentation]    Change the status of VALID Code list. YTI-445
     [Tags]    regression    test    200    status_change
-    Create codelist from Excel ${testiautomaatiokoodisto2_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto2 with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_6}
     Modify code list
@@ -220,7 +227,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 207. Modify Valid Code list
     [Documentation]    Change values for VALID Code list. YTI-523, YTI-873.
     [Tags]    regression    test    200
-    Create codelist from Excel ${testiautomaatiokoodisto2_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto2 with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_6}
     Modify code list
@@ -245,7 +253,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Add classification for DRAFT Code list, check filtering according to the classification from frontpage,
     ...    remove classification.
     [Tags]    regression    test    200
-    Create codelist from Excel ${testiautomaatiokoodisto_with_code} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto with code
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_4}
     Modify code list
@@ -272,7 +281,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 209. Add broader code for code when code is not found from the system
     [Documentation]    Add broader code for code when broader code is not found from the system. Check error message. YTI-499.
     [Tags]    koodistot    regression    test    200
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_16}
     Click element that contains text    Testcode 29                  timeout=20
@@ -291,10 +301,11 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait             ${REMOVE_CODE_BTN}           timeout=20
     Click element with wait             ${CONFIRMATION_YES_BTN}      timeout=20
 
+    Sleep             2
     Switch Browser    1
     Click element with wait             ${SAVE_CODE_MOD_BTN}         timeout=20
-
-    Wait until page contains    Koodia ei löydy.    timeout=20
+    
+    Wait until page contains    Koodia ei löydy.             timeout=60
     Click element with wait     ${CLOSE_ERROR_MESSAGE_BTN}   timeout=20
 
     [Teardown]    Remove codelist teardown    600
@@ -302,12 +313,14 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 210. Update code list values vith different languages
     [Documentation]    Import code list and update code list and code values vith different languages. YTI-674
     [Tags]    regression    test    200
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
 
-    Update code list    ${Code_list_codes_with_languages}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
+    ${excel_file_path}=    Create excel Code list codes with languages
+    Update code list    ${excel_file_path}    ${CODE_LIST_16}    ${FILE_FORMAT_Excel}
     Wait until page contains    30 koodia    timeout=60
 
     Click element that contains text    testcode28 - Testcode 28_fi                  timeout=20
@@ -340,7 +353,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    muutostieto_sv          timeout=60
     Import codes in Excel format
 
-    Upload codes    ${Update_codes_with_languages}
+    ${excel_file_path}=    Create excel Update codes with languages
+    Upload codes    ${excel_file_path}
 
     Wait Until Page Contains    30 koodia    timeout=60
     Click element that contains text    testcode28 - Testcode 28_sv     timeout=20
@@ -356,7 +370,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Change code statuses with code list status change. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
@@ -393,7 +408,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Change code statuses with mass function. YTI-41.
     [Tags]    regression    test    200    status_change
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
@@ -424,7 +440,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Change code statuses with mass function as superuser from Valid to Draft.
     ...    Check that status change is successful. YTI-41.
     [Tags]    regression    test    200    status_change
-    Create codelist from Excel ${Code_list_with_30_Codes_valid} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes valid
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
@@ -453,7 +470,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Change code statuses with mass function as superuser from Valid to Draft.
     ...    Check that status change is successful. YTI-41.
     [Tags]    regression    test    200    status_change
-    Create codelist from Excel ${Code_list_with_30_Codes_valid} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes valid
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
@@ -481,7 +499,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 215. Change code statuses with mass function and with invalid original status
     [Documentation]    Change code statuses with mass function and with invalid original status. Check Error message. YTI-41.
     [Tags]    regression    test    200    status_change
-    Create codelist from Excel ${Code_list_with_30_Codes_valid} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes valid
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_17}
     Wait Until Page Contains    30 koodia    timeout=60
@@ -503,7 +522,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 216. Enforce status transition rules with code status change mass function
     [Documentation]    Enforce status transition rules with code status change mass function for superuser. YTI-41.
     [Tags]    regression    test    200    status_change
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
@@ -547,18 +567,20 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 
     [Teardown]    Remove codelist teardown    600
 
-217. Import code list and codes with upper case/lower case status values
+217. Import code list and codes with upper case-lower case status values
     [Documentation]    Import code list and codes (Excel,CSV) with extra space and upper case/lower case letters in status values.
     ...    Check that import is successful.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
 
     Import codes in Excel format
-    Upload codes    ${Codes_status_with_space}
+    ${excel_file_path}=    Create excel Codes status with space
+    Upload codes    ${excel_file_path}
     Click element that contains text    testcode56 - Testcode 56        timeout=20
 
     Wait Until Page Contains    Koodin arvo    timeout=60
@@ -581,13 +603,15 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    Check that links are working when extra space is defined in HREF columns in code Excel.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${Code_list_with_30_codes_and_instructions_link} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 codes and instructions link
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_16}
     Wait Until Page Contains    30 koodia    timeout=60
     Import codes in Excel format
 
-    Upload codes    ${Code_links_with_space}
+    ${excel_file_path}=    Create excel Code links with space
+    Upload codes    ${excel_file_path}
 
     Click element that contains text    testcode57 - Testcode 57    timeout=20
 
@@ -651,7 +675,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list, codes and extension with different languages.
     ...    Try to remove languages that are in use in the code list and check error message. YTI-1048.
     [Tags]    regression    test    200
-    Create codelist from Excel ${Codes_list_and_extension_with_languages} to test with api
+    ${excel_file_path}=    Create excel Code list codes extensions and members with languages
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist            ${CODE_LIST_14}
     Wait Until Page Contains    25 koodia    timeout=20

@@ -16,7 +16,8 @@ ${CODELIST}                     900_testing_code_list
 900. Add and remove email subscription for new code list
     [Documentation]    Add and remove email subscription for new code list
     [Tags]    test    900
-    Upload codelist in Excel format     ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Upload codelist in Excel format     ${excel_file_path}    ${CODE_LIST_16}
 
     Return to Koodistot frontpage
     Search For Code List                ${CODE_LIST_16}

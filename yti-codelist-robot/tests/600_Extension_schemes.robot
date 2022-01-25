@@ -15,7 +15,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import Code list with extension and members (definition hierarchy), check that import is successfull,
     ...    modify member, export Excel and remove code list.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Codelist_Extensions_members} to test with api
+    ${excel_file_path}=    Create excel Codelist with def hierarchy extensions and members
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
 
     Wait Until Page Contains    testcode01 - Testikoodi 01    timeout=20
@@ -72,19 +73,24 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 601. Import code list with codes and import extension and members
     [Documentation]    Import code list with codes and import extension and members.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Wait Until Page Contains    testcode28 - Testcode 28    timeout=20
     Wait Until Page Contains    testcode29 - Testcode 29    timeout=20
     Wait Until Page Contains    30 koodia    timeout=20
-    Upload extension    ${Extension_definition_hierarchy}    ${FILE_FORMAT_EXCEL}
+    
+    ${excel_file_path}=    Create excel Extension definition hierarchy
+    Upload extension    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
 
     Click element with wait             //*[contains(@id,'555_view_extension')]     timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "JÄSENET")]            timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "TIEDOT")]             timeout=20
 
-    Upload members    ${Definition_hierarchy_members}    ${FILE_FORMAT_EXCEL}
+    ${excel_file_path}=    Create excel Definition hierarchy members
+    Upload members    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
     Wait Until Element Is Enabled    //*[contains(text(), "Testcode 29")]
     Click element with wait          //*[contains(text(), "Testcode 28")]    timeout=20
 
@@ -99,7 +105,9 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 602. Import new code list and create extension and members
     [Documentation]    Import new code list and create calculation hierarchy extension and member manually
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Wait Until Page Contains    testcode28 - Testcode 28    timeout=20
@@ -118,7 +126,9 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 603. Delete extension and member
     [Documentation]    Import new code list and create and delete calculation hierarchy extension and member.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Wait Until Page Contains    testcode28 - Testcode 28    timeout=20
@@ -149,17 +159,22 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 604. Modify extension member
     [Documentation]    Import new code list, import calculation hierarchy extension and members and modify member.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Wait Until Page Contains    testcode28 - Testcode 28    timeout=20
     Wait Until Page Contains    testcode29 - Testcode 29    timeout=20
-    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
+    
+    ${excel_file_path}=    Create excel Extension calculation hierarchy
+    Upload extension    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
 
     Click element with wait      //*[contains(@id,'555_view_extension')]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "TIEDOT")]    timeout=20
-    Upload members    ${Calculation_hierarchy_members}    ${FILE_FORMAT_EXCEL}
+    ${excel_file_path}=    Create excel Calculation hierarchy members
+    Upload members    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
 
     Wait Until Page Contains Element    //*[contains(text(), "- Jäsen2 · Testcode 29 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
     Click element with wait      //*[contains(text(), "- Jäsen1 · Testcode 28 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
@@ -197,19 +212,22 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
     [Tags]    regression    koodistot    600    test
-    ${csv_file_path}=   Create calculation hierarchy csv
 
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Wait Until Page Contains    testcode28 - Testcode 28    timeout=20
     Wait Until Page Contains    testcode29 - Testcode 29    timeout=20
-    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
+    
+    ${excel_file_path}=    Create excel Extension calculation hierarchy
+    Upload extension    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
 
     Click element with wait      //*[contains(@id,'555_view_extension')]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "JÄSENET")]    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "TIEDOT")]    timeout=20
 
+    ${csv_file_path}=   Create calculation hierarchy csv
     Upload members    ${csv_file_path}    ${FILE_FORMAT_CSV}
     Wait Until Page Contains Element    //*[contains(text(), "- Jäsen2 · Testcode 29 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
 
@@ -237,7 +255,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Extensions_without_codeschemes_value}
+    ${excel_file_path}=    Create excel Extensions without codeschemes value
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
 
     Click element with wait      ${UPLOAD_FILE_BTN}              timeout=20
     Wait Until Page Contains     ${Error_missing_codeschemes}    timeout=20
@@ -249,7 +268,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Extensions_invalid_code_in_members_sheet}
+    ${excel_file_path}=    Create excel Extensions invalid code in members sheet
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
 
     Click element with wait      ${UPLOAD_FILE_BTN}    timeout=20
     Wait Until Page Contains    ${Error_invalid_code}    timeout=20
@@ -261,7 +281,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Extensios_max_hierarchy_level}
+    ${excel_file_path}=    Create excel Extensions max hierarchy level
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
 
     Click element with wait      ${UPLOAD_FILE_BTN}    timeout=20
     Wait Until Page Contains    ${Error_max_hierarchy_level}    timeout=20
@@ -272,12 +293,17 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    and check that import is successful.
     [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
-    Search and open codelist    ${CODE_LIST_16}
 
-    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
+    Search and open codelist    ${CODE_LIST_16}
+    
+    ${excel_file_path}=    Create excel Extension calculation hierarchy
+    Upload extension    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
+
     Click element with wait      //*[contains(@id,'555_view_extension')]    timeout=20
-    Upload members    ${Unaryoperator_value_missing}    ${FILE_FORMAT_EXCEL}
+    ${excel_file_path}=    Create excel Calculation hierarchy members unaryoperator value missing
+    Upload members    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
     Wait Until Page Contains    14 jäsentä    timeout=20
     Wait Until Page Contains Element    //*[contains(text(), "- Jäsen1 · Testcode 28 · ${CODE_LIST_16} · Testirekisteri <=")]    timeout=20
 
@@ -288,8 +314,11 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    add codes from that code list to the extension member.
     [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${testiautomaatiokoodisto1_with_codes} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    #Upload codelist in excel format    ${excel_file_path}    ${CODE_LIST_2}
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}    False
@@ -318,7 +347,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    create new version of code list. Check that all values for codes, extensions and members are copied to the new
     ...    code list version. Export Excel and CSV for new code list version.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Extensions_new_version_creation} to test with api
+    ${excel_file_path}=    Create excel Extensions and members for new version creation
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
 
     Wait Until Page Contains    25 koodia    timeout=20
@@ -422,14 +452,18 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    and check error message.
     [Tags]    regression    koodistot    600    test
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
-    Search and open codelist    ${CODE_LIST_16}
 
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
+    Search and open codelist    ${CODE_LIST_16}
+    
+    ${excel_file_path}=    Create excel Extension calculation hierarchy
     Wait Until Page Contains    30 koodia    timeout=20
-    Upload extension    ${Extension_calculation_hierarchy}    ${FILE_FORMAT_EXCEL}
+    Upload extension    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
 
     Click element with wait      //*[contains(@id,'555_view_extension')]    timeout=20
-    Upload members    ${Invalid_unaryoperator_value}    ${FILE_FORMAT_EXCEL}
+    ${excel_file_path}=    Create excel Calculation members invalid unary operator
+    Upload members    ${excel_file_path}    ${FILE_FORMAT_EXCEL}
     Wait Until Page Contains    ${Error_member_value_invalid}    timeout=20
     Cancel code import
 
@@ -444,7 +478,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list with codes, calculation and definition hierarchy extensions and hierachial members,
     ...    Check that it is possible to remove code list when codes are in use in other resources in the same code list.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Extensions_new_version_creation} to test with api
+    ${excel_file_path}=    Create excel Extensions and members for new version creation
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
     Wait Until Page Contains    25 koodia    timeout=20
 
@@ -460,7 +495,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Wait Until Page Contains    30 koodia    timeout=20
@@ -480,7 +516,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list with codes, create new version from file and import extensions
     ...    in CSV format to the new code list version. Check that versions are listed correctly, YTI-1163.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Code_list_with_30_Codes_valid} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes valid
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_17}
 
     Wait Until Page Contains    30 koodia    timeout=20
@@ -493,7 +530,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait      ${FILE_FORMAT_Excel}    timeout=20
 
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Upload codelist    ${Code_list_with_30_Codes}    ${CODE_LIST_16}
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_16}
 
     ${csv_file_path}=   Create Calc def hierarchy extensions csv
     Upload extension    ${csv_file_path}    ${FILE_FORMAT_CSV}
@@ -515,8 +553,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    Check that changes take effect on extensions and members.
     [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${testiautomaatiokoodisto1_with_codes} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}    False
@@ -582,8 +622,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    Check that removing the code list is not possible. YTI-1229.
     [Tags]    koodistot    regression    600    test
     [Setup]    Test Case Setup Admin
-    Create codelist from Excel ${testiautomaatiokoodisto1_with_codes} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Create extension    ${CALCULATION_HIERARCHY}    ${EXTENSION_VALUE_1}    ${EXTENSION_NAME_1}    ${DRAFT_STATUS}    ${CODE_LIST_2}    False
@@ -620,7 +662,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 618. Create member with broader member
     [Documentation]    Import new code list and create calculation hierarchy extension. Create member with broader member manually.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Extensions_new_version_creation} to test with api
+    ${excel_file_path}=    Create excel Extensions and members for new version creation
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
 
     Wait Until Page Contains    testcode01 - Testikoodi 01    timeout=20
@@ -648,8 +691,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list, create members and create cross-reference list, export cross_reference list Excel and CSV
     ...    and delete cross-reference list and code lists.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_for_cross_reference_list_creation} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list and codes for cross reference list
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist    ${CODE_LIST_22}
     Wait Until Page Contains    30 koodia    timeout=20
@@ -692,8 +737,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import two code lists with codes, create calculation hierarchy extension and add another code list to the extension.
     ...    Create automatically members and check that members are created for each code from both code lists.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_for_cross_reference_list_creation} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list and codes for cross reference list
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist    ${CODE_LIST_22}
     Wait Until Page Contains    30 koodia    timeout=20
@@ -712,8 +759,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    without member creation and add other code list to the extension. Create missing members for the extensions
     ...    and check that members are created for each code from both code lists.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_for_cross_reference_list_creation} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list and codes for cross reference list
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -750,8 +799,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 622. Create missing members for the Cross-Reference list
     [Documentation]    Import code list and create Cross-Reference list. Create missing members for the Cross-Reference list.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_for_cross_reference_list_creation} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list and codes for cross reference list
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -779,8 +830,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 623. Remove code that is in use in Cross-Reference list
     [Documentation]    Try to remove code that is in use in Cross-Reference list and check error message
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_for_cross_reference_list_creation} to test with api
-    Create codelist from Excel ${Code_list_with_30_Codes} to test with api
+    ${excel_file_path}=    Create excel Code list and codes for cross reference list
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel Code list with 30 Codes
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist    ${CODE_LIST_22}
     Wait until page contains    30 koodia    timeout=20
@@ -822,7 +875,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 624. Create missing members for the extension and verify code list values
     [Documentation]    Create missing members for the extension and verify that code list values are correct after member creation.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_with_links_and_default_code} to test with api
+    ${excel_file_path}=    Create excel Code list with links and default code
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_23}
     Wait until page contains    30 koodia    timeout=60
 
@@ -857,7 +911,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 625. Import code list with Cross-Reference list extension
     [Documentation]    Import code list with Cross-Reference list extension and members, check that import is successfull,
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_with_cross_reference_list} to test with api
+    ${excel_file_path}=    Create excel Code list with cross reference list
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
 
     Wait until page contains    30 koodia    timeout=60
@@ -877,7 +932,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    create new version of code list. Try to remove code from code list and check that proper error message is displayed.
     ...    Remove extension and check that code list version history does not disappear. YTI-452, YTI-566.
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Extensions_new_version_creation} to test with api
+    ${excel_file_path}=    Create excel Extensions and members for new version creation
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
 
     Wait until page contains        25 koodia
@@ -914,8 +970,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import two code lists with extensions. Check that front page search with extensions and codes without prefLabel
     ...    is successfull.
     [Tags]    koodistot    regression    600    test    search
-    Create codelist from Excel ${filter_1_Code_list_three_extensions} to test with api
-    Create codelist from Excel ${filter_2_Code_list_one_extension} to test with api
+    ${excel_file_path}=    Create excel filter 1 Code list three extensions
+    Create codelist from Excel ${excel_file_path} to test with api
+    ${excel_file_path}=    Create excel filter 2 Code list one extension
+    Create codelist from Excel ${excel_file_path} to test with api
 
     Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    26 koodia    timeout=20
@@ -955,7 +1013,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Check that clearing the comparison operator and unary operator values
     ...    for Calculation hierarchy member is successfull, YTI-468.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_with_calculation_hierarchy_members} to test with api
+    ${excel_file_path}=    Create excel Code list calc hier members
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
 
@@ -984,7 +1043,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Add new calculation hierarchy member without unary operator and comparison operator values.
     ...    Check that modifying only one value (unary operator) for member is successful after member creation, YTI-468.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_with_calculation_hierarchy_members} to test with api
+    ${excel_file_path}=    Create excel Code list calc hier members
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
 
@@ -1009,7 +1069,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import new code list with definition hierarchy extension and members.
     ...    Check that correct error message is dispalyed when trying to import members with duplicate member values, YTI-503.
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_with_definition_hierarchy_members} to test with api
+    ${excel_file_path}=    Create excel Code list with def hierarchy extension and members
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
     Wait until page contains    30 koodia    timeout=20
 
@@ -1018,7 +1079,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait      ${FILE_FORMAT_BTN}    timeout=20
     Click element with wait      ${FILE_FORMAT_Excel}    timeout=20
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_member_id_values}
+    ${excel_file_path}=    Create excel Update code list with duplicate member id values
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
 
     Click element with wait      ${UPLOAD_FILE_BTN}    timeout=20
     Wait until page contains    ${Error_duplicate_member_id_values}    timeout=20
@@ -1031,10 +1093,12 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    codeValue and MEMBER_ID. YTI-639, YTI-696.
     [Tags]    regression    koodistot    test    600
     Import code list in Excel format
-    Upload codelist    ${Code_list_extensions_broader_members}    ${CODE_LIST_14}
+    ${excel_file_path}=    Create excel Codelist with codes extensions and broader members
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_14}
 
     Wait until page contains    25 koodia    timeout=20
-    Update code list    ${Code_list_with_update_members}    ${CODE_LIST_14}    ${FILE_FORMAT_Excel}
+    ${excel_file_path}=    Create excel Code list with update members
+    Update code list    ${excel_file_path}    ${CODE_LIST_14}    ${FILE_FORMAT_Excel}
     Click element with wait      ${EXTENSIONS_TAB}    timeout=60
     Click element with wait      //*[contains(@id,'222_view_extension')]    timeout=30
 
@@ -1053,7 +1117,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Import code list with codes, extensions and members,
     ...    Check that JSON export for code list is successful. YTI-18
     [Tags]    regression    koodistot    600    test
-    Create codelist from Excel ${Extensions_new_version_creation} to test with api
+    ${excel_file_path}=    Create excel Extensions and members for new version creation
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
 
@@ -1075,7 +1140,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     [Documentation]    Update members with invalid relation value
     ...    and check error message
     [Tags]    regression    test    600
-    Create codelist from Excel ${Code_list_extensions_broader_members} to test with api
+    ${excel_file_path}=    Create excel Codelist with codes extensions and broader members
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_14}
     Wait until page contains    25 koodia    timeout=20
 
@@ -1084,7 +1150,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait      ${FILE_FORMAT_BTN}    timeout=20
     Click element with wait      ${FILE_FORMAT_Excel}    timeout=20
     Wait until page contains element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose File    ${FILE_UPLOAD_BTN}    ${Update_members_invalid_relation}
+    ${excel_file_path}=    Create excel Update members invalid relation
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
 
     Click element with wait      ${UPLOAD_FILE_BTN}    timeout=20
     Wait until page contains    ${Error_invalid_member_relation}    timeout=20
@@ -1095,7 +1162,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 634. Import code list and extensions with 100 members
     [Documentation]    Import Code list with extensions and 100 members, check that import is successfull. YTI-691
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${code_list_extensions_100_members} to test with api
+    ${excel_file_path}=    Create excel Code list with extensions and 100 members
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_25}
     Wait until page contains    115 koodia    timeout=90
 
@@ -1116,7 +1184,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 635. Front page deep search with multiple extensions and codes
     [Documentation]    Import code list with multiple codes and extensions. Check that front page deep search function is successful.
     [Tags]    koodistot    regression    600    test    search
-    Create codelist from Excel ${Code_list_with_multiple_extensions} to test with api
+    ${excel_file_path}=    Create excel filter Code list with multiple extensions
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_16}
     Wait Until Page Contains    36 koodia    timeout=20
 
@@ -1200,7 +1269,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
 637. Import code list, extensions and members, create member manually
     [Documentation]    Import code list, extensions and members with MEMBER-IDs, create member manually. YTI-1085
     [Tags]    koodistot    regression    600    test
-    Create codelist from Excel ${Code_list_with_extensions_and_member_relations} to test with api
+    ${excel_file_path}=    Create excel Code list with extensions and member relations
+    Create codelist from Excel ${excel_file_path} to test with api
     Search and open codelist    ${CODE_LIST_25}
     Wait Until Page Contains    25 koodia    timeout=90
     Select Tab    ${EXTENSIONS_TAB}

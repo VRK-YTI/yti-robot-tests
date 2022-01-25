@@ -34,8 +34,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 300. Import code list with missing codeValue
     [Documentation]    Import Code list (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list no codeValue
     Import code list in Excel format
-    Choose File                         ${FILE_UPLOAD_BTN}          ${Code_list_no_codeValue}
+    Choose File                         ${FILE_UPLOAD_BTN}          ${excel_file_path}
     Click element with wait             ${UPLOAD_FILE_BTN}
     Wait Until Page Contains            ${Error_no_codeValue}       timeout=20
     Cancel code list import
@@ -50,15 +51,15 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 301. Import code list with missing CLASSIFICATION value
     [Documentation]    Import Code list with missing CLASSIFICATION value and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list no classification value
     Import code list in Excel format
-    Choose File                         ${FILE_UPLOAD_BTN}          ${Code_list_no_classification}
+    Choose File                         ${FILE_UPLOAD_BTN}          ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}     timeout=20
     Click Button                        Tuo
     Wait Until Page Contains            ${Error_no_classification_value}    timeout=20
     Cancel code list import
 
     ${csv_file_path}=   Create missing CLASSIFICATION csv
-
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
@@ -69,15 +70,15 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 302. Import code list with invalid CLASSIFICATION value
     [Documentation]    Import Code list (Excel, CSV) with invalid CLASSIFICATION value and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list incorrect classification value
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_classification}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
     Cancel code list import
 
     ${csv_file_path}=  Create invalid CLASSIFICATION csv
-
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
@@ -88,8 +89,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 303. Import code list with missing STATUS value
     [Documentation]    Import Code list with missing STATUS value and check error message
     [Tags]    regression    test    300    status_change
+    ${excel_file_path}=    Create excel Code list no status value
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_no_status_value}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_status_value}    timeout=20
@@ -98,8 +100,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 304. Import code list with invalid STATUS value
     [Documentation]    Import Code list with invalid STATUS value and check error message
     [Tags]    regression    test    300    status_change
+    ${excel_file_path}=    Create excel Code list incorrect status value
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_status_value}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_status_value}    timeout=20
@@ -107,9 +110,10 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 
 305. Import code list with duplicate columns
     [Documentation]    Import Code list with duplicate columns and check error message
-    [Tags]    regression    test    300
+    [Tags]    regression    test    300 
+    ${excel_file_path}=    Create excel Code list with multiple columns
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_with_duplicate_columns}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_duplicate_columns}    timeout=20
@@ -118,8 +122,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 306. Import code list with duplicate code lists
     [Documentation]    Import Code list with duplicate Code lists and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Duplicate code lists
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Duplicate_code_lists}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_duplicate_code_lists}    timeout=20
@@ -128,15 +133,15 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 307. Import code list with invalid codeValue
     [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list with invalid codevalue
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_codeValue}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_code_list}    timeout=20
     Cancel code list import
 
     ${csv_file_path}=   Create invalid CODEVALUE csv
-
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
@@ -148,8 +153,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     [Documentation]    Import Code list (Excel) with maximum hierarchies reached
     ...    for codes and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list and codes with max hierarchy level
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_max_hierarchy_level_codes}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_codes_max_hierarchy_level}    timeout=20
@@ -160,8 +166,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     ...    and check error message
     [Tags]    regression    test    300
     [Setup]    Test Case Setup Superuser
+    ${excel_file_path}=    Create excel Code list and codes for new version creation
     Import code list in Excel format
-    Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_9}
     Wait Until Page Contains    10 koodia    timeout=20
 
     Click element with wait     ${CODE_LIST_DDL}                        timeout=20
@@ -170,7 +177,8 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click element with wait     ${FILE_FORMAT_Excel}                    timeout=20
 
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose File    ${FILE_UPLOAD_BTN}    ${2x_code_list}
+    ${excel_file_path}=    Create excel 2x codelists
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_only_one_code_list}    timeout=20
@@ -183,8 +191,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     ...    and check error message
     [Tags]    regression    test    300
     [Setup]    Test Case Setup Superuser
+    ${excel_file_path}=    Create excel Code list and codes for new version creation
     Import code list in Excel format
-    Upload codelist    ${Code_list_Codes_new_version}    ${CODE_LIST_9}
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_9}
     Wait Until Page Contains    10 koodia    timeout=20
 
     Click element with wait     ${CODE_LIST_DDL}                        timeout=20
@@ -193,7 +202,8 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     Click element with wait     ${FILE_FORMAT_Excel}                    timeout=20
 
     Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_Codes_new_version}
+    ${excel_file_path}=    Create excel Code list and codes for new version creation
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_code_list_exists}    timeout=20
@@ -204,8 +214,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 311. Import code list with invalid propertytype in links
     [Documentation]    Import code list with links and with invalid propertytype in links sheet and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list with links invalid propertytype
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_propertytype}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_propertytype}    timeout=20
@@ -214,8 +225,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 312. Import code list with invalid end date
     [Documentation]    Import code list with invalid end date and check error message. YTI-290.
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list with links invalid endate
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_enddate}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_enddate}    timeout=20
@@ -224,8 +236,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 313. Import code list with same sub code list
     [Documentation]    Import code list with same sub code list and check error message. YTI-317.
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel same sub code list
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Same_sub_code_list}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_same_sub_code_list}    timeout=20
@@ -234,8 +247,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 314. Import code list with unknown sub code list
     [Documentation]    Import code list with unknown sub code list and check error message. YTI-317.
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel unknown sub code list
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Unknown_sub_code_list}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_unknown_sub_code_list}    timeout=20
@@ -245,14 +259,15 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     [Documentation]    Import empty Excel file and check error message. YTI-569.
     [Tags]    regression    test    300
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${empty_file}
+    ${excel_file_path}=    Create excel empty file
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_empty_Excel}    timeout=20
     Cancel code list import
 
     Import code list in CSV format
-    Choose File    ${FILE_UPLOAD_BTN}    ${empty_file}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_codevalue_missing}    timeout=20
@@ -261,8 +276,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 316. Import Excel file with no content
     [Documentation]    Import Excel file with no content and check error message. YTI-574.
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel No content excel
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${No_content_excel}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_no_content}    timeout=20
@@ -271,8 +287,9 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 317. Import code list with invalid link URLs
     [Documentation]    Import code list with invalid link URLs and check error message
     [Tags]    regression    test    300
+    ${excel_file_path}=    Create excel Code list with invalid link URLs
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_with_invalid_link_urls}
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_link_urls}    timeout=20
@@ -283,7 +300,8 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     ...    and check error message. YTI-1097.
     [Tags]    regression    test    300
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${Code_list_invalid_delimiter_in_language_code}
+    ${excel_file_path}=    Create excel Code list invalid delimiter in language code
+    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
     Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
     Click Button    ${UPLOAD_FILE_BTN}
     Wait Until Page Contains    ${Error_invalid_language_code_delimiter}    timeout=20

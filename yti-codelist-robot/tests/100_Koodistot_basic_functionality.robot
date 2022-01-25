@@ -49,7 +49,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto2_with_code}    ${CODE_LIST_6}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto2 with code
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_6}
 
     Return to Koodistot frontpage
 
@@ -81,7 +82,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100    search
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist                     ${Testikoodisto_T200}    ${CODE_LIST_7}
+    ${excel_file_path}=    Create excel Testikoodisto T200
+    Upload codelist                     ${excel_file_path}    ${CODE_LIST_7}
 
     Return to Koodistot frontpage
     Wait Until Page Contains Element    ${STATUS_DROPDOWN_BTN}                      timeout=30
@@ -156,7 +158,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Setup]    Test Case Setup Superuser
 
     Import code list in Excel format
-    Upload codelist    ${testiautomaatiokoodisto1_with_codes}    ${CODE_LIST_2}
+    ${excel_file_path}=    Create excel testiautomaatiokoodisto1 with codes
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_2}
 
     Return to Koodistot frontpage
     Click element with wait     ${SEARCH_CODE_CHECKBOX}    timeout=30
@@ -181,7 +184,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100    search
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${Code_filter}    ${CODE_LIST_13}
+    ${excel_file_path}=    Create excel Code filter
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_13}
     Return to Koodistot frontpage
 
     Input text with wait     ${SEARCH_BOX_INPUT}    ${CODE_LIST_13}   timeout=30
@@ -250,7 +254,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
+    ${excel_file_path}=    Create excel Code list testi dcat
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_20}
 
     Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
     Change Content Language     ${CONTENT_LANGUAGE_EN}
@@ -283,7 +288,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     [Tags]    regression    test    100
     [Setup]    Test Case Setup Superuser
     Import code list in Excel format
-    Upload codelist    ${Code_list_test_dcat}    ${CODE_LIST_20}
+    ${excel_file_path}=    Create excel Code list testi dcat
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_20}
     Wait Until Page Contains    AGRI - Maatalous, kalastus, metsätalous ja elintarvikkeet    timeout=20
 
     Change UI Language    ${LANGUAGE_EN}
@@ -353,7 +359,8 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     ...    in frontpage search for certain users only. YTI-903.
     [Tags]    regression    test    100
     Import code list in Excel format
-    Upload codelist    ${Code_list_with_30_codes_incomplete}    ${CODE_LIST_26}
+    ${excel_file_path}=    Create excel Code list with 30 codes incomplete
+    Upload codelist    ${excel_file_path}    ${CODE_LIST_26}
 
     Return to Koodistot frontpage
     Input text with wait                id=search_box_input      ${CODE_LIST_26}        timeout=30
@@ -426,12 +433,13 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
 117. Create codelist from Excel and delete it
     [Tags]    regression    koodistot    test    100
-    Upload codelist in Excel format     ${testiautomaatiokoodisto_with_code}    ${CODE_LIST_4}
+    ${excel_file_path}=    Default koodisto excel with schemes and codes
+    Upload codelist in Excel format     ${excel_file_path}    ${CODE_LIST_4}
     Remove list of codes                ${CODE_LIST_4}
     [Teardown]  run keyword if test failed   Remove codelist teardown      T100
 
 #118. Create codelist from CSV and delete it
 #    [Tags]    regression    koodistot    test    100
-#    Upload codelist in CSV format       ${testiautomaatiokoodisto_with_code}     ${CODE_LIST_4}
+#    Upload codelist in CSV format       ${test}     ${CODE_LIST_4}
 #    Remove list of codes                @{codelist}
 #    [Teardown]  run keyword if test failed   Delete model ${PREFIX_2} with api

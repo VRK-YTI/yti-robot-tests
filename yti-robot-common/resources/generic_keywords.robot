@@ -1,5 +1,6 @@
 *** Settings ***
 Library           helpers.py
+Library           excelwriter.py
 
 *** Variables ***
 ${HEADLESS}=  True

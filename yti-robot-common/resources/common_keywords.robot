@@ -114,8 +114,8 @@ Select user
 
 Open sanastot
     Open Browser with Settings      ${TERMINOLOGIES_ENVIRONMENT_URL}
-    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Click element with wait  //section/a[@href="/search?page=1"]
-    Wait Until Page Contains        Sanastot            timeout=60
+    #Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Click element with wait  //section/a[@href="/search?page=1"]
+    #Wait Until Page Contains        Sanastot            timeout=60
 
 Open Tietomallit
     Open Browser with Settings      ${DATA_VOCABULARIES_ENVIRONMENT_URL}
