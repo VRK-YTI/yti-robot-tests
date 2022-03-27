@@ -13,6 +13,7 @@ Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
 Test Case Generic Suite setup
+    Set Selenium Timeout    ${SELENIUM_DEFAULT_TIMEOUT}
     Delete csv folder
 
 Test Case Teardown Generic Teardown

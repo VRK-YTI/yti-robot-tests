@@ -49,7 +49,7 @@ def append_to_csv(file_name, **kwargs):
     for field in kwargs:
         data_to_add.append(kwargs[field])
 
-    with open(file_path, 'a', newline='') as f:
+    with open(file_path, 'a', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(data_to_add)
 

@@ -110,21 +110,20 @@ Select user
     [Arguments]    ${user_id}    ${user_name}
     Click element with wait             ${IMPERSONATE_USER_DROPDOWN}
     Click element with wait             ${user_id}
-    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    timeout=20
+    Wait Until Page Contains Element    xpath://*[contains(@class, 'logged-in')]/*[contains(text(), '${user_name}')]    
 
 Open sanastot
     Open Browser with Settings      ${TERMINOLOGIES_ENVIRONMENT_URL}
-    #Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Click element with wait  //section/a[@href="/search?page=1"]
-    #Wait Until Page Contains        Sanastot            timeout=60
+    Wait Until Page Contains        Sanastot            timeout=60
 
 Open Tietomallit
     Open Browser with Settings      ${DATA_VOCABULARIES_ENVIRONMENT_URL}
-    Wait Until Page Contains        Tietomallit         timeout=20
-    Wait Until Page Contains        KIRJAUDU SISÄÄN     timeout=20
+    Wait Until Page Contains        Tietomallit         
+    Wait Until Page Contains        KIRJAUDU SISÄÄN
 
 Open RHP
     Open Browser with Settings      ${GROUPMANAGEMENT_ENVIRONMENT_URL}
-    Wait Until Page Contains        KIRJAUDU SISÄÄN     timeout=20
+    Wait Until Page Contains        KIRJAUDU SISÄÄN     
 
 Open Comments
     Open Browser with Settings      ${COMMENTS_ENVIRONMENT_URL}
@@ -148,12 +147,12 @@ Check Mailbox
 
 Select breadcrump link 2
     Sleep                       10
-    Click element with wait     ${2_BREADCRUMB_LINK}                        timeout=20
+    Click element with wait     ${2_BREADCRUMB_LINK}                        timeout=${SELENIUM_DEFAULT_TIMEOUT}
 
 
 Select breadcrump link 3
     Sleep                       10
-    Click element with wait     ${3_BREADCRUMB_LINK}                        timeout=20
+    Click element with wait     ${3_BREADCRUMB_LINK}                        timeout=${SELENIUM_DEFAULT_TIMEOUT}
 
 Logging with eDuuni
     [Arguments]     ${email}       ${password}
@@ -177,3 +176,10 @@ Logging eDuuni with microsoft
     Input text with wait                ${EDUUNI_MICROSOFT_PASSWORD_INPUT}      ${password}
     Click element with wait             ${EDUUNI_MICROSOFT_NEXT_BUTTON}
     Click element with wait             ${EDUUNI_MICROSOFT_NEXT_BUTTON}
+
+Set default codelist variables
+    [Arguments]     ${test_case_number}
+    Set Test Variable    ${DEFAULT_CODELIST_SCHEME_ID}  ${DEFAULT_CODELIST_SCHEME_ID}_${test_case_number}
+    Set Test Variable    ${DEFAULT_PREFLABEL_SCHEME}    ${DEFAULT_PREFLABEL_SCHEME}_${test_case_number}
+    Set Test Variable    ${DEFAULT_CODELIST_CODE_ID}    ${DEFAULT_CODELIST_CODE_ID}_${test_case_number}
+    Set Test Variable    ${DEFAULT_PREFLABEL_CODE}      ${DEFAULT_PREFLABEL_CODE}_${test_case_number}

@@ -31,7 +31,8 @@ ${CODELIST_URI}                     http://uri.suomi.fi/codelist
 
 *** Keywords ***
 Create missing CODEVALUE csv
-    [Arguments]  ${preflabel}=koodisto1000
+    [Arguments]  ${preflabel}=${DEFAULT_PREFLABEL_SCHEME}
+    
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  CODEVALUE=  
     ...  ORGANIZATION=${DEFAULT_ORGANIZATION_ID}  
@@ -60,7 +61,7 @@ Create missing CODEVALUE csv
     [Return]  ${csv_file_path}
 
 Create invalid CODEVALUE csv
-    [Arguments]  ${preflabel}=koodisto1000
+    [Arguments]  ${preflabel}=${DEFAULT_PREFLABEL_SCHEME}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  CODEVALUE=Koodisto 1000  
     ...  ORGANIZATION=${DEFAULT_ORGANIZATION_ID}  
@@ -89,7 +90,9 @@ Create invalid CODEVALUE csv
     [Return]  ${csv_file_path}
 
 Create missing CLASSIFICATION csv
-    [Arguments]  ${codevalue}=Koodisto1000  ${preflabel}=koodisto1000
+    [Arguments]  ${codevalue}=${DEFAULT_CODELIST_SCHEME_ID}     
+    ...          ${preflabel}=${DEFAULT_PREFLABEL_SCHEME}             
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  CODEVALUE=${codevalue}  
     ...  ORGANIZATION=${DEFAULT_ORGANIZATION_ID}  
@@ -118,7 +121,9 @@ Create missing CLASSIFICATION csv
     [Return]  ${csv_file_path}
 
 Create invalid CLASSIFICATION csv
-    [Arguments]  ${codevalue}=Koodisto1000  ${preflabel}=koodisto1000
+    [Arguments]  ${codevalue}=${DEFAULT_CODELIST_SCHEME_ID} 
+    ...          ${preflabel}=${DEFAULT_PREFLABEL_SCHEME}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  CODEVALUE=${codevalue}  
     ...  ORGANIZATION=${DEFAULT_ORGANIZATION_ID}  
@@ -162,35 +167,43 @@ Create invalid member csv
     [Return]  ${csv_file_path}
 
 Create Calc def hierarchy extensions csv
-    [Arguments]  ${file_name}=${TEST NAME}
- 	Append to csv      ${file_name}
-    ...  CODEVALUE=O1234567890123456789012345678901234567111  
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
+ 	Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_scheme}  
     ...  STATUS=${DRAFT}  
     ...  PROPERTYTYPE=definitionHierarchy
     ...  CODESCHEMES=${CODELIST_URI}/eu/dcat  
-    ...  PREFLABEL_FI=Testilaajennus11  
-    ...  PREFLABEL_EN=Test extension11
+    ...  PREFLABEL_FI=${preflabel_fi_scheme}  
+    ...  PREFLABEL_EN=${preflabel_fi_scheme}_EN
     ...  STARTDATE=2016-12-31  
     ...  ENDDATE=2018-12-30
 
-    ${csv_file_path}=   Append to csv      ${file_name}
-    ...  CODEVALUE=O1234567890123456789012345678901234567222  
+    ${csv_file_path}=   Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_scheme}_2
     ...  STATUS=${DRAFT}  
     ...  PROPERTYTYPE=calculationHierarchy
     ...  CODESCHEMES=${CODELIST_URI}/eu/dcat  
-    ...  PREFLABEL_FI=Testilaajennus22  
-    ...  PREFLABEL_EN=Test extension22
+    ...  PREFLABEL_FI=${preflabel_fi_scheme}_2  
+    ...  PREFLABEL_EN=${preflabel_fi_scheme}_2_EN
     ...  STARTDATE=2016-12-31  
     ...  ENDDATE=2018-12-30
     [Return]  ${csv_file_path}
 
 Create calculation hierarchy csv
-    [Arguments]     ${code_prefix}=testcode  ${codecount}=15  ${label_en}=Member  ${label_fi}=Jäsen
-    FOR    ${index}    IN RANGE    1    ${codecount}
-        ${code_index}=      Evaluate    int(${index}) + int(27)
-        ${preflabel_fi}=    Catenate    ${label_fi}${index}
-        ${preflabel_en}=    Catenate    ${label_en}${index}
-        ${codevalue}=       Catenate    ${code_prefix}${code_index}
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
+    FOR    ${index}    IN RANGE    1    15
+        ${code_index}=      Evaluate    int(${index})
+        ${preflabel_fi}=    Catenate    Jäsen${index}
+        ${preflabel_en}=    Catenate    Member${index}
+        ${codevalue}=       Catenate    ${codevalue_code}_${code_index}
         ${startdate}=       Convert Date  2016-01-${index} 	date_format=%Y-%m-%d  result_format=%Y-%m-%d
         ${enddate}=         Convert Date  2020-01-${index} 	date_format=%Y-%m-%d  result_format=%Y-%m-%d
         ${csv_file_path}=   Append to csv      ${TEST NAME}
@@ -208,11 +221,13 @@ Create calculation hierarchy csv
     [Return]  ${csv_file_path}
 
 Create code status with space csv
-    [Arguments]     ${registery}=test  ${schemeCode}=600  ${code_prefix}=testcode  ${codecount}=31
+    [Arguments]     ${registery}=test  
+    ...             ${schemeCode}=600  
+    ...             ${code_prefix}=testcode  
+    ...             ${codecount}=31
     FOR    ${index}    IN RANGE    1    ${codecount}
-        ${code_index}=      Evaluate    int(${index}) + int(27)
-        ${preflabel_fi}=    Catenate    ${code_prefix} ${code_index}
-        ${preflabel_fi}=    Convert To Title Case   ${preflabel_fi}
+        ${code_index}=      Evaluate    int(${index})
+        ${preflabel}=    Catenate    ${code_prefix} ${code_index}
         ${codevalue}=       Catenate    ${code_prefix}${code_index}
         ${uri}=             Catenate    ${CODELIST_URI}/${registery}/${schemeCode}/code/${code_prefix}${code_index}
         ${status}=          catenate    ${EMPTY}  ${VALID}
@@ -221,7 +236,7 @@ Create code status with space csv
         ...  URI=${uri}  
         ...  BROADER=  
         ...  STATUS=${status}  
-        ...  PREFLABEL_FI=${preflabel_fi}
+        ...  PREFLABEL_FI=${preflabel}
         ...  SHORTNAME=  
         ...  CONCEPTURI=  
         ...  SUBCODESCHEME=  
@@ -236,9 +251,12 @@ Create code status with space csv
     [Return]  ${csv_file_path}
 
 Create Code links with space csv
-    [Arguments]     ${registery}=test  ${schemeCode}=600  ${code_prefix}=testcode  ${codecount}=31
+    [Arguments]     ${registery}=test  
+    ...             ${schemeCode}=600  
+    ...             ${code_prefix}=testcode  
+    ...             ${codecount}=31
     FOR    ${index}    IN RANGE    1    ${codecount}
-        ${code_index}=      Evaluate    int(${index}) + int(27)
+        ${code_index}=      Evaluate    int(${index})
         ${preflabel_fi}=    Catenate    ${code_prefix} ${code_index}
         ${preflabel_fi}=    Convert To Title Case   ${preflabel_fi}
         ${codevalue}=       Catenate    ${code_prefix}${code_index}
@@ -263,13 +281,17 @@ Create Code links with space csv
     [Return]  ${csv_file_path}
 
 Create import code missing CODEVALUE csv
-    [Arguments]     ${preflabel_fi}=Koodi1000
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  CODEVALUE=   
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
@@ -277,13 +299,16 @@ Create import code missing CODEVALUE csv
     [Return]  ${csv_file_path}
 
 Create import code missing STATUS csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
@@ -291,13 +316,17 @@ Create import code missing STATUS csv
     [Return]  ${csv_file_path}
 
 Create import code invalid STATUS csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=${xxxxxxxx}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
@@ -305,51 +334,57 @@ Create import code invalid STATUS csv
     [Return]  ${csv_file_path}
 
 Create import code invalid BROADER csv
-    [Arguments]  ${file_name}=${TEST NAME}
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi1000  
-    ...  BROADER=koodi1001  
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_1  
+    ...  BROADER=${codevalue_code}_2  
     ...  ID=  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1000  
+    ...  PREFLABEL_FI=${preflabel_code}_1  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi1001  
-    ...  BROADER=koodi1000  ID=  
-    ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1001  
-    ...  SHORTNAME=  
-    ...  HIERARCHYLEVEL=
-    ...  STARTDATE=  
-    ...  ENDDATE=
-
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi1002  
-    ...  BROADER=koodi1000  ID=  
-    ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1002  
-    ...  SHORTNAME=  
-    ...  HIERARCHYLEVEL=
-    ...  STARTDATE=  
-    ...  ENDDATE=
-
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi1003  
-    ...  BROADER=koodi1000  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_2  
+    ...  BROADER=${codevalue_code}_1  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1003  
+    ...  PREFLABEL_FI=${preflabel_code}_2  
+    ...  SHORTNAME=  
+    ...  HIERARCHYLEVEL=
+    ...  STARTDATE=  
+    ...  ENDDATE=
+
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_3  
+    ...  BROADER=${codevalue_code}_1  
+    ...  ID=  
+    ...  STATUS=${DRAFT}  
+    ...  PREFLABEL_FI=${preflabel_code}_3  
+    ...  SHORTNAME=  
+    ...  HIERARCHYLEVEL=
+    ...  STARTDATE=  
+    ...  ENDDATE=
+
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_4  
+    ...  BROADER=${codevalue_code}_1  
+    ...  ID=  
+    ...  STATUS=${DRAFT}  
+    ...  PREFLABEL_FI=${preflabel_code}_4  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE= 
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi1004  
-    ...  BROADER=  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_5  
+    ...  BROADER=${codevalue_code}_4
     ...  ID=  
     ...  STATUS=${DRAFT}  
     ...  PREFLABEL_FI=Koodi1004  
@@ -358,36 +393,42 @@ Create import code invalid BROADER csv
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi1005  
-    ...  BROADER=koodi1004  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_6  
+    ...  BROADER=${codevalue_code}_5  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1005  
+    ...  PREFLABEL_FI=${preflabel_code}_6  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
     ...  ENDDATE=
-    ${csv_file_path}=   Append to csv      ${file_name}
-    ...  CODEVALUE=koodi1006  
-    ...  BROADER=koodi1007  
+
+    ${csv_file_path}=   Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_7  
+    ...  BROADER=${codevalue_code}_100  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1006  
+    ...  PREFLABEL_FI=${preflabel_code}_7  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
     ...  ENDDATE=
+
     [Return]  ${csv_file_path}
 
 Create import code same BROADER csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
-    ...  BROADER=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
+    ...  BROADER=${codevalue_code}  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=2018-03-01  
@@ -395,14 +436,18 @@ Create import code same BROADER csv
     [Return]  ${csv_file_path}
 
 Create import code with dublicate columns csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=${DRAFT}  
     ...  STATUS2=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
@@ -410,12 +455,16 @@ Create import code with dublicate columns csv
     [Return]  ${csv_file_path}
 
 Create import code with CODEVALUE column missing csv
-    [Arguments]  ${preflabel_fi}=Koodi1000
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
@@ -423,13 +472,17 @@ Create import code with CODEVALUE column missing csv
     [Return]  ${csv_file_path}
 
 Create import code with invalid start date csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME= 
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=xxxx  
@@ -437,72 +490,76 @@ Create import code with invalid start date csv
     [Return]  ${csv_file_path}
 
 Create import code with invalid ID csv
-    [Arguments]  ${file_name}=${TEST NAME}
-    Append to csv      ${file_name}
-    ...  CODEVALUE=Koodi1000  
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+    
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_1  
     ...  ID=93fdc667-9dbc-409f-ac38  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1000  
+    ...  PREFLABEL_FI=${preflabel_code}_1  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL= 
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=Koodi1001  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_2  
     ...  ID=93fdc667-9dbc-409f-ac39  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1001  
+    ...  PREFLABEL_FI=${preflabel_code}_2  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=Koodi1002  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_3  
     ...  ID=93fdc667-9dbc-409f-ac40  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1002  
+    ...  PREFLABEL_FI=${preflabel_code}_3  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=Koodi1003  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_4  
     ...  ID=93fdc667-9dbc-409f-ac41  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1003  
+    ...  PREFLABEL_FI=${preflabel_code}_4  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=Koodi1004  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_5  
     ...  ID=93fdc667-9dbc-409f-ac42  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1004  
+    ...  PREFLABEL_FI=${preflabel_code}_5  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=Koodi1005  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_6  
     ...  ID=93fdc667-9dbc-409f-ac43  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1005  
+    ...  PREFLABEL_FI=${preflabel_code}_6  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    ${csv_file_path}=   Append to csv      ${file_name}
-    ...  CODEVALUE=Koodi1006  
+    ${csv_file_path}=   Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_7  
     ...  ID=93fdc667-9dbc-409f-ac44  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi1006  
+    ...  PREFLABEL_FI=${preflabel_code}_7  
     ...  SHORTNAME=
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
@@ -510,12 +567,16 @@ Create import code with invalid ID csv
     [Return]  ${csv_file_path}
 
 Create import code valid draft csv
-    [Arguments]  ${codevalue}=koodi01     ${preflabel_fi}=Koodi01
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}_8  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}_8  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=  
@@ -523,24 +584,28 @@ Create import code valid draft csv
     [Return]  ${csv_file_path}
 
 Create import code with dublicate CODEVALUES csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER= 
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=
     ...  ENDDATE=
 
     ${csv_file_path}=    Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=
@@ -548,13 +613,17 @@ Create import code with dublicate CODEVALUES csv
     [Return]  ${csv_file_path}
 
 Create import code with invalid CODEVALUES csv
-    [Arguments]  ${preflabel_fi}=Koodi1000
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=koodi 500  
+    ...  CODEVALUE=${codevalue_code} 1 
     ...  BROADER=  
     ...  ID=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=2018-03-01  
@@ -562,12 +631,16 @@ Create import code with invalid CODEVALUES csv
     [Return]  ${csv_file_path}
 
 Create import code with same ORDER csv
-    [Arguments]  ${file_name}=${TEST NAME}
-    Append to csv      ${file_name}
-    ...  CODEVALUE=testikoodi11  
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+    
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_1  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Testikoodi 11  
+    ...  PREFLABEL_FI=${preflabel_code}_1 
     ...  DESCRIPTION_FI=${DEFAULT_DESCRIPTION_FI}
     ...  DESCRIPTION_EN=${DEFAULT_DESCRIPTION_EN}  
     ...  SHORTNAME=  
@@ -578,11 +651,11 @@ Create import code with same ORDER csv
     ...  CREATED=  
     ...  MODIFIED=
 
-    ${csv_file_path}=   Append to csv      ${file_name}
-    ...  CODEVALUE=testikoodi12  
+    ${csv_file_path}=   Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_2  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Testikoodi 12  
+    ...  PREFLABEL_FI=${preflabel_code}_2 
     ...  DESCRIPTION_FI=${DEFAULT_DESCRIPTION_FI}
     ...  DESCRIPTION_EN=${DEFAULT_DESCRIPTION_EN}  
     ...  SHORTNAME=  
@@ -590,16 +663,21 @@ Create import code with same ORDER csv
     ...  ORDER=1  
     ...  STARTDATE=2018-02-10  
     ...  ENDDATE=2018-09-17
-    ...  CREATED=  MODIFIED=
+    ...  CREATED=  
+    ...  MODIFIED=
     [Return]  ${csv_file_path}
 
 Create import code with invalid ORDER csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+    
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  DESCRIPTION_FI=${DEFAULT_DESCRIPTION_FI}
     ...  DESCRIPTION_EN=${DEFAULT_DESCRIPTION_EN}  
     ...  SHORTNAME= 
@@ -612,12 +690,16 @@ Create import code with invalid ORDER csv
     [Return]  ${csv_file_path}
 
 Create import code with missing ORDER csv
-    [Arguments]  ${codevalue}=koodi1000     ${preflabel_fi}=Koodi1000
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}  
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}  
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}  
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_code}  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_code}  
     ...  DESCRIPTION_FI=${DEFAULT_DESCRIPTION_FI}
     ...  DESCRIPTION_EN=${DEFAULT_DESCRIPTION_EN}  
     ...  SHORTNAME=  
@@ -625,66 +707,70 @@ Create import code with missing ORDER csv
     ...  ORDER=  
     ...  STARTDATE=2018-02-11  
     ...  ENDDATE=2018-09-18
-    ...  CREATED=  MODIFIED=
+    ...  CREATED=  
+    ...  MODIFIED=
     [Return]  ${csv_file_path}
 
 Create draft codes with BROADER csv
-    [Arguments]  ${file_name}=${TEST NAME}
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi500  
+        [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}
+        ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}
+        ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}
+        ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_1
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi500  
+    ...  PREFLABEL_FI=${preflabel_code}_1
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi501  
-    ...  BROADER=koodi500  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_2
+    ...  BROADER=${codevalue_code}_1
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi501  
+    ...  PREFLABEL_FI=${preflabel_code}_2
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi502  
-    ...  BROADER=koodi500  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_3
+    ...  BROADER=${codevalue_code}_1
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi502  
+    ...  PREFLABEL_FI=${preflabel_code}_3
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi503 
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_4
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi503  
+    ...  PREFLABEL_FI=${preflabel_code}_4
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=
     ...  ENDDATE=
 
-    Append to csv      ${file_name}
-    ...  CODEVALUE=koodi504  
+    Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_5
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi504  
+    ...  PREFLABEL_FI=${preflabel_code}_5
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=  
     ...  STARTDATE=
     ...  ENDDATE=
 
-    ${csv_file_path}=   Append to csv      ${file_name}
-    ...  CODEVALUE=koodi505  
-    ...  BROADER=koodi504  
+    ${csv_file_path}=   Append to csv      ${TEST NAME}
+    ...  CODEVALUE=${codevalue_code}_6
+    ...  BROADER=${codevalue_code}_5
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=Koodi505  
+    ...  PREFLABEL_FI=${preflabel_code}_6
     ...  SHORTNAME=  
     ...  HIERARCHYLEVEL=
     ...  STARTDATE=  
@@ -694,10 +780,9 @@ Create draft codes with BROADER csv
 Create update sub codelist csv
     [Arguments]     ${registery}=test  ${codecheme}=200  ${code_prefix}=testcode  ${codecount}=31
     FOR    ${index}    IN RANGE    1    ${codecount}
-        ${code_index}=      Evaluate    int(${index}) + int(27)
-        ${preflabel_fi}=    Catenate    ${code_prefix} ${code_index}
-        ${preflabel_fi}=    Convert To Title Case   ${preflabel_fi}
-        ${codevalue}=       Catenate    ${code_prefix}${code_index}
+        ${code_index}=      Evaluate    int(${index})
+        ${preflabel_fi}=    Catenate    ${code_prefix}_${code_index}
+        ${codevalue}=       Catenate    ${code_prefix}_${code_index}
         ${subcodecheme}=    Catenate    ${CODELIST_URI}/${registery}/${codecheme}
         ${csv_file_path}=   Append to csv      ${TEST NAME}
         ...  CODEVALUE=${codevalue}  
@@ -708,7 +793,7 @@ Create update sub codelist csv
         ...  CONCEPTURI=
         ...  SUBCODESCHEME=${subcodecheme}  
         ...  HIERARCHYLEVEL=1  
-        ...  ORDER=${index}  
+        ...  ORDER=${code_index}
         ...  STARTDATE=  
         ...  ENDDATE=  
         ...  CREATED=
@@ -718,10 +803,13 @@ Create update sub codelist csv
     [Return]  ${csv_file_path}
 
 Create codes with special characters csv
-    [Arguments]     ${registery}=test  ${schemeCode}=000
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=+  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/%2B  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/%2B
     ...  ORDER=1  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
@@ -737,7 +825,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=++  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/%2B%2B  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/%2B%2B
     ...  ORDER=2  
     ...  BROADER=  
     ...  STATUS=${DRAFT}
@@ -753,7 +841,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=*  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/*  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/*
     ...  ORDER=3  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
@@ -769,7 +857,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=**  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/**  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/**
     ...  ORDER=4  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
@@ -785,7 +873,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=##  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/%23%23  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/%23%23
     ...  ORDER=5  
     ...  BROADER=  
     ...  STATUS=${DRAFT}
@@ -801,7 +889,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=&  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/%26  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/%26
     ...  ORDER=6  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
@@ -817,7 +905,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=&&  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/%26%26  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/%26%26
     ...  ORDER=7  
     ...  BROADER=  
     ...  STATUS=${DRAFT}
@@ -833,7 +921,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=.  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/U%2B002E  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/U%2B002E
     ...  ORDER=8  
     ...  BROADER=  
     ...  STATUS=${DRAFT}
@@ -849,7 +937,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=..  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/U%2B002EU%2B002E  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/U%2B002EU%2B002E
     ...  ORDER=9  
     ...  BROADER=  
     ...  STATUS=${DRAFT}
@@ -865,7 +953,7 @@ Create codes with special characters csv
 
     Append to csv      ${TEST NAME}
     ...  CODEVALUE=--  
-    ...  URI=h${CODELIST_URI}/${registery}/${schemeCode}/code/--  
+    ...  URI=h${CODELIST_URI}/test/${codevalue_scheme}/code/--
     ...  ORDER=10  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
@@ -881,7 +969,7 @@ Create codes with special characters csv
 
     ${csv_file_path}=   Append to csv      ${TEST NAME}
     ...  CODEVALUE=#  
-    ...  URI=${CODELIST_URI}/${registery}/${schemeCode}/code/%23  
+    ...  URI=${CODELIST_URI}/test/${codevalue_scheme}/code/%23
     ...  ORDER=11  
     ...  BROADER=  
     ...  STATUS=${DRAFT}  
@@ -897,14 +985,17 @@ Create codes with special characters csv
     [Return]  ${csv_file_path}
 
 Create update codelist with 30 codes csv
-    [Arguments]  ${codevalue}=600     ${preflabel_fi}=Koodisto606
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
     ${csv_file_path}=   Append to csv      ${TEST NAME}
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_scheme}
     ...  ORGANIZATION=${DEFAULT_ORGANIZATION_ID}  
     ...  INFORMATIONDOMAIN=${DEFAULT_INFORMATION_DOMAIN_2}  
     ...  VERSION=${VERSION_1}
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_fi_scheme}
     ...  PREFLABEL_SV=  
     ...  PREFLABEL_EN=
     ...  DEFINITION_FI=${UPDATED_DEFINITION_FI}  
@@ -925,14 +1016,17 @@ Create update codelist with 30 codes csv
     [Return]  ${csv_file_path}
 
 Create invalid update codelist with 30 codes csv
-    [Arguments]  ${codevalue}=60     ${preflabel_fi}=Koodisto606
+    [Arguments]  ${codevalue_scheme}=${DEFAULT_CODELIST_SCHEME_ID}
+    ...          ${codevalue_code}=${DEFAULT_CODELIST_CODE_ID}
+    ...          ${preflabel_fi_scheme}=${DEFAULT_PREFLABEL_SCHEME}
+    ...          ${preflabel_code}=${DEFAULT_PREFLABEL_CODE}
     ${csv_file_path}=   Append to csv      ${TEST NAME} 2
-    ...  CODEVALUE=${codevalue}  
+    ...  CODEVALUE=${codevalue_scheme}
     ...  ORGANIZATION=${DEFAULT_ORGANIZATION_ID}  
     ...  INFORMATIONDOMAIN=${DEFAULT_INFORMATION_DOMAIN_2}  
     ...  VERSION=${VERSION_1}
     ...  STATUS=${DRAFT}  
-    ...  PREFLABEL_FI=${preflabel_fi}  
+    ...  PREFLABEL_FI=${preflabel_fi_scheme}
     ...  PREFLABEL_SV=  
     ...  PREFLABEL_EN=
     ...  DEFINITION_FI=${UPDATED_DEFINITION_FI}  

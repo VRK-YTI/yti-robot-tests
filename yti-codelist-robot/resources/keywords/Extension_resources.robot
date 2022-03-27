@@ -12,7 +12,7 @@ ${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 2.
 ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa:
 ${Error_relations_to_other_members}    Koodilaajennuksissa ei sallita jäsenten välisiä linkityksiä.
 ${Error_2_dpms}    Aineistossa on useita samantyyppisiä koodilaajennuksia.
-${Error_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567333/extension/O1234567890123456789012345678901234567111/member/
+${Error_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa:
 ${Error_duplicate_members_for_same_code}    Koodilaajennuksella ei voi olla useita jäseniä samalla koodilla.
 ${Error_duplicate_member_id_values}    MEMBER_ID-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
 ${Error_invalid_member_relation}    Jäsentä ei voitu määrittää tunnisteella: testcode10
@@ -69,7 +69,8 @@ Add code list to extension
     [Arguments]    ${code_list_name}
     Click element with wait             ${ADD_CODE_LIST_TO_EXTENSION_BTN}                   timeout=30
     Input text with wait                ${SEARCH_LINKED_CODE_INPUT}    ${code_list_name}    timeout=30
-    Click element that contains text    ${code_list_name}                                   timeout=30
+    #Click element that contains text    ${code_list_name}                                   timeout=30
+    Click element with wait             //span[text()="${code_list_name}" and @class="title"]
 
 Create member for definition hierarchy
     [Arguments]    ${member_name}    ${code_list_name}    ${code}

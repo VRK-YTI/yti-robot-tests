@@ -251,33 +251,7 @@ ${ENFORCE_STATUS_TRANSITION_CHECKBOX}    id=enforce_status_transition_rules_chec
 #Code lists and Codes
 ${CODE_LIST_KUNNAT}    Kunnat 2018
 ${CODE_LIST_KUNNAT_EN}    Municipalities 2018
-${CODE_LIST_2}      testiautomaatiokoodisto1
-${CODE_LIST_3}      Palveluluokitus
-${CODE_LIST_4}      testiautomaatiokoodisto
-${CODE_LIST_5}      Ammattiluokitus 2010
-${CODE_LIST_6}      testiautomaatiokoodisto 2
-${CODE_LIST_7}      T200
-${CODE_LIST_8}      koodisto6000
-${CODE_LIST_9}      koodisto7000
-${CODE_LIST_10}     koodisto7001
-${CODE_LIST_11}     koodisto7002
-${CODE_LIST_12}     koodisto7003
-${CODE_LIST_13}     Sisällön filteröinti
-${CODE_LIST_14}     Testikoodisto2 pitkillä arvoilla
-${CODE_LIST_15}     Vakiokoodikoodisto
-${CODE_LIST_16}     Koodisto600
-${CODE_LIST_17}     Koodisto700
-${CODE_LIST_18}     Koodisto701
-${CODE_LIST_19}     Testikoodisto3 pitkillä arvoilla
-${CODE_LIST_20}     Testi dcat
-${CODE_LIST_21}     Linkkikoodisto
-${CODE_LIST_22}     Koodisto800
-${CODE_LIST_23}     Koodisto300
-${CODE_LIST_24}     Koodisto606
-${CODE_LIST_25}     Koodisto100
-${CODE_LIST_26}     xyztesti
-${CODE_LIST_27}     Koodisto3000
-${CODE_1}           koodi01 - Koodi01
+
 ${CODE_2}           koodi1006
 ${CODE_1000}        Koodi1000 - Koodi1000
 ${TEST_CODE_1}      T100 - Automaatiokoodi
@@ -332,7 +306,7 @@ ${LICENSE_BTN}                      id=ExternalReference_license_propertytype_dr
 #Error messages
 ${Error_registry_with_codelists}        Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}     Loppupäivä ennen alkupäivää.
-${Error_remove_linked_code}             Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/extension/koodiliitoslaajennus/member/
+${Error_remove_linked_code}             Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa:
 ${Error_no_code_status_changes}         Tilaa ei vaihdettu yhteenkään koodiin. Ei löytynyt koodeja vaihdettavassa tilassa.
 ${Error_remove_languages}               abhaasi, englanti, suomi, tataari
 #JSON Export

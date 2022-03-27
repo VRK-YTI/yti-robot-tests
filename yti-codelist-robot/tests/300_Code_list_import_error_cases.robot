@@ -34,131 +34,166 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
 300. Import code list with missing codeValue
     [Documentation]    Import Code list (Excel, CSV) with missing codeValue and check error message
     [Tags]    regression    test    300
-    ${excel_file_path}=    Create excel Code list no codeValue
+    Set default codelist variables    300
+
+    ${excel_file_path}=    Create excel Code list no codeValue     ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in Excel format
     Choose File                         ${FILE_UPLOAD_BTN}          ${excel_file_path}
     Click element with wait             ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains            ${Error_no_codeValue}       timeout=20
+    Wait Until Page Contains            ${Error_no_codeValue}       
     Cancel code list import
 
-    ${csv_file_path}=   Create missing CODEVALUE csv
+    ${csv_file_path}=   Create missing CODEVALUE csv     ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in CSV format
     Choose File                         ${FILE_UPLOAD_BTN}          ${csv_file_path}
     Click element with wait             ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains            ${Error_no_codeValue}       timeout=20
+    Wait Until Page Contains            ${Error_no_codeValue}       
     Cancel code list import
 
 301. Import code list with missing CLASSIFICATION value
     [Documentation]    Import Code list with missing CLASSIFICATION value and check error message
     [Tags]    regression    test    300
-    ${excel_file_path}=    Create excel Code list no classification value
+    Set default codelist variables    301
+    
+    ${excel_file_path}=    Create excel Code list no classification value  
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}   
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}
+
     Import code list in Excel format
     Choose File                         ${FILE_UPLOAD_BTN}          ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}     timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}     
     Click Button                        Tuo
-    Wait Until Page Contains            ${Error_no_classification_value}    timeout=20
+    Wait Until Page Contains            ${Error_no_classification_value}    
     Cancel code list import
 
     ${csv_file_path}=   Create missing CLASSIFICATION csv
+    ...                 ${DEFAULT_CODELIST_SCHEME_ID}   
+    ...                 ${DEFAULT_PREFLABEL_SCHEME}
+
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    Tuo
-    Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
+    Wait Until Page Contains    ${Error_no_classification_value}    
     Cancel code list import
 
 302. Import code list with invalid CLASSIFICATION value
     [Documentation]    Import Code list (Excel, CSV) with invalid CLASSIFICATION value and check error message
     [Tags]    regression    test    300
+    Set default codelist variables    302
+    
     ${excel_file_path}=    Create excel Code list incorrect classification value
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}   
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in Excel format
+
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
+    Wait Until Page Contains    ${Error_no_classification_value}    
     Cancel code list import
 
     ${csv_file_path}=  Create invalid CLASSIFICATION csv
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}   
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in CSV format
+
     Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_no_classification_value}    timeout=20
+    Wait Until Page Contains    ${Error_no_classification_value}    
     Cancel code list import
 
-303. Import code list with missing STATUS value
+304. Import code list with missing STATUS value
     [Documentation]    Import Code list with missing STATUS value and check error message
     [Tags]    regression    test    300    status_change
+    Set default codelist variables    304
+    
     ${excel_file_path}=    Create excel Code list no status value
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}   
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_no_status_value}    timeout=20
-    Cancel code list import
 
-304. Import code list with invalid STATUS value
-    [Documentation]    Import Code list with invalid STATUS value and check error message
-    [Tags]    regression    test    300    status_change
-    ${excel_file_path}=    Create excel Code list incorrect status value
-    Import code list in Excel format
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_invalid_status_value}    timeout=20
+    Wait Until Page Contains    ${Error_no_status_value}    
     Cancel code list import
 
 305. Import code list with duplicate columns
     [Documentation]    Import Code list with duplicate columns and check error message
     [Tags]    regression    test    300 
+    Set default codelist variables    305
+    
     ${excel_file_path}=    Create excel Code list with multiple columns
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}   
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in Excel format
+
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_duplicate_columns}    timeout=20
+    Wait Until Page Contains    ${Error_duplicate_columns}    
     Cancel code list import
 
 306. Import code list with duplicate code lists
     [Documentation]    Import Code list with duplicate Code lists and check error message
     [Tags]    regression    test    300
+    Set default codelist variables    306
+    
     ${excel_file_path}=    Create excel Duplicate code lists
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}   
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in Excel format
+
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_duplicate_code_lists}    timeout=20
+    Wait Until Page Contains    ${Error_duplicate_code_lists}    
     Cancel code list import
 
 307. Import code list with invalid codeValue
     [Documentation]    Import Code list (Excel, CSV) with invalid codeValue and check error message
     [Tags]    regression    test    300
+    Set default codelist variables    307
+    
     ${excel_file_path}=    Create excel Code list with invalid codevalue
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}   
     Import code list in Excel format
+
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_invalid_code_list}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_code_list}    
     Cancel code list import
 
     ${csv_file_path}=   Create invalid CODEVALUE csv
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}
     Import code list in CSV format
+    
     Choose File    ${FILE_UPLOAD_BTN}    ${csv_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_invalid_code_list}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_code_list}    
     Cancel code list import
 
 308. Import code list with maximum hierarchies reached for codes
     [Documentation]    Import Code list (Excel) with maximum hierarchies reached
     ...    for codes and check error message
     [Tags]    regression    test    300
+    Set default codelist variables    308
+    
     ${excel_file_path}=    Create excel Code list and codes with max hierarchy level
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
+
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_codes_max_hierarchy_level}    timeout=20
+    Wait Until Page Contains    ${Error_codes_max_hierarchy_level}    
     Cancel code list import
 
 309. Create new version of code list from invalid file
@@ -166,143 +201,212 @@ ${Error_invalid_language_code_delimiter}    Aineistossa on kielikoodi arvolla sv
     ...    and check error message
     [Tags]    regression    test    300
     [Setup]    Test Case Setup Superuser
+    Set default codelist variables    309
+    
     ${excel_file_path}=    Create excel Code list and codes for new version creation
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
-    Upload codelist    ${excel_file_path}    ${CODE_LIST_9}
-    Wait Until Page Contains    10 koodia    timeout=20
 
-    Click element with wait     ${CODE_LIST_DDL}                        timeout=20
-    Click element with wait     ${CREATE_CODELIST_VERSION_FROM_FILE}    timeout=20
-    Click element with wait     ${FILE_FORMAT_BTN}                      timeout=20
-    Click element with wait     ${FILE_FORMAT_Excel}                    timeout=20
+    Upload codelist             ${excel_file_path}    ${DEFAULT_PREFLABEL_SCHEME}
+    Wait Until Page Contains    10 koodia    
 
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
+    Click element with wait     ${CODE_LIST_DDL}                        
+    Click element with wait     ${CREATE_CODELIST_VERSION_FROM_FILE}    
+    Click element with wait     ${FILE_FORMAT_BTN}                      
+    Click element with wait     ${FILE_FORMAT_Excel}                    
+
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    
     ${excel_file_path}=    Create excel 2x codelists
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
+
+    Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_only_one_code_list}    timeout=20
+    Wait Until Page Contains    ${Error_only_one_code_list}    
     Cancel code list import
 
-    [Teardown]    Remove codelist teardown    ${CODE_LIST_9}
+    [Teardown]    Remove codelist teardown    ${DEFAULT_CODELIST_SCHEME_ID}
 
 310. Create new version of code list from file with same codevalue
     [Documentation]    Create new version of code list from file with same codevalue
     ...    and check error message
     [Tags]    regression    test    300
     [Setup]    Test Case Setup Superuser
+    Set default codelist variables    310
+
     ${excel_file_path}=    Create excel Code list and codes for new version creation
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
-    Upload codelist    ${excel_file_path}    ${CODE_LIST_9}
-    Wait Until Page Contains    10 koodia    timeout=20
 
-    Click element with wait     ${CODE_LIST_DDL}                        timeout=20
-    Click element with wait     ${CREATE_CODELIST_VERSION_FROM_FILE}    timeout=20
-    Click element with wait     ${FILE_FORMAT_BTN}                      timeout=20
-    Click element with wait     ${FILE_FORMAT_Excel}                    timeout=20
+    Upload codelist             ${excel_file_path}    ${DEFAULT_PREFLABEL_SCHEME}
+    Wait Until Page Contains    10 koodia    
 
-    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    timeout=20
+    Click element with wait     ${CODE_LIST_DDL}                        
+    Click element with wait     ${CREATE_CODELIST_VERSION_FROM_FILE}    
+    Click element with wait     ${FILE_FORMAT_BTN}                      
+    Click element with wait     ${FILE_FORMAT_Excel}                    
+
+    Wait Until Page Contains Element    ${FILE_UPLOAD_BTN}    
     ${excel_file_path}=    Create excel Code list and codes for new version creation
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_code_list_exists}    timeout=20
+
+    Wait Until Page Contains Element    ${UPLOAD_FILE_BTN}    
+    Click Button                        ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains            ${Error_code_list_exists}    
     Cancel code list import
 
-    [Teardown]    Remove codelist teardown     ${CODE_LIST_9}
+    [Teardown]    Remove codelist teardown     ${DEFAULT_CODELIST_SCHEME_ID}
 
 311. Import code list with invalid propertytype in links
     [Documentation]    Import code list with links and with invalid propertytype in links sheet and check error message
     [Tags]    regression    test    300
+    Set default codelist variables    311
+    
     ${excel_file_path}=    Create excel Code list with links invalid propertytype
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_invalid_propertytype}    timeout=20
+
+    Choose File                         ${FILE_UPLOAD_BTN}    ${excel_file_path}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
+    Click Button                        ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains            ${Error_invalid_propertytype}    
     Cancel code list import
 
 312. Import code list with invalid end date
     [Documentation]    Import code list with invalid end date and check error message. YTI-290.
     [Tags]    regression    test    300
+    Set default codelist variables    312
+
     ${excel_file_path}=    Create excel Code list with links invalid endate
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_invalid_enddate}    timeout=20
+
+    Choose File                         ${FILE_UPLOAD_BTN}    ${excel_file_path}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
+    Click Button                        ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains            ${Error_invalid_enddate}   
     Cancel code list import
 
 313. Import code list with same sub code list
     [Documentation]    Import code list with same sub code list and check error message. YTI-317.
     [Tags]    regression    test    300
+    Set default codelist variables    313
+    
     ${excel_file_path}=    Create excel same sub code list
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_same_sub_code_list}    timeout=20
+
+    Choose File                         ${FILE_UPLOAD_BTN}    ${excel_file_path}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
+    Click Button                        ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains            ${Error_same_sub_code_list}    
     Cancel code list import
 
 314. Import code list with unknown sub code list
     [Documentation]    Import code list with unknown sub code list and check error message. YTI-317.
     [Tags]    regression    test    300
+    Set default codelist variables    314
+    
     ${excel_file_path}=    Create excel unknown sub code list
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
-    Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
-    Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_unknown_sub_code_list}    timeout=20
+
+    Choose File                         ${FILE_UPLOAD_BTN}    ${excel_file_path}
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
+    Click Button                        ${UPLOAD_FILE_BTN}
+    Wait Until Page Contains            ${Error_unknown_sub_code_list}    
     Cancel code list import
 
 315. Import empty Excel file
     [Documentation]    Import empty Excel file and check error message. YTI-569.
     [Tags]    regression    test    300
+    Set default codelist variables    315
+    
     Import code list in Excel format
     ${excel_file_path}=    Create excel empty file
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_empty_Excel}    timeout=20
+    Wait Until Page Contains    ${Error_empty_Excel}    
     Cancel code list import
 
     Import code list in CSV format
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_codevalue_missing}    timeout=20
+    Wait Until Page Contains    ${Error_codevalue_missing}    
     Cancel code list import
 
 316. Import Excel file with no content
     [Documentation]    Import Excel file with no content and check error message. YTI-574.
     [Tags]    regression    test    300
+    Set default codelist variables    316
+    
     ${excel_file_path}=    Create excel No content excel
     Import code list in Excel format
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_no_content}    timeout=20
+    Wait Until Page Contains    ${Error_no_content}    
     Cancel code list import
 
 317. Import code list with invalid link URLs
     [Documentation]    Import code list with invalid link URLs and check error message
     [Tags]    regression    test    300
+    Set default codelist variables    317
+    
     ${excel_file_path}=    Create excel Code list with invalid link URLs
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Import code list in Excel format
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_invalid_link_urls}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_link_urls}    
     Cancel code list import
 
 318. Import code list with invalid delimiter in LANGUAGECODE column
     [Documentation]    Import code list with invalid delimiter in LANGUAGECODE column
     ...    and check error message. YTI-1097.
     [Tags]    regression    test    300
+    Set default codelist variables    318
+    
     Import code list in Excel format
     ${excel_file_path}=    Create excel Code list invalid delimiter in language code
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_CODE_ID}  
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}  
+    ...                    ${DEFAULT_PREFLABEL_CODE}
     Choose File    ${FILE_UPLOAD_BTN}    ${excel_file_path}
-    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    timeout=20
+    Wait Until Page Contains Element    ${IMPORT_CODE_LIST_BTN}    
     Click Button    ${UPLOAD_FILE_BTN}
-    Wait Until Page Contains    ${Error_invalid_language_code_delimiter}    timeout=20
+    Wait Until Page Contains    ${Error_invalid_language_code_delimiter}    
     Cancel code list import
