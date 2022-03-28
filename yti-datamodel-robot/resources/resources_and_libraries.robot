@@ -26,6 +26,7 @@ Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
 Test Case Setup Generic Setup
+    Set Selenium Timeout    ${SELENIUM_DEFAULT_TIMEOUT}
     Run Keyword If    '${RECORD}' == 'True'      Start video recording      name=${TEST NAME}
     Open Tietomallit
     Set Selenium Speed      ${SELENIUM_SPEED}
