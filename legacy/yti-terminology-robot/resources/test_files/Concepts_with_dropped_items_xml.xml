@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file://localhost/X:/NTRF.css" type="text/css"?>
+<VOCABULARY>
+  <HEAD level="1">Palvelut</HEAD>
+  <RECORD numb="c1">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelu</TERM>
+        <HOGR>1</HOGR>
+      </TE>
+      <SY>
+        <TERM>palvelutuotos</TERM>
+      </SY>
+      <DEF><RCON href="#c5">palvelutoiminnan</RCON> tuloksena syntyvä aineeton hyödyke, joka kulutetaan tai koetaan</DEF>
+      <NOTE>Palvelu<HOGR>1</HOGR> on yläkäsite, jota harvoin voidaan hyödyntää sellaisenaan. Usein on tarpeen määritellä palvelun<HOGR>1</HOGR> tarkemmin rajautuvia alakäsitteitä kuten <RCON href="#c48">työnvälityspalvelu</RCON> ja <RCON href="#c51">osaamisen kehittämispalvelu</RCON>.</NOTE>
+      <NOTE>Palvelu<HOGR>1</HOGR> syntyy usein <RCON href="#c16">palveluntoteuttajan</RCON> ja <RCON href="#c26">asiakkaan</RCON> välisessä vuorovaikutuksessa. Asiakkaat voivat olla palvelun<HOGR>1</HOGR> toteuttavan <RCON href="#c30">organisaation</RCON> ulkopuolella tai samassa organisaatiossa.</NOTE>
+      <NOTE>Vaikka palvelu<HOGR>1</HOGR> on aineeton hyödyke, palveluun<HOGR>1</HOGR> ja sen tuottamiseen voi liittyä aineellisia hyödykkeitä, kuten konsultointipalvelu, johon sisältyy kirjallinen raportti tai käännöspalvelu, johon kuuluu käännöksen sisältävä dokumentti.</NOTE>
+      <NOTE>Palvelu<HOGR>1</HOGR> voidaan toteuttaa esimerkiksi tietojärjestelmän tai verkkosivuston avulla (ks. JHS 179).</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK>, <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK></NOTE>
+    </LANG>
+    <BCON href="c22" typr="partitive">palvelukokonaisuus</BCON>
+  </RECORD>
+  <RECORD numb="c2" stat="ulottuvuus">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelujen tavoitteen mukaan</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c1" typr="generic">palvelu<HOGR>1</HOGR></BCON>
+  </RECORD>
+  <RECORD numb="c3" stat="ulottuvuus">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelujen kohderyhmän mukaan</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c1" typr="generic">palvelu<HOGR>1</HOGR></BCON>
+  </RECORD>
+  <RECORD numb="c4" stat="ulottuvuus">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelujen ensisijaisuuden mukaan</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c1" typr="generic">palvelu<HOGR>1</HOGR></BCON>
+  </RECORD>
+  <RECORD numb="c5">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelutoiminta</TERM>
+      </TE>
+      <SY>
+        <TERM>palvelu</TERM>
+        <HOGR>2</HOGR>
+      </SY>
+      <DEF>organisoitu <BCON href="#c35" typr="generic">toiminta</BCON>, jolla <RCON href="#c11">palvelunantaja</RCON> vastaa <RCON href="#c25">palvelunkäyttäjän</RCON> tarpeeseen</DEF>
+      <NOTE>Palvelutoimintaan voi liittyä yhden tai useammanlaista toimintaa ja yksi tai useampia <RCON href="#c14">palveluntuottajia</RCON>.</NOTE>
+      <NOTE>Julkisen hallinnon palvelutoiminta voi perustua säädöspohjaiseen tehtävään tai julkisen hallinnon toimijan itselleen ottamaan tehtävään.</NOTE>
+      <NOTE>Jos palvelutoiminta jaetaan vaiheisiin, voidaan vaiheiden muodostamaa kokonaisuutta kutsua palveluprosessiksi.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c6">
+    <LANG value="fi">
+      <TE>
+        <TERM>tukipalvelu</TERM>
+      </TE>
+      <DEF><BCON href="#c1" typr="generic">palvelun<HOGR>1</HOGR></BCON> tuottamista tukeva tai ensisijaisena tarjottavaa palvelua<HOGR>1</HOGR> täydentävä palvelu<HOGR>1</HOGR></DEF>
+      <NOTE>Esimerkiksi <RCON href="#c18">valtakunnalliset palvelukeskukset</RCON> tarjoavat tukipalveluna asiakastietojen hallinnointia, mikä mahdollistaa <RCON href="#c26">asiakkaan</RCON> siirtymisen saumattomasti toimijalta toiselle, kun kaikilla <RCON href="#c11">palvelunantajilla</RCON> on käytössään yhteinen asiakkaan palvelutapahtumahistoria.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+    <BCON href="c4" typr="generic">palvelujen ensisijaisuuden mukaan</BCON>
+  </RECORD>
+  <RECORD numb="c7">
+    <LANG value="fi">
+      <TE>
+        <TERM>kasvupalvelu</TERM>
+      </TE>
+      <DEF><BCON href="#c1" typr="generic">palvelu<HOGR>1</HOGR></BCON>, jonka työ- ja elinkeinoministeriö, maakunta tai Uudenmaan kuntayhtymä järjestää kestävän taloudellisen kasvun, yrittäjyyden sekä yritystoiminnan edellytysten, työmarkkinoiden toimivuuden tai <RCON href="#c64">kotoutumisen</RCON> edistämiseksi</DEF>
+      <NOTE>Uudenmaan maakunnassa kasvupalveluiden järjestämisvastuu on pääkaupunkiseudun kuntien muodostamalla kuntayhtymällä, jota koskevat kaikki samat oikeudet, velvollisuudet ja rajoitteet kuin maakuntia. Uudenmaan kuntayhtymän jäseniksi voivat halutessaan liittyä myös pääkaupunkiseudun ulkopuoliset Uudenmaan kunnat.</NOTE>
+      <NOTE><RCON href="#c26">Asiakkaille</RCON> annettaviin <RCON href="#c1">palveluihin<HOGR>1</HOGR></RCON> viitattaessa on suositeltavaa käyttää tarjottavan palvelun<HOGR>1</HOGR> yksilöivää palvelun nimitystä (kuten <RCON href="#c51">osaamisen kehittämispalvelu</RCON>) kasvupalvelu-termin sijaan.</NOTE>
+      <NOTE>Kasvupalvelujen ja niihin liittyvien tukien myöntäminen on harkinnanvaraista.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK>, <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK></NOTE>
+      <STE>
+        <TERM>Uudenmaan kuntayhtymä</TERM>
+      </STE>
+    </LANG>
+    <BCON href="c2" typr="generic">palvelujen tavoitteen mukaan</BCON>
+  </RECORD>
+  <RECORD numb="c8">
+    <LANG value="fi">
+      <TE>
+        <TERM>valtakunnallinen kasvupalvelu</TERM>
+      </TE>
+      <DEF>valtakunnallisesti toimivaltaisen <RCON href="#c14">palveluntuottajan</RCON> <BCON href="#c7" typr="generic">kasvupalvelu</BCON>, joka järjestetään keskitetysti ja joka on saatavilla koko maassa</DEF>
+      <NOTE>Valtakunnallisista kasvupalveluista vastaa työ- ja elinkeinoministeriö.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK></NOTE>
+    </LANG>
+    <BCON href="c47" typr="generic">palvelun saatavuuden mukaan</BCON>
+  </RECORD>
+  <RECORD numb="c9">
+    <LANG value="fi">
+      <TE>
+        <TERM>maakunnallinen kasvupalvelu</TERM>
+      </TE>
+      <DEF>alueellisesti toimivaltaisen <RCON href="#c14">palveluntuottajan</RCON> <BCON href="#c7" typr="generic">kasvupalvelu</BCON>, jonka maakunta tai Uudenmaan kuntayhtymä järjestää ja joka on saatavilla vähintään yhden maakunnan laajuisesti</DEF>
+      <NOTE>Maakunnalla on velvollisuus järjestää kasvupalveluja työmarkkinoiden toimivuuden ja osaavan työvoiman saatavuuden turvaamiseksi. Maakunta voi järjestää kasvupalveluja myös yritystoiminnan ja yrittäjyyden sekä kansainvälistymisen edistämiseksi sekä <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON>, jotka luovat edellytyksiä innovaatioiden kehittämiselle.</NOTE>
+      <NOTE>Maakunta voi järjestää kasvupalvelut itse tai useamman maakunnan yhteistyönä.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK></NOTE>
+    </LANG>
+    <BCON href="c47" typr="generic">palvelun saatavuuden mukaan</BCON>
+  </RECORD>
+  <RECORD numb="c10">
+    <LANG value="fi">
+      <TE>
+        <TERM>palveluntarjoaja</TERM>
+        <HOGR>1</HOGR>
+      </TE>
+      <DEF>toimija, joka on kiinnostunut toimimaan <RCON href="#c11">palvelunantajana</RCON></DEF>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c11">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelunantaja</TERM>
+      </TE>
+      <DTEA>
+        <TERM>palveluntarjoaja</TERM>
+        <HOGR>2</HOGR>
+      </DTEA>
+      <DEF>toimija, joka järjestää, tuottaa tai toteuttaa <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON></DEF>
+      <NOTE>Termiä palvelunantaja käytetään silloin, kun toimijan roolia (<LINK href="#c12">palvelunjärjestäjä</LINK>, <LINK href="#c14">palveluntuottaja</LINK>, <LINK href="#c16">palveluntoteuttaja</LINK>) ei ole tarpeen eritellä tarkemmin.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c12">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelunjärjestäjä</TERM>
+      </TE>
+      <DEF><BCON href="#c11" typr="generic">palvelunantaja</BCON>, joka vastaa <RCON href="#c1">palvelujen<HOGR>1</HOGR></RCON> toteutumisesta ja niihin liittyvistä kustannuksista</DEF>
+      <NOTE>Esimerkiksi maakunnalla on velvollisuus järjestää tiettyjä <RCON href="#c9">maakunnallisia kasvupalveluja</RCON>.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c13">
+    <LANG value="fi">
+      <TE>
+        <TERM>kasvupalvelujen järjestäjä</TERM>
+      </TE>
+      <DEF><BCON href="#c12" typr="generic">palvelunjärjestäjä</BCON>, joka vastaa <RCON href="#c7">kasvupalveluista</RCON></DEF>
+      <NOTE>Kasvupalvelut voivat olla valtakunnallisia tai maakunnallisia. <RCON href="#c8">Valtakunnallisten kasvupalvelujen</RCON> järjestäjänä toimii työ- ja elinkeinoministeriö. <RCON href="#c9">Maakunnallisten kasvupalvelujen</RCON> järjestäjiä ovat maakunnat ja Uudenmaan kuntayhtymä. Maakunnat ja kuntayhtymä voivat järjestää kasvupalvelut yksin tai tehdä yhteistyötä kasvupalvelujen järjestämiseksi.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c14">
+    <LANG value="fi">
+      <TE>
+        <TERM>palveluntuottaja</TERM>
+      </TE>
+      <DEF><BCON href="#c11" typr="generic">palvelunantaja</BCON>, joka saa aikaan <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON> joko tilaamalla ne muulta <RCON href="#c16">palveluntoteuttajalta</RCON> tai toimimalla itse palveluntoteuttajana</DEF>
+      <NOTE>Esimerkiksi maakunta voi ulkoistaa palvelun<HOGR>1</HOGR> toteuttamisen yksityisen tai julkisen sektorin palveluntoteuttajalle tai toimia itse palveluntoteuttajana.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c15">
+    <LANG value="fi">
+      <TE>
+        <TERM>kasvupalvelujen tuottaja</TERM>
+      </TE>
+      <DEF><BCON href="#c14" typr="generic">palveluntuottaja</BCON>, joka tuottaa <RCON href="#c7">kasvupalveluja</RCON></DEF>
+      <NOTE>Valtakunnallisten kasvupalvelujen tuottajista säädetään lailla.</NOTE>
+      <NOTE>Maakunnallisten kasvupalvelujen tuottaja voi olla yhteisö, säätiö tai yksityinen elinkeinonharjoittaja, joka hankintasopimuksen tai maakunnan tai Uudenmaan kuntayhtymän päätöksen perusteella tuottaa kasvupalveluja maakunnalle tai Uudenmaan kuntayhtymälle. </NOTE>
+      <NOTE>Kasvupalvelujen tuottaja voi <RCON href="#c12">palvelunjärjestäjän</RCON> luvalla ulkoistaa kasvupalvelun tai sen osan toteuttamisen (käyttää <RCON href="#c16">palveluntoteuttajaa</RCON>) tai toteuttaa kasvupalvelun itse (toimia palveluntoteuttajana).</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c16">
+    <LANG value="fi">
+      <TE>
+        <TERM>palveluntoteuttaja</TERM>
+      </TE>
+      <SY>
+        <TERM>palvelujen toteuttaja</TERM>
+      </SY>
+      <DEF><BCON href="#c11" typr="generic">palvelunantaja</BCON>, joka käytännössä antaa sovitut <RCON href="#c1">palvelut<HOGR>1</HOGR></RCON> <RCON href="#c26">asiakkaalle</RCON></DEF>
+      <NOTE>Palveluntoteuttaja antaa sovitut palvelut<HOGR>1</HOGR> asiakkaalle <RCON href="#c12">palvelunjärjestäjän</RCON> tai <RCON href="#c14">palveluntuottajan</RCON> kanssa tekemänsä sopimuksen mukaan.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c17">
+    <LANG value="fi">
+      <TE>
+        <TERM>kasvupalvelujen toteuttaja</TERM>
+      </TE>
+      <DEF><BCON href="#c16" typr="generic">palveluntoteuttaja</BCON>, joka antaa <RCON href="#c26">asiakkaalle</RCON> <RCON href="#c7">kasvupalveluja</RCON></DEF>
+      <NOTE>Esimerkiksi <RCON href="#c67">kotoutumiskoulutuksen</RCON> <RCON href="#c14">palveluntuottaja</RCON> voi tilata alihankintana tietyn osan koulutuksesta toiselta palveluntoteuttajalta.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c18">
+    <SUBJ>maakunnat</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>valtakunnallinen palvelukeskus</TERM>
+      </TE>
+      <SY>
+        <TERM>palvelukeskus</TERM>
+      </SY>
+      <DEF><BCON href="#c30" typr="generic">organisaatio</BCON>, joka tuottaa toimitila- ja kiinteistöhallinnon palveluja, talous- ja henkilöstöhallinnon palveluja tai tieto- ja viestintäteknisiä palveluja</DEF>
+      <NOTE>Maakunnilla ja Uudenmaan kuntayhtymällä on tietyiltä osin <RCON href="#c19">käyttövelvoite</RCON> valtakunnallisen palvelukeskuksen <RCON href="#c1">palvelujen<HOGR>1</HOGR></RCON> käyttämiseen.</NOTE>
+      <NOTE>Valtakunnalliset palvelukeskukset ovat organisaatiomuodoltaan osakeyhtiöitä.</NOTE>
+      <NOTE>Valtakunnalliset palvelukeskukset voivat olla maakuntien yhdessä omistamia tai maakuntien ja valtion yhdessä omistamia.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c19">
+    <SUBJ>maakunnat</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>käyttövelvoite</TERM>
+      </TE>
+      <DEF>maakuntien ja Uudenmaan kuntayhtymän velvollisuus käyttää <RCON href="#c18">valtakunnallisen palvelukeskuksen</RCON> tuottamia <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON></DEF>
+      <NOTE>Maakuntalaissa säädetään siitä, missä tilanteissa maakunta tai Uudenmaan kuntayhtymä voivat poiketa valtakunnallisen palvelukeskuksen palvelujen<HOGR>1</HOGR> käyttövelvoitteesta.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c20">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelutarpeen arviointi</TERM>
+      </TE>
+      <DEF><BCON href="#c35" typr="generic">toiminta</BCON>, jossa asiantuntija arvioi <RCON href="#c26">asiakkaan</RCON> <RCON href="#c21">palvelutarvetta</RCON> yhteistyössä asiakkaan kanssa</DEF>
+      <NOTE>Esimerkiksi <RCON href="#c41">rekisteröityneen työnhakijan</RCON> palvelutarve on arvioitava määräajassa työnhaun alkamisesta. Lisäksi <RCON href="#c42">työttömän työnhakijan</RCON> palvelutarve on arvioitava säännöllisesti työnhaun ollessa voimassa.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c21">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelutarve</TERM>
+      </TE>
+      <DEF><RCON href="#c26">asiakkaan</RCON> todettu tarve saada sellaisia <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON>, jotka asiantuntijan arvion mukaan tukevat asiakasta</DEF>
+      <NOTE>Asiantuntijan toteama palvelutarve perustuu <RCON href="#c20">palvelutarpeen arviointiin</RCON>, joka tehdään yhteistyössä asiakkaan kanssa.</NOTE>
+      <NOTE>Yleiskielessä palvelutarve-termillä viitataan henkilön omaan arvioon tarpeestaan.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c22">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelukokonaisuus</TERM>
+      </TE>
+      <DEF><RCON href="#c26">asiakkaan</RCON> <RCON href="#c21">palvelutarpeeseen</RCON> perustuva useista <LINK href="#c1">palveluista<HOGR>1</HOGR></LINK> koostuva kokonaisuus</DEF>
+      <NOTE>Useimmiten palvelukokonaisuuden tuottamiseen osallistuu useita eri toimijoita.</NOTE>
+      <NOTE>Esimerkiksi <LINK href="#c43">työllistymistä edistävä monialainen yhteispalvelu</LINK> on yhdenlainen palvelukokonaisuus.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK>, <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c23">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelujen yhteensovittaminen</TERM>
+      </TE>
+      <DEF><RCON href="#c26">asiakkaan</RCON> tarvitseman <RCON href="#c22">palvelukokonaisuuden</RCON> muodostaminen</DEF>
+      <NOTE><RCON href="#c12">Palvelunjärjestäjä</RCON> vastaa palvelukokonaisuuden muodostamisesta.</NOTE>
+      <NOTE><RCON href="#c7">Kasvupalvelujen</RCON> kanssa voidaan sovittaa yhteen esimerkiksi sosiaali- ja terveyspalveluja, Kansaneläkelaitoksen kuntoutuspalveluja sekä kuntien nuorisopalveluja ja sivistystoimen palveluja. Maakunta vastaa sekä kasvupalvelujen ja muiden <RCON href="#c1">palvelujen<HOGR>1</HOGR></RCON> yhteensovittamisesta että <RCON href="#c9">maakunnallisten</RCON> ja <RCON href="#c8">valtakunnallisten kasvupalvelujen</RCON> yhteensovittamisesta.</NOTE>
+      <NOTE>Vaikka vastuu palvelujen yhteensovittamisesta on palvelunjärjestäjällä, käytännön tasolla yhteensovittamisesta huolehtii <RCON href="#c14">palveluntuottaja</RCON>.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK>, <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c24">
+    <LANG value="fi">
+      <TE>
+        <TERM>asiakasryhmien palvelukartoitus</TERM>
+      </TE>
+      <DEF><RCON href="#c12">palvelunjärjestäjän</RCON> <BCON href="#c35" typr="generic">toiminta</BCON>, jonka tavoitteena on tunnistaa asiakasryhmät ja niiden tarvitsemat keskeiset <RCON href="#c1">palvelut<HOGR>1</HOGR></RCON></DEF>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <DIAG height="1346" heightcm="35.612915" href="Kaaviot/kasvupalvelut_palvelut.svg" lang="fi" lock="false" name="Palvelut" numb="c68" resolution="96" scale="0.66548896" width="780" widthcm="20.637499">
+    <LINK href="#c1">palvelu (1)</LINK>
+    <LINK href="#c2">palvelu palvelujen tavoitteen mukaan</LINK>
+    <LINK href="#c3">palvelu palvelujen kohderyhmän mukaan</LINK>
+    <LINK href="#c4">palvelu palvelujen ensisijaisuuden mukaan</LINK>
+    <LINK href="#c66">kotoutumista edistävä palvelu</LINK>
+    <LINK href="#c5">palvelutoiminta</LINK>
+    <LINK href="#c6">tukipalvelu</LINK>
+    <LINK href="#c7">kasvupalvelu</LINK>
+    <LINK href="#c8">valtakunnallinen kasvupalvelu</LINK>
+    <LINK href="#c9">maakunnallinen kasvupalvelu</LINK>
+    <LINK href="#c23">palvelujen yhteensovittaminen</LINK>
+    <LINK href="#c20">palvelutarpeen arviointi</LINK>
+    <LINK href="#c11">palvelunantaja</LINK>
+    <LINK href="#c10">palveluntarjoaja<HOGR>1</HOGR></LINK>
+    <LINK href="#c12">palvelunjärjestäjä</LINK>
+    <LINK href="#c13">kasvupalvelujen järjestäjä</LINK>
+    <LINK href="#c16">palveluntoteuttaja</LINK>
+    <LINK href="#c17">kasvupalvelujen toteuttaja</LINK>
+    <LINK href="#c14">palveluntuottaja</LINK>
+    <LINK href="#c15">kasvupalvelujen tuottaja</LINK>
+    <LINK href="#c25">palvelunkäyttäjä</LINK>
+    <LINK href="#c34">loppuasiakas</LINK>
+    <LINK href="#c26">asiakas</LINK>
+    <LINK href="#c18">valtakunnallinen palvelukeskus</LINK>
+    <LINK href="#c21">palvelutarve</LINK>
+    <LINK href="#c22">palvelukokonaisuus</LINK>
+    <LINK href="#c24">asiakasryhmien palvelukartoitus</LINK>
+    <LINK href="#c19">käyttövelvoite</LINK>
+  </DIAG>
+  <HEAD level="1">Asiakkaat</HEAD>
+  <RECORD numb="c25">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelunkäyttäjä</TERM>
+      </TE>
+      <DEF><RCON href="#c1">palvelua<HOGR>1</HOGR></RCON> käyttävä tai muuten <RCON href="#c5">palvelutoiminnan</RCON> kohteena oleva toimija</DEF>
+      <NOTE>Palvelunkäyttäjä voi toimia myös <RCON href="#c26">asiakkaan</RCON> roolissa, mikäli <RCON href="#c11">palvelunantajan</RCON> ja palvelunkäyttäjän välillä on asiakassuhde. Kaikki palvelunkäyttäjät eivät ole palvelunantajan asiakkaita.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c26">
+    <LANG value="fi">
+      <TE>
+        <TERM>asiakas</TERM>
+      </TE>
+      <DEF>toimija, jolla on asiakassuhde <RCON href="#c11">palvelunantajaan</RCON></DEF>
+      <NOTE>Asiakas voi olla henkilö (<RCON href="#c28">henkilöasiakas</RCON>) tai <RCON href="#c30">organisaatio</RCON> (<RCON href="#c29">organisaatioasiakas</RCON>). Asiakas voi olla <RCON href="#c1">palvelun<HOGR>1</HOGR></RCON> toteuttavan organisaation ulkopuolella tai samassa organisaatiossa.</NOTE>
+      <NOTE>Usein asiakas kirjataan palvelunantajan rekisteriin (rekisteröity asiakas), ja henkilöasiakkaan henkilöllisyys varmistetaan rekisteröinnin yhteydessä.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK>, <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+      <STE>
+        <TERM>rekisteröity asiakas</TERM>
+      </STE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c27" stat="ulottuvuus">
+    <LANG value="fi">
+      <TE>
+        <TERM>toimijan tyypin mukaan</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c26" typr="generic">asiakas</BCON>
+  </RECORD>
+  <RECORD numb="c28">
+    <LANG value="fi">
+      <TE>
+        <TERM>henkilöasiakas</TERM>
+      </TE>
+      <DEF><BCON href="#c26" typr="generic">asiakas</BCON>, joka on henkilö</DEF>
+      <NOTE>Esimerkiksi <RCON href="#c41">rekisteröityneet työnhakijat</RCON> ovat <RCON href="#c48">työnvälityspalvelun</RCON> henkilöasiakkaita.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+    <BCON href="c27" typr="generic">toimijan tyypin mukaan</BCON>
+  </RECORD>
+  <RECORD numb="c29">
+    <LANG value="fi">
+      <TE>
+        <TERM>organisaatioasiakas</TERM>
+      </TE>
+      <DEF><BCON href="#c26" typr="generic">asiakas</BCON>, joka on <RCON href="#c30">organisaatio</RCON></DEF>
+      <NOTE><RCON href="#c7">Kasvupalvelujen</RCON> organisaatioasiakkaat ovat <RCON href="#c31">oikeushenkilöitä</RCON>.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+      <STE>
+        <TERM>yritysasiakas</TERM>
+      </STE>
+    </LANG>
+    <BCON href="c27" typr="generic">toimijan tyypin mukaan</BCON>
+  </RECORD>
+  <RECORD numb="c30">
+    <LANG value="fi">
+      <TE>
+        <TERM>organisaatio</TERM>
+      </TE>
+      <DEF>toimija, joka on henkilöiden muodostama yhteenliittymä ja jolla on yhteinen tavoite ja tarkoituksenmukainen rakenne</DEF>
+      <NOTE>Organisaatio voi muodostua useasta eri organisaatiosta.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c31">
+    <LANG value="fi">
+      <TE>
+        <TERM>oikeushenkilö</TERM>
+      </TE>
+      <DEF>oikeussubjekti, joka ei ole ihminen</DEF>
+      <NOTE>Oikeushenkilö on yleensä henkilöiden, yhteisöjen tai pääomien yhteenliittymä.</NOTE>
+      <NOTE>Oikeussubjekti voi saada nimiinsä oikeuksia ja tulla velvoitetuksi.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c32" stat="ulottuvuus">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelujen tyypin mukaan</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c26" typr="generic">asiakas</BCON>
+  </RECORD>
+  <RECORD numb="c33">
+    <LANG value="fi">
+      <TE>
+        <TERM>kasvupalvelujen asiakas</TERM>
+      </TE>
+      <DEF><BCON href="#c26" typr="generic">asiakas</BCON>, jolla on asiakassuhde <RCON href="#c7">kasvupalvelujen</RCON> <RCON href="#c11">palvelunantajaan</RCON></DEF>
+      <NOTE>Kasvupalvelujen asiakkaille tarjotaan <RCON href="#c22">palvelukokonaisuuksia</RCON>, jotka vastaavat asiakkaan tarpeisiin. <RCON href="#c41">Rekisteröityneelle työnhakijalle</RCON> voidaan esimerkiksi tarjota <RCON href="#c45">työnhakua</RCON> tukevia sekä osaamista kartoittavia ja kehittäviä <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON> ja <RCON href="#c30">organisaatiolle</RCON> esimerkiksi rahoitus- ja neuvontapalveluja.</NOTE>
+      <NOTE><RCON href="#c9">Maakunnallisten kasvupalvelujen</RCON> asiakkaalla on oikeus valita haluamansa <RCON href="#c14">palveluntuottaja</RCON> maakunnan järjestämisvastuunsa mukaisesti nimeämien palveluntuottajien joukosta.</NOTE>
+      <NOTE>Kasvupalvelujen asiakkaan asiakassuhde alkaa silloin, kun hän hakee <RCON href="#c1">palvelua<HOGR>1</HOGR></RCON>.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c34">
+    <LANG value="fi">
+      <TE>
+        <TERM>loppuasiakas</TERM>
+      </TE>
+      <SY>
+        <TERM>palvelunsaaja</TERM>
+      </SY>
+      <DEF><BCON href="#c26" typr="generic">asiakas</BCON>, jolle <RCON href="#c1">palvelu<HOGR>1</HOGR></RCON> on myönnetty tai annetaan sovitusti</DEF>
+      <NOTE>Kun maakunta hankkii <RCON href="#c66">kotoutumista edistävän palvelun</RCON> yksityiseltä <RCON href="#c16">palveluntoteuttajalta</RCON> <RCON href="#c63">maahanmuuttajaa</RCON> varten, maahanmuuttaja on palvelun<HOGR>1</HOGR> loppuasiakas.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_asiakkaat.svg">Asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <DIAG height="824" heightcm="21.801666" href="Kaaviot/kasvupalvelut_asiakkaat.svg" lang="fi" lock="false" name="Asiakkaat" numb="c69" resolution="96" scale="0.9735147" width="660" widthcm="17.4625">
+    <LINK href="#c1">palvelu<HOGR>1</HOGR></LINK>
+    <LINK href="#c7">kasvupalvelu</LINK>
+    <LINK href="#c26">asiakas</LINK>
+    <LINK href="#c27">asiakas toimijan tyypin mukaan</LINK>
+    <LINK href="#c28">henkilöasiakas</LINK>
+    <LINK href="#c29">organisaatioasiakas</LINK>
+    <LINK href="#c32">asiakas palvelujen tyypin mukaan</LINK>
+    <LINK href="#c33">kasvupalvelujen asiakas</LINK>
+    <LINK href="#c11">palvelunantaja</LINK>
+    <LINK href="#c25">palvelunkäyttäjä</LINK>
+    <LINK href="#c34">loppuasiakas</LINK>
+    <LINK href="#c21">palvelutarve</LINK>
+    <LINK href="#c30">organisaatio</LINK>
+    <LINK href="#c31">oikeushenkilö</LINK>
+  </DIAG>
+  <HEAD level="1">Alueiden kehittäminen</HEAD>
+  <RECORD numb="c35">
+    <LANG value="fi">
+      <TE>
+        <TERM>toiminta</TERM>
+      </TE>
+      <DEF>yksittäinen tai joukko toisiinsa liittyviä toimintoja, tapahtumia tai vaiheita</DEF>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c36">
+    <LANG value="fi">
+      <TE>
+        <TERM>alueiden kehittäminen</TERM>
+      </TE>
+      <SY>
+        <TERM>aluekehittäminen</TERM>
+      </SY>
+      <DEF>ministeriöiden, maakuntien, kuntien ja muiden toimijoiden vuorovaikutukseen perustuva laaja-alainen ja monitasoinen <BCON href="#c35" typr="generic">toiminta</BCON> maan eri alueiden kehittämiseksi</DEF>
+      <NOTE>Vastuu alueiden kehittämisestä on maakunnilla ja kunnilla omilla alueillaan. Maakunta toimii alueensa aluekehittämisviranomaisena, ja valtio vastaa valtakunnallisesta alueiden kehittämisestä.</NOTE>
+    </LANG>
+  </RECORD>
+  <HEAD level="1">Työnvälityspalvelut ja osaamisen kehittämispalvelut</HEAD>
+  <RECORD numb="c37">
+    <LANG value="fi">
+      <TE>
+        <TERM>työ</TERM>
+      </TE>
+      <DEF>tehtävien ja velvollisuuksien kokonaisuus, jota toimija hoitaa työnantajan lukuun tai työllistäessään itse itsensä</DEF>
+      <NOTE>Työ voidaan tehdä esimerkiksi palvelussuhteessa tai toimeksiantosuhteessa.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c38">
+    <LANG value="fi">
+      <TE>
+        <TERM>työntarjoaja</TERM>
+      </TE>
+      <DEF>toimija, joka etsii <RCON href="#c37">työlle</RCON> tekijää</DEF>
+      <NOTE>Työntarjoaja voi olla työntekijää itselleen etsivä työnantaja, toimeksiannolleen toteuttajaa etsivä toimeksiantaja, <LINK href="#c39">työnvälittäjä</LINK> tai joku muu toimija.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c39">
+    <LANG value="fi">
+      <TE>
+        <TERM>työnvälittäjä</TERM>
+      </TE>
+      <DEF>toimija, joka etsii <RCON href="#c37">työlle</RCON> tekijää toisen puolesta tai joka etsii <RCON href="#c40">työnhakijalle</RCON> työtä</DEF>
+      <NOTE>Kun työnvälittäjä etsii työlle tekijää toisen puolesta, se toimii <RCON href="#c38">työntarjoajana</RCON>.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+    <BCON href="c38" typr="generic">työntarjoaja</BCON>
+  </RECORD>
+  <RECORD numb="c40">
+    <LANG value="fi">
+      <TE>
+        <TERM>työnhakija</TERM>
+        <HOGR>1</HOGR>
+      </TE>
+      <DEF>toimija, joka etsii itselleen <RCON href="#c37">työtä</RCON></DEF>
+      <NOTE>Työnhakijana<HOGR>1</HOGR> voi olla joko henkilö tai <RCON href="#c30">organisaatio</RCON>.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c41">
+    <LANG value="fi">
+      <TE>
+        <TERM>rekisteröitynyt työnhakija</TERM>
+      </TE>
+      <SY>
+        <TERM>työnhakija</TERM>
+        <HOGR>2</HOGR>
+      </SY>
+      <DEF><BCON href="#c40" typr="generic">työnhakija<HOGR>1</HOGR></BCON>, jonka tiedot ovat maakuntien <RCON href="#c45">työnhakuun</RCON> tarjoamassa järjestelmässä ja jonka työnhaku on voimassa laissa säädetyllä tavalla</DEF>
+      <NOTE>Kasvupalvelulainsäädännön mukaan työnhakijoita ovat vain tässä määritellyt rekisteröityneet työnhakijat.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c42">
+    <SUBJ>kasvupalvelut</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>työtön työnhakija</TERM>
+      </TE>
+      <SY>
+        <EQUI value="near-equivalent"></EQUI>
+        <TERM>työtön</TERM>
+      </SY>
+      <DEF><BCON href="#c41" typr="generic">rekisteröitynyt työnhakija</BCON>, joka ei tee kokoaikaisesti <RCON href="#c37">työtä</RCON> yhtäjaksoisesti yli kahta viikkoa tai opiskele päätoimisesti</DEF>
+      <NOTE>Työttömyysturvalain mukaan työttömänä pidetään henkilöä, joka ei ole kokoaikaisessa työsuhteessa tai työllisty yhtäjaksoisesti päätoimisesti yli kahta viikkoa yrittäjänä tai omassa työssä. Lisäksi työttömänä pidetään koko- tai osa-aikaisesti lomautettua henkilöä sekä henkilöä, jolla on lomautukseen rinnastettava syy työnteon ja palkanmaksun keskeytymiseen. Myös itse hakemallaan työvapaalla olevaa henkilöä pidetään työttömänä, jos työvapaan ajaksi vastaanotettu kokoaikatyö päättyy eikä työvapaan keskeyttäminen ole mahdollista.</NOTE>
+      <NOTE>Tilastokeskuksen työvoimatutkimuksessa työttömänä pidetään henkilöä, joka on tutkimusviikolla vailla työtä, on etsinyt viimeisen neljän viikon aikana aktiivisesti työtä palkansaajana tai yrittäjänä ja voisi aloittaa työn kahden viikon kuluessa. Myös henkilö, joka on vailla työtä ja odottaa sovitun työn alkamista kolmen kuukauden kuluessa, luetaan työttömäksi, jos hän voisi aloittaa työn kahden viikon kuluessa. Työttömäksi luetaan myös työpaikastaan toistaiseksi lomautettu, joka täyttää edellä mainitut kriteerit.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c43">
+    <LANG value="fi">
+      <TE>
+        <TERM>työllistymistä edistävä monialainen yhteispalvelu</TERM>
+      </TE>
+      <DEF><BCON href="#c22" typr="generic">palvelukokonaisuus</BCON>, jossa <RCON href="#c42">työttömälle työnhakijalle</RCON> tarjotaan työllistymisen kannalta tarkoituksenmukaisia <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON> eri toimijoiden yhteensovittamana</DEF>
+      <NOTE>Tarjottavat palvelut<HOGR>1</HOGR> voivat olla <RCON href="#c7">kasvupalvelujen</RCON> lisäksi sosiaali- ja terveyspalveluja, Kansaneläkelaitoksen kuntoutuspalveluja tai muita työllistymistä edistäviä palveluja<HOGR>1</HOGR>.</NOTE>
+      <NOTE>Maakunnan on järjestettävä tarvittava määrä palvelupisteitä työllistymistä edistävän monialaisen yhteispalvelun tarjoamiseksi.</NOTE>
+      <NOTE>Yhteispalvelulla ei tässä viitata julkisen hallinnon yhteispalvelusta annetussa laissa (223/2007) määriteltyyn yhteispalveluun.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+    <RCON href="#c23">palvelujen yhteensovittaminen</RCON>
+  </RECORD>
+  <RECORD numb="c44">
+    <LANG value="fi">
+      <TE>
+        <TERM>työnvälitys</TERM>
+      </TE>
+      <DEF><BCON href="#c35" typr="generic">toiminta</BCON>, jossa tavoitteena on löytää <RCON href="#c38">työntarjoajalle</RCON> <RCON href="#c37">työn</RCON> tekijä tai <RCON href="#c40">työnhakijalle<HOGR>1</HOGR></RCON> työtä</DEF>
+      <NOTE>Työnvälitys kattaa myös rekrytoinnin, jolla viitataan työntarjoajan toimintaan tekijän löytämiseksi työlle.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+      <STE>
+        <TERM>rekrytointi</TERM>
+      </STE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c45">
+    <LANG value="fi">
+      <TE>
+        <TERM>työnhaku</TERM>
+      </TE>
+      <DEF><RCON href="#c40">työnhakijan<HOGR>1</HOGR></RCON> <BCON href="#c35" typr="generic">toiminta</BCON> <RCON href="#c37">työn</RCON> löytämiseksi</DEF>
+      <NOTE>Lainsäädännön näkökulmasta työnhaku alkaa, kun henkilöstä tulee <RCON href="#c41">rekisteröitynyt työnhakija</RCON>.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalitysasiakkaat.svg">Työnvälityspalvelujen asiakkaat</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c46" stat="ulottuvuus">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelun sisällön mukaan</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c7" typr="generic">kasvupalvelu</BCON>
+  </RECORD>
+  <RECORD numb="c47" stat="ulottuvuus">
+    <LANG value="fi">
+      <TE>
+        <TERM>palvelun saatavuuden mukaan</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c7" typr="generic">kasvupalvelu</BCON>
+  </RECORD>
+  <RECORD numb="c48">
+    <SUBJ>kasvupalvelut</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>työnvälityspalvelu</TERM>
+      </TE>
+      <DEF>työmarkkinoiden toimivuuden edistämiseen käytettävä <BCON href="#c7" typr="generic">kasvupalvelu</BCON>, jossa tarjotaan tietoa työvoiman saatavuudesta ja työtilaisuuksista, annetaan rekrytointiin ja <RCON href="#c45">työnhakuun</RCON> liittyvää neuvontaa ja ohjausta sekä sovitetaan yhteen työtilaisuuksia ja <RCON href="#c40">työnhakijoita</RCON></DEF>
+      <NOTE>Kasvupalveluna tarjottavasta työnvälityspalvelusta vastaa maakunta.</NOTE>
+      <NOTE>Maakunta voi järjestää myös muita <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON> työllistymisen edistämiseksi.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c49" stat="aputermi">
+    <LANG value="fi">
+      <TE>
+        <TERM>rekrytointipalvelu</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c48" typr="generic">työnvälityspalvelu</BCON>
+  </RECORD>
+  <RECORD numb="c50" stat="aputermi">
+    <LANG value="fi">
+      <TE>
+        <TERM>työnhakupalvelu</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c48" typr="generic">työnvälityspalvelu</BCON>
+  </RECORD>
+  <RECORD numb="c51">
+    <SUBJ>kasvupalvelut</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>osaamisen kehittämispalvelu</TERM>
+      </TE>
+      <SY>
+        <TERM>osaamispalvelu</TERM>
+      </SY>
+      <DEF>työmarkkinoiden toimivuuden edistämiseen käytettävä <BCON href="#c7" typr="generic">kasvupalvelu</BCON>, jossa pyritään ohjauksen, neuvonnan ja koulutuksen avulla parantamaan työvoiman kysynnän ja tarjonnan kohtaantoa sekä kartoittamaan ja kehittämään <RCON href="#c28">henkilöasiakkaan</RCON> osaamista</DEF>
+      <NOTE>Osaamisen kehittämispalveluilla edistetään osaavan työvoiman saatavuutta, uuden yritystoiminnan syntymistä, yritystoiminnan kasvua ja kansainvälistymistä sekä parannetaan henkilöasiakkaiden osaamista, mahdollisuuksia saada <RCON href="#c37">työtä</RCON> tai säilyttää työ ja valmiuksia toimia yrittäjänä.</NOTE>
+      <NOTE>Maakunta tarjoaa osaamisen kehittämispalveluina ammatinvalinta- ja uraohjausta, tutkintoon johtamatonta ammatillista koulutusta, yrittäjyyskoulutusta ja <LINK href="#c67">kotoutumiskoulutusta</LINK>. Lisäksi maakunta voi järjestää muita henkilöasiakkaan osaamista kartoittavia ja kehittäviä <RCON href="#c1">palveluja<HOGR>1</HOGR></RCON> sekä ohjata henkilöasiakkaan työkokeiluun työpaikalle.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c52">
+    <LANG value="fi">
+      <TE>
+        <TERM>kasvupalvelukoulutus</TERM>
+      </TE>
+      <DEF>tutkintoon johtamaton ammatillinen koulutus, yrittäjyyskoulutus tai <LINK href="#c67">kotoutumiskoulutus</LINK></DEF>
+      <NOTE>Kasvupalvelukoulutusta tarjotaan <BCON href="#c51" typr="generic">osaamisen kehittämispalveluna</BCON>.</NOTE>
+      <NOTE>Tutkintoon tai sen osan suorittamiseen johtavaa koulutusta, joka on sisällöltään samankaltaista kuin ammatillista osaamista ja valmiuksia lisäävä kasvupalvelukoulutus, tarjotaan myös opetus- ja kulttuuriministeriön rahoittamana ammatillisena koulutuksena.</NOTE>
+      <NOTE><RCON href="#c26">Asiakkaalle</RCON> annettavaan koulutukseen viitattaessa on suositeltavaa käyttää tarjottavan koulutuksen yksilöivää nimitystä (kuten yrittäjyyskoulutus) kasvupalvelukoulutus-termin sijaan.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK></NOTE>
+    </LANG>
+    <BCON href="#c51" typr="generic">osaamisen kehittämispalvelu</BCON>
+  </RECORD>
+  <RECORD numb="c53" stat="aputermi">
+    <LANG value="fi">
+      <TE>
+        <TERM>tutkintoon johtamaton ammatillinen koulutus</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c52" typr="generic">kasvupalvelukoulutus</BCON>
+  </RECORD>
+  <RECORD numb="c54" stat="aputermi">
+    <LANG value="fi">
+      <TE>
+        <TERM>yrittäjyyskoulutus</TERM>
+      </TE>
+    </LANG>
+    <BCON href="#c52" typr="generic">kasvupalvelukoulutus</BCON>
+  </RECORD>
+  <DIAG height="1134" heightcm="30.00375" href="Kaaviot/kasvupalvelut_tyonvalityspalvelut.svg" lang="fi" lock="false" name="Työnvälityspalvelut" numb="c70" resolution="96" scale="0.7899013" width="730" widthcm="19.314583">
+    <LINK href="#c7">kasvupalvelu</LINK>
+    <LINK href="#c47">kasvupalvelu palvelun saatavuuden mukaan</LINK>
+    <LINK href="#c46">kasvupalvelu palvelun sisällön mukaan</LINK>
+    <LINK href="#c1">palvelu<HOGR>1</HOGR></LINK>
+    <LINK href="#c22">palvelukokonaisuus</LINK>
+    <LINK href="#c23">palvelujen yhteensovittaminen</LINK>
+    <LINK href="#c43">työllistymistä edistävä monialainen yhteispalvelu</LINK>
+    <LINK href="#c48">työnvälityspalvelu</LINK>
+    <LINK href="#c49">rekrytointipalvelu</LINK>
+    <LINK href="#c50">työnhakupalvelu</LINK>
+    <LINK href="#c51">osaamisen kehittämispalvelu</LINK>
+    <LINK href="#c52">kasvupalvelukoulutus</LINK>
+    <LINK href="#c53">tutkintoon johtamaton ammatillinen koulutus</LINK>
+    <LINK href="#c54">yrittäjyyskoulutus</LINK>
+    <LINK href="#c67">kotoutumiskoulutus</LINK>
+    <LINK href="#c8">valtakunnallinen kasvupalvelu</LINK>
+    <LINK href="#c9">maakunnallinen kasvupalvelu</LINK>
+  </DIAG>
+  <DIAG height="642" heightcm="16.98625" href="Kaaviot/kasvupalvelut_tyonvalitysasiakkaat.svg" lang="fi" lock="false" name="Työnvälityspalvelujen asiakkaat" numb="c71" resolution="96" scale="1.0" width="606" widthcm="16.03375">
+    <LINK href="#c26">asiakas</LINK>
+    <LINK href="#c40">työnhakija<HOGR>1</HOGR></LINK>
+    <LINK href="#c41">rekisteröitynyt työnhakija</LINK>
+    <LINK href="#c42">työtön työnhakija</LINK>
+    <LINK href="#c22">palvelukokonaisuus</LINK>
+    <LINK href="#c23">palvelujen yhteensovittaminen</LINK>
+    <LINK href="#c43">työllistymistä edistävä monialainen yhteispalvelu</LINK>
+    <LINK href="#c44">työnvälitys</LINK>
+    <LINK href="#c45">työnhaku</LINK>
+    <LINK href="#c38">työntarjoaja</LINK>
+    <LINK href="#c39">työnvälittäjä</LINK>
+    <LINK href="#c37">työ</LINK>
+  </DIAG>
+  <HEAD level="1">Rahoitus</HEAD>
+  <RECORD numb="c55" stat="aputermi">
+    <LANG value="fi">
+      <TE>
+        <TERM>tuki</TERM>
+      </TE>
+      <DEF></DEF>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c56">
+    <LANG value="fi">
+      <TE>
+        <TERM>tuen hakija</TERM>
+      </TE>
+      <SY>
+        <TERM>tuenhakija</TERM>
+      </SY>
+      <DEF>toimija, joka hakee tukea</DEF>
+      <NOTE>Tuen hakija voi olla joko <RCON href="#c30">organisaatio</RCON> tai henkilö riippuen siitä, mistä tuesta on kyse. Rakennerahastotukea voivat hakea vain organisaatiot, kun taas starttirahaa ja liikkuvuusavustusta voivat hakea henkilöt.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+    </LANG>
+    <RCON href="#c55">tuki</RCON>
+  </RECORD>
+  <RECORD numb="c57">
+    <LANG value="fi">
+      <TE>
+        <TERM>tuen saaja</TERM>
+      </TE>
+      <SY>
+        <TERM>tuensaaja</TERM>
+      </SY>
+      <DEF>toimija, jolle tuki on myönnetty</DEF>
+      <NOTE>Rakennerahastotuen saaja on <RCON href="#c31">oikeushenkilö</RCON>, joka toteuttaa yksittäisen hankkeen ja saa siihen julkista tukea.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+    </LANG>
+    <RCON href="#c55">tuki</RCON>
+  </RECORD>
+  <RECORD numb="c58">
+    <LANG value="fi">
+      <TE>
+        <TERM>tuen myöntäjä</TERM>
+      </TE>
+      <DEF>toimija, joka hyväksyy tukea koskevan hakemuksen</DEF>
+      <NOTE>Valtiontuen myöntäjä on aina viranomainen.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+    </LANG>
+    <RCON href="#c55">tuki</RCON>
+  </RECORD>
+  <RECORD numb="c59">
+    <LANG value="fi">
+      <TE>
+        <TERM>tuen maksaja</TERM>
+      </TE>
+      <DEF>toimija, joka tekee päätöksen tuen maksamisesta</DEF>
+      <NOTE>Ennen tuen maksamista selvitetään, että tuen maksamisedellytykset täyttyvät. Valtiontuen maksaja ja maksutapahtuman suorittaja voi olla viranomainen tai viranomaisen valtuuttama taho. Rakennerahastotuen maksaja on kuitenkin aina viranomainen.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+    </LANG>
+    <RCON href="#c55">tuki</RCON>
+  </RECORD>
+  <RECORD numb="c60">
+    <SUBJ>valtiontuet</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>eriyttäminen</TERM>
+      </TE>
+      <DEF>tukiasioiden käsittelyyn liittyvien toimijaroolien erottaminen toisistaan väärinkäytösten estämiseksi</DEF>
+      <NOTE>Tukiasioiden käsittelyyn liittyviä toimijarooleja ovat <RCON href="#c56">tuen hakija</RCON>, <RCON href="#c58">tuen myöntäjä</RCON>, <RCON href="#c59">tuen maksaja</RCON> ja <RCON href="#c35">toiminnan</RCON> toteuttava <RCON href="#c57">tuen saaja</RCON>. Eriyttäminen voidaan joutua toteuttamaan henkilötasolla, mikäli useiden roolien edustajat ovat samassa <RCON href="#c30">organisaatiossa</RCON>. Yhdellä henkilöllä voi olla vain yksi rooli kussakin hankkeessa.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+    </LANG>
+    <RCON href="#c55">tuki</RCON>
+  </RECORD>
+  <RECORD numb="c61">
+    <SUBJ>valtiontuet</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>paikan päällä varmennus</TERM>
+      </TE>
+      <DEF><RCON href="#c57">tuen saajan</RCON> tai hankkeen tiloissa tehtävä tarkastus, jossa varmistetaan, että hanke tai sen osa on toteutettu säädösten, hankesuunnitelman ja rahoituspäätöksen ehtojen mukaisesti</DEF>
+      <NOTE>Paikan päällä varmennus tehdään vasta sen jälkeen, kun tukea on maksettu. Paikan päällä varmennuksen voi tehdä viranomainen tai viranomaisen valtuuttama taho.</NOTE>
+      <NOTE>Valtiovarainministeriön kontrolleritoiminnon yhteydessä toimivan tarkastusviranomaisen tarkastuksia kutsutaan hanketarkastuksiksi.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+      <STE>
+        <TERM>hanketarkastus</TERM>
+      </STE>
+    </LANG>
+    <RCON href="#c55">tuki</RCON>
+  </RECORD>
+  <RECORD numb="c62">
+    <SUBJ>valtiontuet</SUBJ>
+    <LANG value="fi">
+      <TE>
+        <TERM>hallinnollinen varmennus</TERM>
+      </TE>
+      <DEF>hankkeen ja sen kustannusten ja rahoituksen tarkastus maksatushakemuksen tietojen ja asiakirjojen perusteella</DEF>
+      <NOTE>Hallinnollinen varmennus voidaan tehdä, mikäli <RCON href="#c61">paikan päällä varmennusta</RCON> ei edellytetä.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_rahoitus.svg">Rahoitus</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <DIAG height="699" heightcm="18.494375" href="Kaaviot/kasvupalvelut_rahoitus.svg" lang="fi" lock="false" name="Rahoitus" numb="c72" resolution="96" scale="0.97795993" width="657" widthcm="17.383125">
+    <LINK href="#c55">tuki</LINK>
+    <LINK href="#c56">tuen hakija</LINK>
+    <LINK href="#c57">tuen saaja</LINK>
+    <LINK href="#c58">tuen myöntäjä</LINK>
+    <LINK href="#c59">tuen maksaja</LINK>
+    <LINK href="#c60">eriyttäminen</LINK>
+    <LINK href="#c61">paikan päällä varmennus</LINK>
+    <LINK href="#c62">hallinnollinen varmennus</LINK>
+  </DIAG>
+  <HEAD level="1">Kotoutuminen</HEAD>
+  <RECORD numb="c63">
+    <LANG value="fi">
+      <TE>
+        <TERM>maahanmuuttaja</TERM>
+      </TE>
+      <DEF>henkilö, jolle on myönnetty ulkomaalaislain mukainen oleskelulupakortti tai oleskelukortti tai jonka oleskeluoikeus on muuten rekisteröity</DEF>
+      <NOTE>Muille kuin EU-kansalaisille tai Pohjoismaiden kansalaisille voidaan myöntää ulkomaalaislain mukainen oleskelulupa muuta kuin matkailua tai siihen verrattavaa lyhytaikaista oleskelua varten. Oleskelulupa todistetaan oleskelulupakortilla tai EU-kansalaisten perheenjäsenten (jotka eivät ole EU-kansalaisia) tapauksessa oleskelukortilla. EU-kansalaisten ja Pohjoismaiden kansalaisten tulee rekisteröityä oleskeluoikeutta varten.</NOTE>
+      <NOTE>Yleiskielessä maahanmuuttaja-termiä käytetään lainsäädäntöä laajemmassa merkityksessä.</NOTE>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_kotoutuminen.svg">Kotoutuminen</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c64">
+    <LANG value="fi">
+      <TE>
+        <TERM>kotoutuminen</TERM>
+      </TE>
+      <DEF><RCON href="#c63">maahanmuuttajan</RCON> ja yhteiskunnan vuorovaikutteinen kehitys, joka edistää maahanmuuttajan osallisuutta työ- ja elinkeinoelämässä, koulutuksessa ja muussa yhteiskunnan <RCON href="#c35">toiminnassa</RCON> sekä tukee hänen mahdollisuuksiaan oman kielen ja kulttuurin ylläpitämiseen</DEF>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_kotoutuminen.svg">Kotoutuminen</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c65">
+    <LANG value="fi">
+      <TE>
+        <TERM>kotouttaminen</TERM>
+      </TE>
+      <SY>
+        <TERM>kotoutumisen edistäminen</TERM>
+      </SY>
+      <DEF><RCON href="#c64">kotoutumisen</RCON> monialainen edistäminen ja tukeminen viranomaisten ja muiden tahojen <RCON href="#c1">palveluilla<HOGR>1</HOGR></RCON> ja toimenpiteillä</DEF>
+      <NOTE>Käsitekaavio: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_kotoutuminen.svg">Kotoutuminen</LINK></NOTE>
+    </LANG>
+  </RECORD>
+  <RECORD numb="c66">
+    <LANG value="fi">
+      <TE>
+        <TERM>kotoutumista edistävä palvelu</TERM>
+      </TE>
+      <DEF><BCON href="#c1" typr="generic">palvelu<HOGR>1</HOGR></BCON>, jonka tavoitteena on tukea <RCON href="#c63">maahanmuuttajien</RCON> <RCON href="#c64">kotoutumista</RCON></DEF>
+      <NOTE>Kotoutumista edistäviä palveluja järjestetään osana maakunnan järjestämisvastuulla olevia <RCON href="#c7">kasvupalveluita</RCON> ja sosiaali- ja terveyspalveluita, kunnallisia peruspalveluita ja kansallista koulutusjärjestelmää sekä muina kotoutumista edistävinä palveluina.</NOTE>
+      <NOTE>Erityisiä kotoutumista edistäviä palveluja ovat esimerkiksi kotoutumiseen liittyvä alkukartoitus ja kotoutumissuunnitelman laatiminen.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_palvelut.svg">Palvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_kotoutuminen.svg">Kotoutuminen</LINK></NOTE>
+    </LANG>
+    <BCON href="c3" typr="generic">palvelujen kohderyhmän mukaan</BCON>
+  </RECORD>
+  <RECORD numb="c67">
+    <LANG value="fi">
+      <TE>
+        <TERM>kotoutumiskoulutus</TERM>
+      </TE>
+      <DEF>koulutus, jonka tavoitteena on edistää <RCON href="#c63">maahanmuuttajan</RCON> kielellisiä valmiuksia, työllistymistä ja pääsyä jatko-opintoihin sekä yhteiskunnallista osallisuutta</DEF>
+      <NOTE>Kotoutumiskoulutuksena annetaan oppivelvollisuusiän ylittäneelle maahanmuuttajalle 1) suomen tai ruotsin kielen opetusta; 2) ammatillisten ja muiden työelämässä tarvittavien valmiuksien opetusta, ammatillista suunnittelua ja ohjausta jatko-opintoihin, työllistymistä edistäviin palveluihin tai työmarkkinoille; 3) muuta opetusta, joka edistää yhteiskunnallisia, kulttuurisia ja elämänhallintaan liittyviä valmiuksia. Kotoutumiskoulutuksen sisällöt määräytyvät Opetushallituksen opetussuunnitelman perusteiden mukaan.</NOTE>
+      <NOTE>Kotoutumiskoulutuksen kielellisenä tavoitteena on, että maahanmuuttaja saavuttaa suomen tai ruotsin kielessä toimivan peruskielitaidon.</NOTE>
+      <NOTE>Käsitekaaviot: <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_tyonvalityspalvelut.svg">Työnvälityspalvelut</LINK> ja <LINK href="http://www.tsk.fi/suomi.fi/kasvupalvelujen_sanasto/kasvupalvelut_kotoutuminen.svg">Kotoutuminen</LINK></NOTE>
+    </LANG>
+    <BCON href="c51" typr="generic">osaamisen kehittämispalvelu</BCON>
+    <BCON href="c52" typr="generic">kasvupalvelukoulutus</BCON>
+  </RECORD>
+  <DIAG height="640" heightcm="16.933332" href="Kaaviot/kasvupalvelut_kotoutuminen.svg" lang="fi" lock="false" name="Kotoutuminen" numb="c73" resolution="96" scale="1.0" width="438" widthcm="11.58875">
+    <LINK href="#c63">maahanmuuttaja</LINK>
+    <LINK href="#c64">kotoutuminen</LINK>
+    <LINK href="#c65">kotouttaminen</LINK>
+    <LINK href="#c66">kotoutumista edistävä palvelu</LINK>
+    <LINK href="#c67">kotoutumiskoulutus</LINK>
+  </DIAG>
+</VOCABULARY>

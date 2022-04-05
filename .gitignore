@@ -1,0 +1,22 @@
+.DS_Store
+
+# Test generated content
+*.png
+output.xml
+report.html
+log.html
+geckodriver.log
+
+# python generated content
+*.pyc
+
+# Selenium webdrivers
+chromedriver.exe
+geckodriver.exe
+
+# IntelliJ Idea
+.idea
+
+.project
+.settings/
+.classpath
