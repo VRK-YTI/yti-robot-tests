@@ -1,14 +1,18 @@
 .DS_Store
 
-# Ignore login detail resource
-resources/Login_details.robot
-
 # Test generated content
 *.png
 output.xml
 report.html
 log.html
 geckodriver.log
+
+# python generated content
+*.pyc
+
+# Selenium webdrivers
+chromedriver.exe
+geckodriver.exe
 
 # IntelliJ Idea
 .idea
