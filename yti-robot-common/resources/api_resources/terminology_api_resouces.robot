@@ -3,16 +3,26 @@ Library               RequestsLibrary
 Resource              common_api_resources.robot
 
 *** Variables ***
-${DELETE_TERMINOLOGY_API_POINT}=      ${TERMINOLOGIES_ENVIRONMENT_URL}terminology-api/api/v1/frontend/vocabulary
-${CREATE_TERMINOLOGY_API_POINT}=      ${TERMINOLOGIES_ENVIRONMENT_URL}terminology-api/api/v1/frontend/vocabulary
-${template_graph_id}=                 61cf6bde-46e6-40bb-b465-9b2c66bf4ad8
+${DELETE_TERMINOLOGY_API_POINT}=        ${TERMINOLOGIES_ENVIRONMENT_URL}terminology-api/api/v1/frontend/vocabulary
+${CREATE_TERMINOLOGY_API_POINT}=        ${TERMINOLOGIES_ENVIRONMENT_URL}terminology-api/api/v1/frontend/vocabulary
+${GET_TERMINOLOGY_GRAPHS_API_POINT}     ${TERMINOLOGIES_ENVIRONMENT_URL}terminology-api/api/v1/frontend/graphs
+${template_graph_id}=                   61cf6bde-46e6-40bb-b465-9b2c66bf4ad8
 
 
 *** Keywords ***
+Find terminology id for ${terminology} with api
+    ${headers}=     Create authentication header
+    ${response}=    Get      ${GET_TERMINOLOGY_GRAPHS_API_POINT}  headers=${headers}
+    @{graphs_ids}=  parse terminology urls with value  ${response.json()}  ${terminology}
+    [Return]  @{graphs_ids}
+
 Delete terminology ${terminology} with api
     ${headers}=     Create authentication header
-    ${data}=        Catenate    graphId=${CREATED GRAPH ID}
-    ${response}=    Delete      ${DELETE_TERMINOLOGY_API_POINT}?${data}  headers=${headers}
+    @{graphs_ids}=  Find terminology id for ${terminology} with api
+    FOR    ${graphs_id}    IN    @{graphs_ids}
+        ${data}=        Catenate    graphId=${graphs_id}
+        ${response}=    Delete      ${DELETE_TERMINOLOGY_API_POINT}?${data}  headers=${headers}
+    END
     [Return]        ${response}
 
 Create terminology ${terminology} with api
@@ -28,7 +38,6 @@ Create terminology ${terminology} with api
     ...             ${graph_id}
     ...             ${template_graph_id}
     ${response}=    Post        ${CREATE_TERMINOLOGY_API_POINT}?${data}    headers=${headers}  data=${json}
-    set global variable  ${CREATED GRAPH ID}  ${response.json()}
     [Return]        ${response}
 
 Create terminology json from file

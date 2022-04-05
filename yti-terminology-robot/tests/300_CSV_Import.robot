@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Test Suite for CSV Import test cases
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
+Suite Setup       Test Case Generic Suite setup
 Test Teardown     Test case teardown delete terminology     ${VOCABULARY_2}
 Test Setup        Test Case Setup admin
 Resource          ../resources/resources_and_libraries.robot
@@ -15,9 +15,10 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    import confirmation when related, broader and isPartOf concepts are not found from CSV.
     [Tags]    regression    sanastot    test    300
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
-    Maximize Browser Window
+
     Select Dictionary    ${VOCABULARY_2}
-    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${invalid_related_concepts}
+    ${csv_file_path}=   Create terminology invalid related concepts csv
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${csv_file_path}
     Wait Until Page Contains    Tuodaan 4 käsitettä    timeout=60
     Page Should Contain    4: Viittauksella “broader” ei löydy käsitettä arvolle “joku”
     Page Should Contain    4: Viittauksella “related” ei löydy käsitettä arvolle “joku”
@@ -32,9 +33,10 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    related, broader and isPartOf columns are empty for certain concepts in CSV.
     [Tags]    regression    sanastot    test    300
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
-    Maximize Browser Window
+
     Select Dictionary    ${VOCABULARY_2}
-    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${empty_related_concepts}
+    ${csv_file_path}=   Create terminology empty related concepts csv
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${csv_file_path}
     Wait Until Page Contains    Tuodaan 1 käsitettä    timeout=60
     Wait Until Page Contains    tutkimus    timeout=60
     Wait Until Page Contains    research    timeout=60
@@ -59,9 +61,10 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    is shown in import confirmation as well.
     [Tags]    regression    sanastot    test    300
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
-    Maximize Browser Window
+
     Select Dictionary    ${VOCABULARY_2}
-    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${concepts_with_empty_status}
+    ${csv_file_path}=   Create terminology concepts with empty status csv
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${csv_file_path}
     Wait Until Page Contains    Tuodaan 1 käsitettä    timeout=30
     Wait Until Page Contains    tutkimus    timeout=30
     Wait Until Page Contains    research    timeout=30
@@ -87,10 +90,11 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    is shown in import confirmation as well.
     [Tags]    regression    sanastot    test    300
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
-    Maximize Browser Window
+
     Select Dictionary    ${VOCABULARY_2}
 
-    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${concepts_with_missing_status}
+    ${csv_file_path}=   Create terminology concepts with missing status csv
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${csv_file_path}
     Wait Until Page Contains    Tuodaan 1 käsitettä    timeout=30
     Wait Until Page Contains    tutkimus    timeout=30
     Wait Until Page Contains    research    timeout=30
@@ -118,10 +122,10 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot    test    300
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
-    Maximize Browser Window
 
     Select Dictionary    ${VOCABULARY_2}
-    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${concepts_with_invalid_column}
+    ${csv_file_path}=   Create terminology concepts with invalid column csv
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${csv_file_path}
     Wait Until Page Contains    Ominaisuus “definition” täytyy olla määritelty kielen kanssa    timeout=30
 
     Click Element with wait   ${IMPORT_CANCEL_BTN}
@@ -131,10 +135,10 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    Check that error message is displayed in import confirmation and import is not successful.
     [Tags]    regression    sanastot    test    300
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
-    Maximize Browser Window
 
     Select Dictionary    ${VOCABULARY_2}
-    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${concepts_with_invalid_status_value}
+    ${csv_file_path}=   Create terminology concepts with invalid status value csv
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${csv_file_path}
     Wait Until Page Contains    3: Virheellinen tila “xxxxx”    timeout=30
 
     Click Element with wait    ${IMPORT_CANCEL_BTN}
@@ -144,9 +148,10 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     ...    Check that the values of the second column are taken into use
     [Tags]    regression    sanastot    test    300
     Create Terminological Vocabulary without concepts    ${VOCABULARY_2}
-    Maximize Browser Window
     Select Dictionary    ${VOCABULARY_2}
-    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${concepts_with_duplicate_definition_columns}
+
+    ${csv_file_path}=   Create terminology concepts with duplicate definition columns csv
+    Concept Import Without Confirmation    ${CSV_FORMAT_BTN}    ${csv_file_path}
     Wait Until Page Contains    systemaattista ja luovaa toimintaa2    timeout=30
     Wait Until Page Contains    henkilö joka ammattimaisesti tieteellisiä menetelmiä käyttäen tekee tutkimusta2    timeout=30
     Wait Until Page Contains    henkilö, joka hutkii ammatikseen2    timeout=30

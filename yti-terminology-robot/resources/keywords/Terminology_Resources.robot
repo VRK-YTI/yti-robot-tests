@@ -199,9 +199,7 @@ Create Terminological Vocabulary without concepts
     Unselect Checkbox with wait       ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology}  timeout=30
 
-    ${vocabulary_exists}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "${terminology}")]
-    Run Keyword If    ${vocabulary_exists}    Delete existing terminological vocabulary and create new without concepts    ${terminology}
-    ...    ELSE    Create Terminological Dictionary without concepts    ${terminology}
+    Create Terminological Dictionary without concepts    ${terminology}
     Go Back To Sanastot Frontpage
 
 Go Back To Sanastot Frontpage
@@ -231,7 +229,7 @@ Delete Terminology
 Delete Terminologies
     [Arguments]    @{terminology_items}
     Go Back To Sanastot Frontpage
-    Select superuser
+    Select superuser user
     FOR    ${terminology_item}    IN    @{terminology_items}
         Unselect Checkbox with wait    ${FRONTPAGE_CONCEPT_DEEP_SEARCH}
         Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${terminology_item}
@@ -303,7 +301,9 @@ Create Terminological Dictionary and import vocabulary
 
     Click Element with wait    ${IMPORT_VOCABULARY_BTN}
     Wait Until Element Is Visible    ${FILE_UPLOAD_INPUT}    timeout=30
-    Choose File    ${FILE_UPLOAD_INPUT}    ${test_concepts}
+
+    ${csv_file_path}=   Create terminology test concepts csv
+    Choose File    ${FILE_UPLOAD_INPUT}    ${csv_file_path}
 
     Click Element with wait    ${FILE_UPLOAD_BTN}
     Click Element with wait    ${IMPORT_YES_BTN}

@@ -173,11 +173,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Import Namespace    Julkishallinnon tietokomponentit
     Save Model
 
-    Click Element with wait                         ${MODEL_DATA_TAB}
-    Create New Shape By Referencing External Uri    ${external_uri}         ${class}
-    Confirm All Properties For Class And Save
-
-    Wait Until Page Contains    Maksu    timeout=30
+    Click Element with wait                       ${MODEL_DATA_TAB}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Create New Shape By Referencing External Uri  ${external_uri}  ${class}
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Confirm All Properties For Class And Save
+    Run Keyword If    '${ENVIRONMENT_IDENTIFIER}' == 'AWSDEV'  Wait Until Page Contains    Maksu    timeout=30
 
 208. Add new class to profile and remove properties
     [Documentation]    Add new class to profile and remove properties
@@ -405,7 +404,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 216. Create new class and suggest concept to Terminologies tool
     [Documentation]    Create new class to profile and suggest concept to Terminologies tool.
-    [Tags]    regression    tietomallit    test    200
+    [Tags]    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}   ${VOCABULARY_1}
     Select And Edit Profile    ${MODEL_1}
     Import Namespace    Julkishallinnon tietokomponentit
@@ -424,7 +423,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Close All Browsers
 
     Open sanastot
-    Select admin
+    Select admin user
     Input Text with wait        id=vocabularies_search_input    ${VOCABULARY_1}
     Click Element with wait     //*[contains(text(), "${VOCABULARY_1}")]
     Wait Until Page Contains    ${VOCABULARY_1}     timeout=30
@@ -437,7 +436,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
 
 217. Create new attribute and association and suggest concepts to Terminologies tool
     [Documentation]    Create new attribute and association for profile and suggest concepts to Terminologies tool.
-    [Tags]    regression    tietomallit    test    200
+    [Tags]    tietomallit    test    200
     [Setup]    Test Case Setup Terminologies    ${MODEL_1}    ${PREFIX_1}   ${VOCABULARY_1}
     Maximize Browser Window
     Select And Edit Profile    ${MODEL_1}
@@ -489,7 +488,7 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Close All Browsers
 
     Open sanastot
-    Select admin
+    Select admin user
     Input Text with wait            id=vocabularies_search_input     ${VOCABULARY_1}
     Click Element with wait         //*[contains(text(), "${VOCABULARY_1}")]
     Wait Until Page Contains        ${VOCABULARY_1}    timeout=30
@@ -518,9 +517,10 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Input Text with wait        ${NAMESPACE_PREFIX}     example
     Input Text with wait        ${NAMESPACE_PREFIX}     autom1
 
-    Click Element with wait     ${NAMESPACE_CREATE}
-    Click Element with wait     ${IMPORT_NAMESPACE}
-    Click Element with wait     ${CREATE_NEW_NAMESPACE}
+    Click Element with wait                     ${NAMESPACE_CREATE}
+    Wait until page does not contain element    ${NAMESPACE_CREATE}
+    Click Element with wait                     ${IMPORT_NAMESPACE}
+    Click Element with wait                     ${CREATE_NEW_NAMESPACE}
 
     Input Text with wait        ${NAMESPACE_LABEL}      autom2
     Input Text with wait        ${NAMESPACE_VALUE}      http://uri.suomi.fi/datamodel/ns/autom1/

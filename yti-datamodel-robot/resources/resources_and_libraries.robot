@@ -1,10 +1,8 @@
 *** Settings ***
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
-#Resource          ../../yti-codelist-robot/resources/keywords/Terminologies_resources.robot
 
 Resource          ../resources/keywords/Datamodel_Resources.robot
 
-Resource          ../resources/variables/test_files.robot
 Library           ScreenCapLibrary
 
 *** Variables ***
@@ -28,21 +26,14 @@ Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
 Test Case Setup Generic Setup
+    Set Selenium Timeout    ${SELENIUM_DEFAULT_TIMEOUT}
     Run Keyword If    '${RECORD}' == 'True'      Start video recording      name=${TEST NAME}
     Open Tietomallit
     Set Selenium Speed      ${SELENIUM_SPEED}
 
-Test Case Setup datamodel
+Test Case Setup ${user}
     Test Case Setup Generic Setup
-    Select datamodel user
-
-Test Case Setup Admin
-    Test Case Setup Generic Setup
-    Select Admin
-
-Test Case Setup Superuser
-    Test Case Setup Generic Setup
-    Select Superuser
+    run keyword         Select ${user} user
 
 Test Case setup create profile
     [Arguments]         ${model}    ${prefix}   ${user}=Admin

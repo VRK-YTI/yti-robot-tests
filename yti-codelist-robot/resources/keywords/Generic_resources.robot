@@ -251,33 +251,7 @@ ${ENFORCE_STATUS_TRANSITION_CHECKBOX}    id=enforce_status_transition_rules_chec
 #Code lists and Codes
 ${CODE_LIST_KUNNAT}    Kunnat 2018
 ${CODE_LIST_KUNNAT_EN}    Municipalities 2018
-${CODE_LIST_2}      testiautomaatiokoodisto1
-${CODE_LIST_3}      Palveluluokitus
-${CODE_LIST_4}      testiautomaatiokoodisto
-${CODE_LIST_5}      Ammattiluokitus 2010
-${CODE_LIST_6}      testiautomaatiokoodisto 2
-${CODE_LIST_7}      T200
-${CODE_LIST_8}      koodisto6000
-${CODE_LIST_9}      koodisto7000
-${CODE_LIST_10}     koodisto7001
-${CODE_LIST_11}     koodisto7002
-${CODE_LIST_12}     koodisto7003
-${CODE_LIST_13}     Sisällön filteröinti
-${CODE_LIST_14}     Testikoodisto2 pitkillä arvoilla
-${CODE_LIST_15}     Vakiokoodikoodisto
-${CODE_LIST_16}     Koodisto600
-${CODE_LIST_17}     Koodisto700
-${CODE_LIST_18}     Koodisto701
-${CODE_LIST_19}     Testikoodisto3 pitkillä arvoilla
-${CODE_LIST_20}     Testi dcat
-${CODE_LIST_21}     Linkkikoodisto
-${CODE_LIST_22}     Koodisto800
-${CODE_LIST_23}     Koodisto300
-${CODE_LIST_24}     Koodisto606
-${CODE_LIST_25}     Koodisto100
-${CODE_LIST_26}     xyztesti
-${CODE_LIST_27}     Koodisto3000
-${CODE_1}           koodi01 - Koodi01
+
 ${CODE_2}           koodi1006
 ${CODE_1000}        Koodi1000 - Koodi1000
 ${TEST_CODE_1}      T100 - Automaatiokoodi
@@ -332,18 +306,13 @@ ${LICENSE_BTN}                      id=ExternalReference_license_propertytype_dr
 #Error messages
 ${Error_registry_with_codelists}        Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista.
 ${Error_end_date_before_start_date}     Loppupäivä ennen alkupäivää.
-${Error_remove_linked_code}             Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/600/extension/koodiliitoslaajennus/member/
+${Error_remove_linked_code}             Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa:
 ${Error_no_code_status_changes}         Tilaa ei vaihdettu yhteenkään koodiin. Ei löytynyt koodeja vaihdettavassa tilassa.
 ${Error_remove_languages}               abhaasi, englanti, suomi, tataari
 #JSON Export
 ${Json_export_dcat}                     ["AGRI","ECON","EDUC","ENER","ENVI","GOVE","HEAL","INTR","JUST","REGI","SOCI","TECH","TRAN"]
 
 *** Keywords ***
-Open Koodistot
-    Open Browser with Settings  ${REFERENCE_DATA_ENVIRONMENT_URL}
-    Wait Until Page Contains    Koodistot           timeout=60
-    Wait Until Page Contains    KIRJAUDU SISÄÄN     timeout=60
-
 Return to Koodistot frontpage
     Click element with wait         ${FRONTPAGE_LINK}       timeout=60
     Wait Until Element Is Enabled   ${SEARCH_BOX_INPUT}     timeout=60
@@ -351,7 +320,6 @@ Return to Koodistot frontpage
 Remove list of codes
     [Arguments]    @{code_list_items}
     Return to Koodistot frontpage
-    Select Superuser
     FOR    ${code_list_item}    IN    @{code_list_items}
         Input text with wait                ${SEARCH_BOX_INPUT}     ${code_list_item}       timeout=30
 
@@ -626,23 +594,11 @@ Delete registery
     Click element with wait         ${DELETE_REGISTRY}    timeout=30
     Click element with wait         ${REMOVE_CODE_LIST_CONF_BTN}    timeout=20
 
-Delete registry with code lists
-    [Arguments]    ${registry}    ${code_list}
-    Return to Koodistot frontpage
-    Select superuser
-
-    Delete registery                ${registry}
-
-    Wait Until Page Contains        ${Error_registry_with_codelists}    timeout=20
-    Click element with wait         ${CLOSE_ERROR_MESSAGE_BTN}          timeout=20
-
-    Remove list of codes            ${code_list}
-    Delete empty registry           ${registry}
-
 Delete empty registry
     [Arguments]    ${registry}
-    Return to Koodistot frontpage
-    Select superuser
+    Close all browsers
+    Open koodistot
+    Select superuser user
     Delete registery                    ${registry}
 
     Click element with wait             ${REGISTRY_FILTER_DDL}      timeout=20
@@ -716,6 +672,7 @@ Upload codelist in Excel format
 
     Click element with wait             ${UPLOAD_FILE_BTN}                              timeout=60
 
+    Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator            timeout=90
     Wait Until Page Contains Element    //*[contains(text(), "${codelist_name}")]       timeout=60
 
 Upload codelist in CSV format
@@ -766,7 +723,12 @@ Click Code List Info Tab
 
 Search For Code List
     [Arguments]    ${code_list}
-    Input text with wait    ${SEARCH_BOX_INPUT}    ${code_list}    timeout=30
+    Input text with wait    ${SEARCH_BOX_INPUT}    ${code_list}
+
+Search and open codelist
+    [Arguments]    ${code_list}
+    Search For Code List    ${code_list}
+    Select Code List        ${code_list}
 
 Add Email Subscription For Code List
     Click element with wait                     ${CODE_LIST_DDL}                timeout=20

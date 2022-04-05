@@ -5,8 +5,6 @@ ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${ADMIN_USER_NAME}    Test Admin
 ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${SUPER_USER_NAME}    Test Superuser
-${TESTGROUP_USER_ID}    id=testtestgroup@localhost
-${TESTGROUP_USER_NAME}    Test TestGroup
 ${LANGUAGE_EN}    id=en
 ${LANGUAGE_FI}    id=fi
 ${LANGUAGE_SV}    På svenska (SV)
@@ -112,6 +110,9 @@ ${USER_0_LASTNAME_INPUT}    id=user_0_lastname_input
 ${USER_0_EMAIL_INPUT}    id=user_0_email_input
 ${ADD_USERS_BTN}    id=add_users_button
 ${USERS_MODAL_OPEN}    class=modal-content
+
+${CODE_LIST_8}          codelist_for_comments_1
+${CODE_LIST_8_CODE}     6000
 
 *** Keywords ***
 Return To Comments Frontpage
@@ -253,6 +254,11 @@ Search Comment Round
 Select Comment Round
     [Arguments]    ${comment_round}
     Click Element with wait    //*[contains(text(), "${comment_round}")]
+
+Search and select comment round
+    [Arguments]    ${comment_round}
+    Search Comment Round    ${comment_round}
+    Select Comment Round    ${comment_round}
 
 Add Email Subscription For Comment Round
     Click Element with wait    ${COMMENTROUND_DDL}

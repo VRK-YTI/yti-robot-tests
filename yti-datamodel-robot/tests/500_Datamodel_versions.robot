@@ -20,9 +20,7 @@ Resource          ../resources/resources_and_libraries.robot
     Create new association      Testiassosiaatio
     Create New Version          ${PREFIX_4}
 
-    ${isDev}=    Run Keyword And Return Status    Page Should Contain Element    //*[contains(text(), "- ${ENVIRONMENT_IDENTIFIER}")]
-    Run Keyword If    ${isDev}    Go To    http://uri.suomi.fi/datamodel/ns/${PREFIX_4}${DEV_suffix}
-    ...    ELSE    Go To    http://uri.suomi.fi/datamodel/ns/${PREFIX_4}${TEST_suffix}
+    Go To    http://uri.suomi.fi/datamodel/ns/${PREFIX_4}?env=${ENVIRONMENT_IDENTIFIER}
     Wait Until Page Contains    Testiautomaatiomalli    timeout=30
 
     Select Model Tab            ${MODEL_DETAILS_TAB}

@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation     Test Suite for terminology email subscription
+Suite Setup       Test Case Generic Suite setup
 Suite Teardown    Close All Browsers
 Test Teardown     Close All Browsers
 Resource          ../resources/resources_and_libraries.robot

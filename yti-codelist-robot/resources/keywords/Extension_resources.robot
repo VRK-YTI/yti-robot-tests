@@ -8,11 +8,11 @@ ${Error_missing_codeschemes}    Jäseneen liitetty koodi ei kuulu tähän koodis
 ${Error_invalid_code}    Jäseneen liitettyä koodia ei ole olemassa tunnisteella:
 ${Error_max_hierarchy_level}    Jäsenten hierarkkisten tasojen maksimiarvo ylittyi.
 ${Error_member_value_missing}    Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä 6.
-${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 3.
+${Error_member_value_invalid}    Jäsenen arvo ei ole sallittu rivillä 2.
 ${Error_codes_linked}    Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä seuraavissa resursseissa:
 ${Error_relations_to_other_members}    Koodilaajennuksissa ei sallita jäsenten välisiä linkityksiä.
 ${Error_2_dpms}    Aineistossa on useita samantyyppisiä koodilaajennuksia.
-${Error_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: http://uri.suomi.fi/codelist/test/O1234567890123456789012345678901234567333/extension/O1234567890123456789012345678901234567111/member/
+${Error_linked_code}    Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa:
 ${Error_duplicate_members_for_same_code}    Koodilaajennuksella ei voi olla useita jäseniä samalla koodilla.
 ${Error_duplicate_member_id_values}    MEMBER_ID-sarakkeessa esiintyvät seuraavat arvot useammin kuin kerran: 1, 3.
 ${Error_invalid_member_relation}    Jäsentä ei voitu määrittää tunnisteella: testcode10
@@ -30,7 +30,6 @@ Upload extension
     Choose File                 ${EXTENSION_FILE_UPLOAD}        ${extension}
     Click element with wait     ${EXTENSION_UPLOAD_BTN}         timeout=20
     Click element with wait     ${EXTENSIONS_TAB}               timeout=20
-    Log To Console    Extension imported
 
 Upload members
     [Arguments]    ${member}    ${file_format}
@@ -43,7 +42,6 @@ Upload members
 
     Wait until page contains element    ${MEMBER_UPLOAD_BTN}        timeout=20
     Click Button                        ${MEMBER_UPLOAD_BTN}
-    Log To Console    Member imported
 
 Create extension
     [Arguments]    ${property_type}    ${extension_codevalue}    ${extension_name}    ${extension_status}    ${code_list_name}    ${member_auto_create}
@@ -61,19 +59,18 @@ Create extension
     Wait Until Element Is Enabled       ${SAVE_EXTENSION}       timeout=30
     Click Button                        ${SAVE_EXTENSION}
     Wait Until Element Is Visible        ${MEMBERS_TAB}         timeout=60
-    Log To Console    ${extension_name} created
 
 Delete extension
     Click element with wait             ${EXTENSION_DDL}                    timeout=30
     Click element with wait             ${EXTENSION_DELETE_BTN}             timeout=30
     Click element with wait             ${CONFIRM_DELETE_EXTENSION_BTN}     timeout=30
-    Log To Console    Extension deleted
 
 Add code list to extension
     [Arguments]    ${code_list_name}
     Click element with wait             ${ADD_CODE_LIST_TO_EXTENSION_BTN}                   timeout=30
     Input text with wait                ${SEARCH_LINKED_CODE_INPUT}    ${code_list_name}    timeout=30
-    Click element that contains text    ${code_list_name}                                   timeout=30
+    #Click element that contains text    ${code_list_name}                                   timeout=30
+    Click element with wait             //span[text()="${code_list_name}" and @class="title"]
 
 Create member for definition hierarchy
     [Arguments]    ${member_name}    ${code_list_name}    ${code}
@@ -88,7 +85,6 @@ Create member for definition hierarchy
     Wait Until Page Contains Element    ${SAVE_MEMBER}              timeout=30
     Click Button                        ${SAVE_MEMBER}
     Wait Until Element Is Visible        ${MODIFY_MEMBER_BTN}       timeout=60
-    Log To Console    ${member_name} created
 
 Create member for calculation hierarchy
     [Arguments]    ${member_name}    ${comparison_operator}    ${unary_operator}    ${code_list_name}    ${code}    ${broader_member}
@@ -110,7 +106,6 @@ Create member for calculation hierarchy
     Wait Until Page Contains Element    ${SAVE_MEMBER}    timeout=30
     Click Button                        ${SAVE_MEMBER}
     Wait Until Element Is Enabled       ${MODIFY_MEMBER_BTN}    timeout=60
-    Log To Console    ${member_name} created
 
 Add comparison operator
     [Arguments]    ${comparison_operator}
@@ -147,7 +142,6 @@ Delete member
     Click element with wait             ${MEMBER_DDL}                       timeout=30
     Click element with wait             ${MEMBER_DELETE_BTN}                timeout=30
     Click element with wait             ${CONFIRM_DELETE_EXTENSION_BTN}     timeout=30
-    Log To Console    Member deleted
 
 Remove codelist
     [Arguments]    ${code_list}
@@ -163,19 +157,6 @@ Remove codelist
     Input text with wait                id=search_box_input    ${code_list}     timeout=30
     Wait Until Page Contains            Haulla ei löytynyt yhtään koodistoa.    timeout=60
 
-Remove code lists with extensions
-    [Arguments]    @{code_list_items}
-    Return to Koodistot frontpage
-    Select superuser
-    FOR    ${code_list_item}    IN    @{code_list_items}
-        Input text with wait                ${SEARCH_BOX_INPUT}    ${code_list_item}    timeout=30
-        Click element that contains text    ${code_list_item}                           timeout=30
-        Wait Until Page Contains            ${code_list_item}                           timeout=60
-        ${extension_exists}=    Run Keyword And Return Status    Page should contain element    ${EXTENSIONS_TAB}
-        Run Keyword If    ${extension_exists}    Delete extension before code list    ${code_list_item}
-        ...    ELSE    Continue code list deletion    ${code_list_item}
-    END
-
 Continue code list deletion
     [Arguments]    ${code_list_item}
     Click element with wait             ${CODE_LIST_DDL}                timeout=20
@@ -184,22 +165,6 @@ Continue code list deletion
 
     #Input text with wait                ${SEARCH_BOX_INPUT}    ${code_list_item}    timeout=60
     #Wait Until Page Contains            Haulla ei löytynyt yhtään koodistoa.        timeout=60
-
-Delete extension before code list
-    [Arguments]    ${code_list_item}
-    FOR    ${CheckStatus}    IN RANGE    10
-        ${Status}    Get Text               //*[contains(text(), "LAAJENNUKSET")]
-        Page Should Contain                 ${status}
-        Click element with wait             ${EXTENSIONS_TAB}                       timeout=20
-        Click element with wait             //*[contains(@id,'_view_extension')]    timeout=20
-        Click element with wait             ${EXTENSION_DDL}                        timeout=30
-        Click element with wait             ${EXTENSION_DELETE_BTN}                 timeout=30
-        Click element with wait             ${CONFIRM_DELETE_EXTENSION_BTN}         timeout=30
-        Log To Console                      Extension deleted
-        ${exit}=    Run Keyword And Return Status    Page Should Not Contain element    //*[contains(text(), "LAAJENNUKSET")]
-        Exit For Loop If    ${exit}
-    END
-    Continue code list deletion    ${code_list_item}
 
 Create DPM extension
     [Arguments]    ${extension_type}    ${member_auto_create}    ${extension_status}
@@ -213,4 +178,3 @@ Create DPM extension
     Click element with wait             ${extension_status}                     timeout=20
     Click element with wait             ${SAVE_EXTENSION}                       timeout=30
     Wait Until Element Is Enabled       ${MODIFY_EXTENSION_BTN}                 timeout=60
-    Log To Console    DPM extension created

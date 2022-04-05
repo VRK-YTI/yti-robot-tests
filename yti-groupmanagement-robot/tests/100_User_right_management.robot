@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Test Suite for basic functionality of User right management application
 
-Suite Setup       Test Case Suite Setup Generic Setup
 Suite Teardown    Test Case Suite Teardown Generic Teardown
 Test Teardown     Test Case Teardown Generic Teardown
 Test Setup        Test Case Setup admin
@@ -28,9 +27,9 @@ Resource          ../resources/resources_and_libraries.robot
 
 102. Open Description of file page
     [Documentation]    Verify that Description of file page is opened correctly.
-    [Tags]    local    rhp
+    [Tags]    regression    rhp    test
     Click Element with wait    //app-root/app-footer/div/div[2]/div[2]/ul/li[2]/a
-    Switch window with wait  url=https://yhteentoimiva.suomi.fi/tietosuojaseloste.pdf
+    Switch window with wait     url=https://wiki.dvv.fi/display/YTIJD/Tietosuojaseloste
 
 103. Change user interface language
     [Documentation]    Change user interface language in English and in Finnish.
@@ -65,10 +64,8 @@ Resource          ../resources/resources_and_libraries.robot
     Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta
     Select navigation menu link     Suomi.fi-sanastot
 
-    Switch window with wait             title=${ENVIRONMENT_IDENTIFIER} - Sanastot
+    Switch window with wait     NEW
     Wait Until Page Contains    Sanastot    timeout=40
-    Wait Until Page Contains    Hae sanastoja    timeout=40
-    Wait Until Page Contains    Rajaa tietoalueella    timeout=40
     Close Window
 
     Switch window with wait                 title=${ENVIRONMENT_IDENTIFIER} - Yhteentoimivuusalustan oikeuksienhallinta

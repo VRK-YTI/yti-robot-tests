@@ -1,5 +1,6 @@
 *** Settings ***
 Library           helpers.py
+Library           excelwriter.py
 
 *** Variables ***
 ${HEADLESS}=  True
@@ -22,7 +23,7 @@ Open Chrome to Environment
     Go To    ${environment_url}
 
 Input text with wait
-    [Arguments]  ${element}  ${text}  ${timeout}=30
+    [Arguments]  ${element}  ${text}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
     Wait Until Page Contains Element    ${element}    timeout=${timeout}
     Wait Until Element Is Visible       ${element}    timeout=${timeout}
     Wait Until Element Is Enabled       ${element}    timeout=${timeout}
@@ -30,7 +31,7 @@ Input text with wait
     Input Text                          ${element}    ${text}
 
 Click element with wait
-    [Arguments]  ${element}  ${timeout}=30
+    [Arguments]  ${element}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
     Wait Until Page Contains Element    ${element}    timeout=${timeout}
     Wait Until Element Is Visible       ${element}    timeout=${timeout}
     Wait Until Element Is Enabled       ${element}    timeout=${timeout}
@@ -38,7 +39,7 @@ Click element with wait
     Wait Until Keyword Succeeds         5x  500ms  Click Element  ${element}
 
 Unselect Checkbox with wait
-    [Arguments]  ${element}  ${timeout}=30
+    [Arguments]  ${element}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
     Wait Until Page Contains Element    ${element}    timeout=${timeout}
     Wait Until Element Is Visible       ${element}    timeout=${timeout}
     Wait Until Element Is Enabled       ${element}    timeout=${timeout}
@@ -47,7 +48,7 @@ Unselect Checkbox with wait
     Checkbox Should Not Be Selected      ${element}
 
 Select Checkbox with wait
-    [Arguments]  ${element}  ${timeout}=30
+    [Arguments]  ${element}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
     Wait Until Page Contains Element    ${element}    timeout=${timeout}
     Wait Until Element Is Visible       ${element}    timeout=${timeout}
     Wait Until Element Is Enabled       ${element}    timeout=${timeout}
@@ -57,10 +58,10 @@ Select Checkbox with wait
 
 Switch window with wait
     [Arguments]     ${window}
-    Wait Until Keyword Succeeds     90 seconds    5 seconds    Select window    ${window}
+    Wait Until Keyword Succeeds     90 seconds    5 seconds    Switch window    ${window}
 
 Click element that contains text
-    [Arguments]  ${text}  ${timeout}=30
+    [Arguments]  ${text}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
     Click element with wait     //*[contains(text(), "${text}")]   ${timeout}
 
 Print console logs

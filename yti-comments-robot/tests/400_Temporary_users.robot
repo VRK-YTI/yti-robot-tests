@@ -8,8 +8,8 @@ Resource          ../resources/resources_and_libraries.robot
 400. Add temporary user for comment round and check email notification
     [Documentation]    Add temporary user for comment round and check email notification
     [Tags]    regression    test    400
-    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}    ${CODE_LIST_8}
-    Select superuser
+    [Setup]    Test Case Setup Reference Data    ${Code_list_with_30_Codes}
+    Select superuser user
     Create Comment Round    ${REFERENCE_DATA_TOOL}    ${CODE_LIST_8}    Testiautomaatiokierros    kuvaus    False    False
     Add Resource For Comment Round    Testcode 28    ${COMMENT_TEXT_INPUT_0}    kommentti1    ${STATUS_DDL_0}    ${VALID_0}
     Select Tab    ${INFO_TAB}
@@ -24,4 +24,4 @@ Resource          ../resources/resources_and_libraries.robot
     Wait Until Page Contains    Testiautomaatiokierros    timeout=30
     Comment On Resource    ${COMMENT_TEXT_INPUT_0}    Ehdotetaan uutta tilaa    ${STATUS_DDL_0}    ${SUPERSEDED_0}
 
-    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8}    Testiautomaatiokierros    ${COMMENT_ROUND_STATE_IN_PROGRESS}
+    [Teardown]    Test Case Teardown Reference Data    ${CODE_LIST_8_CODE}    Testiautomaatiokierros
