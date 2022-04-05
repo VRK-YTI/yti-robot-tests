@@ -1,7 +1,7 @@
 *** Settings ***
 Library               RequestsLibrary
 Library               Collections
-Library               resources\\api keywords\\common_api_resouces.py
+Library               ../api keywords/common_api_resouces.py
 
 *** Variables ***
 ${JSON_FILE_FOLDER}=        ${EXECDIR}${/}resources${/}api keywords${/}json files
