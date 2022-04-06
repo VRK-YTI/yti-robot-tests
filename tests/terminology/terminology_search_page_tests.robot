@@ -1,5 +1,5 @@
 *** Settings ***
-Resource             tests/setup_and_teardowns.robot
+Resource             ../../tests/setup_and_teardowns.robot
 Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 

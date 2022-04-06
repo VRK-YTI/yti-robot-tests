@@ -3,10 +3,10 @@ Library   SeleniumLibrary
 Library   ScreenCapLibrary
 Library   OperatingSystem
 Library   String
-Resource  resources\\selenium keywords\\models\\terminology\\search page.robot
-Resource  resources\\selenium keywords\\models\\eduuni.robot
-Resource  resources\\api keywords\\terminology_api_resouces.robot
-Resource  resources\\variables\\${ENVIRONMENT}\\urls.robot
+Resource  ../resources/selenium keywords/models/terminology/search page.robot
+Resource  ../resources/selenium keywords/models/eduuni.robot
+Resource  ../resources/api keywords/terminology_api_resouces.robot
+Resource  ../resources/variables/${ENVIRONMENT}/urls.robot
 
 *** Keywords ***
 Setup test Case

@@ -1,7 +1,7 @@
 *** Settings ***
-Resource  resources\\variables\\run variables.robot
-Resource  resources\\selenium keywords\\generic\\generic selenium.robot
-Library   resources\\selenium keywords\\generic\\generic selenium.py
+Resource  ../../variables/run variables.robot
+Resource  ../../selenium keywords/generic/generic selenium.robot
+Library   ../../selenium keywords/generic/generic selenium.py
 
 *** Variables ***
 ${EDUUNI_LOGIN}                           //*[contains(text(), "Kirjaudu sisään")]
