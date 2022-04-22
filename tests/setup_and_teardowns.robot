@@ -4,7 +4,9 @@ Library   ScreenCapLibrary
 Library   OperatingSystem
 Library   String
 Resource  ../resources/selenium keywords/models/terminology/search page.robot
+Resource  ../resources/selenium keywords/models/terminology/terminology page.robot
 Resource  ../resources/selenium keywords/models/eduuni.robot
+Resource  ../resources/selenium keywords/models/navigation bar.robot
 Resource  ../resources/api keywords/terminology_api_resouces.robot
 Resource  ../resources/variables/${ENVIRONMENT}/urls.robot
 
@@ -14,15 +16,18 @@ Setup test Case
     Set default terminology variables       ${test case id}
     Set Selenium Timeout                    ${SELENIUM_DEFAULT_TIMEOUT}
     Open Browser with Settings
-    Run Keyword If          '${RECORD}' == 'True'      Start video recording      name=${TEST NAME}
+    IF  '${RECORD}' == 'True'
+        Start video recording      name=${TEST NAME}
+    END   
 
 Teardown test Case
     Run keyword and ignore error    Print console logs
-    Run Keyword If                  '${RECORD}' == 'True'      Stop video recording
-    Run keyword If test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}
+    IF  '${RECORD}' == 'True'
+        Stop video recording
+        Run keyword If test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}.webm
+    END   
     Close all browsers
 
-Teardown test Case delete terminology
-    [Arguments]  ${terminology}
+Teardown test Case delete terminology ${terminology}
     Teardown test Case
     Delete terminology ${terminology} with api

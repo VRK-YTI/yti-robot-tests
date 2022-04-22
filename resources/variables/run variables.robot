@@ -2,13 +2,14 @@
 ${HEADLESS}                     True
 ${BROWSER}                      Chrome
 ${RECORD}                       False
+${HIGHLIGHT ELEMENT}            False
 ${SELENIUM_SPEED}               0
 ${SELENIUM_DEFAULT_TIMEOUT}     30
 ${CHROME_DRIVER_PATH}           ${EMPTY}
 ${ENVIRONMENT}                  dev
 ${API_KEY}                      eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlYmU5NDhhNi00MmRhLTdjNGItNDIxZS1kZTlmZjBkZGMwYmEiLCJleHAiOjE2NTExODYyOTAsImlhdCI6MTYzNTQ2MTQ5MH0.uP3o5jgqMsmzRcVhJviwln7vC4JC2FA4XEIsLHzfeZzvGQK1gQB5DpfXfTCADsSNbS8Jn4OoG5pYdg4zhi153w
 
-${DEFAULT TERMINOLOGY NAME}         Automation_Terminology
+${DEFAULT TERMINOLOGY NAME}         Auto_Term
 
 ${EDUUNI_EMAIL_PASSWORD}            ${EMPTY}
 

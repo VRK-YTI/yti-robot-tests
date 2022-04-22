@@ -8,6 +8,10 @@ ${CREATE_TERMINOLOGY_API_POINT}=        ${TERMINOLOGIES_URL}/terminology-api/api
 ${GET_TERMINOLOGY_GRAPHS_API_POINT}     ${TERMINOLOGIES_URL}/terminology-api/api/v1/frontend/graphs
 ${template_graph_id}=                   61cf6bde-46e6-40bb-b465-9b2c66bf4ad8
 
+${DRAFT}=                   DRAFT
+${VALID}=                   VALID
+${SUPERSEDED}=              SUPERSEDED
+${RETIRED}=                 RETIRED
 
 *** Keywords ***
 Find terminology id for ${terminology} with api
@@ -25,7 +29,10 @@ Delete terminology ${terminology} with api
     END
     [Return]        ${response}
 
-Create terminology ${terminology} with api
+Create terminology with api
+    [Arguments]     ${terminology}
+    ...             ${status}=Draft
+
     Set tags        Create terminology with api
     ${graph_id}=    Catenate
     ...             9db140ac-5f1b-44b5-a408-0c42ff712128
@@ -38,15 +45,22 @@ Create terminology ${terminology} with api
     ...             ${terminology}
     ...             ${graph_id}
     ...             ${template_graph_id}
+    ...             ${status}
     ${response}=    Post        ${CREATE_TERMINOLOGY_API_POINT}?${data}    headers=${headers}  data=${json}
     [Return]        ${response}
 
 Create terminology json from file
-    [Arguments]     ${file}     ${terminology}      ${graph_id}     ${template_graph_id}
+    [Arguments]         ${file}     
+    ...                 ${terminology}      
+    ...                 ${graph_id}     
+    ...                 ${template_graph_id}  
+    ...                 ${status}
+
     ${json_string}=      Get File    ${file}
     ${json}=             evaluate        json.loads('''${json_string}''')    json
     set to dictionary    ${json}                                id=${graph_id}
     set to dictionary    ${json["type"]["graph"]}               id=${template_graph_id}
     set to dictionary    ${json["properties"]["prefLabel"][0]}  value=${terminology}
+    set to dictionary    ${json["properties"]["status"][0]}     value=${status}
     ${json_string}=      evaluate        json.dumps(${json})                 json
     [Return]        ${json_string}

@@ -40,7 +40,7 @@
     "status": [
       {
         "lang": "",
-        "value": "DRAFT",
+        "value": "${status}",
         "regex": "(?s)^.*$"
       }
     ],
