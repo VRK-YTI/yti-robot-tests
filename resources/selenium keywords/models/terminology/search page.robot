@@ -63,7 +63,10 @@ Search terminology ${Terminology}
     Input text with wait              ${search box terminology}  ${Terminology}
     Press Keys                        None      ENTER
 
-
+Clear terminology search
+    Double click element            ${search box terminology}
+    press keys                      ${search box terminology}           CTRL+a+BACKSPACE
+    
 Search and select terminology ${Terminology}
     Search terminology ${Terminology}
     Click element with wait           //h2[contains(text(), "${Terminology}")]

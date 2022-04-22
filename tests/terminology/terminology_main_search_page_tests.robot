@@ -171,7 +171,6 @@ T1C8. Test organization selection
     ...                             ${DRAFT}
     Open terminology search page
 
-    Sleep  5
     Select organization Testiorganisaatio
     Verify organization filter Testiorganisaatio is set
     Verify search page contains 1 items with filters
@@ -194,6 +193,7 @@ T1C9. Create and test Valid terminology search page
     Verify page contains ${${Housing count}+1} terminologies with Asuminen
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
+    Clear terminology search
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
