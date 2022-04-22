@@ -62,6 +62,7 @@ Select organization ${organization}
 Search terminology ${Terminology}
     Input text with wait              ${search box terminology}  ${Terminology}
     Press Keys                        None      ENTER
+    
 
 Search and select terminology ${Terminology}
     Search terminology ${Terminology}
