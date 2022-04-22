@@ -5,7 +5,7 @@ Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
 *** Test Cases ***
-T2C1. Click first terminology on list and download it
+T2C1. Select first terminology on list and download it
     [Tags]  Terminology  
     ...     T2 
     ...     PROD 

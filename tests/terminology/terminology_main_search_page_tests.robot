@@ -46,7 +46,7 @@ T1C4. Test status filter checkbox
 
     Set filter Voimassa oleva checkbox
     Verify status filter Voimassa oleva is not Set
-    Verify page does not contain terminologies with status ${filter}
+    Verify page does not contain terminologies with status Voimassa oleva
     Verify page contains remove all filters
     Verify search page contains ${Draft count} items with filters
     
@@ -56,7 +56,7 @@ T1C4. Test status filter checkbox
     
     Set filter Luonnos checkbox
     Verify status filter Luonnos is not Set
-    Verify page does not contain terminologies with status ${filter}
+    Verify page does not contain terminologies with status Luonnos
     Verify page contains remove all filters
     Verify search page contains ${Valid count} items with filters
 
@@ -69,7 +69,7 @@ T1C4. Test status filter checkbox
     Verify page contains remove all filters
     Set filter Korvattu checkbox
     Verify status filter Korvattu is not Set
-    Verify page does not contain terminologies with status ${filter}
+    Verify page does not contain terminologies with status Korvattu
     Verify filters are defaults
 
     Set filter Poistettu käytöstä checkbox
@@ -78,7 +78,7 @@ T1C4. Test status filter checkbox
     Verify page contains remove all filters
     Set filter Poistettu käytöstä checkbox
     Verify status filter Poistettu käytöstä is not Set
-    Verify page does not contain terminologies with status ${filter}
+    Verify page does not contain terminologies with status Poistettu käytöstä
     Verify filters are defaults
     
     Verify search page contains ${Draft + Valid count} items with filters
@@ -93,6 +93,7 @@ T1C5. Test status filter buttons
 
     Remove filter Voimassa oleva with button
     Verify status filter Voimassa oleva is not Set
+    Verify page does not contain terminologies with status Voimassa oleva
     Verify page contains remove all filters
 
     Verify search page contains ${Draft count} items with filters
@@ -101,7 +102,7 @@ T1C5. Test status filter buttons
     
     Remove filter Luonnos with button
     Verify status filter Luonnos is not Set
-    Verify page does not contain terminologies with status ${filter}
+    Verify page does not contain terminologies with status Luonnos
     Verify page contains remove all filters
     Verify search page contains ${Valid count} items with filters
 
@@ -112,14 +113,14 @@ T1C5. Test status filter buttons
     Verify search page contains ${Draft + Valid + Superseded count} items with filters
     Remove filter Korvattu with button
     Verify status filter Korvattu is not Set
-    Verify page does not contain terminologies with status ${filter}
+    Verify page does not contain terminologies with status Korvattu
     Verify filters are defaults
 
     Set filter Poistettu käytöstä checkbox
     Verify search page contains ${Draft + Valid + Retired count} items with filters
     Remove filter Poistettu käytöstä with button
     Verify status filter Korvattu is not Set
-    Verify page does not contain terminologies with status ${filter}
+    Verify page does not contain terminologies with status Poistettu käytöstä
     Verify filters are defaults
     
     Verify search page contains ${Draft + Valid count} items with filters
@@ -170,6 +171,7 @@ T1C8. Test organization selection
     ...                             ${DRAFT}
     Open terminology search page
 
+    Sleep  5
     Select organization Testiorganisaatio
     Verify organization filter Testiorganisaatio is set
     Verify search page contains 1 items with filters

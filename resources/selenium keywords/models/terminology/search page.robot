@@ -6,7 +6,7 @@ ${search box terminology}           //*[@id="2"]
 ${Terminology search page header}   //h1[text()="Sanastot"]  |  //h1[text()="Terminologies"]
 ${Terminology search list}          //div[@id="search-results"]
 ${First terminology on searchlist}  //div[@id="search-results"]/ul/li/div
-${Organization dropdown}            //span[@aria-haspopup="listbox"]
+${Organization dropdown}            //input[@placeholder="Valitse organisaatio"]
 
 ${Remove all filters}               //button[text()="Poista kaikki rajaukset"]  |  //button[text()="Clear all"]  |  //button[text()="Poista kaikki rajaukset"]
 
@@ -62,7 +62,7 @@ Select organization ${organization}
 Search terminology ${Terminology}
     Input text with wait              ${search box terminology}  ${Terminology}
     Press Keys                        None      ENTER
-    
+
 
 Search and select terminology ${Terminology}
     Search terminology ${Terminology}
