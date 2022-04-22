@@ -208,6 +208,7 @@ T1C10. Create and test draft terminology search page
     Verify page contains ${${Draft count}+1} terminologies with Luonnos
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
+    Clear terminology search
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
@@ -223,6 +224,7 @@ T1C11. Create and test Superseeded terminology search page
     Set filter Korvattu checkbox
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
+    Clear terminology search
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
@@ -238,6 +240,7 @@ T1C12. Create and test Retired terminology search page
     Set filter Poistettu käytöstä checkbox
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
+    Clear terminology search
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
