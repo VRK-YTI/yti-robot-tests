@@ -6,6 +6,7 @@ output.xml
 report.html
 log.html
 geckodriver.log
+*.webm
 
 # python generated content
 *.pyc

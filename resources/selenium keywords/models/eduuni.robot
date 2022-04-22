@@ -23,6 +23,7 @@ ${EDUUNI_TYPE}                            MICROSOFT
 *** Keywords ***
 Login with ${user}
     Run keyword              Select ${user} user 
+    Verify page is terminology search page
 
 Select Superuser user
     Logging with eDuuni      ${SUPER_EDUUNI_EMAIL}  ${SUPER_EDUUNI_PASSWORD}

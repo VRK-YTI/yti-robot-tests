@@ -257,10 +257,10 @@ Create Code links with space csv
     ...             ${codecount}=31
     FOR    ${index}    IN RANGE    1    ${codecount}
         ${code_index}=      Evaluate    int(${index})
-        ${preflabel_fi}=    Catenate    ${code_prefix} ${code_index}
+        ${preflabel_fi}=    Catenate    ${code_prefix}_${code_index}
         ${preflabel_fi}=    Convert To Title Case   ${preflabel_fi}
-        ${codevalue}=       Catenate    ${code_prefix}${code_index}
-        ${uri}=             Catenate    ${CODELIST_URI}/${registery}/${schemeCode}/code/${code_prefix}${code_index}
+        ${codevalue}=       Catenate    ${code_prefix}_${code_index}
+        ${uri}=             Catenate    ${CODELIST_URI}/${registery}/${schemeCode}/code/${preflabel_fi}
         ${csv_file_path}=   Append to csv      ${TEST NAME}
         ...  CODEVALUE=${codevalue}  
         ...  URI=${uri}  
