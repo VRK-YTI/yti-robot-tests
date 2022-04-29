@@ -4,9 +4,13 @@ Test automation repository for all yti projects. Root contains tests for v2 of y
 
 Install dependencies
 ====================
+
+Install required libraries for running tests
 ```
 pip install -r requirements.txt
 ```
+
+Install [chromedriver](https://chromedriver.chromium.org/downloads)
 
 Folder structure
 ================
