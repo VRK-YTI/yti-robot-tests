@@ -2,6 +2,11 @@ YTI robot automation tests
 ===============================
 Test automation repository for all yti projects. Root contains tests for v2 of yti project UI and legacy older versions. Currently only terminology has v2. 
 
+Install dependencies
+====================
+```
+pip install -r requirements.txt
+```
 
 Folder structure
 ================
@@ -54,3 +59,7 @@ ____________________________
     ```
     python -m robot.run -v BROWSER:chrome -v RECORD:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:salasana -d test_reports tests
     ```
+____________________________
+* run single test in the suite
+    ```
+    python -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:salasana -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests/terminology/terminology_main_search_page_tests.robot
