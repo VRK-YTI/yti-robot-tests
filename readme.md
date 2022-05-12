@@ -9,7 +9,7 @@ To setup virtual environment run the following commands.
 
 ```
 python -m venv env
-./env/bin/activate
+. ./env/bin/activate
 ```
 
 
