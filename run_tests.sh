@@ -8,7 +8,7 @@ then
     exit 4
 fi
 
-source ./.env
+. ./.env
 
 # set TEST_REPORTS environment variable to change output directory
 
