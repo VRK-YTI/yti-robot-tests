@@ -684,7 +684,7 @@ Add Property For Class
 Add Property Pair
     [Arguments]    ${button}    ${property}
     Click Element with wait    ${button}
-    Click Element with wait    //*[contains(@id,'${property}_search_result_link')]
+    Click Element with wait    //*[contains(@id,'${property}_search_result_link')]      
     Click Element with wait    //*[contains(text(), "Käytä attribuuttia")]
 
 Create New Namespace

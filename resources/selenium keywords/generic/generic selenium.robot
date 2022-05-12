@@ -58,7 +58,3 @@ Switch window with wait
 Click element that contains text
     [Arguments]  ${text}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
     Click element with wait     //*[contains(text(), "${text}")]   ${timeout}
-
-Print console logs
-    ${logs}     Run keyword     Get browser logs
-    log         ${logs}

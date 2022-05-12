@@ -1,10 +1,14 @@
 from robot.libraries.BuiltIn import BuiltIn
 import time
 
-def get_browser_logs():
-    selenium = BuiltIn().get_library_instance('SeleniumLibrary')
-    logs = selenium.driver.get_log('browser')
-    return logs
+def print_console_logs():
+    try:
+        selenium = BuiltIn().get_library_instance('SeleniumLibrary')
+        logs = selenium.driver.get_log('browser')
+        for log in logs:
+            BuiltIn().log(log)
+    except:
+        pass
 
 def highlight_element(element):
     driver = element._parent

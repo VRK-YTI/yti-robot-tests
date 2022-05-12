@@ -1,0 +1,34 @@
+{
+    "delete": [],
+    "save": [
+        {
+            "id": "85de7936-174a-4b68-8b35-8a2b0ebbd6fd",
+            "type": {
+                "id": "Collection",
+                "uri": "http://www.w3.org/2004/02/skos/core#Collection",
+                "graph": {
+                    "id": "${graphs_id}"
+                }
+            },
+            "createdBy": "",
+            "createdDate": "2022-05-12T04:28:43.988Z",
+            "lastModifiedBy": "",
+            "lastModifiedDate": "2022-05-12T04:28:47.702Z",
+            "properties": {
+                "prefLabel": [
+                    {
+                        "lang": "fi",
+                        "value": "${collection}",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "definition": []
+            },
+            "referrers": {},
+            "references": {
+                "broader": [],
+                "member": []
+            }
+        }
+    ]
+}

@@ -1,0 +1,213 @@
+{
+    "delete": [],
+    "save": [
+        {
+            "id": "${TERM_ID}",
+            "type": {
+                "id": "Term",
+                "uri": "http://www.w3.org/2008/05/skos-xl#Label",
+                "graph": {
+                    "id": "${graphs_id}"
+                }
+            },
+            "createdBy": "",
+            "createdDate": "2022-05-12T03:18:23.989Z",
+            "lastModifiedBy": "",
+            "lastModifiedDate": "2022-05-12T03:18:23.989Z",
+            "properties": {
+                "prefLabel": [
+                    {
+                        "lang": "fi",
+                        "value": "${concept}",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "source": [],
+                "scope": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "termStyle": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "termFamily": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "termConjugation": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "termEquivalency": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "termInfo": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "wordClass": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "termHomographNumber": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "editorialNote": [],
+                "draftComment": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "historyNote": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "changeNote": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "status": [
+                    {
+                        "lang": "",
+                        "value": "${status}",
+                        "regex": "(?s)^.*$"
+                    }
+                ]
+            },
+            "referrers": {},
+            "references": {}
+        },
+        {
+            "id": "${concept_id}",
+            "type": {
+                "id": "Concept",
+                "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+                "graph": {
+                    "id": "${graphs_id}"
+                }
+            },
+            "createdBy": "",
+            "createdDate": "2022-05-12T03:18:23.989Z",
+            "lastModifiedBy": "",
+            "lastModifiedDate": "2022-05-12T03:18:26.925Z",
+            "properties": {
+                "definition": [],
+                "note": [],
+                "editorialNote": [],
+                "example": [],
+                "conceptScope": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "conceptClass": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "wordClass": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "changeNote": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "historyNote": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "status": [
+                    {
+                        "lang": "",
+                        "value": "${status}",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "notation": [
+                    {
+                        "lang": "",
+                        "value": "",
+                        "regex": "(?s)^.*$"
+                    }
+                ],
+                "source": []
+            },
+            "referrers": {},
+            "references": {
+                "prefLabelXl": [
+                    {
+                        "id": "${TERM_ID}",
+                        "type": {
+                            "id": "Term",
+                            "uri": "http://www.w3.org/2008/05/skos-xl#Label",
+                            "graph": {
+                                "id": "${graphs_id}"
+                            }
+                        }
+                    }
+                ],
+                "altLabelXl": [],
+                "notRecommendedSynonym": [],
+                "hiddenTerm": [],
+                "broader": [],
+                "narrower": [],
+                "closeMatch": [],
+                "related": [],
+                "isPartOf": [],
+                "hasPart": [],
+                "relatedMatch": [],
+                "exactMatch": [],
+                "searchTerm": []
+            }
+        }
+    ]
+}

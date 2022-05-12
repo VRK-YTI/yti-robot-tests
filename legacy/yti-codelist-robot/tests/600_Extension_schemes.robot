@@ -443,20 +443,21 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Set default codelist variables    611
 
     ${excel_file_path}=    Create excel Extensions and members for new version creation
-    ...                    ${DEFAULT_CODELIST_SCHEME_ID}
+    ...                    ${DEFAULT_CODELIST_SCHEME_ID}_1
     ...                    ${DEFAULT_CODELIST_CODE_ID}
-    ...                    ${DEFAULT_PREFLABEL_SCHEME}
+    ...                    ${DEFAULT_PREFLABEL_SCHEME}_1
     ...                    ${DEFAULT_PREFLABEL_CODE}
     Create codelist from Excel ${excel_file_path} to test with api
-    Search and open codelist    ${DEFAULT_PREFLABEL_SCHEME}
+    Search and open codelist    ${DEFAULT_PREFLABEL_SCHEME}_1
 
     Wait Until Page Contains    25 koodia    
 
     Click element with wait      ${CODE_LIST_DDL}    
     Click element with wait      ${CREATE_NEW_VERSION_BTN}    
 
+    Sleep                   1
     Input Text with wait    ${CODE_LIST_VALUE_INPUT}    ${DEFAULT_CODELIST_SCHEME_ID}_2  
-    Input Text with wait   ${CODE_LIST_NAME_INPUT}    ${DEFAULT_PREFLABEL_SCHEME}_2
+    Input Text with wait    ${CODE_LIST_NAME_INPUT}     ${DEFAULT_PREFLABEL_SCHEME}_2
 
     Click element with wait      ${SAVE_NEW_CODE_LIST}    
     Wait Until Element Is Enabled    ${CODE_LIST_DDL}    
@@ -481,7 +482,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains Element    //*[contains(text(), "LASKENTAHIERARKIAT")]    
     Click element with wait      //*[contains(@id,'111_view_extension')]    
     Click element with wait      ${EXTENSION_INFO_TAB}    
-    Wait Until Page Contains    ${DEFAULT_CODELIST_SCHEME_ID} 
+    Wait Until Page Contains    ${DEFAULT_CODELIST_SCHEME_ID}_2
     Wait Until Page Contains    ${DEFAULT_PREFLABEL_SCHEME}_2
     Wait Until Page Contains    Testilaajennus11    
     Wait Until Page Contains    Määrityshierarkia    
@@ -543,7 +544,7 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Click element with wait      ${EXPORT_DDL}   
     Click element with wait      ${EXPORT_TYPE_CSV}    
 
-    [Teardown]    Remove codelist with extensions teardown    ${DEFAULT_CODELIST_SCHEME_ID}     ${DEFAULT_CODELIST_SCHEME_ID}_2
+    [Teardown]    Remove codelist with extensions teardown    ${DEFAULT_CODELIST_SCHEME_ID}_1    ${DEFAULT_CODELIST_SCHEME_ID}_2
 
 612. Import members with invalid member value
     [Documentation]    Import members with invalid unary operator value to calculation hierarchy extension

@@ -4,6 +4,7 @@ Library   ScreenCapLibrary
 Library   OperatingSystem
 Library   String
 Resource  ../resources/selenium keywords/models/terminology/search page.robot
+Resource  ../resources/selenium keywords/models/terminology/concept page.robot
 Resource  ../resources/selenium keywords/models/terminology/terminology page.robot
 Resource  ../resources/selenium keywords/models/eduuni.robot
 Resource  ../resources/selenium keywords/models/navigation bar.robot
@@ -21,7 +22,7 @@ Setup test Case
     END   
 
 Teardown test Case
-    Run keyword and ignore error    Print console logs
+    Print console logs
     IF  '${RECORD}' == 'True'
         Stop video recording
         Run keyword If test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}.webm

@@ -10,6 +10,7 @@ Resource          ../resources/variables/test_files.robot
 *** Keywords ***
 Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs
+    Run Keyword If Test Failed      Log error window messages
     Close All Browsers
 
 Test Case Suite Teardown Generic Teardown
