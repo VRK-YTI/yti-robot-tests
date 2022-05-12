@@ -11,6 +11,7 @@ Test Case Generic Suite setup
 
 Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs
+    Run Keyword If Test Failed      Log error window messages
     Close All Browsers
 
 Test case teardown delete terminology

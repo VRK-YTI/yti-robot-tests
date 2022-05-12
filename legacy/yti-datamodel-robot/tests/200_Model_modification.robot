@@ -520,26 +520,26 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Click Element with wait                     ${NAMESPACE_CREATE}
     Wait until page does not contain element    ${NAMESPACE_CREATE}
     Click Element with wait                     ${IMPORT_NAMESPACE}
-    Click Element with wait                     ${CREATE_NEW_NAMESPACE}
+    Click Element with wait                     ${CREATE_NEW_NAMESPACE}     timeout=60
 
     Input Text with wait        ${NAMESPACE_LABEL}      autom2
     Input Text with wait        ${NAMESPACE_VALUE}      http://uri.suomi.fi/datamodel/ns/autom1/
 
-    Wait Until Page Contains    ${namespace_in_use}    timeout=30
+    Wait Until Page Contains    ${namespace_in_use}    
     Click Element with wait    ${CANCEL_NAMESPACE_CREATION}
     Click Element with wait    ${CANCEL_SEARCH_NAMESPACE}
     Save Model
 
-    Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/autom1/    timeout=30
+    Wait Until Page Contains    http://uri.suomi.fi/datamodel/ns/autom1/    
     Select Model Tab    ${MODEL_DATA_TAB}
     Create New Class Without Referencing Concept    uusiluokka10
     Save Class
 
-    Wait Until Element Is Enabled           //*[contains(@id,'Uusiluokka10_tabset_link')]    timeout=30
+    Wait Until Element Is Enabled           //*[contains(@id,'Uusiluokka10_tabset_link')]    
     Add Class    Rooli    ${NAMESPACE_1}
 
     Confirm All Properties For Class And Save
-    Wait Until Page Contains Element        //*[contains(@id,'Rooli_tabset_link')]    timeout=30
+    Wait Until Page Contains Element        //*[contains(@id,'Rooli_tabset_link')]    
 
 219. Export class in different formats
     [Documentation]    Create new profile and class.
@@ -732,11 +732,11 @@ ${class_framed_json_ld_test}    blob:https://tietomallit.dev.yti.cloud.vrk.fi/ca
     Save Class
 
     Click Element with wait    //*[contains(text(), "Min arvo")]
-    Wait Until Page Contains    Pienempi kuin                       timeout=30
-    Wait Until Page Contains    Eri kuin                            timeout=30
-    Wait Until Page Contains    Yhtä kuin                           timeout=30
-    Wait Until Page Contains    Pienempi tai yhtä suuri kuin        timeout=30
-    Wait Until Page Contains Element    //*[contains(text(), "autom:maxarvo")]              timeout=30
+    Wait Until Page Contains    Pienempi kuin                       
+    Wait Until Page Contains    Eri kuin                            
+    Wait Until Page Contains    Yhtä kuin                           
+    Wait Until Page Contains    Pienempi tai yhtä suuri kuin        
+    Wait Until Page Contains Element    //*[contains(text(), "autom:maxarvo")]              
     Wait Until Page Contains Element    //*[contains(@id,'Vertailuluokka1_tabset_link')]    timeout=60
 
 224. Add equivalent class from URN namespace

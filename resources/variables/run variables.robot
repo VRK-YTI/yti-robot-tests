@@ -7,9 +7,11 @@ ${SELENIUM_SPEED}               0
 ${SELENIUM_DEFAULT_TIMEOUT}     30
 ${CHROME_DRIVER_PATH}           ${EMPTY}
 ${ENVIRONMENT}                  dev
-${API_KEY}                      eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlYmU5NDhhNi00MmRhLTdjNGItNDIxZS1kZTlmZjBkZGMwYmEiLCJleHAiOjE2NTExODYyOTAsImlhdCI6MTYzNTQ2MTQ5MH0.uP3o5jgqMsmzRcVhJviwln7vC4JC2FA4XEIsLHzfeZzvGQK1gQB5DpfXfTCADsSNbS8Jn4OoG5pYdg4zhi153w
+${API_KEY}                      ${EMPTY}
 
 ${DEFAULT TERMINOLOGY NAME}         Auto_Term
+${DEFAULT CONCEPT NAME}             Auto_Concept
+${DEFAULT COLLECTION NAME}          Auto_Collection
 
 ${EDUUNI_EMAIL_PASSWORD}            ${EMPTY}
 
@@ -40,4 +42,6 @@ ${NOGROUP_EDUUNI_PASSWORD}          ${EDUUNI_EMAIL_PASSWORD}
 *** Keywords ***
 Set default terminology variables
     [Arguments]          ${test_case_id}
-    Set Test Variable    ${DEFAULT TERMINOLOGY NAME}  ${DEFAULT TERMINOLOGY NAME}_${test_case_id}
+    Set Test Variable    ${DEFAULT TERMINOLOGY NAME}    ${DEFAULT TERMINOLOGY NAME}_${test_case_id}
+    Set Test Variable    ${DEFAULT CONCEPT NAME}        ${DEFAULT CONCEPT NAME}_${test_case_id}
+    Set Test Variable    ${DEFAULT COLLECTION NAME}     ${DEFAULT COLLECTION NAME}_${test_case_id}

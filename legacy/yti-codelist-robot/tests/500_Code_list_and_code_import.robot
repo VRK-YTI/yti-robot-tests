@@ -619,7 +619,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 518. Create code list and suggest concept to Terminologies
     [Documentation]    Create code list and suggest concept to Terminologies
     ...    YTI-848.
-    [Tags]    regression    test    koodistot    500
+    [Tags]    test    koodistot    500
     [Setup]    Test Case Setup Terminologies    Testiautomaatiosanasto
     Set default codelist variables    518
     
@@ -653,7 +653,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
 
 519. Create code to code list list and suggest concept to Terminologies
     [Documentation]    Create code to code list list and suggest concept to Terminologies
-    [Tags]    regression    test    koodistot    500
+    [Tags]    test    koodistot    500
     [Setup]    Test Case Setup Terminologies    Testiautomaatiosanasto
     Set default codelist variables    519
     
@@ -732,8 +732,9 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click Button                        ${CREATE_NEW_VERSION_BTN}
 
     Click element with wait     ${CREATE_CODELIST_VERSION_AS_EMPTY}
+    Sleep                       1
     Input Text with wait        ${CODE_LIST_VALUE_INPUT}    ${DEFAULT_CODELIST_SCHEME_ID}_2
-    Input Text with wait        ${CODE_LIST_NAME_INPUT}    ${DEFAULT_PREFLABEL_SCHEME}_2
+    Input Text with wait        ${CODE_LIST_NAME_INPUT}     ${DEFAULT_PREFLABEL_SCHEME}_2
     Click element with wait     ${SAVE_NEW_CODE_LIST}
     Click element with wait     ${CONFIRMATION_YES_BTN}
 

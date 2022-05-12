@@ -31,6 +31,8 @@ ${LANGUAGE_FI}                  id=fi
 ${2_BREADCRUMB_LINK}            id=2_breadcrumb_link
 ${3_BREADCRUMB_LINK}            id=3_breadcrumb_link
 
+${ERROR_MESSAGE_DIALOG_TEXT}    //pre
+
 ${EDUUNI_EMAIL_PASSWORD}            ${EMPTY}
 
 ${ADMIN_EDUUNI_EMAIL}               ytiautomaatioad@outlook.com
@@ -149,7 +151,6 @@ Select breadcrump link 2
     Sleep                       10
     Click element with wait     ${2_BREADCRUMB_LINK}                        timeout=${SELENIUM_DEFAULT_TIMEOUT}
 
-
 Select breadcrump link 3
     Sleep                       10
     Click element with wait     ${3_BREADCRUMB_LINK}                        timeout=${SELENIUM_DEFAULT_TIMEOUT}
@@ -183,3 +184,6 @@ Set default codelist variables
     Set Test Variable    ${DEFAULT_PREFLABEL_SCHEME}    ${DEFAULT_PREFLABEL_SCHEME}_${test_case_number}
     Set Test Variable    ${DEFAULT_CODELIST_CODE_ID}    ${DEFAULT_CODELIST_CODE_ID}_${test_case_number}
     Set Test Variable    ${DEFAULT_PREFLABEL_CODE}      ${DEFAULT_PREFLABEL_CODE}_${test_case_number}
+
+Log error window messages
+    Log element texts    ${ERROR_MESSAGE_DIALOG_TEXT}

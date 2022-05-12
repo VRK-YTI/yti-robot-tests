@@ -169,14 +169,16 @@ T1C8. Test organization selection
     ...     T1  
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
     Open terminology search page
 
-    Select organization Testiorganisaatio
-    Verify organization filter Testiorganisaatio is set
+    Select organization Automaatiotestaus
+    Verify organization filter Automaatiotestaus is set
     Verify search page contains 1 items with filters
 
-    Remove filter Testiorganisaatio with button
-    Verify organization filter Testiorganisaatio is not set
+    Remove filter Automaatiotestaus with button
+    Verify organization filter Automaatiotestaus is not set
     Verify search page does not contain 1 items with filters
     Verify filters are defaults
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
@@ -189,6 +191,8 @@ T1C9. Create and test Valid terminology search page
 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
     Verify page contains ${${Valid count}+1} terminologies with Voimassa oleva
     Verify page contains ${${Housing count}+1} terminologies with Asuminen
     Search terminology ${DEFAULT TERMINOLOGY NAME}
@@ -205,6 +209,8 @@ T1C10. Create and test draft terminology search page
 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
     Verify page contains ${${Draft count}+1} terminologies with Luonnos
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
@@ -220,6 +226,8 @@ T1C11. Create and test Superseeded terminology search page
 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${SUPERSEDED}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
     Verify page contains ${${Superseded count}+1} terminologies with Korvattu
     Set filter Korvattu checkbox
     Search terminology ${DEFAULT TERMINOLOGY NAME}
@@ -236,6 +244,8 @@ T1C12. Create and test Retired terminology search page
 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${RETIRED}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
     Verify page contains ${${Retired count}+1} terminologies with Poistettu käytöstä
     Set filter Poistettu käytöstä checkbox
     Search terminology ${DEFAULT TERMINOLOGY NAME}
@@ -243,6 +253,20 @@ T1C12. Create and test Retired terminology search page
     Clear terminology search
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+
+T1C13. Create and test INCOMPLETE terminology search page
+    [Tags]  Terminology  
+    ...     T1  
+    Open terminology search page
+
+    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
+    ...                             ${INCOMPLETE}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
+    
+    #Search and select terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+
 
 *** Keywords ***
 Get filter counts from search page

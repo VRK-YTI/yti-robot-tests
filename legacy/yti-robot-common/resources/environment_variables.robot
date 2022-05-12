@@ -6,7 +6,7 @@ ${ENVIRONMENT_IDENTIFIER}               AWSDEV
 ${RECORD}                               False
 
 ${SELENIUM_SPEED}                       0
-${SELENIUM_DEFAULT_TIMEOUT}             30
+${SELENIUM_DEFAULT_TIMEOUT}             60
 
 ${DATAFOLDER}                           ${EXECDIR}${/}resources${/}test_files
 

@@ -56,12 +56,12 @@ Robot framework run command
 ===========================
 * run all tests on headless
     ```
-    python -m robot.run -v BROWSER:headlesschrome -v EDUUNI_EMAIL_PASSWORD:salasana -v ENVIRONMENT:dev -d test_reports tests
+    python -m robot.run -v BROWSER:headlesschrome -v EDUUNI_EMAIL_PASSWORD:salasana -v API_KEY:api_key -v ENVIRONMENT:dev -d test_reports tests
     ```
 ____________________________
 * run all tests without headless, record video and highlight element
     ```
-    python -m robot.run -v BROWSER:chrome -v RECORD:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:salasana -d test_reports tests
+    python -m robot.run -v BROWSER:chrome -v RECORD:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:salasana -v API_KEY:api_key -d test_reports tests
     ```
 ____________________________
 * run single test in the suite

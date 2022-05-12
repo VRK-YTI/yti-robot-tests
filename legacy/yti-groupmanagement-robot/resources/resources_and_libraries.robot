@@ -7,6 +7,7 @@ Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 *** Keywords ***
 Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs
+    Run Keyword If Test Failed      Log error window messages
     Close All Browsers
 
 Test Case Suite Teardown Generic Teardown

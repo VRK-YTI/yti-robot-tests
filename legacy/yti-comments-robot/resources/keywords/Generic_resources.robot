@@ -242,9 +242,13 @@ Send Comments
 
 Send Inline Comment For Comment Thread
     [Arguments]    ${id}    ${comment}
+    Sleep                      1
     Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_BTN_SUFFIX}
+    Sleep                      1
     Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}
+    Sleep                      1
     Input Text with wait       ${INLINE_COMMENT_PREFIX}${id}${INLINE_REPLY_INPUT_SUFFIX}    ${comment}
+    Sleep                      1
     Click Element with wait    ${INLINE_COMMENT_PREFIX}${id}${INLINE_SEND_REPLY_BTN_SUFFIX}
 
 Search Comment Round

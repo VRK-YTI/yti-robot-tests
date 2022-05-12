@@ -17,5 +17,5 @@ Will contain some duplicate code with new ui, but in long run all the old tests 
 
 # Example run command
     ```
-    python -m robot.run --variable BROWSER:chrome-local --variable EDUUNI_EMAIL_PASSWORD:salasana --variable CHROME_DRIVER_PATH:chromedriver.exe --variable HEADLESS:True -d test_reports --include "regression" tests
+    python -m robot.run --variable API_KEY:api_key --variable EDUUNI_EMAIL_PASSWORD:salasana --variable BROWSER:chrome-local --variable CHROME_DRIVER_PATH:chromedriver.exe --variable HEADLESS:True -d test_reports --include "regression" tests
     ```

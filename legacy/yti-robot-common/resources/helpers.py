@@ -88,6 +88,14 @@ def get_browser_logs():
     return logs
 
 
+def log_element_texts(elements_to_find):
+    import time
+    time.sleep(5)
+    selenium = BuiltIn().get_library_instance('SeleniumLibrary')
+    elements = selenium.get_webelements(elements_to_find)
+    for element in elements:
+        BuiltIn().log(element.text)
+
 def parse_comment_round_urls_with_label(json, label):
     comment_rounds = [x["commentRounds"] for x in json["results"]]
     comment_round_urls = [[y["url"] for y in x if label == y["label"]] for x in comment_rounds]
