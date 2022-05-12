@@ -21,3 +21,9 @@ geckodriver.exe
 .project
 .settings/
 .classpath
+
+# python virtual environment
+env
+
+# secrets
+.env
