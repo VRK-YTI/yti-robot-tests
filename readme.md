@@ -2,6 +2,17 @@ YTI robot automation tests
 ===============================
 Test automation repository for all yti projects. Root contains tests for v2 of yti project UI and legacy older versions. Currently only terminology has v2. 
 
+Setup virtual environment
+=========================
+
+To setup virtual environment run the following commands.
+
+```
+python -m venv env
+. ./env/bin/activate
+```
+
+
 Install dependencies
 ====================
 
@@ -10,7 +21,16 @@ Install required libraries for running tests
 pip install -r requirements.txt
 ```
 
-Install [chromedriver](https://chromedriver.chromium.org/downloads)
+Download and install [chromedriver](https://chromedriver.chromium.org/downloads). Or on Linux, you can just install it from your package manager.
+
+```
+sudo apt-get install chromium-chromedriver
+```
+
+Configure environment variables
+===============================
+
+Copy `.env.dist` to `.env` and set values to secrets.
 
 Folder structure
 ================
@@ -58,12 +78,31 @@ Robot framework run command
     ```
     python -m robot.run -v BROWSER:headlesschrome -v EDUUNI_EMAIL_PASSWORD:salasana -v API_KEY:api_key -v ENVIRONMENT:dev -d test_reports tests
     ```
+
+    or
+
+    ```
+    ./run_tests.sh headless
+    ```
 ____________________________
 * run all tests without headless, record video and highlight element
     ```
     python -m robot.run -v BROWSER:chrome -v RECORD:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:salasana -v API_KEY:api_key -d test_reports tests
     ```
+
+    or
+
+    ```
+    ./run_tests.sh record
+    ```
 ____________________________
 * run single test in the suite
     ```
     python -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:salasana -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests/terminology/terminology_main_search_page_tests.robot
+    ```
+
+    or
+
+    ```
+    ./run_tests.sh single <testname>
+    ```
