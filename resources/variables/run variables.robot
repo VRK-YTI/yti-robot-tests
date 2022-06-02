@@ -13,6 +13,9 @@ ${DEFAULT TERMINOLOGY NAME}         Auto_Term
 ${DEFAULT CONCEPT NAME}             Auto_Concept
 ${DEFAULT COLLECTION NAME}          Auto_Collection
 
+${DEFAULT ORGANIZATION}             Automaatiotestaus
+${DEFAULT DOMAIN}                   Asuminen
+
 ${EDUUNI_EMAIL_PASSWORD}            ${EMPTY}
 
 ${ADMIN_EDUUNI_EMAIL}               ytiautomaatioad@outlook.com

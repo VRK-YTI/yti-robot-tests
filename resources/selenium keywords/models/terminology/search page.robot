@@ -2,7 +2,7 @@
 Library   String
 
 *** Variables ***
-${search box terminology}           //*[@id="2"]
+${search box terminology}           //*[@placeholder="Esim päivähoito, opiskelu..."]
 ${Terminology search page header}   //h1[text()="Sanastot"]  |  //h1[text()="Terminologies"]
 ${Terminology search list}          //div[@id="search-results"]
 ${First terminology on searchlist}  //div[@id="search-results"]/ul/li/div
@@ -70,6 +70,7 @@ Clear terminology search
 Search and select terminology ${Terminology}
     Search terminology ${Terminology}
     Click element with wait           //h2[contains(text(), "${Terminology}")]
+    Verify page is terminology page
 
 Get status count from ${filter} filter
     Wait until page contains element            //label[contains(text(),'${filter}')]
@@ -79,6 +80,7 @@ Get status count from ${filter} filter
     ${left fetch}=      Fetch from left         ${right_fetch}      kpl)
     ${status count}=    Convert To Integer      ${left fetch}
     [Return]            ${status count}
+
 
 Verify search page contains ${hits} items with filters
     Reload page
@@ -102,8 +104,10 @@ Verify search page language is swedish
     Wait until page Contains           Sanastot-työkalulla kerätään ja ylläpidetään julkishallinnon yhteisiä terminologisia sanastoja ja käsitteitä.
 
 Verify filters are defaults
-    Verify status filter Voimassa oleva is set
-    Verify status filter Luonnos is set
+    Verify status filter Voimassa oleva is not set
+    Verify status filter Luonnos is not set
+    Verify status filter Korvattu is not set
+    Verify status filter Poistettu käytöstä is not set
     Verify page does not contain remove all filters
 
 Verify status filter ${filter} is not set

@@ -18,6 +18,7 @@ T1C2. Select first terminology on search page
     [Tags]  Terminology  
     ...     T1  
     ...     PROD
+    ...     BETA
     Open terminology search page
     Select first terminology on list
 
@@ -25,6 +26,7 @@ T1C3. Change page languages
     [Tags]  Terminology  
     ...     T1  
     ...     PROD
+    ...     BETA
     Open terminology search page
     
     Change language to english
@@ -40,95 +42,87 @@ T1C4. Test status filter checkbox
     [Tags]  Terminology  
     ...     T1  
     ...     PROD
+    ...     BETA
     Open terminology search page
     Get filter counts from search page
-    Verify search page contains ${Draft + Valid count} items with filters
-
+    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
+    
     Set filter Voimassa oleva checkbox
-    Verify status filter Voimassa oleva is not Set
-    Verify page does not contain terminologies with status Voimassa oleva
-    Verify page contains remove all filters
-    Verify search page contains ${Draft count} items with filters
-    
-    Set filter Luonnos checkbox
-    Verify search page contains ${Draft + Valid count} items with filters
-    Verify filters are defaults
-    
-    Set filter Luonnos checkbox
-    Verify status filter Luonnos is not Set
-    Verify page does not contain terminologies with status Luonnos
-    Verify page contains remove all filters
     Verify search page contains ${Valid count} items with filters
-
+    Remove all filters
+    
+    Set filter Luonnos checkbox
+    Verify search page contains ${Draft count} items with filters
     Remove all filters
     Verify filters are defaults
 
     Set filter Korvattu checkbox
-    Verify search page contains ${Draft + Valid +Superseded count} items with filters
+    Verify search page contains ${Superseded count} items with filters
     Verify status filter Korvattu is Set
     Verify page contains remove all filters
+
     Set filter Korvattu checkbox
     Verify status filter Korvattu is not Set
     Verify page does not contain terminologies with status Korvattu
     Verify filters are defaults
 
     Set filter Poistettu käytöstä checkbox
-    Verify search page contains ${Draft + Valid + Retired count} items with filters
+    Verify search page contains ${Retired count} items with filters
     Verify status filter Poistettu käytöstä is Set
     Verify page contains remove all filters
+
     Set filter Poistettu käytöstä checkbox
     Verify status filter Poistettu käytöstä is not Set
     Verify page does not contain terminologies with status Poistettu käytöstä
     Verify filters are defaults
     
-    Verify search page contains ${Draft + Valid count} items with filters
+    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
 
 T1C5. Test status filter buttons
     [Tags]  Terminology  
     ...     T1  
     ...     PROD
+    ...     BETA
     Open terminology search page
     Get filter counts from search page
-    Verify search page contains ${Draft + Valid count} items with filters
-
+    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
+    
+    Set filter Voimassa oleva checkbox
+    Verify search page contains ${Valid count} items with filters
     Remove filter Voimassa oleva with button
-    Verify status filter Voimassa oleva is not Set
-    Verify page does not contain terminologies with status Voimassa oleva
-    Verify page contains remove all filters
-
+    
+    Set filter Luonnos checkbox
     Verify search page contains ${Draft count} items with filters
     Remove filter Luonnos with button
     Verify filters are defaults
-    
-    Remove filter Luonnos with button
-    Verify status filter Luonnos is not Set
-    Verify page does not contain terminologies with status Luonnos
-    Verify page contains remove all filters
-    Verify search page contains ${Valid count} items with filters
-
-    Remove all filters
-    Verify filters are defaults
 
     Set filter Korvattu checkbox
-    Verify search page contains ${Draft + Valid + Superseded count} items with filters
+    Verify search page contains ${Superseded count} items with filters
+    Verify status filter Korvattu is Set
+    Verify page contains remove all filters
+
     Remove filter Korvattu with button
     Verify status filter Korvattu is not Set
     Verify page does not contain terminologies with status Korvattu
     Verify filters are defaults
 
     Set filter Poistettu käytöstä checkbox
-    Verify search page contains ${Draft + Valid + Retired count} items with filters
+    Verify search page contains ${Retired count} items with filters
+    Verify status filter Poistettu käytöstä is Set
+    Verify page contains remove all filters
+
     Remove filter Poistettu käytöstä with button
-    Verify status filter Korvattu is not Set
+    Verify status filter Poistettu käytöstä is not Set
     Verify page does not contain terminologies with status Poistettu käytöstä
     Verify filters are defaults
     
-    Verify search page contains ${Draft + Valid count} items with filters
+    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
 
 T1C6. Test domain filter checkbox
     [Tags]  Terminology  
     ...     T1  
     ...     PROD
+    ...     BETA
     Open terminology search page
 
     Set filter Asuminen checkbox
@@ -152,6 +146,7 @@ T1C7. Test domain filter buttons
     [Tags]  Terminology  
     ...     T1  
     ...     PROD
+    ...     BETA
     Open terminology search page
 
     Set filter Asuminen checkbox
@@ -173,13 +168,13 @@ T1C8. Test organization selection
     ...                             ${ORGANIZATION AUTOMATION}
     Open terminology search page
 
-    Select organization Automaatiotestaus
-    Verify organization filter Automaatiotestaus is set
-    Verify search page contains 1 items with filters
+    Select organization ${DEFAULT ORGANIZATION}
+    Verify organization filter ${DEFAULT ORGANIZATION} is set
+    #Verify search page contains 1 items with filters
 
-    Remove filter Automaatiotestaus with button
-    Verify organization filter Automaatiotestaus is not set
-    Verify search page does not contain 1 items with filters
+    Remove filter ${DEFAULT ORGANIZATION} with button
+    Verify organization filter ${DEFAULT ORGANIZATION} is not set
+    #Verify search page does not contain 1 items with filters
     Verify filters are defaults
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
@@ -194,7 +189,7 @@ T1C9. Create and test Valid terminology search page
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
     Verify page contains ${${Valid count}+1} terminologies with Voimassa oleva
-    Verify page contains ${${Housing count}+1} terminologies with Asuminen
+    Verify page contains ${${Housing count}+1} terminologies with ${DEFAULT DOMAIN}
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
     Clear terminology search
@@ -267,7 +262,6 @@ T1C13. Create and test INCOMPLETE terminology search page
     #Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-
 *** Keywords ***
 Get filter counts from search page
     Sleep                   2
@@ -287,6 +281,8 @@ Get filter counts from search page
     ${Draft + Valid count}=                 Evaluate    ${Draft count}+${Valid count}
     ${Draft + Valid + Retired count}=       Evaluate    ${Draft + Valid count}+${Retired count}
     ${Draft + Valid + Superseded count}=    Evaluate    ${Draft + Valid count}+${Superseded count}
+    ${Draft + Valid + retired + Superseded count}=    Evaluate    ${Draft + Valid count}+${Superseded count}+${Retired count}
     Set test variable  ${Draft + Valid count}                   ${Draft + Valid count}
     Set test variable  ${Draft + Valid + Retired count}         ${Draft + Valid + Retired count}
     Set test variable  ${Draft + Valid + Superseded count}      ${Draft + Valid + Superseded count}
+    Set test variable  ${Draft + Valid + retired + Superseded count}      ${Draft + Valid + retired + Superseded count}
