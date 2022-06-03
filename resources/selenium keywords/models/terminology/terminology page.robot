@@ -43,3 +43,7 @@ Verify collections search page contains ${hits} items with filters
 Verify collections search page does not contain ${hits} items with filters
     Reload page
     Wait until page does not contain element    //span[text()="Käsitekokoelmia ${hits} kpl seuraavilla rajauksilla"] | //span[text()="Collections ${hits} items with following filters"] | //span[text()="Käsitekokoelmia ${hits} kpl seuraavilla rajauksilla"]
+
+Verify terminology is not vocabulary ${vocabulary}
+    Open terminology information page
+    Wait until page does not contain element  //div[text()="${vocabulary}"]

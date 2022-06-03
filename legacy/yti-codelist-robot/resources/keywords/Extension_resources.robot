@@ -21,15 +21,15 @@ ${Error_invalid_propertytype}    Ei sallittu tyypitys laajennus-aineistolle: Ext
 *** Keywords ***
 Upload extension
     [Arguments]    ${extension}    ${file_format}
-    Click element with wait     ${CODE_LIST_DDL}                timeout=60
-    Click element with wait     ${IMPORT_EXTENSIONS_BTN}        timeout=30
-    Click element with wait     ${FILE_FORMAT_UPLOAD}           timeout=20
-    Click element with wait     ${file_format}                  timeout=20
+    Click element with wait     ${CODE_LIST_DDL}                timeout=120
+    Click element with wait     ${IMPORT_EXTENSIONS_BTN}
+    Click element with wait     ${FILE_FORMAT_UPLOAD}
+    Click element with wait     ${file_format}
 
     Sleep                       2
     Choose File                 ${EXTENSION_FILE_UPLOAD}        ${extension}
-    Click element with wait     ${EXTENSION_UPLOAD_BTN}         timeout=20
-    Click element with wait     ${EXTENSIONS_TAB}               timeout=20
+    Click element with wait     ${EXTENSION_UPLOAD_BTN}
+    Click element with wait     ${EXTENSIONS_TAB}
 
 Upload members
     [Arguments]    ${member}    ${file_format}

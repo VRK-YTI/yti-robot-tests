@@ -136,7 +136,7 @@ Create concept json from file
     ...                 ${term id}
 
     ${json_string}=      Get File    ${file}
-    ${json}=             evaluate        json.loads('''${json_string}''')    json
+    ${json}=             evaluate        json.loads('''${json_string}''')      json
     set to dictionary    ${json["save"][1]}                                    id=${concept id}
     set to dictionary    ${json["save"][0]}                                    id=${term id}
     set to dictionary    ${json["save"][1]["references"]["prefLabelXl"][0]}    id=${term id}
@@ -161,11 +161,9 @@ Create collection json from file
     set to dictionary    ${json["save"][0]}                                    id=${collection id}
     set to dictionary    ${json["save"][0]["type"]["graph"]}                   id=${graphs_id}
     set to dictionary    ${json["save"][0]["properties"]["prefLabel"][0]}      value=${collection}
-
     FOR  ${member}  IN  @{members}
         ${new_member}=       Evaluate   {"id": "${member}","type": {"id": "Concept","graph": {"id": "${graphs_id}"},"uri": ""}}
         Append To List       ${json["save"][0]["references"]["member"]}     ${new_member}
     END
-    #set to dictionary    ${json["save"][0]["references"]["member"]}                      member=${new_member}
     ${json_string}=      evaluate        json.dumps(${json})                 json
     [Return]        ${json_string}

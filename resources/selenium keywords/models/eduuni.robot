@@ -28,8 +28,11 @@ Login with ${user}
 Select Superuser user
     Logging with eDuuni      ${SUPER_EDUUNI_EMAIL}  ${SUPER_EDUUNI_PASSWORD}
 
+
 Select Admin user
     Logging with eDuuni      ${ADMIN_EDUUNI_EMAIL}  ${ADMIN_EDUUNI_PASSWORD}
+    #Mouse Over                ${EDUUNI_LOGIN}
+    #Click element with wait   //a[text()="Test Admin"]
 
 Select datamodel user
     Logging with eDuuni      ${DATAMODEL_EDUUNI_EMAIL}  ${DATAMODEL_EDUUNI_PASSWORD}

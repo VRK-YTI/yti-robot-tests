@@ -6,7 +6,6 @@ ${Language english from dropdown}   //div[text()="In English (EN)"]
 ${Language swedish from dropdown}   //div[text()="På svenska (SV)"]  
 ${Log out}                          //a[text()="Kirjaudu ulos"]  
 
-
 *** Keywords ***
 Log out user
     Click element with wait                     ${Log out} 
@@ -29,8 +28,8 @@ Change language to swedish
     Select language dropdown    ${Language swedish from dropdown}
 
 Select language dropdown
-    [Arguments]              ${dropdown_element}        
-    Sleep                    0.5
+    [Arguments]              ${dropdown_element}  
+    Sleep                    1
     Click element with wait  ${Language dropdown}
-    Sleep                    0.5
+    Sleep                    1
     Click element with wait  ${dropdown_element}
