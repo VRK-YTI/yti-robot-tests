@@ -1,5 +1,4 @@
 *** Variables ***
-${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${ADMIN_USER_ID}    id=testiadmin@localhost
 ${SUPER_USER_ID}    id=testisuperuser@localhost
 ${ADMIN_USER_NAME}    Test Admin

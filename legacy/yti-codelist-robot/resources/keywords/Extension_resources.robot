@@ -21,7 +21,7 @@ ${Error_invalid_propertytype}    Ei sallittu tyypitys laajennus-aineistolle: Ext
 *** Keywords ***
 Upload extension
     [Arguments]    ${extension}    ${file_format}
-    Click element with wait     ${CODE_LIST_DDL}                timeout=120
+    Click element with wait     ${CODE_LIST_DDL}                timeout=180
     Click element with wait     ${IMPORT_EXTENSIONS_BTN}
     Click element with wait     ${FILE_FORMAT_UPLOAD}
     Click element with wait     ${file_format}

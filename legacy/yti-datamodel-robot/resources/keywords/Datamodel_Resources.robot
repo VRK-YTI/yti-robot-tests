@@ -3,7 +3,7 @@ Documentation     Resource file for Datamodel application
 Library           SeleniumLibrary
 
 *** Variables ***
-${SLEEP_TIMEOUT}    0.5
+${SLEEP_TIMEOUT}    0.2
 
 ${MODEL_1}        Testiautomaatiomalli
 ${MODEL_2}        Tilamalli
@@ -11,23 +11,16 @@ ${MODEL_2}        Tilamalli
 ${PREFIX_1}       autom
 ${PREFIX_2}       lib
 ${PREFIX_3}       tatm
-${PREFIX_4}       aeghi
 
 ${CORE_VOCABULARY_1}    Automaatiokirjasto
 
 ${NAMESPACE_1}    Julkishallinnon tietokomponentit
-${DEV_suffix}     ?env=awsdev
-${TEST_suffix}    ?env=awstest
 
 ${REMOVE_Asuminen}    id=classifications_Asuminen_remove_editable_button
-${REMOVE_Kulttuuri}    id=classifications_Kulttuuri_remove_editable_button
 ${REMOVE_Testiorganisaatio}    id=contributors_Testiorganisaatio_remove_editable_button
-${REMOVE_Väestörekisterikeskus}    id=contributors_Vaestorekisterikeskus_remove_editable_button
-${REMOVE_LINK}    id=links_Www.suomi.fi/etusivu/_remove_editable_button
 
 #Frontpage
 ${ADD_MODEL_BTN}    id=model_creation_button
-${IMPERSONATE_USER_DROPDOWN}    id=impersonate_user_link
 ${FRONTPAGE_SEARCH_BOX}    id=front_page_search_input
 ${TEXT_FILTER_SEARCH_INPUT}    id=text_filter_search_input
 ${NAVIGATION_MENU_DDL}    id=navigation_menu_dropdown
@@ -40,8 +33,6 @@ ${INFORMATION_LINK}    id=information_link
 ${DESCRIPTION_OF_FILE_LINK}    id=description_of_file_link
 
 #Buttons and links
-${ADD_CLASS_BTN}    id=add_new_class_button
-${USAGE_BTN}      id=model_http://uri.suomi.fi/datamodel/ns/test_accordion_button
 ${CLOSE_BTN}      //div[1]/div/div/div[3]/button
 ${CONFIRM_ALERT_BTN}    id=confirm_alert_modal_button
 
@@ -58,7 +49,6 @@ ${SAVE_NEW_MODEL_BTN}    id=save_new_model_button
 ${SAVE_MODEL_BTN}    id=model_edit_buttons_save
 ${REMOVE_MODEL_BTN}    id=model_edit_buttons_remove
 ${CONFIRM_REMOVE_MODEL_BTN}    id=confirm_modal_template_button
-${ADD_LINK}       id=add_link_button
 ${LINK_URL_INPUT}    id=add_link_url_input
 ${LINK_NAME_INPUT}    id=add_link_title_input
 ${LINK_DESCRIPTION_INPUT}    id=add_link_description_textarea
@@ -66,7 +56,6 @@ ${CREATE_NEW_LINK}    id=create_link_button
 ${IMPORT_NAMESPACE}    id=add_imported_namespace_button
 ${SEARCH_NAMESPACE_INPUT}    id=text_filter_search_input
 ${SEARCH_VOCABULARY_INPUT}    id=text_filter_search_input
-${HIDE_MODEL_DETAILS_BTN}    id=hide_model_details_button
 ${ADD_REF_DATA_BTN}    id=add_reference_data_button
 ${REF_DATA_FILTER_DDL}    id=reference_data_status_filter_dropdown
 ${SEARCH_REF_DATA_INPUT}    id=text_filter_search_input
@@ -74,11 +63,6 @@ ${USE_SELCTION_BTN}    //div[1]/div/div/form/div[3]/button[1]/span[2]
 ${ADD_PROFILE_BTN}    id=add_profile_button
 ${ADD_LIBRARY_BTN}    id=add_library_button
 ${MODIFY_MODEL}    id=model_edit_buttons_edit
-${SHOW_HISTORY_BTN}    id=model_edit_buttons_history
-${MAXIMAXE_BTN}    id=maximize_button
-${DOWNLOAD_DDL}    id=download_dropdown
-${PNG_DOWNLOAD}    id=PNG_download_dropdown
-${SVG_DOWNLOAD}    id=SVG_download_dropdown
 ${EXPORT_MODEL_DDL}    id=model_export_dropdown
 ${OPEN_LINK_MODAL}    class=modal-body
 ${CLOSE_HISTORY_VIEW_BTN}    id=close_history_view_button
@@ -90,6 +74,9 @@ ${SUBSCRIPTION_BELL_ICON}    //*[@class="subscription-icon icon-bell"]
 ${USER_DETAILS_SUBSCRIPTIONS_TAB}    id=user_details_subscriptions_tab
 ${CHANGE_RESOURCES_STATUSES_CHECKBOX}    id=change_resource_statuses_too_checkbox
 ${MODEL_CONTACT_INPUT}    id=modelContact
+
+${ADD_LINK}            id=add_link_button
+${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaAttribuuttiTaiAssosiaatio_dropdown_option
 
 #Status
 ${MODEL_STATE_DDL}    id=modelState_item_select
@@ -103,12 +90,8 @@ ${MASS_MIGRATE_STATUSES_BTN}    id=mass_migrate_datamodel_statuses_button
 ${ENFORCE_STATUS_TRANSITION_RULES_CHECKBOX}    id=enforce_status_transition_rules_checkbox
 ${STARTING_STATUS_DDL}    id=selected_migrate_resource_statuses_from_status_input_dropdown
 ${TARGET_STATUS_DDL}    id=selected_migrate_resource_statuses_to_status_input_dropdown
-${STARTING_STATUS_INCOMPLETE}    id=INCOMPLETE_migrate_resource_statuses_from_status_input_dropdown
 ${STARTING_STATUS_DRAFT}    id=DRAFT_migrate_resource_statuses_from_status_input_dropdown
 ${STARTING_STATUS_VALID}    id=VALID_migrate_resource_statuses_from_status_input_dropdown
-${STARTING_STATUS_SUPERSEDED}    id=SUPERSEDED_migrate_resource_statuses_from_status_input_dropdown
-${STARTING_STATUS_RETIRED}    id=RETIRED_migrate_resource_statuses_from_status_input_dropdown
-${STARTING_STATUS_INVALID}    id=INVALID_migrate_resource_statuses_from_status_input_dropdown
 ${TARGET_STATUS_INCOMPLETE}    id=INCOMPLETE_migrate_resource_statuses_to_status_input_dropdown
 ${TARGET_STATUS_DRAFT}    id=DRAFT_migrate_resource_statuses_to_status_input_dropdown
 ${TARGET_STATUS_VALID}    id=VALID_migrate_resource_statuses_to_status_input_dropdown
@@ -148,12 +131,9 @@ ${CONFIRM_ADD_PROPERTIES}    id=confirm_properties_from_class_button
 ${SAVE_CLASS}     id=class_edit_buttons_save
 ${MODIFY_CLASS}    id=class_edit_buttons_edit
 ${ADD_PROPERTY_DDL}    id=class_options_button_add_property_dropdown_title
-${ADD_PROPERTY_BTN}    id=class_options_button_add_property_LisaaAttribuuttiTaiAssosiaatio_dropdown_option
 ${SEARCH_ATTRIBUTE_INPUT}    id=text_filter_search_input
 ${USE_SELECTION_BTN}    id=confirm_class_button
 ${ALL_TYPES_DDL}    id=type
-${ASSOCIATION_TYPE}    //*[@id="type"]/option[3]
-${ATTRIBUTE_TYPE}    //*[@id="type"]/option[2]
 ${VALUE_CLASS_BTN}    //*[contains(@id,'_valueClass_choose_class_uri_select_button')]
 ${CREATE_NEW_CLASS_WITHOUT_REF_LINK}    id=create_new_LuoUusiLuokkaIlmanKasiteviitetta_link
 ${CREATE_NEW_SHAPE_BY_REF_URI}    id=create_shape_button
@@ -172,7 +152,6 @@ ${CONCEPT_DEFINITION_INPUT}    id=conceptDefinition
 ${EXPORT_CLASS_DDL}    id=class_export_dropdown
 ${DEACTIVATED_CHECKBOX}    id=deactivated
 ${CLASS_ID}       id=classId
-${EQUIVALENT_CLASS_INPUT}    id=equivalentClass
 ${CREATE_NEW_CLASS_BTN}    id=searchConceptModalConfirmButton
 ${USE_CONCEPT_BTN}    id=searchConceptModalConfirmButton
 ${ACTIONS_BTN}    //*[contains(@id,'_actions_button')]
@@ -195,10 +174,6 @@ ${PREDICATE_STATE_INCOMPLETE}    id=predicateState_INCOMPLETE
 ${CREATE_AND_USE_ATTRIBUTE}    id=confirm_predicate_button
 ${SUGGEST_ATTRIBUTE_TO_TERMINOLOGIES}    //*[contains(@id,'create_new_Ehdota')]
 ${PREDICATE_ID}    id=predicateId
-${PROPERRTY_DISJOINT_INPUT}    id=disjoint
-${PROPERTY_EQUALS_INPUT}    id=equals
-${PROPERTY_LESS_THAN_INPUT}    id=lessThan
-${PROPERTY_LESS_THAN_OR_EQUALS_INPUT}    id=lessThanOrEquals
 ${PROPERTY_LESS_THAN_BTN}    id=lessThan_choose_attribute_multiple_uri_select_button
 ${PROPERTY_LESS_THAN_OR_EQUALS_BTN}    id=lessThanOrEquals_choose_attribute_multiple_uri_select_button
 ${PROPERTY_DISJOINT_BTN}    id=disjoint_choose_attribute_multiple_uri_select_button
@@ -228,7 +203,6 @@ ${CORE_VOCABULARY_DESCRIPTION_INPUT}    id=modelComment
 ${CORE_VOCABULARY_PREFIX_INPUT}         id=modelPrefix
 ${VOCABULARY_ADD_CLASSIFICATION}        id=add_classification_button
 ${VOCABULARY_ADD_CONTRIBUTOR}           id=add_contributor_button
-${SAVE_CORE_VOCABULARY_BTN}             id=model_edit_buttons_save
 ${SAVE_NEW_CORE_VOCABULARY_BTN}         id=save_new_model_button
 ${MODIFY_CORE_VOCABULARY_BTN}           id=model_edit_buttons_edit
 
@@ -245,11 +219,11 @@ ${EXPORT_JSON_LD_Context}       id=class_export_show_application_ld_json_context
 ${CREATE_NEW_VERSION_BTN}       id=create_new_datamodel_version_button
 ${NEW_VERSION_PREFIX_INPUT}     id=new_datamodel_version_prefix_input
 ${SAVE_NEW_VERSION_BTN}         id=save_new_datamodel_version_button
-${VERSION_MODAL}                class=app-new-datamodel-version-modal
 
 #Error messages
-${error_reserved_namespace_prefix}      Tunniste on jo käytössä tai on varattu
 ${namespace_in_use}                     Tunniste on jo käytössä
+
+${MODEL TAB HEADER}                     //h4[text()="Soveltamisprofiilin tiedot"]
 
 *** Keywords ***
 Go Back To Data Vocabularies Frontpage
@@ -317,44 +291,25 @@ Delete Existing Core Vocabulary And Create New
     Delete datamodel                ${core_vocabulary}
     Create New Core Vocabulary      ${core_vocabulary}    ${prefix}
 
+
 Select model
     [Arguments]    ${model}
     Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${model}       timeout=60
     Click Element with wait    //*[contains(text(), "${model}")]
 
+Open model details tab
+    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
+
+Edit model
+    Click Element with wait    ${MODIFY_MODEL}
+
+Edit core vocabulary
+    Click Element with wait    ${MODIFY_CORE_VOCABULARY_BTN}
+
 Select And Edit Profile
     [Arguments]    ${model}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${model}     timeout=60
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "${model}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-    Click Element with wait    ${MODIFY_MODEL}
-
-Select and edit Testiautomaatio profile
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${MODEL_1}       timeout=60
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "${MODEL_1}")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}     timeout=60
-    Click Element with wait    ${MODIFY_MODEL}
-
-Select And Edit Core Vocabulary
-    [Arguments]    ${vocabulary}
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}     timeout=60
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "Automaatiokirjasto")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}             timeout=60
-    Click Element with wait    ${MODIFY_CORE_VOCABULARY_BTN}
-
-Select and edit Automaatiokirjasto Core Vocabulary
-    Sleep  ${SLEEP_TIMEOUT}
-    Input Text with wait    ${FRONTPAGE_SEARCH_BOX}    ${CORE_VOCABULARY_1}     timeout=60
-    Sleep  ${SLEEP_TIMEOUT}
-    Click Element with wait    //*[contains(text(), "Automaatiokirjasto")]
-    Click Element with wait    ${MODEL_DETAILS_TAB}                               timeout=60
-    Click Element with wait    ${MODIFY_CORE_VOCABULARY_BTN}
+    Select model               ${model}
+    Modify Profile
 
 Add Information Domain
     [Arguments]    ${information_domain}
@@ -383,7 +338,7 @@ Import Namespace
     Click Element with wait    //*[contains(text(), "${namespace}")]        timeout=60
 
 Save Model
-    Click Element with wait    ${SAVE_MODEL_BTN}
+    Click Element with wait          ${SAVE_MODEL_BTN}
     Wait Until Element Is Visible    ${MODIFY_MODEL}    timeout=60
 
 Add Class
@@ -451,8 +406,8 @@ Save Class
     Wait Until Element Is Visible    ${MODIFY_CLASS}    timeout=60
 
 Confirm All Properties For Class And Save
-    run keyword and ignore error  Click Element with wait    ${CONFIRM_ADD_PROPERTIES}
-    Click Element with wait    ${SAVE_CLASS}
+    run keyword and ignore error     Click Element with wait    ${CONFIRM_ADD_PROPERTIES}
+    Click Element with wait          ${SAVE_CLASS}
     Wait Until Element Is Enabled    ${MODIFY_CLASS}    timeout=60
 
 Deselect properties for class and save
@@ -475,7 +430,7 @@ Add Attribute
     Input Text with wait    ${SEARCH_ATTRIBUTE_INPUT}    ${attribute}
     Sleep  ${SLEEP_TIMEOUT}
     Click Element with wait    //*[contains(@id, "create_new_LisaaUusiAttribuutti")]
-    Wait Until Element Is Enabled    //*[contains(@id, "create_new_LuoUusiAttribuutti")]    timeout=30
+    Wait Until Element Is Enabled    //*[contains(@id, "create_new_LuoUusiAttribuutti")]    
     Click Element with wait    //*[contains(@id, "create_new_LuoUusiAttribuutti")]
     Click Element with wait    id=searchConceptModalConfirmButton
     Click Element with wait    ${CONFIRM_PREDICATE_BTN}
@@ -645,9 +600,8 @@ Create New Shape By Referencing External Uri
 
 Delete datamodel
     [Arguments]    ${datamodel}
-    Input Text with wait        ${FRONTPAGE_SEARCH_BOX}    ${datamodel}       timeout=60
-
-    Click Element with wait     //*[contains(text(), "${datamodel}")]
+    Select model                ${datamodel}
+    
     Click Element with wait     ${MODEL_DETAILS_TAB}                     timeout=60
     Click Element with wait     ${REMOVE_MODEL_BTN}
     Click Element with wait     ${CONFIRM_REMOVE_MODEL_BTN}
@@ -710,6 +664,9 @@ Add Link
 Select Datamodel Definition Tab
     Click Element with wait    ${MODEL_DATA_TAB}
 
+Verify model tab is open
+    Wait until page contains element  ${MODEL TAB HEADER}
+
 Select Model Tab
     [Arguments]    ${tab}
     Click Element with wait    ${tab}
@@ -729,20 +686,20 @@ Show History
     Click Element with wait    ${element}
 
 Modify Profile
-    Click Element with wait    ${MODEL_DETAILS_TAB}  timeout=60
-    Click Element with wait    ${MODIFY_MODEL}
+    Open model details tab
+    Edit model
 
 Add Email Subscription For Datamodel
     Click Element with wait    ${MODEL_ACTION_MENU}
     Click Element with wait    ${ADD_SUBSCRIPTION_BTN}
     Click Element with wait    ${CONFIRMATION_YES_BTN}
-    Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Wait Until Page Contains Element    ${SUBSCRIPTION_BELL_ICON}    
 
 Remove Email Subscription For Datamodel
     Click Element with wait    ${MODEL_ACTION_MENU}
     Click Element with wait    ${DELETE_SUBSCRIPTION_BTN}
     Click Element with wait    ${CONFIRMATION_YES_BTN}
-    Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    timeout=20
+    Wait Until Page Does Not Contain Element    ${SUBSCRIPTION_BELL_ICON}    
 
 Select navigation menu link
     [Arguments]    ${navigation_menu_link}
