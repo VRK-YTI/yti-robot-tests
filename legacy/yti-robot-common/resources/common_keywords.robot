@@ -11,7 +11,7 @@ ${TEST_DATAMODEL_NAME}      Test Datamodel
 ${TEST_TERMINOLOGY_ID}      //*[@id="testterminology@localhost"] | //*[@id="testterminology@localhost_fakeable_user_link"]
 ${TEST_TERMINOLOGY_NAME}    Test Terminology
 
-${TEST_NOGROUP_ID}          //*[@id="dummy@localhost"] | //*[@id="dummy@localhost_fakeable_user_link"]
+${TEST_NOGROUP_ID}          //*[@id="dummy@localhost"] | //*[@id="dummy@localhost_fakeable_user_link"] | //*[@id="impersonate_user_dummy@localhost_link"]
 ${TEST_NOGROUP_NAME}        Test Nogroup
 
 ${CODELIST_USER_ID}          //*[@id="testcodelist@localhost"] | //*[@id=""]
@@ -184,6 +184,11 @@ Set default codelist variables
     Set Test Variable    ${DEFAULT_PREFLABEL_SCHEME}    ${DEFAULT_PREFLABEL_SCHEME}_${test_case_number}
     Set Test Variable    ${DEFAULT_CODELIST_CODE_ID}    ${DEFAULT_CODELIST_CODE_ID}_${test_case_number}
     Set Test Variable    ${DEFAULT_PREFLABEL_CODE}      ${DEFAULT_PREFLABEL_CODE}_${test_case_number}
+
+Set default datamodel variables
+    [Arguments]     ${test_case_number}
+    Set Test Variable    ${DEFAULT_DATAMODEL_NAME}      ${DEFAULT_DATAMODEL_NAME}_${test_case_number}
+    Set Test Variable    ${DEFAULT_DATAMODEL_PREFIX}    ${DEFAULT_DATAMODEL_PREFIX}_${test_case_number}
 
 Log error window messages
     Log element texts    ${ERROR_MESSAGE_DIALOG_TEXT}

@@ -21,7 +21,7 @@ Resource          ../resources/resources_and_libraries.robot
 
     Change Profile Status       Voimassa oleva
     Enforce Resource Status Change
-    Click Element with wait     ${SAVE_MODEL_BTN}    timeout=30
+    Click Element with wait     ${SAVE_MODEL_BTN}    
     Confirm Action
     Confirm Action
     Confirm Alert
@@ -31,7 +31,7 @@ Resource          ../resources/resources_and_libraries.robot
     Select model        ${MODEL_2}
     Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
-    Wait Until Page contains        Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page contains        Tila vaihdettu 3 resurssiin.    
     Confirm Alert
 
     Select Model Tab                ${MODEL_DATA_TAB}
@@ -57,13 +57,13 @@ Resource          ../resources/resources_and_libraries.robot
     Enforce Status Transition Rules
     Set Startig Status    ${STARTING_STATUS_DRAFT}
 
-    Click Element with wait             ${TARGET_STATUS_DDL}            timeout=20
-    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
+    Click Element with wait             ${TARGET_STATUS_DDL}            
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          
     Page Should Not Contain Element     ${TARGET_STATUS_DRAFT}
     Page Should Not Contain Element     ${TARGET_STATUS_SUPERSEDED}
     Page Should Not Contain Element     ${TARGET_STATUS_RETIRED}
-    Click Element with wait             ${TARGET_STATUS_INCOMPLETE}    timeout=30
+    Click Element with wait             ${TARGET_STATUS_INCOMPLETE}    
     Save Migrate Resource Statuses
     Confirm Alert
 
@@ -83,15 +83,15 @@ Resource          ../resources/resources_and_libraries.robot
 
     Mass Migrate Statuses
     Set Startig Status    ${STARTING_STATUS_DRAFT}
-    Wait Until Page Contains    Resursseja: 3    timeout=10
+    Wait Until Page Contains    Resursseja: 3    
 
     Click Element with wait             ${TARGET_STATUS_DDL}
-    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_DRAFT}          timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_SUPERSEDED}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_RETIRED}        timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_INVALID}        timeout=30
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          
+    Wait Until Page Contains Element    ${TARGET_STATUS_DRAFT}          
+    Wait Until Page Contains Element    ${TARGET_STATUS_SUPERSEDED}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_RETIRED}        
+    Wait Until Page Contains Element    ${TARGET_STATUS_INVALID}        
 
     Click Element with wait             ${TARGET_STATUS_INCOMPLETE}
     Save Migrate Resource Statuses
@@ -111,11 +111,11 @@ Resource          ../resources/resources_and_libraries.robot
 
     Mass Migrate Statuses
     Set Startig Status    ${STARTING_STATUS_DRAFT}
-    Wait Until Page Contains    Resursseja: 3    timeout=10
+    Wait Until Page Contains    Resursseja: 3    
 
-    Click Element with wait             ${TARGET_STATUS_DDL}            timeout=20
-    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
+    Click Element with wait             ${TARGET_STATUS_DDL}            
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          
     Page Should Not Contain Element     ${TARGET_STATUS_DRAFT}
     Page Should Not Contain Element     ${TARGET_STATUS_SUPERSEDED}
     Page Should Not Contain Element     ${TARGET_STATUS_RETIRED}
@@ -131,7 +131,7 @@ Resource          ../resources/resources_and_libraries.robot
     Select model        ${MODEL_2}
     Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
-    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    
     Confirm Alert
 
 404. Change status for core vocabulary and resources
@@ -151,7 +151,7 @@ Resource          ../resources/resources_and_libraries.robot
     Modify Profile
     Change Profile Status    Voimassa oleva
     Enforce Resource Status Change
-    Click Element with wait   ${SAVE_MODEL_BTN}    timeout=30
+    Click Element with wait   ${SAVE_MODEL_BTN}    
     Confirm Action
     Confirm Action
     Confirm Alert
@@ -161,7 +161,7 @@ Resource          ../resources/resources_and_libraries.robot
     Select model        ${CORE_VOCABULARY_1}
     Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
-    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    
     Confirm Alert
 
     Select Model Tab    ${MODEL_DATA_TAB}
@@ -196,9 +196,9 @@ Resource          ../resources/resources_and_libraries.robot
     Enforce Status Transition Rules
     Set Startig Status    ${STARTING_STATUS_DRAFT}
 
-    Click Element with wait             ${TARGET_STATUS_DDL}            timeout=20
-    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
+    Click Element with wait             ${TARGET_STATUS_DDL}            
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          
     Page Should Not Contain Element     ${TARGET_STATUS_DRAFT}
     Page Should Not Contain Element     ${TARGET_STATUS_SUPERSEDED}
     Page Should Not Contain Element     ${TARGET_STATUS_RETIRED}
@@ -232,17 +232,17 @@ Resource          ../resources/resources_and_libraries.robot
     Mass Migrate Statuses
     Set Startig Status    ${STARTING_STATUS_DRAFT}
 
-    Wait Until Page Contains    Resursseja: 3    timeout=10
-    Click Element with wait             ${TARGET_STATUS_DDL}            timeout=20
-    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_DRAFT}          timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_SUPERSEDED}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_RETIRED}        timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_INVALID}        timeout=30
-    Click Element with wait             ${TARGET_STATUS_INCOMPLETE}     timeout=30
+    Wait Until Page Contains            Resursseja: 3    
+    Click Element with wait             ${TARGET_STATUS_DDL}            
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          
+    Wait Until Page Contains Element    ${TARGET_STATUS_DRAFT}          
+    Wait Until Page Contains Element    ${TARGET_STATUS_SUPERSEDED}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_RETIRED}        
+    Wait Until Page Contains Element    ${TARGET_STATUS_INVALID}        
+    Click Element with wait             ${TARGET_STATUS_INCOMPLETE}     
     Save Migrate Resource Statuses
-    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    
     Confirm Alert
 
     [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
@@ -267,12 +267,12 @@ Resource          ../resources/resources_and_libraries.robot
     Create new association    Testiassosiaatio
 
     Mass Migrate Statuses
-    Set Startig Status    ${STARTING_STATUS_DRAFT}
-    Wait Until Page Contains    Resursseja: 3    timeout=10
+    Set Startig Status                  ${STARTING_STATUS_DRAFT}
+    Wait Until Page Contains            Resursseja: 3    
 
-    Click Element with wait             ${TARGET_STATUS_DDL}            timeout=20
-    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     timeout=30
-    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          timeout=30
+    Click Element with wait             ${TARGET_STATUS_DDL}            
+    Wait Until Page Contains Element    ${TARGET_STATUS_INCOMPLETE}     
+    Wait Until Page Contains Element    ${TARGET_STATUS_VALID}          
     Page Should Not Contain Element     ${TARGET_STATUS_DRAFT}
     Page Should Not Contain Element     ${TARGET_STATUS_SUPERSEDED}
     Page Should Not Contain Element     ${TARGET_STATUS_RETIRED}
@@ -287,7 +287,7 @@ Resource          ../resources/resources_and_libraries.robot
     Select model        ${CORE_VOCABULARY_1}
     Select Superuser user
     Change All Resource Statuses    False    ${STARTING_STATUS_VALID}    ${TARGET_STATUS_DRAFT}
-    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    timeout=30
+    Wait Until Page Contains    Tila vaihdettu 3 resurssiin.    
     Confirm Alert
 
     [Teardown]    Test Case Teardown Delete model    ${PREFIX_2}
@@ -305,29 +305,29 @@ Resource          ../resources/resources_and_libraries.robot
     Select Tab    ${ASSOCIATION_TAB}
     Create new association    Testiassosiaatio
     Modify Profile
-    Click Element with wait             ${MODEL_STATE_DDL}      timeout=20
+    Click Element with wait             ${MODEL_STATE_DDL}      
 
-    Wait Until Page Contains Element    ${MODEL_STATE_DRAFT}            timeout=30
-    Wait Until Page Contains Element    ${MODEL_STATE_INCOMPLETE}       timeout=30
-    Wait Until Page Contains Element    ${MODEL_STATE_VALID}            timeout=30
+    Wait Until Page Contains Element    ${MODEL_STATE_DRAFT}            
+    Wait Until Page Contains Element    ${MODEL_STATE_INCOMPLETE}       
+    Wait Until Page Contains Element    ${MODEL_STATE_VALID}            
     Page Should Not Contain Element     ${MODEL_STATE_SUPERSEDED}
     Page Should Not Contain Element     ${MODEL_STATE_RETIRED}
     Page Should Not Contain Element     ${MODEL_STATE_INVALID}
 
-    Click Element with wait             ${MODEL_STATE_VALID}            timeout=30
-    Click Element with wait             ${SAVE_MODEL_BTN}               timeout=30
+    Click Element with wait             ${MODEL_STATE_VALID}            
+    Click Element with wait             ${SAVE_MODEL_BTN}               
     Confirm Action
 
     Modify Profile
-    Click Element with wait             ${MODEL_STATE_DDL}              timeout=20
-    Wait Until Page Contains Element    ${MODEL_STATE_VALID}            timeout=30
-    Wait Until Page Contains Element    ${MODEL_STATE_RETIRED}          timeout=30
-    Wait Until Page Contains Element    ${MODEL_STATE_INVALID}          timeout=30
-    Wait Until Page Contains Element    ${MODEL_STATE_SUPERSEDED}       timeout=30
-    Page Should Not Contain Element    ${MODEL_STATE_DRAFT}
-    Page Should Not Contain Element    ${MODEL_STATE_INCOMPLETE}
-    Click Element with wait   ${MODEL_STATE_RETIRED}    timeout=30
-    Click Element with wait   ${SAVE_MODEL_BTN}         timeout=30
+    Click Element with wait             ${MODEL_STATE_DDL}              
+    Wait Until Page Contains Element    ${MODEL_STATE_VALID}            
+    Wait Until Page Contains Element    ${MODEL_STATE_RETIRED}          
+    Wait Until Page Contains Element    ${MODEL_STATE_INVALID}          
+    Wait Until Page Contains Element    ${MODEL_STATE_SUPERSEDED}       
+    Page Should Not Contain Element     ${MODEL_STATE_DRAFT}
+    Page Should Not Contain Element     ${MODEL_STATE_INCOMPLETE}
+    Click Element with wait             ${MODEL_STATE_RETIRED}    
+    Click Element with wait             ${SAVE_MODEL_BTN}         
 
     Close all browsers
     Open Tietomallit
@@ -346,26 +346,26 @@ Resource          ../resources/resources_and_libraries.robot
     Save Class
     Select And Edit Class    Testiluokka
 
-    Click Element with wait             ${CLASS_STATE_DDL}              timeout=20
-    Wait Until Page Contains Element    ${CLASS_STATE_DRAFT}            timeout=30
-    Wait Until Page Contains Element    ${CLASS_STATE_INCOMPLETE}       timeout=30
-    Wait Until Page Contains Element    ${CLASS_STATE_VALID}            timeout=30
-    Page Should Not Contain Element    ${CLASS_STATE_SUPERSEDED}
-    Page Should Not Contain Element    ${CLASS_STATE_RETIRED}
-    Page Should Not Contain Element    ${CLASS_STATE_INVALID}
-    Click Element with wait   ${CLASS_STATE_VALID}  timeout=30
-    Click Element with wait   ${SAVE_CLASS}         timeout=60
+    Click Element with wait             ${CLASS_STATE_DDL}              
+    Wait Until Page Contains Element    ${CLASS_STATE_DRAFT}            
+    Wait Until Page Contains Element    ${CLASS_STATE_INCOMPLETE}       
+    Wait Until Page Contains Element    ${CLASS_STATE_VALID}            
+    Page Should Not Contain Element     ${CLASS_STATE_SUPERSEDED}
+    Page Should Not Contain Element     ${CLASS_STATE_RETIRED}
+    Page Should Not Contain Element     ${CLASS_STATE_INVALID}
+    Click Element with wait             ${CLASS_STATE_VALID}  
+    Click Element with wait             ${SAVE_CLASS}         
     Confirm Action
 
-    Select And Edit Class    Testiluokka
-    Click Element with wait             ${CLASS_STATE_DDL}          timeout=20
-    Wait Until Page Contains Element    ${CLASS_STATE_VALID}        timeout=30
-    Wait Until Page Contains Element    ${CLASS_STATE_RETIRED}      timeout=30
-    Wait Until Page Contains Element    ${CLASS_STATE_INVALID}      timeout=30
-    Wait Until Page Contains Element    ${CLASS_STATE_SUPERSEDED}   timeout=30
-    Page Should Not Contain Element    ${CLASS_STATE_DRAFT}
-    Page Should Not Contain Element    ${CLASS_STATE_INCOMPLETE}
-    Click Element with wait   ${CLASS_STATE_RETIRED}
+    Select And Edit Class               Testiluokka
+    Click Element with wait             ${CLASS_STATE_DDL}          
+    Wait Until Page Contains Element    ${CLASS_STATE_VALID}        
+    Wait Until Page Contains Element    ${CLASS_STATE_RETIRED}      
+    Wait Until Page Contains Element    ${CLASS_STATE_INVALID}      
+    Wait Until Page Contains Element    ${CLASS_STATE_SUPERSEDED}   
+    Page Should Not Contain Element     ${CLASS_STATE_DRAFT}
+    Page Should Not Contain Element     ${CLASS_STATE_INCOMPLETE}
+    Click Element with wait             ${CLASS_STATE_RETIRED}
     Save Class
 
 
@@ -375,24 +375,24 @@ Resource          ../resources/resources_and_libraries.robot
     [Setup]   Test Case setup create profile     ${MODEL_2}   ${PREFIX_3}   datamodel
     Select model    ${MODEL_2}
     Select Tab    ${ATTRIBUTE_TAB}
-    Create New Attribute    Testiattribuutti
-    Select And Edit Predicate    ${ATTRIBUTE_TAB}    testiattribuutti
-    Click Element with wait             ${PREDICATE_STATE_DDL}              timeout=20
-    Wait Until Page Contains Element    ${PREDICATE_STATE_DRAFT}            timeout=30
-    Wait Until Page Contains Element    ${PREDICATE_STATE_INCOMPLETE}       timeout=30
-    Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}            timeout=30
-    Page Should Not Contain Element    ${PREDICATE_STATE_SUPERSEDED}
-    Page Should Not Contain Element    ${PREDICATE_STATE_RETIRED}
-    Page Should Not Contain Element    ${PREDICATE_STATE_INVALID}
-    Click Element with wait   ${PREDICATE_STATE_VALID}
-    Click Element with wait   ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
+    Create New Attribute                Testiattribuutti
+    Select And Edit Predicate           ${ATTRIBUTE_TAB}    testiattribuutti
+    Click Element with wait             ${PREDICATE_STATE_DDL}              
+    Wait Until Page Contains Element    ${PREDICATE_STATE_DRAFT}            
+    Wait Until Page Contains Element    ${PREDICATE_STATE_INCOMPLETE}       
+    Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}            
+    Page Should Not Contain Element     ${PREDICATE_STATE_SUPERSEDED}
+    Page Should Not Contain Element     ${PREDICATE_STATE_RETIRED}
+    Page Should Not Contain Element     ${PREDICATE_STATE_INVALID}
+    Click Element with wait             ${PREDICATE_STATE_VALID}
+    Click Element with wait             ${PREDICATE_EDIT_SAVE_BTN}    timeout=60
     Confirm Action
 
     Select And Edit Predicate           ${ATTRIBUTE_TAB}    testiattribuutti
-    Click Element with wait             ${PREDICATE_STATE_DDL}    timeout=20
-    Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}    timeout=30
-    Wait Until Page Contains Element    ${PREDICATE_STATE_RETIRED}    timeout=30
-    Wait Until Page Contains Element    ${PREDICATE_STATE_INVALID}    timeout=30
+    Click Element with wait             ${PREDICATE_STATE_DDL}
+    Wait Until Page Contains Element    ${PREDICATE_STATE_VALID}
+    Wait Until Page Contains Element    ${PREDICATE_STATE_RETIRED}
+    Wait Until Page Contains Element    ${PREDICATE_STATE_INVALID}
     Wait Until Page Contains Element    ${PREDICATE_STATE_SUPERSEDED}
     Page Should Not Contain Element     ${PREDICATE_STATE_DRAFT}
     Page Should Not Contain Element     ${PREDICATE_STATE_INCOMPLETE}

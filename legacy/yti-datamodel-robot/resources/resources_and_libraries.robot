@@ -1,11 +1,14 @@
 *** Settings ***
 Resource          ../../yti-robot-common/resources/resources_and_libraries.robot
 
+Resource          ../resources/keywords/Datamodel_document.robot
 Resource          ../resources/keywords/Datamodel_Resources.robot
 
 Library           ScreenCapLibrary
 
 *** Variables ***
+${DEFAULT_DATAMODEL_NAME}    Au_data
+${DEFAULT_DATAMODEL_PREFIX}  auda
 
 *** Keywords ***
 Test Case Teardown Generic Teardown
@@ -27,6 +30,8 @@ Test Case Suite Teardown Generic Teardown
     Close All Browsers
 
 Test Case Setup Generic Setup
+    ${test case id}=                 Fetch From Left  ${TEST NAME}  .
+    Set default datamodel variables  ${test case id}
     Set Selenium Timeout    ${SELENIUM_DEFAULT_TIMEOUT}
     Run Keyword If    '${RECORD}' == 'True'      Start video recording      name=${TEST NAME}
     Open Tietomallit
@@ -34,7 +39,9 @@ Test Case Setup Generic Setup
 
 Test Case Setup ${user}
     Test Case Setup Generic Setup
-    run keyword         Select ${user} user
+    IF  '${user}' != '${NONE}'
+        run keyword         Select ${user} user
+    END
 
 Test Case setup create profile
     [Arguments]         ${model}    ${prefix}   ${user}=Admin

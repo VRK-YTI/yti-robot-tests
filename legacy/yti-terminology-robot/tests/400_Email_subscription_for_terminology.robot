@@ -6,8 +6,6 @@ Test Teardown     Close All Browsers
 Resource          ../resources/resources_and_libraries.robot
 
 *** Variables ***
-${IMPERSONATE_USER_DROPDOWN}=  fakeable_user_dropdown
-${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
 
 *** Test Cases ***
 400. Add and remove email subscription for new terminology
@@ -21,8 +19,8 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     Add Email Subscription For Terminology
     Select navigation menu link    Käyttäjätiedot
     Select Tab    ${USER_DETAILS_SUBSCRIPTIONS_TAB}
-    Wait Until Page Contains    Sanastoaineistot    timeout=20
-    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    timeout=20
+    Wait Until Page Contains    Sanastoaineistot    
+    Wait Until Page Contains Element    //*[contains(text(), "${VOCABULARY_1}")]    
     Go Back To Sanastot Frontpage
     Select Dictionary    ${VOCABULARY_1}
     Remove Email Subscription For Terminology

@@ -169,7 +169,6 @@ ${CONCEPT_FILTER_BTN}    id=concept_list_filter_results_tooltip_overlay
 ${CONCEPT_FILTER_DDL}    id=selected_status_filter_dropdown
 ${CONCEPT_INCOMPLETE_STATUS}    id=INCOMPLETE_status_filter_dropdown
 ${CONCEPT_DRAFT_STATUS}    id=DRAFT_status_filter_dropdown
-${ADD_LINK}       id=concept_definition_fi_0_semantic_text_input_extlink_popover_button
 ${ADD_CONCEPT_REFERENCE}    id=concept_definition_fi_0_semantic_text_input_link_popover_button
 ${ADD_CONCEPT_REFERENCE_1}    id=concept_definition_fi_1_semantic_text_input_link_popover_button
 ${ADD_CONCEPT_NOTE_REFERENCE_1}    id=concept_note_fi_1_semantic_text_input_link_popover_button
