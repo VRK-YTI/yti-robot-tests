@@ -100,6 +100,7 @@ T3C6. Verify create invalid email
 
 T3C7. Create terminology with same name
     [Tags]  Terminology  
+    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -144,6 +145,7 @@ T3C8. Verify empty own prefix
     
 T3C9. Verify duplicate prefix
     [Tags]  Terminology  
+    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -295,4 +297,3 @@ T3C15. Verify create valid email
     Verify dialog is not open
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
-    
