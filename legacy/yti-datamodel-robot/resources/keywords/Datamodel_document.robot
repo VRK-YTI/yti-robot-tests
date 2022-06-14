@@ -10,6 +10,7 @@ ${Documentation header}       //h2[text()=" Dokumentaatio "]
 ${Editing textarea}           //div/textarea
 ${Confirm ongoing warning}    //button[@id="confirm_modal_template_button"]
 ${Cancel ongoing editing warning}    //button[@id="cancel_modal_template_button"]
+${data language dropdown}    //button[@id="data_language_dropdown_button"]
 
 
 *** Keywords ***
@@ -32,6 +33,12 @@ Save edited documentation
 Cancel editing documentation
     Click Element with wait   ${Cancel edit doc button}
 
+Edit and save documentation
+    [Arguments]  ${text}
+    Edit documentation
+    Write to editor           ${text}
+    Save edited documentation
+
 Write to editor
     [Arguments]  ${text}
     Wait Until Page Contains Element    ${Editing textarea}
@@ -51,3 +58,15 @@ Click edited link
     [Arguments]  ${link}
     Wait Until Page Contains element  ${Edit doc button}
     Click element with wait           //div/p/a[@href="${link}"]
+
+Verify documentation contains
+    [Arguments]  ${text}
+    Wait Until Page Contains element  ${Edit doc button}
+    Wait Until Page Contains          ${text}
+
+Change data language to ${lang}
+    Click element with wait  ${data language dropdown}
+    Click element with wait  //button[@id="${lang}_data_language_dropdown_button"]
+
+Verify default documentation on changed language
+    Wait until page contains element   //*[@id="modelDocumentation"]/div/div[contains(text(), "fi")]

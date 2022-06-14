@@ -75,10 +75,8 @@ ${datamodel_prefix}    auto_doc
     Create profile ${DEFAULT_DATAMODEL_NAME} with prefix ${DEFAULT_DATAMODEL_PREFIX} api
     Select model   ${DEFAULT_DATAMODEL_NAME}
     Open documentation page
-    Edit documentation
-    Write to editor           test
-    Save edited documentation
-    Wait until page contains  test
+    Edit and save documentation     test
+    Verify documentation contains   test
 
 606. Open documentation page and change page while editing empty document
     [Tags]     regression    
@@ -119,7 +117,7 @@ ${datamodel_prefix}    auto_doc
     Verify ongoing editing warning
     Cancel ongoing editing warning
     Save edited documentation
-    Wait until page contains  test
+    Verify documentation contains  test
 
 609. Open documentation page, change page while editing and confirm warning
     [Tags]     regression    
@@ -143,8 +141,36 @@ ${datamodel_prefix}    auto_doc
     Create profile ${DEFAULT_DATAMODEL_NAME} with prefix ${DEFAULT_DATAMODEL_PREFIX} api
     Select model   ${DEFAULT_DATAMODEL_NAME}
     Open documentation page
-    Edit documentation
-    Write to editor           ${DATA VOCABULARIES ENVIRONMENT URL}
-    Save edited documentation
-    Click edited link         ${DATA VOCABULARIES ENVIRONMENT URL}  
-    Select model              ${DEFAULT_DATAMODEL_NAME}
+    Edit and save documentation   ${DATA VOCABULARIES ENVIRONMENT URL}
+    Click edited link             ${DATA VOCABULARIES ENVIRONMENT URL}  
+    Select model                  ${DEFAULT_DATAMODEL_NAME}
+
+611. Open documentation page and change data languages
+    [Tags]     regression    
+    ...        tietomallit        
+    ...        test        
+    ...        600
+    Create profile ${DEFAULT_DATAMODEL_NAME} with prefix ${DEFAULT_DATAMODEL_PREFIX} api
+    Select model   ${DEFAULT_DATAMODEL_NAME}
+    Open documentation page
+
+    Edit and save documentation    finnish_documentation
+    Verify documentation contains  finnish_documentation
+
+    Change data language to en
+    Verify default documentation on changed language
+    Change data language to sv
+    Verify default documentation on changed language
+
+    Change data language to en
+    Edit and save documentation    english_documentation
+    Verify documentation contains  english_documentation
+
+    Change data language to fi
+    Verify documentation contains  finnish_documentation
+    
+    Change data language to en
+    Verify documentation contains  english_documentation
+    
+    Change data language to sv
+    Verify default documentation on changed language
