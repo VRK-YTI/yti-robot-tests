@@ -48,8 +48,9 @@ Create terminology with api
     ...             ${organization}=${ORGANIZATION_AUTOMATION}
 
     Set tags        Create terminology with api
+    ${uuid}         Evaluate    uuid.uuid4()    modules=uuid
     ${graph_id}=    Catenate
-    ...             9db140ac-5f1b-44b5-a408-0c42ff712128
+    ...             ${uuid}
     ${headers}=     Create authentication header
     ${data}=        Catenate
     ...             templateGraphId=${template_graph_id}
