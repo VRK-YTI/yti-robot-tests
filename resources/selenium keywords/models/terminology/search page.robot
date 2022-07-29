@@ -5,7 +5,7 @@ Library   String
 ${search box terminology}           //*[@placeholder="Esim päivähoito, opiskelu..."]
 ${Terminology search page header}   //h1[text()="Sanastot"]  |  //h1[text()="Terminologies"]
 ${Terminology search list}          //div[@id="search-results"]
-${First terminology on searchlist}  //div[@id="search-results"]/ul/li/div
+${First terminology on searchlist}  //div[@id="search-results"]/div/div/a
 ${Organization dropdown}            //input[@placeholder="Valitse organisaatio"]
 
 ${Remove all filters}               //button[text()="Poista kaikki rajaukset"]  |  //button[text()="Clear all"]  |  //button[text()="Poista kaikki rajaukset"]
