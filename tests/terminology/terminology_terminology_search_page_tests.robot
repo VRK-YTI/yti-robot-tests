@@ -165,17 +165,17 @@ T2C6. Test and create terminology with collection containin concepts
     Select concept ${DEFAULT COLLECTION NAME}
     Verify collection contains concepts
 
-    Select concept ${DEFAULT CONCEPT NAME}_1
+    Select collection concept ${DEFAULT CONCEPT NAME}_1
     Verify concept is part of collection
     Select term ${DEFAULT CONCEPT NAME}_1
     Close term dialog
-    Select concept ${DEFAULT COLLECTION NAME}
+    Select terminology ${DEFAULT COLLECTION NAME} from side
 
-    Select concept ${DEFAULT CONCEPT NAME}_2
+    Select collection concept ${DEFAULT CONCEPT NAME}_2
     Verify concept is part of collection
     Select term ${DEFAULT CONCEPT NAME}_2
     Close term dialog
-    Select concept ${DEFAULT COLLECTION NAME}
+    Select terminology ${DEFAULT COLLECTION NAME} from side
 
     Select terminology ${DEFAULT TERMINOLOGY NAME} from breadcrumps
 

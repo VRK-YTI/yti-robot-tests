@@ -10,9 +10,15 @@ Open terminology information page
     Click element with wait             ${Terminology title}
 
 Select concept ${concept}
+    click element with wait  //h2[text()="${concept}"] 
+
+Select collection concept ${concept} 
     click element with wait  //a[text()="${concept}"] 
 
 Select terminology ${terminology} from breadcrumps
+    Click element with wait     //a[text()="${terminology}"]
+
+Select terminology ${terminology} from side
     Click element with wait     //a[text()="${terminology}"]
 
 Download terminology
