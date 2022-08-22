@@ -389,15 +389,15 @@ Add new term to new concept
 
     Sleep  1
     Press Keys    None      TAB
-    Sleep  0.2
+    Sleep  0.5
     Press Keys    None      ${name}
 
     IF  '${homograph}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None      TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None      SPACE
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
         Press Keys    None       ${homograph}
     END
@@ -405,94 +405,94 @@ Add new term to new concept
         Click element with wait  //label[text()="${Term type}"]
     END
     IF  '${Term language}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Click element with wait  //li[text()="${Term language}"]
     END
     IF  '${Term status}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       SPACE
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ENTER
     END
 
     IF  '${extra info}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ${extra info}
     END
     IF  '${scope}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ${scope}
     END
     IF  '${term equivalency}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       SPACE
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ARROW_DOWN
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ENTER
     ELSE
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
     END
     IF  '${sources}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ${sources}
     END
     IF  '${Change note}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ${Change note}
     END
     IF  '${etymology}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       ${etymology}
     END
     IF  '${Admin note}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
     END
 
     IF  '${Term style}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Click element with wait  //li[text()="${Term style}"]
     END
     IF  '${Term family}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Click element with wait  //li[text()="${Term family}"]
     END
     IF  '${Term conjugation}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Click element with wait  //li[text()="${Term conjugation}"]
     END
     IF  '${Term word class}' != '${NONE}'
-        Sleep  0.2
+        Sleep  0.5
         Press Keys    None       TAB
         Press Keys    None       TAB
-        Sleep  0.2
+        Sleep  0.5
         Click element with wait  //li[text()="${Term word class}"]
     END
     
