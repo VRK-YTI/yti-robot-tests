@@ -258,8 +258,9 @@ T1C13. Create and test INCOMPLETE terminology search page
     ...                             ${INCOMPLETE}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
-    
-    #Search and select terminology ${DEFAULT TERMINOLOGY NAME}
+
+    Login with Admin
+    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 *** Keywords ***

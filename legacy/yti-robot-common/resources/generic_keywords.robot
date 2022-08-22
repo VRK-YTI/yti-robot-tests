@@ -65,5 +65,4 @@ Click element that contains text
     Click element with wait     //*[contains(text(), "${text}")]   ${timeout}
 
 Print console logs
-    ${logs}     Run keyword     Get browser logs
-    log         ${logs}
+    Get browser logs

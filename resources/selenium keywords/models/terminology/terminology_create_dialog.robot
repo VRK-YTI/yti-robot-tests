@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+
 *** Variables ***
 ${Create terminology button}      //button[text()="Lisää uusi sanasto"]  |  //button[text()="Add new terminology"]
 ${Create terminology dialog}      //div[@role="dialog"]

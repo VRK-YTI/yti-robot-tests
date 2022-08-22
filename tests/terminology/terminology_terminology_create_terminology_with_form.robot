@@ -5,7 +5,6 @@ Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
 *** Test Cases ***
-
 T3C1. Verify create terminology button is not shown when not logged in or user without access
     [Tags]  Terminology  
     ...     T3
@@ -208,7 +207,7 @@ T3C11. Create other vocabulary
 
     Verify dialog is not open
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
-    #Verify terminology is not vocabulary Terminologinen sanasto
+    Verify terminology is not vocabulary Terminologinen sanasto
     
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
@@ -231,8 +230,8 @@ T3C12. Verify prefix max size
     ...  prefix=${long prefix}
     ...  email=${ADMIN_EDUUNI_EMAIL}
 
-    #Verify dialog is not open
-    #[Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    Verify dialog is not open
+    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T3C13. Verify terminology name max 
     [Tags]  Terminology  
@@ -254,8 +253,8 @@ T3C13. Verify terminology name max
     ...  email=${ADMIN_EDUUNI_EMAIL}
 
     Verify dialog is not open
-    [Teardown]  Teardown test Case delete terminology ${long title}
-
+    
+    [Teardown]  Teardown test Case delete terminology aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 T3C14. Verify terminology description max 
     [Tags]  Terminology  

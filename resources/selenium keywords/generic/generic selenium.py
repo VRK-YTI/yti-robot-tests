@@ -6,7 +6,11 @@ def print_console_logs():
         selenium = BuiltIn().get_library_instance('SeleniumLibrary')
         logs = selenium.driver.get_log('browser')
         for log in logs:
-            BuiltIn().log(log)
+            if (log["level"] == "SEVERE" and "fse.eduuni.fi" not in log["message"] and "login.microsoftonline.com" not in log["message"] 
+                and "frontend/subscriptions" not in log["message"] and "login.live.com" not in log["message"]):
+                BuiltIn().log(log, "WARN", formatter="repr")
+            else:
+                BuiltIn().log(log)
     except:
         pass
 

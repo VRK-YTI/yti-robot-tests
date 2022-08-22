@@ -83,10 +83,17 @@ def Append_to_csv_with_semicolon(file_name, **kwargs):
 
 
 def get_browser_logs():
-    selenium = BuiltIn().get_library_instance('SeleniumLibrary')
-    logs = selenium.driver.get_log('browser')
-    return logs
-
+    try:
+        selenium = BuiltIn().get_library_instance('SeleniumLibrary')
+        logs = selenium.driver.get_log('browser')
+        for log in logs:
+            if (log["level"] == "SEVERE" and "fse.eduuni.fi" not in log["message"] and "login.microsoftonline.com" not in log["message"] 
+                and "login.live.com" not in log["message"]):
+                BuiltIn().log(log, "WARN", formatter="repr")
+            else:
+                BuiltIn().log(log)
+    except:
+        pass
 
 def log_element_texts(elements_to_find):
     import time
