@@ -408,7 +408,12 @@ Add new term to new concept
         Sleep  0.5
         Press Keys    None       TAB
         Sleep  0.5
-        Click element with wait  //li[text()="${Term language}"]
+        Press Keys    None       SPACE
+        Sleep  0.5
+        Press Keys    None       ARROW_DOWN
+        Sleep  0.5
+        Press Keys    None       ENTER
+        #Click element with wait  //li[text()="${Term language}"]
     END
     IF  '${Term status}' != '${NONE}'
         Sleep  0.5
@@ -418,6 +423,9 @@ Add new term to new concept
         Press Keys    None       SPACE
         Sleep  0.5
         Press Keys    None       ENTER
+    ELSE
+        Sleep  0.5
+        Press Keys    None       TAB
     END
 
     IF  '${extra info}' != '${NONE}'

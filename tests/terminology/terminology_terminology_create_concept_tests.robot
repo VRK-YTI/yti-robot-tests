@@ -393,7 +393,6 @@ T4C10. Verify term contains only set information
     
     Start concept creation for ${DEFAULT CONCEPT NAME}_2
 
-
     Add new term to new concept
     ...  name=${DEFAULT CONCEPT NAME}_3
     ...  Term type=Synonyymi
