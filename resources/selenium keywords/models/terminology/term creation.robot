@@ -406,14 +406,12 @@ Add new term to new concept
     END
     IF  '${Term language}' != '${NONE}'
         Sleep  0.5
+        # TODO only works on jenkins, remove 2 tabs for local run
+        Press Keys    None       TAB
+        Press Keys    None       TAB
         Press Keys    None       TAB
         Sleep  0.5
-        Press Keys    None       SPACE
-        Sleep  0.5
-        Press Keys    None       ARROW_DOWN
-        Sleep  0.5
-        Press Keys    None       ENTER
-        #Click element with wait  //li[text()="${Term language}"]
+        Click element with wait  //li[text()="${Term language}"]
     END
     IF  '${Term status}' != '${NONE}'
         Sleep  0.5

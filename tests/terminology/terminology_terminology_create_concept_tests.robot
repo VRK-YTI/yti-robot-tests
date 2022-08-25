@@ -449,7 +449,7 @@ T4C10. Verify term contains only set information
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T4C10. Verify empty input fields with spaces
+T4C11. Verify empty input fields with spaces
     [Tags]  Terminology  
     ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
@@ -558,7 +558,7 @@ T4C10. Verify empty input fields with spaces
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T4C11. Verify recommended term type can't be changed when its only one
+T4C12. Verify recommended term type can't be changed when its only one
     [Tags]  Terminology  
     ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
