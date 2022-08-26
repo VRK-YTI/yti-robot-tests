@@ -1,6 +1,7 @@
 *** Variables ***
 ${Concept title}  //span[text()="Käsite"]  |  //span[text()="Concept"]
 ${Term info close}  //button[@aria-label="Sulje termin tiedot"]
+${Term title}  //h2[text()="Termit"]  |  //span[text()="Terms"]
 
 *** Keywords ***
 Verify page is concept page
@@ -10,7 +11,7 @@ Select term ${term}
     click element with wait  //button[text()="${term}"] 
 
 Verify term is dialog is open
-    Wait until page contains  //h2[text()="${term}"] 
+    Wait until page contains element  //h2[text()="${term}"] 
 
 Close term dialog
     Click element with wait  ${Term info close}

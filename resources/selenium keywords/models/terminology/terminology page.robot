@@ -8,6 +8,7 @@ Verify page is terminology page
 
 Open terminology information page
     Click element with wait             ${Terminology title}
+    Wait until page contains element    ${Terminology download button}
 
 Select concept ${concept}
     click element with wait  //h2[text()="${concept}"] 
@@ -23,7 +24,7 @@ Select terminology ${terminology} from side
 
 Download terminology
     Open terminology information page
-    Click element with wait             ${Terminology download button}
+    Click element with wait            ${Terminology download button}
 
 Verify terminology search page language is finnish
     Wait until page Contains           Sanaston tiedot ja toiminnot
