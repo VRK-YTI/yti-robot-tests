@@ -27,7 +27,7 @@ Teardown test Case
     Print console logs
     IF  '${RECORD}' == 'True'
         Stop video recording
-        Run keyword If test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}.webm
+        Run keyword If test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}_*.webm
     END   
     Close all browsers
 

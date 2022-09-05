@@ -74,9 +74,14 @@ Environment URLS for V2
 
 Robot framework run command
 ===========================
+* Build docker with dockerfile
+    ```
+    docker build -t yti-robot-tests:latest .
+    ```
+____________________________
 * run all tests on headless
     ```
-    python -m robot.run -v BROWSER:headlesschrome -v EDUUNI_EMAIL_PASSWORD:salasana -v API_KEY:api_key -v ENVIRONMENT:dev -d test_reports tests
+    python -m robot.run -v BROWSER:headlesschrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports tests
     ```
 
     or
@@ -84,10 +89,15 @@ Robot framework run command
     ```
     ./run_tests.sh headless
     ```
+    or
+    ```
+    # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values. %CD%, . or absolute path on -v.
+    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& python3 -m robot.run -v BROWSER:headlesschrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports tests"
+    ```
 ____________________________
 * run all tests without headless, record video and highlight element
     ```
-    python -m robot.run -v BROWSER:chrome -v RECORD:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:salasana -v API_KEY:api_key -d test_reports tests
+    python -m robot.run -v BROWSER:chrome -v RECORD:True -v HIGHLIGHT_ELEMENT:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -d test_reports tests
     ```
 
     or
@@ -95,14 +105,36 @@ ____________________________
     ```
     ./run_tests.sh record
     ```
+    or
+
+    ```
+    ./run_tests.sh headless
+    ```
+    or
+    ```
+    # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values. %CD%, . or absolute path on -v.
+    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& python3 -m robot.run -v BROWSER:chrome -v RECORD:True -v HIGHLIGHT_ELEMENT:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -d test_reports tests"  
+    ```
 ____________________________
 * run single test in the suite
     ```
-    python -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:salasana -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests/terminology/terminology_main_search_page_tests.robot
+    python -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests/terminology/terminology_main_search_page_tests.robot
     ```
 
     or
 
     ```
     ./run_tests.sh single <testname>
+    ```
+    or
+    ```
+    # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values. %CD%, . or absolute path on -v.
+    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& python3 -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests/terminology/terminology_main_search_page_tests.robot"
+    ```
+
+____________________________
+* run legacy tests 
+    ```
+    # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values. %CD%, . or absolute path on -v.
+    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& cd legacy/yti-groupmanagement-robot && python3 -m robot.run -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-key% -v BROWSER:chrome-local -v CHROME_DRIVER_PATH:chromedriver -v SELENIUM_SPEED:0.2 -d test_reports --include regression tests"  
     ```
