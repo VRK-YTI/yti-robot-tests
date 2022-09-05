@@ -81,6 +81,7 @@ Robot framework run command
 ____________________________
 * run all tests on headless
     ```
+    # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values.
     python -m robot.run -v BROWSER:headlesschrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports tests
     ```
 
@@ -97,6 +98,7 @@ ____________________________
 ____________________________
 * run all tests without headless, record video and highlight element
     ```
+    # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values.
     python -m robot.run -v BROWSER:chrome -v RECORD:True -v HIGHLIGHT_ELEMENT:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -d test_reports tests
     ```
 
@@ -118,7 +120,8 @@ ____________________________
 ____________________________
 * run single test in the suite
     ```
-    python -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests/terminology/terminology_main_search_page_tests.robot
+    # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values.
+    python -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports -t "T1C2. Select first terminology on search page" tests
     ```
 
     or
@@ -129,7 +132,7 @@ ____________________________
     or
     ```
     # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values. %CD%, . or absolute path on -v.
-    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& python3 -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests/terminology/terminology_main_search_page_tests.robot"
+    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& python3 -m robot.run -v BROWSER:chrome -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -v ENVIRONMENT:dev -d test_reports -t 'T1C2. Select first terminology on search page' tests"
     ```
 
 ____________________________
