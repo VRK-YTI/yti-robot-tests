@@ -216,7 +216,7 @@ T4C8. Create valid concept with all information and relations
     ...  Sources=Sources
     ...  change history=change history
     ...  etymology=etymology
-    ...  concept class=concept class
+    #...  concept class=conceptclass
     ...  word class=adjektiivi
     ...  broader concept=${DEFAULT CONCEPT NAME}_1
     ...  narrower concept=${DEFAULT CONCEPT NAME}_1
@@ -287,7 +287,6 @@ T4C9. Verify empty input fields and that concept information is right
 
     Add information to concept
     ...  definition=${EMPTY}
-    ...  example=${EMPTY}
     ...  Sources=${EMPTY}
     ...  subject=subject
     ...  Note=Note
@@ -305,7 +304,6 @@ T4C9. Verify empty input fields and that concept information is right
     ...  sources=${EMPTY}
     ...  Change note=${EMPTY}
     ...  etymology=${EMPTY}
-    ...  Admin note=${EMPTY}
 
     Add new term to new concept
     ...  name=${DEFAULT CONCEPT NAME}_3
@@ -318,7 +316,6 @@ T4C9. Verify empty input fields and that concept information is right
     ...  sources=${EMPTY}
     ...  Change note=${EMPTY}
     ...  etymology=${EMPTY}
-    ...  Admin note=${EMPTY}
     Save concept creation
 
     Verify concept page does not contain all information
@@ -473,7 +470,6 @@ T4C11. Verify empty input fields with spaces
 
     Add information to concept
     ...  definition=${SPACE}
-    ...  example=${SPACE}
     ...  Sources=${SPACE}
     ...  subject=subject
     ...  Note=Note
@@ -491,7 +487,6 @@ T4C11. Verify empty input fields with spaces
     ...  sources=${SPACE}
     ...  Change note=${SPACE}
     ...  etymology=${SPACE}
-    ...  Admin note=${SPACE}
 
     Add new term to new concept
     ...  name=${DEFAULT CONCEPT NAME}_3
@@ -504,7 +499,6 @@ T4C11. Verify empty input fields with spaces
     ...  sources=${SPACE}
     ...  Change note=${SPACE}
     ...  etymology=${SPACE}
-    ...  Admin note=${SPACE}
 
     Save concept creation
 

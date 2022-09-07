@@ -107,7 +107,6 @@
     "at": "http://publications.europa.eu/ontology/authority/",
     "sh": "http://www.w3.org/ns/shacl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "${prefix}": "http://uri.suomi.fi/datamodel/ns/${prefix}#",
     "dcterms": "http://purl.org/dc/terms/",
     "text": "http://jena.apache.org/text#",
     "prov": "http://www.w3.org/ns/prov#",

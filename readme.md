@@ -108,11 +108,6 @@ ____________________________
     ./run_tests.sh record
     ```
     or
-
-    ```
-    ./run_tests.sh headless
-    ```
-    or
     ```
     # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values. %CD%, . or absolute path on -v.
     docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& python3 -m robot.run -v BROWSER:chrome -v RECORD:True -v HIGHLIGHT_ELEMENT:True -v ENVIRONMENT:dev -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-KEY% -d test_reports tests"  
