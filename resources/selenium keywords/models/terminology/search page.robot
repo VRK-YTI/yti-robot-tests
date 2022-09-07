@@ -2,7 +2,7 @@
 Library   String
 
 *** Variables ***
-${search box terminology}           //*[@placeholder="Esim päivähoito, opiskelu..."]
+${search box terminology}           //input[@id="filter-keyword-input"]
 ${Terminology search page header}   //h1[text()="Sanastot"]  |  //h1[text()="Terminologies"]
 ${Terminology search list}          //div[@id="search-results"]
 ${First terminology on searchlist}  //div[@id="search-results"]/div/div/a

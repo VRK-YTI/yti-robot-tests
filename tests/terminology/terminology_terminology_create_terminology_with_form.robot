@@ -60,7 +60,7 @@ T3C4. Verify create missing all values in create dialog
     ...  email=${NONE}
 
     Verify alert Sanaston kieliä ei ole määritelty
-    Verify alert Sisällöntuottajaa ei ole määritelty
+    Verify alert Sisällöntuottajia ei ole määritelty
     Verify alert Tietoaluetta ei ole määritelty
 
 T3C5. Verify create missing title value in create dialog
@@ -90,8 +90,8 @@ T3C6. Verify create invalid email
     ...  language=suomi FI
     ...  title=${DEFAULT TERMINOLOGY NAME}
     ...  description=${NONE}
-    ...  organization=${NONE}
-    ...  domain=${NONE}
+    ...  organization=${DEFAULT ORGANIZATION}
+    ...  domain=${DEFAULT DOMAIN}
     ...  prefix=${NONE}
     ...  email=asdf
 

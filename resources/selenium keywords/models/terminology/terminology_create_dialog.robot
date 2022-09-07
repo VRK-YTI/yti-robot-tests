@@ -12,7 +12,7 @@ ${Cancel creating terminology button}     ${Create terminology dialog}//button[t
 ${Terminology select language input}      ${Create terminology dialog}//input[@placeholder="Valitse sanaston kielet"]
 ${Terminology title input}             ${Create terminology dialog}//input[@placeholder="Kirjoita otsikko"]
 ${Terminology description input}       ${Create terminology dialog}//textarea[@placeholder="Kirjoita kuvaus"]
-${Terminology select organization input}      ${Create terminology dialog}//input[@placeholder="Valitse organisaatio"]
+${Terminology select organization input}      ${Create terminology dialog}//input[@id="organizations-selector"]
 ${Terminology select domain input}      ${Create terminology dialog}//input[@placeholder="Valitse sanaston tietoalueet"]
 ${Alert on create terminology}          ${Create terminology dialog}//section[@role="alert"]//div[text()="Puuttuvia tietoja"]
 ${Terminology create email input}      ${Create terminology dialog}//input[@placeholder="Esim. yllapito@example.org"]
