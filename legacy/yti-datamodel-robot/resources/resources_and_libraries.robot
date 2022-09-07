@@ -15,8 +15,11 @@ Test Case Teardown Generic Teardown
     Run keyword and ignore error    Print console logs
     Run Keyword If Test Failed      Log error window messages
     Close All Browsers
-    Run Keyword If    '${RECORD}' == 'True'      Stop video recording
-    run keyword if test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}
+    
+    IF  '${RECORD}' == 'True'
+        Stop video recording
+        Run keyword If test passed      Remove File     ${OUTPUT DIR}${/}${TEST NAME}_*.webm
+    END   
 
 Test Case Teardown Delete model
     [Arguments]    @{models}

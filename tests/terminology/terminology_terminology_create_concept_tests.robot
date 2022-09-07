@@ -263,7 +263,7 @@ T4C8. Create valid concept with all information and relations
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T4C9. Verify empty input fields and that term/concept information is right
+T4C9. Verify empty input fields and that concept information is right
     [Tags]  Terminology  
     ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}

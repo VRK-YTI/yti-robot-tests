@@ -3,12 +3,27 @@ Library  SeleniumLibrary
 
 *** Keywords ***
 Open Browser with Settings
-    Open browser       browser=${BROWSER}    executable_path=${CHROME_DRIVER_PATH}
+    IF  '${BROWSER.lower()}' == 'chrome'
+        ${chrome_options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+        Call Method    ${chrome_options}    add_argument    --disable-gpu
+        Call Method    ${chrome_options}    add_argument    --no-sandbox
+        Call Method    ${chrome_options}    add_argument    --disable-dev-shm-usage
+        Open browser       browser=${BROWSER}    executable_path=${CHROME_DRIVER_PATH}  options=${chrome_options}
+    ELSE IF  '${BROWSER.lower()}' == 'headlesschrome'
+        ${chrome_options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+        Call Method    ${chrome_options}    add_argument    --headless
+        Call Method    ${chrome_options}    add_argument    --disable-gpu
+        Call Method    ${chrome_options}    add_argument    --no-sandbox
+        Call Method    ${chrome_options}    add_argument    --disable-dev-shm-usage
+        Open browser       browser=${BROWSER}    executable_path=${CHROME_DRIVER_PATH}  options=${chrome_options}
+    ELSE
+        Open browser       browser=${BROWSER}    executable_path=${CHROME_DRIVER_PATH}
+    END
     Set Window Size    1920    1080
 
 Find and highlight element
     [Arguments]     ${element}
-    IF    '${RECORD}' == 'True'
+    IF    '${HIGHLIGHT ELEMENT}' == 'True'
         ${elem}=  Get WebElement  ${element}
         Run keyword and ignore error  Highlight element             ${elem}
     END
