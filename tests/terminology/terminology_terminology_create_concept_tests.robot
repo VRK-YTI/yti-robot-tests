@@ -1,4 +1,5 @@
 *** Settings ***
+Force Tags           Terminology  T4
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case
@@ -6,8 +7,6 @@ Test Teardown        Teardown test Case
 
 *** Test Cases ***
 T4C1. Verify create concept button is not shown without access rights
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -24,8 +23,6 @@ T4C1. Verify create concept button is not shown without access rights
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C2. Cancel concept creation before naming
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -43,8 +40,6 @@ T4C2. Cancel concept creation before naming
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C3. Create valid concept
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -60,8 +55,6 @@ T4C3. Create valid concept
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C4. Verify empty concept name
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -77,8 +70,6 @@ T4C4. Verify empty concept name
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C5. Verify empty concept name with space
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -93,9 +84,7 @@ T4C5. Verify empty concept name with space
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T4C6. Verify too long concept name
-    [Tags]  Terminology  
-    ...     T4 
+T4C6. Verify too long concept Name
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -116,8 +105,6 @@ T4C6. Verify too long concept name
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C7. Cancel creation after selection concept name
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -134,8 +121,6 @@ T4C7. Cancel creation after selection concept name
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C8. Create valid concept with all information and relations
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -179,7 +164,7 @@ T4C8. Create valid concept with all information and relations
     ...  homograph=1
     ...  extra info=extra info
     ...  scope=scope
-    ...  sources=sources
+    #...  sources=sources
     ...  Change note=Change note
     ...  etymology=etymology
     ...  Admin note=Admin note
@@ -213,7 +198,7 @@ T4C8. Create valid concept with all information and relations
     ...  subject=subject
     ...  Note=Note
     ...  diagram=diagram
-    ...  Sources=Sources
+    #...  Sources=Sources
     ...  change history=change history
     ...  etymology=etymology
     #...  concept class=conceptclass
@@ -264,8 +249,6 @@ T4C8. Create valid concept with all information and relations
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C9. Verify empty input fields and that concept information is right
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -288,9 +271,8 @@ T4C9. Verify empty input fields and that concept information is right
     Add information to concept
     ...  definition=${EMPTY}
     ...  Sources=${EMPTY}
-    ...  subject=subject
-    ...  Note=Note
-    ...  diagram=diagram
+    ...  subject=${EMPTY}
+    ...  diagram=${EMPTY}
     ...  change history=${EMPTY}
     ...  etymology=${EMPTY}
     ...  concept class=${EMPTY}
@@ -301,7 +283,6 @@ T4C9. Verify empty input fields and that concept information is right
     ...  homograph=${EMPTY}
     ...  extra info=${EMPTY}
     ...  scope=${EMPTY}
-    ...  sources=${EMPTY}
     ...  Change note=${EMPTY}
     ...  etymology=${EMPTY}
 
@@ -369,8 +350,6 @@ T4C9. Verify empty input fields and that concept information is right
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C10. Verify term contains only set information
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -447,8 +426,6 @@ T4C10. Verify term contains only set information
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C11. Verify empty input fields with spaces
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -471,9 +448,9 @@ T4C11. Verify empty input fields with spaces
     Add information to concept
     ...  definition=${SPACE}
     ...  Sources=${SPACE}
-    ...  subject=subject
-    ...  Note=Note
-    ...  diagram=diagram
+    ...  subject=${SPACE}
+    #...  Note=Note
+    ...  diagram=${SPACE}
     ...  change history=${SPACE}
     ...  etymology=${SPACE}
     ...  concept class=${SPACE}
@@ -484,7 +461,7 @@ T4C11. Verify empty input fields with spaces
     ...  homograph=${SPACE}
     ...  extra info=${SPACE}
     ...  scope=${SPACE}
-    ...  sources=${SPACE}
+    #...  sources=${SPACE}
     ...  Change note=${SPACE}
     ...  etymology=${SPACE}
 
@@ -553,8 +530,6 @@ T4C11. Verify empty input fields with spaces
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C12. Verify recommended term type can't be changed when its only one
-    [Tags]  Terminology  
-    ...     T4 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}

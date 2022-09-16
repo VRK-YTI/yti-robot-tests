@@ -1,4 +1,5 @@
 *** Settings ***
+Force Tags           Terminology  T2
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case
@@ -6,9 +7,7 @@ Test Teardown        Teardown test Case
 
 *** Test Cases ***
 T2C1. Select first terminology on list and download it
-    [Tags]  Terminology  
-    ...     T2 
-    ...     PROD 
+    [Tags]  PROD 
     ...     BETA
     Open terminology search page
     Select first terminology on list
@@ -17,9 +16,7 @@ T2C1. Select first terminology on list and download it
     Download terminology
 
 T2C2. Change page languages
-    [Tags]  Terminology  
-    ...     T2
-    ...     PROD
+    [Tags]  PROD 
     ...     BETA
     Open terminology search page
     Select first terminology on list
@@ -34,9 +31,7 @@ T2C2. Change page languages
     Verify terminology search page language is finnish
 
 T2C3. Terminology page filter checkbox tests
-    [Tags]  Terminology  
-    ...     T2
-    ...     PROD
+    [Tags]  PROD 
     ...     BETA
     Open terminology search page
     Select first terminology on list
@@ -58,9 +53,7 @@ T2C3. Terminology page filter checkbox tests
     Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
 
 T2C4. Terminology page filter buttons tests
-    [Tags]  Terminology  
-    ...     T2
-    ...     PROD
+    [Tags]  PROD 
     ...     BETA
     Open terminology search page
     Select first terminology on list
@@ -75,8 +68,6 @@ T2C4. Terminology page filter buttons tests
     Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
 
 T2C8. Test and create terminology with concepts
-    [Tags]  Terminology  
-    ...     T2
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
@@ -133,8 +124,6 @@ T2C8. Test and create terminology with concepts
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T2C6. Test and create terminology with collection containin concepts
-    [Tags]  Terminology  
-    ...     T2
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
@@ -182,8 +171,6 @@ T2C6. Test and create terminology with collection containin concepts
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T2C7. Test and create terminology with collection without concepts
-    [Tags]  Terminology  
-    ...     T2
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
