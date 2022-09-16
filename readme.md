@@ -134,5 +134,5 @@ ____________________________
 * run legacy tests 
     ```
     # Replace %YTI-API-KEY%, %YTI-EDUUNI-PASSWORD% with wanted values. %CD%, . or absolute path on -v.
-    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& cd legacy/yti-groupmanagement-robot && python3 -m robot.run -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-key% -v BROWSER:chrome-local -v CHROME_DRIVER_PATH:chromedriver -v SELENIUM_SPEED:0.2 -d test_reports --include regression tests"  
+    docker run -it --rm -v "%CD%:/robot_tests/" yti-robot-tests:latest /bin/bash -c "/usr/bin/Xvfb :0 -screen 0 1920x1080x24& cd legacy/yti-groupmanagement-robot && python3 -m robot.run -v EDUUNI_EMAIL_PASSWORD:%YTI-EDUUNI-PASSWORD% -v API_KEY:%YTI-API-key% -v BROWSER:chrome-local -v CHROME_DRIVER_PATH:chromedriver -v SELENIUM_SPEED:0.2 -d test_reports --include regression tests"
     ```

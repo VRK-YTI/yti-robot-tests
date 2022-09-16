@@ -1,4 +1,5 @@
 *** Settings ***
+Force Tags           Terminology  T3
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case
@@ -6,16 +7,12 @@ Test Teardown        Teardown test Case
 
 *** Test Cases ***
 T3C1. Verify create terminology button is not shown when not logged in or user without access
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Verify create terminology button is not shown
     Login with no group
     Verify create terminology button is not shown
 
 T3C2. Open create terminology dialog and cancel
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -25,8 +22,6 @@ T3C2. Open create terminology dialog and cancel
     Verify dialog is not open
 
 T3C3. Create valid terminology from dialog
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -45,8 +40,6 @@ T3C3. Create valid terminology from dialog
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T3C4. Verify create missing all values in create dialog
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -64,8 +57,6 @@ T3C4. Verify create missing all values in create dialog
     Verify alert Tietoaluetta ei ole määritelty
 
 T3C5. Verify create missing title value in create dialog
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -80,26 +71,7 @@ T3C5. Verify create missing title value in create dialog
 
     Verify alert Sanaston nimi puuttuu kieleltä
 
-T3C6. Verify create invalid email
-    [Tags]  Terminology  
-    ...     T3
-    Open terminology search page
-    Login with Admin
-
-    Create terminology from dialog  
-    ...  language=suomi FI
-    ...  title=${DEFAULT TERMINOLOGY NAME}
-    ...  description=${NONE}
-    ...  organization=${DEFAULT ORGANIZATION}
-    ...  domain=${DEFAULT DOMAIN}
-    ...  prefix=${NONE}
-    ...  email=asdf
-
-    Verify alert Yhteydenotto-osoite ei ole oikeassa muodossa
-
 T3C7. Create terminology with same name
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -126,8 +98,6 @@ T3C7. Create terminology with same name
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T3C8. Verify empty own prefix
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -143,8 +113,6 @@ T3C8. Verify empty own prefix
     Verify alert Tunnusta ei ole määritelty
     
 T3C9. Verify duplicate prefix
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -173,8 +141,6 @@ T3C9. Verify duplicate prefix
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
     
 T3C10. Verify prefix is not valid
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -190,8 +156,6 @@ T3C10. Verify prefix is not valid
     Verify alert Tunnus ei oikeassa muodossa tai se on jo käytössä
 
 T3C11. Create other vocabulary
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 
@@ -212,8 +176,6 @@ T3C11. Create other vocabulary
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T3C12. Verify prefix max size
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
     
@@ -234,8 +196,6 @@ T3C12. Verify prefix max size
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T3C13. Verify terminology name max 
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
     
@@ -257,8 +217,6 @@ T3C13. Verify terminology name max
     [Teardown]  Teardown test Case delete terminology aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 T3C14. Verify terminology description max 
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
     
@@ -279,8 +237,6 @@ T3C14. Verify terminology description max
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T3C15. Verify create valid email
-    [Tags]  Terminology  
-    ...     T3
     Open terminology search page
     Login with Admin
 

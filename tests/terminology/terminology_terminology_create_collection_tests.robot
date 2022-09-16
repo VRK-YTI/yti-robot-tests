@@ -1,4 +1,5 @@
 *** Settings ***
+Force Tags           Terminology  T5
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case
@@ -6,8 +7,6 @@ Test Teardown        Teardown test Case
 
 *** Test Cases ***
 T5C1. Verify create collection button is not shown without log in
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -24,8 +23,6 @@ T5C1. Verify create collection button is not shown without log in
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C2. Create valid collection
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -43,8 +40,6 @@ T5C2. Create valid collection
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C3. Verify empty collection name
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -63,8 +58,6 @@ T5C3. Verify empty collection name
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C4. Verify too long collection name
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -86,8 +79,6 @@ T5C4. Verify too long collection name
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C5. Verify empty definition
-    [Tags]  Terminology  
-    ...     T5
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -106,8 +97,6 @@ T5C5. Verify empty definition
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C6. Verify too long collection definition
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -130,8 +119,6 @@ T5C6. Verify too long collection definition
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C7. Create valid collection with term
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -156,8 +143,6 @@ T5C7. Create valid collection with term
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C8. Create valid collection with multiple concepts
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -188,8 +173,6 @@ T5C8. Create valid collection with multiple concepts
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C9. Create collection, add concepts and remove 1
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -221,8 +204,6 @@ T5C9. Create collection, add concepts and remove 1
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C10. Create collection, add concepts and remove them all
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -255,8 +236,6 @@ T5C10. Create collection, add concepts and remove them all
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C11. Add 30 concepts to collection
-    [Tags]  Terminology  
-    ...     T5 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}

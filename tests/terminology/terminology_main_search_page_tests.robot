@@ -1,4 +1,5 @@
 *** Settings ***
+Force Tags           Terminology  T1
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case
@@ -6,26 +7,20 @@ Test Teardown        Teardown test Case
 
 *** Test Cases ***
 T1C1. Open terminology page and log in
-    [Tags]  Terminology  
-    ...     T1  
-    ...     PROD
+    [Tags]  PROD
     Open terminology search page
 
     Login with Admin
     Log out user
 
 T1C2. Select first terminology on search page
-    [Tags]  Terminology  
-    ...     T1  
-    ...     PROD
+    [Tags]  PROD
     ...     BETA
     Open terminology search page
     Select first terminology on list
 
 T1C3. Change page languages
-    [Tags]  Terminology  
-    ...     T1  
-    ...     PROD
+    [Tags]  PROD
     ...     BETA
     Open terminology search page
     
@@ -39,9 +34,7 @@ T1C3. Change page languages
     Verify search page language is finnish
 
 T1C4. Test status filter checkbox
-    [Tags]  Terminology  
-    ...     T1  
-    ...     PROD
+    [Tags]  PROD
     ...     BETA
     Open terminology search page
     Get filter counts from search page
@@ -79,9 +72,7 @@ T1C4. Test status filter checkbox
     Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
 
 T1C5. Test status filter buttons
-    [Tags]  Terminology  
-    ...     T1  
-    ...     PROD
+    [Tags]  PROD
     ...     BETA
     Open terminology search page
     Get filter counts from search page
@@ -119,9 +110,7 @@ T1C5. Test status filter buttons
     Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
 
 T1C6. Test domain filter checkbox
-    [Tags]  Terminology  
-    ...     T1  
-    ...     PROD
+    [Tags]  PROD
     ...     BETA
     Open terminology search page
 
@@ -143,9 +132,7 @@ T1C6. Test domain filter checkbox
     Verify filters are defaults
 
 T1C7. Test domain filter buttons
-    [Tags]  Terminology  
-    ...     T1  
-    ...     PROD
+    [Tags]  PROD
     ...     BETA
     Open terminology search page
 
@@ -160,8 +147,6 @@ T1C7. Test domain filter buttons
     Verify filters are defaults
 
 T1C8. Test organization selection
-    [Tags]  Terminology  
-    ...     T1  
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
@@ -179,8 +164,6 @@ T1C8. Test organization selection
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T1C9. Create and test Valid terminology search page
-    [Tags]  Terminology  
-    ...     T1  
     Open terminology search page
     Get filter counts from search page
 
@@ -197,8 +180,6 @@ T1C9. Create and test Valid terminology search page
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T1C10. Create and test draft terminology search page
-    [Tags]  Terminology  
-    ...     T1  
     Open terminology search page
     Get filter counts from search page
 
@@ -214,8 +195,6 @@ T1C10. Create and test draft terminology search page
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T1C11. Create and test Superseeded terminology search page
-    [Tags]  Terminology  
-    ...     T1  
     Open terminology search page
     Get filter counts from search page
 
@@ -232,8 +211,6 @@ T1C11. Create and test Superseeded terminology search page
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T1C12. Create and test Retired terminology search page
-    [Tags]  Terminology  
-    ...     T1  
     Open terminology search page
     Get filter counts from search page
 
@@ -250,8 +227,6 @@ T1C12. Create and test Retired terminology search page
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T1C13. Create and test INCOMPLETE terminology search page
-    [Tags]  Terminology  
-    ...     T1  
     Open terminology search page
 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
