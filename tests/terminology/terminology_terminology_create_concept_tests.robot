@@ -447,7 +447,7 @@ T4C11. Verify empty input fields with spaces
 
     Add information to concept
     ...  definition=${SPACE}
-    ...  Sources=${SPACE}
+    #...  Sources=${SPACE}
     ...  subject=${SPACE}
     #...  Note=Note
     ...  diagram=${SPACE}
