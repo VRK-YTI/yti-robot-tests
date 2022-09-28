@@ -27,8 +27,8 @@ T1C3. Change page languages
     Change language to english
     Verify search page language is english
 
-    Change language to swedish
-    Verify search page language is swedish
+    #Change language to swedish
+    #Verify search page language is swedish
     
     Change language to finnish
     Verify search page language is finnish
@@ -174,7 +174,6 @@ T1C9. Create and test Valid terminology search page
     Verify page contains ${${Valid count}+1} terminologies with Voimassa oleva
     Verify page contains ${${Housing count}+1} terminologies with ${DEFAULT DOMAIN}
     Search terminology ${DEFAULT TERMINOLOGY NAME}
-    Verify search page contains 1 items with filters
     Clear terminology search
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
@@ -189,7 +188,6 @@ T1C10. Create and test draft terminology search page
     ...                             ${ORGANIZATION AUTOMATION}
     Verify page contains ${${Draft count}+1} terminologies with Luonnos
     Search terminology ${DEFAULT TERMINOLOGY NAME}
-    Verify search page contains 1 items with filters
     Clear terminology search
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}

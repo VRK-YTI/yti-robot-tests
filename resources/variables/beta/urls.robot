@@ -1,2 +1,2 @@
 *** Variables ***
-${TERMINOLOGIES_URL}  https://sanastot.beta.yti.cloud.vrk.fi/
+${TERMINOLOGIES_URL}  https://sanastot.beta.yti.cloud.dvv.fi/
