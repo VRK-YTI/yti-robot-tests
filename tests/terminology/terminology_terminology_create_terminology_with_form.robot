@@ -153,7 +153,7 @@ T3C11. Verify prefix max size
     
     set test variable  ${long prefix}  ${EMPTY}
     FOR    ${index}    IN RANGE    1000
-        ${long prefix}=  Catenate  ${long prefix}a
+        ${long prefix}=  Catenate  ${long prefix}z
     END
     Create terminology from dialog  
     ...  language=suomi FI

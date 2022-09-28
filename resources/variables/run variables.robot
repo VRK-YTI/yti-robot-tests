@@ -9,7 +9,7 @@ ${CHROME_DRIVER_PATH}           ${EMPTY}
 ${ENVIRONMENT}                  dev
 ${API_KEY}                      ${EMPTY}
 
-${DEFAULT TERMINOLOGY NAME}         Auto_Term
+${DEFAULT TERMINOLOGY NAME}         Auto_TC
 ${DEFAULT CONCEPT NAME}             Auto_Concept
 ${DEFAULT COLLECTION NAME}          Auto_Collection
 
