@@ -35,7 +35,6 @@ T3C3. Create valid terminology from dialog
     ...  email=${NONE}
 
     Verify dialog is not open
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
@@ -71,33 +70,7 @@ T3C5. Verify create missing title value in create dialog
 
     Verify alert Sanaston nimi puuttuu kieleltä
 
-T3C7. Create terminology with same name
-    Open terminology search page
-    Login with Admin
-
-    Create terminology from dialog  
-    ...  language=suomi FI
-    ...  title=${DEFAULT TERMINOLOGY NAME}
-    ...  description=${NONE}
-    ...  organization=${DEFAULT ORGANIZATION}
-    ...  domain=${DEFAULT DOMAIN}
-    ...  prefix=${NONE}
-    ...  email=${NONE}
-    Verify dialog is not open
-
-    Create terminology from dialog  
-    ...  language=suomi FI
-    ...  title=${DEFAULT TERMINOLOGY NAME}
-    ...  description=${NONE}
-    ...  organization=${DEFAULT ORGANIZATION}
-    ...  domain=${DEFAULT DOMAIN}
-    ...  prefix=${NONE}
-    ...  email=${NONE}
-    Verify dialog is not open
-    
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
-
-T3C8. Verify empty own prefix
+T3C7. Verify empty own prefix
     Open terminology search page
     Login with Admin
 
@@ -112,7 +85,7 @@ T3C8. Verify empty own prefix
 
     Verify alert Tunnusta ei ole määritelty
     
-T3C9. Verify duplicate prefix
+T3C8. Verify duplicate prefix
     Open terminology search page
     Login with Admin
 
@@ -126,7 +99,7 @@ T3C9. Verify duplicate prefix
     ...  email=${NONE}
     Verify dialog is not open
 
-    Reload page
+    Open terminology search page
 
     Create terminology from dialog  
     ...  language=suomi FI
@@ -140,7 +113,7 @@ T3C9. Verify duplicate prefix
     
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
     
-T3C10. Verify prefix is not valid
+T3C9. Verify prefix is not valid
     Open terminology search page
     Login with Admin
 
@@ -155,7 +128,7 @@ T3C10. Verify prefix is not valid
 
     Verify alert Tunnus ei oikeassa muodossa tai se on jo käytössä
 
-T3C11. Create other vocabulary
+T3C10. Create other vocabulary
     Open terminology search page
     Login with Admin
 
@@ -170,12 +143,11 @@ T3C11. Create other vocabulary
     ...  another vocabulary=${True}
 
     Verify dialog is not open
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     Verify terminology is not vocabulary Terminologinen sanasto
     
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T3C12. Verify prefix max size
+T3C11. Verify prefix max size
     Open terminology search page
     Login with Admin
     
@@ -195,7 +167,7 @@ T3C12. Verify prefix max size
     Verify dialog is not open
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T3C13. Verify terminology name max 
+T3C12. Verify terminology name max 
     Open terminology search page
     Login with Admin
     
@@ -216,7 +188,7 @@ T3C13. Verify terminology name max
     
     [Teardown]  Teardown test Case delete terminology aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
-T3C14. Verify terminology description max 
+T3C13. Verify terminology description max 
     Open terminology search page
     Login with Admin
     
@@ -236,7 +208,7 @@ T3C14. Verify terminology description max
     Verify dialog is not open
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T3C15. Verify create valid email
+T3C14. Verify create valid email
     Open terminology search page
     Login with Admin
 
@@ -250,5 +222,4 @@ T3C15. Verify create valid email
     ...  email=${ADMIN_EDUUNI_EMAIL}
 
     Verify dialog is not open
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}

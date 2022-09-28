@@ -22,7 +22,13 @@
                         "regex": "(?s)^.*$"
                     }
                 ],
-                "definition": []
+                "definition":[
+                    {
+                        "lang":"fi",
+                        "regex":"(?s)^.*$",
+                        "value":"definition"
+                    }
+                ]
             },
             "referrers": {},
             "references": {

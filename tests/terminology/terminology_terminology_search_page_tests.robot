@@ -24,8 +24,8 @@ T2C2. Change page languages
     Change language to english
     Verify terminology search page language is english
 
-    Change language to swedish
-    Verify terminology search page language is swedish
+    #Change language to swedish
+    #Verify terminology search page language is swedish
     
     Change language to finnish
     Verify terminology search page language is finnish
