@@ -164,23 +164,7 @@ T6C8. Refresh page while importing file
     # Hyväksy varoitus ja poistu luomisesta
     No operation
 
-T6C9. Refresh page while importing file
-    # Kirjaudu sisään
-    # Import sanasto excel tiedostolla
-    # Yritä päivittää sivu kesken excel luomista
-    # Varmista, että käyttäjä saa varoituksen
-    # Hyväksy varoitus ja poistu luomisesta
-    No operation
-
-T6C10. Refresh page while importing file
-    # Kirjaudu sisään
-    # Import sanasto excel tiedostolla
-    # Yritä päivittää sivu kesken excel luomista
-    # Varmista, että käyttäjä saa varoituksen
-    # Hyväksy varoitus ja poistu luomisesta
-    No operation
-
-T6C11. Test missing excel tabs
+T6C9. Test missing excel tabs
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla josta puuttuu välilehtiä
     # Varmista, että käyttäjä saa varoituksen
@@ -188,7 +172,7 @@ T6C11. Test missing excel tabs
     # Testaa kaikki 4 tab
     No operation
 
-T6C12. Test missing excel headers
+T6C10. Test missing excel headers
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla josta puuttuu otsikoita
     # Varmista, että käyttäjä saa varoituksen
@@ -196,7 +180,7 @@ T6C12. Test missing excel headers
     # Päätä lopulta kuinka montako testata
     No operation
     
-T6C13. Test missing mandatory information on terminology
+T6C11. Test missing mandatory information on terminology
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla josta puuttuu pakollisia tietoja sanastosta
     # Varmista, että käyttäjä saa varoituksen
@@ -204,7 +188,7 @@ T6C13. Test missing mandatory information on terminology
     # Päätä lopulta kuinka montako testata (yksi vai useampi?)
     No operation
     
-T6C14. Test invalid information on terminology
+T6C12. Test invalid information on terminology
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla jossa on väärässä muodossa tietoa
     # Varmista, että käyttäjä saa varoituksen
@@ -212,7 +196,7 @@ T6C14. Test invalid information on terminology
     # Päätä lopulta kuinka montako testata (yksi vai useampi?)
     No operation
 
-T6C15. Test missing mandatory information on concept
+T6C13. Test missing mandatory information on concept
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla josta puuttuu pakollisia tietoja käsiteestä
     # Varmista, että käyttäjä saa varoituksen
@@ -220,7 +204,7 @@ T6C15. Test missing mandatory information on concept
     # Päätä lopulta kuinka montako testata (yksi vai useampi?)
     No operation
 
-T6C16. Test invalid information on concept
+T6C14. Test invalid information on concept
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla jossa on väärässä muodossa tietoa käsitteestä
     # Varmista, että käyttäjä saa varoituksen
@@ -228,7 +212,7 @@ T6C16. Test invalid information on concept
     # Päätä lopulta kuinka montako testata (yksi vai useampi?)
     No operation
 
-T6C17. Test missing mandatory information on concept
+T6C15. Test missing mandatory information on concept
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla josta puuttuu pakollisia tietoja termistä
     # Varmista, että käyttäjä saa varoituksen
@@ -236,7 +220,7 @@ T6C17. Test missing mandatory information on concept
     # Päätä lopulta kuinka montako testata (yksi vai useampi?)
     No operation
 
-T6C18. Test invalid information on term
+T6C16. Test invalid information on term
     # Kirjaudu sisään
     # Import sanasto excel tiedostolla jossa on väärässä muodossa tietoa termistä
     # Varmista, että käyttäjä saa varoituksen
