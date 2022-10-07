@@ -6,7 +6,7 @@ Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
 *** Test Cases ***
-T5C1. Verify create collection button is not shown without log in
+T5C1. Verify create collection button permissions
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -214,6 +214,7 @@ T5C10. Create collection, add concepts and remove them all
     ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
     ...                                  ${DRAFT}
     ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
+
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_2
     ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce2

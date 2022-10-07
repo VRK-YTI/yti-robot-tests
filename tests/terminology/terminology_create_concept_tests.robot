@@ -6,7 +6,7 @@ Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
 *** Test Cases ***
-T4C1. Verify create concept button is not shown without access rights
+T4C1. Verify create concept button permissions
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
