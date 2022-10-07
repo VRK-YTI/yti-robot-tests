@@ -1,5 +1,5 @@
 *** Settings ***
-Force Tags           T6  #Terminology  T6
+Force Tags           Terminology  T6  IGNORE
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case

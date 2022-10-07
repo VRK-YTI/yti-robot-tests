@@ -6,7 +6,7 @@ Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
 *** Test Cases ***
-T3C1. Verify create terminology button is not shown when not logged in or user without access
+T3C1. Verify create terminology button permissions
     Open terminology search page
     Verify create terminology button is not shown
     Login with no group
