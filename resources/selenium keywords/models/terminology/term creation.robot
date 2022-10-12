@@ -30,7 +30,7 @@ ${concept diagrams and sources box}    //span[text()="Käsitekaaviot ja lähteet
 ${concept diagrams decriptions input}  //textarea[@placeholder="Kirjoita kuvaus"]
 
 ${concept organization box}  //span[text()="Hallinnolliset tiedot"]
-${concept organization history change input}  //textarea[@placeholder="Kirjoita muutoshistoria"]
+${concept organization history change input}  //textarea[@id="change-history-input"]
 ${concept organization etymology input}  //textarea[@placeholder="Kirjoita termin käytön historia"]
 ${concept organization add note button}  //button[text()="Lisää uusi muistiinpano"]
 ${concept organization add note input}  //textarea[@placeholder="Kirjoita muistiinpano tai kommentti"]
@@ -84,11 +84,11 @@ ${Change recommended term homograph}    //label[text()="Termi on homonyymi"]
 ${Change recommended term extra info}    //textarea[@placeholder="Kirjoita termin lisätieto"]
 ${Change recommended term scope}    //textarea[@placeholder="Kirjoita alan nimi"]
 ${Change recommended term sources}    //textarea[@placeholder="Kirjoita kuvaus"]
-${Change recommended term Change note}    //textarea[@placeholder="Kirjoita verkkosivun tarkka osoite"] 
+${Change recommended term Change note}    //textarea[@id="change-note-input"] 
 ${Change recommended term etymology}    //textarea[@placeholder="Kirjoita termin käytön historia"]
 ${Change recommended term Admin note button}    //button[text()="Lisää uusi muistiinpano"]
 ${Change recommended term Admin note input}    //textarea[@placeholder="Kirjoita muistiinpano tai kommentti"]
-${Change recommended term Term style}    //input[@placeholder="Valitse termin tyyli"]
+${Change recommended term Term style}        //div/label[text()="Termin tyyli"]/../../div/input
 
 ${Change recommended term Term family}    //input[@placeholder="Valitse termin suku"]
 ${Change recommended term Term conjugation}    //input[@placeholder="Valitse termin luku"]
@@ -191,7 +191,7 @@ Verify new collection page is open
     Wait Until Location Contains  new-collection
 
 Verify new concept page is not open
-    Wait Until Location Does Not Contain  new-concept
+    Wait Until Location Does Not Contain  new-concept  timeout=90
 
 Add concept ${concept_name} as relation
     #Press Keys    None      TAB
@@ -407,6 +407,8 @@ Add new term to new concept
     IF  '${Term language}' != '${NONE}'
         Sleep  0.5
         Press Keys    None       TAB
+        Press Keys    None       TAB
+        Press Keys    None       TAB
         Sleep  0.5
         Click element with wait  //li[text()="${Term language}"]
     END
@@ -475,11 +477,12 @@ Add new term to new concept
         Sleep  0.5
         Press Keys    None       TAB
         Sleep  0.5
-        Click element with wait  //li[text()="${Term style}"]
+        Press Keys    None       ${Term style}
+        #Click element with wait  //li[text()="${Term style}"]
     END
     IF  '${Term family}' != '${NONE}'
         Sleep  0.5
-        Press Keys    None       TAB
+        #Press Keys    None       TAB
         Press Keys    None       TAB
         Sleep  0.5
         Click element with wait  //li[text()="${Term family}"]
@@ -553,8 +556,7 @@ Modify to prefered term information
         Input text with wait  ${Change recommended term Admin note input}  ${Admin note}
     END
     IF  '${Term style}' != '${NONE}'
-        Click element with wait  ${Change recommended term Term style}
-        Click element with wait  //li[text()="${Term style}"]
+        Input text with wait  ${Change recommended term Term style}  ${Term style}
     END
     IF  '${Term family}' != '${NONE}'
         Click element with wait  ${Change recommended term Term family}

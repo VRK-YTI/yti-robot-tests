@@ -235,39 +235,4 @@ T5C10. Create collection, add concepts and remove them all
     Save collect creation
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
-
-T5C11. Add 30 concepts to collection
-    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
-    ...                             ${VALID}
-    ...                             ${DOMAIN HOUSING}
-    ...                             ${ORGANIZATION AUTOMATION}
     
-    # TODO Find out why api gives error when more concepts are added (around 9-10)
-    #FOR    ${index}    IN RANGE    1    30
-    #    Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
-    #    ...                                  ${DEFAULT CONCEPT NAME}_${index}
-    #    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce${index}
-    #    ...                                  ${DRAFT}
-    #    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e8${index}
-    #END
-
-    Open terminology search page
-    Login with Admin
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
-    
-    # TODO change to api call if reason is found why it does not work
-    FOR    ${index}    IN RANGE    1    31
-        Create concept
-        ...  name=${DEFAULT CONCEPT NAME}_${index}
-        Select terminology ${DEFAULT TERMINOLOGY NAME} from breadcrumps
-    END
-    
-    Open create collection dialog
-    Name new collection as ${DEFAULT COLLECTION NAME}
-    Give new collection definition as definition
-    FOR    ${index}    IN RANGE    1    31
-        Add concept ${DEFAULT CONCEPT NAME}_${index} to collection
-    END
-    Save collect creation
-
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}

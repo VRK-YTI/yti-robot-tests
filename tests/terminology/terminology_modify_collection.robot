@@ -1,5 +1,5 @@
 *** Settings ***
-Force Tags           Terminology  T9  IGNORE
+Force Tags           T9  IGNORE
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case
