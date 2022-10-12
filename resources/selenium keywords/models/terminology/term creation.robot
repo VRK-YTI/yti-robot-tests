@@ -194,10 +194,6 @@ Verify new concept page is not open
     Wait Until Location Does Not Contain  new-concept  timeout=90
 
 Add concept ${concept_name} as relation
-    #Press Keys    None      TAB
-    #Press Keys    None      TAB
-    #Press Keys    None      ${concept_name}
-    #Press Keys    None      ENTER
     Click element with wait  //label/span[text()="${concept_name}"]
     Click element with wait  ${Close and add concept relation button} 
 
@@ -478,11 +474,9 @@ Add new term to new concept
         Press Keys    None       TAB
         Sleep  0.5
         Press Keys    None       ${Term style}
-        #Click element with wait  //li[text()="${Term style}"]
     END
     IF  '${Term family}' != '${NONE}'
         Sleep  0.5
-        #Press Keys    None       TAB
         Press Keys    None       TAB
         Sleep  0.5
         Click element with wait  //li[text()="${Term family}"]
