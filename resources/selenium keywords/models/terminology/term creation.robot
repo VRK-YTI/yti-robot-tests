@@ -84,7 +84,7 @@ ${Change recommended term homograph}    //label[text()="Termi on homonyymi"]
 ${Change recommended term extra info}    //textarea[@placeholder="Kirjoita termin lisätieto"]
 ${Change recommended term scope}    //textarea[@placeholder="Kirjoita alan nimi"]
 ${Change recommended term sources}    //textarea[@placeholder="Kirjoita kuvaus"]
-${Change recommended term Change note}    //textarea[@id="change-note-input"] 
+${Change recommended term Change note}    //textarea[contains(@id, "change-note-input")] 
 ${Change recommended term etymology}    //textarea[@placeholder="Kirjoita termin käytön historia"]
 ${Change recommended term Admin note button}    //button[text()="Lisää uusi muistiinpano"]
 ${Change recommended term Admin note input}    //textarea[@placeholder="Kirjoita muistiinpano tai kommentti"]
@@ -396,15 +396,19 @@ Add new term to new concept
         Sleep  0.5
         Press Keys    None       TAB
         Press Keys    None       ${homograph}
+    ELSE
+        Sleep  0.5
+        Press Keys    None       TAB
     END
-    IF  '${Term type}' != '${NONE}'
-        Click element with wait  //label[text()="${Term type}"]
-    END
+
     IF  '${Term language}' != '${NONE}'
         Sleep  0.5
         Press Keys    None       TAB
         Sleep  0.5
         Click element with wait  //li[text()="${Term language}"]
+    END
+    IF  '${Term type}' != '${NONE}'
+        Click element with wait  //label[text()="${Term type}"]
     END
     IF  '${Term status}' != '${NONE}'
         Sleep  0.5
@@ -421,6 +425,7 @@ Add new term to new concept
 
     IF  '${extra info}' != '${NONE}'
         Sleep  0.5
+        Press Keys    None       TAB
         Press Keys    None       TAB
         Sleep  0.5
         Press Keys    None       ${extra info}
