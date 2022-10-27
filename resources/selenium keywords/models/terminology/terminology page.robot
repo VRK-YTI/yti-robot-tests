@@ -1,6 +1,6 @@
 *** Variables ***
 ${Terminology title}                //span[text()="Sanaston tiedot ja toiminnot"]  |  //span[text()="Terminology"]
-${Terminology download button}      //button[contains(text(), "Lataa sanasto")]
+${Terminology download button}      //button[@id="export-terminology-button"]
 
 *** Keywords ***
 Verify page is terminology page
