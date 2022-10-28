@@ -404,8 +404,6 @@ Add new term to new concept
     IF  '${Term language}' != '${NONE}'
         Sleep  0.5
         Press Keys    None       TAB
-        Press Keys    None       TAB
-        Press Keys    None       TAB
         Sleep  0.5
         Click element with wait  //li[text()="${Term language}"]
     END
