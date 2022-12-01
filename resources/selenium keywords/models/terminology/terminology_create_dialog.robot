@@ -19,6 +19,8 @@ ${Terminology create email input}      ${Create terminology dialog}//input[@plac
 ${Select own prefix}   ${Create terminology dialog}//label[text()="Valitse oma tunnus"]
 ${Prefix input}    ${Create terminology dialog}//fieldset/div/span/div/input
 
+${Concept language finnish}  suomi FI
+
 *** Keywords ***
 Verify create terminology button is not shown
     Wait Until Page Does Not Contain Element    ${Create terminology button}

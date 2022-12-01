@@ -46,6 +46,7 @@ Create terminology with api
     ...             ${status}=${DRAFT}
     ...             ${domain}=${DOMAIN_HOUSING}
     ...             ${organization}=${ORGANIZATION_AUTOMATION}
+    ...             ${prefix}=${terminology}
 
     Set tags        Create terminology with api
     ${uuid}         Evaluate    uuid.uuid4()    modules=uuid
@@ -54,7 +55,7 @@ Create terminology with api
     ${headers}=     Create authentication header
     ${data}=        Catenate
     ...             templateGraphId=${template_graph_id}
-    ...             &prefix=${terminology}
+    ...             &prefix=${prefix}
     ${json}=        Create terminology json from file
     ...             ${JSON_FILE_FOLDER}${/}terminology_create.json
     ...             ${terminology}

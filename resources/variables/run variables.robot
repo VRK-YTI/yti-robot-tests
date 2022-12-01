@@ -12,6 +12,7 @@ ${API_KEY}                      ${EMPTY}
 ${DEFAULT TERMINOLOGY NAME}         Auto_TC
 ${DEFAULT CONCEPT NAME}             Auto_Concept
 ${DEFAULT COLLECTION NAME}          Auto_Collection
+${DEFAULT TERMINOLOGY PREFIX}       auto_prefix
 
 ${DEFAULT ORGANIZATION}             Automaatiotestaus
 ${DEFAULT DOMAIN}                   Asuminen
@@ -46,5 +47,6 @@ ${NOGROUP_EDUUNI_PASSWORD}          ${EDUUNI_EMAIL_PASSWORD}
 Set default terminology variables
     [Arguments]          ${test_case_id}
     Set Test Variable    ${DEFAULT TERMINOLOGY NAME}    ${DEFAULT TERMINOLOGY NAME}_${test_case_id}
+    Set Test Variable    ${DEFAULT TERMINOLOGY PREFIX}  ${DEFAULT TERMINOLOGY PREFIX}_${test_case_id.lower()}
     Set Test Variable    ${DEFAULT CONCEPT NAME}        ${DEFAULT CONCEPT NAME}_${test_case_id}
     Set Test Variable    ${DEFAULT COLLECTION NAME}     ${DEFAULT COLLECTION NAME}_${test_case_id}
