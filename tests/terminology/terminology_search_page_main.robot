@@ -6,20 +6,7 @@ Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
 *** Test Cases ***
-T1C1. Open terminology page and log in
-    [Tags]  PROD
-    Open terminology search page
-
-    Login with Admin
-    Log out user
-
-T1C2. Select first terminology on search page
-    [Tags]  PROD
-    ...     BETA
-    Open terminology search page
-    Select first terminology on list
-
-T1C3. Change page languages
+T1C1. Verify front page language options
     [Tags]  PROD
     ...     BETA
     Open terminology search page
@@ -33,7 +20,7 @@ T1C3. Change page languages
     Change language to finnish
     Verify search page language is finnish
 
-T1C4. Test status filter checkbox
+T1C2. Test status filter checkbox and buttons
     [Tags]  PROD
     ...     BETA
     Open terminology search page
@@ -68,15 +55,6 @@ T1C4. Test status filter checkbox
     Verify status filter Poistettu käytöstä is not Set
     Verify page does not contain terminologies with status Poistettu käytöstä
     Verify filters are defaults
-    
-    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
-
-T1C5. Test status filter buttons
-    [Tags]  PROD
-    ...     BETA
-    Open terminology search page
-    Get filter counts from search page
-    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
     
     Set filter Voimassa oleva checkbox
     Verify search page contains ${Valid count} items with filters
@@ -109,7 +87,7 @@ T1C5. Test status filter buttons
     
     Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
 
-T1C6. Test domain filter checkbox
+T1C3. Test domain filter checkbox and buttons
     [Tags]  PROD
     ...     BETA
     Open terminology search page
@@ -131,11 +109,6 @@ T1C6. Test domain filter checkbox
     Remove all filters
     Verify filters are defaults
 
-T1C7. Test domain filter buttons
-    [Tags]  PROD
-    ...     BETA
-    Open terminology search page
-
     Set filter Asuminen checkbox
     Remove filter Asuminen with button
     Verify domain filter Asuminen is not Set
@@ -146,24 +119,24 @@ T1C7. Test domain filter buttons
     Verify domain filter Demokratia is not Set
     Verify filters are defaults
 
-T1C8. Test organization selection
+T1C4. Test organization selection
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
     Open terminology search page
 
     Select organization ${DEFAULT ORGANIZATION}
     Verify organization filter ${DEFAULT ORGANIZATION} is set
-    #Verify search page contains 1 items with filters
 
     Remove filter ${DEFAULT ORGANIZATION} with button
     Verify organization filter ${DEFAULT ORGANIZATION} is not set
-    #Verify search page does not contain 1 items with filters
     Verify filters are defaults
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T1C9. Create and test Valid terminology search page
+T1C5. Create and test Valid terminology search page
     Open terminology search page
     Get filter counts from search page
 
@@ -171,14 +144,17 @@ T1C9. Create and test Valid terminology search page
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
     Verify page contains ${${Valid count}+1} terminologies with Voimassa oleva
     Verify page contains ${${Housing count}+1} terminologies with ${DEFAULT DOMAIN}
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Clear terminology search
+
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T1C10. Create and test draft terminology search page
+T1C6. Create and test draft terminology search page
     Open terminology search page
     Get filter counts from search page
 
@@ -186,13 +162,16 @@ T1C10. Create and test draft terminology search page
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
     Verify page contains ${${Draft count}+1} terminologies with Luonnos
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Clear terminology search
+
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T1C11. Create and test Superseeded terminology search page
+T1C7. Create and test Superseeded terminology search page
     Open terminology search page
     Get filter counts from search page
 
@@ -200,15 +179,18 @@ T1C11. Create and test Superseeded terminology search page
     ...                             ${SUPERSEDED}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
     Verify page contains ${${Superseded count}+1} terminologies with Korvattu
     Set filter Korvattu checkbox
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
     Clear terminology search
+
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T1C12. Create and test Retired terminology search page
+T1C8. Create and test Retired terminology search page
     Open terminology search page
     Get filter counts from search page
 
@@ -216,21 +198,25 @@ T1C12. Create and test Retired terminology search page
     ...                             ${RETIRED}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
     Verify page contains ${${Retired count}+1} terminologies with Poistettu käytöstä
     Set filter Poistettu käytöstä checkbox
     Search terminology ${DEFAULT TERMINOLOGY NAME}
     Verify search page contains 1 items with filters
     Clear terminology search
+    
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T1C13. Create and test INCOMPLETE terminology search page
-    Open terminology search page
-
+T1C9. Create and test INCOMPLETE terminology search page
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${INCOMPLETE}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
+    Open terminology search page
 
     Login with Admin
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}

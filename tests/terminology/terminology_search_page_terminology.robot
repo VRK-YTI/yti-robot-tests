@@ -6,16 +6,7 @@ Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
 *** Test Cases ***
-T2C1. Select first terminology on list and download it
-    [Tags]  PROD 
-    ...     BETA
-    Open terminology search page
-    Select first terminology on list
-    Get filter counts from search page
-
-    Download terminology
-
-T2C2. Change page languages
+T2C1. Verify terminology language options
     [Tags]  PROD 
     ...     BETA
     Open terminology search page
@@ -30,7 +21,7 @@ T2C2. Change page languages
     Change language to finnish
     Verify terminology search page language is finnish
 
-T2C3. Terminology page filter checkbox tests
+T2C2. Terminology page filter checkbox and buttons tests
     [Tags]  PROD 
     ...     BETA
     Open terminology search page
@@ -50,28 +41,20 @@ T2C3. Terminology page filter checkbox tests
     Set filter Korvattu checkbox
     Set filter Poistettu käytöstä checkbox
     Remove all filters
-    Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
-
-T2C4. Terminology page filter buttons tests
-    [Tags]  PROD 
-    ...     BETA
-    Open terminology search page
-    Select first terminology on list
-    Get filter counts from search page
-    Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
 
     Verify filter Voimassa oleva with buttons and search count ${Valid count}
     Verify filter Luonnos with buttons and search count ${Draft count}
     Verify filter Korvattu with buttons and search count ${Superseded count}
     Verify filter Poistettu käytöstä with buttons and search count ${Retired count}
-    
+
     Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
 
-T2C8. Test and create terminology with concepts
+T2C3. Test and create terminology with concepts
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
@@ -123,11 +106,12 @@ T2C8. Test and create terminology with concepts
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T2C6. Test and create terminology with collection containin concepts
+T2C4. Test and create terminology with collection containin concepts and without concepts
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
@@ -168,14 +152,6 @@ T2C6. Test and create terminology with collection containin concepts
 
     Select terminology ${DEFAULT TERMINOLOGY NAME} from breadcrumps
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
-
-T2C7. Test and create terminology with collection without concepts
-    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
-    ...                             ${DRAFT}
-    ...                             ${DOMAIN HOUSING}
-    ...                             ${ORGANIZATION AUTOMATION}
-
     ${emptylist}=                           Create List
     Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                     ${DEFAULT COLLECTION NAME}
@@ -187,6 +163,7 @@ T2C7. Test and create terminology with collection without concepts
     
     Set filter Käsitekokoelmat checkbox
     Select concept ${DEFAULT COLLECTION NAME}
+    
     Sleep  1
     Verify collection does not contain concepts
     Select terminology ${DEFAULT TERMINOLOGY NAME} from breadcrumps

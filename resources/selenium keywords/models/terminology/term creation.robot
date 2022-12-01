@@ -11,6 +11,7 @@ ${concept create cancel button}    //button[text()="Peruuta"]  |  //button[text(
 ${concept create save button}    //button[text()="Tallenna"]  |  //button[text()="Save"]
 ${Collection create save button}    //button[text()="Tallenna"]  |  //button[text()="Save"]
 ${Create concept title}  //h2[text()="Lisää uusi käsite"]  |  //h2[text()="Add new concept"]
+${Concept status label}    //label[text()="Käsitteen tila"]
 
 ${Add concept to collection button}            //button[text()="Lisää käsite käsitekokoelmaan"]  |  //button[text()="Add concept to collection"]
 ${Close and add concept to collection button}  //button[text()="Lisää käsite"]  |  //button[text()="Lisää käsitteet"]  |  //button[text()="Add concept"]  |  //button[text()="Add concepts"]
@@ -18,13 +19,20 @@ ${Close and add concept to collection button}  //button[text()="Lisää käsite"
 ${Search concept input from create dialog}     //input[@placeholder="Kirjoita hakusana"]  |  //input[@placeholder="Enter a name"]
 ${Search button from create dialog}         //button[text()="Hae"]  |  //button[text()="Search"]
 
-${Create concept button}            //button[text()="Lisää uusi käsite"]  |  //button[text()="Add new concept"] 
-${Create collection button}         //button[text()="Lisää uusi käsitekokoelma"]  |  //button[text()="Add new collection"] 
+${Create concept button}            //div[@id="search-results"]/div/button[@id="new-concept-button"]
+${Create collection button}         //button[text()="Lisää uusi käsitekokoelma"]  |  //button[text()="Add new collection"]
+${Copy terminology button}          //button[text()="Luo uusi versio sanastosta"] 
+${Copy cancel terminology button}          //button[text()="Peruuta"] 
+${Copy create terminology button}          //button[text()="Tallenna"] 
+${Copy manual prefix select}               //label[@for="prefix-input-manual"]
+${Copy manual prefix input}                //input[@id="prefix-text-input"]
 
 ${concept subject input}            //input[@placeholder="Kirjoita aihealueen nimi"]  |  //input[@placeholder="Kirjoita aihealueen nimi"]
 
 ${concept new example button}       //button[text()="Lisää uusi huomautus"]  |  //button[text()="Lisää uusi huomautus"]
 ${concept new example input}        //textarea[@placeholder="Kirjoita huomautus"]  |  //textarea[@placeholder="Kirjoita huomautus"]
+${concept new usage example button}       //button[text()="Lisää uusi käyttöesimerkki"]
+${concept new usage example input}        //textarea[@placeholder="Kirjoita esimerkki"]
 
 ${concept diagrams and sources box}    //span[text()="Käsitekaaviot ja lähteet"] 
 ${concept diagrams decriptions input}  //textarea[@placeholder="Kirjoita kuvaus"]
@@ -78,6 +86,7 @@ ${Has part concept in concepts information title}    //h3[text()="Koostumussuhte
 
 ${new term add term button}        //button[text()="Lisää uusi termi"]
 ${new term accept button}          //button[text()="Hyväksy"]
+${new term cancel button}          //*[text()="Peruuta"]
 
 ${Update recommended term button}  //span[contains(text(), "- Luonnos")]
 ${Change recommended term homograph}    //label[text()="Termi on homonyymi"]
@@ -94,10 +103,44 @@ ${Change recommended term Term family}    //input[@placeholder="Valitse termin s
 ${Change recommended term Term conjugation}    //input[@placeholder="Valitse termin luku"]
 ${Change recommended term Term word class}    //input[@placeholder="Valitse termin sanaluokka"]
 
+${Cancel change term type button}            //*[text()="Peruuta"]
+
+${Collection empty form error}          Tyhjän lomakkeen lähettäminen ei ole sallittua
+${Collection empty name error}          Nimi tai kuvaus puuttuu kieleltä
+${Collection empty definition error}    Nimi tai kuvaus puuttuu kieleltä
+
+${Copy terminology invalid prefix error}      Etuliitteen sallitut merkit ovat a-z, 0-9, alaviiva ja väliviiva
+${Copy terminology empty prefix error}        Tunnusta ei ole määritelty
+${Copy terminology in use prefix error}       Tunnus on käytössä
+
+${Term language finnish}                suomi FI
+${Term type synonym}                    Synonyymi
+${Term type recommended}                Suositettava termi
+${Term state draft}                     Luonnos
+${Term style spoken}                    puhekieli
+${Term family masculine}                maskuliini
+${Term conjugation single}              yksikkö
+${Term word class adjective}            adjektiivi
+
+${Example missing error}                Vähintään yhdeltä käyttöesimerkiltä puuttuu selite
+${Note missing error}                   Vähintään yhdeltä huomautukselta puuttuu selite
+${Admin note missing error}             Vähintään yhdeltä ylläpitäjän muistiipanolta puuttuu selite
+${Source missing error}                 Vähintään yhdeltä lähteeltä puuttuu arvo
+${Url missing error}                    Vähintään yhdeltä käsitekaaviolta puuttuu nimi ja/tai verkko-osoite
+${Status missing error}                 Käsitteen tilaa ei ole määritetty
+
+${New term missing name error}                 Termin nimeä ei ole määritetty
+${New term missing type error}                 Termin tyyppiä ei ole määritetty
+${SNew term missing language error}            Termin kieltä ei ole määritetty
 
 *** Keywords ***
+Verify concept error message ${error}
+    Wait until page contains element  //li[text()="${error}"]
+
+Verify term error message ${error}
+    Wait until page contains element  //li[text()="${error}"]
+
 Open create concept dialog
-    Open terminology information page
     Click element with wait             ${Create concept button} 
     Verify create concept dialog is open
 
@@ -112,9 +155,32 @@ Open create collection dialog
     Open terminology information page
     Click element with wait             ${Create collection button}
 
+Open copy terminology dialog
+    Open terminology information page
+    Click element with wait             ${Copy terminology button}
+
+Cancel copy terminology dialog
+    Click element with wait             ${Copy cancel terminology button}
+
+Create copy terminology dialog
+    [Arguments]     ${Valid}=${True}
+    Sleep  1
+    Click element with wait                     ${Copy create terminology button}
+    IF  '${Valid}' == '${True}'
+        Wait Until Page does not Contain element    ${Copy create terminology button}  timeout=60
+    END
+
+Input manual prefix ${prefix} on copy dialog
+    Click element with wait    ${Copy manual prefix select}                     
+    Input text with Wait       ${Copy manual prefix input}    ${prefix}       
+
 Verify page does not contain create collection button
     Open terminology information page
     Wait until page does not contain element    ${Create collection button}
+
+Verify page does not contain copy terminology button
+    Open terminology information page
+    Wait until page does not contain element    ${Copy terminology button}
 
 Give new concept defition as ${concept definition}
     Input text with wait  ${concept name input}  ${concept definition}
@@ -147,7 +213,6 @@ Save concept creation
         Verify new concept page is not open
     END
     IF  '${Valid}' == '${False}'
-        Run keyword and ignore error  Verify new concept page is not open
         Verify new concept page is open
     END
 
@@ -161,6 +226,9 @@ Save collect creation
         Run keyword and ignore error  Verify new concept page is not open
         Verify new collection page is open
     END
+
+Verify error message ${message}
+    Wait until page contains element  //li[contains(text(), "${message}")]
 
 Remove concept ${concept name} from collection creation
     Click element with wait  //span[text()="${concept name}"]
@@ -229,7 +297,6 @@ Create concept
     ...             ${change history}
     ...             ${etymology}
     ...             ${concept class}
-    ...             ${word class}
     ...             ${broader concept}
     ...             ${narrower concept}
     ...             ${Related concept}
@@ -239,19 +306,19 @@ Create concept
     ...             ${Match in other vocabulary}
     
     Save concept creation
-    ...             ${valid}=${True}
 
 Add information to concept
     [Arguments]     ${definition}=${NONE}
     ...             ${example}=${NONE}
+    ...             ${usage}=${NONE}
     ...             ${subject}=${NONE}
     ...             ${Note}=${NONE}
     ...             ${diagram}=${NONE}
     ...             ${Sources}=${NONE}
     ...             ${change history}=${NONE}
     ...             ${etymology}=${NONE}
+    ...             ${status}=${NONE}
     ...             ${concept class}=${NONE}
-    ...             ${word class}=${NONE}
     ...             ${broader concept}=${NONE}
     ...             ${narrower concept}=${NONE}
     ...             ${Related concept}=${NONE}
@@ -259,12 +326,19 @@ Add information to concept
     ...             ${Has part concept}=${NONE}
     ...             ${Related concept in other vocabulary}=${NONE}
     ...             ${Match in other vocabulary}=${NONE}
+    IF  '${status}' != '${NONE}'
+        Input text with wait  ${concept definition input}  ${definition}
+    END
     IF  '${definition}' != '${NONE}'
         Input text with wait  ${concept definition input}  ${definition}
     END
     IF  '${example}' != '${NONE}'
         Click element with wait  ${concept new example button}       
         Input text with wait  ${concept new example input}  ${example}
+    END
+    IF  '${usage}' != '${NONE}'
+        Click element with wait  ${concept new usage example button}       
+        Input text with wait  ${concept new usage example input}  ${usage}
     END
     IF  '${subject}' != '${NONE}'
         Input text with wait  ${concept subject input}  ${subject}
@@ -294,28 +368,24 @@ Add information to concept
         Press Keys    None      ${Note}
         Click element with wait   ${concept organization box}  
     END
-    IF  '${diagram}' != '${NONE}'
-        Click element with wait  ${concept diagrams and sources box}
-        Click element with wait  ${concept diagrams and sources box}
-    END
     IF  '${Sources}' != '${NONE}'
         Click element with wait  ${concept diagrams and sources box}
         Press Keys    None      TAB
         Press Keys    None      TAB
+        Press Keys    None      ENTER
         Press Keys    None      ${Sources}
+        Click element with wait  ${concept diagrams and sources box}
+    END
+    IF  '${diagram}' != '${NONE}'
+        Click element with wait  ${concept diagrams and sources box}
+        Press Keys    None      TAB
+        Press Keys    None      ENTER
         Click element with wait  ${concept diagrams and sources box}
     END
     IF  '${concept class}' != '${NONE}'
         Click element with wait  ${concept terms other information box}
         Press Keys    None      TAB
         Press Keys    None      ${concept class}
-        Click element with wait  ${concept terms other information box}
-    END
-    IF  '${word class}' != '${NONE}'
-        Click element with wait  ${concept terms other information box}
-        Press Keys    None      TAB
-        Press Keys    None      TAB
-        Click element with wait  //li[text()="${word class}"]
         Click element with wait  ${concept terms other information box}
     END
     
@@ -854,3 +924,17 @@ Try to change term type
     Click element with wait  ${Update recommended term button}
     Click element with wait  ${Change term type button}
 
+Cancel changing term type
+    Press Keys    None      TAB
+    Press Keys    None      TAB
+    Press Keys    None      ENTER
+
+Clear concept status input
+    Click element with wait  ${Concept status label}
+    Press Keys    None      TAB
+    Press Keys    None      TAB
+    Press Keys    None      ENTER
+
+
+    
+    
