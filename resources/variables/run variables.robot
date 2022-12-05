@@ -14,6 +14,9 @@ ${DEFAULT CONCEPT NAME}             Auto_Concept
 ${DEFAULT COLLECTION NAME}          Auto_Collection
 ${DEFAULT TERMINOLOGY PREFIX}       auto_prefix
 
+${DEFAULT DATAMODEL NAME}         Auto_DM
+${DEFAULT DATAMODEL PREFIX}        auto_prefix
+
 ${DEFAULT ORGANIZATION}             Automaatiotestaus
 ${DEFAULT DOMAIN}                   Asuminen
 
@@ -50,3 +53,8 @@ Set default terminology variables
     Set Test Variable    ${DEFAULT TERMINOLOGY PREFIX}  ${DEFAULT TERMINOLOGY PREFIX}_${test_case_id.lower()}
     Set Test Variable    ${DEFAULT CONCEPT NAME}        ${DEFAULT CONCEPT NAME}_${test_case_id}
     Set Test Variable    ${DEFAULT COLLECTION NAME}     ${DEFAULT COLLECTION NAME}_${test_case_id}
+
+Set default datamodel variables
+    [Arguments]          ${test_case_id}
+    Set Test Variable    ${DEFAULT DATAMODEL NAME}    ${DEFAULT DATAMODEL NAME}_${test_case_id}
+    Set Test Variable    ${DEFAULT DATAMODEL PREFIX}  ${DEFAULT DATAMODEL PREFIX}_${test_case_id.lower()}

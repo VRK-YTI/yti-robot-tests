@@ -85,6 +85,15 @@ T4C3. Create valid concept with all information and relations
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
 
+    ${definition}      Set Variable    definition
+    ${example}         Set Variable    example
+    ${subject}         Set Variable    subject
+    ${Note}            Set Variable    Note
+    ${change history}  Set Variable    change history
+    ${etymology}       Set Variable    etymology
+    ${concept class}   Set Variable    concept class
+    ${diagram}         Set Variable    diagram
+
     Open terminology search page
     Login with Admin
 
@@ -94,14 +103,13 @@ T4C3. Create valid concept with all information and relations
     Start concept creation for ${DEFAULT CONCEPT NAME}_2
 
     Add information to concept
-    ...  definition=definition
-    ...  example=example
-    ...  subject=subject
-    ...  Note=Note
-    ...  Sources=Sources
-    ...  change history=change history
-    ...  etymology=etymology
-    ...  concept class=concept class
+    ...  definition=${definition}
+    ...  example=${example}
+    ...  subject=${subject}
+    ...  Note=${Note}
+    ...  change history=${change history}
+    ...  etymology=${etymology}
+    ...  concept class=${concept class}
     ...  broader concept=${DEFAULT CONCEPT NAME}_1
     ...  narrower concept=${DEFAULT CONCEPT NAME}_1
     ...  Related concept=${DEFAULT CONCEPT NAME}_1
@@ -122,7 +130,7 @@ T4C3. Create valid concept with all information and relations
     ...  Term family=${Term family masculine}
     ...  Term conjugation=${Term conjugation single}
     ...  Term word class=${Term word class adjective}
-
+    
     Add new term to new concept
     ...  name=${DEFAULT CONCEPT NAME}_3
     ...  homograph=2
@@ -142,14 +150,16 @@ T4C3. Create valid concept with all information and relations
     ...  Term word class=${Term word class adjective}
 
     Save concept creation
+    
     Verify concept page contains all information
-    ...  definition=definition
-    ...  example=example
-    ...  subject=subject
-    ...  Note=Note
-    ...  diagram=diagram
-    ...  change history=change history
-    ...  etymology=etymology
+    ...  definition=${definition}
+    ...  example=${example}
+    ...  subject=${subject}
+    ...  Note=${Note}
+    ...  diagram=${diagram}
+    ...  change history=${change history}
+    ...  etymology=${etymology}
+    ...  concept class=${concept class}
     ...  word class=${Term word class adjective}
     ...  broader concept=${DEFAULT CONCEPT NAME}_1
     ...  narrower concept=${DEFAULT CONCEPT NAME}_1
