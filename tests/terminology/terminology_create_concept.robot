@@ -91,7 +91,7 @@ T4C3. Create valid concept with all information and relations
     ${Note}            Set Variable    Note
     ${change history}  Set Variable    change history
     ${etymology}       Set Variable    etymology
-    ${concept class}   Set Variable    concept class
+    ${concept class}   Set Variable    conceptclass
     ${diagram}         Set Variable    diagram
 
     Open terminology search page
@@ -150,7 +150,7 @@ T4C3. Create valid concept with all information and relations
     ...  Term word class=${Term word class adjective}
 
     Save concept creation
-    
+
     Verify concept page contains all information
     ...  definition=${definition}
     ...  example=${example}
