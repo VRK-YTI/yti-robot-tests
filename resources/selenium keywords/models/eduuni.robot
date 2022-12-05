@@ -28,7 +28,6 @@ Login with ${user}
 Select Superuser user
     Logging with eDuuni      ${SUPER_EDUUNI_EMAIL}  ${SUPER_EDUUNI_PASSWORD}
 
-
 Select Admin user
     Logging with eDuuni      ${ADMIN_EDUUNI_EMAIL}  ${ADMIN_EDUUNI_PASSWORD}
 

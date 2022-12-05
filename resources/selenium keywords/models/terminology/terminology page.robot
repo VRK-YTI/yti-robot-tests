@@ -10,6 +10,33 @@ Open terminology information page
     Click element with wait             ${Terminology title}
     Wait until page contains element    ${Terminology download button}
 
+Verify concept ${concept} on terminology ${terminology}
+    Select concept ${concept}
+    Select term ${concept}
+    Close term dialog
+    Select terminology ${terminology} from breadcrumps
+
+Verify collection ${collection} containing concept ${concept} on terminology ${terminology}
+    Set filter Käsitekokoelmat checkbox
+    Select concept ${collection}
+    Verify collection contains concepts
+
+    Select collection concept ${concept}
+    Verify concept is part of collection
+    Select term ${concept}
+    Close term dialog
+
+    Select terminology ${collection} from side
+    Select terminology ${terminology} from breadcrumps
+
+Verify collection ${collection} on terminology ${terminology} does not contain concepts
+    Set filter Käsitekokoelmat checkbox
+    Select concept ${collection}
+    
+    Sleep  1
+    Verify collection does not contain concepts
+    Select terminology ${terminology} from breadcrumps
+
 Select concept ${concept}
     click element with wait  //h2[text()="${concept}"] 
 

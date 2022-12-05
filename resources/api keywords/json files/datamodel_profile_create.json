@@ -1,0 +1,201 @@
+{
+  "@graph": {
+    "@id": "http://uri.suomi.fi/datamodel/ns/${prefix}",
+    "@type": [
+      "owl:Ontology",
+      "dcap:DCAP"
+    ],
+    "contributor": [
+      {
+        "@id": "urn:uuid:${organisation}",
+        "@type": "foaf:Organization",
+        "prefLabel": {
+          "fi": "Testiorganisaatio"
+        }
+      }
+    ],
+    "created": "2021-11-01T11:16:42.379Z",
+    "isPartOf": [
+      {
+        "@id": "http://urn.fi/URN:NBN:fi:au:ptvl:v1001",
+        "identifier": "${service}",
+        "label": {
+          "fi": "Asuminen"
+        }
+      }
+    ],
+    "language": [
+      "fi",
+      "en",
+      "sv"
+    ],
+    "modified": "2021-11-01T11:16:42.379Z",
+    "preferredXMLNamespaceName": "http://uri.suomi.fi/datamodel/ns/${prefix}#",
+    "preferredXMLNamespacePrefix": "${prefix}",
+    "label": {
+      "fi": "${model}"
+    },
+    "versionInfo": "DRAFT",
+    "comment": {
+      "fi": "${model}"
+    },
+    "useContext": "InformationDescription",
+    "contact": {},
+    "documentation": {}
+  },
+  "@context": {
+    "prefLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "@container": "@language"
+    },
+    "rest": {
+      "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+      "@type": "@id"
+    },
+    "first": {
+      "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first"
+    },
+    "identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "label": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#label",
+      "@container": "@language"
+    },
+    "language": {
+      "@id": "http://purl.org/dc/terms/language",
+      "@container": "@list"
+    },
+    "preferredXMLNamespacePrefix": {
+      "@id": "http://purl.org/ws-mmi-dc/terms/preferredXMLNamespacePrefix"
+    },
+    "modified": {
+      "@id": "http://purl.org/dc/terms/modified",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "versionInfo": {
+      "@id": "http://www.w3.org/2002/07/owl#versionInfo"
+    },
+    "preferredXMLNamespaceName": {
+      "@id": "http://purl.org/ws-mmi-dc/terms/preferredXMLNamespaceName"
+    },
+    "created": {
+      "@id": "http://purl.org/dc/terms/created",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "contributor": {
+      "@id": "http://purl.org/dc/terms/contributor",
+      "@type": "@id"
+    },
+    "isPartOf": {
+      "@id": "http://purl.org/dc/terms/isPartOf",
+      "@type": "@id"
+    },
+    "dcap": "http://purl.org/ws-mmi-dc/terms/",
+    "schema": "http://schema.org/",
+    "void": "http://rdfs.org/ns/void#",
+    "adms": "http://www.w3.org/ns/adms#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "dcam": "http://purl.org/dc/dcam/",
+    "skosxl": "http://www.w3.org/2008/05/skos-xl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "afn": "http://jena.hpl.hp.com/ARQ/function#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "iow": "http://uri.suomi.fi/datamodel/ns/iow#",
+    "sd": "http://www.w3.org/ns/sparql-service-description#",
+    "at": "http://publications.europa.eu/ontology/authority/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "text": "http://jena.apache.org/text#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "httpv": "http://www.w3.org/2011/http#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "ts": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "comment": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#comment",
+      "@container": "@language"
+    },
+    "definition": {
+      "@id": "http://www.w3.org/2004/02/skos/core#definition",
+      "@container": "@language"
+    },
+    "hasPart": {
+      "@id": "http://purl.org/dc/terms/hasPart",
+      "@type": "@id"
+    },
+    "homepage": {
+      "@id": "http://xmlns.com/foaf/0.1/homepage"
+    },
+    "imports": {
+      "@id": "http://www.w3.org/2002/07/owl#imports",
+      "@type": "@id"
+    },
+    "isDefinedBy": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "@type": "@id"
+    },
+    "nodeKind": {
+      "@id": "http://www.w3.org/ns/shacl#nodeKind",
+      "@type": "@id"
+    },
+    "title": {
+      "@id": "http://purl.org/dc/terms/title",
+      "@container": "@language"
+    },
+    "editorialNote": {
+      "@id": "http://www.w3.org/2004/02/skos/core#editorialNote",
+      "@container": "@language"
+    },
+    "localName": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#localName"
+    },
+    "status": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#status"
+    },
+    "creator": {
+      "@id": "http://purl.org/dc/terms/creator"
+    },
+    "description": {
+      "@id": "http://purl.org/dc/terms/description",
+      "@container": "@language"
+    },
+    "rootResource": {
+      "@id": "http://rdfs.org/ns/void#rootResource",
+      "@type": "@id"
+    },
+    "references": {
+      "@id": "http://purl.org/dc/terms/references",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "http://purl.org/dc/terms/requires",
+      "@type": "@id"
+    },
+    "relations": {
+      "@id": "http://purl.org/dc/terms/relation",
+      "@container": "@list"
+    },
+    "codeLists": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#codeLists",
+      "@type": "@id"
+    },
+    "useContext": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#useContext"
+    },
+    "contact": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#contact",
+      "@container": "@language"
+    },
+    "wasRevisionOf": {
+      "@id": "http://www.w3.org/ns/prov#wasRevisionOf",
+      "@type": "@id"
+    },
+    "documentation": {
+      "@id": "http://uri.suomi.fi/datamodel/ns/iow#documentation",
+      "@container": "@language"
+    }
+  }
+}

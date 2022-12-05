@@ -43,6 +43,9 @@ T5C2. Verify collection creation error messages
     Give new collection definition as definition
     Save collect creation
     ...   Valid=${False}
+    # TODO remove when bug is fixed
+    Save collect creation
+    ...   Valid=${False}
     Verify error message ${Collection empty name error}
 
     Name new collection as ${DEFAULT COLLECTION NAME}
@@ -94,5 +97,9 @@ T5C3. Create valid collection with multiple concepts
     Add concept ${DEFAULT CONCEPT NAME}_3 to collection
     Remove concept ${DEFAULT CONCEPT NAME}_3 from collection creation
     Save collect creation
+
+    Select terminology ${DEFAULT TERMINOLOGY NAME} from breadcrumps
+    Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME}_1 on terminology ${DEFAULT TERMINOLOGY NAME}
+    Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME}_2 on terminology ${DEFAULT TERMINOLOGY NAME}
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}

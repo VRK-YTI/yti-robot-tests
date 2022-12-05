@@ -31,6 +31,18 @@ T10C2. Create valid copy with automatically generated prefix
     ...                             ${ORGANIZATION AUTOMATION}
     ...                             ${DEFAULT TERMINOLOGY PREFIX}
 
+    Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
+    ...                                  ${DEFAULT CONCEPT NAME}
+    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  ${DRAFT}
+    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
+
+    ${members}=    Create List              04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
+    ...                                     ${DEFAULT COLLECTION NAME}
+    ...                                     ${COLLECTION ID DEFAULT}
+    ...                                     ${members}
+
     Open terminology search page
 
     Login with admin
@@ -38,6 +50,13 @@ T10C2. Create valid copy with automatically generated prefix
 
     Open copy terminology dialog
     Create copy terminology dialog
+    
+    # TODO bug where concept is not shown before refreshing page
+    Sleep  2
+    Reload page
+
+    Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
+    Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
@@ -48,6 +67,18 @@ T10C3. Create valid copy with own prefix
     ...                             ${ORGANIZATION AUTOMATION}
     ...                             ${DEFAULT TERMINOLOGY PREFIX}
 
+    Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
+    ...                                  ${DEFAULT CONCEPT NAME}
+    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  ${DRAFT}
+    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
+
+    ${members}=    Create List              04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
+    ...                                     ${DEFAULT COLLECTION NAME}
+    ...                                     ${COLLECTION ID DEFAULT}
+    ...                                     ${members}
+
     Open terminology search page
 
     Login with admin
@@ -57,6 +88,13 @@ T10C3. Create valid copy with own prefix
     Input manual prefix new_${DEFAULT TERMINOLOGY PREFIX} on copy dialog
     
     Create copy terminology dialog
+
+    # TODO bug where concept is not shown before refreshing page
+    Sleep  2
+    Reload page
+
+    Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
+    Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
