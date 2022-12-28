@@ -19,7 +19,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Tags]    regression    test    100
     Click Element with wait    ${LICENSE_LINK}
 
-    Switch window with wait     url=https://ec.europa.eu/info/european-union-public-licence
+    Switch window with wait     url=https://commission.europa.eu/content/european-union-public-licence_en
     Wait Until Page Contains    European Union Public Licence
     Wait Until Page Contains    What is the EUPL?
 
