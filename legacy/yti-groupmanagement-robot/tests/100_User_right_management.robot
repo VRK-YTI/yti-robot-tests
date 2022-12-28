@@ -21,7 +21,7 @@ Resource          ../resources/resources_and_libraries.robot
     [Documentation]    Verify that European Union Public Licence page is opened correctly. YTI-877.
     [Tags]    regression    rhp    test
     Click Element with wait   ${EUPL_LICENCE_LINK}
-    Switch window with wait         url=https://ec.europa.eu/info/european-union-public-licence
+    Switch window with wait         url=https://commission.europa.eu/content/european-union-public-licence_en
     Wait Until Page Contains        European Union Public Licence    timeout=30
     Wait Until Page Contains        What is the EUPL?    timeout=30
 

@@ -35,7 +35,7 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
 
     Click element with wait     ${EUPL_LICENCE_PAGE}    
 
-    Switch window with wait     url=https://ec.europa.eu/info/european-union-public-licence
+    Switch window with wait     url=https://commission.europa.eu/content/european-union-public-licence_en
 
     Wait Until Page Contains    European Union Public Licence    
     Wait Until Page Contains    What is the EUPL?    

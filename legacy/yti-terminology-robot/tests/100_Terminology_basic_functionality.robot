@@ -32,7 +32,7 @@ ${NAVIGATION_MENU_DDL}    id=nav_item_dropdown_link
     [Tags]    regression    sanastot    test    100
     Click Element with wait         ${EUPL_LICENCE_LINK}
 
-    Switch window with wait    url=https://ec.europa.eu/info/european-union-public-licence
+    Switch window with wait    url=https://commission.europa.eu/content/european-union-public-licence_en
     Wait Until Page Contains        European Union Public Licence       timeout=30
     Wait Until Page Contains        What is the EUPL?                   timeout=30
 
