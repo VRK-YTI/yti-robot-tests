@@ -69,7 +69,7 @@ Clear terminology search
     
 Search and select terminology ${Terminology}
     Search terminology ${Terminology}
-    Click element with wait           //h2[contains(text(), "${Terminology}")]
+    Click element with wait           //h2/span/b[contains(text(), "${Terminology}")]
     Verify page is terminology page
 
 Get status count from ${filter} filter

@@ -34,8 +34,9 @@ Create terminology from dialog
     ...             ${prefix}
     ...             ${email}
     ...             ${another vocabulary}=${NONE}
-    Open create terminology dialog    
-    Click element with wait  ${Select fill information}    
+    Open create terminology dialog  
+    # Radio button select has been disabled for now  
+    # Click element with wait  ${Select fill information}    
 
     IF  '${language}' != '${NONE}'
         Click element with wait  ${Terminology select language input}

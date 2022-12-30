@@ -58,7 +58,6 @@ T4C2. Verify concept creation error messages
 
     Verify concept error message ${Admin note missing error}
     Verify concept error message ${Note missing error}
-    Verify concept error message ${Status missing error}
     Verify concept error message ${Example missing error} 
     Verify concept error message ${Source missing error} 
     Verify concept error message ${Url missing error}

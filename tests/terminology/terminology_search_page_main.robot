@@ -25,7 +25,7 @@ T1C2. Test status filter checkbox and buttons
     ...     BETA
     Open terminology search page
     Get filter counts from search page
-    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
+    Verify search page contains ${Draft + Valid count} items with filters
     
     Set filter Voimassa oleva checkbox
     Verify search page contains ${Valid count} items with filters
@@ -85,7 +85,7 @@ T1C2. Test status filter checkbox and buttons
     Verify page does not contain terminologies with status Poistettu käytöstä
     Verify filters are defaults
     
-    Verify search page contains ${Draft + Valid + retired + Superseded count} items with filters
+    Verify search page contains ${Draft + Valid count} items with filters
 
 T1C3. Test domain filter checkbox and buttons
     [Tags]  PROD

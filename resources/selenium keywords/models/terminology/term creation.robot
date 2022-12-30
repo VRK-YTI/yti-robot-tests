@@ -876,7 +876,7 @@ Verify term page does not contain all information
     ...             ${Term conjugation}=${NONE}
     ...             ${Term word class}=${NONE}
     Click element with wait           //span/span/button[text()="${name}"]
-    Wait until page contains element  //h2[text()="${name}"]
+    Wait until page contains element  //h2/span[text()="${name}"]
 
     IF  '${homograph}' != '${NONE}'
         Wait until page does not contain element  ${homograph in term information title}
