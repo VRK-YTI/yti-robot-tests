@@ -38,7 +38,7 @@ Verify collection ${collection} on terminology ${terminology} does not contain c
     Select terminology ${terminology} from breadcrumps
 
 Select concept ${concept}
-    click element with wait  //h2[text()="${concept}"] 
+    click element with wait  //h2/span[text()="${concept}"] 
 
 Select collection concept ${concept} 
     click element with wait  //a[text()="${concept}"] 

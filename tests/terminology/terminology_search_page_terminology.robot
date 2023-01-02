@@ -28,13 +28,13 @@ T2C2. Terminology page filter checkbox and buttons tests
     Select first terminology on list
     Get filter counts from search page
 
-    Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
+    Verify concepts search page contains ${Draft + Valid count} items with filters
 
     Verify filter Voimassa oleva with checkbox and search count ${Valid count}
     Verify filter Luonnos with checkbox and search count ${Draft count}
     Verify filter Korvattu with checkbox and search count ${Superseded count}
     Verify filter Poistettu käytöstä with checkbox and search count ${Retired count}
-    Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
+    Verify concepts search page contains ${Draft + Valid count} items with filters
 
     Set filter Voimassa oleva checkbox
     Set filter Luonnos checkbox
@@ -47,7 +47,7 @@ T2C2. Terminology page filter checkbox and buttons tests
     Verify filter Korvattu with buttons and search count ${Superseded count}
     Verify filter Poistettu käytöstä with buttons and search count ${Retired count}
 
-    Verify concepts search page contains ${Draft + Valid + Superseded + Retired count} items with filters
+    Verify concepts search page contains ${Draft + Valid count} items with filters
 
 T2C3. Test and create terminology with concepts
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
