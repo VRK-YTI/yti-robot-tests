@@ -494,9 +494,11 @@ Add new term to new concept
     END
 
     IF  '${extra info}' != '${NONE}'
-        Sleep  0.5
-        Press Keys    None       TAB
-        Press Keys    None       TAB
+        IF  '${BROWSER}' == 'headlesschrome'
+            Sleep  0.5
+            Press Keys    None       TAB
+            Press Keys    None       TAB
+        END
         Sleep  0.5
         Press Keys    None       ${extra info}
     END

@@ -72,7 +72,7 @@ T3C2. Verify create terminology error messages
     Verify dialog is not open
 
     Open terminology search page
-
+    
     Create terminology from dialog  
     ...  language=${Concept language finnish}
     ...  title=${DEFAULT TERMINOLOGY NAME}_2

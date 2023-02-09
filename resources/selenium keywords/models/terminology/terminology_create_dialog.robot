@@ -41,6 +41,7 @@ Create terminology from dialog
     IF  '${language}' != '${NONE}'
         Click element with wait  ${Terminology select language input}
         Click element with wait  //li[text()="${language}"]
+        Press Keys               None  TAB
     END
     IF  '${title}' != '${NONE}'
         Input text with wait    ${Terminology title input}    ${title}
@@ -49,30 +50,43 @@ Create terminology from dialog
         Input text with wait    ${Terminology description input}    ${description}
     END
     IF  '${organization}' != '${NONE}'
-        Mouse over  ${Terminology select organization input}
+        Scroll create dialog down
         Click element with wait  ${Terminology select organization input}
         Click element with wait  //li[text()="${organization}"]
     END
     IF  '${domain}' != '${NONE}'
-        Mouse over  ${Terminology select domain input}
+        Scroll create dialog down
         Click element with wait  ${Terminology select domain input}
         Click element with wait  //li[text()="${domain}"]
         Press Keys               None  TAB
     END
     IF  '${prefix}' != '${NONE}'
+        Scroll create dialog down
         Click element with wait  ${Select own prefix}
-        Input text with wait  ${Prefix input}  ${prefix}
+        Press Keys               None  TAB
+        Press Keys               None  ${prefix}
+        #Input text with wait  ${Prefix input}  ${prefix}
     END
     IF  '${email}' != '${NONE}'
+        Scroll create dialog down
         Input text with wait  ${Terminology create email input}  ${email}
+        #Press Keys               None  TAB
     END
     IF  '${another vocabulary}' != '${NONE}'
+        Scroll create dialog down
         Click element with wait  ${Select different terminology}
     END
     Sleep  1
-    #Mouse over  ${Create terminology button dialog}
+
     Click element with wait  ${Create terminology button dialog}  
-    
+
+Scroll create dialog down
+    # Quick fix, element is in way of the input, so dialog has to be scrolled
+    Click element with wait  //h1[text()="Lisää uusi sanasto"]
+    FOR    ${index}    IN RANGE    1    12
+        Press Keys               None  TAB
+    END  
+
 Verify alert ${alert}
     Wait until page contains element  //*[contains(text(), "${alert}")]
 

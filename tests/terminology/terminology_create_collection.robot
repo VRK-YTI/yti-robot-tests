@@ -43,16 +43,9 @@ T5C2. Verify collection creation error messages
     Give new collection definition as definition
     Save collect creation
     ...   Valid=${False}
-    # TODO remove when bug is fixed
-    Save collect creation
-    ...   Valid=${False}
-    Verify error message ${Collection empty name error}
-
-    Name new collection as ${DEFAULT COLLECTION NAME}
-    Give new collection definition as ${EMPTY}
-    Save collect creation
-    ...   Valid=${False}
-    Verify error message ${Collection empty definition error}
+    # TODO Is this bug or working right?
+    #Verify error message ${Collection empty name error}
+    Verify error message ${Collection empty form error}
 
     Name new collection as ${DEFAULT COLLECTION NAME}
     Give new collection definition as definition

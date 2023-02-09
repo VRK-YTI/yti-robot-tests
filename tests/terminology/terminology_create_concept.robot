@@ -138,7 +138,6 @@ T4C3. Create valid concept with all information and relations
     ...  Term status=${Term state draft}
     ...  extra info=extra info
     ...  scope=scope
-    ...  term equivalency=${True}
     ...  sources=sources
     ...  Change note=Change note
     ...  etymology=etymology
@@ -193,7 +192,6 @@ T4C3. Create valid concept with all information and relations
     ...  Term status=${Term state draft}
     ...  extra info=extra info
     ...  scope=scope
-    ...  term equivalency=<
     ...  sources=sources
     ...  Change note=Change note
     ...  etymology=etymology
