@@ -55,6 +55,13 @@ T10C2. Create valid copy with automatically generated prefix
     Sleep  2
     Reload page
 
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME} (Copy)
+    Verify displayed status is Luonnos
+    Verify displayed domains are Asuminen
+    Verify displayed organizations are Automaatiotestaus
+    Verify displayed languages are suomi FI
+    Verify displayed type is Terminologinen sanasto
+
     Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
     Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
 
@@ -92,6 +99,14 @@ T10C3. Create valid copy with own prefix
     # TODO bug where concept is not shown before refreshing page
     Sleep  2
     Reload page
+
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME} (Copy)
+    Verify displayed status is Luonnos
+    Verify displayed domains are Asuminen
+    Verify displayed organizations are Automaatiotestaus
+    Verify displayed languages are suomi FI
+    Verify displayed type is Terminologinen sanasto
+    Verify displayed url contains new_${DEFAULT TERMINOLOGY PREFIX}
 
     Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
     Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)

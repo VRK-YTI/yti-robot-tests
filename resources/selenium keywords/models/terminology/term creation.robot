@@ -105,9 +105,7 @@ ${Change recommended term Term word class}    //input[@placeholder="Valitse term
 
 ${Cancel change term type button}            //*[text()="Peruuta"]
 
-${Collection empty form error}          Tyhjän lomakkeen lähettäminen ei ole sallittua
-${Collection empty name error}          Nimi tai kuvaus puuttuu kieleltä
-${Collection empty definition error}    Nimi tai kuvaus puuttuu kieleltä
+${Collection empty name error}          Käsitekokoelman nimi tulee olla määritettynä vähintään yhdellä kielellä.
 
 ${Copy terminology invalid prefix error}      Etuliitteen sallitut merkit ovat a-z, 0-9, alaviiva ja väliviiva
 ${Copy terminology empty prefix error}        Tunnusta ei ole määritelty
@@ -148,15 +146,15 @@ Verify concept creation name is not empty error
     Wait until page contains element  ${concept name is empty error}
 
 Verify page does not contain create concept button
-    Open terminology information page
+    Open terminology information
     Wait until page does not contain element    ${Create concept button} 
 
 Open create collection dialog
-    Open terminology information page
+    Open terminology information
     Click element with wait             ${Create collection button}
 
 Open copy terminology dialog
-    Open terminology information page
+    Open terminology information
     Click element with wait             ${Copy terminology button}
 
 Cancel copy terminology dialog
@@ -175,11 +173,11 @@ Input manual prefix ${prefix} on copy dialog
     Input text with Wait       ${Copy manual prefix input}    ${prefix}       
 
 Verify page does not contain create collection button
-    Open terminology information page
+    Open terminology information
     Wait until page does not contain element    ${Create collection button}
 
 Verify page does not contain copy terminology button
-    Open terminology information page
+    Open terminology information
     Wait until page does not contain element    ${Copy terminology button}
 
 Give new concept defition as ${concept definition}

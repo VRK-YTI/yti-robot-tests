@@ -1,5 +1,5 @@
 *** Settings ***
-Force Tags           T7  IGNORE
+Force Tags           T7  TERMINOLOGY
 Resource             ../../tests/setup_and_teardowns.robot
 Library              ../../resources/common keywords/helpers.py
 Test Setup           Setup test Case
@@ -8,62 +8,189 @@ Test Teardown        Teardown test Case
 
 *** Test Cases ***
 T7C1. Verify modify terminology button permissions
-    # Luo sanasto kaikilla tiedoilla
-    # Avaa sanasto
-    # Tarkista, että muokkaus painiketta ei näy
-    #
-    # Kirjaudu sisään käyttäjällä ilman oikeuksia
-    # Tarkista, että muokkaus painiketta ei näy
-    #
-    # Kirjaudu sisään käyttäjällä, jolla on oikeudet
-    # Varmista, että muokkaus painike näkyy
-    # Paina muokkausta
-    # Lopeta muokkaus kesken
-    # Poista sanasto
-    No operation
+    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
+    ...                             ${VALID}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
+    Open terminology search page
+    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
+    Verify modify terminology button is not shown
+
+    Login with No group
+    Verify modify terminology button is not shown
+    
+    # Close browser and open it again, because of eduuni cache
+    Close Browser
+    Open Browser with Settings
+    Open terminology search page
+    Login with Admin
+    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
+    Open modify terminology dialog
+    Cancel modify terminology
+
+    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C2. Modify terminology
-    # Luo sanasto kaikilla tiedoilla
-    # Avaa sanasto
-    #
-    # Aloita muokkaus
-    # Muokkaa kaikkia tietoja
-    # Tarkista tiedot
-    #
-    # Aloita muokkaus
-    # Poista kaikki valinnaiset tiedot
-    # Tarkista tiedot
-    #
-    # Aloita muokkaus
-    # Muokkaa kaikki tiedot ja lisää kenttiin ja lisää useampia vaihtoehtoja (kieli, alue, tietoalue)
-    # Tarkista tiedot
-    #
-    # Poista sanasto
-    No operation
+    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
+    ...                             ${VALID}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
+    Open terminology search page
+    Login with Admin
+    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
+
+    Open modify terminology dialog
+    Input finish name ${DEFAULT TERMINOLOGY NAME}_1 on modify terminology
+    Input finish definition definition on modify terminology
+
+    Select status Luonnos on modify terminology
+
+    Input contact ${ADMIN_EDUUNI_EMAIL} on modify terminology
+    Save terminolgy modify
+
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}_1
+    Verify displayed status is Luonnos
+    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
+    Verify displayed domains are Asuminen
+    Verify displayed organizations are Automaatiotestaus
+    Verify displayed languages are suomi FI
+    Verify displayed type is Terminologinen sanasto
+    Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
+
+    Open modify terminology dialog
+
+    Select language englanti EN on modify terminology
+    Select language ruotsi SV on modify terminology
+
+    Input finish name ${DEFAULT TERMINOLOGY NAME}_2 on modify terminology
+    Input finish definition definition on modify terminology
+    Input english name ${DEFAULT TERMINOLOGY NAME}_2 on modify terminology
+    Input english definition definition on modify terminology
+    Input swedish name ${DEFAULT TERMINOLOGY NAME}_2 on modify terminology
+    Input swedish definition definition on modify terminology
+
+    On modify terminology select organization Testiorganisaatio
+    Select domain Demokratia on modify terminology
+
+    Select type other on modify terminology
+    Select prefix manual on modify terminology
+    Input prefix ${DEFAULT TERMINOLOGY PREFIX}_1 on modify terminology
+
+    Save terminolgy modify
+
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}_2
+    Verify displayed english name is ${DEFAULT TERMINOLOGY NAME}_2
+    Verify displayed swedish name is ${DEFAULT TERMINOLOGY NAME}_2
+    Verify displayed finish description is definition
+    Verify displayed english description is definition
+    Verify displayed swedish description is definition
+    Verify displayed status is Luonnos
+    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
+    Verify displayed domains are Asuminen, Demokratia
+    Verify displayed organizations are Automaatiotestaus
+    Verify displayed organizations are Testiorganisaatio
+    Verify displayed languages are suomi FI, englanti EN, ruotsi SV
+    Verify displayed type is Muu sanasto
+    # TODO bug prefix modify does not work
+    #Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}_1
+
+    Open modify terminology dialog
+
+    Select language englanti EN on modify terminology
+    Select language ruotsi SV on modify terminology
+
+    Input finish name ${DEFAULT TERMINOLOGY NAME} on modify terminology
+    Input finish definition ${EMPTY} on modify terminology
+
+    On modify terminology select organization Testiorganisaatio
+    Select domain Demokratia on modify terminology
+
+    Select type terminology on modify terminology
+    Select prefix automatic on modify terminology
+
+    Select status Voimassa oleva on modify terminology
+
+    Input contact ${EMPTY} on modify terminology
+    Save terminolgy modify  
+
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
+    Verify displayed status is Voimassa oleva
+    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
+    Verify displayed domains are Asuminen
+    Verify displayed organizations are Automaatiotestaus
+    Verify displayed languages are suomi FI
+    Verify displayed type is Terminologinen sanasto
+    Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
+
+    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C3. Verify modify terminology errors
-    # Luo sanasto kaikilla tiedoilla
-    # Avaa sanasto
-    # Aloita muokkaus
-    #
-    # Poista kieli
-    # Tarkista virhe ilmoitus
-    # Valitse kieli, mutta jätä se tyhjästi
-    # Tarkista virhe ilmoitus 
-    # Anna kieli uudestaan
-    #
-    # Poista status
-    # Tarkista virhe ilmoitus
-    # Anna status takaisin
-    #
-    # Poista tietoalue
-    # Tarkista virhe ilmoitus
-    # Anna tietoalue takaisin
-    #
-    # Poista Sisällöntuottajat
-    # Tarkista virhe ilmoitus
-    # Anna Sisällöntuottajat takaisin
-    #
-    # Poista sanasto
-    No operation
+    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
+    ...                             ${VALID}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}
+
+    Open terminology search page
+    Login with Admin
+    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
+
+    Open modify terminology dialog
+
+    Select language suomi FI on modify terminology
+    Save terminolgy modify  
+    ...  False
+    Verify modify terminology error message ${Terminology modify languages are not set error}
+
+    Select language suomi FI on modify terminology
+    Save terminolgy modify  
+    ...  False
+    Verify modify terminology error message ${Terminology modify name missing from finish error}
+    Input finish name ${DEFAULT TERMINOLOGY NAME} on modify terminology
+
+    Select language englanti EN on modify terminology
+    Select language ruotsi SV on modify terminology
+    Save terminolgy modify  
+    ...  False
+    Verify modify terminology error message ${Terminology modify name missing from english error}
+    Verify modify terminology error message ${Terminology modify name missing from swedish error}
+
+    Input finish name ${DEFAULT TERMINOLOGY NAME} on modify terminology
+    Input english name ${DEFAULT TERMINOLOGY NAME} on modify terminology
+    Input swedish name ${DEFAULT TERMINOLOGY NAME} on modify terminology
+
+    Remove selected status on modify terminology
+    On modify terminology select organization Automaatiotestaus
+    Select domain Asuminen on modify terminology
+    Select prefix manual on modify terminology
+
+    Save terminolgy modify  
+    ...  False
+    Verify modify terminology error message ${Terminology modify status missing error}
+    Verify modify terminology error message ${Terminology modify contributors missing error}
+    Verify modify terminology error message ${Terminology modify domain missing error}
+    Verify modify terminology error message ${Terminology modify prefix missing error}
+
+    Select status Voimassa oleva on modify terminology
+    On modify terminology select organization Automaatiotestaus
+    Select domain Asuminen on modify terminology
+    Input prefix ${DEFAULT TERMINOLOGY PREFIX} on modify terminology
+    
+    Save terminolgy modify
+
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
+    Verify displayed english name is ${DEFAULT TERMINOLOGY NAME}
+    Verify displayed swedish name is ${DEFAULT TERMINOLOGY NAME}
+    Verify displayed status is Voimassa oleva
+    Verify displayed domains are Asuminen
+    Verify displayed organizations are Automaatiotestaus
+    Verify displayed languages are suomi FI, englanti EN, ruotsi SV
+    Verify displayed type is Terminologinen sanasto
+    Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
+
+    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 

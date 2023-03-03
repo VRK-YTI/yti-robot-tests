@@ -36,16 +36,14 @@ T5C2. Verify collection creation error messages
 
     Open create collection dialog
     Save collect creation
-    ...   Valid=${False}
-    Verify error message ${Collection empty form error}
+    ...  Valid=${False}
+    Verify error message ${Collection empty name error}
 
     Name new collection as ${EMPTY}
     Give new collection definition as definition
     Save collect creation
-    ...   Valid=${False}
-    # TODO Is this bug or working right?
-    #Verify error message ${Collection empty name error}
-    Verify error message ${Collection empty form error}
+    ...  Valid=${False}
+    Verify error message ${Collection empty name error}
 
     Name new collection as ${DEFAULT COLLECTION NAME}
     Give new collection definition as definition

@@ -101,6 +101,13 @@ T3C3. Create valid terminology from dialog
     ...  prefix=${NONE}
     ...  email=${NONE}
     Verify dialog is not open
+
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
+    Verify displayed status is Luonnos
+    Verify displayed domains are ${DEFAULT DOMAIN}
+    Verify displayed organizations are ${DEFAULT ORGANIZATION}
+    Verify displayed languages are ${Concept language finnish}
+    Verify displayed type is Terminologinen sanasto
     
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
@@ -119,6 +126,14 @@ T3C4. Create other vocabulary with email and custom prefix
     ...  another vocabulary=${True}
 
     Verify dialog is not open
-    Verify terminology is not vocabulary Terminologinen sanasto
+
+    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
+    Verify displayed status is Luonnos
+    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
+    Verify displayed domains are ${DEFAULT DOMAIN}
+    Verify displayed organizations are ${DEFAULT ORGANIZATION}
+    Verify displayed languages are ${Concept language finnish}
+    Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
+    Verify displayed type is Muu sanasto
     
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}

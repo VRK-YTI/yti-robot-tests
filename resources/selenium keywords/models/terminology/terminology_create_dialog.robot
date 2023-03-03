@@ -2,13 +2,12 @@
 Library    SeleniumLibrary
 
 *** Variables ***
-${Create terminology button}      //button[text()="Lisää uusi sanasto"]  |  //button[text()="Add new terminology"]
 ${Create terminology dialog}      //div[@role="dialog"]
 ${Select fill information}        ${Create terminology dialog}//label[text()="Täytän tiedot itse"]
 ${Select import file}             ${Create terminology dialog}//label[text()="Tuon tiedostolla"]
 ${Select different terminology}   ${Create terminology dialog}//label[text()="Muu sanasto"]
-${Create terminology button dialog}       ${Create terminology dialog}//button[text()="Lisää sanasto"]
-${Cancel creating terminology button}     ${Create terminology dialog}//button[text()="Keskeytä"]
+${Create terminology button dialog}       ${Create terminology dialog}//button[@id="submit-button"]
+${Cancel creating terminology button}     ${Create terminology dialog}//button[@id="cancel-button"]
 ${Terminology select language input}      ${Create terminology dialog}//input[@placeholder="Valitse sanaston kielet"]
 ${Terminology title input}             ${Create terminology dialog}//input[@placeholder="Kirjoita otsikko"]
 ${Terminology description input}       ${Create terminology dialog}//textarea[@placeholder="Kirjoita kuvaus"]
@@ -22,9 +21,6 @@ ${Prefix input}    ${Create terminology dialog}//fieldset/div/span/div/input
 ${Concept language finnish}  suomi FI
 
 *** Keywords ***
-Verify create terminology button is not shown
-    Wait Until Page Does Not Contain Element    ${Create terminology button}
-
 Create terminology from dialog
     [Arguments]     ${language} 
     ...             ${title}
@@ -89,9 +85,6 @@ Scroll create dialog down
 
 Verify alert ${alert}
     Wait until page contains element  //*[contains(text(), "${alert}")]
-
-Open create terminology dialog
-    Click element with wait  ${Create terminology button}  
 
 Cancel creating terminology dialog
     Click element with wait  ${Cancel creating terminology button}
