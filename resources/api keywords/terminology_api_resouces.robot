@@ -14,6 +14,7 @@ ${DOMAIN_HOUSING}=                      9ba19f8d-d688-39cc-b620-ebb7875e6e9b
 
 #${ORGANIZATION_AUTOMATION}=             9a7362ab-0938-462c-a645-abae08525715
 ${ORGANIZATION_AUTOMATION}=             918448ba-3fc1-4908-aae7-096c8773ca8b
+${ORGANIZATION_TEST}=                   9a7362ab-0938-462c-a645-abae08525715
 
 ${TERM_ID}=                             bf5f88cb-3a33-498e-b8eb-1c9807973e88
 ${CONCEPT_ID_DEFAULT}=                  04bb2206-ba9e-4007-920d-f57ed0d4bcef

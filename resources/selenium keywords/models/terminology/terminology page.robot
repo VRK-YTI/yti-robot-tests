@@ -1,15 +1,36 @@
 *** Variables ***
 ${Terminology title}                //span[text()="Sanaston tiedot ja toiminnot"]  |  //span[text()="Terminology"]
 ${Terminology download button}      //button[@id="export-terminology-button"]
+${Terminology modify button}        //button[@id="edit-terminology-button"]
+${Create terminology button}        //button[text()="Lisää uusi sanasto"]  |  //button[text()="Add new terminology"]
+
+${Displayed terminology name fi}    //div[@id="preferred-label"]/ul/li[@lang="fi"]/span
+${Displayed terminology name en}    //div[@id="preferred-label"]/ul/li[@lang="en"]/span
+${Displayed terminology name sv}    //div[@id="preferred-label"]/ul/li[@lang="sv"]/span
+
+${Displayed terminology description fi}    //div[@id="description"]/ul/li[@lang="fi"]/span
+${Displayed terminology description en}    //div[@id="description"]/ul/li[@lang="en"]/span
+${Displayed terminology description sv}    //div[@id="description"]/ul/li[@lang="sv"]/span
+
+${Displayed terminology status}          //span[@id="status-chip"]/span
+${Displayed terminology domains}         //div[@id="information-domains"]
+${Displayed terminology languages}       //div[@id="languages"]
+${Displayed terminology type}            //div[@id="type"]
+${Displayed terminology contact}         //div[@id="basic-block"]/a
+${Displayed terminology organization}    //div[@id="organization"]
+${Displayed terminology url}             //div[@id="uri"]
 
 *** Keywords ***
 Verify page is terminology page
     Wait until page contains element    ${Terminology title}
 
-Open terminology information page
+Open terminology information
     Click element with wait             ${Terminology title}
     Wait until page contains element    ${Terminology download button}
 
+Close terminology information
+    Click element with wait                     ${Terminology title}
+    
 Verify concept ${concept} on terminology ${terminology}
     Select concept ${concept}
     Select term ${concept}
@@ -50,8 +71,21 @@ Select terminology ${terminology} from side
     Click element with wait     //a[text()="${terminology}"]
 
 Download terminology
-    Open terminology information page
+    Open terminology information
     Click element with wait            ${Terminology download button}
+
+Open modify terminology dialog
+    Open terminology information
+    Click element with wait            ${Terminology modify button}
+
+Open create terminology dialog
+    Click element with wait  ${Create terminology button}  
+
+Verify create terminology button is not shown
+    Wait Until Page Does Not Contain Element    ${Create terminology button}
+
+Verify modify terminology button is not shown
+    Wait Until Page Does Not Contain Element    ${Terminology modify button}
 
 Verify terminology search page language is finnish
     Wait until page Contains           Sanaston tiedot ja toiminnot
@@ -78,6 +112,70 @@ Verify collections search page does not contain ${hits} items with filters
     Reload page
     Wait until page does not contain element    //span[text()="Käsitekokoelmia ${hits} kpl seuraavilla rajauksilla"] | //span[text()="Collections ${hits} items with following filters"] | //span[text()="Käsitekokoelmia ${hits} kpl seuraavilla rajauksilla"]
 
-Verify terminology is not vocabulary ${vocabulary}
-    Open terminology information page
-    Wait until page does not contain element  //div[text()="${vocabulary}"]
+Verify displayed finish name is ${name}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology name fi}  ${name}
+    Close terminology information
+
+Verify displayed english name is ${name}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology name en}  ${name}
+    Close terminology information
+
+Verify displayed swedish name is ${name}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology name sv}  ${name}
+    Close terminology information
+
+Verify displayed finish description is ${description}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology description fi}  ${description}
+    Close terminology information
+
+Verify displayed english description is ${description}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology description en}  ${description}
+    Close terminology information
+
+Verify displayed swedish description is ${description}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology description sv}  ${description}
+    Close terminology information
+
+Verify displayed status is ${status}
+    Open terminology information
+    Wait until page contains element  //span[@id="status-chip"]/span[text()="${status}"]
+    Close terminology information
+
+Verify displayed domains are ${domains}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology domains}   ${domains}
+    Close terminology information
+
+Verify displayed languages are ${languages}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology languages}    ${languages}
+    Close terminology information
+    
+Verify displayed type is ${type}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology type}     ${type}
+    Close terminology information
+    
+Verify displayed contact is ${contact}
+    Open terminology information
+    Wait until page contains element  //div[@id="basic-block"]/a[contains(@href, "${contact}")]
+    Close terminology information
+    
+Verify displayed organizations are ${organizations}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology organization}    ${organizations}
+    Close terminology information
+
+Verify displayed url contains ${url}
+    Open terminology information
+    Wait Until Element Contains  ${Displayed terminology url}     ${url}
+    Close terminology information
+
+
+    

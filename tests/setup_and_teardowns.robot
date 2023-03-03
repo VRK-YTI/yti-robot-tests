@@ -8,6 +8,7 @@ Resource  ../resources/selenium keywords/models/terminology/concept page.robot
 Resource  ../resources/selenium keywords/models/terminology/terminology page.robot
 Resource  ../resources/selenium keywords/models/terminology/terminology_create_dialog.robot
 Resource  ../resources/selenium keywords/models/terminology/term creation.robot
+Resource  ../resources/selenium keywords/models/terminology/terminology modify page.robot
 Resource  ../resources/selenium keywords/models/datamodel/search page.robot
 Resource  ../resources/selenium keywords/models/eduuni.robot
 Resource  ../resources/selenium keywords/models/navigation bar.robot
