@@ -10,6 +10,7 @@ ${Organization dropdown}            //input[@placeholder="Valitse organisaatio"]
 
 ${Remove all filters}               //button[text()="Poista kaikki rajaukset"]  |  //button[text()="Clear all"]  |  //button[text()="Poista kaikki rajaukset"]
 
+
 *** Keywords ***
 Open terminology search page
     Go to  ${TERMINOLOGIES_URL}

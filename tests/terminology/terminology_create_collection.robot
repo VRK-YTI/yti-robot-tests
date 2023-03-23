@@ -21,6 +21,15 @@ T5C1. Verify create collection button permissions
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     Verify page does not contain create collection button
 
+    # Close browser and open it again, because of eduuni cache
+    Close Browser
+    Open Browser with Settings
+    Open terminology search page
+    Login with Admin
+    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
+    Open create collection dialog
+    Cancel collection create
+
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C2. Verify collection creation error messages
