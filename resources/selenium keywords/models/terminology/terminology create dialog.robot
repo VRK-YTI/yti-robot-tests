@@ -6,17 +6,17 @@ ${Create terminology dialog}      //div[@role="dialog"]
 ${Select fill information}        ${Create terminology dialog}//label[text()="Täytän tiedot itse"]
 ${Select import file}             ${Create terminology dialog}//label[text()="Tuon tiedostolla"]
 ${Select different terminology}   ${Create terminology dialog}//label[text()="Muu sanasto"]
-${Create terminology button dialog}       ${Create terminology dialog}//button[@id="submit-button"]
-${Cancel creating terminology button}     ${Create terminology dialog}//button[@id="cancel-button"]
-${Terminology select language input}      ${Create terminology dialog}//input[@placeholder="Valitse sanaston kielet"]
-${Terminology title input}             ${Create terminology dialog}//input[@placeholder="Kirjoita otsikko"]
-${Terminology description input}       ${Create terminology dialog}//textarea[@placeholder="Kirjoita kuvaus"]
+${Create terminology button dialog}           ${Create terminology dialog}//button[@id="submit-button"]
+${Cancel creating terminology button}         ${Create terminology dialog}//button[@id="cancel-button"]
+${Terminology select language input}          ${Create terminology dialog}//input[@placeholder="Valitse sanaston kielet"]
+${Terminology title input}                    ${Create terminology dialog}//input[@placeholder="Kirjoita otsikko"]
+${Terminology description input}              ${Create terminology dialog}//textarea[@placeholder="Kirjoita kuvaus"]
 ${Terminology select organization input}      ${Create terminology dialog}//input[@id="organizations-selector"]
 ${Terminology select domain input}      ${Create terminology dialog}//input[@placeholder="Valitse sanaston tietoalueet"]
 ${Alert on create terminology}          ${Create terminology dialog}//section[@role="alert"]//div[text()="Puuttuvia tietoja"]
 ${Terminology create email input}      ${Create terminology dialog}//input[@placeholder="Esim. yllapito@example.org"]
-${Select own prefix}   ${Create terminology dialog}//label[text()="Valitse oma tunnus"]
-${Prefix input}    ${Create terminology dialog}//fieldset/div/span/div/input
+${Select own prefix}                   ${Create terminology dialog}//label[text()="Valitse oma tunnus"]
+${Prefix input}                        ${Create terminology dialog}//fieldset/div/span/div/input
 
 ${Concept language finnish}  suomi FI
 

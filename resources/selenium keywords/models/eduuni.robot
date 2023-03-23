@@ -4,8 +4,8 @@ Resource  ../../selenium keywords/generic/generic selenium.robot
 Library   ../../selenium keywords/generic/generic selenium.py
 
 *** Variables ***
-${EDUUNI_LOGIN}                           //*[contains(text(), "Kirjaudu sisään")]
-${EDUUNI_LOGIN_EXISTING}                  //*[contains(text(), "Jatka kirjautumaan")]
+${EDUUNI_LOGIN}                           //*[@id="login-button"]
+${EDUUNI_LOGIN_EXISTING}                  //*[@id="to-login-button"]
 
 ${EDUUNI_MICROSOFT}                       //*[contains(text(), "Microsoft Account")]
 ${EDUUNI_MICROSOFT_EMAIL_INPUT}           //*[@name="loginfmt"]
@@ -52,6 +52,7 @@ Select test user
 Logging with eDuuni
     [Arguments]     ${email}       ${password}
     Set tags      Log in
+    Sleep         0.5
     Click element with wait             ${EDUUNI_LOGIN}
     Wait Until Page Contains Element    ${EDUUNI_LOGIN_EXISTING}
     Press Keys    None      TAB

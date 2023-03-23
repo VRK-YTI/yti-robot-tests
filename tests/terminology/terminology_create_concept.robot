@@ -49,9 +49,8 @@ T4C2. Verify concept creation error messages
     ...  example=${EMPTY}
     ...  usage=${EMPTY}
     ...  Note=${EMPTY}
-    ...  Sources=${EMPTY}
+    ...  sources=${EMPTY}
     ...  diagram=${EMPTY}
-
     Clear concept status input
 
     Save concept creation  ${False}
@@ -64,14 +63,14 @@ T4C2. Verify concept creation error messages
     
     Try to change term type
     Verify recommended term can't be changed when its only one
-    Cancel changing term type
+    Cancel term creation
 
     Click element with wait  ${new term add term button}
     Click element with wait  ${new term accept button}
 
     Verify term error message ${New term missing name error}
     Verify term error message ${New term missing type error}
-    Verify term error message ${SNew term missing language error}
+    Verify term error message ${New term missing language error}
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C3. Create valid concept with all information and relations
@@ -84,6 +83,18 @@ T4C3. Create valid concept with all information and relations
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
 
+    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}_2
+    ...                             ${VALID}
+    ...                             ${DOMAIN HOUSING}
+    ...                             ${ORGANIZATION AUTOMATION}
+    ...                             ${DEFAULT TERMINOLOGY PREFIX}_2
+    
+    Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}_2
+    ...                                  ${DEFAULT CONCEPT NAME}_3
+    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce3
+    ...                                  ${DRAFT}
+    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e83
+
     ${definition}      Set Variable    definition
     ${example}         Set Variable    example
     ${subject}         Set Variable    subject
@@ -91,7 +102,7 @@ T4C3. Create valid concept with all information and relations
     ${change history}  Set Variable    change history
     ${etymology}       Set Variable    etymology
     ${concept class}   Set Variable    conceptclass
-    ${diagram}         Set Variable    diagram
+    ${sources}         Set Variable    source
 
     Open terminology search page
     Login with Admin
@@ -108,14 +119,16 @@ T4C3. Create valid concept with all information and relations
     ...  Note=${Note}
     ...  change history=${change history}
     ...  etymology=${etymology}
+    ...  sources=${sources}
     ...  concept class=${concept class}
     ...  broader concept=${DEFAULT CONCEPT NAME}_1
     ...  narrower concept=${DEFAULT CONCEPT NAME}_1
     ...  Related concept=${DEFAULT CONCEPT NAME}_1
     ...  Is part of concept=${DEFAULT CONCEPT NAME}_1
     ...  Has part concept=${DEFAULT CONCEPT NAME}_1
-    ...  Related concept in other vocabulary=${NONE}
-    ...  Match in other vocabulary=${NONE}
+    ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_3
+    ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_3
+    ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_3
 
     Modify to prefered term information
     ...  name=${DEFAULT CONCEPT NAME}_changed
@@ -154,18 +167,18 @@ T4C3. Create valid concept with all information and relations
     ...  example=${example}
     ...  subject=${subject}
     ...  Note=${Note}
-    ...  diagram=${diagram}
     ...  change history=${change history}
     ...  etymology=${etymology}
     ...  concept class=${concept class}
-    ...  word class=${Term word class adjective}
+    ...  sources=${sources}
     ...  broader concept=${DEFAULT CONCEPT NAME}_1
     ...  narrower concept=${DEFAULT CONCEPT NAME}_1
     ...  Related concept=${DEFAULT CONCEPT NAME}_1
     ...  Is part of concept=${DEFAULT CONCEPT NAME}_1
     ...  Has part concept=${DEFAULT CONCEPT NAME}_1
-    ...  Related concept in other vocabulary=${NONE}
-    ...  Match in other vocabulary=${NONE}
+    ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_3
+    ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_3
+    ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_3
 
     Verify term page contains all information
     ...  name=${DEFAULT CONCEPT NAME}_changed
@@ -200,4 +213,6 @@ T4C3. Create valid concept with all information and relations
     ...  Term conjugation=${Term conjugation single}
     ...  Term word class=${Term word class adjective}
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Run keywords
+    ...         Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME}_2 with api
