@@ -10,6 +10,7 @@ Resource  ../resources/selenium keywords/models/terminology/terminology create d
 Resource  ../resources/selenium keywords/models/terminology/collection page.robot
 Resource  ../resources/selenium keywords/models/datamodel/search page.robot
 Resource  ../resources/selenium keywords/models/eduuni.robot
+Resource  ../resources/selenium keywords/models/impersonate.robot
 Resource  ../resources/selenium keywords/models/navigation bar.robot
 Resource  ../resources/api keywords/terminology_api_resouces.robot
 Resource  ../resources/api keywords/datamodel_api_resouces.robot
