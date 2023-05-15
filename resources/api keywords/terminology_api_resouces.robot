@@ -12,7 +12,6 @@ ${template_graph_id}=                   61cf6bde-46e6-40bb-b465-9b2c66bf4ad8
 ${DOMAIN_DEMOCRACY}=                    9f69e282-b4d9-3cc0-a0d2-e7ccd861266a
 ${DOMAIN_HOUSING}=                      9ba19f8d-d688-39cc-b620-ebb7875e6e9b
 
-#${ORGANIZATION_AUTOMATION}=             9a7362ab-0938-462c-a645-abae08525715
 ${ORGANIZATION_AUTOMATION}=             918448ba-3fc1-4908-aae7-096c8773ca8b
 ${ORGANIZATION_TEST}=                   9a7362ab-0938-462c-a645-abae08525715
 

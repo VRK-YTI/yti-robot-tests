@@ -14,8 +14,8 @@ ${DEFAULT CONCEPT NAME}             Auto_Concept
 ${DEFAULT COLLECTION NAME}          Auto_Collection
 ${DEFAULT TERMINOLOGY PREFIX}       auto_prefix
 
-${DEFAULT DATAMODEL NAME}         Auto_DM
-${DEFAULT DATAMODEL PREFIX}        auto_prefix
+${DEFAULT DATAMODEL NAME}           auto_DM
+${DEFAULT DATAMODEL PREFIX}         pr
 
 ${DEFAULT ORGANIZATION}             Automaatiotestaus
 ${DEFAULT DOMAIN}                   Asuminen

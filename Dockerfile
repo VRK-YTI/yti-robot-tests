@@ -5,12 +5,6 @@ VOLUME ["/robot_tests"]
 # Update apt and install apt packages
 RUN apt update && apt install -y unzip python3 pip xvfb wget
 
-# Install firefox and geckodriver
-RUN apt install -y firefox-esr=91.13.0esr-1~deb11u1 
-RUN wget -qP /tmp/ https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz \
-    && tar -xvzf /tmp/geckodriver-v0.31.0-linux64.tar.gz -C /usr/local/bin/ \
-    && rm -f /tmp/geckodriver-v0.31.0-linux64.tar.gz
-
 # Install chrome and chromedrive
 RUN wget -qP /tmp/ "https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip" \
     && unzip -o /tmp/chromedriver_linux64.zip -d /usr/bin \

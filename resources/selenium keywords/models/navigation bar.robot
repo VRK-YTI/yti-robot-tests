@@ -31,5 +31,6 @@ Select language dropdown
     [Arguments]              ${dropdown_element}  
     Sleep                    1
     Click element with wait  ${Language dropdown}
-    Sleep                    1
+    Sleep                    2
     Click element with wait  ${dropdown_element}
+    Sleep                    2

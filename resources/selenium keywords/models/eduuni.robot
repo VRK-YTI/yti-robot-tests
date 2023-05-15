@@ -18,12 +18,13 @@ ${EDUUNI_GOOGLE_PASSWORD_INPUT}           //*[@name="password"]
 ${EDUUNI_GOOGLE_NEXT_BUTTON}              //*[@jsname="LgbsSe"]
 
 ${EDUUNI_TYPE}                            MICROSOFT
+${LOGGED IN USER BLOCK}                   //div[@id="top-header-authentication"]
 
 
 *** Keywords ***
 Login with ${user}
     Run keyword              Select ${user} user 
-    Verify page is terminology search page
+    Verify user is logged in
 
 Select Superuser user
     Logging with eDuuni      ${SUPER_EDUUNI_EMAIL}  ${SUPER_EDUUNI_PASSWORD}
@@ -76,3 +77,6 @@ Logging eDuuni with microsoft
     Input text with wait                ${EDUUNI_MICROSOFT_PASSWORD_INPUT}      ${password}
     Click element with wait             ${EDUUNI_MICROSOFT_NEXT_BUTTON}
     Click element with wait             ${EDUUNI_MICROSOFT_NEXT_BUTTON}
+
+Verify user is logged in
+    Wait until page contains element    ${LOGGED IN USER BLOCK}
