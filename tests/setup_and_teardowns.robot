@@ -9,6 +9,8 @@ Resource  ../resources/selenium keywords/models/terminology/terminology page.rob
 Resource  ../resources/selenium keywords/models/terminology/terminology create dialog.robot
 Resource  ../resources/selenium keywords/models/terminology/collection page.robot
 Resource  ../resources/selenium keywords/models/datamodel/search page.robot
+Resource  ../resources/selenium keywords/models/datamodel/datamodel create dialog.robot
+Resource  ../resources/selenium keywords/models/datamodel/datamodel editing.robot
 Resource  ../resources/selenium keywords/models/eduuni.robot
 Resource  ../resources/selenium keywords/models/impersonate.robot
 Resource  ../resources/selenium keywords/models/navigation bar.robot
