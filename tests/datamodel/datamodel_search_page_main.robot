@@ -295,7 +295,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Automaatiotestaus contributers on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Asuminen domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has DESCRIPTION_FI description on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Tietokomponenttikirjasto on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Ydintietomalli on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} status is Voimassa oleva on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi} title
     Clear text search filter
@@ -306,7 +306,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Automaatiotestaus (fi) contributers on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Housing domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has DESCRIPTION_FI description on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Core Vocabulary on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Core Data Model on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} status is Valid on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi} (fi) title
     Clear text search filter
@@ -339,7 +339,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Automaatiotestaus contributers on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Asuminen domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Ei annettu kuvausta description on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Tietokomponenttikirjasto on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Ydintietomalli on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} status is Virheellinen on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME}_${invalid_number} title
     Clear text search filter
@@ -350,7 +350,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Automaatiotestaus (fi) contributers on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Housing domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has No description description on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Core Vocabulary on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} type is Core Data Model on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} status is Invalid on main page
     Clear text search filter
 
@@ -359,109 +359,3 @@ T1C7. Verify main search pages datamodel information
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_fi} with api
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_en} with api
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${invalid_number} with api
-
-*** keywords ***
-Create multiple options datamodel with api
-    [Arguments]  ${number}
-    &{labels}=  Create dictionary  
-    ...  ${LANGUAGE_FI}   
-    ...  ${DEFAULT DATAMODEL NAME}_${number}
-    ...  ${LANGUAGE_SV}    
-    ...  ${DEFAULT DATAMODEL NAME}_${number}_SV
-    ...  ${LANGUAGE_EN}  
-    ...  ${DEFAULT DATAMODEL NAME}_${number}_EN
-    &{descriptions}=  Create dictionary  
-    ...  ${LANGUAGE_FI}  
-    ...  DESCRIPTION_FI
-    ...  ${LANGUAGE_SV}   
-    ...  DESCRIPTION_SV
-    ...  ${LANGUAGE_EN} 
-    ...  DESCRIPTION_EN
-    @{languages}=  Create List  
-    ...  ${LANGUAGE_FI}   
-    ...  ${LANGUAGE_SV}    
-    ...  ${LANGUAGE_EN} 
-    @{organizations}=  Create List  
-    ...  ${AUTOMATION_ORGANIZATION}
-    ...  ${TESTING_ORGANIZATION}
-    @{services}=  Create List  
-    ...  ${HOUSING_SERVICE}
-    ...  ${DEMOCRACY_SERVICE}
-
-    Create datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${DRAFT}
-    ...  type=${PROFILE}
-    ...  labels=&{labels}
-    ...  descriptions=&{descriptions}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-
-Create single language fi datamodel with api
-    [Arguments]  ${number}
-    &{labels}=  Create dictionary  
-    ...  ${LANGUAGE_FI}   
-    ...  ${DEFAULT DATAMODEL NAME}_${number}
-    &{descriptions}=  Create dictionary  
-    ...  ${LANGUAGE_FI}  
-    ...  DESCRIPTION_FI    
-    @{languages}=  Create List  
-    ...  ${LANGUAGE_FI} 
-    @{organizations}=  Create List  
-    ...  ${AUTOMATION_ORGANIZATION}
-    @{services}=  Create List  
-    ...  ${HOUSING_SERVICE}
-
-    Create datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${VALID}
-    ...  type=${LIBRARY}
-    ...  labels=&{labels}
-    ...  descriptions=&{descriptions}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-
-Create single language en datamodel with api
-    [Arguments]  ${number}
-    &{labels}=  Create dictionary  
-    ...  ${LANGUAGE_EN}   
-    ...  ${DEFAULT DATAMODEL NAME}_${number}
-    @{languages}=  Create List   
-    ...  ${LANGUAGE_EN} 
-    @{organizations}=  Create List  
-    ...  ${AUTOMATION_ORGANIZATION}
-    @{services}=  Create List  
-    ...  ${DEMOCRACY_SERVICE}
-
-    Create datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${DRAFT}
-    ...  type=${PROFILE}
-    ...  labels=&{labels}
-    ...  descriptions=&{EMPTY}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services} 
-
-Create invalid datamodel with api
-    [Arguments]  ${number}
-    &{labels}=  Create dictionary  
-    ...  ${LANGUAGE_FI}   
-    ...  ${DEFAULT DATAMODEL NAME}_${number}
-    @{languages}=  Create List  
-    ...  ${LANGUAGE_FI} 
-    @{organizations}=  Create List  
-    ...  ${AUTOMATION_ORGANIZATION}
-    @{services}=  Create List  
-    ...  ${HOUSING_SERVICE}
-
-    Create datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${INVALID}
-    ...  type=${LIBRARY}
-    ...  labels=&{labels}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}

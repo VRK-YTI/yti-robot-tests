@@ -1,7 +1,6 @@
 *** Settings ***
 Library   String
-Library    SeleniumLibrary
-Resource    ../../generic/generic selenium.robot
+Library   SeleniumLibrary
 
 *** Variables ***
 ${Datamodel search page header}                   //h1[text()="Tietomallit"]

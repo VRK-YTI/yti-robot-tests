@@ -89,3 +89,109 @@ Create datamodel json from file
 
     ${json_string}=      evaluate        json.dumps(${json})                 json
     [Return]        ${json_string}
+
+*** keywords ***
+Create multiple options datamodel with api
+    [Arguments]  ${number}
+    &{labels}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL NAME}_${number}
+    ...  ${LANGUAGE_SV}    
+    ...  ${DEFAULT DATAMODEL NAME}_${number}_SV
+    ...  ${LANGUAGE_EN}  
+    ...  ${DEFAULT DATAMODEL NAME}_${number}_EN
+    &{descriptions}=  Create dictionary  
+    ...  ${LANGUAGE_FI}  
+    ...  DESCRIPTION_FI
+    ...  ${LANGUAGE_SV}   
+    ...  DESCRIPTION_SV
+    ...  ${LANGUAGE_EN} 
+    ...  DESCRIPTION_EN
+    @{languages}=  Create List  
+    ...  ${LANGUAGE_FI}   
+    ...  ${LANGUAGE_SV}    
+    ...  ${LANGUAGE_EN} 
+    @{organizations}=  Create List  
+    ...  ${AUTOMATION_ORGANIZATION}
+    ...  ${TESTING_ORGANIZATION}
+    @{services}=  Create List  
+    ...  ${HOUSING_SERVICE}
+    ...  ${DEMOCRACY_SERVICE}
+
+    Create datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  status=${DRAFT}
+    ...  type=${PROFILE}
+    ...  labels=&{labels}
+    ...  descriptions=&{descriptions}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+
+Create single language fi datamodel with api
+    [Arguments]  ${number}
+    &{labels}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL NAME}_${number}
+    &{descriptions}=  Create dictionary  
+    ...  ${LANGUAGE_FI}  
+    ...  DESCRIPTION_FI    
+    @{languages}=  Create List  
+    ...  ${LANGUAGE_FI} 
+    @{organizations}=  Create List  
+    ...  ${AUTOMATION_ORGANIZATION}
+    @{services}=  Create List  
+    ...  ${HOUSING_SERVICE}
+
+    Create datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  status=${VALID}
+    ...  type=${LIBRARY}
+    ...  labels=&{labels}
+    ...  descriptions=&{descriptions}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+
+Create single language en datamodel with api
+    [Arguments]  ${number}
+    &{labels}=  Create dictionary  
+    ...  ${LANGUAGE_EN}   
+    ...  ${DEFAULT DATAMODEL NAME}_${number}
+    @{languages}=  Create List   
+    ...  ${LANGUAGE_EN} 
+    @{organizations}=  Create List  
+    ...  ${AUTOMATION_ORGANIZATION}
+    @{services}=  Create List  
+    ...  ${DEMOCRACY_SERVICE}
+
+    Create datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  status=${DRAFT}
+    ...  type=${PROFILE}
+    ...  labels=&{labels}
+    ...  descriptions=&{EMPTY}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services} 
+
+Create invalid datamodel with api
+    [Arguments]  ${number}
+    &{labels}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL NAME}_${number}
+    @{languages}=  Create List  
+    ...  ${LANGUAGE_FI} 
+    @{organizations}=  Create List  
+    ...  ${AUTOMATION_ORGANIZATION}
+    @{services}=  Create List  
+    ...  ${HOUSING_SERVICE}
+
+    Create datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  status=${INVALID}
+    ...  type=${LIBRARY}
+    ...  labels=&{labels}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
