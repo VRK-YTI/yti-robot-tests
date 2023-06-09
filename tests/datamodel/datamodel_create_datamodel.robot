@@ -127,6 +127,7 @@ T2C3. Create valid datamodel with only nessecary information
 
     Accept creating datamodel
     Verify datamodel is created with prefix ${DEFAULT DATAMODEL PREFIX}
+    Take Screenshot
 
     Open datamodel options select
     Open show datamodel as file dialog

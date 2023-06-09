@@ -18,7 +18,6 @@ T5C1. Verify create collection button permissions
     Verify page does not contain create collection button
 
     Login with no group
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     Verify page does not contain create collection button
 
     # Close browser and open it again, because of eduuni cache

@@ -40,10 +40,10 @@ Create terminology from dialog
         Press Keys               None  TAB
     END
     IF  '${title}' != '${NONE}'
-        Input text with wait    ${Terminology title input}    ${title}
+        Input create terminology language ${language} for name ${title}
     END
     IF  '${description}' != '${NONE}'
-        Input text with wait    ${Terminology description input}    ${description}
+        Input create terminology language ${language} for description ${description}
     END
     IF  '${organization}' != '${NONE}'
         Scroll create dialog down
@@ -75,6 +75,16 @@ Create terminology from dialog
     Sleep  1
 
     Click element with wait  ${Create terminology button dialog}  
+
+Input create terminology language ${language} for description ${description}
+    Input text with wait  
+    ...  //span[text()="${language}"]/../../div/div/label[text()="Kuvaus"]/../../div/textarea  
+    ...  ${description}
+
+Input create terminology language ${language} for name ${title}
+        Input text with wait  
+        ...  //span[text()="${language}"]/../../div/span/div/label[text()="Sanaston nimi"]/../../div/input  
+        ...  ${title}
 
 Scroll create dialog down
     # Quick fix, element is in way of the input, so dialog has to be scrolled

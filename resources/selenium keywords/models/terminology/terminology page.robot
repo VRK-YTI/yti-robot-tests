@@ -23,7 +23,7 @@ ${Displayed terminology url}             //div[@id="uri"]
 ${terminology modify save button}              //button[@id="submit-button"]
 ${terminology modify cancel button}            //button[@id="cancel-button"]
 
-${Terminology modify language input}            //input[@id="language-selector"]
+${Terminology modify language input}            //input[@placeholder="Valitse sanaston kielet"]
 ${Terminology modify finish name input}         //div/p/span[text()="suomi FI"]/../../div/span/div/input
 ${Terminology modify finish definition input}   //div/p/span[text()="suomi FI"]/../../div/div/textarea
 ${Terminology modify english name input}        //div/p/span[text()="englanti EN"]/../../div/span/div/input

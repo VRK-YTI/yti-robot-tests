@@ -26,8 +26,6 @@ T8C1. Verify concept modify button permissions
     Verify concept modify button is not shown
 
     Login with no group
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
-    Select concept ${DEFAULT CONCEPT NAME}
     Verify concept modify button is not shown
 
     # Close browser and open it again, because of eduuni cache

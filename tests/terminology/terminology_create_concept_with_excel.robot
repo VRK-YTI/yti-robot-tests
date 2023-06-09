@@ -19,7 +19,6 @@ T11C1. Verify creat concept with excel button permissions
     Verify page does not contain bring concepts button
 
     Login with no group
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     Verify page does not contain bring concepts button
 
     # Close browser and open it again, because of eduuni cache
