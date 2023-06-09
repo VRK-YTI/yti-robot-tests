@@ -18,7 +18,6 @@ T4C1. Verify create concept button permissions
     Verify page does not contain create concept button
 
     Login with no group
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     Verify page does not contain create concept button
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}

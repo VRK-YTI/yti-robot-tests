@@ -19,7 +19,6 @@ T10C1. Verify copy button permissions
     Verify page does not contain copy terminology button
 
     Login with no group
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
     Verify page does not contain copy terminology button
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}

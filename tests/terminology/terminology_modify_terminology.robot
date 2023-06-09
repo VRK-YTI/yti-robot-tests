@@ -141,7 +141,7 @@ T7C3. Verify modify terminology errors
 
     Open modify terminology dialog
 
-    Select language suomi FI on modify terminology
+    Click element with wait  //span[text()="suomi FI"]
     Save terminolgy modify  
     ...  False
     Verify modify terminology error message ${Terminology modify languages are not set error}
@@ -188,7 +188,7 @@ T7C3. Verify modify terminology errors
     Verify displayed status is Voimassa oleva
     Verify displayed domains are Asuminen
     Verify displayed organizations are Automaatiotestaus
-    Verify displayed languages are suomi FI, englanti EN, ruotsi SV
+    Verify displayed languages are suomi FI, ruotsi SV, englanti EN
     Verify displayed type is Terminologinen sanasto
     Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
 
