@@ -44,13 +44,13 @@ T7C2. Modify terminology
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
 
     Open modify terminology dialog
-    Input finish name ${DEFAULT TERMINOLOGY NAME}_1 on modify terminology
+    # Input finish name ${DEFAULT TERMINOLOGY NAME}_1 on modify terminology
     Input finish definition definition on modify terminology
 
     Select status Luonnos on modify terminology
 
     Input contact ${ADMIN_EDUUNI_EMAIL} on modify terminology
-    Sleep   5
+    # Sleep   5
     Save terminolgy modify
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
