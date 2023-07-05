@@ -126,7 +126,7 @@ T7C2. Modify terminology
     Verify displayed type is Terminologinen sanasto
     Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    #[Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C3. Verify modify terminology errors
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
