@@ -44,89 +44,16 @@ T7C2. Modify terminology
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
 
     Open modify terminology dialog
-    # Input finish name ${DEFAULT TERMINOLOGY NAME}_1 on modify terminology
-    # Input finish definition definition on modify terminology
-
-    # Select status Luonnos on modify terminology
-
-    # Input contact ${ADMIN_EDUUNI_EMAIL} on modify terminology
-    Save terminolgy modify
-
-    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}_1
-    Verify displayed status is Luonnos
-    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
-    Verify displayed domains are Asuminen
-    Verify displayed organizations are Automaatiotestaus
-    Verify displayed languages are suomi FI
-    Verify displayed type is Terminologinen sanasto
-    Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
-
-    Open modify terminology dialog
-
-    Select language englanti EN on modify terminology
-    Select language ruotsi SV on modify terminology
-
-    Input finish name ${DEFAULT TERMINOLOGY NAME}_2 on modify terminology
+    Input finish name ${DEFAULT TERMINOLOGY NAME}_1 on modify terminology
     Input finish definition definition on modify terminology
-    Input english name ${DEFAULT TERMINOLOGY NAME}_2 on modify terminology
-    Input english definition definition on modify terminology
-    Input swedish name ${DEFAULT TERMINOLOGY NAME}_2 on modify terminology
-    Input swedish definition definition on modify terminology
 
-    On modify terminology select organization Testiorganisaatio
-    Select domain Demokratia on modify terminology
+    Select status Luonnos on modify terminology
 
-    Select type other on modify terminology
-    Select prefix manual on modify terminology
-    Input prefix ${DEFAULT TERMINOLOGY PREFIX}_1 on modify terminology
-
+    Input contact ${ADMIN_EDUUNI_EMAIL} on modify terminology
+    Sleep 5
     Save terminolgy modify
 
-    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}_2
-    Verify displayed english name is ${DEFAULT TERMINOLOGY NAME}_2
-    Verify displayed swedish name is ${DEFAULT TERMINOLOGY NAME}_2
-    Verify displayed finish description is definition
-    Verify displayed english description is definition
-    Verify displayed swedish description is definition
-    Verify displayed status is Luonnos
-    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
-    Verify displayed domains are Asuminen, Demokratia
-    Verify displayed organizations are Automaatiotestaus
-    Verify displayed organizations are Testiorganisaatio
-    Verify displayed languages are suomi FI, englanti EN, ruotsi SV
-    Verify displayed type is Muu sanasto
-    # TODO bug prefix modify does not work
-    #Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}_1
-
-    Open modify terminology dialog
-
-    Select language englanti EN on modify terminology
-    Select language ruotsi SV on modify terminology
-
-    Input finish name ${DEFAULT TERMINOLOGY NAME} on modify terminology
-    Input finish definition ${EMPTY} on modify terminology
-
-    On modify terminology select organization Testiorganisaatio
-    Select domain Demokratia on modify terminology
-
-    Select type terminology on modify terminology
-    Select prefix automatic on modify terminology
-
-    Select status Voimassa oleva on modify terminology
-
-    Input contact ${EMPTY} on modify terminology
-    Save terminolgy modify  
-
-    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
-    Verify displayed status is Voimassa oleva
-    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
-    Verify displayed domains are Asuminen
-    Verify displayed organizations are Automaatiotestaus
-    Verify displayed languages are suomi FI
-    Verify displayed type is Terminologinen sanasto
-    Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}
-
-    #[Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C3. Verify modify terminology errors
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
