@@ -91,6 +91,7 @@ Download terminology
 Open modify terminology dialog
     Open terminology information
     Click element with wait            ${Terminology modify button}
+    Sleep   3
 
 Open create terminology dialog
     Click element with wait  ${Create terminology button}  
