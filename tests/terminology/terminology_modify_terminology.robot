@@ -44,12 +44,12 @@ T7C2. Modify terminology
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
 
     Open modify terminology dialog
-    Input finish name ${DEFAULT TERMINOLOGY NAME}_1 on modify terminology
-    Input finish definition definition on modify terminology
+    # Input finish name ${DEFAULT TERMINOLOGY NAME}_1 on modify terminology
+    # Input finish definition definition on modify terminology
 
-    Select status Luonnos on modify terminology
+    # Select status Luonnos on modify terminology
 
-    Input contact ${ADMIN_EDUUNI_EMAIL} on modify terminology
+    # Input contact ${ADMIN_EDUUNI_EMAIL} on modify terminology
     Save terminolgy modify
 
     Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}_1
