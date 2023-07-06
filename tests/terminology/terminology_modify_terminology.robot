@@ -93,7 +93,7 @@ T7C2. Modify terminology
     Verify displayed domains are Asuminen, Demokratia
     Verify displayed organizations are Automaatiotestaus
     Verify displayed organizations are Testiorganisaatio
-    Verify displayed languages are suomi FI, englanti EN, ruotsi SV
+    Verify displayed languages are suomi FI, ruotsi SV, englanti EN
     Verify displayed type is Muu sanasto
     # TODO bug prefix modify does not work
     #Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}_1
