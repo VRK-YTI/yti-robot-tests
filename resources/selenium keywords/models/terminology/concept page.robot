@@ -679,8 +679,7 @@ Modify to prefered term information
     END
     IF  '${Term word class}' != '${NONE}'
         IF  '${Term word class}' == 'CLEAR'
-            #Click element with wait  (//label[text()="Termin sanaluokka"]/../../div/div/div/button)[1]
-            No Operation
+            Click element with wait  (//label[text()="Termin sanaluokka"]/../../div/div/div/button)[1]
         ELSE
             Click element with wait  ${Change recommended term Term word class}
             Click element with wait  //li[text()="${Term word class}"]

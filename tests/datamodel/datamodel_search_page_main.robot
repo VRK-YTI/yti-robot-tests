@@ -231,14 +231,14 @@ T1C6. Verify main search pages multiple filters
     Filter with datamodel domain Asuminen
     Filter with datamodel type Ydintietomalli
     Filter by language fi
-    Filter by organization Testiorganisaatio
+    Filter by organization Automaatiotestaus
     Verify search result count is Tietomalleja 1 kpl seuraavilla rajauksilla
 
     Filter with datamodel status Käytössä olevat tietomallit
     Filter with datamodel domain Demokratia
     Filter with datamodel type Soveltamisprofiilit
     Filter by language en
-    Filter by organization Automaatiotestaus
+    Filter by organization Testiorganisaatio
     Verify search result count is Tietomalleja 1 kpl seuraavilla rajauksilla
     
     Clear text search filter

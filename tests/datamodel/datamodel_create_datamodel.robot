@@ -76,7 +76,6 @@ T2C2. Verify create datamodel errors
     Accept creating datamodel
     Verify create datamodel does not contain error Palautteen sähköposti ei ole oikeassa muodossa
 
-    #TODO invalid error, bugged currently
     Input create datamodel prefix *
     Verify create datamodel contains error Tietomallin yksilöivän tunnuksen pituus ei täytä vaatimuksia (2-32 merkkiä)
     Verify create datamodel invalid prefix error
@@ -84,12 +83,11 @@ T2C2. Verify create datamodel errors
     Input create datamodel prefix **
     Verify create datamodel does not contain error Tietomallin yksilöivän tunnuksen pituus ei täytä vaatimuksia (2-32 merkkiä)
     Accept creating datamodel
-    Verify create datamodel contains error BAD_REQUEST: Object validation failed
+    Verify create datamodel invalid prefix error
 
-    #TODO invalid error, bugged currently
     Input create datamodel prefix ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     Accept creating datamodel
-    Verify create datamodel contains error BAD_REQUEST: Object validation failed
+    Verify create datamodel invalid prefix error
 
     Input create datamodel language suomi FI for name ${DEFAULT DATAMODEL NAME}
     Accept creating datamodel
@@ -180,7 +178,7 @@ T2C4. Create valid datamodel with all information
     Open datamodel options select
     Open show datamodel as file dialog
     Show datamodel file
-
+    
     ${json_dict}=  Get shown json from new tab
     Dictionary Should Contain Value  ${json_dict}  ${ADMIN_EDUUNI_EMAIL}
     Dictionary Should not Contain Value  ${json_dict}  yhteentoimivuus@dvv.fi
@@ -245,7 +243,7 @@ T2C5. Create valid datamodel with all information and remove unnesecary
     
     Input create datamodel contact ${EMPTY}
     Input create datamodel prefix ${DEFAULT DATAMODEL PREFIX}_1
-    Input create datamodel language suomi FI for name ${DEFAULT DATAMODEL NAME}_1
+    Input create datamodel language suomi FI for name ${DEFAULT DATAMODEL NAME} fi
     Input create datamodel language suomi FI for description ${EMPTY}
 
     Accept creating datamodel
@@ -262,7 +260,7 @@ T2C5. Create valid datamodel with all information and remove unnesecary
     Dictionary Should Contain Value        ${json_dict}  fi
     Dictionary Should Contain Value        ${json_dict["dcterms:contributor"]}  urn:uuid:${AUTOMATION_ORGANIZATION}
     Dictionary Should Contain Value        ${json_dict["dcterms:isPartOf"]}     http://urn.fi/URN:NBN:fi:au:ptvl:v1001
-    Dictionary Should Contain Value        ${json_dict["rdfs:label"]}           ${DEFAULT DATAMODEL NAME} fi
+    Should Contain                         ${json_dict["rdfs:label"]["@value"]}           ${DEFAULT DATAMODEL NAME} fi
     Dictionary Should not Contain Key      ${json_dict}  rdfs:comment
 
     [Teardown]  Run keywords
