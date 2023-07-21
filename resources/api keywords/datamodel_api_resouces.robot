@@ -56,7 +56,7 @@ Create datamodel with api
     ...             languages=${languages}
     ...             status=${status}
     ...             type=${type}
-    ${response}=    Put         ${CREATE_MODEL_API_POINT}     headers=${headers}  data=${json}
+    ${response}=    Post         ${CREATE_MODEL_API_POINT}/${type.lower()}     headers=${headers}  data=${json}
     [Return]        ${response}
 
 Delete model ${model} with api

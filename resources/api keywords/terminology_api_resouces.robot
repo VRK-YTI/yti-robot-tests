@@ -4,7 +4,7 @@ Resource              common_api_resources.robot
 
 *** Variables ***
 ${DELETE_TERMINOLOGY_API_POINT}=        ${TERMINOLOGIES_URL}/terminology-api/api/v1/frontend/vocabulary
-${CREATE_TERMINOLOGY_API_POINT}=        ${TERMINOLOGIES_URL}/terminology-api/api/v1/frontend/vocabulary
+${CREATE_TERMINOLOGY_API_POINT}=        ${TERMINOLOGIES_URL}/terminology-api/api/v1/frontend/validatedVocabulary
 ${CREATE_TERMI_CONCEPT_API_POINT}=      ${TERMINOLOGIES_URL}/terminology-api/api/v1/frontend/modify
 ${GET_TERMINOLOGY_GRAPHS_API_POINT}     ${TERMINOLOGIES_URL}/terminology-api/api/v1/frontend/graphs
 ${template_graph_id}=                   61cf6bde-46e6-40bb-b465-9b2c66bf4ad8

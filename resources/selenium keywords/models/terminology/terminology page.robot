@@ -1,3 +1,5 @@
+*** Settings ***
+Library    SeleniumLibrary
 *** Variables ***
 ${Terminology title}                //span[text()="Sanaston tiedot ja toiminnot"]  |  //span[text()="Terminology"]
 ${Terminology download button}      //button[@id="export-terminology-button"]
@@ -76,6 +78,7 @@ Verify concept ${concept} on terminology ${terminology}
     Select terminology ${terminology} from breadcrumps
 
 Select concept ${concept}
+    Reload Page
     click element with wait  //h2/span[text()="${concept}"] 
 
 Select terminology ${terminology} from breadcrumps
