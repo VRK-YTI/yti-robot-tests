@@ -2,6 +2,14 @@ from robot.libraries.BuiltIn import BuiltIn
 import os
 
 
+def verify_list_contains_key_and_value(_list, key, value):
+    print(_list, key, value)
+    for item in _list:
+        if key in item.keys() and item[key] == value:
+            return True
+    raise ValueError('Key and value pair not found from list')
+
+
 def debug_ask_for_keyword(debug_screenshot_path="debug screenshot"):
     """
     Debug helper that can be added anywhere in robot code to test different keywords
