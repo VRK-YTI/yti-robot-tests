@@ -45,3 +45,7 @@ Teardown test Case delete terminology ${terminology}
 Teardown test Case delete datamodel ${datamodel}
     Teardown test Case
     Delete model ${datamodel} with api
+
+Teardown test Case on failure delete datamodel ${datamodel}
+    Teardown test Case
+    Run keyword if test failed  Delete model ${datamodel} with api

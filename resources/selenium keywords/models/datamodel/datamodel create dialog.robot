@@ -2,18 +2,18 @@
 Library    SeleniumLibrary
 
 *** Variables ***
-${Create new datamodel button}              //button[text()="Luo uusi tietomalli"]
+${Create new datamodel button}              //button[@id="new-model-button"]
 ${Datamodel Profile radio button}           //input[@id="profile-radio-button"]/..
 ${Datamodel Core model radio button}        //input[@id="library-radio-button"]/..
 ${Datamodel Prefix input}                   //input[@id="prefix-text-input"]
 ${Datamodel contact input}                  //input[@id="contact-input"]
-${Create datamodel accept button}           //button[text()="Luo tietomalli"]
-${Create datamodel cancel button}           //button[text()="Keskeytä"]
+${Create datamodel accept button}           //button[@id="submit-button"]
+${Create datamodel cancel button}           //button[@id="cancel-button"]
 ${Create datamodel prefix error text}       //span[@id="prefix-text-input-statusText"]
 
-${Datamodel domain select}                  //input[@placeholder="Valitse tietomallin tietoalueet"]
-${Datamodel contributor select}             //input[@placeholder="Valitse sisällöntuottajat"]
-${Datamodel language select}                //input[@placeholder="Valitse tietomallin kielet"]
+${Datamodel domain select}                  //input[@id="information-domains-selector"]
+${Datamodel contributor select}             //input[@id="contributors-selector"]
+${Datamodel language select}                //input[@id="language-selector"]
 
 ${Remove all selections for domains}        //label[text()="Tietoalueet"]/../../../../button[text()="Poista kaikki valinnat"]
 ${Remove all selections for contributors}   //label[text()="Sisällöntuottajat"]/../../../../button[text()="Poista kaikki valinnat"]
@@ -69,14 +69,10 @@ Select create datamodel language ${language}
     Click element with wait  //li[text()="${language}"]
 
 Input create datamodel language ${language} for name ${name}
-    Input text with wait  
-    ...  //span[text()="${language}"]/../../div/span/div/label[text()="Tietomallin nimi"]/../../div/input  
-    ...  ${name}
+    Input text with wait     //input[@id="name-input-${language}"]  ${name}
 
 Input create datamodel language ${language} for description ${description}
-    Input text with wait  
-    ...  //span[text()="${language}"]/../../div/div/label[text()="Kuvaus"]/../../div/textarea  
-    ...  ${description}
+    Input text with wait     //textarea[@id="description-input-${language}"]  ${description}
 
 Verify create datamodel invalid prefix error
     Wait until page contains element  ${Create datamodel prefix error text}
