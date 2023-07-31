@@ -539,9 +539,8 @@ T2C8. Add terminology link to datamodel
     Edit links from links tab
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  8
-    Add codelist link to datamodel in links tab     DCAT-AP-luokitus
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
+    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  6
     Save editing links 
 
     Reload page
@@ -554,7 +553,6 @@ T2C8. Add terminology link to datamodel
     Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}_2
     Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_1}
     Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_2}
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/codelist/eu/dcat
     
     Cancel show datamodel file dialog
     
@@ -565,19 +563,16 @@ T2C8. Add terminology link to datamodel
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  8
     Remove link from link editing
     Remove link from link editing
-    Remove link from link editing
     Save editing links 
 
     Edit links from links tab
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  8
-    Add codelist link to datamodel in links tab     DCAT-AP-luokitus
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
     Save editing links 
 
     Edit links from links tab
-    Remove link from link editing
     Remove link from link editing
     Remove link from link editing
     Remove link from link editing
