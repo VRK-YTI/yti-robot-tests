@@ -157,6 +157,7 @@ Add datamodel link to datamodel in links tab
     Click element with wait  ${Add datamodel link button}
     Input text with wait     ${Add terminology dialog search input}  ${datamodel}
     Press Keys               None  TAB
+    Sleep  1
     Click element with wait  //span[text()="1 tietomalli"]
     FOR    ${index}    IN RANGE    1    ${tabs_count}
         Press Keys               None  TAB
