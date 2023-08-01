@@ -540,7 +540,7 @@ T2C8. Add terminology link to datamodel
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  8
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  6
+    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
     Save editing links 
 
     Reload page
