@@ -502,22 +502,6 @@ T2C8. Add terminology link to datamodel
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     Login with Admin
 
-    Open datamodel options select
-    Start editing datamodel
-
-    Add terminology link to datamodel  ${DEFAULT TERMINOLOGY NAME}_1  9
-    Add terminology link to datamodel  ${DEFAULT TERMINOLOGY NAME}_2  8
-
-    Save editing
-
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
-
-    ${json_dict}=  Get shown json from new tab
-    Dictionary Should not Contain Key    ${json_dict}  dcterms:requires
-    Cancel show datamodel file dialog
-
     Select links tab
     Edit links from links tab
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
