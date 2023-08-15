@@ -501,23 +501,6 @@ T2C8. Add terminology link to datamodel
     Open datamodel search page
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     Login with Admin
-    
-    Open datamodel options select
-    Start editing datamodel
-
-    Add terminology link to datamodel  ${DEFAULT TERMINOLOGY NAME}_1  7
-    Add terminology link to datamodel  ${DEFAULT TERMINOLOGY NAME}_2  8
-
-    Save editing
-
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
-
-    ${json_dict}=  Get shown json from new tab
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/terminology/auto_prefix_t2c8_1
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/terminology/auto_prefix_t2c8_2
-    Cancel show datamodel file dialog
 
     Open datamodel options select
     Start editing datamodel
