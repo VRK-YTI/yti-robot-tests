@@ -192,3 +192,4 @@ Edit links from links tab
 
 Save editing links 
     Click element with wait  ${Datamodel links edit submit button}
+    Sleep                    20
