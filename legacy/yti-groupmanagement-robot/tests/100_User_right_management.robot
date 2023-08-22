@@ -50,7 +50,7 @@ Resource          ../resources/resources_and_libraries.robot
 
 105. Check navigation menu links
     [Documentation]    Verify that navigation menu links are opened correctly
-    [Tags]    regression    test
+    [Tags]    regression   rhp    test
     Select navigation menu link     Käyttäjätiedot
     Wait Until Page Contains        Käyttäjätiedot    timeout=40
     Wait Until Page Contains        Nimi    timeout=40

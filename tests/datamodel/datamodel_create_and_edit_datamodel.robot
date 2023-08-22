@@ -7,6 +7,12 @@ Library              Collections
 Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
+*** Variables ***
+${link}=     https://dvv.fi/documents/16079645/16452557/section-info-fi.png/9c02b3ea-4377-c2f4-c166-5c2285cb44a4?t=1574845075000
+${fin doc}=  test fi
+${en doc}=   test en
+${sv doc}=   test sv
+
 *** Test Cases ***
 T2C1. Verify create datamodel permissions
     Open datamodel search page
@@ -640,3 +646,78 @@ T2C9. Add datamodel link to datamodel
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_1} with api
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_2} with api
+
+T2C10. Verify documentation permissions
+    ${single_language_fi}=  set variable  1
+    Create single language fi datamodel with api
+    ...  number=${single_language_fi}
+
+    Open datamodel search page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
+    Verify page does not contain datamodel documentation tab
+
+    Login with no group
+    Verify page does not contain datamodel documentation tab
+
+    # Close browser and open it again, because of eduuni cache
+    Close Browser
+    Open Browser with Settings        
+    Open datamodel search page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
+    Login with Admin
+    
+    Verify page does contain datamodel documentation tab
+    Open documentation tab
+    Verify page does contain datamodel edit documentation button
+
+    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+
+T2C11. Edit documentation
+    ${multiple_options_and_languages}=  set variable  1
+    Create multiple options datamodel with api
+    ...  number=${multiple_options_and_languages}
+
+    Open datamodel search page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
+    Login with Admin
+    
+    Open documentation tab
+    Click edit documentation button
+    Cancel editing documentation
+
+    Click edit documentation button
+    Input documentation                 ${fin doc} [asd](${link})
+    Verify preview text                 ${fin doc}
+
+    Change documentation language tab   englanti
+    Verify preview text is not shown    ${fin doc}
+    Input documentation                 ${en doc}
+    Verify preview text                 ${en doc}
+    
+    Change documentation language tab   ruotsi
+    Verify preview text is not shown    ${en doc}
+    Input documentation                 ${sv doc}
+    
+    Change documentation language tab   suomi
+    Verify preview text is not shown    ${sv doc}
+    Verify preview text                 ${fin doc}
+    
+    Save editing documentation
+
+    Verify preview text            ${fin doc}
+    Verify documentation link      ${link}
+
+    Change language to english
+    Verify preview text                       ${en doc}
+    Verify documentation link is not shown    ${link}
+
+    Change language to swedish
+    Verify preview text                       ${sv doc}
+    Verify documentation link is not shown    ${link}
+
+    Change language to finnish
+    Verify preview text            ${fin doc}
+    Verify documentation link      ${link}
+    
+    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
+    
