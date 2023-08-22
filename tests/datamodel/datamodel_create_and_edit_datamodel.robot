@@ -637,6 +637,10 @@ T2C10. Verify documentation permissions
     Open documentation tab
     Verify page does contain datamodel edit documentation button
 
+    Open datamodel options select
+    Delete datamodel from ui
+    Verify datamodel has been deleted
+
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
 
 T2C11. Edit documentation
@@ -685,6 +689,10 @@ T2C11. Edit documentation
     Change language to finnish
     Verify preview text            ${fin doc}
     Verify documentation link      ${link}
-    
+
+    Open datamodel options select
+    Delete datamodel from ui
+    Verify datamodel has been deleted
+
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     
