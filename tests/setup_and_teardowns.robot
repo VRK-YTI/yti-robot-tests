@@ -12,6 +12,8 @@ Resource  ../resources/selenium keywords/models/datamodel/search page.robot
 Resource  ../resources/selenium keywords/models/datamodel/datamodel create dialog.robot
 Resource  ../resources/selenium keywords/models/datamodel/datamodel editing.robot
 Resource  ../resources/selenium keywords/models/datamodel/datamodel documentation.robot
+Resource  ../resources/selenium keywords/models/datamodel/datamodel classes.robot
+Resource  ../resources/selenium keywords/models/datamodel/datamodel attributes.robot
 Resource  ../resources/selenium keywords/models/eduuni.robot
 Resource  ../resources/selenium keywords/models/impersonate.robot
 Resource  ../resources/selenium keywords/models/navigation bar.robot

@@ -28,6 +28,7 @@ Verify page is datamodel search page
 Search and select datamodel ${Datamodel}
     Search datamodel ${Datamodel}
     Select datamodel ${datamodel}
+    Sleep            1
 
 Select datamodel ${datamodel}
     Click element with wait           //h2[@id="card-title-link"]/span[text()="${Datamodel}"]

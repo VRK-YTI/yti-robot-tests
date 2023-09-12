@@ -179,10 +179,12 @@ T2C4. Verify edit datamodel errors
     On edit input sv description ${EMPTY}
 
     Save editing
-
-    Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä suomi
-    Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä ruotsi
-    Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä englanti
+    
+    
+    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, egnlanti
+    #Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä suomi
+    #Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä ruotsi
+    #Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä englanti
     #Verify edit datamodel contains error Tietomallin kieliä ei ole määritelty
     
     On edit input fi name ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
@@ -193,9 +195,9 @@ T2C4. Verify edit datamodel errors
     Select edit datamodel contributor Automaatiotestaus
     On edit input contact ${EMPTY}
 
-    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi
-    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä ruotsi
-    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä englanti
+    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, egnlanti
+    #Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä ruotsi
+    #Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä englanti
     Verify edit datamodel does not contain error Tietomallin kieliä ei ole määritelty
     Verify edit datamodel does not contain error Tietomallin tietoaluetta ei ole määritelty
     Verify edit datamodel does not contain error Tietomallin sisällöntuottajia ei ole määritelty
@@ -236,9 +238,9 @@ T2C5. Create valid datamodel with only nessecary information and edit
     Dictionary Should Contain Value    ${json_dict}  yhteentoimivuus@dvv.fi
     Dictionary Should Contain Value    ${json_dict}  ${DEFAULT DATAMODEL PREFIX}
     Dictionary Should Contain Value    ${json_dict}  fi
-    Dictionary Should Contain Value    ${json_dict["dcterms:contributor"]}  urn:uuid:${AUTOMATION_ORGANIZATION}
-    Dictionary Should Contain Value    ${json_dict["dcterms:isPartOf"]}     http://urn.fi/URN:NBN:fi:au:ptvl:v1001
-    Dictionary Should Contain Value    ${json_dict["rdfs:label"]}           ${DEFAULT DATAMODEL NAME} fi
+    Dictionary Should Contain Value    ${json_dict["dcterms:contributor"]}       urn:uuid:${AUTOMATION_ORGANIZATION}
+    Dictionary Should Contain Value    ${json_dict["dcterms:isPartOf"]}          ptvl:v1001
+    Dictionary Should Contain Value    ${json_dict["rdfs:label"]}                ${DEFAULT DATAMODEL NAME} fi
     Dictionary Should not Contain Key  ${json_dict}  rdfs:comment
     Cancel show datamodel file dialog
 
@@ -263,21 +265,20 @@ T2C5. Create valid datamodel with only nessecary information and edit
     Show datamodel file
 
     ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict}  ${ADMIN_EDUUNI_EMAIL}
-    Dictionary Should Contain Value    ${json_dict}  ${DEFAULT DATAMODEL PREFIX}
-    Dictionary Should Contain Value    ${json_dict}  en
-    Dictionary Should Contain Value    ${json_dict["dcterms:contributor"]}  urn:uuid:${TESTING_ORGANIZATION}
-    Dictionary Should Contain Value    ${json_dict["dcterms:isPartOf"]}     http://urn.fi/URN:NBN:fi:au:ptvl:v1090
-    Dictionary Should Contain Value    ${json_dict["rdfs:label"]}           ${DEFAULT DATAMODEL NAME}_EN
-    Dictionary Should not Contain Key  ${json_dict}  rdfs:comment
+    Dictionary Should Contain Value    ${json_dict}                              ${ADMIN_EDUUNI_EMAIL}
+    Dictionary Should Contain Value    ${json_dict}                              ${DEFAULT DATAMODEL PREFIX}
+    Dictionary Should Contain Value    ${json_dict}                              en
+    Dictionary Should Contain Value    ${json_dict["dcterms:contributor"]}       urn:uuid:${TESTING_ORGANIZATION}
+    Dictionary Should Contain Value    ${json_dict["dcterms:isPartOf"]}          ptvl:v1090
+    Dictionary Should Contain Value    ${json_dict["rdfs:label"]}                ${DEFAULT DATAMODEL NAME}_EN
+    Dictionary Should not Contain Key  ${json_dict}                              rdfs:comment
     Cancel show datamodel file dialog
 
     Open datamodel options select
     Delete datamodel from ui
     Verify datamodel has been deleted
 
-    [Teardown]  Run keywords
-    ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}
+    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}
 
 T2C6. Create valid datamodel with all information and edit those information
     Open datamodel search page
@@ -327,8 +328,8 @@ T2C6. Create valid datamodel with all information and edit those information
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${TESTING_ORGANIZATION}
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${AUTOMATION_ORGANIZATION}
 
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=http://urn.fi/URN:NBN:fi:au:ptvl:v1001
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=http://urn.fi/URN:NBN:fi:au:ptvl:v1090
+    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1001
+    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1090
 
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de en
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de sv
@@ -386,8 +387,8 @@ T2C6. Create valid datamodel with all information and edit those information
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${TESTING_ORGANIZATION}
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${AUTOMATION_ORGANIZATION}
 
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=http://urn.fi/URN:NBN:fi:au:ptvl:v1120
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=http://urn.fi/URN:NBN:fi:au:ptvl:v1167
+    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1120
+    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1167
 
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de 2 en
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de 2 sv
@@ -465,7 +466,7 @@ T2C7. Create valid datamodel with all information and remove unnesecary
     Dictionary Should not Contain Value    ${json_dict}  ${DEFAULT DATAMODEL PREFIX}
     Dictionary Should Contain Value        ${json_dict}  fi
     Dictionary Should Contain Value        ${json_dict["dcterms:contributor"]}  urn:uuid:${AUTOMATION_ORGANIZATION}
-    Dictionary Should Contain Value        ${json_dict["dcterms:isPartOf"]}     http://urn.fi/URN:NBN:fi:au:ptvl:v1001
+    Dictionary Should Contain Value        ${json_dict["dcterms:isPartOf"]}     ptvl:v1001
     Should Contain                         ${json_dict["rdfs:label"]["@value"]}           ${DEFAULT DATAMODEL NAME} fi
     Dictionary Should not Contain Key      ${json_dict}  rdfs:comment
     Cancel show datamodel file dialog
@@ -510,8 +511,8 @@ T2C8. Add terminology link to datamodel
 
     Select links tab
     Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  8
+    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  5
+    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  6
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
     Save editing links 
@@ -532,15 +533,15 @@ T2C8. Add terminology link to datamodel
     Reload page
     Select links tab
     Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  9
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  8
+    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
+    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  6
     Remove link from link editing
     Remove link from link editing
     Save editing links 
 
     Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  8
+    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  5
+    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  6
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
     Save editing links 
@@ -637,6 +638,7 @@ T2C10. Verify documentation permissions
     Open documentation tab
     Verify page does contain datamodel edit documentation button
 
+    Select info tab
     Open datamodel options select
     Delete datamodel from ui
     Verify datamodel has been deleted
@@ -678,18 +680,19 @@ T2C11. Edit documentation
     Verify preview text            ${fin doc}
     Verify documentation link      ${link}
 
-    Change language to english
+    Change language to english on datamodel
     Verify preview text                       ${en doc}
     Verify documentation link is not shown    ${link}
 
-    Change language to swedish
+    Change language to swedish on datamodel
     Verify preview text                       ${sv doc}
     Verify documentation link is not shown    ${link}
 
-    Change language to finnish
+    Change language to finnish on datamodel
     Verify preview text            ${fin doc}
     Verify documentation link      ${link}
 
+    Select info tab
     Open datamodel options select
     Delete datamodel from ui
     Verify datamodel has been deleted

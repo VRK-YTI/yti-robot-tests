@@ -145,7 +145,9 @@ Add terminology link to datamodel in links tab
     Click element with wait  ${Add terminology datamodel edit button}
     Input text with wait     ${Add terminology dialog search input}  ${terminology}
     Press Keys               None  TAB
+    Sleep                    1
     Click element with wait  //span[text()="1 sanasto"]
+    Sleep                    1
     FOR    ${index}    IN RANGE    1    ${tabs_count}
         Press Keys               None  TAB
     END  
@@ -187,7 +189,6 @@ Select links tab
     Click element with wait  ${Datamodel links tab}
 
 Edit links from links tab
-    Click element with wait  ${Datamodel links options button}
     Click element with wait  ${Edit links button}
 
 Save editing links 
