@@ -52,7 +52,7 @@ Select test user
 
 Logging with eDuuni
     [Arguments]     ${email}       ${password}
-    Set tags      Log in
+    #Set tags      Log in
     Sleep         0.5
     Click element with wait             ${EDUUNI_LOGIN}
     Wait Until Page Contains Element    ${EDUUNI_LOGIN_EXISTING}
