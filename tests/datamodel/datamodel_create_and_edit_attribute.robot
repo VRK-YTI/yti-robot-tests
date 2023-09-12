@@ -52,6 +52,7 @@ T4C2. Create valid attribute
     Open attribute tab
     Create new attribute
     Cancel create datamodel attribute dialog
+    Sleep  2
 
     Create new attribute
     Create new attribute datamodel in dialog
@@ -447,15 +448,15 @@ T4C8. Modify attribute
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${INCOMPLETE}
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:label"][1]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_3_fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:label"][0]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:label"][2]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:comment"][2]}     value=description fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:comment"][1]}     value=description en
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:comment"][0]}     value=description sv
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${INCOMPLETE}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"][1]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_3_fi
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"][0]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"][2]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][2]}     value=description fi
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][1]}     value=description en
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][0]}     value=description sv
     ${json_dict}=  Get shown json from new tab
 
     [Teardown]  Run keywords
@@ -531,14 +532,15 @@ T4C9. Modify attribute remove unnesecary
     
     Edit attribute
 
-    Remove upper attribute from attribute
-    Remove corresponding attribute from attribute
     Click element with wait                     ${Datamodel attribute label input sv}
     Press Keys                                  None  CTRL+A
     Press Keys                                  None  BACKSPACE
     Click element with wait                     ${Datamodel attribute label input en}
     Press Keys                                  None  CTRL+A
     Press Keys                                  None  BACKSPACE
+
+    Remove upper attribute from attribute
+    Remove corresponding attribute from attribute
 
     Input finnish description into attribute        ${SPACE}
     Input swedish description into attribute        ${SPACE}
