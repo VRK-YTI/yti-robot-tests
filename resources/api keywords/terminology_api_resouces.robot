@@ -48,7 +48,7 @@ Create terminology with api
     ...             ${organization}=${ORGANIZATION_AUTOMATION}
     ...             ${prefix}=${terminology}
 
-    Set tags        Create terminology with api
+    #Set tags        Create terminology with api
     ${uuid}         Evaluate    uuid.uuid4()    modules=uuid
     ${graph_id}=    Catenate
     ...             ${uuid}
@@ -72,7 +72,7 @@ Create terminology collection with api
     ...             ${collection}
     ...             ${collection id}
     ...             ${members}
-    Set tags        Create collection with api
+    #Set tags        Create collection with api
     ${headers}=     Create authentication header
     @{graphs_ids}=  Find terminology id for ${terminology} with api
     FOR    ${graphs_id}    IN    @{graphs_ids}
@@ -93,7 +93,7 @@ Create terminology concept with api
     ...             ${status}=${DRAFT}
     ...             ${term id}=${TERM_ID}
 
-    Set tags        Create concept with api
+    #Set tags        Create concept with api
     ${headers}=     Create authentication header
     
     @{graphs_ids}=  Find terminology id for ${terminology} with api

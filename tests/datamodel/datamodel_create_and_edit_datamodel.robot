@@ -688,6 +688,6 @@ T2C11. Edit documentation
     Open datamodel options select
     Delete datamodel from ui
     Verify datamodel has been deleted
-    
+
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     

@@ -48,6 +48,7 @@ T4C2. Create valid attribute
     Open attribute tab
     Create new attribute
     Cancel create datamodel attribute dialog
+    Sleep  2
 
     Create new attribute
     Create new attribute datamodel in dialog
@@ -113,12 +114,11 @@ T4C3. Create valid attribute with subattribute
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    ${ids}=  Evaluate  [x["@id"] for x in ${json_dict["@graph"]} if "@id" in x.keys() and ]
-    ${status}=  Evaluate  [x["owl:versionInfo"] for x in ${json_dict["@graph"]} if "owl:versionInfo" in x.keys()]
-    ${isDefinedBy}=  Evaluate  [x["rdfs:isDefinedBy"]["@id"] for x in ${json_dict["@graph"]} if "rdfs:isDefinedBy" in x.keys() and "@id" in x["rdfs:isDefinedBy"].keys()]
-    List Should Contain Value    ${ids}            ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    List Should Contain Value    ${status}         ${DRAFT}
-    List Should Contain Value    ${isDefinedBy}    http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                           value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                           value=${DRAFT}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}       value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:subPropertyOf"]}     value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
+
     Cancel show datamodel file dialog
 
     Open attribute tab
