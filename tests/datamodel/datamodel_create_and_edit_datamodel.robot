@@ -49,8 +49,8 @@ T2C2. Verify edit datamodel permissions
     Close Browser
     Open Browser with Settings        
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open datamodel options select
     Verify page does contain edit datamodel button
@@ -154,8 +154,8 @@ T2C4. Verify edit datamodel errors
     ...  number=${multiple_options_and_languages}
      
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     
     Open datamodel options select
     Start editing datamodel
@@ -180,12 +180,7 @@ T2C4. Verify edit datamodel errors
 
     Save editing
     
-    
-    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, egnlanti
-    #Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä suomi
-    #Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä ruotsi
-    #Verify edit datamodel contains error Tietomallin nimi puuttuu kieleltä englanti
-    #Verify edit datamodel contains error Tietomallin kieliä ei ole määritelty
+    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, englanti
     
     On edit input fi name ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     On edit input en name ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}_SV
@@ -195,9 +190,7 @@ T2C4. Verify edit datamodel errors
     Select edit datamodel contributor Automaatiotestaus
     On edit input contact ${EMPTY}
 
-    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, egnlanti
-    #Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä ruotsi
-    #Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä englanti
+    Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, englanti
     Verify edit datamodel does not contain error Tietomallin kieliä ei ole määritelty
     Verify edit datamodel does not contain error Tietomallin tietoaluetta ei ole määritelty
     Verify edit datamodel does not contain error Tietomallin sisällöntuottajia ei ole määritelty
@@ -506,8 +499,8 @@ T2C8. Add terminology link to datamodel
 
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
 
     Select links tab
     Edit links from links tab
@@ -575,20 +568,19 @@ T2C8. Add terminology link to datamodel
 
 T2C9. Add datamodel link to datamodel
     ${multiple_options_and_languages}=  set variable  1
+    ${single_language_1}=  set variable  2
+    ${single_language_2}=  set variable  3
+    
     Create multiple options datamodel with api
     ...  number=${multiple_options_and_languages}
-    
-    ${single_language_1}=  set variable  2
     Create single language fi datamodel with api
     ...  number=${single_language_1}
-
-    ${single_language_2}=  set variable  3
     Create single language fi datamodel with api
     ...  number=${single_language_2}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
 
     Select links tab
     Edit links from links tab
@@ -631,8 +623,8 @@ T2C10. Verify documentation permissions
     Close Browser
     Open Browser with Settings        
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Verify page does contain datamodel documentation tab
     Open documentation tab
@@ -651,8 +643,8 @@ T2C11. Edit documentation
     ...  number=${multiple_options_and_languages}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     
     Open documentation tab
     Click edit documentation button

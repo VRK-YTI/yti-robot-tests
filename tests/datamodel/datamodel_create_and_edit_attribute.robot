@@ -8,10 +8,6 @@ Library              Collections
 Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
-*** Variables ***
-${link}=     https://dvv.fi/documents/16079645/16452557/section-info-fi.png/9c02b3ea-4377-c2f4-c166-5c2285cb44a4?t=1574845075000
-
-
 *** Test Cases ***
 T4C1. Verify create attribute permissions
     ${single_language_fi}=  set variable  1
@@ -46,8 +42,8 @@ T4C2. Create valid attribute
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open attribute tab
     Create new attribute
@@ -73,8 +69,8 @@ T4C2. Create valid attribute
     Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}
     Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
-    ${json_dict}=  Get shown json from new tab
-    
+    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:label"]}          value=${DEFAULT DATAMODEL ATTRIBUTE NAME}
+
     Cancel show datamodel file dialog
 
     Open attribute tab
@@ -87,35 +83,30 @@ T4C3. Create valid attribute with subattribute
     ${single_language_fi}=  set variable  1
     Create single language fi datamodel with api
     ...  number=${single_language_fi}
+  
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
+
+    Create datamodel attribute with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
+    ...  status=${VALID}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open attribute tab
-    Create new attribute
-    Cancel create datamodel attribute dialog
-
-    Create new attribute
-    Create new attribute datamodel in dialog
-
-    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
-    Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    Save attribute
-    Return from attribute
-
-    Open attribute tab
-    Create new attribute
-    Cancel create datamodel attribute dialog
-
     Create new attribute
     Select attribute on create attribute dialog    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1  ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
 
-    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2
     Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
     Save attribute
+    Verify create datamodel attribute does not contain error ${attribute name not set error}
     
-    Sleep  30
+    Sleep  5
     Reload page
     Select info tab
     Open datamodel options select
@@ -123,16 +114,15 @@ T4C3. Create valid attribute with subattribute
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                           value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                           value=${DRAFT}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}       value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:subPropertyOf"]}     value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    ${json_dict}=  Get shown json from new tab
-    
+
     Cancel show datamodel file dialog
 
     Open attribute tab
-    Select attribute    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2
+    Select attribute    ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     Delete attribute
 
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
@@ -152,28 +142,26 @@ T4C4. Create valid attribute with all options
     ...                                  ${DRAFT}
     ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
+    @{terminologies}=  Create list  
+    ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
+  
     Create multiple options datamodel library with api
     ...  number=${multi_language}
+    ...  terminologies=@{terminologies}
+  
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
+
+    Create datamodel attribute with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
+    ...  status=${VALID}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     Login with Admin
-
-    Select links tab
-    Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}  5
-    Save editing links 
-
-    Open attribute tab
-    Create new attribute
-    Create new attribute datamodel in dialog
-
-    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
-    Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    Save attribute
-    Return from attribute
-
-    Reload Page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     
     Open attribute tab
 
@@ -194,7 +182,7 @@ T4C4. Create valid attribute with all options
     Select equivalent attribute into attribute
     Select attribute on linking attribute dialog        ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1  ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
 
-    Select status into attribute                    ${INCOMPLETE}
+    Select status into attribute                    ${DRAFT}
 
     Input finnish description into attribute        description fi
     Input swedish description into attribute        description sv
@@ -203,28 +191,30 @@ T4C4. Create valid attribute with all options
     Input editor comment into attribute             editor input
     Save attribute
 
+    Sleep  5
     Return from attribute
 
-    Sleep  20
     Reload page
     Select info tab
     Open datamodel options select
     Open show datamodel as file dialog
     Show datamodel file
-    
     ${json_dict}=  Get shown json from new tab
-    log  ${json_dict["@graph"][0]}
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${INCOMPLETE}
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][2]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][0]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][1]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][2]}     value=description fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][0]}     value=description en
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][1]}     value=description sv
-    ${json_dict}=  Get shown json from new tab
-    
+
+    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
+    log  ${labels}
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_fi
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
+
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
+    log  ${comment}
+    List Should Contain Value    @{comment}    description fi
+    List Should Contain Value    @{comment}    description en
+    List Should Contain Value    @{comment}    description sv
     Cancel show datamodel file dialog
 
     Open attribute tab
@@ -241,8 +231,8 @@ T4C5. Verify invalid attribute errors
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open attribute tab
     Create new attribute
@@ -308,8 +298,8 @@ T4C6. Verify modify attribute permissions
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
 
     Open attribute tab
     Create new attribute
@@ -345,8 +335,8 @@ T4C7. Verify invalid attribute modify errors
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
 
     Open attribute tab
     Create new attribute
@@ -389,28 +379,26 @@ T4C8. Modify attribute
     ...                                  ${DRAFT}
     ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
+    @{terminologies}=  Create list  
+    ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
+  
     Create multiple options datamodel library with api
     ...  number=${multi_language}
+    ...  terminologies=@{terminologies}
+    
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
+
+    Create datamodel attribute with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
+    ...  status=${VALID}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     Login with Admin
-
-    Select links tab
-    Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}  5
-    Save editing links 
-
-    Open attribute tab
-    Create new attribute
-    Create new attribute datamodel in dialog
-
-    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
-    Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    Save attribute
-    Return from attribute
-
-    Reload Page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     
     Open attribute tab
 
@@ -422,7 +410,7 @@ T4C8. Modify attribute
     Save attribute
 
     Edit attribute
-    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_3_fi
+    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     Input english attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
     Input swedish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
 
@@ -432,14 +420,15 @@ T4C8. Modify attribute
     Select equivalent attribute into attribute
     Select attribute on linking attribute dialog        ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1  ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
 
-    Select status into attribute                    ${INCOMPLETE}
+    Select status into attribute                    ${DRAFT}
     Input finnish description into attribute        description fi
     Input swedish description into attribute        description sv
     Input english description into attribute        description en
     Input editor comment into attribute             editor input
+    
     Save attribute
-
-    Sleep  20
+    
+    Sleep  5
     Return from attribute
     Reload page
     Select info tab
@@ -449,22 +438,26 @@ T4C8. Modify attribute
     
     ${json_dict}=  Get shown json from new tab
     Dictionary Should Contain Value    ${json_dict["@graph"][2]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${INCOMPLETE}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"][1]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_3_fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"][0]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"][2]}       value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][2]}     value=description fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][1]}     value=description en
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][0]}     value=description sv
-    ${json_dict}=  Get shown json from new tab
+
+    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:label"]}]]
+    log  ${labels}
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
+    
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:comment"]}]]
+    log  ${comment}
+    List Should Contain Value    @{comment}    description fi
+    List Should Contain Value    @{comment}    description en
+    List Should Contain Value    @{comment}    description sv
 
     [Teardown]  Run keywords
     ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multi_language}
     ...    Delete terminology ${DEFAULT TERMINOLOGY NAME} with api
 
 T4C9. Modify attribute remove unnesecary
-    
     ${multi_language}=  set variable  1
 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
@@ -479,28 +472,26 @@ T4C9. Modify attribute remove unnesecary
     ...                                  ${DRAFT}
     ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
+    @{terminologies}=  Create list  
+    ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
+  
     Create multiple options datamodel library with api
     ...  number=${multi_language}
+    ...  terminologies=@{terminologies}
+  
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
+
+    Create datamodel attribute with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
+    ...  status=${VALID}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     Login with Admin
-
-    Select links tab
-    Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}  5
-    Save editing links 
-
-    Open attribute tab
-    Create new attribute
-    Create new attribute datamodel in dialog
-
-    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
-    Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    Save attribute
-    Return from attribute
-
-    Reload Page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     
     Open attribute tab
 
@@ -509,7 +500,7 @@ T4C9. Modify attribute remove unnesecary
 
     Select attribute concept into attribute         ${DEFAULT CONCEPT NAME}
 
-    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_fi
+    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     Input english attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
     Input swedish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
 
@@ -521,7 +512,7 @@ T4C9. Modify attribute remove unnesecary
     Select equivalent attribute into attribute
     Select attribute on linking attribute dialog        ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1  ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
 
-    Select status into attribute                    ${INCOMPLETE}
+    Select status into attribute                    ${DRAFT}
 
     Input finnish description into attribute        description fi
     Input swedish description into attribute        description sv
@@ -531,7 +522,7 @@ T4C9. Modify attribute remove unnesecary
     Save attribute
     
     Edit attribute
-
+    Input finnish attribute label               ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     Click element with wait                     ${Datamodel attribute label input sv}
     Press Keys                                  None  CTRL+A
     Press Keys                                  None  BACKSPACE
@@ -546,12 +537,11 @@ T4C9. Modify attribute remove unnesecary
     Input swedish description into attribute        ${SPACE}
     Input english description into attribute        ${SPACE}
     Input editor comment into attribute             ${SPACE}
-
     Save attribute
     
     Return from attribute
 
-    Sleep  20
+    Sleep  5
     Reload page
     Select info tab
     Open datamodel options select
@@ -559,14 +549,16 @@ T4C9. Modify attribute remove unnesecary
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${INCOMPLETE}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"]}          value=${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_fi
-    Dictionary Should not Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][1]}     value=description fi
-    Dictionary Should not Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][2]}     value=description en
-    Dictionary Should not Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][0]}     value=description sv
-    ${json_dict}=  Get shown json from new tab
+    Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DRAFT}
+    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:label"]}          value=${DEFAULT DATAMODEL ATTRIBUTE NAME}
+    
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][1]["rdfs:comment"]}]]
+    log  ${comment}
+    List Should not Contain Value    @{comment}    description fi
+    List Should not Contain Value    @{comment}    description en
+    List Should not Contain Value    @{comment}    description sv
 
     [Teardown]  Run keywords
     ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multi_language}

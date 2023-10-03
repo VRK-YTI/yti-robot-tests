@@ -36,6 +36,9 @@ ${Remove disjoint class from class}                 //label[contains(text(), "Er
 ${Datamodel concept search input}                   //input[@id="concept-search-input"]
 ${Datamodel concept search radio button}            //*[@class="highlighted-content"]/../../../../div/input[contains(@id, "terminology")] 
 
+${Datamodel class search status}                    //span[@id="status-picker-displayValue"]
+${Datamodel class search status all}                //li[@id="status-picker--1"]
+
 
 # Errors
 ${Class prefix not set error}              Luokan tunnusta ei ole määritetty
@@ -128,11 +131,11 @@ Delete class
     Click element with wait   ${Datamodel class delete button}
 
 Verify create datamodel class contains error ${error}
-    Wait until page contains element  //div/ul/li[text()="${error}"]  #//div[text()="Puuttuvia tietoja"]/../div/ul/li[text()="${error}"]
+    Wait until page contains element  //div/ul/li[text()="${error}"]
 
 
 Verify create datamodel class does not contain error ${error}
-    Wait until page does not contain element  //div/ul/li[text()="${error}"]  #//div[text()="Puuttuvia tietoja"]/../div/ul/li[text()="${error}"]
+    Wait until page does not contain element  //div/ul/li[text()="${error}"]
 
 Cancel class creation
     Click element with wait  ${Datamodel add class cancel button}
@@ -164,13 +167,11 @@ Select class concept into class
     [Arguments]   ${text}
     Click element with wait    ${Datamodel class concept select dropdown}       
     Input text with wait       ${Datamodel concept search input}        ${text}
-    Sleep                    5
+    Sleep                    2
     FOR    ${index}    IN RANGE    1    6
         Press Keys               None  TAB
     END 
-    Sleep                    5
     Press Keys               None  SPACE 
-    #Click element with wait    ${Datamodel concept search radio button}
     Click element with wait    ${Datamodel select class button}
 
 Select subclass into class
@@ -185,6 +186,8 @@ Select disjoint class into class
 Select class on linking class dialog
     [Arguments]   ${text}  ${prefix}
     Sleep  2
+    Click element with wait  ${Datamodel class search status}
+    Click element with wait  ${Datamodel class search status all}
     Input text with wait     ${Datamodel search input in class dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -192,7 +195,11 @@ Select class on linking class dialog
     
 Select class on create class dialog
     [Arguments]   ${text}  ${prefix}
+    Click element with wait  ${Datamodel class search status}
+    Click element with wait  ${Datamodel class search status all}
+    Input text with wait     ${Datamodel search input in class dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
+    Sleep  1
     Click element with wait  ${Datamodel select subclass button}
     
 Remove upper class from class

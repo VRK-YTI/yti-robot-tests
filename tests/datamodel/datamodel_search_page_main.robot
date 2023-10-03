@@ -57,7 +57,7 @@ T1C2. Verify main search pages language filters
     ...  number=${single_language_en}
 
     Open datamodel search page
-
+    
     Search datamodel ${DEFAULT DATAMODEL NAME}
     Filter by language fi
     Verify search result count is Tietomalleja 2 kpl seuraavilla rajauksilla
@@ -273,7 +273,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Asuminen domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has DESCRIPTION_FI description on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} type is Soveltamisprofiili on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Luonnos on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Voimassa oleva on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options} title
     Clear text search filter
 
@@ -285,7 +285,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Housing domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has DESCRIPTION_EN description on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} type is Profile on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Draft on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Valid on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options}_EN title
     Clear text search filter
 
@@ -318,7 +318,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Demokratia domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Ei annettu kuvausta description on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} type is Soveltamisprofiili on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Luonnos on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Voimassa oleva on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME}_${single_language_en} (en) title
     Clear text search filter
 
@@ -329,7 +329,7 @@ T1C7. Verify main search pages datamodel information
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Democracy domains on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has No description description on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} type is Profile on main page
-    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Draft on main page
+    Verify datamodel ${DEFAULT DATAMODEL NAME} status is Valid on main page
     Clear text search filter
 
     Change language to finnish
