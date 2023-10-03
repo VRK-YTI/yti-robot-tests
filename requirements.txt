@@ -5,3 +5,4 @@ robotframework-screencaplibrary==1.6.0
 robotframework-requests==0.9.2
 robotframework-imaplibrary==0.3.0
 xlsxwriter==3.0.2
+robotframework-retryfailed==0.2.0

@@ -42,6 +42,8 @@ ${Remove disjoint attribute from attribute}                 //label[contains(tex
 ${Datamodel concept search input}                   //input[@id="concept-search-input"]
 ${Datamodel concept search radio button}            //*[@class="highlighted-content"]/../../../../div/input[contains(@id, "terminology")] 
 
+${Datamodel attribute search status}                    //span[@id="status-picker-displayValue"]
+${Datamodel attribute search status all}                //li[@id="status-picker--1"]
 
 # Errors
 ${attribute prefix not set error}              Attribuutin yksilöivää tunnusta ei ole määritelty
@@ -134,11 +136,10 @@ Delete attribute
     Click element with wait   ${Datamodel attribute delete button}
 
 Verify create datamodel attribute contains error ${error}
-    Wait until page contains element  //div/ul/li[text()="${error}"]  #//div[text()="Puuttuvia tietoja"]/../div/ul/li[text()="${error}"]
-
+    Wait until page contains element  //div/ul/li[text()="${error}"]
 
 Verify create datamodel attribute does not contain error ${error}
-    Wait until page does not contain element  //div/ul/li[text()="${error}"]  #//div[text()="Puuttuvia tietoja"]/../div/ul/li[text()="${error}"]
+    Wait until page does not contain element  //div/ul/li[text()="${error}"]
 
 Cancel attribute creation
     Click element with wait  ${Datamodel add attribute cancel button}
@@ -147,11 +148,9 @@ Input finnish description into attribute
     [Arguments]   ${text}
     Input text with wait   ${Datamodel attribute description input fi}      ${text}
 
-
 Input english description into attribute
     [Arguments]   ${text}
     Input text with wait   ${Datamodel attribute description input en}      ${text}
-
 
 Input swedish description into attribute
     [Arguments]   ${text}
@@ -170,13 +169,11 @@ Select attribute concept into attribute
     [Arguments]   ${text}
     Click element with wait    ${Datamodel attribute concept select dropdown}       
     Input text with wait       ${Datamodel concept search input}        ${text}
-    Sleep                    5
+    Sleep                    2
     FOR    ${index}    IN RANGE    1    6
         Press Keys               None  TAB
     END 
-    Sleep                    5
     Press Keys               None  SPACE 
-    #Click element with wait    ${Datamodel concept search radio button}
     Click element with wait    ${Datamodel select attribute button}
 
 Select subattribute into attribute
@@ -202,6 +199,8 @@ Select class on linking attribute dialog
 Select attribute on linking subattribute dialog
     [Arguments]   ${text}  ${prefix}
     Sleep  2
+    Click element with wait  ${Datamodel attribute search status}
+    Click element with wait  ${Datamodel attribute search status all}
     Input text with wait     ${Datamodel search input in attribute dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -210,6 +209,8 @@ Select attribute on linking subattribute dialog
 Select attribute on linking attribute dialog
     [Arguments]   ${text}  ${prefix}
     Sleep  2
+    Click element with wait  ${Datamodel attribute search status}
+    Click element with wait  ${Datamodel attribute search status all}
     Input text with wait     ${Datamodel search input in attribute dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -217,7 +218,11 @@ Select attribute on linking attribute dialog
     
 Select attribute on create attribute dialog
     [Arguments]   ${text}  ${prefix}
+    Click element with wait  ${Datamodel attribute search status}
+    Click element with wait  ${Datamodel attribute search status all}
+    Input text with wait     //div[@role="dialog"]/div/div/div/div/span/div/div/input[@id="search-input"]  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
+    Sleep                    1
     Click element with wait  ${Datamodel select subattribute button}
     
 Remove upper attribute from attribute

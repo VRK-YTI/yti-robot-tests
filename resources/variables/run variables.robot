@@ -23,6 +23,9 @@ ${DEFAULT DATAMODEL CLASS PREFIX}   cl
 ${DEFAULT DATAMODEL ATTRIBUTE NAME}     auto_attr
 ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}   attr
 
+${DEFAULT DATAMODEL ASSOCIATION NAME}     auto_asso
+${DEFAULT DATAMODEL ASSOCIATION PREFIX}   asso
+
 ${DEFAULT ORGANIZATION}             Automaatiotestaus
 ${DEFAULT DOMAIN}                   Asuminen
 
@@ -68,3 +71,6 @@ Set default datamodel variables
     Set Test Variable    ${DEFAULT DATAMODEL CLASS PREFIX}      ${DEFAULT DATAMODEL CLASS PREFIX}_${test_case_id.lower()}
     Set Test Variable    ${DEFAULT DATAMODEL ATTRIBUTE NAME}        ${DEFAULT DATAMODEL ATTRIBUTE NAME}_${test_case_id.lower()}
     Set Test Variable    ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}      ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_${test_case_id.lower()}
+    Set Test Variable    ${DEFAULT DATAMODEL ASSOCIATION NAME}        ${DEFAULT DATAMODEL ASSOCIATION NAME}_${test_case_id.lower()}
+    Set Test Variable    ${DEFAULT DATAMODEL ASSOCIATION PREFIX}      ${DEFAULT DATAMODEL ASSOCIATION PREFIX}_${test_case_id.lower()}
+    

@@ -8,9 +8,6 @@ Library              Collections
 Test Setup           Setup test Case
 Test Teardown        Teardown test Case
 
-*** Variables ***
-${link}=     https://dvv.fi/documents/16079645/16452557/section-info-fi.png/9c02b3ea-4377-c2f4-c166-5c2285cb44a4?t=1574845075000
-
 
 *** Test Cases ***
 T3C1. Verify create class permissions
@@ -32,8 +29,8 @@ T3C1. Verify create class permissions
     Close Browser
     Open Browser with Settings        
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open class tab
     Verify page does contain add datamodel class button
@@ -46,8 +43,8 @@ T3C2. Create valid class
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open class tab
     Create new class
@@ -72,7 +69,6 @@ T3C2. Create valid class
     Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}
     Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
-    ${json_dict}=  Get shown json from new tab
     
     Cancel show datamodel file dialog
 
@@ -87,22 +83,20 @@ T3C3. Create valid class with subclass
     Create single language fi datamodel with api
     ...  number=${single_language_fi}
 
-    Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
-    Login with Admin
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL CLASS NAME}_1
     
-    Open class tab
-    Create new class
-    Cancel create datamodel class dialog
-
-    Create new class
-    Create new class datamodel in dialog
-
-    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_1
-    Input class prefix            ${DEFAULT DATAMODEL CLASS PREFIX}_1
-    Save class
-    Return from class
-
+    Create datamodel class with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL CLASS PREFIX}_1
+    ...  status=${VALID}
+    
+    Open datamodel search page
+    Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
+    
     Open class tab
     Create new class
     Cancel create datamodel class dialog
@@ -110,9 +104,9 @@ T3C3. Create valid class with subclass
     Create new class
     Select class on create class dialog    ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
 
-    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_2
     Input class prefix            ${DEFAULT DATAMODEL CLASS PREFIX}_2
     Save class
+    Verify create datamodel class does not contain error ${Class name not set error}
 
     Reload page
     Select info tab
@@ -125,12 +119,11 @@ T3C3. Create valid class with subclass
     Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:subClassOf"]}     value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}_1
-    ${json_dict}=  Get shown json from new tab
     
     Cancel show datamodel file dialog
 
     Open class tab
-    Select class    ${DEFAULT DATAMODEL CLASS NAME}_2
+    Select class    ${DEFAULT DATAMODEL CLASS NAME}_1
     Delete class
 
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
@@ -150,28 +143,26 @@ T3C4. Create valid class with all options
     ...                                  ${DRAFT}
     ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
+    @{terminologies}=  Create list  
+    ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
+  
     Create multiple options datamodel library with api
     ...  number=${multi_language}
+    ...  terminologies=@{terminologies}
+    
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL CLASS NAME}_1
+    
+    Create datamodel class with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL CLASS PREFIX}_1
+    ...  status=${VALID}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     Login with Admin
-
-    Select links tab
-    Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}  5
-    Save editing links 
-
-    Open class tab
-    Create new class
-    Create new class datamodel in dialog
-
-    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_1
-    Input class prefix            ${DEFAULT DATAMODEL CLASS PREFIX}_1
-    Save class
-    Return from class
-
-    Reload Page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     
     Open class tab
 
@@ -195,7 +186,7 @@ T3C4. Create valid class with all options
     Select disjoint class into class
     Select class on linking class dialog        ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
 
-    Select status into class                    ${INCOMPLETE}
+    Select status into class                    ${DRAFT}
 
     Input finnish description into class        description fi
     Input swedish description into class        description sv
@@ -214,15 +205,20 @@ T3C4. Create valid class with all options
     
     ${json_dict}=  Get shown json from new tab
     Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${INCOMPLETE}
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][0]}       value=${DEFAULT DATAMODEL CLASS NAME}_2_fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][1]}       value=${DEFAULT DATAMODEL CLASS NAME}_2_en
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][2]}       value=${DEFAULT DATAMODEL CLASS NAME}_2_sv
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][1]}     value=description fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][2]}     value=description en
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][0]}     value=description sv
-    ${json_dict}=  Get shown json from new tab
+    
+    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
+    log  ${labels}
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_fi
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_en
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_sv
+    
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
+    log  ${comment}
+    List Should Contain Value    @{comment}    description fi
+    List Should Contain Value    @{comment}    description en
+    List Should Contain Value    @{comment}    description sv
     
     Cancel show datamodel file dialog
 
@@ -240,8 +236,8 @@ T3C5. Verify invalid class errors
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open class tab
     Create new class
@@ -307,8 +303,8 @@ T3C6. Verify modify class permissions
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
 
     Open class tab
     Create new class
@@ -344,8 +340,8 @@ T3C7. Verify invalid class modify errors
     ...  number=${single_language_fi}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
 
     Open class tab
     Create new class
@@ -386,26 +382,26 @@ T3C8. Modify class
     ...                                  ${DRAFT}
     ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
+    @{terminologies}=  Create list  
+    ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
+  
     Create multiple options datamodel library with api
     ...  number=${multi_language}
+    ...  terminologies=@{terminologies}  
+
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL CLASS NAME}_1
+    
+    Create datamodel class with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL CLASS PREFIX}_1
+    ...  status=${VALID}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     Login with Admin
-
-    Select links tab
-    Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}  5
-    Save editing links 
-
-    Open class tab
-    Create new class
-    Create new class datamodel in dialog
-
-    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_1
-    Input class prefix            ${DEFAULT DATAMODEL CLASS PREFIX}_1
-    Save class
-    Return from class
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
 
     Reload Page
     
@@ -419,7 +415,7 @@ T3C8. Modify class
     Save class
 
     Edit class
-    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_3_fi
+    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}
     Input english class label     ${DEFAULT DATAMODEL CLASS NAME}_2_en
     Input swedish class label     ${DEFAULT DATAMODEL CLASS NAME}_2_sv
 
@@ -432,14 +428,14 @@ T3C8. Modify class
     Select disjoint class into class
     Select class on linking class dialog        ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
 
-    Select status into class                    ${INCOMPLETE}
+    Select status into class                    ${DRAFT}
     Input finnish description into class        description fi
     Input swedish description into class        description sv
     Input english description into class        description en
     Input editor comment into class             editor input
     Save class
 
-    Sleep  20
+    Sleep  5
     Return from class
     Reload page
     Select info tab
@@ -449,15 +445,21 @@ T3C8. Modify class
     
     ${json_dict}=  Get shown json from new tab
     Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${INCOMPLETE}
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][1]}       value=${DEFAULT DATAMODEL CLASS NAME}_3_fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][0]}       value=${DEFAULT DATAMODEL CLASS NAME}_2_en
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"][2]}       value=${DEFAULT DATAMODEL CLASS NAME}_2_sv
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][2]}     value=description fi
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][1]}     value=description en
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:comment"][0]}     value=description sv
-    ${json_dict}=  Get shown json from new tab
+
+    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
+    log  ${labels}
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_en
+    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_sv
+    
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
+    log  ${comment}
+    List Should Contain Value    @{comment}    description fi
+    List Should Contain Value    @{comment}    description en
+    List Should Contain Value    @{comment}    description sv
+
 
     [Teardown]  Run keywords
     ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multi_language}
@@ -479,28 +481,26 @@ T3C9. Modify class remove unnesecary
     ...                                  ${DRAFT}
     ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
+    @{terminologies}=  Create list  
+    ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
+  
     Create multiple options datamodel library with api
     ...  number=${multi_language}
+    ...  terminologies=@{terminologies}
+      
+    &{label}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL CLASS NAME}_1
+    
+    Create datamodel class with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    ...  label=&{label}
+    ...  identifier=${DEFAULT DATAMODEL CLASS PREFIX}_1
+    ...  status=${VALID}
 
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     Login with Admin
-
-    Select links tab
-    Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}  5
-    Save editing links 
-
-    Open class tab
-    Create new class
-    Create new class datamodel in dialog
-
-    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_1
-    Input class prefix            ${DEFAULT DATAMODEL CLASS PREFIX}_1
-    Save class
-    Return from class
-
-    Reload Page
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multi_language}
     
     Open class tab
 
@@ -524,7 +524,7 @@ T3C9. Modify class remove unnesecary
     Select disjoint class into class
     Select class on linking class dialog        ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
 
-    Select status into class                    ${INCOMPLETE}
+    Select status into class                    ${DRAFT}
 
     Input finnish description into class        description fi
     Input swedish description into class        description sv
@@ -538,10 +538,11 @@ T3C9. Modify class remove unnesecary
     Remove upper class from class
     Remove corresponding class from class
     Remove disjoint class from class
-    Click element with wait                     ${Datamodel class label input en}
+    Input finnish class label                   ${DEFAULT DATAMODEL CLASS NAME}
+    Click element with wait                     ${Datamodel class label input sv}
     Press Keys                                  None  CTRL+A
     Press Keys                                  None  BACKSPACE
-    Click element with wait                     ${Datamodel class label input sv}
+    Click element with wait                     ${Datamodel class label input en}
     Press Keys                                  None  CTRL+A
     Press Keys                                  None  BACKSPACE
 
@@ -554,7 +555,7 @@ T3C9. Modify class remove unnesecary
     
     Return from class
 
-    Sleep  20
+    Sleep  5
     Reload page
     Select info tab
     Open datamodel options select
@@ -563,13 +564,15 @@ T3C9. Modify class remove unnesecary
     
     ${json_dict}=  Get shown json from new tab
     Dictionary Should Contain Value    ${json_dict["@graph"][2]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${INCOMPLETE}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"]}          value=${DEFAULT DATAMODEL CLASS NAME}_2_fi
-    Dictionary Should not Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][1]}     value=description fi
-    Dictionary Should not Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][2]}     value=description en
-    Dictionary Should not Contain Value    ${json_dict["@graph"][2]["rdfs:comment"][0]}     value=description sv
-    ${json_dict}=  Get shown json from new tab
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"]}          value=${DEFAULT DATAMODEL CLASS NAME}
+    
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:comment"]}]]
+    log  ${comment}
+    List Should not Contain Value    @{comment}    description fi
+    List Should not Contain Value    @{comment}    description en
+    List Should not Contain Value    @{comment}    description sv
 
     [Teardown]  Run keywords
     ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multi_language}

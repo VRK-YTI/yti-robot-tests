@@ -6,6 +6,13 @@ Resource              common_api_resources.robot
 *** Variables ***
 ${DELETE_MODEL_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/model
 ${CREATE_MODEL_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/model
+${UPDATE_MODEL_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/model/library
+${CREATE_CLASS_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/class/library
+${CREATE_ATTRIBUTE_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/resource/library
+
+${CREATE_ASSOCIATION_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/resource/library
+
+
 
 ${LANGUAGE_FI}=                 fi
 ${LANGUAGE_SV}=                 sv
@@ -26,7 +33,7 @@ ${INVALID}=                  INVALID
 ${PROFILE}=                  PROFILE
 ${LIBRARY}=                  LIBRARY
 
-${DEFAULT_STATUS}=           ${DRAFT}
+${DEFAULT_STATUS}=           ${VALID}
 ${DEFAULT_TYPE}=             ${PROFILE}
 &{DEFAULT_DESCRIPTION}=      &{EMPTY}
 @{DEFAULT_LANGUAGES}=        ${LANGUAGE_FI}
@@ -35,6 +42,23 @@ ${DEFAULT_TYPE}=             ${PROFILE}
 
 
 *** Keywords ***
+Create datamodel api payload from file
+    [Arguments]     
+    ...  ${file}
+    ...  &{kwargs}
+    ${json_string}=      Get File       ${file}
+    ${json}=             evaluate       json.loads('''${json_string}''')    json
+    FOR    ${kwarg}    IN    &{kwargs}
+        set to dictionary  ${json}       ${kwarg[0]}=${kwarg[1]}
+    END
+    ${json_string}=      evaluate        json.dumps(${json})                 json
+    [Return]        ${json_string}
+
+Delete model ${model} with api
+    ${headers}=     Create authentication header
+    ${response}=    Delete      ${DELETE_MODEL_API_POINT}/${model}  headers=${headers}
+    [Return]        ${response}
+
 Create datamodel with api
     [Arguments]
     ...  ${prefix}
@@ -43,56 +67,88 @@ Create datamodel with api
     ...  ${services}=${DEFAULT_SERVICES}
     ...  ${organizations}=${DEFAULT_ORGANIZATIONs}
     ...  ${languages}=${DEFAULT_LANGUAGES}
-    ...  ${status}=${DEFAULT_STATUS}
     ...  ${type}=${DEFAULT_TYPE}
     ${headers}=     Create authentication header
-    ${json}=        Create datamodel json from file
+    ${json}=        Create datamodel api payload from file  #Create datamodel json from file
     ...             ${JSON_FILE_FOLDER}${/}datamodel_profile_create.json
-    ...             labels=${labels}
+    ...             label=${labels}
     ...             prefix=${prefix}
-    ...             descriptions=${descriptions}
-    ...             services=${services}
+    ...             description=${descriptions}
+    ...             groups=${services}
     ...             organizations=${organizations}
     ...             languages=${languages}
-    ...             status=${status}
     ...             type=${type}
+   
     ${response}=    Post         ${CREATE_MODEL_API_POINT}/${type.lower()}     headers=${headers}  data=${json}
     [Return]        ${response}
 
-Delete model ${model} with api
+Update datamodel with api
+    [Arguments]
+    ...  ${prefix}
+    ...  ${labels}
+    ...  ${descriptions}=&{DEFAULT_DESCRIPTION}
+    ...  ${services}=${DEFAULT_SERVICES}
+    ...  ${organizations}=${DEFAULT_ORGANIZATIONs}
+    ...  ${languages}=${DEFAULT_LANGUAGES}
+    ...  ${status}=${DEFAULT_STATUS}
+    ...  &{kwargs}
     ${headers}=     Create authentication header
-    ${response}=    Delete      ${DELETE_MODEL_API_POINT}/${model}  headers=${headers}
+    ${json}=        Create datamodel api payload from file
+    ...             ${JSON_FILE_FOLDER}${/}datamodel_profile_update.json
+    ...             label=${labels}
+    ...             description=${descriptions}
+    ...             groups=${services}
+    ...             organizations=${organizations}
+    ...             languages=${languages}
+    ...             status=${status}
+    ...             &{kwargs}
+    ${response}=    Put         ${UPDATE_MODEL_API_POINT}/${prefix}     headers=${headers}  data=${json}
     [Return]        ${response}
 
-Create datamodel json from file
-    [Arguments]     
-    ...  ${file}
+Create datamodel class with api
+    [Arguments]
     ...  ${prefix}
-    ...  ${languages}
-    ...  ${status}
-    ...  ${type}
-    ...  ${labels}
-    ...  ${descriptions}
-    ...  ${services}
-    ...  ${organizations}
-    ${json_string}=      Get File    ${file}
-    ${json}=             evaluate       json.loads('''${json_string}''')    json
-    set to dictionary    ${json}        id=http://uri.suomi.fi/datamodel/ns/${prefix}
-    set to dictionary    ${json}        description=${descriptions}
-    set to dictionary    ${json}        label=${labels}
-    set to dictionary    ${json}        prefix=${prefix}
-    set to dictionary    ${json}        status=${status}
-    set to dictionary    ${json}        type=${type}
-    set to dictionary    ${json}        groups=${services}
-    set to dictionary    ${json}        languages=${languages}
-    set to dictionary    ${json}        organizations=${organizations}
+    ...  &{kwargs}
+    
+    ${headers}=     Create authentication header
+    ${json}=        Create datamodel api payload from file
+    ...             ${JSON_FILE_FOLDER}${/}datamodel_class_create.json
+    ...             &{kwargs}
+    log  ${json}
+    ${response}=    Post         ${CREATE_CLASS_API_POINT}/${prefix}     headers=${headers}  data=${json}
+    [Return]        ${response}
 
-    ${json_string}=      evaluate        json.dumps(${json})                 json
-    [Return]        ${json_string}
 
-*** keywords ***
+Create datamodel attribute with api
+    [Arguments]
+    ...  ${prefix}
+    ...  &{kwargs}
+    
+    ${headers}=     Create authentication header
+    ${json}=        Create datamodel api payload from file
+    ...             ${JSON_FILE_FOLDER}${/}datamodel_attribute_create.json
+    ...             &{kwargs}
+    log  ${json}
+    ${response}=    Post         ${CREATE_ATTRIBUTE_API_POINT}/${prefix}/attribute     headers=${headers}  data=${json}
+    [Return]        ${response}
+
+Create datamodel association with api
+    [Arguments]
+    ...  ${prefix}
+    ...  &{kwargs}
+    
+    ${headers}=     Create authentication header
+    ${json}=        Create datamodel api payload from file
+    ...             ${JSON_FILE_FOLDER}${/}datamodel_association_create.json
+    ...             &{kwargs}
+    log  ${json}
+    ${response}=    Post         ${CREATE_ASSOCIATION_API_POINT}/${prefix}/association     headers=${headers}  data=${json}
+    [Return]        ${response}
+
 Create multiple options datamodel with api
-    [Arguments]  ${number}
+    [Arguments]  
+    ...  ${number}
+    ...  &{kwargs}
     &{labels}=  Create dictionary  
     ...  ${LANGUAGE_FI}   
     ...  ${DEFAULT DATAMODEL NAME}_${number}
@@ -120,16 +176,28 @@ Create multiple options datamodel with api
 
     Create datamodel with api
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${DRAFT}
     ...  type=${PROFILE}
     ...  labels=&{labels}
     ...  descriptions=&{descriptions}
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
+    
+    Update datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  labels=&{labels}
+    ...  descriptions=&{descriptions}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+    ...  status=${VALID}
+    ...  &{kwargs}
 
 Create multiple options datamodel library with api
-    [Arguments]  ${number}
+    [Arguments]    
+    ...  ${number}
+    ...  &{kwargs}
+    
     &{labels}=  Create dictionary  
     ...  ${LANGUAGE_FI}   
     ...  ${DEFAULT DATAMODEL NAME}_${number}
@@ -157,16 +225,27 @@ Create multiple options datamodel library with api
 
     Create datamodel with api
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${DRAFT}
     ...  type=${LIBRARY}
     ...  labels=&{labels}
     ...  descriptions=&{descriptions}
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
+    
+    Update datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  labels=&{labels}
+    ...  descriptions=&{descriptions}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+    ...  status=${VALID}
+    ...  &{kwargs}
 
 Create single language fi datamodel with api
-    [Arguments]  ${number}
+    [Arguments]    
+    ...  ${number}
+    ...  &{kwargs}
     &{labels}=  Create dictionary  
     ...  ${LANGUAGE_FI}   
     ...  ${DEFAULT DATAMODEL NAME}_${number}
@@ -182,16 +261,63 @@ Create single language fi datamodel with api
 
     Create datamodel with api
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${VALID}
     ...  type=${LIBRARY}
     ...  labels=&{labels}
     ...  descriptions=&{descriptions}
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
+    
+    Update datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  labels=&{labels}
+    ...  descriptions=&{descriptions}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+    ...  status=${VALID}
+    ...  &{kwargs}
+
+Update single language fi datamodel with api
+    [Arguments]    
+    ...  ${number}
+    ...  &{kwargs}
+    &{labels}=  Create dictionary  
+    ...  ${LANGUAGE_FI}   
+    ...  ${DEFAULT DATAMODEL NAME}_${number}
+    &{descriptions}=  Create dictionary  
+    ...  ${LANGUAGE_FI}  
+    ...  DESCRIPTION_FI    
+    @{languages}=  Create List  
+    ...  ${LANGUAGE_FI} 
+    @{organizations}=  Create List  
+    ...  ${AUTOMATION_ORGANIZATION}
+    @{services}=  Create List  
+    ...  ${HOUSING_SERVICE}
+
+    Update datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  labels=&{labels}
+    ...  descriptions=&{descriptions}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+    ...  status=${VALID}
+    
+    Update datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  labels=&{labels}
+    ...  descriptions=&{descriptions}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+    ...  status=${VALID}
+    ...  &{kwargs}
 
 Create single language en datamodel with api
-    [Arguments]  ${number}
+    [Arguments]    
+    ...  ${number}
+    ...  &{kwargs}
     &{labels}=  Create dictionary  
     ...  ${LANGUAGE_EN}   
     ...  ${DEFAULT DATAMODEL NAME}_${number}
@@ -204,16 +330,26 @@ Create single language en datamodel with api
 
     Create datamodel with api
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${DRAFT}
     ...  type=${PROFILE}
     ...  labels=&{labels}
     ...  descriptions=&{EMPTY}
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services} 
+    
+    Update datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  labels=&{labels}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+    ...  status=${VALID}
+    ...  &{kwargs}
 
 Create invalid datamodel with api
-    [Arguments]  ${number}
+    [Arguments]    
+    ...  ${number}
+    ...  &{kwargs}
     &{labels}=  Create dictionary  
     ...  ${LANGUAGE_FI}   
     ...  ${DEFAULT DATAMODEL NAME}_${number}
@@ -226,9 +362,17 @@ Create invalid datamodel with api
 
     Create datamodel with api
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  status=${INVALID}
     ...  type=${LIBRARY}
     ...  labels=&{labels}
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
+    
+    Update datamodel with api
+    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
+    ...  labels=&{labels}
+    ...  organizations=@{organizations}
+    ...  languages=@{languages}
+    ...  services=@{services}
+    ...  status=${VALID}
+    ...  &{kwargs}

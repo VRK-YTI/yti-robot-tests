@@ -23,7 +23,11 @@ ${LOGGED IN USER BLOCK}                   //div[@id="top-header-authentication"]
 
 *** Keywords ***
 Login with ${user}
-    Run keyword              Select ${user} user 
+    IF  '${ENVIRONMENT}' == 'dev'
+        Run keyword              Impersonate with ${user}
+    ELSE
+        Run keyword              Select ${user} user 
+    END  
     Verify user is logged in
 
 Select Superuser user
