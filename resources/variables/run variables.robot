@@ -9,10 +9,10 @@ ${CHROME_DRIVER_PATH}           ${EMPTY}
 ${ENVIRONMENT}                  dev
 ${API_KEY}                      ${EMPTY}
 
-${DEFAULT TERMINOLOGY NAME}         Auto_TC
+${DEFAULT TERMINOLOGY NAME}         Auto_t
 ${DEFAULT CONCEPT NAME}             Auto_Concept
 ${DEFAULT COLLECTION NAME}          Auto_Collection
-${DEFAULT TERMINOLOGY PREFIX}       auto_prefix
+${DEFAULT TERMINOLOGY PREFIX}       auto_pre
 
 ${DEFAULT DATAMODEL NAME}           auto_DM
 ${DEFAULT DATAMODEL PREFIX}         pr
