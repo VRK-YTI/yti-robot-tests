@@ -546,7 +546,7 @@ T5C9. Modify association remove unnesecary
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ASSOCIATION PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ASSOCIATION PREFIX}_2
     Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
     Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
     Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:label"]}          value=${DEFAULT DATAMODEL ASSOCIATION NAME}

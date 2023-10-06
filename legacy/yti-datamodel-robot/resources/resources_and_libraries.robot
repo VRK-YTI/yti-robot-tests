@@ -66,3 +66,6 @@ Test Case Teardown Terminologies
     Test Case Teardown Delete model       @{models}
 
     Delete terminology ${terminology} with api
+
+Delete models ${model} if test failed
+    Run keyword if test failed  Delete model ${model} with api

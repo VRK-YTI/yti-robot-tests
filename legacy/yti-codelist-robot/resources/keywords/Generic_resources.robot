@@ -1,3 +1,5 @@
+*** Settings ***
+Library    SeleniumLibrary
 *** Variables ***
 
 #Generic
@@ -450,7 +452,8 @@ Upload codelist
     Wait Until Element Is Enabled       ${UPLOAD_FILE_BTN}                              timeout=20
     Click Button                        ${UPLOAD_FILE_BTN}
 
-    Wait Until Element Is Visible       ${CODE_LIST_DDL}                                timeout=120
+    Wait Until Element Is Visible               ${CODE_LIST_DDL}                                timeout=120
+    Wait Until Page Does Not Contain Element    //app-ajax-loading-indicator                    timeout=120
 
 Update code list
     [Arguments]    ${code_list}    ${codelist_name}    ${file_format}

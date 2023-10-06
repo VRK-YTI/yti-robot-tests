@@ -608,6 +608,10 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Input Text with wait        ${SEARCH_BOX_INPUT}    ${DEFAULT_PREFLABEL_SCHEME}    
     Wait Until Page Contains    Haulla ei löytynyt yhtään koodistoa.        timeout=60
 
+    [Teardown]  run keywords   
+    ...    Test Case Teardown Generic Teardown
+    ...    Delete codelist ${DEFAULT_CODELIST_SCHEME_ID} if test fails
+
 614. Import extensions in CSV format
     [Documentation]    Import code list with codes and import extension,
     ...    Import members in CSV format and export CSV.

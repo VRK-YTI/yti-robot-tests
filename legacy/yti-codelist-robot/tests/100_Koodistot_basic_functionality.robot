@@ -498,4 +498,6 @@ ${Error_end_date_before_start_date}    Loppupäivä ennen alkupäivää.
     ...                    ${DEFAULT_PREFLABEL_CODE}
     Upload codelist in Excel format     ${excel_file_path}    ${DEFAULT_PREFLABEL_SCHEME}
     Remove list of codes                ${DEFAULT_PREFLABEL_SCHEME}
-    [Teardown]  run keyword if test failed   Remove codelist teardown      ${DEFAULT_CODELIST_SCHEME_ID}
+    [Teardown]  run keywords   
+    ...    Test Case Teardown Generic Teardown
+    ...    Delete codelist ${DEFAULT_CODELIST_SCHEME_ID} if test fails
