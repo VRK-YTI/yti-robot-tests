@@ -65,39 +65,39 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     [Documentation]    Verify that navigation menu links are opened correctly
     [Tags]    regression    tietomallit    test    100
     Select navigation menu link    Käyttäjätiedot
-    Wait Until Page Contains    Käyttäjätiedot    
-    Wait Until Page Contains    Nimi    
-    Wait Until Page Contains    Sähköposti    
-    Wait Until Page Contains    Organisaatiot ja roolit    
+    Wait Until Page Contains       Käyttäjätiedot    
+    Wait Until Page Contains       Nimi    
+    Wait Until Page Contains       Sähköposti    
+    Wait Until Page Contains       Organisaatiot ja roolit    
 
     Select navigation menu link    yhteentoimiva.suomi.fi
-    Switch window with wait    title=Yhteentoimivuusalusta | Suomidigi
+    Switch window with wait        title=Yhteentoimivuusalusta | Suomidigi
     Close Window
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+    Switch window with wait        title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-sanastot
 
-    Switch window with wait     NEW
-    Wait Until Page Contains    Sanastot    
+    Switch window with wait        NEW
+    Wait Until Page Contains       Sanastot    
     Close Window
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+    Switch window with wait      title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-koodistot
     Wait Until Keyword Succeeds    90 seconds    5 seconds    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Koodistot
     Wait Until Page Contains    Koodistot    
     Wait Until Page Contains    Etusivu    
     Close Window
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
     Select navigation menu link    Suomi.fi-kommentit
 
-    Switch window with wait    title=${ENVIRONMENT_IDENTIFIER} - Kommentit
+    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Kommentit
     Wait Until Page Contains    Kommentit    
     Wait Until Page Contains    Etusivu    
     Wait Until Page Contains    Rajaa hakutuloksia    
     Close Window
 
-    Switch window with wait  title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
+    Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Tietomallit
 
     Change user interface language    ${LANGUAGE_EN}
     Click Element with wait     ${NAVIGATION_MENU_DDL}        
@@ -113,8 +113,8 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     [Tags]    regression    tietomallit    test     100
     Click Element with wait    ${LICENSE_ICON_TEXT_LINK}    
 
-    Switch window with wait  title=Creative Commons — Attribution 4.0 International — CC BY 4.0
-    Wait Until Page Contains    Attribution 4.0 International    
+    Switch window with wait             NEW
+    Wait Until Page Contains element    //h2[contains(text(), "Attribution 4.0 International")]    
 
 115. Check URI links
     [Documentation]    Check that URI links are working correctly
@@ -136,14 +136,18 @@ ${LANGUAGE_FI}    id=fi_ui_language_dropdown
     [Tags]    regression    tietomallit    test    100
     Create Profile                   ${DEFAULT_DATAMODEL_NAME}    ${DEFAULT_DATAMODEL_PREFIX}
     Delete datamodel                 ${DEFAULT_DATAMODEL_NAME}
-    [Teardown]  run keyword if test failed   Test Case Teardown Delete model    ${DEFAULT_DATAMODEL_PREFIX}
+    [Teardown]  Run keywords   
+    ...    Test Case Teardown Generic Teardown
+    ...    Delete models ${DEFAULT_DATAMODEL_PREFIX} if test failed
 
 117. Create and delete vocabulary
     [Documentation]    Create and delete vocabulary
     [Tags]    regression    tietomallit    test    100
     Create Core Vocabulary  ${DEFAULT_DATAMODEL_NAME}   ${DEFAULT_DATAMODEL_PREFIX}
     Delete datamodel        ${DEFAULT_DATAMODEL_NAME}
-    [Teardown]  run keyword if test failed      Test Case Teardown Delete model    ${DEFAULT_DATAMODEL_PREFIX}
+    [Teardown]  Run keywords 
+    ...    Test Case Teardown Generic Teardown
+    ...    Delete models ${DEFAULT_DATAMODEL_PREFIX} if test failed
 
 *** Keywords ***
 Change user interface language

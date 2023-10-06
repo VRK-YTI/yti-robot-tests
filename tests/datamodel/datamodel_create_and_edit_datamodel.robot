@@ -55,9 +55,6 @@ T2C2. Verify edit datamodel permissions
     Open datamodel options select
     Verify page does contain edit datamodel button
 
-    Delete datamodel from ui
-    Verify datamodel has been deleted
-
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     
 T2C3. Verify create datamodel errors
@@ -140,10 +137,6 @@ T2C3. Verify create datamodel errors
     Accept creating datamodel
     Verify datamodel is created with prefix ${DEFAULT DATAMODEL PREFIX}
 
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
-
     [Teardown]  Run keywords
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_fi} with api
@@ -197,10 +190,6 @@ T2C4. Verify edit datamodel errors
     Verify edit datamodel does not contain error Palautteen sähköposti ei ole oikeassa muodossa
 
     Save editing
-
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
 
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
 
@@ -266,10 +255,6 @@ T2C5. Create valid datamodel with only nessecary information and edit
     Dictionary Should Contain Value    ${json_dict["rdfs:label"]}                ${DEFAULT DATAMODEL NAME}_EN
     Dictionary Should not Contain Key  ${json_dict}                              rdfs:comment
     Cancel show datamodel file dialog
-
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
 
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}
 
@@ -398,10 +383,6 @@ T2C6. Create valid datamodel with all information and edit those information
     Verify list contains key and value  ${json_dict["rdfs:label"]}  key=@language   value=fi
     Cancel show datamodel file dialog
 
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
-
     [Teardown]  Run keywords
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}   
 
@@ -463,10 +444,6 @@ T2C7. Create valid datamodel with all information and remove unnesecary
     Should Contain                         ${json_dict["rdfs:label"]["@value"]}           ${DEFAULT DATAMODEL NAME} fi
     Dictionary Should not Contain Key      ${json_dict}  rdfs:comment
     Cancel show datamodel file dialog
-    
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
 
     [Teardown]  Run keywords
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_1
@@ -555,10 +532,6 @@ T2C8. Add terminology link to datamodel
     Dictionary Should not Contain Key    ${json_dict}  dcterms:requires
     Cancel show datamodel file dialog
 
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
-
     [Teardown]  Run keywords
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     ...    Delete terminology ${DEFAULT TERMINOLOGY NAME}_1 with api
@@ -598,10 +571,6 @@ T2C9. Add datamodel link to datamodel
     Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/pr_t2c9_3
     Cancel show datamodel file dialog
 
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
-
     [Teardown]  Run keywords
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_1} with api
@@ -629,11 +598,6 @@ T2C10. Verify documentation permissions
     Verify page does contain datamodel documentation tab
     Open documentation tab
     Verify page does contain datamodel edit documentation button
-
-    Select info tab
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
 
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
 
@@ -683,11 +647,6 @@ T2C11. Edit documentation
     Change language to finnish on datamodel
     Verify preview text            ${fin doc}
     Verify documentation link      ${link}
-
-    Select info tab
-    Open datamodel options select
-    Delete datamodel from ui
-    Verify datamodel has been deleted
     
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     

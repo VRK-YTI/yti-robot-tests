@@ -79,3 +79,6 @@ Delete registry with code lists
         Delete codelist ${codelist} from registery ${api_registery} with api
     END
     Delete empty registry           ${registry}
+
+Delete codelist ${codelist} if test fails
+    run keyword if test failed   Delete codelist ${codelist} from registery test with api
