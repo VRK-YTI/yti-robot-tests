@@ -86,7 +86,7 @@ T4C3. Create valid attribute with subattribute
   
     &{label}=  Create dictionary  
     ...  ${LANGUAGE_FI}   
-    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
+    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}
 
     Create datamodel attribute with api
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
