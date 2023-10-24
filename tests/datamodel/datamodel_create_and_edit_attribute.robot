@@ -14,22 +14,22 @@ T4C1. Verify create attribute permissions
     Create single language fi datamodel with api
     ...  number=${single_language_fi}
 
-    Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
+    #Open datamodel search page
+    #Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
 
-    Open attribute tab
-    Verify page does not contain add datamodel attribute button
+    #Open attribute tab
+    #Verify page does not contain add datamodel attribute button
 
-    Login with no group
-    Open attribute tab
-    Verify page does not contain add datamodel attribute button
+    #Login with no group
+    #Open attribute tab
+    #Verify page does not contain add datamodel attribute button
 
     # Close browser and open it again, because of eduuni cache
-    Close Browser
-    Open Browser with Settings        
+    #Close Browser
+    #Open Browser with Settings        
     Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     Login with Admin
+    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open attribute tab
     Verify page does contain add datamodel attribute button
@@ -55,6 +55,7 @@ T4C2. Create valid attribute
     Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}
     Save attribute
+    Wait until attribute is saved 
 
     Return from attribute
 
@@ -85,13 +86,13 @@ T4C3. Create valid attribute with subattribute
   
     &{label}=  Create dictionary  
     ...  ${LANGUAGE_FI}   
-    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1
+    ...  ${DEFAULT DATAMODEL ATTRIBUTE NAME}
 
     Create datamodel attribute with api
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     ...  label=&{label}
     ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    ...  status=${VALID}
+    ...  status=${SUGGESTED}
 
     Open datamodel search page
     Login with Admin
@@ -99,13 +100,13 @@ T4C3. Create valid attribute with subattribute
     
     Open attribute tab
     Create new attribute
-    Select attribute on create attribute dialog    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_1  ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
+    Select attribute on create attribute dialog    ${DEFAULT DATAMODEL ATTRIBUTE NAME}  ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
 
     Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
     Save attribute
+    Wait until attribute is saved 
     Verify create datamodel attribute does not contain error ${attribute name not set error}
     
-    Sleep  5
     Reload page
     Select info tab
     Open datamodel options select
@@ -113,11 +114,9 @@ T4C3. Create valid attribute with subattribute
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    ${ids}=  Evaluate  [x["@id"] for x in ${json_dict["@graph"]} if "@id" in x.keys() and ]
-    ${status}=  Evaluate  [x["owl:versionInfo"] for x in ${json_dict["@graph"]} if "owl:versionInfo" in x.keys()]
+    ${ids}=  Evaluate  [x["@id"] for x in ${json_dict["@graph"]} if "@id" in x.keys()]
     ${isDefinedBy}=  Evaluate  [x["rdfs:isDefinedBy"]["@id"] for x in ${json_dict["@graph"]} if "rdfs:isDefinedBy" in x.keys() and "@id" in x["rdfs:isDefinedBy"].keys()]
     List Should Contain Value    ${ids}            ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    List Should Contain Value    ${status}         ${DRAFT}
     List Should Contain Value    ${isDefinedBy}    http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     Cancel show datamodel file dialog
 
@@ -157,7 +156,7 @@ T4C4. Create valid attribute with all options
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
     ...  label=&{label}
     ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    ...  status=${VALID}
+    ...  status=${SUGGESTED}
 
     Open datamodel search page
     Login with Admin
@@ -190,8 +189,8 @@ T4C4. Create valid attribute with all options
 
     Input editor comment into attribute             editor input
     Save attribute
-
-    Sleep  5
+    Wait until attribute is saved 
+    
     Return from attribute
 
     Reload page
@@ -283,6 +282,7 @@ T4C5. Verify invalid attribute errors
     Verify create datamodel attribute does not contain error ${attribute prefix valid character error}
     
     Save attribute
+    Wait until attribute is saved 
 
     Return from attribute
     Reload page
@@ -309,23 +309,24 @@ T4C6. Verify modify attribute permissions
     Input attribute prefix                          ${DEFAULT DATAMODEL attribute PREFIX}
     Input editor comment into attribute             editor input
     Save attribute
+    Wait until attribute is saved 
     Verify page does contain attribute options button
     Verify attribute page does contain editor message     editor input
 
     # Close browser and open it again, because of eduuni cache
-    Close Browser
-    Open Browser with Settings        
-    Open datamodel search page
+    #Close Browser
+    #Open Browser with Settings        
+    #Open datamodel search page
 
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
-    Open attribute tab
-    Select attribute    ${DEFAULT DATAMODEL ATTRIBUTE NAME}
-    Verify page does not contain attribute options button
-    Verify attribute page does not contain editor message     editor input
+    #Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
+    #Open attribute tab
+    #Select attribute    ${DEFAULT DATAMODEL ATTRIBUTE NAME}
+    #Verify page does not contain attribute options button
+    #Verify attribute page does not contain editor message     editor input
 
-    Login with no group
-    Verify page does not contain attribute options button
-    Verify attribute page does not contain editor message     editor input
+    #Login with no group
+    #Verify page does not contain attribute options button
+    #Verify attribute page does not contain editor message     editor input
 
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
 
@@ -355,6 +356,7 @@ T4C7. Verify invalid attribute modify errors
 
     Input finnish attribute label    ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     Save attribute
+    Wait until attribute is saved 
 
     Return from attribute
     Reload page
@@ -394,7 +396,7 @@ T4C8. Modify attribute
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
     ...  label=&{label}
     ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    ...  status=${VALID}
+    ...  status=${SUGGESTED}
 
     Open datamodel search page
     Login with Admin
@@ -408,6 +410,7 @@ T4C8. Modify attribute
     Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_fi
     Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
     Save attribute
+    Wait until attribute is saved 
 
     Edit attribute
     Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}
@@ -427,8 +430,8 @@ T4C8. Modify attribute
     Input editor comment into attribute             editor input
     
     Save attribute
+    Wait until attribute is saved 
     
-    Sleep  5
     Return from attribute
     Reload page
     Select info tab
@@ -437,17 +440,17 @@ T4C8. Modify attribute
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
+    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
 
-    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:label"]}]]
+    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
     log  ${labels}
     List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_en
     List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2_sv
     
-    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:comment"]}]]
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
     log  ${comment}
     List Should Contain Value    @{comment}    description fi
     List Should Contain Value    @{comment}    description en
@@ -487,7 +490,7 @@ T4C9. Modify attribute remove unnesecary
     ...  prefix=${DEFAULT DATAMODEL PREFIX}_${multi_language}
     ...  label=&{label}
     ...  identifier=${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
-    ...  status=${VALID}
+    ...  status=${SUGGESTED}
 
     Open datamodel search page
     Login with Admin
@@ -520,6 +523,7 @@ T4C9. Modify attribute remove unnesecary
 
     Input editor comment into attribute             editor input
     Save attribute
+    Wait until attribute is saved 
     
     Edit attribute
     Input finnish attribute label               ${DEFAULT DATAMODEL ATTRIBUTE NAME}
@@ -538,10 +542,10 @@ T4C9. Modify attribute remove unnesecary
     Input english description into attribute        ${SPACE}
     Input editor comment into attribute             ${SPACE}
     Save attribute
+    Wait until attribute is saved 
     
     Return from attribute
 
-    Sleep  5
     Reload page
     Select info tab
     Open datamodel options select

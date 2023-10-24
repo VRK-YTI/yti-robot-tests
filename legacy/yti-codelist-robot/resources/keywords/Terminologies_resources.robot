@@ -77,28 +77,3 @@ Check concept suggestion in Terminologies
     #Wait until page contains    Tämä on kulkuneuvo      timeout=20
     #Wait until page contains    Test Superuser          timeout=20
 
-Create Testiautomaatiosanasto and import vocabulary
-    Open sanastot
-    Click element with wait             ${ADD_VOCABULARY_BTN}
-    Input Text with wait                ${TITLE_INPUT_FI}    ${VOCABULARY_1}
-    Click element with wait             ${ADD_VOCABULARY_ORGANIZATION_BTN}
-    Input Text with wait                ${SEARCH_VOCABULARY_ORGANIZATION_INPUT}    ${ORGANIZATION_2}
-    Click element that contains text    ${ORGANIZATION_2}
-    Click element with wait             ${ADD_NEW_CLASSIFICATION_BTN}
-    Input Text with wait                ${TERMINOLOGY_CLASSIFICATION_INPUT}    ${TERMINOLOGY_CLASSIFICATION_2}
-    Click element that contains text    ${TERMINOLOGY_CLASSIFICATION_2}
-    Click element with wait             ${ADD_DESCRIPTION_DDL}
-
-    Click Button                        ${NEW_DESCRIPTION_FI}
-    Input Text with wait                ${VOCABULARY_DESCRIPTION_TEXTAREA_FI}       Tämä on kuvaus
-    Input Text with wait                ${PREFIX_INPUT}                             ${PREFIX_1}
-    Click element with wait             ${SAVE_VOCABULARY_BTN}                                          timeout=60
-
-    Click element with wait             ${VOCABULARY_DDL}                                               timeout=90
-    Click element with wait             ${IMPORT_VOCABULARY_BTN}                                        timeout=90
-
-    ${csv_file_path}=                   Create concepts from controlled vocabularies csv
-    Choose File                         ${FILE_UPLOAD_INPUT}    ${csv_file_path}
-
-    Click element with wait             ${UPLOAD_FILE}
-    Click element with wait             ${IMPORT_YES_BTN}

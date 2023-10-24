@@ -4,6 +4,7 @@ Library               OperatingSystem
 Resource              common_api_resources.robot
 
 *** Variables ***
+${STATUS_MODEL_API_POINT}=   ${DATAMODELS_URL}datamodel-api/v2/model
 ${DELETE_MODEL_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/model
 ${CREATE_MODEL_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/model
 ${UPDATE_MODEL_API_POINT}=      ${DATAMODELS_URL}datamodel-api/v2/model/library
@@ -29,11 +30,12 @@ ${SUPERSEDED}=               SUPERSEDED
 ${RETIRED}=                  RETIRED
 ${INCOMPLETE}=               INCOMPLETE
 ${INVALID}=                  INVALID
+${SUGGESTED}=                SUGGESTED
 
 ${PROFILE}=                  PROFILE
 ${LIBRARY}=                  LIBRARY
 
-${DEFAULT_STATUS}=           ${VALID}
+${DEFAULT_STATUS}=           ${SUGGESTED}
 ${DEFAULT_TYPE}=             ${PROFILE}
 &{DEFAULT_DESCRIPTION}=      &{EMPTY}
 @{DEFAULT_LANGUAGES}=        ${LANGUAGE_FI}
@@ -57,6 +59,11 @@ Create datamodel api payload from file
 Delete model ${model} with api
     ${headers}=     Create authentication header
     ${response}=    Delete      ${DELETE_MODEL_API_POINT}/${model}  headers=${headers}
+    [Return]        ${response}
+
+Change model ${model} to ${status} with api
+    ${headers}=     Create authentication header
+    ${response}=    Post      url=${STATUS_MODEL_API_POINT}/${model}/release?status=${status}&version=1.0.0  headers=${headers}
     [Return]        ${response}
 
 Create datamodel with api
@@ -182,16 +189,8 @@ Create multiple options datamodel with api
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
-    
-    Update datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  labels=&{labels}
-    ...  descriptions=&{descriptions}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-    ...  status=${VALID}
-    ...  &{kwargs}
+
+    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
 
 Create multiple options datamodel library with api
     [Arguments]    
@@ -231,16 +230,9 @@ Create multiple options datamodel library with api
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
-    
-    Update datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  labels=&{labels}
-    ...  descriptions=&{descriptions}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-    ...  status=${VALID}
-    ...  &{kwargs}
+
+    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
+
 
 Create single language fi datamodel with api
     [Arguments]    
@@ -267,17 +259,9 @@ Create single language fi datamodel with api
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
-    
-    Update datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  labels=&{labels}
-    ...  descriptions=&{descriptions}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-    ...  status=${VALID}
-    ...  &{kwargs}
 
+    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
+    
 Update single language fi datamodel with api
     [Arguments]    
     ...  ${number}
@@ -295,24 +279,7 @@ Update single language fi datamodel with api
     @{services}=  Create List  
     ...  ${HOUSING_SERVICE}
 
-    Update datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  labels=&{labels}
-    ...  descriptions=&{descriptions}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-    ...  status=${VALID}
-    
-    Update datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  labels=&{labels}
-    ...  descriptions=&{descriptions}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-    ...  status=${VALID}
-    ...  &{kwargs}
+    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
 
 Create single language en datamodel with api
     [Arguments]    
@@ -336,15 +303,8 @@ Create single language en datamodel with api
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services} 
-    
-    Update datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  labels=&{labels}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-    ...  status=${VALID}
-    ...  &{kwargs}
+
+    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
 
 Create invalid datamodel with api
     [Arguments]    
@@ -367,12 +327,5 @@ Create invalid datamodel with api
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
-    
-    Update datamodel with api
-    ...  prefix=${DEFAULT DATAMODEL PREFIX}_${number}
-    ...  labels=&{labels}
-    ...  organizations=@{organizations}
-    ...  languages=@{languages}
-    ...  services=@{services}
-    ...  status=${VALID}
-    ...  &{kwargs}
+
+    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api

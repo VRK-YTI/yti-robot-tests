@@ -31,6 +31,7 @@ Search and select datamodel ${Datamodel}
     Sleep            2
 
 Select datamodel ${datamodel}
+    Click element with wait           //label[text() = "Kaikki tietomallit"]
     Click element with wait           //h2[@id="card-title-link"]/span[text()="${Datamodel}"]
 
 Search datamodel ${Datamodel}
