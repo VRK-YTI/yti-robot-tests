@@ -119,6 +119,7 @@ Save association
 
 Wait until association is saved
     Wait until page does not contain element  ${Datamodel save association}
+    Sleep  5
 
 Return from association
     Click element with wait   ${Datamodel association back button}
