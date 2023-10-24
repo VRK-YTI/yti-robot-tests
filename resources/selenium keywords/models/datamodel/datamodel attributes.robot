@@ -128,6 +128,7 @@ Save attribute
 
 Wait until attribute is saved 
     Wait until page does not contain element  ${Datamodel save attribute}
+    Sleep  5
 
 Return from attribute
     Click element with wait   ${Datamodel attribute back button}

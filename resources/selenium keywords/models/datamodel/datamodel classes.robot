@@ -122,6 +122,7 @@ Save class
 
 Wait until class is saved 
     Wait until page does not contain element  ${Datamodel save class}
+    Sleep  5
 
 Return from class
     Click element with wait   ${Datamodel class back button}
