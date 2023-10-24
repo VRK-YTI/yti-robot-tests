@@ -89,7 +89,7 @@ def get_browser_logs():
         for log in logs:
             if (log["level"] == "SEVERE" and "fse.eduuni.fi" not in log["message"] and "login.microsoftonline.com" not in log["message"] 
                 and "login.live.com" not in log["message"]):
-                BuiltIn().log(log, "WARN", formatter="repr")
+                BuiltIn().log(log, formatter="repr")
             else:
                 BuiltIn().log(log)
     except:
