@@ -472,7 +472,7 @@ T2C8. Add terminology and datamodel links to datamodel
     Select links tab
     Edit links from links tab
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  5
-    Add datamodel link to datamodel in links tab    auto_DM_T5C1_1  4  #${DEFAULT DATAMODEL NAME}_${single_language_1}  4
+    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
     Save editing links 
 
     Reload page
@@ -482,7 +482,7 @@ T2C8. Add terminology and datamodel links to datamodel
     Show datamodel file
     ${json_dict}=  Get shown json from new tab
     Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}_1
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/pr_t5c1_1/1.0.0  #${DEFAULT DATAMODEL PREFIX}_${single_language_1}
+    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_1}
 
     Cancel show datamodel file dialog
     
@@ -495,7 +495,7 @@ T2C8. Add terminology and datamodel links to datamodel
 
     Edit links from links tab
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  5
-    Add datamodel link to datamodel in links tab    auto_DM_T5C1_1  4  #${DEFAULT DATAMODEL NAME}_${single_language_1}  4
+    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
     Save editing links 
 
     Edit links from links tab

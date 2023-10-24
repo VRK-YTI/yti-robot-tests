@@ -555,12 +555,12 @@ T4C9. Modify attribute remove unnesecary
     Show datamodel file
     
     ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:label"]}          value=${DEFAULT DATAMODEL ATTRIBUTE NAME}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"]}          value=${DEFAULT DATAMODEL ATTRIBUTE NAME}
     
-    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][1]["rdfs:comment"]}]]
+    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:comment"]}]]
     log  ${comment}
     List Should not Contain Value    @{comment}    description fi
     List Should not Contain Value    @{comment}    description en
