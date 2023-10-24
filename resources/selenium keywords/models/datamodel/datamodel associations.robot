@@ -22,8 +22,8 @@ ${Datamodel association delete button}                    //button[@id="remove-b
 ${Datamodel association editor comment input}             //textarea[@id="editorial-note-input"]
 ${Datamodel association status dropdown}                  //button[@id="status-dropdown_button"]
 ${Datamodel association concept select dropdown}          //button[@id="select-concept-button"]
-${Datamodel association add subassociation button}              //label[contains(text(), "Yläassosiaatiot")]/../../div/button
-${Datamodel association add equivalent association button}      //label[contains(text(), "Vastaavat assosiaatiot")]/../../div/button
+${Datamodel association add subassociation button}              //label[contains(text(), "Yläassosiaatiot")]/../../button
+${Datamodel association add equivalent association button}      //label[contains(text(), "Vastaavat assosiaatiot")]/../../button
 ${Datamodel select concept button}                    //div[@role="dialog"]/div/div/button[@id="submit-button"]
 ${Datamodel select association button}                    //div[@role="dialog"]/div/div/button[@id="use-selected-button"]
 ${Datamodel select subassociation button}                 //div[@role="dialog"]/div/div/button[@id="use-selected-button"]

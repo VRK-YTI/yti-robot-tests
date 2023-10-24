@@ -25,9 +25,9 @@ ${Datamodel attribute description input sv}                //textarea[@id="note-
 ${Datamodel attribute editor comment input}             //textarea[@id="editorial-note-input"]
 ${Datamodel attribute status dropdown}                  //button[@id="status-dropdown_button"]
 ${Datamodel attribute concept select dropdown}          //button[@id="select-concept-button"]
-${Datamodel attribute add subattribute button}              //label[contains(text(), "Yläattribuutit")]/../../div/button
-${Datamodel attribute add equivalent attribute button}      //label[contains(text(), "Vastaavat attribuutit")]/../../div/button
-${Datamodel attribute disjoint attribute button}            //label[contains(text(), "Erilliset attribuutit")]/../../div/button
+${Datamodel attribute add subattribute button}              //label[contains(text(), "Yläattribuutit")]/../../button
+${Datamodel attribute add equivalent attribute button}      //label[contains(text(), "Vastaavat attribuutit")]/../../button
+${Datamodel attribute disjoint attribute button}            //label[contains(text(), "Erilliset attribuutit")]/../../button
 ${Datamodel select linking subattribute button}                    //div[@role="dialog"]/div/div/button[@id="use-selected-button"]
 ${Datamodel select attribute button}                    //div[@role="dialog"]/div/div/button[@id="submit-button"]
 ${Datamodel select subattribute button}                 //div[@role="dialog"]/div/div/button[@id="use-selected-button"]
