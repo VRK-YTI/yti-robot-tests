@@ -48,6 +48,7 @@ T4C2. Create valid attribute
     Open attribute tab
     Create new attribute
     Cancel create datamodel attribute dialog
+    Sleep  2
 
     Create new attribute
     Create new attribute datamodel in dialog
@@ -118,6 +119,7 @@ T4C3. Create valid attribute with subattribute
     ${isDefinedBy}=  Evaluate  [x["rdfs:isDefinedBy"]["@id"] for x in ${json_dict["@graph"]} if "rdfs:isDefinedBy" in x.keys() and "@id" in x["rdfs:isDefinedBy"].keys()]
     List Should Contain Value    ${ids}            ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
     List Should Contain Value    ${isDefinedBy}    http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+
     Cancel show datamodel file dialog
 
     Open attribute tab

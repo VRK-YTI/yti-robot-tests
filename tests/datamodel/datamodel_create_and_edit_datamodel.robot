@@ -588,6 +588,6 @@ T2C10. Edit documentation
     Change language to finnish on datamodel
     Verify preview text            ${fin doc}
     Verify documentation link      ${link}
-    
+
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     

@@ -196,3 +196,4 @@ Edit links from links tab
 Save editing links 
     Click element with wait  ${Datamodel links edit submit button}
     Wait until page does not contain element  ${Datamodel links edit submit button}
+
