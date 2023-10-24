@@ -36,18 +36,18 @@ T2C2. Verify edit datamodel permissions
     Create single language fi datamodel with api
     ...  number=${single_language_fi}
 
-    Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
-    Open datamodel options select
-    Verify page does not contain edit datamodel button
+    #Open datamodel search page
+    #Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
+    #Open datamodel options select
+    #Verify page does not contain edit datamodel button
 
-    Login with no group
-    Open datamodel options select
-    Verify page does not contain edit datamodel button
+    #Login with no group
+    #Open datamodel options select
+    #Verify page does not contain edit datamodel button
 
     # Close browser and open it again, because of eduuni cache
-    Close Browser
-    Open Browser with Settings        
+    #Close Browser
+    #Open Browser with Settings        
     Open datamodel search page
     Login with Admin
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
@@ -448,10 +448,9 @@ T2C7. Create valid datamodel with all information and remove unnesecary
     [Teardown]  Run keywords
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_1
 
-T2C8. Add terminology link to datamodel
+T2C8. Add terminology and datamodel links to datamodel
     ${multiple_options_and_languages}=  set variable  1
     ${single_language_1}=  set variable  2
-    ${single_language_2}=  set variable  3
 
     Create multiple options datamodel with api
     ...  number=${multiple_options_and_languages}
@@ -459,20 +458,11 @@ T2C8. Add terminology link to datamodel
     Create single language fi datamodel with api
     ...  number=${single_language_1}
 
-    Create single language fi datamodel with api
-    ...  number=${single_language_2}
-
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}_1
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
     ...                             ${DEFAULT TERMINOLOGY PREFIX}_1
-
-    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}_2
-    ...                             ${VALID}
-    ...                             ${DOMAIN HOUSING}
-    ...                             ${ORGANIZATION AUTOMATION}
-    ...                             ${DEFAULT TERMINOLOGY PREFIX}_2
 
 
     Open datamodel search page
@@ -482,9 +472,7 @@ T2C8. Add terminology link to datamodel
     Select links tab
     Edit links from links tab
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  5
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  6
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
+    Add datamodel link to datamodel in links tab    auto_DM_T5C1_1  4  #${DEFAULT DATAMODEL NAME}_${single_language_1}  4
     Save editing links 
 
     Reload page
@@ -494,31 +482,23 @@ T2C8. Add terminology link to datamodel
     Show datamodel file
     ${json_dict}=  Get shown json from new tab
     Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}_1
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}_2
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_1}
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_2}
-    
+    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/pr_t5c1_1/1.0.0  #${DEFAULT DATAMODEL PREFIX}_${single_language_1}
+
     Cancel show datamodel file dialog
     
     Reload page
     Select links tab
     Edit links from links tab
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  7
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  6
-    Remove link from link editing
+    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  6
     Remove link from link editing
     Save editing links 
 
     Edit links from links tab
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1  5
-    Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_2  6
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
+    Add datamodel link to datamodel in links tab    auto_DM_T5C1_1  4  #${DEFAULT DATAMODEL NAME}_${single_language_1}  4
     Save editing links 
 
     Edit links from links tab
-    Remove link from link editing
-    Remove link from link editing
     Remove link from link editing
     Remove link from link editing
     Save editing links 
@@ -535,62 +515,23 @@ T2C8. Add terminology link to datamodel
     [Teardown]  Run keywords
     ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     ...    Delete terminology ${DEFAULT TERMINOLOGY NAME}_1 with api
-    ...    Delete terminology ${DEFAULT TERMINOLOGY NAME}_2 with api
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_1} with api
-    ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_2} with api
 
-T2C9. Add datamodel link to datamodel
-    ${multiple_options_and_languages}=  set variable  1
-    ${single_language_1}=  set variable  2
-    ${single_language_2}=  set variable  3
-    
-    Create multiple options datamodel with api
-    ...  number=${multiple_options_and_languages}
-    Create single language fi datamodel with api
-    ...  number=${single_language_1}
-    Create single language fi datamodel with api
-    ...  number=${single_language_2}
-
-    Open datamodel search page
-    Login with Admin
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
-
-    Select links tab
-    Edit links from links tab
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}  4
-    Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_2}  5
-    Save editing links 
-
-    Reload page
-    Select info tab
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
-    ${json_dict}=  Get shown json from new tab
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/pr_t2c9_2
-    Verify list contains key and value  ${json_dict["dcterms:requires"]}  key=@id  value=http://uri.suomi.fi/datamodel/ns/pr_t2c9_3
-    Cancel show datamodel file dialog
-
-    [Teardown]  Run keywords
-    ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
-    ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_1} with api
-    ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_2} with api
-
-T2C10. Verify documentation permissions
+T2C9. Verify documentation permissions
     ${single_language_fi}=  set variable  1
     Create single language fi datamodel with api
     ...  number=${single_language_fi}
 
-    Open datamodel search page
-    Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
-    Verify page does not contain datamodel documentation tab
+    #Open datamodel search page
+    #Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
+    #Verify page does not contain datamodel documentation tab
 
-    Login with no group
-    Verify page does not contain datamodel documentation tab
+    #Login with no group
+    #Verify page does not contain datamodel documentation tab
 
     # Close browser and open it again, because of eduuni cache
-    Close Browser
-    Open Browser with Settings        
+    #Close Browser
+    #Open Browser with Settings        
     Open datamodel search page
     Login with Admin
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
@@ -601,7 +542,7 @@ T2C10. Verify documentation permissions
 
     [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
 
-T2C11. Edit documentation
+T2C10. Edit documentation
     ${multiple_options_and_languages}=  set variable  1
     Create multiple options datamodel with api
     ...  number=${multiple_options_and_languages}

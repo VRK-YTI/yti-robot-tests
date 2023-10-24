@@ -33,6 +33,8 @@ ${Add codelist link button}                          //button[@id="add-reference
 
 ${Show as file content}                               //pre
 
+
+
 *** Keywords ***
 Open datamodel options select
     Click element with wait  ${Datamodel options button}
@@ -193,4 +195,5 @@ Edit links from links tab
 
 Save editing links 
     Click element with wait  ${Datamodel links edit submit button}
-    Sleep                    20
+    Wait until page does not contain element  ${Datamodel links edit submit button}
+

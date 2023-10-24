@@ -4,7 +4,7 @@ Library    SeleniumLibrary
 *** Variables ***
 ${Datamodel association tab}                              //button[@id="drawer-button-associations"]
 ${Datamodel add association button}                       //button[@id="add-resource-button"]
-${Datamodel search input in association dialog}           //input[@id="search-input"]
+${Datamodel search input in association dialog}           //div[@role="dialog"]/div/div/div/div/span/div/div/input[@id="search-input"]
 ${Datamodel add association cancel button}                //button[@id="cancel-button"]
 ${Datamodel create new association button}                //button[@id="create-new-button"]
 ${Datamodel create new association with subassociation button}  //button[@id="use-selected-button"]
@@ -36,6 +36,10 @@ ${Datamodel concept search radio button}            //*[@class="highlighted-cont
 
 ${Datamodel association search status}                    //span[@id="status-picker-displayValue"]
 ${Datamodel association search status all}                //li[@id="status-picker--1"]
+${Datamodel association search model}                    //span[@id="data-model-picker-displayValue"]
+${Datamodel association search model all}                //li[@id="data-model-picker-all"]
+${Datamodel association search terminology}                    //input[@id="terminology-select"]
+${Datamodel association search terminology all}                //li[@id="terminology-select-all"]
 
 
 # Errors
@@ -113,6 +117,9 @@ Select association
 Save association
     Click element with wait   ${Datamodel save association}
 
+Wait until association is saved
+    Wait until page does not contain element  ${Datamodel save association}
+
 Return from association
     Click element with wait   ${Datamodel association back button}
 
@@ -164,7 +171,11 @@ Select status into association
 
 Select association concept into association
     [Arguments]   ${text}
-    Click element with wait    ${Datamodel association concept select dropdown}       
+    Click element with wait    ${Datamodel association concept select dropdown}  
+
+    Click element with wait  ${Datamodel association search terminology}
+    Click element with wait  ${Datamodel association search terminology all}
+
     Input text with wait       ${Datamodel concept search input}        ${text}
     Sleep                    2
     FOR    ${index}    IN RANGE    1    6
@@ -184,6 +195,10 @@ Select association on linking subassociation dialog
     Sleep  2
     Click element with wait  ${Datamodel association search status}
     Click element with wait  ${Datamodel association search status all}
+
+    Click element with wait  ${Datamodel association search model}
+    Click element with wait  ${Datamodel association search model all}
+
     Input text with wait     ${Datamodel search input in association dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -193,9 +208,13 @@ Select association on create association dialog
     [Arguments]   ${text}  ${prefix}
     Click element with wait  ${Datamodel association search status}
     Click element with wait  ${Datamodel association search status all}
+
+    Click element with wait  ${Datamodel association search model}
+    Click element with wait  ${Datamodel association search model all}
+    
     Input text with wait     ${Datamodel search input in association dialog}  ${text}
+
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
-    Sleep                    1
     Click element with wait  ${Datamodel select subassociation button}
     
 Remove upper association from association

@@ -38,6 +38,10 @@ ${Datamodel concept search radio button}            //*[@class="highlighted-cont
 
 ${Datamodel class search status}                    //span[@id="status-picker-displayValue"]
 ${Datamodel class search status all}                //li[@id="status-picker--1"]
+${Datamodel class search model}                    //span[@id="data-model-picker-displayValue"]
+${Datamodel class search model all}                //li[@id="data-model-picker-all"]
+${Datamodel class search terminology}                    //input[@id="terminology-select"]
+${Datamodel class search terminology all}                //li[@id="terminology-select-all"]
 
 
 # Errors
@@ -115,6 +119,10 @@ Select class
 Save class
     Click element with wait   ${Datamodel save class}
 
+
+Wait until class is saved 
+    Wait until page does not contain element  ${Datamodel save class}
+
 Return from class
     Click element with wait   ${Datamodel class back button}
 
@@ -165,7 +173,11 @@ Select status into class
 
 Select class concept into class
     [Arguments]   ${text}
-    Click element with wait    ${Datamodel class concept select dropdown}       
+    Click element with wait    ${Datamodel class concept select dropdown}    
+    
+    Click element with wait      ${Datamodel class search terminology}
+    Click element with wait      ${Datamodel class search terminology all}   
+
     Input text with wait       ${Datamodel concept search input}        ${text}
     Sleep                    2
     FOR    ${index}    IN RANGE    1    6
@@ -188,6 +200,10 @@ Select class on linking class dialog
     Sleep  2
     Click element with wait  ${Datamodel class search status}
     Click element with wait  ${Datamodel class search status all}
+    
+    Click element with wait  ${Datamodel class search model}
+    Click element with wait  ${Datamodel class search model all}
+
     Input text with wait     ${Datamodel search input in class dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -197,6 +213,10 @@ Select class on create class dialog
     [Arguments]   ${text}  ${prefix}
     Click element with wait  ${Datamodel class search status}
     Click element with wait  ${Datamodel class search status all}
+    
+    Click element with wait  ${Datamodel class search model}
+    Click element with wait  ${Datamodel class search model all}
+
     Input text with wait     ${Datamodel search input in class dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  1

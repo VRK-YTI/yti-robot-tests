@@ -44,6 +44,12 @@ ${Datamodel concept search radio button}            //*[@class="highlighted-cont
 
 ${Datamodel attribute search status}                    //span[@id="status-picker-displayValue"]
 ${Datamodel attribute search status all}                //li[@id="status-picker--1"]
+${Datamodel attribute search model}                    //span[@id="data-model-picker-displayValue"]
+${Datamodel attribute search model all}                //li[@id="data-model-picker-all"]
+${Datamodel attribute search terminology}                    //input[@id="terminology-select"]
+${Datamodel attribute search terminology all}                //li[@id="terminology-select-all"]
+
+
 
 # Errors
 ${attribute prefix not set error}              Attribuutin yksilöivää tunnusta ei ole määritelty
@@ -120,6 +126,9 @@ Select attribute
 Save attribute
     Click element with wait   ${Datamodel save attribute}
 
+Wait until attribute is saved 
+    Wait until page does not contain element  ${Datamodel save attribute}
+
 Return from attribute
     Click element with wait   ${Datamodel attribute back button}
 
@@ -168,6 +177,9 @@ Select status into attribute
 Select attribute concept into attribute
     [Arguments]   ${text}
     Click element with wait    ${Datamodel attribute concept select dropdown}       
+    Click element with wait    ${Datamodel attribute search terminology} 
+    Click element with wait    ${Datamodel attribute search terminology all} 
+    
     Input text with wait       ${Datamodel concept search input}        ${text}
     Sleep                    2
     FOR    ${index}    IN RANGE    1    6
@@ -191,6 +203,10 @@ Select class into attribute
 Select class on linking attribute dialog
     [Arguments]   ${text}  ${prefix}
     Sleep  2
+    
+    Click element with wait  ${Datamodel attribute search model}
+    Click element with wait  ${Datamodel attribute search model all}
+
     Input text with wait     ${Datamodel search input in attribute dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -201,6 +217,10 @@ Select attribute on linking subattribute dialog
     Sleep  2
     Click element with wait  ${Datamodel attribute search status}
     Click element with wait  ${Datamodel attribute search status all}
+    
+    Click element with wait  ${Datamodel attribute search model}
+    Click element with wait  ${Datamodel attribute search model all}
+
     Input text with wait     ${Datamodel search input in attribute dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -211,6 +231,10 @@ Select attribute on linking attribute dialog
     Sleep  2
     Click element with wait  ${Datamodel attribute search status}
     Click element with wait  ${Datamodel attribute search status all}
+    
+    Click element with wait  ${Datamodel attribute search model}
+    Click element with wait  ${Datamodel attribute search model all}
+
     Input text with wait     ${Datamodel search input in attribute dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep  2
@@ -220,6 +244,10 @@ Select attribute on create attribute dialog
     [Arguments]   ${text}  ${prefix}
     Click element with wait  ${Datamodel attribute search status}
     Click element with wait  ${Datamodel attribute search status all}
+    
+    Click element with wait  ${Datamodel attribute search model}
+    Click element with wait  ${Datamodel attribute search model all}
+    
     Input text with wait     //div[@role="dialog"]/div/div/div/div/span/div/div/input[@id="search-input"]  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
     Sleep                    1
