@@ -934,9 +934,6 @@ Verify term page does not contain all information
     IF  '${Term type}' != '${NONE}'
         Wait until page does not contain element  //div[@role="dialog"]/*/h3[text()="Tyyppi"]/../span[text()="${Term type}"]
     END
-    IF  '${Term language}' != '${NONE}'
-        Wait until page contains  ${Term language}
-    END
     IF  '${Term status}' != '${NONE}'
         Wait until page does not contain element  //div[@role="dialog"]/*/h3[text()="Tila"]/../span[text()="${Term status}"]
     END
