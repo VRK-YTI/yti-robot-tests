@@ -1,9 +1,9 @@
 *** Variables ***
 ${search box top bar}               //*[@role="searchbox"]
 ${Language dropdown}                //button[text()="Suomeksi (FI)"] | //button[text()="In English (EN)"] | //button[text()="På svenska (SV)"]
-${Language finnish from dropdown}   //div[text()="Suomeksi (FI)"]  
-${Language english from dropdown}   //div[text()="In English (EN)"]  
-${Language swedish from dropdown}   //div[text()="På svenska (SV)"]  
+${Language finnish from dropdown}   //button[text()="Suomeksi (FI)"]  
+${Language english from dropdown}   //button[text()="In English (EN)"]  
+${Language swedish from dropdown}   //button[text()="På svenska (SV)"]  
 ${Language dropdown on datamodel}                //span[contains(text(), "Sisältö kielellä")][1]
 ${Language finnish from dropdown on datamodel}   //li[contains(text(), "Sisältö kielellä")][1]
 ${Language swedish from dropdown on datamodel}   //li[contains(text(), "Sisältö kielellä")][2]
