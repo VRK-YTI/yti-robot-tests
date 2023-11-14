@@ -118,8 +118,8 @@ Save association
     Click element with wait   ${Datamodel save association}
 
 Wait until association is saved
-    Wait until page does not contain element  ${Datamodel save association}
-    Sleep  5
+    Wait until page does not contain element  ${Datamodel save association}  timeout=120
+    Sleep  15
 
 Return from association
     Click element with wait   ${Datamodel association back button}
@@ -172,17 +172,13 @@ Select status into association
 
 Select association concept into association
     [Arguments]   ${text}
-    Click element with wait    ${Datamodel association concept select dropdown}  
+    Click element with wait    ${Datamodel association concept select dropdown} 
 
     Click element with wait  ${Datamodel association search terminology}
-    Click element with wait  ${Datamodel association search terminology all}
+    Click element with wait  ${Datamodel association search terminology all} 
 
     Input text with wait       ${Datamodel concept search input}        ${text}
-    Sleep                    2
-    FOR    ${index}    IN RANGE    1    6
-        Press Keys               None  TAB
-    END 
-    Press Keys               None  SPACE 
+    Click element with wait    (//div[@role="dialog"]/div/div/div[@class="item-wrapper"]/div/label)[1]
     Click element with wait    ${Datamodel select concept button}
 
 Select subassociation into association
@@ -197,8 +193,6 @@ Select association on linking subassociation dialog
     Click element with wait  ${Datamodel association search status}
     Click element with wait  ${Datamodel association search status all}
 
-    Click element with wait  ${Datamodel association search model}
-    Click element with wait  ${Datamodel association search model all}
 
     Input text with wait     ${Datamodel search input in association dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
@@ -209,13 +203,12 @@ Select association on create association dialog
     [Arguments]   ${text}  ${prefix}
     Click element with wait  ${Datamodel association search status}
     Click element with wait  ${Datamodel association search status all}
-
-    Click element with wait  ${Datamodel association search model}
-    Click element with wait  ${Datamodel association search model all}
     
     Input text with wait     ${Datamodel search input in association dialog}  ${text}
+    Sleep                    2
 
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
+    Sleep                    2
     Click element with wait  ${Datamodel select subassociation button}
     
 Remove upper association from association

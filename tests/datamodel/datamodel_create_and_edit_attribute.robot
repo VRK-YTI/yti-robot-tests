@@ -103,6 +103,7 @@ T4C3. Create valid attribute with subattribute
     Create new attribute
     Select attribute on create attribute dialog    ${DEFAULT DATAMODEL ATTRIBUTE NAME}  ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_1
 
+    Input finnish attribute label     ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2
     Input attribute prefix            ${DEFAULT DATAMODEL ATTRIBUTE PREFIX}_2
     Save attribute
     Wait until attribute is saved 
@@ -123,7 +124,7 @@ T4C3. Create valid attribute with subattribute
     Cancel show datamodel file dialog
 
     Open attribute tab
-    Select attribute    ${DEFAULT DATAMODEL ATTRIBUTE NAME}
+    Select attribute    ${DEFAULT DATAMODEL ATTRIBUTE NAME}_2
     Delete attribute
 
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}

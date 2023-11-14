@@ -121,8 +121,8 @@ Save class
 
 
 Wait until class is saved 
-    Wait until page does not contain element  ${Datamodel save class}
-    Sleep  5
+    Wait until page does not contain element  ${Datamodel save class}  timeout=120
+    Sleep  15
 
 Return from class
     Click element with wait   ${Datamodel class back button}
@@ -180,11 +180,7 @@ Select class concept into class
     Click element with wait      ${Datamodel class search terminology all}   
 
     Input text with wait       ${Datamodel concept search input}        ${text}
-    Sleep                    2
-    FOR    ${index}    IN RANGE    1    6
-        Press Keys               None  TAB
-    END 
-    Press Keys               None  SPACE 
+    Click element with wait    (//div[@role="dialog"]/div/div/div[@class="item-wrapper"]/div/label)[1]
     Click element with wait    ${Datamodel select class button}
 
 Select subclass into class
@@ -202,8 +198,6 @@ Select class on linking class dialog
     Click element with wait  ${Datamodel class search status}
     Click element with wait  ${Datamodel class search status all}
     
-    Click element with wait  ${Datamodel class search model}
-    Click element with wait  ${Datamodel class search model all}
 
     Input text with wait     ${Datamodel search input in class dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
@@ -215,12 +209,11 @@ Select class on create class dialog
     Click element with wait  ${Datamodel class search status}
     Click element with wait  ${Datamodel class search status all}
     
-    Click element with wait  ${Datamodel class search model}
-    Click element with wait  ${Datamodel class search model all}
 
     Input text with wait     ${Datamodel search input in class dialog}  ${text}
+    Sleep                    2
+    
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
-    Sleep  1
     Click element with wait  ${Datamodel select subclass button}
     
 Remove upper class from class

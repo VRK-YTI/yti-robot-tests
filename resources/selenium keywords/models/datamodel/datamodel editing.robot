@@ -1,6 +1,7 @@
 
 *** Settings ***
 Library    SeleniumLibrary
+Library    ../../generic/generic selenium.py
 
 *** Variables ***
 ${Datamodel options button}                           //button[@id="actions-button"]
@@ -32,8 +33,6 @@ ${Remove link button}                                 //button[@id="remove-linke
 ${Add codelist link button}                          //button[@id="add-reference-data-button"]
 
 ${Show as file content}                               //pre
-
-
 
 *** Keywords ***
 Open datamodel options select
@@ -130,57 +129,25 @@ Scroll create datamodel edit down
         Press Keys               None  TAB
     END  
 
-Add terminology link to datamodel
-    [Arguments]  ${terminology}  ${tabs_count}=7
-    Click element with wait  ${Add terminology datamodel edit button}
-    Input text with wait     ${Add terminology dialog search input}  ${terminology}
-    Press Keys               None  TAB
-    Click element with wait  //span[text()="1 sanasto"]
-    FOR    ${index}    IN RANGE    1    ${tabs_count}
-        Press Keys               None  TAB
-    END  
-    Press Keys               None  SPACE
-    Click element with wait  ${Add terminology dialog submit button}
-
 Add terminology link to datamodel in links tab
     [Arguments]  ${terminology}  ${tabs_count}=7
     Click element with wait  ${Add terminology datamodel edit button}
     Input text with wait     ${Add terminology dialog search input}  ${terminology}
-    Press Keys               None  TAB
-    Sleep                    1
-    Click element with wait  //span[text()="1 sanasto"]
-    Sleep                    1
-    FOR    ${index}    IN RANGE    1    ${tabs_count}
-        Press Keys               None  TAB
-    END  
-    Press Keys               None  SPACE
+    Wait until page contains element  //div[@role="dialog"]/div/div/div/span[text()="1 sanasto"]
+    Find and highlight element        (//div[@role="dialog"]/div/div/div/div/div/div/input)[1]
+    Click Element At Coordinates    (//div[@role="dialog"]/div/div/div/div/div/div/input)[1]    5    5
     Click element with wait  ${Datamodel links terminology links submit button}
     
 Add datamodel link to datamodel in links tab
     [Arguments]  ${datamodel}  ${tabs_count}=4
     Click element with wait  ${Add datamodel link button}
     Input text with wait     ${Add terminology dialog search input}  ${datamodel}
-    Press Keys               None  TAB
-    Sleep  1
-    Click element with wait  //span[text()="1 tietomalli"]
-    FOR    ${index}    IN RANGE    1    ${tabs_count}
-        Press Keys               None  TAB
-    END  
-    Press Keys               None  SPACE
+
+    Wait until page contains element  //div[@role="dialog"]/div/div/div/span[text()="1 tietomalli"]
+    Find and highlight element               //div[@role="dialog"]/div/div/div/div/div
+    Click Element At Coordinates    //div[@role="dialog"]/div/div/div/div/div    0    0
     Click element with wait  ${Datamodel links terminology links submit button}
     
-Add codelist link to datamodel in links tab
-    [Arguments]  ${codelist}  ${tabs_count}=4
-    Click element with wait  ${Add codelist link button}
-    Input text with wait     ${Add codelist dialog search input}  ${codelist}
-    Press Keys               None  TAB
-    Click element with wait  //span[text()="1 koodisto"]
-    FOR    ${index}    IN RANGE    1    ${tabs_count}
-        Press Keys               None  TAB
-    END  
-    Press Keys               None  SPACE
-    Click element with wait  ${Datamodel links terminology links submit button}
-
 Remove link from link editing
     Click element with wait  ${Remove link button}
 

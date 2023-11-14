@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Resource    ../../generic/generic selenium.robot
 
 *** Variables ***
 ${Create new datamodel button}              //button[@id="new-model-button"]
@@ -27,6 +28,7 @@ Verify page does contain create datamodel button
 
 Open create datamodel dialog
     Click element with wait  ${Create new datamodel button} 
+    Find and hide element    (//div[@role="dialog"]/div/div)[3]
 
 Accept creating datamodel
     Click element with wait  ${Create datamodel accept button}

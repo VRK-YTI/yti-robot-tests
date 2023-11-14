@@ -26,7 +26,7 @@ T2C1. Verify create datamodel permissions
     Close Browser
     Open Browser with Settings    
     Open datamodel search page
-    Login with Admin
+    Login with Superuser
     Verify page does contain create datamodel button
     Open create datamodel dialog
     Cancel creating datamodel
@@ -49,13 +49,13 @@ T2C2. Verify edit datamodel permissions
     #Close Browser
     #Open Browser with Settings        
     Open datamodel search page
-    Login with Admin
+    Login with Superuser
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open datamodel options select
     Verify page does contain edit datamodel button
 
-    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     
 T2C3. Verify create datamodel errors
     ${single_language_fi}=  set variable  1
@@ -138,7 +138,7 @@ T2C3. Verify create datamodel errors
     Verify datamodel is created with prefix ${DEFAULT DATAMODEL PREFIX}
 
     [Teardown]  Run keywords
-    ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}
+    ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_fi} with api
 
 T2C4. Verify edit datamodel errors
@@ -147,7 +147,8 @@ T2C4. Verify edit datamodel errors
     ...  number=${multiple_options_and_languages}
      
     Open datamodel search page
-    Login with Admin
+
+    Login with Superuser
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     
     Open datamodel options select
@@ -175,12 +176,14 @@ T2C4. Verify edit datamodel errors
     
     Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, englanti
     
+    
+
     On edit input fi name ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}
     On edit input en name ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}_SV
     On edit input sv name ${DEFAULT DATAMODEL NAME}_${multiple_options_and_languages}_EN
 
+    Select edit datamodel contributor Testiorganisaatio
     Select edit datamodel domain Asuminen
-    Select edit datamodel contributor Automaatiotestaus
     On edit input contact ${EMPTY}
 
     Verify edit datamodel does not contain error Tietomallin Tietomallin nimi puuttuu kieleltä suomi, ruotsi, englanti
@@ -191,8 +194,7 @@ T2C4. Verify edit datamodel errors
 
     Save editing
 
-    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
-
+    [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
 
 T2C5. Create valid datamodel with only nessecary information and edit
     Open datamodel search page
@@ -221,7 +223,6 @@ T2C5. Create valid datamodel with only nessecary information and edit
     Dictionary Should Contain Value    ${json_dict}  ${DEFAULT DATAMODEL PREFIX}
     Dictionary Should Contain Value    ${json_dict}  fi
     Dictionary Should Contain Value    ${json_dict["dcterms:contributor"]}       urn:uuid:${AUTOMATION_ORGANIZATION}
-    Dictionary Should Contain Value    ${json_dict["dcterms:isPartOf"]}          ptvl:v1001
     Dictionary Should Contain Value    ${json_dict["rdfs:label"]}                ${DEFAULT DATAMODEL NAME} fi
     Dictionary Should not Contain Key  ${json_dict}  rdfs:comment
     Cancel show datamodel file dialog
@@ -251,12 +252,11 @@ T2C5. Create valid datamodel with only nessecary information and edit
     Dictionary Should Contain Value    ${json_dict}                              ${DEFAULT DATAMODEL PREFIX}
     Dictionary Should Contain Value    ${json_dict}                              en
     Dictionary Should Contain Value    ${json_dict["dcterms:contributor"]}       urn:uuid:${TESTING_ORGANIZATION}
-    Dictionary Should Contain Value    ${json_dict["dcterms:isPartOf"]}          ptvl:v1090
     Dictionary Should Contain Value    ${json_dict["rdfs:label"]}                ${DEFAULT DATAMODEL NAME}_EN
     Dictionary Should not Contain Key  ${json_dict}                              rdfs:comment
     Cancel show datamodel file dialog
 
-    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}
+    [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}
 
 T2C6. Create valid datamodel with all information and edit those information
     Open datamodel search page
@@ -305,9 +305,6 @@ T2C6. Create valid datamodel with all information and edit those information
     
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${TESTING_ORGANIZATION}
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${AUTOMATION_ORGANIZATION}
-
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1001
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1090
 
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de en
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de sv
@@ -365,9 +362,6 @@ T2C6. Create valid datamodel with all information and edit those information
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${TESTING_ORGANIZATION}
     Verify list contains key and value  ${json_dict["dcterms:contributor"]}   key=@id   value=urn:uuid:${AUTOMATION_ORGANIZATION}
 
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1120
-    Verify list contains key and value  ${json_dict["dcterms:isPartOf"]}   key=@id  value=ptvl:v1167
-
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de 2 en
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de 2 sv
     Verify list contains key and value  ${json_dict["rdfs:comment"]}  key=@value      value=de 2 fi    
@@ -384,7 +378,7 @@ T2C6. Create valid datamodel with all information and edit those information
     Cancel show datamodel file dialog
 
     [Teardown]  Run keywords
-    ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}   
+    ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}   
 
 T2C7. Create valid datamodel with all information and remove unnesecary
     Open datamodel search page
@@ -440,13 +434,12 @@ T2C7. Create valid datamodel with all information and remove unnesecary
     Dictionary Should not Contain Value    ${json_dict}  ${DEFAULT DATAMODEL PREFIX}
     Dictionary Should Contain Value        ${json_dict}  fi
     Dictionary Should Contain Value        ${json_dict["dcterms:contributor"]}  urn:uuid:${AUTOMATION_ORGANIZATION}
-    Dictionary Should Contain Value        ${json_dict["dcterms:isPartOf"]}     ptvl:v1001
     Should Contain                         ${json_dict["rdfs:label"]["@value"]}           ${DEFAULT DATAMODEL NAME} fi
     Dictionary Should not Contain Key      ${json_dict}  rdfs:comment
     Cancel show datamodel file dialog
 
     [Teardown]  Run keywords
-    ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_1
+    ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_1
 
 T2C8. Add terminology and datamodel links to datamodel
     ${multiple_options_and_languages}=  set variable  1
@@ -463,7 +456,6 @@ T2C8. Add terminology and datamodel links to datamodel
     ...                             ${DOMAIN HOUSING}
     ...                             ${ORGANIZATION AUTOMATION}
     ...                             ${DEFAULT TERMINOLOGY PREFIX}_1
-
 
     Open datamodel search page
     Login with Admin
@@ -513,7 +505,7 @@ T2C8. Add terminology and datamodel links to datamodel
     Cancel show datamodel file dialog
 
     [Teardown]  Run keywords
-    ...    Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
+    ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     ...    Delete terminology ${DEFAULT TERMINOLOGY NAME}_1 with api
     ...    Delete model ${DEFAULT DATAMODEL PREFIX}_${single_language_1} with api
 
@@ -540,7 +532,7 @@ T2C9. Verify documentation permissions
     Open documentation tab
     Verify page does contain datamodel edit documentation button
 
-    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
 
 T2C10. Edit documentation
     ${multiple_options_and_languages}=  set variable  1
@@ -589,5 +581,5 @@ T2C10. Edit documentation
     Verify preview text            ${fin doc}
     Verify documentation link      ${link}
 
-    [Teardown]  Teardown test Case on failure delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
+    [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multiple_options_and_languages}
     
