@@ -127,8 +127,8 @@ Save attribute
     Click element with wait   ${Datamodel save attribute}
 
 Wait until attribute is saved 
-    Wait until page does not contain element  ${Datamodel save attribute}
-    Sleep  5
+    Wait until page does not contain element  ${Datamodel save attribute}  timeout=120
+    Sleep  15
 
 Return from attribute
     Click element with wait   ${Datamodel attribute back button}
@@ -177,16 +177,13 @@ Select status into attribute
 
 Select attribute concept into attribute
     [Arguments]   ${text}
-    Click element with wait    ${Datamodel attribute concept select dropdown}       
+    Click element with wait    ${Datamodel attribute concept select dropdown} 
+      
     Click element with wait    ${Datamodel attribute search terminology} 
-    Click element with wait    ${Datamodel attribute search terminology all} 
+    Click element with wait    ${Datamodel attribute search terminology all}      
     
     Input text with wait       ${Datamodel concept search input}        ${text}
-    Sleep                    2
-    FOR    ${index}    IN RANGE    1    6
-        Press Keys               None  TAB
-    END 
-    Press Keys               None  SPACE 
+    Click element with wait    (//div[@role="dialog"]/div/div/div[@class="item-wrapper"]/div/label)[1]
     Click element with wait    ${Datamodel select attribute button}
 
 Select subattribute into attribute
@@ -219,8 +216,6 @@ Select attribute on linking subattribute dialog
     Click element with wait  ${Datamodel attribute search status}
     Click element with wait  ${Datamodel attribute search status all}
     
-    Click element with wait  ${Datamodel attribute search model}
-    Click element with wait  ${Datamodel attribute search model all}
 
     Input text with wait     ${Datamodel search input in attribute dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
@@ -233,8 +228,6 @@ Select attribute on linking attribute dialog
     Click element with wait  ${Datamodel attribute search status}
     Click element with wait  ${Datamodel attribute search status all}
     
-    Click element with wait  ${Datamodel attribute search model}
-    Click element with wait  ${Datamodel attribute search model all}
 
     Input text with wait     ${Datamodel search input in attribute dialog}  ${text}
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
@@ -246,12 +239,10 @@ Select attribute on create attribute dialog
     Click element with wait  ${Datamodel attribute search status}
     Click element with wait  ${Datamodel attribute search status all}
     
-    Click element with wait  ${Datamodel attribute search model}
-    Click element with wait  ${Datamodel attribute search model all}
-    
     Input text with wait     //div[@role="dialog"]/div/div/div/div/span/div/div/input[@id="search-input"]  ${text}
+    Sleep                    2
+    
     Click element with wait  //a[contains(@href, "${prefix}")]/../../div[@id="select-single-radio-button"]
-    Sleep                    1
     Click element with wait  ${Datamodel select subattribute button}
     
 Remove upper attribute from attribute

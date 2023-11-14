@@ -102,6 +102,7 @@ T5C3. Create valid association with subassociation
     Create new association
     Select association on create association dialog    ${DEFAULT DATAMODEL ASSOCIATION NAME}  ${DEFAULT DATAMODEL ASSOCIATION PREFIX}_1
 
+    Input finnish association label     ${DEFAULT DATAMODEL ASSOCIATION NAME}_2
     Input association prefix            ${DEFAULT DATAMODEL ASSOCIATION PREFIX}_2
     Save association
     Verify create datamodel association does not contain error ${association name not set error}
@@ -120,7 +121,7 @@ T5C3. Create valid association with subassociation
     Cancel show datamodel file dialog
 
     Open association tab
-    Select association    ${DEFAULT DATAMODEL ASSOCIATION NAME}
+    Select association    ${DEFAULT DATAMODEL ASSOCIATION NAME}_2
     Delete association
 
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}

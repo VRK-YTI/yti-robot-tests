@@ -104,7 +104,8 @@ T3C3. Create valid class with subclass
 
     Create new class
     Select class on create class dialog    ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
-
+    
+    Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_2
     Input class prefix            ${DEFAULT DATAMODEL CLASS PREFIX}_2
     Save class
     Verify create datamodel class does not contain error ${Class name not set error}
@@ -125,7 +126,7 @@ T3C3. Create valid class with subclass
     Cancel show datamodel file dialog
 
     Open class tab
-    Select class    ${DEFAULT DATAMODEL CLASS NAME}_1
+    Select class    ${DEFAULT DATAMODEL CLASS NAME}_2
     Delete class
 
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
@@ -466,7 +467,6 @@ T3C8. Modify class
     List Should Contain Value    @{comment}    description fi
     List Should Contain Value    @{comment}    description en
     List Should Contain Value    @{comment}    description sv
-
 
     [Teardown]  Run keywords
     ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multi_language}

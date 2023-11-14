@@ -28,6 +28,12 @@ Find and highlight element
         Run keyword and ignore error  Highlight element             ${elem}
     END
 
+Find and hide element
+    [Arguments]     ${element}
+    Wait Until Page Contains element  ${element}
+    ${elem}=  Get WebElement  ${element}
+    Run keyword and ignore error  Hide element  ${elem}
+
 Input text with wait
     [Arguments]  ${element}  ${text}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
     Wait Until Page Contains Element    ${element}    timeout=${timeout}

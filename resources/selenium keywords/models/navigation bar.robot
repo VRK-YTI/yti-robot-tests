@@ -4,7 +4,7 @@ ${Language dropdown}                //button[text()="Suomeksi (FI)"] | //button[
 ${Language finnish from dropdown}   //button[text()="Suomeksi (FI)"]  
 ${Language english from dropdown}   //button[text()="In English (EN)"]  
 ${Language swedish from dropdown}   //button[text()="På svenska (SV)"]  
-${Language dropdown on datamodel}                //span[contains(text(), "Sisältö kielellä")][1]
+${Language dropdown on datamodel}                //button[@value="fi"] | //button[@value="en"] | //button[@value="sv"]
 ${Language finnish from dropdown on datamodel}   //li[contains(text(), "Sisältö kielellä")][1]
 ${Language swedish from dropdown on datamodel}   //li[contains(text(), "Sisältö kielellä")][2]
 ${Language english from dropdown on datamodel}   //li[contains(text(), "Sisältö kielellä")][3]

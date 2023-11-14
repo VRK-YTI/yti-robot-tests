@@ -21,7 +21,6 @@ T1C1. Verify main search pages organization filters
     Open datamodel search page
     Login with admin
     Click element with wait           //label[text() = "Kaikki tietomallit"]
-    
 
     Search datamodel ${DEFAULT DATAMODEL NAME}
     Verify filter chip ${DEFAULT DATAMODEL NAME}

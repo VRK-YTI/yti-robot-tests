@@ -22,3 +22,9 @@ def highlight_element(element):
     apply_style("background: yellow; border: 2px solid red;")
     time.sleep(2)
     apply_style(original_style)
+    
+def hide_element(element):
+    driver = element._parent
+    def apply_style(s):
+        driver.execute_script("arguments[0].setAttribute('style', arguments[1]);",element, s)
+    apply_style("display: none")
