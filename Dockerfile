@@ -6,13 +6,23 @@ VOLUME ["/robot_tests"]
 RUN apt update && apt install -y unzip python3 pip xvfb wget
 
 # Install chrome and chromedrive
-RUN wget -qP /tmp/ "https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip" \
-    && unzip -o /tmp/chromedriver_linux64.zip -d /usr/bin \
-    && rm -f /tmp/chromedriver_linux64.zip 
+RUN wget -qP /tmp/ "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.105/linux64/chromedriver-linux64.zip" \
+    && unzip -o /tmp/chromedriver-linux64.zip -d /usr/bin \
+    && rm -f /tmp/chromedriver-linux64.zip \
+    && mv /usr/bin/chromedriver-linux64/chromedriver /usr/bin/chromedriver
 
-RUN wget -qP /tmp/ "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_105.0.5195.102-1_amd64.deb" \
-    && apt install -y /tmp/google-chrome-stable_105.0.5195.102-1_amd64.deb \
-    && rm -f /tmp/google-chrome-stable_105.0.5195.102-1_amd64.deb
+RUN wget -qP /tmp/ "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" \
+    && apt install -y /tmp/google-chrome-stable_current_amd64.deb \
+    && rm -f /tmp/google-chrome-stable_current_amd64.deb
+
+#COPY google-chrome-stable_current_amd64.deb google-chrome-stable_current_amd64.deb 
+#RUN apt install -y ./google-chrome-stable_current_amd64.deb 
+
+# Install firefox and geckodriver
+#RUN apt install -y firefox-esr=91.13.0esr-1~deb11u1 
+#RUN wget -qP /tmp/ https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz \
+#    && tar -xvzf /tmp/geckodriver-v0.31.0-linux64.tar.gz -C /usr/local/bin/ \
+#    && rm -f /tmp/geckodriver-v0.31.0-linux64.tar.gz
 
 # Install python and requirements
 COPY requirements.txt requirements.txt
