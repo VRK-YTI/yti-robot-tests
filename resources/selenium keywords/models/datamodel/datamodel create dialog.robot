@@ -57,13 +57,13 @@ Select create datamodel core model type
     
 Select create datamodel domain ${domain}
     Click element with wait  ${Datamodel domain select}
-    Input text with wait     ${Datamodel domain select}    ${domain}
+    Input text with wait     ${Datamodel domain select}    ${domain}  tab=False
     Click element with wait  //li/mark[text()="${domain}"]
     Press Keys               None  TAB
 
 Select create datamodel contributor ${contributor}
     Click element with wait  ${Datamodel contributor select}
-    Input text with wait     ${Datamodel contributor select}    ${contributor}
+    Input text with wait     ${Datamodel contributor select}    ${contributor}  tab=False
     Click element with wait  //li/mark[text()="${contributor}"]
     Press Keys               None  TAB
 
@@ -72,7 +72,7 @@ Select create datamodel language ${language}
     Click element with wait  //li[text()="${language}"]
 
 Input create datamodel language ${language} for name ${name}
-    Input text with wait     //input[@id="name-input-${language}"]  ${name}u
+    Input text with wait     //input[@id="name-input-${language}"]  ${name}
 
 Input create datamodel language ${language} for description ${description}
     Input text with wait     //textarea[@id="description-input-${language}"]  ${description}

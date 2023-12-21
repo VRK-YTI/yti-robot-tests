@@ -33,7 +33,7 @@ T7C1. Verify modify terminology button permissions
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C2. Modify terminology
-    # TODO Remove skip when bug is fixed
+    # TODO Remove skip when bug is fixed (YTI-3755)
     Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
@@ -131,7 +131,7 @@ T7C2. Modify terminology
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C3. Verify modify terminology errors
-    # TODO Remove skip when bug is fixed
+    # TODO Remove skip when bug is fixed (YTI-3755)
     Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
