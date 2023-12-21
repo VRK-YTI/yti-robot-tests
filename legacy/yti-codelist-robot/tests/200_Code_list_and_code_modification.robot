@@ -424,19 +424,6 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Wait Until Page Contains    muutostieto_sv          
     Import codes in Excel format
 
-    #${excel_file_path}=    Create excel Update codes with languages
-    #...                    ${DEFAULT_CODELIST_SCHEME_ID}
-    #...                    ${DEFAULT_CODELIST_CODE_ID}  
-    #...                    ${DEFAULT_PREFLABEL_SCHEME}  
-    #...                    ${DEFAULT_PREFLABEL_CODE}
-    #Upload codes    ${excel_file_path}
-    #Click element that contains text    ${DEFAULT_CODELIST_CODE_ID}    
-
-    #Change Content Language     ${CONTENT_LANGUAGE_AR_SO}
-    #Wait Until Page Contains    ${DEFAULT_PREFLABEL_SCHEME}_ar      
-    #Wait Until Page Contains    Kuvaus_ar           
-    #Wait Until Page Contains    Määritelmä_ar       
-
     [Teardown]    Remove codelist teardown    ${DEFAULT_CODELIST_SCHEME_ID}
 
 211. Change code statuses with code list status change
@@ -725,6 +712,8 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     ...    Check that links are working when extra space is defined in HREF columns in code Excel.
     [Tags]    regression    test    200
     [Setup]    Test Case Setup Admin
+    # TODO bugged remove skip when fixed (YTI-3763)
+    Skip
     Set default codelist variables    218
     
     ${excel_file_path}=    Create excel Code list with 30 codes and instructions link

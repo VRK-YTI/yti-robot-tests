@@ -441,8 +441,10 @@ Add information to concept
         IF  '${sources}' == 'CLEAR'
             Click element with wait  ${concept sources delete diagram button}
         ELSE
+            # TODO I'm not sure what this does anymore, and should be checked
             #Click element with wait  ${concept sources add diagram button}
             #Input text with wait     ${concept sources add diagram input}    ${sources}
+            
             Press Keys    None      TAB
             Press Keys    None      ENTER
         END
@@ -866,6 +868,7 @@ Verify term page contains all information
         Wait until page contains element  //div[@role="dialog"]/*/h3[text()="Käyttöala"]/../span[text()="${scope}"]
         Wait until page contains  ${term equivalency}
     END
+    # TODO not sure why this is removed
     #IF  '${sources}' != '${NONE}'
     #    Wait until page contains  ${sources}
     #END
@@ -944,6 +947,7 @@ Verify term page does not contain all information
     IF  '${term equivalency}' != '${NONE}'
         Wait until page does not contain element  //div[@role="dialog"]/*/h3[text()="Käyttöala"]/../span[text()="${scope}"]
     END
+    # TODO not sure why this is removed
     #IF  '${sources}' != '${NONE}'
     #    Wait until page contains  ${sources}
     #END

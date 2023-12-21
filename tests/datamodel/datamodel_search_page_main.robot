@@ -104,6 +104,7 @@ T1C3. Verify main search pages status filters
 
     Search datamodel ${DEFAULT DATAMODEL NAME}
     Filter with datamodel status Ei käytössä olevat tietomallit
+    # TODO check if this should be uncommented
     #Verify search result count is Tietomalleja 1 kpl seuraavilla rajauksilla
     Verify filter chip Poistettu käytöstä
     Verify filter chip Korvattu
@@ -118,10 +119,12 @@ T1C3. Verify main search pages status filters
 
     Search datamodel ${DEFAULT DATAMODEL NAME}_${invalid_number}
     Filter with datamodel status Käytössä olevat tietomallit
+    # TODO check if this should be uncommented
     #Verify search result count is Tietomalleja 0 kpl seuraavilla rajauksilla
 
     Filter with datamodel status Ei käytössä olevat tietomallit
     Remove filter chip Korvattu
+    # TODO check if this should be uncommented
     #Verify search result count is Tietomalleja 0 kpl seuraavilla rajauksilla
     Clear text search filter
     
@@ -237,14 +240,12 @@ T1C6. Verify main search pages multiple filters
 
     Search datamodel ${DEFAULT DATAMODEL NAME}
 
-    #Filter with datamodel status Ei käytössä olevat tietomallit
     Filter with datamodel domain Asuminen
     Filter with datamodel type Ydintietomalli
     Filter by language fi
     Filter by organization Automaatiotestaus
     Verify search result count is Tietomalleja 2 kpl seuraavilla rajauksilla
 
-    #Filter with datamodel status Käytössä olevat tietomallit
     Filter with datamodel domain Demokratia
     Filter with datamodel type Soveltamisprofiilit
     Filter by language en
@@ -346,7 +347,6 @@ T1C7. Verify main search pages datamodel information
 
     Change language to finnish
     Search datamodel ${DEFAULT DATAMODEL NAME}_${invalid_number}
-    #Filter with datamodel status Ei käytössä olevat tietomallit
     Verify search result count is Tietomalleja 1 kpl seuraavilla rajauksilla
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Automaatiotestaus contributers on main page
     Verify datamodel ${DEFAULT DATAMODEL NAME} has Asuminen domains on main page

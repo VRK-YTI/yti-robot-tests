@@ -64,16 +64,3 @@ ${CONCEPT_LIST_SEARCH_INPUT}    id=concept_list_search_concept_input
 Check concept suggestion in Terminologies
     Open sanastot
 
-    #Input Text with wait                ${FRONTPAGE_SEARCH_BOX}    ${VOCABULARY_1}
-    #Click element that contains text    ${VOCABULARY_1}
-
-    #Wait until page contains            ${VOCABULARY_1}             timeout=30
-    #Wait until page contains            Testiautomaatiosanasto      timeout=20
-
-    #Input Text with wait                ${CONCEPT_LIST_SEARCH_INPUT}    automobiili
-    #Click element that contains text    automobiili
-
-    #Wait until page contains    Ehdotus                 timeout=20
-    #Wait until page contains    Tämä on kulkuneuvo      timeout=20
-    #Wait until page contains    Test Superuser          timeout=20
-

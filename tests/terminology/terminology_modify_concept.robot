@@ -152,11 +152,6 @@ T8C2. Modify concept
     ...  etymology=CLEAR
     ...  concept class=CLEAR
     ...  sources=CLEAR
-    #...  broader concept=${DEFAULT CONCEPT NAME}_1
-    #...  narrower concept=${DEFAULT CONCEPT NAME}_1
-    #...  Related concept=${DEFAULT CONCEPT NAME}_1
-    #...  Is part of concept=${DEFAULT CONCEPT NAME}_1
-    #...  Has part concept=${DEFAULT CONCEPT NAME}_1
     ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_3
@@ -173,11 +168,6 @@ T8C2. Modify concept
     ...  etymology=${etymology}
     ...  concept class=${concept class}
     ...  sources=${sources}
-    #...  broader concept=${DEFAULT CONCEPT NAME}_1
-    #...  narrower concept=${DEFAULT CONCEPT NAME}_1
-    #...  Related concept=${DEFAULT CONCEPT NAME}_1
-    #...  Is part of concept=${DEFAULT CONCEPT NAME}_1
-    #...  Has part concept=${DEFAULT CONCEPT NAME}_1
     ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_3
@@ -193,11 +183,6 @@ T8C2. Modify concept
     ...  usage=${usage}_1
     ...  Note=${Note}_1
     ...  sources=${sources}_1
-    #...  broader concept=${DEFAULT CONCEPT NAME}_1
-    #...  narrower concept=${DEFAULT CONCEPT NAME}_1
-    #...  Related concept=${DEFAULT CONCEPT NAME}_1
-    #...  Is part of concept=${DEFAULT CONCEPT NAME}_1
-    #...  Has part concept=${DEFAULT CONCEPT NAME}_1
     ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_3
@@ -207,11 +192,6 @@ T8C2. Modify concept
     ...  usage=${usage}_2
     ...  Note=${Note}_2
     ...  sources=${sources}_2
-    #...  broader concept=${DEFAULT CONCEPT NAME}_4
-    #...  narrower concept=${DEFAULT CONCEPT NAME}_4
-    #...  Related concept=${DEFAULT CONCEPT NAME}_4
-    #...  Is part of concept=${DEFAULT CONCEPT NAME}_4
-    #...  Has part concept=${DEFAULT CONCEPT NAME}_4
     ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_5
     ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_5
     ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_5
@@ -227,11 +207,6 @@ T8C2. Modify concept
     ...  usage=${usage}_1
     ...  Note=${Note}_1
     ...  sources=${sources}_1
-    #...  broader concept=${DEFAULT CONCEPT NAME}_1
-    #...  narrower concept=${DEFAULT CONCEPT NAME}_1
-    #...  Related concept=${DEFAULT CONCEPT NAME}_1
-    #...  Is part of concept=${DEFAULT CONCEPT NAME}_1
-    #...  Has part concept=${DEFAULT CONCEPT NAME}_1
     ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_3
     ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_3
@@ -241,11 +216,6 @@ T8C2. Modify concept
     ...  usage=${usage}_2
     ...  Note=${Note}_2
     ...  sources=${sources}_2
-    #...  broader concept=${DEFAULT CONCEPT NAME}_4
-    #...  narrower concept=${DEFAULT CONCEPT NAME}_4
-    #...  Related concept=${DEFAULT CONCEPT NAME}_4
-    #...  Is part of concept=${DEFAULT CONCEPT NAME}_4
-    #...  Has part concept=${DEFAULT CONCEPT NAME}_4
     ...  Related concept in other vocabulary=${DEFAULT CONCEPT NAME}_5
     ...  Match in other vocabulary=${DEFAULT CONCEPT NAME}_5
     ...  Almost match in other vocabulary=${DEFAULT CONCEPT NAME}_5
@@ -366,6 +336,7 @@ T8C3. Modify terms
     ...  etymology=etymology
     ...  Admin note=Admin note
     ...  Term style=${Term style spoken}
+    # TODO check if this should be uncommented
     #...  Term family=${Term family masculine}
     ...  Term conjugation=${Term conjugation single}
     ...  Term word class=${Term word class adjective}

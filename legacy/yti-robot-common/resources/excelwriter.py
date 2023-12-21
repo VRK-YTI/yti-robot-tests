@@ -63,8 +63,7 @@ class excelwriter:
             os.makedirs(excel_dir)
         file_path = self.rename_file(file_path)
         open(file_path, 'a').close()
-        #workbook = xlsxwriter.Workbook(file_path)
-        #workbook.close()
+        
         return file_path
 
     def read_excel_file(self, _file):

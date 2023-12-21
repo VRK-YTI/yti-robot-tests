@@ -202,7 +202,7 @@ T2C5. Create valid datamodel with only nessecary information and edit
     Verify datamodel is created with prefix ${DEFAULT DATAMODEL PREFIX}
     Take Screenshot
 
-    # TODO Add new checks that datamodel has all valid data
+    # TODO Add new checks that datamodel has all valid data (YTI-3762)
     #Open datamodel options select
     #Open show datamodel as file dialog
     #Show datamodel file
@@ -232,7 +232,7 @@ T2C5. Create valid datamodel with only nessecary information and edit
 
     Save editing
 
-    # TODO Add new checks that datamodel has all valid data
+    # TODO Add new checks that datamodel has all valid data (YTI-3762)
     #Open datamodel options select
     #Open show datamodel as file dialog
     #Show datamodel file
@@ -280,7 +280,7 @@ T2C6. Create valid datamodel with all information and edit those information
     Accept creating datamodel
     Verify datamodel is created with prefix ${DEFAULT DATAMODEL PREFIX}
     
-    # TODO Add new checks that datamodel has all valid data
+    # TODO Add new checks that datamodel has all valid data (YTI-3762)
     #Open datamodel options select
     #Open show datamodel as file dialog
     #Show datamodel file
@@ -337,7 +337,7 @@ T2C6. Create valid datamodel with all information and edit those information
 
     Save editing
 
-    # TODO Add new checks that datamodel has all valid data
+    # TODO Add new checks that datamodel has all valid data (YTI-3762)
     #Open datamodel options select
     #Open show datamodel as file dialog
     #Show datamodel file
@@ -416,7 +416,7 @@ T2C7. Create valid datamodel with all information and remove unnesecary
     Accept creating datamodel
     Verify datamodel is created with prefix ${DEFAULT DATAMODEL PREFIX}
 
-    # TODO Add new checks that datamodel has all valid data
+    # TODO Add new checks that datamodel has all valid data (YTI-3762)
     #Open datamodel options select
     #Open show datamodel as file dialog
     #Show datamodel file
@@ -462,7 +462,7 @@ T2C8. Add terminology and datamodel links to datamodel
 
     Reload page
     
-    # TODO Add new checks that datamodel has all valid data
+    # TODO Add new checks that datamodel has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -492,7 +492,7 @@ T2C8. Add terminology and datamodel links to datamodel
 
     Reload page
     
-    # TODO Add new checks that datamodel has all valid data
+    # TODO Add new checks that datamodel has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog

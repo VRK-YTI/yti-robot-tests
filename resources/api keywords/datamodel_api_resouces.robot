@@ -190,7 +190,6 @@ Create multiple options datamodel with api
     ...  languages=@{languages}
     ...  services=@{services}
 
-    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
 
 Create multiple options datamodel library with api
     [Arguments]    
@@ -231,9 +230,6 @@ Create multiple options datamodel library with api
     ...  languages=@{languages}
     ...  services=@{services}
 
-    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
-
-
 Create single language fi datamodel with api
     [Arguments]    
     ...  ${number}
@@ -259,8 +255,6 @@ Create single language fi datamodel with api
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
-
-    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
     
 Update single language fi datamodel with api
     [Arguments]    
@@ -278,8 +272,6 @@ Update single language fi datamodel with api
     ...  ${AUTOMATION_ORGANIZATION}
     @{services}=  Create List  
     ...  ${HOUSING_SERVICE}
-
-    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
 
 Create single language en datamodel with api
     [Arguments]    
@@ -304,8 +296,6 @@ Create single language en datamodel with api
     ...  languages=@{languages}
     ...  services=@{services} 
 
-    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api
-
 Create invalid datamodel with api
     [Arguments]    
     ...  ${number}
@@ -327,5 +317,3 @@ Create invalid datamodel with api
     ...  organizations=@{organizations}
     ...  languages=@{languages}
     ...  services=@{services}
-
-    #Change model ${DEFAULT DATAMODEL PREFIX}_${number} to ${SUGGESTED} with api

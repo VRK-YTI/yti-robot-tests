@@ -48,7 +48,7 @@ T4C2. Create valid attribute
     Return from attribute
 
     Reload page
-    # TODO Add new checks that attribute has all valid data
+    # TODO Add new checks that attribute has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -99,7 +99,7 @@ T4C3. Create valid attribute with subattribute
     Verify create datamodel attribute does not contain error ${attribute name not set error}
     
     Reload page
-    # TODO Add new checks that attribute has all valid data
+    # TODO Add new checks that attribute has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -185,7 +185,7 @@ T4C4. Create valid attribute with all options
     Return from attribute
 
     Reload page
-    # TODO Add new checks that attribute has all valid data
+    # TODO Add new checks that attribute has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -410,7 +410,7 @@ T4C8. Modify attribute
     
     Return from attribute
     Reload page
-    # TODO Add new checks that attribute has all valid data
+    # TODO Add new checks that attribute has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -522,7 +522,7 @@ T4C9. Modify attribute remove unnesecary
     Return from attribute
 
     Reload page
-    # TODO Add new checks that attribute has all valid data
+    # TODO Add new checks that attribute has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog

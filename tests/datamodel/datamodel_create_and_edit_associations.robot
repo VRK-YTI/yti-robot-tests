@@ -46,7 +46,7 @@ T5C2. Create valid association
     Return from association
 
     Reload page
-    # TODO Add new checks that association has all valid data
+    # TODO Add new checks that association has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -97,7 +97,7 @@ T5C3. Create valid association with subassociation
     Wait until association is saved
 
     Reload page
-    # TODO Add new checks that association has all valid data
+    # TODO Add new checks that association has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -181,7 +181,7 @@ T5C4. Create valid association with all options
     Return from association
 
     Reload page
-    # TODO Add new checks that association has all valid data
+    # TODO Add new checks that association has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -402,7 +402,7 @@ T5C8. Modify association
 
     Return from association
     Reload page
-    # TODO Add new checks that association has all valid data
+    # TODO Add new checks that association has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -514,7 +514,7 @@ T5C9. Modify association remove unnesecary
     Return from association
 
     Reload page
-    # TODO Add new checks that association has all valid data
+    # TODO Add new checks that association has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog

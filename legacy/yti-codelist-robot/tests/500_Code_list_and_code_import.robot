@@ -346,15 +346,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     ${concept_uri}=    Catenate    SEPARATOR=    ${concept_uri_prefix}    ${uri_environment}
     Click Element that contains text        ${concept_uri}
 
-    #Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Sanastot
-    #Wait Until Page Contains    Suositettava termi
-    #Wait Until Page Contains    tutkija
-    #Wait Until Page Contains    Person who does the research
-    #Wait Until Page Contains    http://uri.suomi.fi/terminology/111/concept-1
-    #Close Window
-
-    #Switch window with wait     title=${ENVIRONMENT_IDENTIFIER} - Koodistot
-
     [Teardown]    Test Case Teardown Terminologies   ${DEFAULT_CODELIST_SCHEME_ID}
 
 512. Create code to code list and get concept for code from Terminologies
@@ -992,7 +983,7 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Click element with wait                 ${MODIFY_CODE_BTN}
     Click element with wait                 ${SUB_CODE_LIST_BTN}
     Input Text with wait                    ${SEARCH_SUB_CODE_LIST_INPUT}    ${DEFAULT_PREFLABEL_SCHEME}
-    #Sleep  30
+    
     Click element with wait                 //span[text()="${DEFAULT_PREFLABEL_SCHEME}" and @class="title"]
     Click element with wait                 ${SAVE_NEW_CODE_BTN}
     Wait Until Page Contains                Liittyvä koodisto
@@ -1168,7 +1159,6 @@ ${concept_uri_prefix}    http://uri.suomi.fi/terminology/111/concept-1?env=
     Wait Until Page Contains    ${DEFAULT_PREFLABEL_CODE}_1_1
     [Teardown]    Remove codelist teardown    ${DEFAULT_CODELIST_SCHEME_ID}_1    
     ...                                       ${DEFAULT_CODELIST_SCHEME_ID}_2
-    #...                                       ${DEFAULT_CODELIST_SCHEME_ID}_1${DEFAULT_CODELIST_SCHEME_ID}_2
 
 530. Update code attributes in versioned code list's newest version
     [Documentation]    Import VALID code list with codes and create new version of code list.
