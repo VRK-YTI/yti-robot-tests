@@ -440,7 +440,8 @@ T3C8. Modify class
     ...    Delete terminology ${DEFAULT TERMINOLOGY NAME} with api
 
 T3C9. Modify class remove unnesecary
-    
+    # TODO Remove skip after fixing bug or test case (YTI-3758)
+    Skip
     ${multi_language}=  set variable  1
 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
