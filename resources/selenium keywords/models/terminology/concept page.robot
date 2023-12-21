@@ -120,7 +120,7 @@ ${new term homograph checkbox}     //div[@role="dialog"]//div/label[text()="Term
 ${new term homograph input}        //div[@role="dialog"]//div/label[text()="Homonyymin järjestysnumero"]/../../div/input
 ${new term name input}             //div[@role="dialog"]/div/div/span/div/label[text()="Termin nimi"]/../../div/input
 ${new term langueage input}        //div[@role="dialog"]/div/div/div/div/div/label[text()="Kieli"]/../../../div/div/div/input
-${new term term status input}      //div[@role="dialog"]//div/label[text()="Termin tila"]/../../div/span
+${new term term status input}      //div[@role="dialog"]/descendant::label[text()="Termin tila"]/../../descendant::button
 ${new term term extra info input}  //div[@role="dialog"]//div/label[text()="Termin lisätieto"]/../../div/textarea
 ${new term term domain input}      //div[@role="dialog"]//div/label[text()="Käyttöala"]/../../div/textarea
 ${new term term equalency input}   //div[@role="dialog"]//label[text()="Termin vastaavuus"]/../span/div
@@ -422,6 +422,7 @@ Add information to concept
             Click element with wait   ${concept organization box} 
             Click element with wait   ${concept organization organization add note button}
             Input text with wait      ${concept organization organization note input}    ${Note}
+            Click element with wait   ${concept organization organization note input}
             Click element with wait   ${concept organization box}  
         END
     END
@@ -527,6 +528,8 @@ Add new term to new concept
     ...             ${Term word class}=${NONE}
     
     Click element with wait  ${new term add term button}
+    # Dialogs have element that blocks selecting elements (bug, can be reproduced manualy)
+    Find and hide element    //div[contains(@class, "fi-modal_footer_content-gradient")]
 
     Input text with wait    ${new term name input}    ${name}
 
@@ -543,10 +546,8 @@ Add new term to new concept
         Click element with wait  //label[text()="${Term type}"]
     END
     IF  '${Term status}' != '${NONE}'
-        #Press Keys               NONE        TAB+TAB+TAB
-        #Click element with wait  ${new term term status input}
-        #Click element with wait  //li[text()="${Term status}"]
-        No operation
+        Click element with wait  ${new term term status input}
+        Click element with wait  //li[@role="option" and text()="${Term status}"]
     END
 
     IF  '${extra info}' != '${NONE}'
@@ -563,7 +564,6 @@ Add new term to new concept
         Press Keys    None       ENTER
     END
     IF  '${sources}' != '${NONE}'
-        Press Keys               NONE        TAB+TAB+TAB
         Click element with wait  ${new term term source button}
         Input text with wait     ${new term term source input}  ${sources}
     END
@@ -590,7 +590,6 @@ Add new term to new concept
         Click element with wait  //li[text()="${Term conjugation}"]
     END
     IF  '${Term word class}' != '${NONE}'
-        Press Keys               NONE        TAB+TAB+TAB
         Click element with wait  ${new term term word class input}
         Click element with wait  //li[text()="${Term word class}"]
     END
@@ -685,7 +684,6 @@ Modify to prefered term information
             Click element with wait  //li[text()="${Term word class}"]
         END
     END
-    
     Click element with wait  ${Update recommended term button}
 
 Verify concept page contains all information

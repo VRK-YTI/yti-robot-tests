@@ -34,7 +34,9 @@ Setup test Case
         Start video recording      name=${TEST NAME}
     END   
 
-Teardown test Case
+Teardown test case
+    # Document out only, if you want to pause execution for testing purposes on local environment
+    # Run keyword if test failed  Pause during failure with dialog
     Print console logs
     IF  '${RECORD}' == 'True'
         Stop video recording
@@ -53,3 +55,8 @@ Teardown test Case delete datamodel ${datamodel}
 Teardown test Case on failure delete datamodel ${datamodel}
     Teardown test Case
     Run keyword if test failed  Delete model ${datamodel} with api
+
+Pause during failure with dialog
+    # Import done in keyword because library will give error on linux
+    Import Library  Dialogs
+    Dialogs.Pause Execution

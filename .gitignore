@@ -23,6 +23,7 @@ geckodriver.exe
 .settings/
 .classpath
 reports
+test_reports
 
 # python virtual environment
 env

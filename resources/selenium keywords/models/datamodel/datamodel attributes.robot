@@ -17,13 +17,12 @@ ${Datamodel attribute prefix input}                     //input[@id="prefix-inpu
 ${Datamodel save attribute}                             //button[@id="submit-button"]
 ${Datamodel attribute back button}                      //button[@id="back-button"]
 ${Datamodel attribute options button}                   //button[text()="Toiminnot"]
-${Datamodel attribute edit button}                      //button[@id="edit-button"]
-${Datamodel attribute delete button}                    //button[@id="remove-button"]
+${Datamodel attribute edit button}                      //button[@id="action-menu-menu-list-item-0"]
+${Datamodel attribute delete button}                    //button[@id="action-menu-menu-list-item-3"]
 ${Datamodel attribute description input fi}                //textarea[@id="note-input-fi"]
 ${Datamodel attribute description input en}                //textarea[@id="note-input-en"]
 ${Datamodel attribute description input sv}                //textarea[@id="note-input-sv"]
 ${Datamodel attribute editor comment input}             //textarea[@id="editorial-note-input"]
-${Datamodel attribute status dropdown}                  //button[@id="status-dropdown_button"]
 ${Datamodel attribute concept select dropdown}          //button[@id="select-concept-button"]
 ${Datamodel attribute add subattribute button}              //label[contains(text(), "Yläattribuutit")]/../../button
 ${Datamodel attribute add equivalent attribute button}      //label[contains(text(), "Vastaavat attribuutit")]/../../button
@@ -169,11 +168,6 @@ Input swedish description into attribute
 Input editor comment into attribute
     [Arguments]   ${text}
     Input text with wait   ${Datamodel attribute editor comment input}   ${text}
-
-Select status into attribute
-    [Arguments]   ${status}
-    Click element with wait  ${Datamodel attribute status dropdown} 
-    Click element with wait  //li[@id="status-dropdown-${status}"]
 
 Select attribute concept into attribute
     [Arguments]   ${text}

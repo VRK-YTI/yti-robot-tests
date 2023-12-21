@@ -303,6 +303,7 @@ T8C3. Modify terms
     ...  Term family=${Term family masculine}
     ...  Term conjugation=${Term conjugation single}
     ...  Term word class=${Term word class adjective}
+ 
     Save concept modify
 
     Verify term page contains all information
@@ -339,6 +340,7 @@ T8C3. Modify terms
     ...  Term word class=${Term word class adjective}
     
     Modify concept
+    
     Modify to prefered term information
     ...  name=${DEFAULT CONCEPT NAME}
     ...  homograph=CLEAR

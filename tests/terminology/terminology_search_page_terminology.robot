@@ -15,6 +15,7 @@ T2C1. Verify terminology language options
     Change language to english
     Verify terminology search page language is english
 
+    # TODO Swedish does not work
     #Change language to swedish
     #Verify terminology search page language is swedish
     

@@ -1,3 +1,4 @@
+# TODO could probebly be removed. I think these are not valid test cases to automate anymore.
 *** Settings ***
 Force Tags           T6  IGNORE
 Resource             ../../tests/setup_and_teardowns.robot

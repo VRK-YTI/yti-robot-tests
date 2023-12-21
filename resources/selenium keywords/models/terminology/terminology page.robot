@@ -1,5 +1,3 @@
-*** Settings ***
-Library    SeleniumLibrary
 *** Variables ***
 ${Terminology title}                //span[text()="Sanaston tiedot ja toiminnot"]  |  //span[text()="Terminology"]
 ${Terminology download button}      //button[@id="export-terminology-button"]
@@ -26,12 +24,13 @@ ${terminology modify save button}              //button[@id="submit-button"]
 ${terminology modify cancel button}            //button[@id="cancel-button"]
 
 ${Terminology modify language input}            //input[@placeholder="Valitse sanaston kielet"]
-${Terminology modify finish name input}         //div/p/span[text()="suomi FI"]/../../div/span/div/input
-${Terminology modify finish definition input}   //div/p/span[text()="suomi FI"]/../../div/div/textarea
-${Terminology modify english name input}        //div/p/span[text()="englanti EN"]/../../div/span/div/input
-${Terminology modify english definition input}  //div/p/span[text()="englanti EN"]/../../div/div/textarea
-${Terminology modify swedish name input}        //div/p/span[text()="ruotsi SV"]/../../div/span/div/input
-${Terminology modify swedish definition input}  //div/p/span[text()="ruotsi SV"]/../../div/div/textarea
+# TODO i think there is bug here, with the text changing
+${Terminology modify finish name input}         //div/p/span[text()="suomi FI"]/../../div/span/div/input | //div/p/span[text()="fi"]/../../div/span/div/input
+${Terminology modify finish definition input}   //div/p/span[text()="suomi FI"]/../../div/div/textarea | //div/p/span[text()="fi"]/../../div/div/textarea
+${Terminology modify english name input}        //div/p/span[text()="englanti EN"]/../../div/span/div/input | //div/p/span[text()="en"]/../../div/span/div/input
+${Terminology modify english definition input}  //div/p/span[text()="englanti EN"]/../../div/div/textarea | //div/p/span[text()="en"]/../../div/div/textarea
+${Terminology modify swedish name input}        //div/p/span[text()="ruotsi SV"]/../../div/span/div/input | //div/p/span[text()="sv"]/../../div/span/div/input
+${Terminology modify swedish definition input}  //div/p/span[text()="ruotsi SV"]/../../div/div/textarea | //div/p/span[text()="sv"]/../../div/div/textarea
 
 ${Terminology modify status input}              //div/div/label[text()="Sanaston tila"]/../../div/div/input
 ${Terminology remove status button}             //div/div/label[text()="Sanaston tila"]/../../div/div/div
@@ -130,7 +129,7 @@ Verify collections search page does not contain ${hits} items with filters
     Reload page
     Wait until page does not contain element    //span[text()="Käsitekokoelmia ${hits} kpl seuraavilla rajauksilla"] | //span[text()="Collections ${hits} items with following filters"] | //span[text()="Käsitekokoelmia ${hits} kpl seuraavilla rajauksilla"]
 
-Save terminolgy modify
+Save terminology modify
     [Arguments]     ${Valid}=${True}
     Click element with wait  ${terminology modify save button} 
     IF  '${Valid}' == '${True}'
@@ -150,7 +149,7 @@ Verify modify terminology page is open
     Wait Until Location Contains  edit
 
 Select language ${language} on modify terminology
-    Input text with wait    ${Terminology modify language input}   ${language}
+    Input text with wait    ${Terminology modify language input}   ${language}  tab=False
     Press Keys              None      ARROW_DOWN
     Press Keys              None      ENTER
     Press Keys              None      TAB
@@ -174,7 +173,7 @@ Input finish name ${name} on modify terminology
     Input text with wait    ${Terminology modify finish name input}  ${name}
 
 Select status ${status} on modify terminology
-    Input text with wait    ${Terminology modify status input}   ${status}
+    Input text with wait    ${Terminology modify status input}   ${status}  tab=False
     Press Keys              None      ARROW_DOWN
     Press Keys              None      ENTER
     Press Keys              None      TAB
@@ -183,7 +182,7 @@ Remove selected status on modify terminology
     Click element with wait  ${Terminology remove status button}
 
 On modify terminology select organization ${organization}
-    Input text with wait    ${Terminology modify organization input}   ${organization}
+    Input text with wait    ${Terminology modify organization input}   ${organization}  tab=False
     Press Keys              None      ARROW_DOWN
     Press Keys              None      ENTER
     Press Keys              None      TAB
@@ -195,7 +194,7 @@ Select type other on modify terminology
     Click element with wait  ${Terminology modify type input other}
 
 Select domain ${domain} on modify terminology
-    Input text with wait    ${Terminology modify domain input}   ${domain}
+    Input text with wait    ${Terminology modify domain input}   ${domain}  tab=False
     Press Keys              None      ARROW_DOWN
     Press Keys              None      ENTER
     Press Keys              None      TAB
@@ -208,7 +207,7 @@ Select prefix manual on modify terminology
 
 Input prefix ${prefix} on modify terminology
     Input text with wait    ${Terminology modify prefix input}   ${prefix}
-
+    
 Input contact ${contact} on modify terminology
     Input text with wait    ${Terminology modify contact input}   ${contact}
 

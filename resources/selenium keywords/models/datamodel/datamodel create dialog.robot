@@ -56,22 +56,23 @@ Select create datamodel core model type
     Click element with wait  ${Datamodel Core model radio button}
     
 Select create datamodel domain ${domain}
-    Scroll create datamodel dialog down
     Click element with wait  ${Datamodel domain select}
-    Click element with wait  //li[text()="${domain}"]
+    Input text with wait     ${Datamodel domain select}    ${domain}
+    Click element with wait  //li/mark[text()="${domain}"]
+    Press Keys               None  TAB
 
 Select create datamodel contributor ${contributor}
-    Scroll create datamodel dialog down
     Click element with wait  ${Datamodel contributor select}
-    Click element with wait  //li[text()="${contributor}"]
+    Input text with wait     ${Datamodel contributor select}    ${contributor}
+    Click element with wait  //li/mark[text()="${contributor}"]
+    Press Keys               None  TAB
 
 Select create datamodel language ${language}
-    Scroll create datamodel dialog down
     Click element with wait  ${Datamodel language select}
     Click element with wait  //li[text()="${language}"]
 
 Input create datamodel language ${language} for name ${name}
-    Input text with wait     //input[@id="name-input-${language}"]  ${name}
+    Input text with wait     //input[@id="name-input-${language}"]  ${name}u
 
 Input create datamodel language ${language} for description ${description}
     Input text with wait     //textarea[@id="description-input-${language}"]  ${description}
@@ -79,33 +80,23 @@ Input create datamodel language ${language} for description ${description}
 Verify create datamodel invalid prefix error
     Wait until page contains element  ${Create datamodel prefix error text}
 
-Scroll create datamodel dialog down
-    [Arguments]  ${tabs_count}=6
-    # Quick fix, element is in way of the input, so dialog has to be scrolled
-    Click element with wait  //h2[text()="Luo uusi tietomalli"]
-    FOR    ${index}    IN RANGE    1    ${tabs_count}
-        Press Keys               None  TAB
-    END  
+Verify create datamodel invalid prefix error is not visible
+    Wait until element is not visible  ${Create datamodel prefix error text}
 
 Verify datamodel is created with prefix ${prefix}
     Wait Until Location Contains  ${DATAMODELS_URL}model/${prefix}
 
 Remove selected domain ${domain}
-    Scroll create datamodel dialog down
     Click element with wait  //button/span[text()="${domain}"]
 
 Remove selected contributor ${contributor}
-    Scroll create datamodel dialog down
     Click element with wait  //button/span[text()="${contributor}"]
 
 Remove selected language ${language}
-    Scroll create datamodel dialog down
     Click element with wait  //button/span[text()="${language}"]
 
 Remove all selected domains
-    Scroll create datamodel dialog down  10
     Click element with wait  ${Remove all selections for domains}
 
 Remove all selected contributors
-    Scroll create datamodel dialog down  10
     Click element with wait  ${Remove all selections for contributors}

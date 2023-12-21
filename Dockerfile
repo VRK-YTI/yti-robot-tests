@@ -3,7 +3,7 @@ FROM debian:bullseye-20220822-slim@sha256:f21a32253b030826c59cd71de36996e2fd6d82
 VOLUME ["/robot_tests"]
 
 # Update apt and install apt packages
-RUN apt update && apt install -y unzip python3 pip xvfb wget
+RUN apt update && apt install -y unzip python3 pip xvfb wget uuid-runtime
 
 # Install chrome and chromedrive
 RUN wget -qP /tmp/ "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.105/linux64/chromedriver-linux64.zip" \
@@ -19,10 +19,10 @@ RUN wget -qP /tmp/ "https://dl.google.com/linux/direct/google-chrome-stable_curr
 #RUN apt install -y ./google-chrome-stable_current_amd64.deb 
 
 # Install firefox and geckodriver
-#RUN apt install -y firefox-esr=91.13.0esr-1~deb11u1 
-#RUN wget -qP /tmp/ https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz \
-#    && tar -xvzf /tmp/geckodriver-v0.31.0-linux64.tar.gz -C /usr/local/bin/ \
-#    && rm -f /tmp/geckodriver-v0.31.0-linux64.tar.gz
+RUN apt update && apt install -y firefox-esr
+RUN wget -qP /tmp/ https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz \
+    && tar -xvzf /tmp/geckodriver-v0.33.0-linux64.tar.gz -C /usr/local/bin/ \
+    && rm -f /tmp/geckodriver-v0.33.0-linux64.tar.gz
 
 # Install python and requirements
 COPY requirements.txt requirements.txt

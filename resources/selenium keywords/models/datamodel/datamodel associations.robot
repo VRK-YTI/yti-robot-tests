@@ -17,10 +17,9 @@ ${Datamodel association prefix input}                     //input[@id="prefix-in
 ${Datamodel save association}                             //button[@id="submit-button"]
 ${Datamodel association back button}                      //button[@id="back-button"]
 ${Datamodel association options button}                   //button[text()="Toiminnot"]
-${Datamodel association edit button}                      //button[@id="edit-button"]
-${Datamodel association delete button}                    //button[@id="remove-button"]
+${Datamodel association edit button}                      //button[@id="action-menu-menu-list-item-0"]
+${Datamodel association delete button}                    //button[@id="action-menu-menu-list-item-3"]
 ${Datamodel association editor comment input}             //textarea[@id="editorial-note-input"]
-${Datamodel association status dropdown}                  //button[@id="status-dropdown_button"]
 ${Datamodel association concept select dropdown}          //button[@id="select-concept-button"]
 ${Datamodel association add subassociation button}              //label[contains(text(), "Yläassosiaatiot")]/../../button
 ${Datamodel association add equivalent association button}      //label[contains(text(), "Vastaavat assosiaatiot")]/../../button
@@ -165,10 +164,6 @@ Input editor comment into association
     [Arguments]   ${text}
     Input text with wait   ${Datamodel association editor comment input}   ${text}
 
-Select status into association
-    [Arguments]   ${status}
-    Click element with wait  ${Datamodel association status dropdown} 
-    Click element with wait  //li[@id="status-dropdown-${status}"]
 
 Select association concept into association
     [Arguments]   ${text}

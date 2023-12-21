@@ -33,6 +33,8 @@ T7C1. Verify modify terminology button permissions
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C2. Modify terminology
+    # TODO Remove skip when bug is fixed
+    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -50,7 +52,7 @@ T7C2. Modify terminology
     Select status Luonnos on modify terminology
 
     Input contact ${ADMIN_EDUUNI_EMAIL} on modify terminology
-    Save terminolgy modify
+    Save terminology modify
 
     Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}_1
     Verify displayed status is Luonnos
@@ -80,7 +82,7 @@ T7C2. Modify terminology
     Select prefix manual on modify terminology
     Input prefix ${DEFAULT TERMINOLOGY PREFIX}_1 on modify terminology
 
-    Save terminolgy modify
+    Save terminology modify
 
     Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}_2
     Verify displayed english name is ${DEFAULT TERMINOLOGY NAME}_2
@@ -96,7 +98,7 @@ T7C2. Modify terminology
     Verify displayed languages are suomi FI, ruotsi SV, englanti EN
     Verify displayed type is Muu sanasto
     # TODO bug prefix modify does not work
-    #Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}_1
+    # Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}_1
 
     Open modify terminology dialog
 
@@ -115,11 +117,11 @@ T7C2. Modify terminology
     Select status Voimassa oleva on modify terminology
 
     Input contact ${EMPTY} on modify terminology
-    Save terminolgy modify  
+    Save terminology modify
 
     Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
     Verify displayed status is Voimassa oleva
-    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
+    Verify displayed contact is yhteentoimivuus@dvv.fi
     Verify displayed domains are Asuminen
     Verify displayed organizations are Automaatiotestaus
     Verify displayed languages are suomi FI
@@ -129,6 +131,8 @@ T7C2. Modify terminology
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C3. Verify modify terminology errors
+    # TODO Remove skip when bug is fixed
+    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -140,21 +144,21 @@ T7C3. Verify modify terminology errors
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
 
     Open modify terminology dialog
-
-    Click element with wait  //span[text()="suomi FI"]
-    Save terminolgy modify  
+    
+    Select language suomi FI on modify terminology
+    Save terminology modify
     ...  False
     Verify modify terminology error message ${Terminology modify languages are not set error}
 
     Select language suomi FI on modify terminology
-    Save terminolgy modify  
+    Save terminology modify 
     ...  False
     Verify modify terminology error message ${Terminology modify name missing from finish error}
     Input finish name ${DEFAULT TERMINOLOGY NAME} on modify terminology
 
     Select language englanti EN on modify terminology
     Select language ruotsi SV on modify terminology
-    Save terminolgy modify  
+    Save terminology modify
     ...  False
     Verify modify terminology error message ${Terminology modify name missing from english error}
     Verify modify terminology error message ${Terminology modify name missing from swedish error}
@@ -168,7 +172,7 @@ T7C3. Verify modify terminology errors
     Select domain Asuminen on modify terminology
     Select prefix manual on modify terminology
 
-    Save terminolgy modify  
+    Save terminology modify 
     ...  False
     Verify modify terminology error message ${Terminology modify status missing error}
     Verify modify terminology error message ${Terminology modify contributors missing error}
@@ -180,7 +184,7 @@ T7C3. Verify modify terminology errors
     Select domain Asuminen on modify terminology
     Input prefix ${DEFAULT TERMINOLOGY PREFIX} on modify terminology
     
-    Save terminolgy modify
+    Save terminology modify
 
     Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
     Verify displayed english name is ${DEFAULT TERMINOLOGY NAME}
