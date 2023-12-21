@@ -46,7 +46,7 @@ T2C2. Verify edit datamodel permissions
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     
 T2C3. Verify create datamodel errors
-    # TODO Creates datamodel even though prefix is already in use and shows its on dialog
+    # TODO Creates datamodel even though prefix is already in use and shows its on dialog (YTI-3758)
     Skip
     ${single_language_fi}=  set variable  1
     Create single language fi datamodel with api

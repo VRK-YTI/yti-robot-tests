@@ -71,7 +71,7 @@ Search attribute in attribute dialog
 
 Input attribute prefix
     [Arguments]   ${Text}
-    Input text with wait                        ${Datamodel attribute prefix input}   ${Text}
+    Input text with wait                        ${Datamodel attribute prefix input}   ${Text}  tab=False
     Sleep  1
 
 Input finnish attribute label
