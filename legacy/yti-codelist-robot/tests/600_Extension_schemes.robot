@@ -767,9 +767,6 @@ ${LANGUAGE_DROPDOWN_BTN}    id=select_lang_dropdown
     Reload page
     
     Click element with wait      ${MEMBERS_TAB}    
-    #Click element with wait      //*[contains(text(), "- Member 1 · koodin uusi nimi · uusi nimi koodistolle · Testirekisteri <=")]    
-
-    #Wait Until Page Contains    ${DEFAULT_PREFLABEL_SCHEME} - koodin uusi nimi - uusi nimi koodistolle - Testirekisteri    
 
     [Teardown]    Remove codelist with extensions teardown  ${DEFAULT_CODELIST_SCHEME_ID}_2  ${DEFAULT_CODELIST_SCHEME_ID}
 

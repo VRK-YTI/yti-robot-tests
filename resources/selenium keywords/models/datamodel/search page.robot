@@ -36,6 +36,7 @@ Select datamodel ${datamodel}
 
 Search datamodel ${Datamodel}
     Input text with wait              ${Search box datamodel}  ${Datamodel}
+    Click element with wait           ${Search box datamodel}
 
 Clear text search filter
     Click element with wait           ${Search box datamodel}/../*[2]

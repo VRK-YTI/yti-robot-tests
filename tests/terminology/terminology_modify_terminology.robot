@@ -131,8 +131,6 @@ T7C2. Modify terminology
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C3. Verify modify terminology errors
-    # TODO Remove skip when bug is fixed (YTI-3755)
-    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}

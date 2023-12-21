@@ -48,7 +48,7 @@ T3C2. Create valid class
     Return from class
 
     Reload page
-    # TODO Add new checks that class has all valid data
+    # TODO Add new checks that class has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -97,7 +97,7 @@ T3C3. Create valid class with subclass
     Wait until class is saved
 
     Reload page
-    # TODO Add new checks that class has all valid data
+    # TODO Add new checks that class has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -186,7 +186,7 @@ T3C4. Create valid class with all options
     Return from class
 
     Reload page
-    # TODO Add new checks that class has all valid data
+    # TODO Add new checks that class has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -412,7 +412,7 @@ T3C8. Modify class
 
     Return from class
     Reload page
-    # TODO Add new checks that class has all valid data
+    # TODO Add new checks that class has all valid data (YTI-3762)
     # Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
@@ -530,7 +530,7 @@ T3C9. Modify class remove unnesecary
     Return from class
 
     Reload page
-    # TODO Add new checks that class has all valid data
+    # TODO Add new checks that class has all valid data (YTI-3762)
     #Select info tab
     #Open datamodel options select
     #Open show datamodel as file dialog
