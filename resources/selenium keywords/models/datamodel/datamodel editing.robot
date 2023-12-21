@@ -4,15 +4,15 @@ Library    SeleniumLibrary
 Library    ../../generic/generic selenium.py
 
 *** Variables ***
-${Datamodel options button}                           //button[@id="actions-button"]
-${Edit datamodel button}                              //button[@id="edit-button"]
+${Datamodel options button}                           //button[@id="actions-menu"]
+${Edit datamodel button}                              //button[@id="actions-menu-menu-list-item-0"]
 ${Save datamodel edit button}                         //button[text()="Tallenna"]
 ${Cancel datamodel edit button}                       //button[text()="Peruuta"]
 ${Add terminology datamodel edit button}              //button[@id="add-terminology-button"]
 ${Add terminology dialog search input}                //input[@id="search-input"]
 ${Add codelist dialog search input}                   //input[@id="search-text-input"]
 ${Add terminology dialog submit button}               //button[@id="submit-button"]
-${Datamodel options show datamodel file}              //button[@id="show-as-file-button"]
+${Datamodel options show datamodel file}              //button[@id="actions-menu-menu-list-item-3"]
 ${Show datamodel button}                              //button[@id="show-button"]
 ${Delete datamodel button}                            //button[@id="delete-modal-button"]
 ${Delete datamodel dialog button}                     //button[@id="delete-button"]
@@ -65,7 +65,6 @@ Save editing
     Click element with wait  ${Save datamodel edit button}
 
 On edit remove ${language}
-    Scroll create datamodel edit down  
     Click element with wait  //span[text()="${language}"]
 
 On edit select create datamodel language ${language}
@@ -96,7 +95,6 @@ Get shown json from new tab
     [Return]  ${json}
 
 Remove all selected domains from edit
-    Scroll create datamodel edit down
     Click element with wait  ${Remove all selections for domains}
     Press Keys    None      TAB
 
@@ -105,7 +103,6 @@ Remove all selected contributors from edit
     Press Keys    None      TAB
 
 Select edit datamodel domain ${domain}
-    Scroll create datamodel edit down
     Click element with wait  ${Datamodel domain select}
     Click element with wait  //li[text()="${domain}"]
     Press Keys    None      TAB
@@ -121,16 +118,8 @@ Verify edit datamodel contains error ${error}
 Verify edit datamodel does not contain error ${error}
     Wait until page does not contain element  //div[text()="Puuttuvia tietoja"]/../div/ul/li[text()="${error}"]
 
-Scroll create datamodel edit down
-    [Arguments]  ${tabs_count}=6
-    # Quick fix, element is in way of the input, so dialog has to be scrolled
-    Click element with wait  //span[text()="Tiedot"]
-    FOR    ${index}    IN RANGE    1    ${tabs_count}
-        Press Keys               None  TAB
-    END  
-
 Add terminology link to datamodel in links tab
-    [Arguments]  ${terminology}  ${tabs_count}=7
+    [Arguments]  ${terminology}
     Click element with wait  ${Add terminology datamodel edit button}
     Input text with wait     ${Add terminology dialog search input}  ${terminology}
     Wait until page contains element  //div[@role="dialog"]/div/div/div/span[text()="1 sanasto"]
@@ -139,13 +128,16 @@ Add terminology link to datamodel in links tab
     Click element with wait  ${Datamodel links terminology links submit button}
     
 Add datamodel link to datamodel in links tab
-    [Arguments]  ${datamodel}  ${tabs_count}=4
+    [Arguments]  ${datamodel}
     Click element with wait  ${Add datamodel link button}
-    Input text with wait     ${Add terminology dialog search input}  ${datamodel}
+    
+    Click element with wait  //*[@id="status-picker-displayValue"]
+    Click element with wait  //*[@id="status-picker--1"]
 
-    Wait until page contains element  //div[@role="dialog"]/div/div/div/span[text()="1 tietomalli"]
-    Find and highlight element               //div[@role="dialog"]/div/div/div/div/div
-    Click Element At Coordinates    //div[@role="dialog"]/div/div/div/div/div    0    0
+    Input text with wait     ${Add terminology dialog search input}  ${datamodel}
+    
+    Wait Until Page Contains Element    //input[contains(@id, "select-multiple-checkbox")]
+    Click Element At Coordinates        //input[contains(@id, "select-multiple-checkbox")]    0    0
     Click element with wait  ${Datamodel links terminology links submit button}
     
 Remove link from link editing

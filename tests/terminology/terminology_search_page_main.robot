@@ -14,6 +14,7 @@ T1C1. Verify front page language options
     Change language to english
     Verify search page language is english
 
+    # TODO Swedish does not work
     #Change language to swedish
     #Verify search page language is swedish
     

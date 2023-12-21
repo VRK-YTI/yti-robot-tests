@@ -35,13 +35,16 @@ Find and hide element
     Run keyword and ignore error  Hide element  ${elem}
 
 Input text with wait
-    [Arguments]  ${element}  ${text}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}
+    [Arguments]  ${element}  ${text}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}  ${tab}=True
     Wait Until Page Contains Element    ${element}    timeout=${timeout}
     Wait Until Element Is Visible       ${element}    timeout=${timeout}
     Wait Until Element Is Enabled       ${element}    timeout=${timeout}
     Wait For Condition                  return document.readyState=="complete"      timeout=${timeout}
     Find and highlight element          ${element}
     Input Text                          ${element}    ${text}
+    IF  '${tab}' == 'True'
+        Press Keys                          None      TAB
+    END
 
 Click element with wait
     [Arguments]  ${element}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}

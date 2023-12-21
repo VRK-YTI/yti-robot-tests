@@ -15,13 +15,12 @@ ${Datamodel class label input en}                   //span/div/label[contains(te
 ${Datamodel class label input sv}                   //span/div/label[contains(text(), "Luokan nimi, sv")]/../../div/input
 ${Datamodel class prefix input}                     //input[@id="prefix-input"]
 ${Datamodel save class}                             //button[@id="submit-button"]
-${Datamodel class back button}                      //button[text()="Takaisin"]
+${Datamodel class back button}                      //button[text()="Luokka-listaan"]
 ${Datamodel class options button}                   //button[text()="Toiminnot"]
-${Datamodel class edit button}                      //button[@id="edit-class-button"]
-${Datamodel class delete button}                    //button[@id="delete-class-button"]
+${Datamodel class edit button}                      //button[@id="actions-menu-menu-list-item-0"]
+${Datamodel class delete button}                    //button[@id="actions-menu-menu-list-item-3"]
 ${Datamodel class description input}                //textarea[@id="comment-input"]
 ${Datamodel class editor comment input}             //textarea[@id="editor-comment-input"]
-${Datamodel class status dropdown}                  //button[@id="status-dropdown_button"]
 ${Datamodel class concept select dropdown}          //button[@id="select-concept-button"]
 ${Datamodel class add subclass button}              //label[contains(text(), "Yläluokat")]/../../button
 ${Datamodel class add equivalent class button}      //label[contains(text(), "Vastaavat luokat")]/../../button
@@ -166,11 +165,6 @@ Input swedish description into class
 Input editor comment into class
     [Arguments]   ${text}
     Input text with wait   ${Datamodel class editor comment input}   ${text}
-
-Select status into class
-    [Arguments]   ${status}
-    Click element with wait  ${Datamodel class status dropdown} 
-    Click element with wait  //li[@id="status-dropdown-${status}"]
 
 Select class concept into class
     [Arguments]   ${text}

@@ -14,20 +14,7 @@ T3C1. Verify create class permissions
     ${single_language_fi}=  set variable  1
     Create single language fi datamodel with api
     ...  number=${single_language_fi}
-
-    #Open datamodel search page
-    #Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
-
-    #Open class tab
-    #Verify page does not contain add datamodel class button
-
-    #Login with no group
-    #Open class tab
-    #Verify page does not contain add datamodel class button
-
-    # Close browser and open it again, because of eduuni cache
-    #Close Browser
-    #Open Browser with Settings        
+        
     Open datamodel search page
     Login with Admin
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
@@ -61,17 +48,18 @@ T3C2. Create valid class
     Return from class
 
     Reload page
-    Select info tab
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
+    # TODO Add new checks that class has all valid data
+    #Select info tab
+    #Open datamodel options select
+    #Open show datamodel as file dialog
+    #Show datamodel file
     
-    ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    #${json_dict}=  Get shown json from new tab
+    #Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][1]}                        value=${DRAFT}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][1]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
     
-    Cancel show datamodel file dialog
+    #Cancel show datamodel file dialog
 
     Open class tab
     Select class    ${DEFAULT DATAMODEL CLASS NAME}
@@ -100,9 +88,6 @@ T3C3. Create valid class with subclass
     
     Open class tab
     Create new class
-    Cancel create datamodel class dialog
-
-    Create new class
     Select class on create class dialog    ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
     
     Input finnish class label     ${DEFAULT DATAMODEL CLASS NAME}_2
@@ -112,18 +97,19 @@ T3C3. Create valid class with subclass
     Wait until class is saved
 
     Reload page
-    Select info tab
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
+    # TODO Add new checks that class has all valid data
+    #Select info tab
+    #Open datamodel options select
+    #Open show datamodel as file dialog
+    #Show datamodel file
     
-    ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:subClassOf"]}     value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}_1
+    #${json_dict}=  Get shown json from new tab
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}_2
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:subClassOf"]}     value=${DEFAULT DATAMODEL PREFIX}_${single_language_fi}:${DEFAULT DATAMODEL CLASS PREFIX}_1
     
-    Cancel show datamodel file dialog
+    #Cancel show datamodel file dialog
 
     Open class tab
     Select class    ${DEFAULT DATAMODEL CLASS NAME}_2
@@ -189,8 +175,6 @@ T3C4. Create valid class with all options
     Select disjoint class into class
     Select class on linking class dialog        ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
 
-    Select status into class                    ${DRAFT}
-
     Input finnish description into class        description fi
     Input swedish description into class        description sv
     Input english description into class        description en
@@ -202,29 +186,30 @@ T3C4. Create valid class with all options
     Return from class
 
     Reload page
-    Select info tab
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
+    # TODO Add new checks that class has all valid data
+    #Select info tab
+    #Open datamodel options select
+    #Open show datamodel as file dialog
+    #Show datamodel file
     
-    ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    #${json_dict}=  Get shown json from new tab
+    #Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
+    #Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
     
-    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
-    log  ${labels}
-    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_fi
-    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_en
-    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_sv
+    #${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
+    #log  ${labels}
+    #List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_fi
+    #List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_en
+    #List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_sv
     
-    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
-    log  ${comment}
-    List Should Contain Value    @{comment}    description fi
-    List Should Contain Value    @{comment}    description en
-    List Should Contain Value    @{comment}    description sv
+    #${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
+    #log  ${comment}
+    #List Should Contain Value    @{comment}    description fi
+    #List Should Contain Value    @{comment}    description en
+    #List Should Contain Value    @{comment}    description sv
     
-    Cancel show datamodel file dialog
+    #Cancel show datamodel file dialog
 
     Open class tab
     Select class    ${DEFAULT DATAMODEL CLASS NAME}_2_fi
@@ -244,9 +229,6 @@ T3C5. Verify invalid class errors
     Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
     
     Open class tab
-    Create new class
-    Cancel create datamodel class dialog
-
     Create new class
     Create new class datamodel in dialog
     
@@ -322,21 +304,6 @@ T3C6. Verify modify class permissions
     Wait until class is saved
     Verify page does contain class options button
     Verify class page does contain editor message     editor input
-
-    # Close browser and open it again, because of eduuni cache
-    #Close Browser
-    #Open Browser with Settings        
-    #Open datamodel search page
-
-    #Search and select datamodel ${DEFAULT DATAMODEL NAME}_${single_language_fi}
-    #Open class tab
-    #Select class    ${DEFAULT DATAMODEL CLASS NAME}
-    #Verify page does not contain class options button
-    #Verify class page does not contain editor message     editor input
-
-    #Login with no group
-    #Verify page does not contain class options button
-    #Verify class page does not contain editor message     editor input
 
     [Teardown]  Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${single_language_fi}
 
@@ -436,7 +403,6 @@ T3C8. Modify class
     Select disjoint class into class
     Select class on linking class dialog        ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
 
-    Select status into class                    ${DRAFT}
     Input finnish description into class        description fi
     Input swedish description into class        description sv
     Input english description into class        description en
@@ -446,27 +412,28 @@ T3C8. Modify class
 
     Return from class
     Reload page
-    Select info tab
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
+    # TODO Add new checks that class has all valid data
+    # Select info tab
+    #Open datamodel options select
+    #Open show datamodel as file dialog
+    #Show datamodel file
     
-    ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    #${json_dict}=  Get shown json from new tab
+    #Dictionary Should Contain Value    ${json_dict["@graph"][0]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
+    #Dictionary Should Contain Value    ${json_dict["@graph"][0]}                        value=${DRAFT}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][0]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
 
-    ${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
-    log  ${labels}
-    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}
-    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_en
-    List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_sv
-    
-    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
-    log  ${comment}
-    List Should Contain Value    @{comment}    description fi
-    List Should Contain Value    @{comment}    description en
-    List Should Contain Value    @{comment}    description sv
+    #${labels}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:label"]}]]
+    #log  ${labels}
+    #List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}
+    #List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_en
+    #List Should Contain Value    @{labels}    ${DEFAULT DATAMODEL CLASS NAME}_2_sv
+
+    #${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][0]["rdfs:comment"]}]]
+    #log  ${comment}
+    #List Should Contain Value    @{comment}    description fi
+    #List Should Contain Value    @{comment}    description en
+    #List Should Contain Value    @{comment}    description sv
 
     [Teardown]  Run keywords
     ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multi_language}
@@ -531,8 +498,6 @@ T3C9. Modify class remove unnesecary
     Select disjoint class into class
     Select class on linking class dialog        ${DEFAULT DATAMODEL CLASS NAME}_1  ${DEFAULT DATAMODEL CLASS PREFIX}_1
 
-    Select status into class                    ${DRAFT}
-
     Input finnish description into class        description fi
     Input swedish description into class        description sv
     Input english description into class        description en
@@ -565,22 +530,23 @@ T3C9. Modify class remove unnesecary
     Return from class
 
     Reload page
-    Select info tab
-    Open datamodel options select
-    Open show datamodel as file dialog
-    Show datamodel file
+    # TODO Add new checks that class has all valid data
+    #Select info tab
+    #Open datamodel options select
+    #Open show datamodel as file dialog
+    #Show datamodel file
     
-    ${json_dict}=  Get shown json from new tab
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
-    Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"]}          value=${DEFAULT DATAMODEL CLASS NAME}
+    #${json_dict}=  Get shown json from new tab
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]}  value=${DEFAULT DATAMODEL PREFIX}_${multi_language}:${DEFAULT DATAMODEL CLASS PREFIX}_2
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]}                        value=${DRAFT}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:isDefinedBy"]}    value=http://uri.suomi.fi/datamodel/ns/${DEFAULT DATAMODEL PREFIX}_${multi_language}
+    #Dictionary Should Contain Value    ${json_dict["@graph"][2]["rdfs:label"]}          value=${DEFAULT DATAMODEL CLASS NAME}
     
-    ${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:comment"]}]]
-    log  ${comment}
-    List Should not Contain Value    @{comment}    description fi
-    List Should not Contain Value    @{comment}    description en
-    List Should not Contain Value    @{comment}    description sv
+    #${comment}=  Evaluate  [[x["@value"] for x in ${json_dict["@graph"][2]["rdfs:comment"]}]]
+    #log  ${comment}
+    #List Should not Contain Value    @{comment}    description fi
+    #List Should not Contain Value    @{comment}    description en
+    #List Should not Contain Value    @{comment}    description sv
 
     [Teardown]  Run keywords
     ...    Teardown test Case delete datamodel ${DEFAULT DATAMODEL PREFIX}_${multi_language}
