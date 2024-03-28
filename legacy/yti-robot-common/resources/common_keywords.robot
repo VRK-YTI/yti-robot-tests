@@ -65,7 +65,7 @@ ${EDUUNI_LOGIN_EXISTING}        id=login_modal_button
 ${EDUUNI_MICROSOFT}                       //*[contains(text(), "Microsoft Account")]
 ${EDUUNI_MICROSOFT_EMAIL_INPUT}           //*[@name="loginfmt"]
 ${EDUUNI_MICROSOFT_PASSWORD_INPUT}        //*[@name="passwd"]
-${EDUUNI_MICROSOFT_NEXT_BUTTON}           //*[@id="idSIButton9"]
+${EDUUNI_MICROSOFT_NEXT_BUTTON}           //*[@id="idSIButton9" or @id="acceptButton"]
 
 ${EDUUNI_GOOGLE}                        //*[contains(text(), "Google")]
 ${EDUUNI_GOOGLE_EMAIL_INPUT}            //*[@name="identifier"]
