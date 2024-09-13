@@ -6,7 +6,8 @@ VOLUME ["/robot_tests"]
 RUN apt update && apt install -y unzip python3 pip xvfb wget uuid-runtime
 
 # Install chrome and chromedrive
-RUN wget -qP /tmp/ "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.105/linux64/chromedriver-linux64.zip" \
+# RUN wget -qP /tmp/ "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.105/linux64/chromedriver-linux64.zip" \
+RUN wget -qP /tmp/ "https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.86/linux64/chromedriver-linux64.zip" \
     && unzip -o /tmp/chromedriver-linux64.zip -d /usr/bin \
     && rm -f /tmp/chromedriver-linux64.zip \
     && mv /usr/bin/chromedriver-linux64/chromedriver /usr/bin/chromedriver
