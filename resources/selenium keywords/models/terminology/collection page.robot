@@ -10,6 +10,7 @@ ${collection cancel button}                     //button[@id="cancel-button"]
 ${Edit collection button}                       //button[@id="edit-collection-button"]
 ${Collection create save button}                //button[text()="Tallenna"]  |  //button[text()="Save"]
 
+${Collection identifier input}                  //input[@id="prefix-input"]
 ${Collection name input}                        //input[@placeholder="Kirjoita nimi"]  |  //input[@placeholder="Enter a name"]
 ${Collection definition input}                  //textarea[@placeholder="Kirjoita kuvaus"]
 
@@ -17,7 +18,7 @@ ${Create collection button}                     //button[text()="Lisää uusi k�
 ${Add concept to collection button}             //button[text()="Lisää käsite käsitekokoelmaan"]  |  //button[text()="Add concept to collection"]
 ${Close and add concept to collection button}   //button[text()="Lisää käsite"]  |  //button[text()="Lisää käsitteet"]  |  //button[text()="Add concept"]  |  //button[text()="Add concepts"]
 
-${Collection empty name error}          Käsitekokoelman nimi tulee olla määritettynä vähintään yhdellä kielellä.
+${Collection empty name error}          Etuliitteen sallitut merkit ovat a-z, 0-9, alaviiva ja väliviiva
 
 *** Keywords ***
 Delete collection
@@ -57,6 +58,9 @@ Open create collection dialog
 Verify page does not contain create collection button
     Open terminology information
     Wait until page does not contain element    ${Create collection button}
+
+Give new collection identifier as ${identifier}
+    Input text with wait  ${Collection identifier input}  ${identifier}
 
 Name new collection as ${concept name}
     Input text with wait  ${collection name input}  ${concept name} 

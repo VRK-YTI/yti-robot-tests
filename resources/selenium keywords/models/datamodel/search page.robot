@@ -35,7 +35,9 @@ Select datamodel ${datamodel}
     Click element with wait           //h2[@id="card-title-link"]/span[text()="${Datamodel}"]
 
 Search datamodel ${Datamodel}
+    Press Keys                        None  ESCAPE
     Input text with wait              ${Search box datamodel}  ${Datamodel}
+    Press Keys                        None  ESCAPE
     Click element with wait           ${Search box datamodel}
 
 Clear text search filter

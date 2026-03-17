@@ -46,7 +46,7 @@ ${Datamodel class search terminology all}                //li[@id="terminology-s
 # Errors
 ${Class prefix not set error}              Luokan tunnusta ei ole määritetty
 ${Class prefix starts with number error}   Luokan tunnus ei voi alkaa numerolla
-${Class prefix size error}                 Luokan tunnuksen pituus ei täytä vaatimuksia (2-32 merkkiä)
+${Class prefix size error}                 Luokan tunnuksen pituus ei täytä vaatimuksia (2-120 merkkiä)
 ${Class prefix valid character error}      Luokan tunnuksen sallitut merkit ovat a-z, 0-9, alaviiva ja väliviiva
 ${Class name not set error}                Luokan nimeä ei ole määritelty
 

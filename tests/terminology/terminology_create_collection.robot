@@ -53,6 +53,7 @@ T5C2. Verify collection creation error messages
     ...  Valid=${False}
     Verify error message ${Collection empty name error}
 
+    Give new collection identifier as ${DEFAULT COLLECTION PREFIX}
     Name new collection as ${DEFAULT COLLECTION NAME}
     Give new collection definition as definition
     Save collect creation
@@ -89,6 +90,7 @@ T5C3. Create valid collection with multiple concepts
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
 
     Open create collection dialog
+    Give new collection identifier as ${DEFAULT COLLECTION PREFIX}
     Name new collection as ${DEFAULT COLLECTION NAME}
     Give new collection definition as definition
     Add concept ${DEFAULT CONCEPT NAME}_1 to collection
