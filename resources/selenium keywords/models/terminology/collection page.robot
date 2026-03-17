@@ -80,13 +80,13 @@ Save collect creation
     END
 
 Remove concept ${concept name} from collection creation
-    Click element with wait  //span[text()="${concept name}"]
+    Click element with wait  //span[contains(., "${concept name}")]
 
 Add concept ${concept name} to collection
     Click element with wait  ${Add concept to collection button}
     Search concept ${concept_name} from add dialog
     Click element with wait  ${Search button from create dialog}
-    Click element with wait  //span/b[text()="${concept_name}"]
+    Click element with wait  //span[contains(., "${concept name}")]
     Click element with wait  ${Close and add concept to collection button}
 
 Verify new collection page is not open
