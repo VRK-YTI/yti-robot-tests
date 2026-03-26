@@ -54,7 +54,7 @@ ${Datamodel attribute search terminology all}                //li[@id="terminolo
 ${attribute prefix not set error}              Attribuutin yksilöivää tunnusta ei ole määritelty
 ${attribute prefix starts with number error}   Attribuutin tunnus ei voi alkaa numerolla
 ${attribute prefix size error}                 Attribuutin tunnuksen pituus ei täytä vaatimuksia (2-120 merkkiä)
-${attribute prefix valid character error}      Attribuutin tunnuksen sallitut merkit ovat a-z, 0-9, alaviiva ja väliviiva
+${attribute prefix valid character error}      Attribuutin tunnuksen sallitut merkit ovat a-z, A-Z, 0-9, alaviiva ja väliviiva.
 ${attribute name not set error}                Attribuutin nimeä ei ole määritelty
 
 *** Keywords ***

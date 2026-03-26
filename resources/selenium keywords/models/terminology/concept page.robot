@@ -152,7 +152,7 @@ ${Change recommended term Term family}        //input[@placeholder="Valitse term
 ${Change recommended term Term conjugation}   //input[@placeholder="Valitse termin luku"]
 ${Change recommended term Term word class}    //input[@placeholder="Valitse termin sanaluokka"]
 
-${Copy terminology invalid prefix error}      Etuliitteen sallitut merkit ovat a-z, 0-9, alaviiva ja väliviiva
+${Copy terminology invalid prefix error}      Etuliitteen sallitut merkit ovat a-z, A-Z, 0-9, alaviiva ja väliviiva.
 ${Copy terminology empty prefix error}        Tunnusta ei ole määritelty
 ${Copy terminology in use prefix error}       Tunnus on käytössä
 
@@ -388,7 +388,9 @@ Add information to concept
     IF  '${subject}' != '${NONE}'
         IF  '${subject}' == 'CLEAR'
             Click element with wait    ${concept subject input}
-            Press Keys    None         CTRL+a+BACKSPACE
+                Press Keys                          ${search box terminology}    HOME
+                Press Keys                          ${search box terminology}    SHIFT+END
+                Press Keys                          ${search box terminology}    BACKSPACE
         ELSE
             Input text with wait  ${concept subject input}  ${subject}
         END
@@ -397,7 +399,9 @@ Add information to concept
         Click element with wait   ${concept organization box}  
         IF  '${change history}' == 'CLEAR'
             Click element with wait    ${concept organization history change input}
-            Press Keys    None         CTRL+a+BACKSPACE
+                Press Keys                          ${search box terminology}    HOME
+                Press Keys                          ${search box terminology}    SHIFT+END
+                Press Keys                          ${search box terminology}    BACKSPACE
         ELSE
             Input text with wait      ${concept organization history change input}  ${change history}
         END
@@ -407,7 +411,9 @@ Add information to concept
         Click element with wait   ${concept organization box}  
         IF  '${etymology}' == 'CLEAR'
             Click element with wait    ${concept organization etymology input}
-            Press Keys    None         CTRL+a+BACKSPACE
+                Press Keys                          ${search box terminology}    HOME
+                Press Keys                          ${search box terminology}    SHIFT+END
+                Press Keys                          ${search box terminology}    BACKSPACE
         ELSE
             Input text with wait      ${concept organization etymology input}  ${etymology}
         END
@@ -454,7 +460,9 @@ Add information to concept
         Click element with wait  ${concept terms other information box}
         IF  '${concept class}' == 'CLEAR'
             Click element with wait    ${concept organization concept class input}
-            Press Keys    None         CTRL+a+BACKSPACE
+                Press Keys                          ${search box terminology}    HOME
+                Press Keys                          ${search box terminology}    SHIFT+END
+                Press Keys                          ${search box terminology}    BACKSPACE
         ELSE
             Input text with wait     ${concept organization concept class input}    ${concept class}
         END
