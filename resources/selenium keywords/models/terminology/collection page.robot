@@ -18,7 +18,7 @@ ${Create collection button}                     //button[text()="Lisää uusi k�
 ${Add concept to collection button}             //button[text()="Lisää käsite käsitekokoelmaan"]  |  //button[text()="Add concept to collection"]
 ${Close and add concept to collection button}   //button[text()="Lisää käsite"]  |  //button[text()="Lisää käsitteet"]  |  //button[text()="Add concept"]  |  //button[text()="Add concepts"]
 
-${Collection empty name error}          Etuliitteen sallitut merkit ovat a-z, A-Z, 0-9, alaviiva ja väliviiva.
+${Collection empty name error}          Käsitekokoelman nimi tulee olla määritettynä vähintään yhdellä kielellä.
 
 *** Keywords ***
 Delete collection

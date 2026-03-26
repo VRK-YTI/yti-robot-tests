@@ -244,7 +244,7 @@ Create copy terminology dialog
     END
 
 Input manual prefix ${prefix} on copy dialog
-    Click element with wait    ${Copy manual prefix select}                     
+    Click element with wait    ${Copy manual prefix input}                     
     Input text with Wait       ${Copy manual prefix input}    ${prefix}       
 
 Verify page does not contain copy terminology button
