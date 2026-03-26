@@ -137,7 +137,7 @@ Add datamodel link to datamodel in links tab
     Input text with wait     ${Add terminology dialog search input}  ${datamodel}
     
     Wait Until Page Contains Element    //input[contains(@id, "select-multiple-checkbox")]
-    Click Element At Coordinates        //input[contains(@id, "select-multiple-checkbox")]    0    0
+    Click Element At Coordinates        //input[contains(@id, "select-multiple-checkbox")]    5   5
     Click element with wait  ${Datamodel links terminology links submit button}
     
 Remove link from link editing
