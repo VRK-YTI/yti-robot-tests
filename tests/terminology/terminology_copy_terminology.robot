@@ -32,11 +32,10 @@ T10C2. Create valid copy with automatically generated prefix
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
-    ${members}=    Create List              04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ${members}=    Create List              concept-1
     Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                     ${DEFAULT COLLECTION NAME}
     ...                                     ${COLLECTION ID DEFAULT}
@@ -75,11 +74,10 @@ T10C3. Create valid copy with own prefix
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
-    ${members}=    Create List              04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ${members}=    Create List              concept-1
     Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                     ${DEFAULT COLLECTION NAME}
     ...                                     ${COLLECTION ID DEFAULT}

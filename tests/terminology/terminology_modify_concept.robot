@@ -16,9 +16,8 @@ T8C1. Verify concept modify button permissions
  
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
     Open terminology search page
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
@@ -49,21 +48,18 @@ T8C2. Modify concept
  
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_2
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce2
+    ...                                  concept-2
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e82
   
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_4
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce4
+    ...                                  concept-4
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e84
     
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}_2
     ...                             ${VALID}
@@ -73,15 +69,13 @@ T8C2. Modify concept
     
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}_2
     ...                                  ${DEFAULT CONCEPT NAME}_3
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce3
+    ...                                  concept-3
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e83
    
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}_2
     ...                                  ${DEFAULT CONCEPT NAME}_5
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce5
+    ...                                  concept-5
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e85
 
     Open terminology search page
     Login with Admin
@@ -233,9 +227,8 @@ T8C3. Modify terms
  
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
     Open terminology search page
     Login with Admin
@@ -356,9 +349,8 @@ T8C4. Verify modify concept errors
  
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
     Open terminology search page
     Login with Admin
@@ -408,9 +400,8 @@ T8C5. Verify modify term errors
  
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
     Open terminology search page
     Login with Admin

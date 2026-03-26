@@ -128,9 +128,8 @@ T3C4. Create valid class with all options
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -352,9 +351,8 @@ T3C8. Modify class
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -452,9 +450,8 @@ T3C9. Modify class remove unnesecary
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -514,11 +511,13 @@ T3C9. Modify class remove unnesecary
     Remove disjoint class from class
     Input finnish class label                   ${DEFAULT DATAMODEL CLASS NAME}
     Click element with wait                     ${Datamodel class label input sv}
-    Press Keys                                  None  CTRL+A
-    Press Keys                                  None  BACKSPACE
+    Press Keys                                  None   HOME
+    Press Keys                                  None   SHIFT+END
+    Press Keys                                  None   BACKSPACE
     Click element with wait                     ${Datamodel class label input en}
-    Press Keys                                  None  CTRL+A
-    Press Keys                                  None  BACKSPACE
+    Press Keys                                  None   HOME
+    Press Keys                                  None   SHIFT+END
+    Press Keys                                  None   BACKSPACE
 
     Input finnish description into class        ${SPACE}
     Input swedish description into class        ${SPACE}

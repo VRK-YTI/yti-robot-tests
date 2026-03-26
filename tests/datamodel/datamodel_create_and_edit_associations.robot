@@ -126,9 +126,8 @@ T5C4. Create valid association with all options
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -320,8 +319,9 @@ T5C7. Verify invalid association modify errors
     Edit association
     
     Click element with wait          ${Datamodel ASSOCIATION label input fi}
-    Press Keys                       None  CTRL+A
-    Press Keys                       None  BACKSPACE
+    Press Keys                          None   HOME
+    Press Keys                          None   SHIFT+END
+    Press Keys                          None   BACKSPACE
     Save association
     Verify create datamodel association contains error ${ASSOCIATION name not set error}
 
@@ -348,9 +348,8 @@ T5C8. Modify association
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -439,9 +438,8 @@ T5C9. Modify association remove unnesecary
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -494,11 +492,13 @@ T5C9. Modify association remove unnesecary
     Edit association
     Input finnish association label             ${DEFAULT DATAMODEL ASSOCIATION NAME}
     Click element with wait                     ${Datamodel association label input sv}
-    Press Keys                                  None  CTRL+A
-    Press Keys                                  None  BACKSPACE
+    Press Keys                                  None   HOME
+    Press Keys                                  None   SHIFT+END
+    Press Keys                                  None   BACKSPACE
     Click element with wait                     ${Datamodel association label input en}
-    Press Keys                                  None  CTRL+A
-    Press Keys                                  None  BACKSPACE
+    Press Keys                                  None   HOME
+    Press Keys                                  None   SHIFT+END
+    Press Keys                                  None   BACKSPACE
 
     Remove upper association from association
     Remove corresponding association from association

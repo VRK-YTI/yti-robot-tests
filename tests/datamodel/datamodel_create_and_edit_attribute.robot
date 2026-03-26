@@ -130,9 +130,8 @@ T4C4. Create valid attribute with all options
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -326,8 +325,9 @@ T4C7. Verify invalid attribute modify errors
     Edit attribute
     
     Click element with wait          ${Datamodel attribute label input fi}
-    Press Keys                       None  CTRL+A
-    Press Keys                       None  BACKSPACE
+    Press Keys                       None   HOME
+    Press Keys                       None   SHIFT+END
+    Press Keys                       None   BACKSPACE
     Save attribute
     Verify create datamodel attribute contains error ${attribute name not set error}
 
@@ -354,9 +354,8 @@ T4C8. Modify attribute
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -448,9 +447,8 @@ T4C9. Modify attribute remove unnesecary
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     @{terminologies}=  Create list  
     ...  http://uri.suomi.fi/terminology/${DEFAULT TERMINOLOGY PREFIX}
@@ -503,11 +501,13 @@ T4C9. Modify attribute remove unnesecary
     Edit attribute
     Input finnish attribute label               ${DEFAULT DATAMODEL ATTRIBUTE NAME}
     Click element with wait                     ${Datamodel attribute label input sv}
-    Press Keys                                  None  CTRL+A
-    Press Keys                                  None  BACKSPACE
+    Press Keys                                  None   HOME
+    Press Keys                                  None   SHIFT+END
+    Press Keys                                  None   BACKSPACE
     Click element with wait                     ${Datamodel attribute label input en}
-    Press Keys                                  None  CTRL+A
-    Press Keys                                  None  BACKSPACE
+    Press Keys                                  None   HOME
+    Press Keys                                  None   SHIFT+END
+    Press Keys                                  None   BACKSPACE
 
     Remove upper attribute from attribute
     Remove corresponding attribute from attribute
