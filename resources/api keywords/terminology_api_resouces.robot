@@ -16,8 +16,8 @@ ${DOMAIN_HOUSING}=                      P1
 ${ORGANIZATION_AUTOMATION}=             918448ba-3fc1-4908-aae7-096c8773ca8b
 ${ORGANIZATION_TEST}=                   9a7362ab-0938-462c-a645-abae08525715
 
-${CONCEPT_ID_DEFAULT}=                  04bb2206-ba9e-4007-920d-f57ed0d4bcef
-${COLLECTION_ID_DEFAULT}=               85de7936-174a-4b68-8b35-8a2b0ebbd6fd
+${CONCEPT_ID_DEFAULT}=                  concept-1
+${COLLECTION_ID_DEFAULT}=               collection-1
 
 ${DRAFT}=                   DRAFT
 ${VALID}=                   VALID
