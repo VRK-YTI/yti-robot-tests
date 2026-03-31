@@ -63,7 +63,10 @@ T10C2. Create valid copy with automatically generated prefix
     Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
     Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Run Keywords
+    ...         Teardown test Case    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} with api    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} (Copy) with api
 
 T10C3. Create valid copy with own prefix
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
@@ -108,7 +111,10 @@ T10C3. Create valid copy with own prefix
     Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
     Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Run Keywords
+    ...         Teardown test Case    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} with api    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} (Copy) with api
 
 T10C4. Verify copy dialog errors    
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
@@ -138,4 +144,7 @@ T10C4. Verify copy dialog errors
     Input manual prefix new_${DEFAULT TERMINOLOGY PREFIX} on copy dialog
     Create copy terminology dialog
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Run Keywords
+    ...         Teardown test Case    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} with api    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} (Copy) with api
