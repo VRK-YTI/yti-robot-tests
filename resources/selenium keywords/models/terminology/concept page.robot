@@ -301,7 +301,7 @@ Verify new concept page is not open
 Add concept ${concept_name} as relation
     Input text with wait     ${Concept relation search input}  ${concept_name}
     Click element with wait  ${Concept relation search button}
-    Click element with wait  //b[text()="${concept_name}"]
+    Click element with wait  //label/span[text()="${concept_name}"]
     Click element with wait  ${Close and add concept relation button} 
 
 Create concept 
@@ -387,10 +387,7 @@ Add information to concept
     END
     IF  '${subject}' != '${NONE}'
         IF  '${subject}' == 'CLEAR'
-            Click element with wait    ${concept subject input}
-                Press Keys                          ${search box terminology}    HOME
-                Press Keys                          ${search box terminology}    SHIFT+END
-                Press Keys                          ${search box terminology}    BACKSPACE
+           Clear input robustly   ${concept subject input}
         ELSE
             Input text with wait  ${concept subject input}  ${subject}
         END
@@ -398,10 +395,7 @@ Add information to concept
     IF  '${change history}' != '${NONE}'
         Click element with wait   ${concept organization box}  
         IF  '${change history}' == 'CLEAR'
-            Click element with wait    ${concept organization history change input}
-                Press Keys                          ${search box terminology}    HOME
-                Press Keys                          ${search box terminology}    SHIFT+END
-                Press Keys                          ${search box terminology}    BACKSPACE
+            Clear input robustly    ${concept organization history change input}
         ELSE
             Input text with wait      ${concept organization history change input}  ${change history}
         END
@@ -410,10 +404,7 @@ Add information to concept
     IF  '${etymology}' != '${NONE}'
         Click element with wait   ${concept organization box}  
         IF  '${etymology}' == 'CLEAR'
-            Click element with wait    ${concept organization etymology input}
-                Press Keys                          ${search box terminology}    HOME
-                Press Keys                          ${search box terminology}    SHIFT+END
-                Press Keys                          ${search box terminology}    BACKSPACE
+            Clear input robustly    ${concept organization etymology input}
         ELSE
             Input text with wait      ${concept organization etymology input}  ${etymology}
         END
@@ -459,10 +450,10 @@ Add information to concept
     IF  '${concept class}' != '${NONE}'
         Click element with wait  ${concept terms other information box}
         IF  '${concept class}' == 'CLEAR'
-            Click element with wait    ${concept organization concept class input}
-                Press Keys                          ${search box terminology}    HOME
-                Press Keys                          ${search box terminology}    SHIFT+END
-                Press Keys                          ${search box terminology}    BACKSPACE
+            Clear input robustly  ${concept organization concept class input}
+            # The refocus is needed for the value to update correctly for some reason
+            Press Keys    None      TAB
+            Click element with wait  ${concept organization concept class input}
         ELSE
             Input text with wait     ${concept organization concept class input}    ${concept class}
         END
@@ -727,19 +718,19 @@ Verify concept page contains all information
         Wait until page contains element  //div[text()="${subject}"]/div[text()="Aihealue"]
     END
     IF  '${change history}' != '${NONE}'
-        Wait until page contains element  //div[text()="${change history}"]/div[text()="Muutoshistoriatiedot"]
+        Wait until page contains element  //div[text()="Muutoshistoriatiedot"]/following-sibling::span[text()="${change history}"]
     END
     IF  '${etymology}' != '${NONE}'
-        Wait until page contains element  //div[text()="${etymology}"]/div[text()="Käytön historiatieto (etymologia)"]
+        Wait until page contains element  //div[text()="Käytön historiatieto (etymologia)"]/following-sibling::span[text()="${etymology}"]
     END
     IF  '${Note}' != '${NONE}'
-        Wait until page contains element  //div/ul/li[text()="${Note}"]/../../div[text()="Ylläpitäjän muistiinpano"]
+        Wait until page contains element  //span[text()="${Note}"]
     END
     IF  '${sources}' != '${NONE}'
         Wait until page contains element  //div/ul/li[text()="${sources}"]/../../div[text()="Lähteet"]
     END
     IF  '${concept class}' != '${NONE}'
-        Wait until page contains element  //div[text()="${concept class}"]/div[text()="Käsitteen luokka"]
+        Wait until page contains element  //*[text()="${concept class}"]
     END
     IF  '${broader concept}' != '${NONE}'
         Wait until page contains element  //a[text()="${broader concept}"]
@@ -798,10 +789,10 @@ Verify concept page does not contain all information
         Wait until page does not contain element  //div[text()="${subject}"]/div[text()="Aihealue"]
     END
     IF  '${change history}' != '${NONE}'
-        Wait until page does not contain element  //div[text()="${change history}"]/div[text()="Muutoshistoriatiedot"]
+        Wait until page does not contain element  //div[text()="Muutoshistoriatiedot"]/following-sibling::span[text()="${change history}"]
     END
     IF  '${etymology}' != '${NONE}'
-        Wait until page does not contain element  //div[text()="${etymology}"]/div[text()="Käytön historiatieto (etymologia)"]
+        Wait until page does not contain element  //div[text()="Käytön historiatieto (etymologia)"]/following-sibling::span[text()="${etymology}"]
     END
     IF  '${Note}' != '${NONE}'
         Wait until page does not contain element  //div/ul/li[text()="${Note}"]/../../div[text()="Ylläpitäjän muistiinpano"]
@@ -810,7 +801,7 @@ Verify concept page does not contain all information
         Wait until page does not contain element  //div/ul/li[text()="${sources}"]/../../div[text()="Lähteet"]
     END
     IF  '${concept class}' != '${NONE}'
-        Wait until page does not contain element  //div[text()="${concept class}"]/div[text()="Käsitteen luokka"]
+        Wait until page does not contain element  //*[text()="${concept class}"]
     END
     IF  '${broader concept}' != '${NONE}'
         Wait until page does not contain element  //a[text()="${broader concept}"]

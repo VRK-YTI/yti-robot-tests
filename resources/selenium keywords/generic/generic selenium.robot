@@ -34,6 +34,24 @@ Find and hide element
     ${elem}=  Get WebElement  ${element}
     Run keyword and ignore error  Hide element  ${elem}
 
+Clear input robustly
+    [Arguments]    ${element}
+    Wait Until Page Contains element  ${element}
+    Run Keyword And Ignore Error    Clear Element Text    ${element}
+    ${elem}=    Get WebElement    ${element}
+    ${id}=    Get Element Attribute    ${element}    id
+    Execute JavaScript
+    ...    var el = document.getElementById('${id}');
+    ...    const setter = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(el), 'value')?.set;
+    ...    if (setter) {
+    ...        setter.call(el, '');
+    ...    } else {
+    ...        el.value = '';
+    ...    }
+    ...    el.dispatchEvent(new Event('input', { bubbles: true }));
+    ...    el.dispatchEvent(new Event('change', { bubbles: true }));
+    ...    ARGUMENTS    ${elem}
+
 Input text with wait
     [Arguments]  ${element}  ${text}  ${timeout}=${SELENIUM_DEFAULT_TIMEOUT}  ${tab}=True
     Wait Until Page Contains Element    ${element}    timeout=${timeout}
