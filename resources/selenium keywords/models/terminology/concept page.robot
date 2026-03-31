@@ -92,8 +92,9 @@ ${Term extra info in term information title}      //h3[text()="Termin lisätieto
 ${Scope in term information title}                //h3[text()="Käyttöala"]
 ${Source in term information title}               //h3[text()="Lähde"]
 
-${Term information close button}                //button[text()="Sulje"]
 
+${Term information close button}                //button[text()="Sulje"]
+${Terminlogy copy success dialog close button}  //button[text()="Sulje"]
 ${Recommended term can't be changed error}      //div[text()="Suositettavan termin tyyppiä ei voi muuttaa, koska muita suositettavia termejä ei ole määritetty. Lisää uusi suositettava termi tai muuta olemassa oleva termi suositettavaksi termiksi."]
 
 ${Change term type button}              //button[text()="Muuta termin tyyppi"]
@@ -242,6 +243,10 @@ Create copy terminology dialog
     IF  '${Valid}' == '${True}'
         Wait Until Page does not Contain element    ${Copy create terminology button}  timeout=60
     END
+
+Close copy confirmation dialog
+    Wait until page contains element  ${Terminlogy copy success dialog close button}
+    Click element with wait  ${Terminlogy copy success dialog close button}
 
 Input manual prefix ${prefix} on copy dialog
     Click element with wait    ${Copy manual prefix input}                     

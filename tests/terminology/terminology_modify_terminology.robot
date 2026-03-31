@@ -79,7 +79,7 @@ T7C2. Modify terminology
     Select domain Demokratia on modify terminology
 
     Select type other on modify terminology
-    Select prefix manual on modify terminology
+    Select prefix input on modify terminology
     Input prefix ${DEFAULT TERMINOLOGY PREFIX}_1 on modify terminology
 
     Save terminology modify
@@ -168,14 +168,12 @@ T7C3. Verify modify terminology errors
     Remove selected status on modify terminology
     On modify terminology select organization Automaatiotestaus
     Select domain Asuminen on modify terminology
-    Select prefix manual on modify terminology
 
     Save terminology modify 
     ...  False
     Verify modify terminology error message ${Terminology modify status missing error}
     Verify modify terminology error message ${Terminology modify contributors missing error}
     Verify modify terminology error message ${Terminology modify domain missing error}
-    Verify modify terminology error message ${Terminology modify prefix missing error}
 
     Select status Voimassa oleva on modify terminology
     On modify terminology select organization Automaatiotestaus
