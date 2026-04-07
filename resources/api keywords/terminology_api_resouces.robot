@@ -29,7 +29,7 @@ ${INCOMPLETE}=              INCOMPLETE
 *** Keywords ***
 Find terminology prefix for ${terminology}
     ${headers}=     Create authentication header
-    ${response}=    Get    ${SEARCH_TERMINOLOGIES_API_POINT}    headers=${headers}    params=query=${terminology}&pageSize=50
+    ${response}=    Get    ${SEARCH_TERMINOLOGIES_API_POINT}    headers=${headers}    params=query=${terminology}&pageSize=50&status=DRAFT&status=VALID&status=SUPERSEDED&status=RETIRED&status=INCOMPLETE
     ${prefix}=      find prefix from terminology search    ${response.json()}    ${terminology}
     [Return]        ${prefix}
 
