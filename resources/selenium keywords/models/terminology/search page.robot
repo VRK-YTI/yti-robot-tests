@@ -71,10 +71,7 @@ Search terminology ${Terminology}
     Click element with wait             ${Terminology search page header}
 
 Clear terminology search
-    Click element with wait             ${search box terminology}
-    Press Keys                          ${search box terminology}    HOME
-    Press Keys                          ${search box terminology}    SHIFT+END
-    Press Keys                          ${search box terminology}    BACKSPACE
+    Clear input robustly               ${search box terminology}
     
 Search and select terminology ${Terminology}
     Search terminology ${Terminology}

@@ -49,3 +49,11 @@ def build_collection_json(identifier, label_fi, members):
         "label": {"fi": label_fi},
         "members": list(members) if not isinstance(members, list) else members
     })
+
+
+def build_collection_update_json(label_fi, members):
+    import json
+    return json.dumps({
+        "label": {"fi": label_fi},
+        "members": list(members) if not isinstance(members, list) else members
+    })

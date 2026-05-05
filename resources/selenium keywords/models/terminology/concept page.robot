@@ -547,6 +547,7 @@ Add new term to new concept
     IF  '${Term language}' != '${NONE}'
         Click element with wait  ${new term langueage input}
         Click element with wait  //li[text()="${Term language}"]
+        Sleep  2s
     END
     IF  '${Term type}' != '${NONE}'
         Click element with wait  //label[text()="${Term type}"]

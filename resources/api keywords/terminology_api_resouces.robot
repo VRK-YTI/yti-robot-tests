@@ -72,3 +72,14 @@ Create terminology collection with api
     ${json}=        build collection json    ${collection id}    ${collection}    ${members}
     ${response}=    Post    ${CREATE_TERMI_COLLECTION_API_POINT}/${prefix}    headers=${headers}    data=${json}
     [Return]        ${response}
+
+Update terminology collection with api
+    [Arguments]     ${terminology}
+    ...             ${collection}
+    ...             ${collection id}
+    ...             ${members}
+    ${prefix}=      Find terminology prefix for ${terminology}
+    ${headers}=     Create authentication header
+    ${json}=        build collection update json    ${collection}    ${members}
+    ${response}=    Put    ${CREATE_TERMI_COLLECTION_API_POINT}/${prefix}/${collection id}    headers=${headers}    data=${json}
+    [Return]        ${response}

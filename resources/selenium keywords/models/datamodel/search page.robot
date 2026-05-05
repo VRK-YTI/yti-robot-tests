@@ -3,7 +3,7 @@ Library   String
 Library   SeleniumLibrary
 
 *** Variables ***
-${Datamodel search page header}                   //h1[text()="Tietomallit"]
+${Datamodel search page header}                   //h1[@id="page-title"]
 ${Search box datamodel}                           //input[@id="filter-keyword-input"]
 ${Reset all filters button}                       //button[@id="filter-reset-button"]
 

@@ -130,7 +130,7 @@ T2C4. Test and create terminology with collection containin concepts and without
     Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME}_2 on terminology ${DEFAULT TERMINOLOGY NAME}
 
     ${emptylist}=                           Create List
-    Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
+    Update terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                     ${DEFAULT COLLECTION NAME}
     ...                                     ${COLLECTION ID DEFAULT}
     ...                                     ${emptylist}
