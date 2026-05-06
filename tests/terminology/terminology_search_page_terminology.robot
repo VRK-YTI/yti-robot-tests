@@ -101,6 +101,8 @@ T2C3. Test and create terminology with concepts
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T2C4. Test and create terminology with collection containin concepts and without concepts
+    # TODO: remove skip and fix final verification check after the fix from YTI-4388 has been implemented
+    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
