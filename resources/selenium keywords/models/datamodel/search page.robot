@@ -3,15 +3,15 @@ Library   String
 Library   SeleniumLibrary
 
 *** Variables ***
-${Datamodel search page header}                   //h1[text()="Tietomallit"]
+${Datamodel search page header}                   //h1[@id="page-title"]
 ${Search box datamodel}                           //input[@id="filter-keyword-input"]
 ${Reset all filters button}                       //button[@id="filter-reset-button"]
 
 ${Organization filter}                            //input[@id="filter-organization-selector"]
-${Organization filter item}                       //ul[@id="filter-organization-selector-popover"]/div/div
+${Organization filter item}                       //ul[@id="filter-organization-selector-popover"]
 ${Clear organization filter}                      ${Organization filter}/../../div/div/button
 ${Language filter}                                //input[@id="filter-language-selector"]
-${Language filter item}                           //ul[@id="filter-language-selector-popover"]/div/div
+${Language filter item}                           //ul[@id="filter-language-selector-popover"]
 ${Clear language filter}                          ${Language filter}/../../div/div/button
 
 ${Filter chips}                                   //*[@id="result-counts-chips"]/button
@@ -35,8 +35,8 @@ Select datamodel ${datamodel}
     Click element with wait           //h2[@id="card-title-link"]/span[text()="${Datamodel}"]
 
 Search datamodel ${Datamodel}
-    Input text with wait              ${Search box datamodel}  ${Datamodel}
-    Click element with wait           ${Search box datamodel}
+    Input text with wait              ${Search box datamodel}  ${Datamodel}  tab=False
+    Click element with wait           ${Datamodel search page header}
 
 Clear text search filter
     Click element with wait           ${Search box datamodel}/../*[2]

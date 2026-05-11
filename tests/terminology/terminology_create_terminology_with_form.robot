@@ -98,7 +98,7 @@ T3C3. Create valid terminology from dialog
     ...  description=${NONE}
     ...  organization=${DEFAULT ORGANIZATION}
     ...  domain=${DEFAULT DOMAIN}
-    ...  prefix=${NONE}
+    ...  prefix=${DEFAULT TERMINOLOGY PREFIX}
     ...  email=${NONE}
     Verify dialog is not open
 

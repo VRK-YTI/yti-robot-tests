@@ -44,8 +44,8 @@ ${Datamodel association search terminology all}                //li[@id="termino
 # Errors
 ${association prefix not set error}              Assosiaation yksilöivää tunnusta ei ole määritelty
 ${association prefix starts with number error}   Assosiaation tunnus ei voi alkaa numerolla
-${association prefix size error}                 Assosiaation tunnuksen pituus ei täytä vaatimuksia (2-32 merkkiä)
-${association prefix valid character error}      Assosiaation tunnuksen sallitut merkit ovat a-z, 0-9, alaviiva ja väliviiva
+${association prefix size error}                 Assosiaation tunnuksen pituus ei täytä vaatimuksia (2-120 merkkiä)
+${association prefix valid character error}      Assosiaation tunnuksen sallitut merkit ovat a-z, A-Z, 0-9, alaviiva ja väliviiva.
 ${association name not set error}                Assosiaation nimeä ei ole määritelty
 
 *** Keywords ***

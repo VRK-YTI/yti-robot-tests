@@ -61,16 +61,21 @@ Select organization ${organization}
     Click element with wait           //li[text()="${organization}"]
     
 Search terminology ${Terminology}
-    Input text with wait              ${search box terminology}  ${Terminology}
-    Press Keys                        None      ENTER
+    Wait Until Page Contains Element    ${search box terminology}
+    Wait Until Element Is Visible       ${search box terminology}
+    Wait Until Element Is Enabled       ${search box terminology}
+    Click element with wait             ${search box terminology}
+    Press Keys                          ${search box terminology}    HOME
+    Press Keys                          ${search box terminology}    SHIFT+END
+    Press Keys                          ${search box terminology}    ${Terminology}
+    Click element with wait             ${Terminology search page header}
 
 Clear terminology search
-    Double click element            ${search box terminology}
-    press keys                      ${search box terminology}           CTRL+a+BACKSPACE
+    Clear input robustly               ${search box terminology}
     
 Search and select terminology ${Terminology}
     Search terminology ${Terminology}
-    Click element with wait           //h2/span/b[contains(text(), "${Terminology}")]
+    Click element with wait           //h2[contains(., "${Terminology}")]
     Verify page is terminology page
 
 Get status count from ${filter} filter

@@ -10,6 +10,7 @@ ${collection cancel button}                     //button[@id="cancel-button"]
 ${Edit collection button}                       //button[@id="edit-collection-button"]
 ${Collection create save button}                //button[text()="Tallenna"]  |  //button[text()="Save"]
 
+${Collection identifier input}                  //input[@id="prefix-input"]
 ${Collection name input}                        //input[@placeholder="Kirjoita nimi"]  |  //input[@placeholder="Enter a name"]
 ${Collection definition input}                  //textarea[@placeholder="Kirjoita kuvaus"]
 
@@ -58,6 +59,9 @@ Verify page does not contain create collection button
     Open terminology information
     Wait until page does not contain element    ${Create collection button}
 
+Give new collection identifier as ${identifier}
+    Input text with wait  ${Collection identifier input}  ${identifier}
+
 Name new collection as ${concept name}
     Input text with wait  ${collection name input}  ${concept name} 
 
@@ -76,13 +80,13 @@ Save collect creation
     END
 
 Remove concept ${concept name} from collection creation
-    Click element with wait  //span[text()="${concept name}"]
+    Click element with wait  //span[contains(., "${concept name}")]
 
 Add concept ${concept name} to collection
     Click element with wait  ${Add concept to collection button}
     Search concept ${concept_name} from add dialog
     Click element with wait  ${Search button from create dialog}
-    Click element with wait  //span/b[text()="${concept_name}"]
+    Click element with wait  //span[contains(., "${concept name}")]
     Click element with wait  ${Close and add concept to collection button}
 
 Verify new collection page is not open

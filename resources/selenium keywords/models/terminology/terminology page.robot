@@ -4,13 +4,13 @@ ${Terminology download button}      //button[@id="export-terminology-button"]
 ${Terminology modify button}        //button[@id="edit-terminology-button"]
 ${Create terminology button}        //button[text()="Lisää uusi sanasto"]  |  //button[text()="Add new terminology"]
 
-${Displayed terminology name fi}    //div[@id="preferred-label"]/ul/li[@lang="fi"]/span
-${Displayed terminology name en}    //div[@id="preferred-label"]/ul/li[@lang="en"]/span
-${Displayed terminology name sv}    //div[@id="preferred-label"]/ul/li[@lang="sv"]/span
+${Displayed terminology name fi}    //div/ul/li[@lang="fi"]
+${Displayed terminology name en}    //div/ul/li[@lang="en"]
+${Displayed terminology name sv}    //div/ul/li[@lang="sv"]
 
-${Displayed terminology description fi}    //div[@id="description"]/ul/li[@lang="fi"]/span
-${Displayed terminology description en}    //div[@id="description"]/ul/li[@lang="en"]/span
-${Displayed terminology description sv}    //div[@id="description"]/ul/li[@lang="sv"]/span
+${Displayed terminology description fi}    //div/ul/li[@lang="fi"]
+${Displayed terminology description en}    //div/ul/li[@lang="en"]
+${Displayed terminology description sv}    //div/ul/li[@lang="sv"]
 
 ${Displayed terminology status}          //span[@id="status-chip"]/span
 ${Displayed terminology domains}         //div[@id="information-domains"]
@@ -203,10 +203,13 @@ Select prefix automatic on modify terminology
     Click element with wait  ${Terminology modify prefix input automatic} 
 
 Select prefix manual on modify terminology
-    Click element with wait  ${Terminology modify prefix input manual}
+    Click element with wait  ${Terminology modify prefix input}
 
 Input prefix ${prefix} on modify terminology
     Input text with wait    ${Terminology modify prefix input}   ${prefix}
+
+Clear prefix input on modify terminology
+    Clear input robustly  ${Terminology modify prefix input}
     
 Input contact ${contact} on modify terminology
     Input text with wait    ${Terminology modify contact input}   ${contact}

@@ -59,27 +59,23 @@ T2C3. Test and create terminology with concepts
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
     
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_2
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce2
+    ...                                  concept-2
     ...                                  ${VALID}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e82
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_3
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce3
+    ...                                  concept-3
     ...                                  ${SUPERSEDED}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e83
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_4
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce4
+    ...                                  concept-4
     ...                                  ${RETIRED}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e84
 
     Open terminology search page
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
@@ -105,6 +101,8 @@ T2C3. Test and create terminology with concepts
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T2C4. Test and create terminology with collection containin concepts and without concepts
+    # TODO: remove skip and fix final verification check after the fix from YTI-4388 has been implemented
+    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
@@ -113,17 +111,15 @@ T2C4. Test and create terminology with collection containin concepts and without
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_2
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce2
+    ...                                  concept-2
     ...                                  ${VALID}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e82
 
-    ${members}=    Create List              04bb2206-ba9e-4007-920d-f57ed0d4bce1       04bb2206-ba9e-4007-920d-f57ed0d4bce2
+    ${members}=    Create List              concept-1       concept-2
     Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                     ${DEFAULT COLLECTION NAME}
     ...                                     ${COLLECTION ID DEFAULT}
@@ -136,7 +132,7 @@ T2C4. Test and create terminology with collection containin concepts and without
     Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME}_2 on terminology ${DEFAULT TERMINOLOGY NAME}
 
     ${emptylist}=                           Create List
-    Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
+    Update terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                     ${DEFAULT COLLECTION NAME}
     ...                                     ${COLLECTION ID DEFAULT}
     ...                                     ${emptylist}

@@ -476,6 +476,8 @@ T2C8. Add terminology and datamodel links to datamodel
     Reload page
     Select links tab
     Edit links from links tab
+    Remove link from link editing
+    Remove link from link editing
     Add terminology link to datamodel in links tab  ${DEFAULT TERMINOLOGY NAME}_1
     Remove link from link editing
     Save editing links 
@@ -486,7 +488,6 @@ T2C8. Add terminology and datamodel links to datamodel
     Save editing links 
 
     Edit links from links tab
-    Remove link from link editing
     Remove link from link editing
     Save editing links 
 

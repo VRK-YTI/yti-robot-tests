@@ -23,7 +23,7 @@ T10C1. Verify copy button permissions
 
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
-T10C2. Create valid copy with automatically generated prefix
+T10C2. Create valid copy with own prefix
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
@@ -32,11 +32,10 @@ T10C2. Create valid copy with automatically generated prefix
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
-    ${members}=    Create List              04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ${members}=    Create List              concept-1
     Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                     ${DEFAULT COLLECTION NAME}
     ...                                     ${COLLECTION ID DEFAULT}
@@ -48,11 +47,10 @@ T10C2. Create valid copy with automatically generated prefix
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
 
     Open copy terminology dialog
+    Input manual prefix ${DEFAULT TERMINOLOGY PREFIX}_copy on copy dialog
     Create copy terminology dialog
-    
-    # TODO bug where concept is not shown before refreshing page
-    Sleep  2
-    Reload page
+    Close copy confirmation dialog
+
 
     Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME} (Copy)
     Verify displayed status is Luonnos
@@ -64,55 +62,12 @@ T10C2. Create valid copy with automatically generated prefix
     Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
     Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Run Keywords
+    ...         Teardown test Case    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} with api    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} (Copy) with api
 
-T10C3. Create valid copy with own prefix
-    Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
-    ...                             ${DRAFT}
-    ...                             ${DOMAIN HOUSING}
-    ...                             ${ORGANIZATION AUTOMATION}
-    ...                             ${DEFAULT TERMINOLOGY PREFIX}
-
-    Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
-    ...                                  ${DEFAULT CONCEPT NAME}
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
-    ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
-
-    ${members}=    Create List              04bb2206-ba9e-4007-920d-f57ed0d4bce1
-    Create terminology collection with api  ${DEFAULT TERMINOLOGY NAME}
-    ...                                     ${DEFAULT COLLECTION NAME}
-    ...                                     ${COLLECTION ID DEFAULT}
-    ...                                     ${members}
-
-    Open terminology search page
-
-    Login with admin
-    Search and select terminology ${DEFAULT TERMINOLOGY NAME}
-
-    Open copy terminology dialog
-    Input manual prefix new_${DEFAULT TERMINOLOGY PREFIX} on copy dialog
-    
-    Create copy terminology dialog
-
-    # TODO bug where concept is not shown before refreshing page
-    Sleep  2
-    Reload page
-
-    Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME} (Copy)
-    Verify displayed status is Luonnos
-    Verify displayed domains are Asuminen
-    Verify displayed organizations are Automaatiotestaus
-    Verify displayed languages are suomi FI
-    Verify displayed type is Terminologinen sanasto
-    Verify displayed url contains new_${DEFAULT TERMINOLOGY PREFIX}
-
-    Verify concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
-    Verify collection ${DEFAULT COLLECTION NAME} containing concept ${DEFAULT CONCEPT NAME} on terminology ${DEFAULT TERMINOLOGY NAME} (Copy)
-
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
-
-T10C4. Verify copy dialog errors    
+T10C3. Verify copy dialog errors    
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${DRAFT}
     ...                             ${DOMAIN HOUSING}
@@ -140,4 +95,7 @@ T10C4. Verify copy dialog errors
     Input manual prefix new_${DEFAULT TERMINOLOGY PREFIX} on copy dialog
     Create copy terminology dialog
 
-    [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
+    [Teardown]  Run Keywords
+    ...         Teardown test Case    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} with api    AND
+    ...         Delete terminology ${DEFAULT TERMINOLOGY NAME} (Copy) with api

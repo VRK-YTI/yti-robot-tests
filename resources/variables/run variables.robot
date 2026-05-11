@@ -12,6 +12,7 @@ ${API_KEY}                      ${EMPTY}
 ${DEFAULT TERMINOLOGY NAME}         Auto_t
 ${DEFAULT CONCEPT NAME}             Auto_Concept
 ${DEFAULT COLLECTION NAME}          Auto_Collection
+${DEFAULT COLLECTION PREFIX}        auto_col
 ${DEFAULT TERMINOLOGY PREFIX}       auto_pre
 
 ${DEFAULT DATAMODEL NAME}           auto
@@ -62,6 +63,7 @@ Set default terminology variables
     Set Test Variable    ${DEFAULT TERMINOLOGY PREFIX}  ${DEFAULT TERMINOLOGY PREFIX}_${test_case_id.lower()}
     Set Test Variable    ${DEFAULT CONCEPT NAME}        ${DEFAULT CONCEPT NAME}_${test_case_id}
     Set Test Variable    ${DEFAULT COLLECTION NAME}     ${DEFAULT COLLECTION NAME}_${test_case_id}
+    Set Test Variable    ${DEFAULT COLLECTION PREFIX}   ${DEFAULT COLLECTION PREFIX}_${test_case_id.lower()}
 
 Set default datamodel variables
     [Arguments]          ${test_case_id}

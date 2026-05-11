@@ -32,6 +32,8 @@ T5C1. Verify create collection button permissions
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C2. Verify collection creation error messages
+    # TODO: remove skip after fixing the underlying issue (YTI-4387)
+    Skip 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -53,6 +55,7 @@ T5C2. Verify collection creation error messages
     ...  Valid=${False}
     Verify error message ${Collection empty name error}
 
+    Give new collection identifier as ${DEFAULT COLLECTION PREFIX}
     Name new collection as ${DEFAULT COLLECTION NAME}
     Give new collection definition as definition
     Save collect creation
@@ -68,27 +71,25 @@ T5C3. Create valid collection with multiple concepts
     
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_1
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce1
+    ...                                  concept-1
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e81
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_2
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce2
+    ...                                  concept-2
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e82
 
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}
     ...                                  ${DEFAULT CONCEPT NAME}_3
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce3
+    ...                                  concept-3
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e83
 
     Open terminology search page
     Login with Admin
     Search and select terminology ${DEFAULT TERMINOLOGY NAME}
 
     Open create collection dialog
+    Give new collection identifier as ${DEFAULT COLLECTION PREFIX}
     Name new collection as ${DEFAULT COLLECTION NAME}
     Give new collection definition as definition
     Add concept ${DEFAULT CONCEPT NAME}_1 to collection

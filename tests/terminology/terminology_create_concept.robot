@@ -92,9 +92,8 @@ T4C3. Create valid concept with all information and relations
     
     Create terminology concept with api  ${DEFAULT TERMINOLOGY NAME}_2
     ...                                  ${DEFAULT CONCEPT NAME}_3
-    ...                                  04bb2206-ba9e-4007-920d-f57ed0d4bce3
+    ...                                  concept-3
     ...                                  ${DRAFT}
-    ...                                  bf5f88cb-3a33-498e-b8eb-1c9807973e83
 
     ${definition}      Set Variable    definition
     ${example}         Set Variable    example

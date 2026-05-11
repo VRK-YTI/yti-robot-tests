@@ -15,7 +15,6 @@ ${Terminology select organization input}      ${Create terminology dialog}//inpu
 ${Terminology select domain input}      ${Create terminology dialog}//input[@placeholder="Valitse sanaston tietoalueet"]
 ${Alert on create terminology}          ${Create terminology dialog}//section[@role="alert"]//div[text()="Puuttuvia tietoja"]
 ${Terminology create email input}      ${Create terminology dialog}//input[@placeholder="Esim. yllapito@example.org"]
-${Select own prefix}                   ${Create terminology dialog}//label[text()="Valitse oma tunnus"]
 ${Prefix input}                        ${Create terminology dialog}//input[@id="prefix-text-input"]
 
 ${Concept language finnish}  suomi FI
@@ -55,7 +54,6 @@ Create terminology from dialog
         Press Keys               None  TAB
     END
     IF  '${prefix}' != '${NONE}'
-        Click element with wait  ${Select own prefix}
         Input text with wait  ${Prefix input}  ${prefix}
     END
     IF  '${email}' != '${NONE}'
