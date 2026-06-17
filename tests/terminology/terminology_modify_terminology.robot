@@ -33,8 +33,6 @@ T7C1. Verify modify terminology button permissions
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T7C2. Modify terminology
-    # TODO Remove skip when bug is fixed (YTI-3755)
-    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -79,8 +77,6 @@ T7C2. Modify terminology
     Select domain Demokratia on modify terminology
 
     Select type other on modify terminology
-    Select prefix input on modify terminology
-    Input prefix ${DEFAULT TERMINOLOGY PREFIX}_1 on modify terminology
 
     Save terminology modify
 
@@ -97,8 +93,6 @@ T7C2. Modify terminology
     Verify displayed organizations are Testiorganisaatio
     Verify displayed languages are suomi FI, ruotsi SV, englanti EN
     Verify displayed type is Muu sanasto
-    # TODO bug prefix modify does not work
-    # Verify displayed url contains ${DEFAULT TERMINOLOGY PREFIX}_1
 
     Open modify terminology dialog
 
@@ -112,16 +106,14 @@ T7C2. Modify terminology
     Select domain Demokratia on modify terminology
 
     Select type terminology on modify terminology
-    Select prefix automatic on modify terminology
 
     Select status Voimassa oleva on modify terminology
 
-    Input contact ${EMPTY} on modify terminology
     Save terminology modify
 
     Verify displayed finish name is ${DEFAULT TERMINOLOGY NAME}
     Verify displayed status is Voimassa oleva
-    Verify displayed contact is yhteentoimivuus@dvv.fi
+    Verify displayed contact is ${ADMIN_EDUUNI_EMAIL}
     Verify displayed domains are Asuminen
     Verify displayed organizations are Automaatiotestaus
     Verify displayed languages are suomi FI
