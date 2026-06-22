@@ -95,7 +95,6 @@ T8C2. Modify concept
     ${sources}         Set Variable    source
 
     Add information to concept
-    ...  prefix=${DEFAULT TERMINOLOGY PREFIX}
     ...  definition=${definition}
     ...  example=${example}
     ...  usage=${usage}

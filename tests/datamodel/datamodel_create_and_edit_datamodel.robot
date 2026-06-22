@@ -485,10 +485,6 @@ T2C8. Add terminology and datamodel links to datamodel
     Add datamodel link to datamodel in links tab    ${DEFAULT DATAMODEL NAME}_${single_language_1}
     Save editing links 
 
-    Edit links from links tab
-    Remove link from link editing
-    Save editing links 
-
     Reload page
     
     # TODO Add new checks that datamodel has all valid data (YTI-3762)
