@@ -219,8 +219,6 @@ T8C2. Modify concept
     ...         Delete terminology ${DEFAULT TERMINOLOGY NAME}_2 with api
 
 T8C3. Modify terms
-    # TODO: unskip after bug related to content language is found (YTI-4389)
-    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}

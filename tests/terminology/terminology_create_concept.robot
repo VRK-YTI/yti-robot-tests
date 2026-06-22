@@ -73,8 +73,6 @@ T4C2. Verify concept creation error messages
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T4C3. Create valid concept with all information and relations
-    # TODO remove skip when bug is fixed (YTI-3755)
-    Skip
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}
@@ -113,6 +111,7 @@ T4C3. Create valid concept with all information and relations
     Start concept creation for ${DEFAULT CONCEPT NAME}_2
 
     Add information to concept
+    ...  prefix=${DEFAULT TERMINOLOGY PREFIX}
     ...  definition=${definition}
     ...  example=${example}
     ...  subject=${subject}

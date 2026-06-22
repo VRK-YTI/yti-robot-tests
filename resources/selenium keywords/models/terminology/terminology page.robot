@@ -8,9 +8,9 @@ ${Displayed terminology name fi}    //div/ul/li[@lang="fi"]
 ${Displayed terminology name en}    //div/ul/li[@lang="en"]
 ${Displayed terminology name sv}    //div/ul/li[@lang="sv"]
 
-${Displayed terminology description fi}    //div/ul/li[@lang="fi"]
-${Displayed terminology description en}    //div/ul/li[@lang="en"]
-${Displayed terminology description sv}    //div/ul/li[@lang="sv"]
+${Displayed terminology description fi}    //div/ul/li[@lang="fi"]/span
+${Displayed terminology description en}    //div/ul/li[@lang="en"]/span
+${Displayed terminology description sv}    //div/ul/li[@lang="sv"]/span
 
 ${Displayed terminology status}          //span[@id="status-chip"]/span
 ${Displayed terminology domains}         //div[@id="information-domains"]
@@ -254,7 +254,11 @@ Verify displayed status is ${status}
 
 Verify displayed domains are ${domains}
     Open terminology information
-    Wait Until Element Contains  ${Displayed terminology domains}   ${domains}
+    ${domain_list}=    Split String    ${domains}    ,
+    FOR    ${domain}    IN    @{domain_list}
+        ${domain}=    Strip String    ${domain}
+        Wait Until Element Contains    ${Displayed terminology domains}    ${domain}
+    END
     Close terminology information
 
 Verify displayed languages are ${languages}

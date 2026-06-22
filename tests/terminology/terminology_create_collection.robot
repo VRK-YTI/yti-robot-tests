@@ -32,8 +32,6 @@ T5C1. Verify create collection button permissions
     [Teardown]  Teardown test Case delete terminology ${DEFAULT TERMINOLOGY NAME}
 
 T5C2. Verify collection creation error messages
-    # TODO: remove skip after fixing the underlying issue (YTI-4387)
-    Skip 
     Create terminology with api     ${DEFAULT TERMINOLOGY NAME}
     ...                             ${VALID}
     ...                             ${DOMAIN HOUSING}

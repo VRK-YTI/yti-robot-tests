@@ -15,6 +15,7 @@ ${bring concepts file close after upload button}  //button[text()="Sulje"]
 
 ${Bring concept dialog cancel button}   //div[@role="dialog"]/div/div/button[text()="Peruuta"]
 
+${concept prefix input}                //label[contains(., "Tunnus")]/following::input[1]  |  //label[contains(., "Identifier")]/following::input[1]
 ${concept name input}                  //input[@placeholder="Kirjoita termin nimi"]  |  //input[@placeholder="Give term name"]
 ${concept definition input}            //textarea[@placeholder="Kirjoita määritelmä"]  |  //textarea[@placeholder="Enter a definition"]
 
@@ -196,7 +197,8 @@ Verify collection contains concepts
     Wait until element is visible    //*[text()="Valikoimaan kuuluvat käsitteet"]
 
 Verify collection does not contain concepts
-    Wait until element is not visible    //*[text()="Valikoimaan kuuluvat käsitteet"]
+    Wait until element is visible    //*[text()="Valikoimaan kuuluvat käsitteet"]
+    Wait until element is visible    //*[text()="Käsitekokoelmaan ei ole lisätty käsitteitä"]
 
 Verify concept error message ${error}
     Wait until page contains element  //li[text()="${error}"]
@@ -349,7 +351,8 @@ Create concept
     Save concept creation
 
 Add information to concept
-    [Arguments]     ${definition}=${NONE}
+    [Arguments]     ${prefix}=${NONE}
+    ...             ${definition}=${NONE}
     ...             ${example}=${NONE}
     ...             ${usage}=${NONE}
     ...             ${subject}=${NONE}
@@ -368,6 +371,9 @@ Add information to concept
     ...             ${Related concept in other vocabulary}=${NONE}
     ...             ${Match in other vocabulary}=${NONE}
     ...             ${Almost match in other vocabulary}=${NONE}
+    IF  '${prefix}' != '${NONE}'
+        Input text with wait  ${concept prefix input}  ${definition}
+    END
     IF  '${status}' != '${NONE}'
         Input text with wait  ${concept definition input}  ${definition}
     END
